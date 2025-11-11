@@ -1,80 +1,100 @@
 # The Book of Robocoding
 
+“May your aim be true and your dodges unpredictable.” — Adopted Robocode Community Motto
+
+_Build the best - destroy the rest!_
+
 [![Deploy Documentation](https://github.com/robocode-dev/robocoding/actions/workflows/deploy.yml/badge.svg)](https://github.com/robocode-dev/robocoding/actions/workflows/deploy.yml)
 
-**Build the best - destroy the rest!**
+A structured, modern knowledge base covering **Robocode** and **Robocode Tank Royale**—from fundamentals and physics to
+movement, targeting, and competitive strategy—distilling two decades of community experience.
 
-Comprehensive documentation for Robocode and Robocode Tank Royale - the programming game where you code robot battle tanks to compete autonomously.
+---
 
-🔗 **Live Site**: [robocode-dev.github.io/robocoding](https://robocode-dev.github.io/robocoding/)
+## 📦 Deployable Documentation
 
-## 📚 About
+The site is automatically deployed to **GitHub Pages** via **GitHub Actions**. Pushing changes to `main` triggers a new
+build and publication at:
 
-This documentation site provides:
+🔗 **Live Site**: https://robocode-dev.github.io/robocoding/
 
-- **Clear explanations** of Robocode concepts and gameplay
-- **Physics & formulas** with KaTeX mathematical rendering
-- **Step-by-step tutorials** for beginners
-- **Advanced techniques** with pseudocode examples
-- **Multi-language code examples** (Python, Java, C#, JavaScript)
-- **Mobile-friendly** dark mode interface
-- **Search functionality** to find what you need
+---
 
-## 🎯 What's Inside
+## 🎯 Purpose
+
+**The Book of Robocoding** unifies knowledge previously scattered across RoboWiki.net, forums, and historical sources.
+It focuses on concepts, strategy patterns, math, and reasoning (code examples appear when they clarify concepts;
+otherwise pseudocode is preferred). The goal is to teach principles that transfer between the classic Java-based
+Robocode and Robocode Tank Royale.
+
+---
+
+## 📚 What's Inside
 
 ### Articles
-- **What is Robocode?** - Introduction to the programming game
-- **Physics** - Game mechanics with mathematical formulas
-- **Scoring** - How points are awarded in battles
-- **Coordinates and Angles** - Understanding the arena coordinate system
-- **History** - From the original Robocode to Tank Royale
+
+- What is Robocode?
+- Physics (game mechanics & formulas)
+- Scoring
+- Coordinates and Angles
+- History (classic Robocode → Tank Royale)
+- Targeting Systems
+- Movement & Evasion
+- Energy Management
+- Radar & Scanning
+- Team Robots
+- Robocode Tank Royale Differences
+- Glossary
+- References & Credits
 
 ### Tutorials
-- **Getting Started** - Installation and setup for multiple languages
-- **My First Bot** - Create your first working bot
-- **Beyond the Basics** - Advanced strategies and techniques
+
+- Getting Started
+- My First Bot
+- Beyond the Basics
+
+---
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
 - Node.js 14+ (for building the site)
-- npm or yarn package manager
+- npm or yarn
 
 ### Local Development
 
-1. **Clone the repository**
+1. Clone
    ```bash
    git clone https://github.com/robocode-dev/robocoding.git
    cd robocoding
    ```
-
-2. **Install dependencies**
+2. Install
    ```bash
    npm install
    ```
-
-3. **Start the development server**
+3. Develop
    ```bash
    npm run dev
    ```
-   
-   The site will be available at `http://localhost:8081/robocoding/`
-
-4. **Build for production**
+   Serves at: http://localhost:8080/robocoding/ (or as shown in your terminal)
+4. Build
    ```bash
    npm run build
    ```
-   
-   Generated files will be in `docs/.vuepress/dist/`
+   Output: `docs/.vuepress/dist/`
+
+---
 
 ## 🛠️ Technology Stack
 
-- **[VuePress 1.x](https://v1.vuepress.vuejs.org/)** - Static site generator
-- **[Vue 2](https://v2.vuejs.org/)** - Progressive JavaScript framework
-- **[KaTeX](https://katex.org/)** - Fast math rendering
-- **[markdown-it](https://markdown-it.github.io/)** - Markdown parser
-- **GitHub Pages** - Hosting and deployment
+- VuePress 1.x (static site generator)
+- Vue 2
+- KaTeX (math rendering)
+- markdown-it (Markdown parsing)
+- GitHub Pages (hosting)
+
+---
 
 ## 📝 Project Structure
 
@@ -90,127 +110,150 @@ robocoding/
 │   │       ├── robocode-logo.svg
 │   │       └── favicon.ico
 │   ├── articles/              # Article pages
-│   │   ├── what-is-robocode.md
-│   │   ├── physics.md
-│   │   ├── scoring.md
-│   │   ├── coordinates-and-angles.md
-│   │   └── history.md
 │   ├── tutorial/              # Tutorial pages
-│   │   ├── getting-started.md
-│   │   ├── my-first-bot.md
-│   │   └── beyond-basics.md
 │   └── README.md              # Home page
-├── .github/
-│   └── workflows/
-│       └── deploy.yml         # GitHub Actions deployment
+├── .github/workflows/deploy.yml
 ├── package.json
 ├── LICENSE-CODE               # MIT License for code
 ├── LICENSE-DOCS               # CC BY-SA 4.0 for documentation
+├── ATTRIBUTION.md             # Author credits
+├── NOTICE.md                  # RoboWiki acknowledgments
 └── README.md                  # This file
 ```
 
+---
+
 ## 🎨 Features
 
-### Dark Mode UI
-Clean, modern dark theme optimized for readability and reduced eye strain.
-
-### Mathematical Formulas
-KaTeX rendering for physics equations and game mechanics:
-
-$$
-v = a \times t
-$$
-
-### Code Examples
-Multi-language code examples with syntax highlighting for Python, Java, C#, JavaScript, and more.
-
-### Mobile-Friendly
-Responsive design that works beautifully on phones, tablets, and desktops.
-
-### Search
-Built-in search functionality to quickly find articles and tutorials.
-
-### Sidebar Navigation
-Organized sidebar with collapsible sections for easy navigation.
-
-## 🤝 Contributing
-
-We welcome contributions! Here's how you can help:
-
-1. **Report Issues**: Found a bug or error? [Open an issue](https://github.com/robocode-dev/robocoding/issues)
-
-2. **Suggest Improvements**: Have ideas for new content? Let us know!
-
-3. **Submit Pull Requests**: 
-   - Fork the repository
-   - Create a feature branch (`git checkout -b feature/amazing-content`)
-   - Commit your changes (`git commit -m 'Add amazing content'`)
-   - Push to the branch (`git push origin feature/amazing-content`)
-   - Open a Pull Request
-
-### Writing Guidelines
-
-- Keep articles **clear and concise**
-- Use **headings** to organize content
-- Include **code examples** where appropriate
-- Add **formulas** using KaTeX syntax: `$inline$` or `$$display$$`
-- Test locally before submitting
-
-## 📜 License
-
-This project uses dual licensing:
-
-### Documentation Content
-Licensed under **[Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)**
-
-You are free to:
-- **Share** - copy and redistribute the material
-- **Adapt** - remix, transform, and build upon the material
-
-Under the terms:
-- **Attribution** - Give appropriate credit
-- **ShareAlike** - Distribute derivatives under the same license
-
-### Code Examples
-Licensed under **[MIT License](https://opensource.org/licenses/MIT)**
-
-Free to use, modify, and distribute with attribution.
-
-## 🙏 Credits and Acknowledgments
-
-This documentation draws upon the collective knowledge of the Robocode community:
-
-### Special Thanks
-- **[RoboWiki](http://robowiki.net/)** contributors for extensive research and documentation
-- **Mathew Nelson** - Original Robocode creator
-- **Flemming Nørnberg Larsen** - Robocode Tank Royale creator and maintainer
-- All **bot developers** and **tournament organizers** who have contributed to the community
-
-### Reference Materials
-The content in this book is based on and inspired by:
-- Official Robocode documentation
-- RoboWiki community research
-- Tank Royale documentation
-- Years of collective community knowledge
-
-## 🔗 Related Projects
-
-- **[Robocode Tank Royale](https://robocode-dev.github.io/tank-royale/)** - Modern multi-language version
-- **[Classic Robocode](https://robocode.sourceforge.io/)** - Original Java version
-- **[RoboWiki](http://robowiki.net/)** - Community research and strategies
-
-## 📧 Support
-
-- **Issues**: [GitHub Issues](https://github.com/robocode-dev/robocoding/issues)
-- **Discussions**: Join the Robocode community forums
-- **Documentation**: You're reading it!
-
-## 🌟 Star History
-
-If you find this documentation helpful, please consider giving it a star ⭐ on GitHub!
+- Dark theme optimized for reading
+- Math formulas via KaTeX (e.g. `v = a × t`)
+- Multi-language code examples
+- Mobile-friendly responsive layout
+- Built-in search
+- Structured sidebar navigation
 
 ---
 
-**Built with ❤️ by the Robocode community**
+## 🤝 Contributing
 
-*Content licensed under CC BY-SA 4.0 | Code licensed under MIT | Built with VuePress*
+Ways to help:
+
+- Report issues
+- Improve explanations
+- Add examples / diagrams
+- Refine formulas
+- Suggest new topics
+
+### Workflow
+
+1. Fork & branch: `git checkout -b feature/topic`
+2. Implement & preview locally
+3. Commit: `git commit -m "Describe change"`
+4. Push & open a Pull Request
+
+### Writing Guidelines
+
+- Prefer clarity over cleverness
+- Use headings for structure
+- Keep paragraphs short
+- Use KaTeX for math (`$inline$`, `$$block$$`)
+- Provide minimal, focused examples
+- Avoid language-specific code when a concept is universal
+
+### Adding a New Page (Articles or Tutorials)
+
+1. Create a Markdown file under `docs/articles/` or `docs/tutorial/` (e.g. `advanced-movement.md`).
+2. Start with a top-level `# Title` header; optional front matter is not required for standard pages.
+3. Add the filename (without extension) to the appropriate sidebar list in `docs/.vuepress/config.js`:
+    - Articles: add to the array under `'/articles/'` and to the home sidebar children if desired.
+    - Tutorials: add to the array under `'/tutorial/'`.
+4. Keep section heading levels consistent (`#` for page title, then `##`, `###` ...).
+5. Cite sources or inspiration at the bottom when derived from RoboWiki or forum analysis.
+6. Run `npm run dev` and verify navigation and sidebar entries before opening a PR.
+
+Example sidebar addition (in `config.js`):
+```js
+// In docs/.vuepress/config.js
+module.exports = {
+  // ...existing config...
+  themeConfig: {
+    // ...existing themeConfig...
+    sidebar: {
+      '/articles/': [
+        '', // maps to /articles/ README index
+        'what-is-robocode',
+        'physics',
+        'scoring',
+        'coordinates-and-angles',
+        'history',
+        'advanced-movement' // new page
+      ],
+      // ...existing sidebars...
+    }
+  }
+}
+```
+
+---
+
+## 📜 License
+
+Dual licensed:
+
+### Documentation
+
+Creative Commons Attribution–ShareAlike 4.0 (CC BY-SA 4.0)
+https://creativecommons.org/licenses/by-sa/4.0/
+
+### Code Examples & Configuration
+
+MIT License
+https://opensource.org/licenses/MIT
+
+---
+
+## 🙏 Credits & Acknowledgments
+
+Draws on the collective effort of an informal Robocode community of developers, competitors, and researchers.
+
+### Special Thanks
+
+- **Mathew Nelson** – Original creator of Robocode (2001–2005)
+- **Flemming Nørnberg Larsen** – Maintainer (2005–present), creator of Robocode Tank Royale, author of this book
+- **Pavel Savara** – Major contributor (modularization, replay, more)
+- **Albert Perez** – Creator of RoboRumble ([RoboRumble on RoboWiki](http://robowiki.net/robowiki/RoboRumble))
+- **Julian Kent (Skilgannon)** – Creator/maintainer of
+  LiteRumble ([LiteRumble on RoboWiki](http://robowiki.net/robowiki/LiteRumble)); host of RoboWiki.net
+- **RoboWiki** contributors – Foundational research & analysis
+- All bot authors, tournament organizers, and knowledge sharers
+
+### Source Foundations
+
+- Official Robocode & Tank Royale docs
+- RoboWiki analytical articles
+- Historic forum discussions
+- Long-term competitive meta observations
+
+See `ATTRIBUTION.md` and `NOTICE.md` for detailed credits and licensing provenance.
+
+---
+
+## 👥 Authors & Maintainers
+
+- Mathew Nelson – Original creator (2001–2005)
+- Flemming Nørnberg Larsen – Maintainer & author (2005–present)
+- Additional notable contributors: Pavel Savara, Albert Perez, Julian Kent (Skilgannon) — and others listed in
+  `ATTRIBUTION.md`.
+
+---
+
+## Robocode Community & Motto
+
+The term "Robocode Community" informally covers everyone engaging in development, bot design, competitions,
+infrastructure (RoboRumble / LiteRumble), documentation, and knowledge sharing.
+
+The motto appears at the top of this document and is a community-inspired adoption—not an official historical slogan.
+
+(Already shown at top; not repeated here to avoid redundancy.)
+
+---
