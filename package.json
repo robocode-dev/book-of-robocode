@@ -1,0 +1,26 @@
+{
+  "name": "the-book-of-robocoding",
+  "version": "1.0.0",
+  "description": "The Book of Robocoding - Documentation for Robocode & Robocode Tank Royale",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "keywords": [
+    "robocode",
+    "tank-royale",
+    "documentation",
+    "programming-game"
+  ],
+  "author": "Flemming Nørnberg Larsen",
+  "license": "MIT",
+  "devDependencies": {
+    "@vuepress/plugin-back-to-top": "^1.9.10",
+    "@vuepress/plugin-medium-zoom": "^1.9.10",
+    "@vuepress/plugin-nprogress": "^1.9.10",
+    "@vuepress/plugin-search": "^1.9.10",
+    "markdown-it-katex": "^2.0.3",
+    "vuepress": "^1.9.10"
+  }
+}
