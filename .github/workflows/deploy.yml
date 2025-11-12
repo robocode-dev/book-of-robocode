@@ -1,3 +1,5 @@
+# NOTE: Deployment is disabled while the repository is private.
+# Jobs below only run when the repository visibility is public.
 name: Deploy Documentation
 
 on:
@@ -17,6 +19,7 @@ concurrency:
 
 jobs:
   build:
+    if: ${{ github.repository_visibility == 'public' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -43,6 +46,7 @@ jobs:
           path: docs/.vuepress/dist
 
   deploy:
+    if: ${{ github.repository_visibility == 'public' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
