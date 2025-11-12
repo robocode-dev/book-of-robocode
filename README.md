@@ -1,8 +1,8 @@
 # The Book of Robocoding
 
-“May your aim be true and your dodges unpredictable.” — Adopted Robocode Community Motto
+“May your aim be true and your dodges unpredictable.” — Adopted Robocoding Motto
 
-_Build the best - destroy the rest!_
+_Build the best — destroy the rest!_
 
 [![Deploy Documentation](https://github.com/robocode-dev/robocoding/actions/workflows/deploy.yml/badge.svg)](https://github.com/robocode-dev/robocoding/actions/workflows/deploy.yml)
 
