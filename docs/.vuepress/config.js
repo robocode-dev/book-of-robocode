@@ -1,5 +1,6 @@
 import { defaultTheme } from '@vuepress/theme-default'
 import { viteBundler } from '@vuepress/bundler-vite'
+import { searchPlugin } from '@vuepress/plugin-search'
 
 export default {
   title: 'The Book of Robocoding',
@@ -14,16 +15,13 @@ export default {
   ],
 
   plugins: [
-    [
-      '@vuepress/plugin-search',
-      {
-        locales: {
-          '/': {
-            placeholder: 'Search'
-          }
+    searchPlugin({
+      locales: {
+        '/': {
+          placeholder: 'Search'
         }
       }
-    ],
+    }),
     '@vuepress/plugin-nprogress'
   ],
 
