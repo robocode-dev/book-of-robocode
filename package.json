@@ -13,7 +13,7 @@
     "documentation",
     "programming-game"
   ],
-  "author": "Robocode Community",
+  "author": "Flemming Nørnberg Larsen",
   "license": "MIT",
   "devDependencies": {
     "@vuepress/plugin-back-to-top": "^1.9.10",
