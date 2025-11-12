@@ -1,17 +1,36 @@
-module.exports = {
+import { defaultTheme } from '@vuepress/theme-default'
+import { viteBundler } from '@vuepress/bundler-vite'
+
+export default {
   title: 'The Book of Robocoding',
   description: 'Documentation for Robocode & Robocode Tank Royale - Build the best, destroy the rest!',
   base: '/robocoding/',
-  
+
+  bundler: viteBundler(),
+
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css' }]
   ],
 
-  themeConfig: {
+  plugins: [
+    [
+      '@vuepress/plugin-search',
+      {
+        locales: {
+          '/': {
+            placeholder: 'Search'
+          }
+        }
+      }
+    ],
+    '@vuepress/plugin-nprogress'
+  ],
+
+  theme: defaultTheme({
     logo: '/robocode-logo.svg',
-    
-    nav: [
+
+    navbar: [
       { text: 'Home', link: '/' },
       { text: 'Articles', link: '/articles/' },
       { text: 'Tutorial', link: '/tutorial/' },
@@ -36,8 +55,8 @@ module.exports = {
       '/': [
         '',
         {
-          title: 'Articles',
-          collapsable: false,
+          text: 'Articles',
+          collapsible: false,
           children: [
             '/articles/what-is-robocode',
             '/articles/physics',
@@ -47,8 +66,8 @@ module.exports = {
           ]
         },
         {
-          title: 'Tutorial',
-          collapsable: false,
+          text: 'Tutorial',
+          collapsible: false,
           children: [
             '/tutorial/getting-started',
             '/tutorial/my-first-bot',
@@ -58,31 +77,15 @@ module.exports = {
       ]
     },
 
-    searchPlaceholder: 'Search...',
-    lastUpdated: 'Last Updated',
-    
     repo: 'robocode-dev/robocoding',
-    repoLabel: 'GitHub',
     docsDir: 'docs',
-    editLinks: true,
+    lastUpdated: true,
+    editLink: true,
     editLinkText: 'Help improve this page!',
-
     smoothScroll: true
-  },
+  }),
 
   markdown: {
-    lineNumbers: true,
-    extendMarkdown: md => {
-      md.use(require('markdown-it-katex'))
-    }
-  },
-
-  plugins: [
-    '@vuepress/back-to-top',
-    '@vuepress/medium-zoom',
-    '@vuepress/nprogress',
-    ['@vuepress/search', {
-      searchMaxSuggestions: 10
-    }]
-  ]
+    code: { lineNumbers: true }
+  }
 }
