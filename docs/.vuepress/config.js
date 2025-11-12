@@ -39,8 +39,7 @@ export default {
       { text: 'Melee Combat', link: '/articles/melee-combat' },
       { text: 'Advanced Topics', link: '/articles/advanced-topics' },
       { text: 'Tank Royale Differences', link: '/articles/tank-royale' },
-      { text: 'Appendices', link: '/articles/appendices' },
-      { text: 'GitHub', link: 'https://github.com/robocode-dev/robocoding' }
+      { text: 'Appendices', link: '/articles/appendices' }
     ],
 
     sidebar: {
