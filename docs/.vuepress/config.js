@@ -5,7 +5,6 @@ import { searchPlugin } from '@vuepress/plugin-search'
 export default {
   title: 'The Book of Robocoding',
   description: 'Documentation for Robocode & Robocode Tank Royale - Build the best, destroy the rest!',
-  base: '/robocoding/',
 
   bundler: viteBundler(),
 
@@ -30,19 +29,225 @@ export default {
 
     navbar: [
       { text: 'Home', link: '/' },
-      { text: 'Articles', link: '/articles/' },
-      { text: 'Tutorial', link: '/tutorial/' },
+      { text: 'Introduction', link: '/articles/what-is-robocode' },
+      { text: 'Getting Started', link: '/tutorial/getting-started' },
+      { text: 'Battlefield Physics', link: '/articles/physics' },
+      { text: 'Targeting Systems', link: '/articles/targeting/' },
+      { text: 'Movement & Evasion', link: '/articles/movement/' },
+      { text: 'Energy Management', link: '/articles/energy-management' },
+      { text: 'Team Strategies', link: '/articles/team-strategies' },
+      { text: 'Melee Combat', link: '/articles/melee-combat' },
+      { text: 'Advanced Topics', link: '/articles/advanced-topics' },
+      { text: 'Tank Royale Differences', link: '/articles/tank-royale' },
+      { text: 'Appendices', link: '/articles/appendices' },
       { text: 'GitHub', link: 'https://github.com/robocode-dev/robocoding' }
     ],
 
     sidebar: {
       '/articles/': [
-        '',
-        'what-is-robocode',
-        'physics',
-        'scoring',
-        'coordinates-and-angles',
-        'history'
+        {
+          text: 'Introduction',
+          children: ['what-is-robocode']
+        },
+        {
+          text: 'Getting Started',
+          children: [
+            'my-first-bot',
+            'robot-api-basics',
+            'your-first-battle'
+          ]
+        },
+        {
+          text: 'Battlefield Physics',
+          children: [
+            'coordinates-and-angles',
+            'movement-constraints',
+            'bullet-physics',
+            'wall-collisions',
+            'gun-heat-cooling'
+          ]
+        },
+        {
+          text: 'Radar & Scanning',
+          children: [
+            'radar-basics',
+            {
+              text: 'One-on-One Radar',
+              children: [
+                'one-on-one-radar',
+                'spinning-radar',
+                'infinity-lock',
+                {
+                  text: 'Perfect Locks',
+                  children: ['turn-multiplier', 'width-lock']
+                }
+              ]
+            },
+            {
+              text: 'Melee Radar',
+              children: [
+                'melee-radar',
+                'spinning-corner-arc',
+                'oldest-scanned',
+                'gun-heat-lock'
+              ]
+            }
+          ]
+        },
+        {
+          text: 'Targeting Systems',
+          children: [
+            {
+              text: 'Simple Targeting',
+              children: [
+                'head-on-targeting',
+                'linear-targeting',
+                'circular-targeting',
+                'random-area-targeting',
+                'virtual-guns-mean-targeting'
+              ]
+            },
+            {
+              text: 'The Targeting Problem',
+              children: [
+                'understanding-the-challenge',
+                'introducing-waves'
+              ]
+            },
+            {
+              text: 'Statistical Targeting',
+              children: [
+                'guessfactor-targeting',
+                'segmentation-visit-count-stats',
+                'dynamic-clustering',
+                'advanced-statistical-methods'
+              ]
+            },
+            {
+              text: 'Predictive Targeting',
+              children: [
+                'precise-prediction',
+                'pattern-matching',
+                'play-it-forward-sequential-prediction'
+              ]
+            },
+            {
+              text: 'Advanced Targeting',
+              children: [
+                'angular-targeting',
+                'anti-surfer-targeting',
+                'neural-experimental-targeting'
+              ]
+            },
+            {
+              text: 'Targeting Tactics',
+              children: [
+                'fire-power-timing-decisions',
+                'saving-gun-data'
+              ]
+            }
+          ]
+        },
+        {
+          text: 'Movement & Evasion',
+          children: [
+            {
+              text: 'Basic Movement',
+              children: [
+                'movement-fundamentals-goto',
+                'wall-avoidance-wall-smoothing',
+                'distancing'
+              ]
+            },
+            {
+              text: 'Simple Evasion',
+              children: [
+                'random-movement',
+                'stop-and-go',
+                'oscillator-movement'
+              ]
+            },
+            {
+              text: 'Strategic Movement',
+              children: [
+                'anti-gravity-movement',
+                'minimum-risk-movement',
+                'corner-movement'
+              ]
+            },
+            {
+              text: 'Advanced Evasion',
+              children: [
+                'gun-heat-waves-bullet-shadows',
+                'dodging-bullets',
+                'wave-surfing-introduction',
+                'wave-surfing-implementations',
+                'flattener'
+              ]
+            },
+            {
+              text: 'Offensive Movement',
+              children: [
+                'pattern-enemy-dodging-movement',
+                'ramming-mirror-movement',
+                'movement-analysis'
+              ]
+            }
+          ]
+        },
+        {
+          text: 'Energy Management',
+          children: [
+            'energy-resource',
+            'bullet-power-selection',
+            'energy-management-1v1',
+            'energy-management-melee'
+          ]
+        },
+        {
+          text: 'Team Strategies',
+          children: [
+            'team-basics',
+            'twin-duel-strategy',
+            'communication-coordination',
+            'team-roles-formations'
+          ]
+        },
+        {
+          text: 'Melee Combat',
+          children: [
+            'melee-strategy',
+            'melee-targeting',
+            'melee-movement',
+            'melee-survival'
+          ]
+        },
+        {
+          text: 'Advanced Topics',
+          children: [
+            'multiple-choice-bestpspace',
+            'targeting-matrix',
+            'testing-analysis-tools',
+            'optimization-techniques'
+          ]
+        },
+        {
+          text: 'Robocode Tank Royale Differences',
+          children: [
+            'api-changes',
+            'physics-differences',
+            'migration-guide'
+          ]
+        },
+        {
+          text: 'Appendices',
+          children: [
+            'glossary',
+            'quick-reference',
+            'debugging-tips',
+            'references-credits'
+          ]
+        }
       ],
       '/tutorial/': [
         '',
