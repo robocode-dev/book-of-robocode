@@ -2,7 +2,7 @@
 
 ## The Beginning (2001)
 
-**Robocode** was created by **Mathew Nelson** at IBM in 2001. It was originally developed as an internal training tool to help IBM employees learn Java programming in a fun and engaging way.
+**Robocode** was created by **Mathew A. Nelson** at IBM in 2001. It was originally developed as an internal training tool to help IBM employees learn Java programming in a fun and engaging way.
 
 The concept was simple but brilliant: write code to control a tank in a battle arena. This game-based approach to learning programming proved to be incredibly effective and enjoyable.
 
@@ -124,7 +124,7 @@ The fundamental appeal remains the same: **learning programming through competit
 ## Timeline
 
 ```
-2001  - Robocode created by Mathew Nelson at IBM
+2001  - Robocode created by Mathew A. Nelson at IBM
 2005  - Released as open source (CPL/EPL)
 2000s - RoboWiki community forms
 2010s - Peak competitive era
@@ -136,7 +136,7 @@ The fundamental appeal remains the same: **learning programming through competit
 
 The Robocode community owes gratitude to:
 
-- **Mathew Nelson**: Original creator
+- **Mathew A. Nelson**: Original creator
 - **Flemming Nørnberg Larsen**: Tank Royale creator and current maintainer
 - **RoboWiki contributors**: Extensive documentation and research
 - **Bot developers**: Thousands of creative programmers worldwide

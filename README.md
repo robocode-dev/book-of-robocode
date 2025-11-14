@@ -2,7 +2,7 @@
 
 “May your aim be true and your dodges unpredictable.” — Flemming Nørnberg Larsen
 
-“Build the best — destroy the rest!” — Mathew Nelson
+“Build the best — destroy the rest!” — Mathew A. Nelson
 
 [![Deploy Documentation](https://github.com/robocode-dev/robocoding/actions/workflows/deploy.yml/badge.svg)](https://github.com/robocode-dev/robocoding/actions/workflows/deploy.yml)
 
@@ -195,7 +195,7 @@ https://opensource.org/licenses/MIT
 This project draws on the collective effort of an informal Robocode community: developers, competitors, researchers, infrastructure maintainers (RoboRumble / LiteRumble), and documentation contributors.
 
 ### Special Thanks
-- **Mathew Nelson** — Original creator of Robocode (2001–2005)
+- **Mathew A. Nelson** — Original creator of Robocode (2001–2005)
 - **Flemming Nørnberg Larsen** — Maintainer (2005–present); creator of Robocode Tank Royale; author of this book
 - **Pavel Savara** — Major Robocode contributor (modularization, replay, refactoring)
 - **Albert Perez** — Creator of RoboRumble ([RoboRumble](http://robowiki.net/robowiki/RoboRumble))
@@ -215,7 +215,7 @@ See `ATTRIBUTION.md` and `NOTICE.md` for detailed credits and licensing provenan
 
 ## 👥 Authors & Maintainers
 
-- Mathew Nelson — Original creator (2001–2005)
+- Mathew A. Nelson — Original creator (2001–2005)
 - Flemming Nørnberg Larsen — Maintainer & primary author (2005–present)
 - Additional notable contributors: Pavel Savara, Albert Perez, Julian Kent (Skilgannon) — plus others listed in `ATTRIBUTION.md`.
 
