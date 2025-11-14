@@ -7,8 +7,16 @@ content for *The Book of Robocoding*.
 
 ## 🎯 Purpose
 
-AI should help transform the knowledge on [RoboWiki.net](https://robowiki.net/) into clear, modern, and engaging
-educational material that matches the style and structure defined in `BOOK_STRATEGY.md`.
+AI should help transform the knowledge on [RoboWiki.net](https://robowiki.net/) and the official
+[Robocode Tank Royale documentation](https://robocode-dev.github.io/tank-royale/) and its GitHub project pages
+into clear, modern, and engaging educational material that matches the style and structure defined in
+`BOOK_STRATEGY.md`.
+
+Important source distinction:
+
+- **RoboWiki.net** documents the original, classic **Robocode** platform only.
+- **Robocode Tank Royale** is documented on **robocode-dev.github.io/tank-royale** and the corresponding
+  GitHub repository pages — not on RoboWiki.
 
 Each AI-generated page must:
 
@@ -16,7 +24,8 @@ Each AI-generated page must:
 - Reflect **community consensus**.
 - Stay **concise**, **fun**, and **educational**.
 - Attribute **original sources** and **contributors**.
-- Fit both **Robocode** and **Robocode Tank Royale** perspectives.
+- Respect the difference between classic **Robocode** and **Robocode Tank Royale** sources while aiming to fit both
+  perspectives when the concept applies to both.
 
 ---
 

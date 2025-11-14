@@ -23,14 +23,15 @@ It aims to make Robocode approachable to students, educators, hobbyists, and AI 
 
 Core principles:
 
-- Clarity first: short, focused explanations over walls of text.
-- Primarily teen-friendly: explain ideas as if to a curious teenager, then deepen formality and math in advanced sections.
-- Visual and mathematical reasoning preferred over code dumps.
-- Neutral tone, summarizing community consensus.
-- Pseudocode over real code for conceptual teaching.
-- Parallel support for both Robocode and Tank Royale.
-- Attribution to RoboWiki authors and contributors.
-- Educational reuse under CC BY-SA 4.0.
+ - Clarity first: short, focused explanations over walls of text.
+ - Primarily teen-friendly: explain ideas as if to a curious teenager, then deepen formality and math in advanced sections.
+ - Visual and mathematical reasoning preferred over code dumps.
+ - Neutral tone, summarizing community consensus.
+ - Pseudocode over real code for conceptual teaching.
+ - Parallel support for both Robocode and Tank Royale.
+ - Attribution to RoboWiki authors and contributors.
+ - Educational reuse under CC BY-SA 4.0.
+ - Clear separation of sources: RoboWiki for classic Robocode, robocode.dev and its GitHub pages for Robocode Tank Royale.
 
 Difficulty progression:
 
@@ -142,6 +143,10 @@ When using an LLM or code assistant:
     - Rewrite for clarity and neutrality.
     - Include attribution.
     - Omit outdated bot examples.
+    - Remember that RoboWiki documents **classic Robocode only**, not Robocode Tank Royale.
+5. When describing Robocode Tank Royale–specific features or APIs:
+    - Prefer information from **robocode-dev.github.io/tank-royale** and the official GitHub repositories.
+    - Make platform distinctions explicit when behavior differs between classic Robocode and Tank Royale.
 
 ## 🧭 Example Prompt for LLM Agent
 
