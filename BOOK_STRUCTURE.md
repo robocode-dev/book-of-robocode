@@ -5,19 +5,20 @@
 📘 The Book of Robocoding
 
 ├─ Introduction
-│  └─ What is Robocode & How to Use This Book
+│  ├─ What is Robocode & How to Use This Book
+│  └─ A Short History of Robocode
 
 ├─ Getting Started
-│  ├─ My First Robot Tutorial
-│  ├─ The Robot API Basics
+│  ├─ Your First Robot (Guided Tutorial)
+│  ├─ Robot Anatomy & The Robot API (Beginner Level)
 │  └─ Your First Battle
 
 ├─ Battlefield Physics
-│  ├─ Coordinate Systems
+│  ├─ Coordinate Systems & Angles
 │  ├─ Movement Constraints & Robot Physics
 │  ├─ Bullet Travel & Bullet Physics
 │  ├─ Wall Collisions
-│  └─ Gun Heat & Cooling
+│  └─ Gun Heat, Cooling & Scoring Basics
 
 ├─ Radar & Scanning
 │  ├─ Radar Basics
@@ -81,11 +82,11 @@
 │     ├─ Ramming & Mirror Movement
 │     └─ Movement Analysis
 
-├─ Energy Management
+├─ Energy & Scoring
 │  ├─ Energy as a Resource
 │  ├─ Bullet Power Selection Strategy
-│  ├─ Energy Management in 1v1
-│  └─ Energy Management in Melee
+│  ├─ Scoring Systems & Battle Types
+│  └─ Energy Management in 1v1 and Melee
 
 ├─ Team Strategies
 │  ├─ Team Basics

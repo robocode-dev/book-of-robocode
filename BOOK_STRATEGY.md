@@ -13,22 +13,29 @@ It aims to make Robocode approachable to students, educators, hobbyists, and AI 
 
 ## 👥 Audience
 
-1. New AI students learning algorithmic behavior and decision-making.
-2. Robocode players and developers who want to improve their bots.
-3. Educators and researchers using Robocode for teaching AI or simulation.
-4. Contributors rewriting and organizing RoboWiki knowledge for clarity.
+1. Teenagers and young beginners learning programming and AI through games.
+2. Students in universities or technical schools using Robocode in courses, labs, or competitions.
+3. Robocode players and developers who want to improve their bots.
+4. Educators and researchers using Robocode for teaching AI or simulation.
+5. Contributors rewriting and organizing RoboWiki knowledge for clarity.
 
 ## 📚 Content Philosophy
 
 Core principles:
 
 - Clarity first: short, focused explanations over walls of text.
+- Primarily teen-friendly: explain ideas as if to a curious teenager, then deepen formality and math in advanced sections.
 - Visual and mathematical reasoning preferred over code dumps.
 - Neutral tone, summarizing community consensus.
 - Pseudocode over real code for conceptual teaching.
 - Parallel support for both Robocode and Tank Royale.
 - Attribution to RoboWiki authors and contributors.
 - Educational reuse under CC BY-SA 4.0.
+
+Difficulty progression:
+
+- Beginner & intermediate chapters assume a teen reader who may be new to programming.
+- Advanced Topics may assume university-level math or prior competitive Robocode experience, but still aim to be readable and inspiring.
 
 ## 🧩 Structure Overview
 
@@ -63,7 +70,9 @@ Example section tree:
 
 Tone & Style:
 
-- Neutral, factual language.
+- Neutral, factual language with a friendly, encouraging feel.
+- Assume a teen reader in beginner and intermediate sections: introduce jargon slowly and always with a concrete example.
+- In Advanced Topics, it is okay to be more technical, but avoid unnecessary formality and keep explanations motivating.
 - No first-person phrasing.
 - Short paragraphs (3–4 sentences max).
 - Use Markdown lists, callouts, and tables.
@@ -128,7 +137,7 @@ When using an LLM or code assistant:
     - Use the frontmatter structure.
     - 300–800 words max.
     - Include 1–2 formulas or pseudocode snippets.
-    - Add short summary.
+    - Add a short summary.
 4. When adapting RoboWiki content:
     - Rewrite for clarity and neutrality.
     - Include attribution.
