@@ -20,10 +20,12 @@ teen-friendly pages, light math, and practical intuition.
 
 In this book, the word Robocode is used in two closely related ways:
 
-1. **Robocode (classic)** — the original Java-based programming game created by Mathew A. Nelson and later maintained
-   by Flemming N. Larsen. Battles run on a 2D battlefield where robot tanks fight using Java code.
-2. **Robocode Tank Royale** — a newer, modern Robocode platform created by Flemming N. Larsen. It keeps the same core
-   idea (code a battling tank) but supports multiple programming languages and a more flexible architecture.
+1. [Robocode (classic)](https://robocode.sourceforge.io/) — the original Java-based programming game created by Mathew
+   A. Nelson and later maintained by Flemming N. Larsen. Battles run on a 2D battlefield where robot tanks fight using
+   Java code.
+2. [Robocode Tank Royale](https://robocode.dev/) — a newer, modern Robocode platform created by Flemming N. Larsen. It
+   keeps the same core idea (code a battling tank) but supports multiple programming languages and a more flexible
+   architecture.
 
 Unless stated otherwise, Robocode should be read as Robocode and Robocode Tank Royale together. When a concept only
 applies to one platform, the page will say Classic Robocode or Robocode Tank Royale explicitly.
@@ -47,10 +49,10 @@ During a battle, you cannot control the bot directly. The only way to win is to 
 - Runs on the Java platform.
 - You write Java robots that extend specific base classes from the Robocode API.
 - Battles run inside a desktop GUI application.
-- Many classic strategies, tutorials, and bots live on RoboWiki (classic Robocode only).
+- Many classic strategies, tutorials, and bots live on [RoboWiki](https://robowiki.net) (classic Robocode only).
 
 ### Robocode Tank Royale
 
 - Runs on a server + bot architecture.
 - Bots connect to a game server using network protocols.
-- You can write bots in multiple languages (for example, Java, TypeScript/JavaScript, C#, Python, Kotlin, and more).
+- You can write bots in multiple languages (for example, Java, C#, Python, Kotlin, Scala, and more).

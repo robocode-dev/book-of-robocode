@@ -12,7 +12,7 @@ source: [
 
 # A Short History of Robocode
 
-Robocode began in the early 2000s as a side project by Mathew A. Nelson. The idea was simple: learn programming by
+Robocode began in the early 2000s as a side project by Mathew A. Nelson. The idea was simple: learn programming by
 coding a robot tank that fights in a 2D arena. The mix of learning and competition made it popular with students,
 hobbyists, and teachers.
 
@@ -25,7 +25,8 @@ Highlights:
 
 - A vibrant community formed around the game.
 - Players created hundreds of robots, from simple examples to world-class competitive bots.
-- The community started RoboWiki (classic Robocode only), collecting strategies, formulas, and tutorials.
+- The community started [RoboWiki](https://robowiki.net) (classic Robocode only), collecting strategies, formulas, and
+  tutorials.
 
 RoboWiki became the reference for advanced topics such as wave surfing, GuessFactor targeting, detailed battlefield
 physics, and much more.
@@ -53,6 +54,7 @@ Robocode Tank Royale, created by Flemming N. Larsen, keeps the core idea but upd
 Key features:
 
 - Server-based engine; bots connect over a network protocol
-- Multiple languages (Java, TypeScript/JavaScript, C#, Python, Kotlin, and more)
+- Support for multiple languages (Java, C#, Python, Kotlin, Scala, and others)
 - Cleaner separation of engine and bots, making automation and deployment easier
-- Open documentation and starter kits at robocode-dev.github.io/tank-royale
+- Open documentation and starter kits
+  at [robocode-dev.github.io/tank-royale](https://robocode-dev.github.io/tank-royale)
