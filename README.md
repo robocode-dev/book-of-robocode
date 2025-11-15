@@ -64,16 +64,16 @@ Automatically deployed to **GitHub Pages** via **GitHub Actions**. Pushing chang
    ```bash
    npm install
    ```
-3. Develop (serve locally)
-   ```bash
-   npm run dev
-   ```
-   Default: http://localhost:8080/robocoding/
-4. Build (generate static site)
+3. Build (generate static site)
    ```bash
    npm run build
    ```
    Output: `docs/.vuepress/dist/`
+4. Develop (serve locally)
+   ```bash
+   npm run dev
+   ```
+   Default: http://localhost:8080/
 
 ---
 
