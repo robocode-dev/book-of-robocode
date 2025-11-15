@@ -29,7 +29,7 @@ export default {
 
     navbar: [
       { text: 'Home', link: '/' },
-      { text: 'Introduction', link: '/articles/what-is-robocode' },
+      { text: 'Introduction', link: '/introduction/what-is-robocode' },
       { text: 'Getting Started', link: '/tutorial/getting-started' },
       { text: 'Battlefield Physics', link: '/articles/physics' },
       { text: 'Targeting Systems', link: '/articles/targeting/' },
@@ -43,19 +43,11 @@ export default {
     ],
 
     sidebar: {
+      '/introduction/': [
+        'what-is-robocode',
+        'history'
+      ],
       '/articles/': [
-        {
-          text: 'Introduction',
-          children: ['what-is-robocode']
-        },
-        {
-          text: 'Getting Started',
-          children: [
-            'my-first-bot',
-            'robot-api-basics',
-            'your-first-battle'
-          ]
-        },
         {
           text: 'Battlefield Physics',
           children: [
@@ -260,11 +252,9 @@ export default {
           text: 'Articles',
           collapsible: false,
           children: [
-            '/articles/what-is-robocode',
             '/articles/physics',
             '/articles/scoring',
-            '/articles/coordinates-and-angles',
-            '/articles/history'
+            '/articles/coordinates-and-angles'
           ]
         },
         {
