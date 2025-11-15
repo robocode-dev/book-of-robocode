@@ -60,7 +60,7 @@ export default {
           ]
         }
       ],
-      '/articles/': [
+      '/physics/': [
         {
           text: 'Battlefield Physics',
           children: [
@@ -70,7 +70,9 @@ export default {
             'wall-collisions',
             'gun-heat-cooling'
           ]
-        },
+        }
+      ],
+      '/radar/': [
         {
           text: 'Radar & Scanning',
           children: [
@@ -97,7 +99,9 @@ export default {
               ]
             }
           ]
-        },
+        }
+      ],
+      '/targeting/': [
         {
           text: 'Targeting Systems',
           children: [
@@ -151,7 +155,9 @@ export default {
               ]
             }
           ]
-        },
+        }
+      ],
+      '/movement/': [
         {
           text: 'Movement & Evasion',
           children: [
@@ -198,7 +204,9 @@ export default {
               ]
             }
           ]
-        },
+        }
+      ],
+      '/energy-and-scoring/': [
         {
           text: 'Energy Management',
           children: [
@@ -207,7 +215,9 @@ export default {
             'energy-management-1v1',
             'energy-management-melee'
           ]
-        },
+        }
+      ],
+      '/team-strategies/': [
         {
           text: 'Team Strategies',
           children: [
@@ -216,7 +226,9 @@ export default {
             'communication-coordination',
             'team-roles-formations'
           ]
-        },
+        }
+      ],
+      '/melee-combat/': [
         {
           text: 'Melee Combat',
           children: [
@@ -225,7 +237,9 @@ export default {
             'melee-movement',
             'melee-survival'
           ]
-        },
+        }
+      ],
+      '/advanced/': [
         {
           text: 'Advanced Topics',
           children: [
@@ -234,7 +248,9 @@ export default {
             'testing-analysis-tools',
             'optimization-techniques'
           ]
-        },
+        }
+      ],
+      '/tank-royale/': [
         {
           text: 'Robocode Tank Royale Differences',
           children: [
@@ -242,7 +258,9 @@ export default {
             'physics-differences',
             'migration-guide'
           ]
-        },
+        }
+      ],
+      '/appendices/': [
         {
           text: 'Appendices',
           children: [
