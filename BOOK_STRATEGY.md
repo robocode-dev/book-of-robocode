@@ -5,7 +5,7 @@
 The Book of Robocoding is a modern, structured, and educational documentation project designed to:
 
 - Preserve and modernize the knowledge from RoboWiki.net.
-- Teach robot AI programming, physics, and strategy clearly and visually.
+- Teach bot AI programming, physics, and strategy clearly and visually.
 - Serve as the official learning hub for both Robocode (Java) and Robocode Tank Royale (TypeScript).
 - Present concepts, formulas, and reasoning clearly — not raw implementation.
 
@@ -31,12 +31,12 @@ Core principles:
  - Parallel support for both Robocode and Tank Royale.
  - Attribution to RoboWiki authors and contributors.
  - Educational reuse under CC BY-SA 4.0.
- - Clear separation of sources: RoboWiki for classic Robocode, robocode.dev and its GitHub pages for Robocode Tank Royale.
+ - Clear separation of sources: RoboWiki for classic Robocode, robocode.dev, and its GitHub pages for Robocode Tank Royale.
 
 Difficulty progression:
 
 - Beginner & intermediate chapters assume a teen reader who may be new to programming.
-- Advanced Topics may assume university-level math or prior competitive Robocode experience, but still aim to be readable and inspiring.
+- Advanced Topics may assume university-level math or prior competitive Robocode experience but still aim to be readable and inspiring.
 
 ## 🧩 Structure Overview
 
@@ -73,7 +73,7 @@ Tone & Style:
 
 - Neutral, factual language with a friendly, encouraging feel.
 - Assume a teen reader in beginner and intermediate sections: introduce jargon slowly and always with a concrete example.
-- In Advanced Topics, it is okay to be more technical, but avoid unnecessary formality and keep explanations motivating.
+- In Advanced Topics, it is okay to be more technical but avoid unnecessary formality and keep explanations motivating.
 - No first-person phrasing.
 - Short paragraphs (3–4 sentences max).
 - Use Markdown lists, callouts, and tables.
@@ -84,9 +84,9 @@ Example pseudocode:
 
 # Predict future position
 
-function predictPosition(robot, timeAhead):
-x = robot.x + cos(robot.heading) * robot.velocity * timeAhead
-y = robot.y + sin(robot.heading) * robot.velocity * timeAhead
+function predictPosition(bot, timeAhead):
+x = bot.x + cos(bot.heading) * bot.velocity * timeAhead
+y = bot.y + sin(bot.heading) * bot.velocity * timeAhead
 return (x, y)
 
 ## 🧮 Math & Physics Representation
@@ -144,7 +144,7 @@ When using an LLM or code assistant:
     - Include attribution.
     - Omit outdated bot examples.
     - Remember that RoboWiki documents **classic Robocode only**, not Robocode Tank Royale.
-5. When describing Robocode Tank Royale–specific features or APIs:
+5. When describing Robocode Tank-Royale-specific features or APIs:
     - Prefer information from **robocode-dev.github.io/tank-royale** and the official GitHub repositories.
     - Make platform distinctions explicit when behavior differs between classic Robocode and Tank Royale.
 

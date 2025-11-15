@@ -1,4 +1,3 @@
-
 # Complete Book Structure
 
 ```
@@ -9,13 +8,13 @@
 │  └─ A Short History of Robocode
 
 ├─ Getting Started
-│  ├─ Your First Robot (Guided Tutorial)
-│  ├─ Robot Anatomy & The Robot API (Beginner Level)
+│  ├─ Your First Bot (Guided Tutorial)
+│  ├─ Bot Anatomy & The Bot API (Beginner Level)
 │  └─ Your First Battle
 
 ├─ Battlefield Physics
 │  ├─ Coordinate Systems & Angles
-│  ├─ Movement Constraints & Robot Physics
+│  ├─ Movement Constraints & Bot Physics
 │  ├─ Bullet Travel & Bullet Physics
 │  ├─ Wall Collisions
 │  └─ Gun Heat, Cooling & Scoring Basics
@@ -303,5 +302,5 @@ Readers get a complete education without drowning in every variant that ever exi
 5. **Flexible Reading**: Readers can skip advanced sections but still have complete basic knowledge
 6. **Reference-Friendly**: Related concepts grouped together for easy lookup
 
-This structure takes a beginner from "Hello World" to competitive robot design in a natural,
+This structure takes a beginner from "Hello World" to competitive bot design in a natural,
 logical progression without overwhelming them with every possible variant and historical approach.
