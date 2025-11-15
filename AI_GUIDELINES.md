@@ -1,6 +1,6 @@
 # 🤖 AI Collaboration Guidelines for The Book of Robocoding
 
-These guidelines define how AI tools (like ChatGPT, Copilot, or multi-agent systems) should generate, review, and refine
+These guidelines define how AI tools (like ChatGPT, Copilot, or multi-agent systems) should generate and refine
 content for *The Book of Robocoding*.
 
 ---
@@ -81,46 +81,7 @@ AI outputs must sound:
 - ❌ Avoid sarcasm, memes, or pop-culture references.
 
 Think of the tone as:
-> “A science teacher with a smile, not a stand-up comedian.”
-
----
-
-## 🔍 Quality Filters — AI Output Review Checklist
-
-Before accepting AI-generated text, check for the following:
-
-### ✅ Structure
-
-- [ ] Page includes frontmatter (title, summary, tags, difficulty, sources).
-- [ ] Headings are logical and hierarchical.
-- [ ] 1–2 math formulas or pseudocode examples included.
-- [ ] Max 800 words, easy to scan.
-
-### ✅ Accuracy
-
-- [ ] Formulas are mathematically correct.
-- [ ] Robocode vs. Tank Royale differences are accurate.
-- [ ] Physics and coordinate systems are clearly stated.
-- [ ] No factual speculation or “creative assumptions”.
-- [ ] Platform support statements match the current policy: Java, .NET, Python 3.10+; WASM planned; examples use C#/.NET, Java, or Python unless otherwise approved.
-
-### ✅ Tone
-
-- [ ] Friendly and engaging, suitable for students.
-- [ ] No slang, sarcasm, or unnecessary humor.
-- [ ] Motivational and clear — not overly academic.
-
-### ✅ Attribution
-
-- [ ] Original RoboWiki sources cited.
-- [ ] “Based on RoboWiki content (CC BY-SA 3.0)” footer included.
-- [ ] No copyrighted code copied verbatim.
-
-### ✅ Style
-
-- [ ] Consistent with `BOOK_STRATEGY.md` structure.
-- [ ] Uses Markdown lists, tables, and callouts when useful.
-- [ ] Pseudocode syntax correct and readable.
+> "A science teacher with a smile, not a stand-up comedian."
 
 ---
 
@@ -136,14 +97,9 @@ Before accepting AI-generated text, check for the following:
     - Adds formulas, structure, and examples.
     - Adapts tone and style.
 
-3. **Agent C — Reviewer**
-    - Applies Quality Filters checklist.
-    - Flags unclear or inaccurate sections.
-    - Suggests improvements.
-
-4. **Agent D — Publisher**
+3. **Agent C — Publisher**
     - Integrates into `/docs/` with frontmatter.
-    - Validates build and preview formatting.
+    - Validates build formatting.
     - Adds attribution entries.
 
 ---
@@ -166,7 +122,7 @@ Output: Markdown page for `/docs/targeting/linear-targeting.md`
 ## 🏁 Final Note
 
 AI contributors are **assistants**, not authors.  
-All content should be reviewed, verified, and attributed properly before publishing.  
+All content should be verified and attributed properly before publishing.  
 Humans make the final call on tone, accuracy, and inclusion.
 
 > “If it’s fun to read and true to the math — it’s Robocoding material.”

@@ -4,7 +4,7 @@ You are contributing to “The Book of Robocoding”, an educational guide for:
 
 Use these core reference documents as your style and structure authority:
 - BOOK_STRATEGY.md → defines audience, tone, page structure, and math/pseudocode rules.
-- AI_GUIDELINES.md → defines how AI-generated content should be written, reviewed, and attributed.
+- AI_GUIDELINES.md → defines how AI-generated content should be written and attributed.
 - BOOK_STRUCTURE.md → defines the complete table of contents (sections, page names, and relationships).
 
 Assume those documents say (and you must follow):
