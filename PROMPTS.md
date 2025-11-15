@@ -34,6 +34,12 @@ PLATFORM & SOURCES
     - From robocode-dev/GitHub → treat it as Tank Royale information.
 - When possible, explain how a concept maps between classic Robocode and Tank Royale (similarities and key differences).
 
+PLATFORM SUPPORT POLICY (must reflect in pages)
+- Supported platforms: **Java**, **.NET**, and **Python 3.10+**.
+- All languages running on those platforms are implicitly supported (e.g., Kotlin/Scala on JVM, F#/VB on .NET).
+- WebAssembly (WASM) support will be added later.
+- Currently, sample bots exist only for **C#/.NET**, **Java**, and **Python** — prefer examples in these languages.
+
 PAGE STRUCTURE & FRONTMATTER
 - Every page is a **self-contained concept** with VuePress-compatible Markdown.
 - Every page must begin with frontmatter:

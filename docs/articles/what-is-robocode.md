@@ -1,56 +1,96 @@
-# What is Robocode?
+---
+title: "What is Robocode & How to Use This Book"
+category: "Introduction"
+summary: "Learn what Robocode is, how the two platforms relate, and how to use this book to become a better bot programmer."
+tags: ["introduction", "robocode", "tank-royale", "beginner"]
+difficulty: "beginner"
+source: [
+  "RoboWiki - Robocode (classic Robocode only)",
+  "Robocode Tank Royale Docs - robocode-dev.github.io/tank-royale"
+]
+---
 
-## Introduction
+# What is Robocode & How to Use This Book
 
-**Robocode** is a [programming game](https://en.wikipedia.org/wiki/Programming_game) where the goal is to code a robot battle tank (bot). The bot must compete against other tanks in a virtual battle arena.
+Robocode is a programming game where your code drives a battle tank. Instead of using a controller, you write the brain of the bot and let it fight on a 2D battlefield. This book explains the ideas behind winning bots with short, teen-friendly pages, light math, and practical intuition.
 
-The "player" of the game is the programmer (coder) of the bot, who has no direct influence on the game while it is running. Instead, the player must write a program that makes up the brain of the tank. The program tells how the tank must behave and react to events occurring in the battle arena.
+## What "Robocode" Means
 
-## How It Works
+In this book, the word Robocode is used in two closely related ways:
 
-Your code controls:
-- **Movement** - Navigate the battlefield and avoid enemy fire
-- **Radar** - Scan for enemy tanks
-- **Gun** - Aim and fire at opponents
-- **Strategy** - React to events and make tactical decisions
+1. **Robocode (classic)** – the original Java-based programming game created by Mathew A. Nelson and later maintained by Flemming N. Larsen. Battles run on a 2D battlefield where robot tanks fight using Java code.
+2. **Robocode Tank Royale** – a newer, modern Robocode platform created by Flemming N. Larsen. It keeps the same core idea (code a battling tank), but supports multiple programming languages and a more flexible architecture.
 
-All bots get a score and placement based on their performance. The aim is to achieve the highest score possible.
+Unless stated otherwise, “Robocode” should be read as “Robocode and Robocode Tank Royale” together. When a concept only applies to one platform, the page will say Classic Robocode or Robocode Tank Royale explicitly.
 
-## Purpose
+## The Core Idea
 
-Robocode is designed to help you:
-- **Learn programming** in a fun, interactive way
-- **Improve coding skills** through practical challenges
-- **Study AI** in a fast-running real-time game environment
-- **Compete** with other programmers worldwide
+Your bot must:
+- Move around the battlefield
+- Scan for enemies with a radar
+- Aim its gun
+- Decide when and how hard to fire
+- React to events such as being hit or colliding with walls
 
-## Two Versions
+During a battle, you cannot control the bot directly. The only way to win is to write smarter code.
+
+## Classic Robocode vs. Tank Royale
 
 ### Classic Robocode
-The original version, Java-based, that started it all in 2001. Available at [robocode.sourceforge.io](https://robocode.sourceforge.io/)
+
+- Runs on the Java platform.
+- You write Java robots that extend specific base classes from the Robocode API.
+- Battles run inside a desktop GUI application.
+- Many classic strategies, tutorials, and bots live on RoboWiki (classic Robocode only).
 
 ### Robocode Tank Royale
-A modern reimplementation supporting multiple programming languages:
-- Java
-- C#
-- Python
-- JavaScript/TypeScript
-- Kotlin
-- And more...
 
-Learn more at [Robocode Tank Royale](https://robocode-dev.github.io/tank-royale/)
+- Runs on a server + bot architecture.
+- Bots connect to a game server using network protocols.
+- You can write bots in multiple languages (for example Java, TypeScript/JavaScript, C#, Python, Kotlin, and more).
+- Documentation and tools are hosted at robocode-dev.github.io/tank-royale.
 
-## The Name "Robocode"
+Most strategy concepts in this book (movement, targeting, energy management) apply to both platforms, even though the APIs and technical details are different.
 
-The name _Robocode_ is short for "Robot code" from the original version. In Tank Royale, the term "bot" is used instead of "robot."
+## How a Battle Loop Feels
 
-## The Name "Tank Royale"
+In both platforms, your bot follows a loop of sense → decide → act. A simplified pseudocode version looks like this:
 
-Robocode's battles take place on a battlefield where small automated tank bots fight until only one is left - like a Battle Royale game. Hence, the name _Tank Royale_.
+```pseudo
+loop forever:
+  scan_for_enemies()
+  if enemy_seen:
+    aim_gun_at(enemy)
+    if should_fire(enemy):
+      fire_bullet(chosen_power)
+  choose_movement()
+  move_tank()
+end loop
+```
 
-::: tip Note
-Robocode contains no gore, no blood, no people, and no politics. The battles are simply for the excitement of competition and learning.
-:::
+- Sense: read radar data, enemy positions, bullet events, and wall collisions.
+- Decide: pick a movement direction, a target, and a firepower.
+- Act: turn the radar, turn the gun, move the tank, and fire.
+
+## A Simple Physics Fact
+
+Many Robocode concepts rely on distance, speed, and time. One basic relation that appears often is:
+
+\[
+\text{time} = \frac{\text{distance}}{\text{bullet speed}}
+\]
+
+This helps estimate when a bullet will arrive after you fire. Exact speeds depend on firepower; details appear in later chapters.
+
+## Classic Robocode vs. Tank Royale Labels
+
+To keep the content clear, many pages include notes like:
+
+- Applies to: Classic Robocode
+- Applies to: Robocode Tank Royale
+- Applies to: Both
+
+When code or APIs differ, examples are shown side by side or in separate tabs, while the core ideas remain shared.
 
 ## Example Battle
 
@@ -59,12 +99,17 @@ In a typical Robocode battle, you'll see:
 - Radars spinning to detect enemies
 - Bullets flying across the battlefield
 - Energy levels changing as tanks take damage
-- Scoring updating in real-time
+- Scoring updating in real time
+
+:::: tip Note
+Robocode contains no gore, no blood, no people, and no politics. The battles are simply for the excitement of competition and learning.
+::::
 
 ## Next Steps
 
-Ready to get started? Head over to the [Getting Started](/tutorial/getting-started) tutorial to create your first bot!
+- If you have never coded a bot before, continue with the [Getting Started](/tutorial/getting-started) tutorial to create your first bot.
+- If you already have a simple bot, you can jump directly to Battlefield Physics or Simple Targeting.
 
 ---
 
-*This article draws on content from [RoboWiki](http://robowiki.net/), contributed by the Robocode community.*
+*Based on RoboWiki content (classic Robocode only, CC BY-SA 3.0) and the official Robocode Tank Royale documentation. Rewritten and structured for The Book of Robocoding.*

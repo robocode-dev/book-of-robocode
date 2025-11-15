@@ -10,11 +10,15 @@ This guide will help you set up Robocode and prepare to create your first bot.
 
 **Supported Languages**:
 - Java
-- Python
+- Python 3.10+
 - C# (.NET)
-- JavaScript/TypeScript
 - Kotlin
 - Scala
+
+:::: tip Note
+JavaScript/TypeScript support is coming soon through a coming WebAssembly Bot API.
+Scala and Kotlin are supported via the Java Bot API.
+::::
 
 #### Installation
 

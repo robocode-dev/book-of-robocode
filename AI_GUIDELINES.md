@@ -12,6 +12,13 @@ AI should help transform the knowledge on [RoboWiki.net](https://robowiki.net/) 
 into clear, modern, and engaging educational material that matches the style and structure defined in
 `BOOK_STRATEGY.md`.
 
+Platform support policy for this book:
+
+- Supported platforms: Java, .NET, and Python 3.10+.
+- All languages running on those platforms are implicitly supported (e.g., Kotlin/Scala on JVM, F# on .NET).
+- WebAssembly (WASM) support will be added later.
+- Sample bots currently exist only for C#/.NET, Java, and Python — examples should prefer these languages for now.
+
 Important source distinction:
 
 - **RoboWiki.net** documents the original, classic **Robocode** platform only.
@@ -95,6 +102,7 @@ Before accepting AI-generated text, check for the following:
 - [ ] Robocode vs. Tank Royale differences are accurate.
 - [ ] Physics and coordinate systems are clearly stated.
 - [ ] No factual speculation or “creative assumptions”.
+- [ ] Platform support statements match the current policy: Java, .NET, Python 3.10+; WASM planned; examples use C#/.NET, Java, or Python unless otherwise approved.
 
 ### ✅ Tone
 
