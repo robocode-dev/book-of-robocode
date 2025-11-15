@@ -30,22 +30,35 @@ export default {
     navbar: [
       { text: 'Home', link: '/' },
       { text: 'Introduction', link: '/introduction/what-is-robocode' },
-      { text: 'Getting Started', link: '/tutorial/getting-started' },
-      { text: 'Battlefield Physics', link: '/articles/physics' },
-      { text: 'Targeting Systems', link: '/articles/targeting/' },
-      { text: 'Movement & Evasion', link: '/articles/movement/' },
-      { text: 'Energy Management', link: '/articles/energy-management' },
-      { text: 'Team Strategies', link: '/articles/team-strategies' },
-      { text: 'Melee Combat', link: '/articles/melee-combat' },
-      { text: 'Advanced Topics', link: '/articles/advanced-topics' },
-      { text: 'Tank Royale Differences', link: '/articles/tank-royale' },
-      { text: 'Appendices', link: '/articles/appendices' }
+      { text: 'Getting Started', link: '/getting-started/your-first-bot' },
+      { text: 'Battlefield Physics', link: '/physics' },
+      { text: 'Targeting Systems', link: '/targeting/' },
+      { text: 'Movement & Evasion', link: '/movement/' },
+      { text: 'Energy Management', link: '/energy-management' },
+      { text: 'Team Strategies', link: '/team-strategies' },
+      { text: 'Melee Combat', link: '/melee-combat' },
+      { text: 'Advanced Topics', link: '/advanced-topics' },
+      { text: 'Tank Royale Differences', link: '/tank-royale' },
+      { text: 'Appendices', link: '/appendices' }
     ],
 
     sidebar: {
       '/introduction/': [
-        'what-is-robocode',
-        'history'
+        {
+          text: 'Introduction',
+          children: [
+            'what-is-robocode',
+            'history'
+          ]
+        }
+      ],
+      '/getting-started/': [
+        {
+          text: 'Getting Started',
+          children: [
+            'your-first-bot'
+          ]
+        }
       ],
       '/articles/': [
         {
@@ -239,36 +252,8 @@ export default {
             'references-credits'
           ]
         }
-      ],
-      '/tutorial/': [
-        '',
-        'getting-started',
-        'my-first-bot',
-        'beyond-basics'
-      ],
-      '/': [
-        '',
-        {
-          text: 'Articles',
-          collapsible: false,
-          children: [
-            '/articles/physics',
-            '/articles/scoring',
-            '/articles/coordinates-and-angles'
-          ]
-        },
-        {
-          text: 'Tutorial',
-          collapsible: false,
-          children: [
-            '/tutorial/getting-started',
-            '/tutorial/my-first-bot',
-            '/tutorial/beyond-basics'
-          ]
-        }
       ]
     },
-
     repo: 'robocode-dev/robocoding',
     docsDir: 'docs',
     lastUpdated: true,
