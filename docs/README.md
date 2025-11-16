@@ -26,7 +26,7 @@ This documentation covers both:
 ## Quick Start
 
 1. [Read the Introduction](./introduction/what-is-robocode) to understand what Robocode is
-2. [Follow the Tutorial](./tutorial/getting-started) to create your first bot
+2. [Follow the Tutorial](./getting-started/your-first-bot) to create your first bot
 3. [Learn the Physics](./articles/physics) to master game mechanics
 4. [Understand Scoring](./articles/scoring) to optimize your strategy
 
