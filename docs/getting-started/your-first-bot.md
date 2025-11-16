@@ -1,3 +1,15 @@
+---
+title: "Your First Bot"
+category: "Getting Started"
+summary: "A guided overview for new players to create and understand their first Robocode or Tank Royale bot."
+tags: ["tutorial", "first bot", "robocode", "tank-royale", "beginner"]
+difficulty: "beginner"
+source: [
+  "RoboWiki - My First Robot (classic Robocode)",
+  "Robocode Tank Royale Docs - My First Bot"
+]
+---
+
 # Your First Bot (Guided Tutorial)
 
 New to Robocode or Robocode Tank Royale? This overview gives you the mental model for getting a simple, working bot into
