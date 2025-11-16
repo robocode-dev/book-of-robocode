@@ -1,7 +1,7 @@
-# 🤖 AI Collaboration Guidelines for The Book of Robocoding
+# 🤖 AI Collaboration Guidelines for The Book of Robocode
 
 These guidelines define how AI tools (like ChatGPT, Copilot, or multi-agent systems) should generate and refine
-content for *The Book of Robocoding*.
+content for *The Book of Robocode*.
 
 ---
 
@@ -41,7 +41,7 @@ Each AI-generated page must:
 Use this prompt when generating a new page or section:
 
 """
-You are contributing to *The Book of Robocoding*, an educational guide for Robocode and Robocode Tank Royale.
+You are contributing to *The Book of Robocode*, an educational guide for Robocode and Robocode Tank Royale.
 
 Your task:
 
@@ -54,7 +54,7 @@ Your task:
 6. If a topic applies differently to Robocode and Tank Royale, explain both briefly.
 7. Include formulas in LaTeX/KaTeX format.
 8. Attribute original sources in the footer using:  
-   “_Based on RoboWiki content (CC BY-SA 3.0). Rewritten and structured for The Book of Robocoding._”
+   “_Based on RoboWiki content (CC BY-SA 3.0). Rewritten and structured for The Book of Robocode._”
 9. Output in Markdown format suitable for VuePress.
 
 Follow these writing rules:

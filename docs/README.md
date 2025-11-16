@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: /robocode-logo.svg
-heroText: The Book of Robocoding
+heroText: The Book of Robocode
 tagline: Build the best - destroy the rest!
 actionText: Get Started →
 actionLink: /tutorial/getting-started

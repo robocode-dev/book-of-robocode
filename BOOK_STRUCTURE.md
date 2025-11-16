@@ -1,7 +1,7 @@
 # Complete Book Structure
 
 ```
-📘 The Book of Robocoding
+📘 The Book of Robocode
 
 ├─ Introduction
 │  ├─ What is Robocode & How to Use This Book

@@ -1,8 +1,8 @@
-# 📘 The Book of Robocoding — Strategy Document
+# 📘 The Book of Robocode — Strategy Document
 
 ## 🎯 Mission
 
-The Book of Robocoding is a modern, structured, and educational documentation project designed to:
+The Book of Robocode is a modern, structured, and educational documentation project designed to:
 
 - Preserve and modernize the knowledge from RoboWiki.net.
 - Teach bot AI programming, physics, and strategy clearly and visually.
@@ -43,7 +43,7 @@ Difficulty progression:
 Each topic = a short, self-contained concept page.
 
 Example section tree:
-📘 The Book of Robocoding
+📘 The Book of Robocode
 ├─ Introduction
 ├─ Getting Started
 ├─ Battlefield Physics
@@ -150,7 +150,7 @@ When using an LLM or code assistant:
 
 ## 🧭 Example Prompt for LLM Agent
 
-"Using the Book of Robocoding strategy, generate a beginner-friendly Markdown page explaining GuessFactor Targeting for
+"Using the Book of Robocode strategy, generate a beginner-friendly Markdown page explaining GuessFactor Targeting for
 both Robocode and Tank Royale. Include formulas for bearing offset and sample pseudocode for guess factor calculation.
 Maintain educational tone, short paragraphs, and proper attribution format."
 

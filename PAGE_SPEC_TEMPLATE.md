@@ -1,4 +1,4 @@
-# Page Spec – The Book of Robocoding
+# Page Spec – The Book of Robocode
 
 ## 1. Identity
 

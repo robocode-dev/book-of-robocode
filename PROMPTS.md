@@ -1,4 +1,4 @@
-You are contributing to “The Book of Robocoding”, an educational guide for:
+You are contributing to “The Book of Robocode”, an educational guide for:
 
 - Classic Robocode (the original Java-based game created by Mathew A. Nelson and maintained by Flemming N. Larsen), and
 - Robocode Tank Royale (the newer, server-based platform created by Flemming N. Larsen).
@@ -73,7 +73,7 @@ PAGE STRUCTURE & FRONTMATTER
 - End every page with an attribution footer like:
 
   *Based on RoboWiki content (CC BY-SA 3.0) for classic Robocode and the official Robocode Tank Royale documentation.
-  Rewritten and structured for The Book of Robocoding.*
+  Rewritten and structured for The Book of Robocode.*
 
 QUALITY & SAFETY RULES
 

@@ -3,7 +3,7 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { searchPlugin } from '@vuepress/plugin-search'
 
 export default {
-  title: 'The Book of Robocoding',
+  title: 'The Book of Robocode',
   description: 'Documentation for Robocode & Robocode Tank Royale - Build the best, destroy the rest!',
 
   bundler: viteBundler(),

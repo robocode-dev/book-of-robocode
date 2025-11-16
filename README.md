@@ -1,4 +1,4 @@
-# The Book of Robocoding
+# The Book of Robocode
 
 “May your aim be true and your dodges unpredictable.” — Flemming Nørnberg Larsen
 
@@ -20,7 +20,7 @@ Automatically deployed to **GitHub Pages** via **GitHub Actions**. Pushing chang
 
 ## 🎯 Purpose
 
-**The Book of Robocoding** (authored by **Flemming Nørnberg Larsen**) unifies knowledge previously scattered across RoboWiki.net, forums, and historical sources. It focuses on concepts, strategy patterns, math, and reasoning. Code examples appear when they clarify principles; otherwise, pseudocode is preferred. The goal is to teach ideas that transfer between classic Java-based Robocode and Robocode Tank Royale.
+**The Book of Robocode** (authored by **Flemming Nørnberg Larsen**) unifies knowledge previously scattered across RoboWiki.net, forums, and historical sources. It focuses on concepts, strategy patterns, math, and reasoning. Code examples appear when they clarify principles; otherwise, pseudocode is preferred. The goal is to teach ideas that transfer between classic Java-based Robocode and Robocode Tank Royale.
 
 ---
 

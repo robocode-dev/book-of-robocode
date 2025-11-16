@@ -1,7 +1,7 @@
 {
   "name": "the-book-of-robocoding",
   "version": "1.0.0",
-  "description": "The Book of Robocoding - Documentation for Robocode & Robocode Tank Royale",
+  "description": "The Book of Robocode - Documentation for Robocode & Robocode Tank Royale",
   "main": "index.js",
   "scripts": {
     "dev": "vuepress dev docs",

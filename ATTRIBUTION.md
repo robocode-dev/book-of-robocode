@@ -1,10 +1,10 @@
 # Attribution
 
-This project, The Book of Robocoding, builds on two decades of work by many people across Robocode and Robocode Tank Royale.
+This project, The Book of Robocode, builds on two decades of work by many people across Robocode and Robocode Tank Royale.
 
 ## Primary Authors
 
-- Flemming Nørnberg Larsen — Author of The Book of Robocoding; Robocode maintainer (2005–present); creator of Robocode Tank Royale
+- Flemming Nørnberg Larsen — Author of The Book of Robocode; Robocode maintainer (2005–present); creator of Robocode Tank Royale
 - Mathew A. Nelson — Original creator of Robocode (2001–2005)
 
 ## Notable Contributors
