@@ -72,13 +72,17 @@ Example section tree:
 Tone & Style:
 
 - Neutral, factual language with a friendly, encouraging feel.
-- Assume a teen reader in beginner and intermediate sections: introduce jargon slowly and always with a concrete example.
-- In Advanced Topics, it is okay to be more technical but avoid unnecessary formality and keep explanations motivating.
+- Assume a teen reader in beginner and intermediate sections: introduce jargon slowly and always with a concrete
+  example.
+- In Advanced Topics, it is okay to be more technical but avoid unnecessary formality and keep explanations
+  motivating.
 - No first-person phrasing.
 - Short paragraphs (3–4 sentences max).
 - Use Markdown lists, callouts, and tables.
 - Math via KaTeX or MathJax.
 - Pseudocode syntax for code logic.
+- Use **UTF-8** encoding; emoji characters are allowed when they add clarity or motivation.
+- Keep each line at **120 characters or fewer** for readability and clean diffs.
 
 Example pseudocode:
 

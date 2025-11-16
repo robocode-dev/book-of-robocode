@@ -33,6 +33,8 @@ Each AI-generated page must:
 - Attribute **original sources** and **contributors**.
 - Respect the difference between classic **Robocode** and **Robocode Tank Royale** sources while aiming to fit both
   perspectives when the concept applies to both.
+- Be written using **UTF-8** encoding, where **emoji characters are allowed** when appropriate.
+- Keep lines at **120 characters or fewer** to make diffs and reviews easy.
 
 ---
 

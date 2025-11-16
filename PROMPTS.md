@@ -26,6 +26,8 @@ CONTENT STYLE
 - Use **1–2 formulas or pseudocode blocks** per page; always define symbols.
 - Use Markdown features: headings, lists, callouts (tip/warning), and tables when helpful.
 - Keep each page roughly **300–800 words** unless the spec clearly allows more.
+- Write all content as **UTF-8** text; emoji characters are allowed when they support the explanation or tone.
+- Wrap text so that each line stays at **120 characters or fewer**.
 
 PLATFORM & SOURCES
 
