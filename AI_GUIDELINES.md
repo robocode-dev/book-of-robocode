@@ -56,8 +56,9 @@ Your task:
 6. If a topic applies differently to Robocode and Tank Royale, explain both briefly.
 7. Include formulas in LaTeX/KaTeX format.
 8. Attribute original sources in the footer using:  
-   “_Based on RoboWiki content (CC BY-SA 3.0). Rewritten and structured for The Book of Robocode._”
+   "_Based on RoboWiki content (CC BY-SA 3.0). Rewritten and structured for The Book of Robocode._"
 9. Output in Markdown format suitable for VuePress.
+10. **Use American English spelling and grammar throughout all writing and editing.**
 
 Follow these writing rules:
 
