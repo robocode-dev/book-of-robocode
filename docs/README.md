@@ -21,7 +21,7 @@ footer: Content licensed under CC BY-SA 4.0 | Code licensed under MIT | Built wi
 
 This documentation covers both:
 - **Classic Robocode** - The original Java-based version
-- **Robocode Tank Royale** - The modern, multi-language version
+- **Robocode Tank Royale** - The modern, multilanguage version
 
 ## Quick Start
 

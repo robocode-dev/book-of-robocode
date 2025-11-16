@@ -42,7 +42,7 @@ The filename of your properties file (excluding the `.properties` extension) **m
 For example, if your bot class is `MyFirstRobot`, the properties file should be named `MyFirstRobot.properties`. This is
 required for Robocode to recognize and load your bot correctly.
 
-## What do a properties file contain?
+## What does a properties file contain?
 
 Typical fields include:
 
