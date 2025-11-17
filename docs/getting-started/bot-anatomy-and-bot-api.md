@@ -46,10 +46,13 @@ The **bot center** (its x/y position) and the hitbox around it are used for:
 - Detecting **bot vs bot** collisions
 - Detecting **bullet vs bot** hits
 
-> **Image suggestion (reused SVG):** A top-down bot with its hitbox highlighted.
-> - Classic: a 40×40 axis-aligned square around the bot sprite.
-> - Tank Royale: a circle with radius 36 around the bot.  
-    > Put the SVG in `docs/images/bot-hitboxes.svg`.
+Classic Robocode's square hitbox (40×40 pixel fixed square):
+
+![Classic Robocode bot hitbox](../images/bot-square-hitbox.svg)
+
+Robocode Tank Royale circle hitbox (36×36 pixel fixed circle):
+
+![Robocode Tank Royale bot hitbox](../images/bot-circle-hitbox.svg)
 
 ---
 
