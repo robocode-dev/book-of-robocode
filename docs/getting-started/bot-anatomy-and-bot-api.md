@@ -2,7 +2,7 @@
 title: "Bot Anatomy & The Bot API"
 category: "Getting Started"
 summary: "Learn the main parts of a Robocode bot and how the game engine interacts with your code."
-tags: ["bot anatomy", "api", "robocode", "tank-royale", "beginner"]
+tags: [ "bot anatomy", "api", "robocode", "tank-royale", "beginner" ]
 difficulty: "beginner"
 source: [
   "RoboWiki - Bot Anatomy (classic Robocode)",
@@ -152,37 +152,49 @@ and *Gun Heat, Cooling & Scoring Basics*.
 
 ## 3. Body, gun, and radar movement (chained vs independent)
 
-The engine lets you control **body**, **gun**, and **radar** each turn. In both classic Robocode and Tank Royale, these
-parts are **chained by default**:
+The engine lets you control **body**, **gun**, and **radar** each turn. These parts are **chained by default**:
 
 - Turning the **body** also turns the gun and radar.
 - Turning the **gun** also turns the radar.
 
-Both engines then give you tools in their APIs to make the gun and radar behave more independently when you want.
+The Bot APIs then give you tools to make the gun and radar behave independently when you want more control.
 
 ### 3.1 What “independent” means
 
-When parts are independent:
+By default, rotations are **chained**:
 
-- Turning the **body** does **not** automatically drag the gun or radar with it.
-- Turning the **gun** does **not** automatically drag the radar.
-- You can rotate all three at different speeds and directions in the same turn.
+- Turning the **body** also turns the gun and radar by the same angle.
+- Turning the **gun** also turns the radar.
 
-When parts are **not** independent, rotations are “chained”:
+This is the simplest behavior: all parts “swivel together” unless you ask for something more advanced.
 
-- Turning the body also turns the gun and radar.
-- Turning the gun also turns the radar.
+When parts are **independent**, those automatic rotations are turned off:
+
+- Turning the **body** does **not** drag the gun or radar with it.
+- Turning the **gun** does **not** drag the radar.
+- The body, gun, and radar can all rotate at their own speeds and even in different directions in the same turn.
+
+The concept is the same everywhere: you choose whether rotations stay chained, become fully independent, or something in
+between.
 
 ### 3.2 Achieving independence
 
-Both classic Robocode and Tank Royale work the same way: parts are chained by default, and each engine's Bot API gives
-you the tools to make them behave independently when you want.
+Independence is mainly a **strategy tool**. You keep parts chained when you want simple behavior and make them
+independent when you want more control.
 
-In practice, you'll typically:
+Typical patterns you’ll use:
 
-- Spin the **radar** almost constantly to search for enemies.
-- Keep the **gun** locked on your main target.
-- Move the **body** in a pattern that makes you hard to hit.
+- **Radar:** Spin it almost constantly so you don’t lose track of enemies, even while dodging.
+- **Gun:** Keep it aimed at your current target, adjusting its heading based on the latest scan data.
+- **Body:** Move in patterns that make you harder to hit (circles, zig‑zags, sudden reversals), without disturbing where
+  the gun and radar are pointing.
+
+The Bot API lets you:
+
+- Decide whether the gun follows the body or can turn separately.
+- Decide whether the radar follows the gun or can scan independently.
+- Update body, gun, and radar commands at every turn so they work together: the radar finds targets, the gun tracks
+  them, and the body keeps you alive.
 
 ---
 
@@ -234,45 +246,57 @@ Bot Physics*.
 ## 5. Scanning and the 1200‑pixel scan arc
 
 The radar’s job is to answer one question: **Where are the enemy bots?** It does this by sweeping a **scan arc** over
-the battlefield.
-
-### 5.1 Scan range and arc width
-
-Conceptually, a scan is a **circular sector**:
-
-- **Length (range):** up to **1200 virtual pixels** from your bot’s center.
-- **Width (angle):** configurable in the API; you choose narrow or wide.
-- **Direction:** centered on the radar heading.
+the battlefield. The scan arc for a turn is defined by the **radar sweep** – the angle the radar turned between the
+previous heading and the current heading.
+You can think of this sweep as how far you swung a flashlight between two directions during that turn.
 
 Only bots that are both:
 
 - Within **1200 units** distance, and
-- Inside the **angular width** of the radar arc
+- Inside that **swept sector**
 
 will be detected by that scan during that turn.
 
+Special case – **no radar turn** this turn:
+
+- Sweep = 0, so the arc collapses into a thin beam.
+- Only bots exactly along that beam direction will be detected.
+- If you leave the radar fixed for many turns, you’ll only ever see bots that happen to cross that line.
+
 **Trade‑offs:**
 
-- **Wide arc**
-    - Easier to find enemies.
-    - Less precise; you may have fewer details or lose track between turns.
-- **Narrow arc**
-    - Great for tracking a known target.
-    - Easier to “miss” enemies if your aim drifts.
+- **Wide sweep (large turn angle)**
+    - Easier to find or re-find enemies.
+    - You cover more battlefield per turn.
+- **Narrow sweep (small turn angle)**
+    - Great for tracking a known target precisely.
+    - Easier to “lose” other enemies if you never sweep over them.
 
-> **Image (reused SVG):** Radar scan arc with 1200‑pixel range circle and a visible narrow and wide arc variant, plus an
-> enemy bot inside.  
-> File: `docs/images/radar-scan-arc.svg`.  
-> If no suitable SVG exists, we need a new one illustrating: bot at center, circle with radius 1200, wedge showing the
-> current scan arc.
+> **Image suggestion (reused or new SVG):** Show a bot at the center with its previous radar heading, current radar
+> heading, and the swept sector shaded. Include a separate small example where the two headings are almost the same (
+> narrow beam).
 
 ### 5.2 Scanning each turn
 
-On every turn:
+The radar only “sees” along the path it sweeps out. If it doesn’t turn, it’s just looking along a single
+line. The more you turn the radar in a single tick, the wider the slice of battlefield you cover that
+turn — like slowly panning a flashlight around a dark room.
 
-1. The engine takes your **radar heading** and **arc width**.
-2. It checks which enemy bots fall inside that sector (up to 1200 pixels away).
-3. For each detected enemy, it triggers a **scan event** for your bot.
+On every turn, the scanning process conceptually is:
+
+1. Take the radar’s **previous heading** (from the end of the last turn).
+2. Apply your radar turn command to get the **current heading**.
+3. Compute the **radar sweep** (the angle between previous and current heading, along the turned path — this
+   angle is how wide your scan is this turn).
+4. Form the **scan arc**: a sector covering every angle between the previous and current radar headings, out to
+   1200 units.
+5. Any enemy whose position lies inside this swept sector is **scanned**, and the engine sends your bot a scan
+   event.
+
+If you don’t turn the radar at all, the sweep has zero width and the scan arc collapses into a thin beam in
+one direction. This is like a laser pointer that never moves: it only “hits” enemies that walk straight
+through that line. Leaving the radar fixed for many turns is risky because you’ll miss enemies that stay
+just off that line the whole time.
 
 A typical scan event includes information such as:
 
@@ -283,14 +307,20 @@ A typical scan event includes information such as:
 
 The engine does **not** remember enemies for you. Your code should:
 
-- Store the latest scan data you care about.
-- Use it to aim the gun and to decide movement.
-- Optionally, adjust radar turn speed and width to keep enemies in view.
+- Store the latest scan data you care about (often one record per enemy).
+- Use it to aim the gun and decide movement.
+- Adjust future radar turns: use **wide sweeps** while searching, and **narrow sweeps** when you want a tight lock.
 
 Common strategies:
 
-- **Continuous sweep:** spin the radar 360° to discover all bots regularly.
-- **Radar lock:** when you find a target, keep turning the radar just enough to keep that bot within a narrow arc.
+- **Continuous sweep:** Spin the radar around the full 360° with large sweeps to discover all bots regularly.
+  This is like a lighthouse beam slowly turning full circle so it eventually shines on everything.
+- **Radar lock:** Once you find a target, make small back‑and‑forth sweeps around its bearing so it stays inside a
+  narrow arc. This is like keeping your flashlight pointed near one moving person, only wiggling it a little so
+  they don’t slip out of view.
+
+We’ll return to these ideas in the dedicated radar chapter, where we turn these concepts into full scanning
+patterns.
 
 ---
 
@@ -301,7 +331,7 @@ Common strategies:
 When you fire the gun, you choose a **bullet power**. The Bot API then:
 
 - **Subtracts energy** from your bot based on the power.
-- Launches a bullet in the direction of the gun heading.
+- Launches a bullet in the direction of the gun heading if the gun is cooled down enough.
 - Sets the bullet’s **speed** and **damage** based on its power.
 
 In both classic Robocode and Tank Royale:
@@ -345,11 +375,11 @@ There are several key collision types:
     - The API triggers events for the shooter (bullet hit) and sometimes for the target (got hit).
 
 4. **Bullet vs bullet** (classic Robocode & Robocode Tank Royale)
-    - Two bullets can collide and destroy each other in both engines.
-    - Both shooters may receive bullet-related events when this happens (for example, Tank Royale has a *
-      *BulletHitBulletEvent**).
+    - Two bullets can collide and destroy each other.
+    - Both shooters may receive bullet-related events when this happens (for example, Tank Royale has a
+      **BulletHitBulletEvent**).
 
-### 6.3 Disabled bots vs destroyed bots
+### 6.3 Disabled bots vs. destroyed bots
 
 Energy acts as both health and ammunition. When a bot’s energy hits **0**, it becomes **disabled**: it stays on the
 battlefield but cannot move, turn, fire, or react to events.
@@ -407,8 +437,7 @@ Good practice:
 
 ## 8. Events in the Bot APIs
 
-Both classic Robocode and Tank Royale use an **event‑driven** model: the engine calls your bot with events describing
-what just happened.
+Robocode uses an **event‑driven** model: the engine calls your bot with events describing what just happened.
 
 ### 8.1 Common event types
 
@@ -424,20 +453,18 @@ Exact names differ by API, but conceptually you’ll see events like:
     - Enemy scanned (includes enemy bearing, distance, heading, speed, energy).
 - **Bullet events**
     - Bullet fired (sometimes implicit, based on your command).
-    - Bullet hit enemy.
-    - Bullet was hit by another bullet (classic only).
+    - Bullet hit an enemy.
+    - Bullet was hit by another bullet.
     - Bullet missed or hit a wall.
-    - In both engines, bullet events can include bullet–bullet collisions (for example, Tank Royale has a *
-      *BulletHitBulletEvent** when bullets collide).
 - **Collision events**
-    - Hit wall.
+    - Hit the wall.
     - Hit another bot.
     - Got hit by another bot.
 - **Error / timeout**
     - Skipped turn or similar warnings.
 
 Your bot typically defines **handlers** (methods or callbacks) for these. The engine calls them at the appropriate time
-each turn.
+at each turn.
 
 ### 8.2 Connecting anatomy to events
 
