@@ -56,7 +56,8 @@ export default {
         {
           text: 'Getting Started',
           children: [
-            'your-first-bot'
+            'your-first-bot',
+            'bot-anatomy-and-bot-api'
           ]
         }
       ],
