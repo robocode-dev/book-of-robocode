@@ -109,9 +109,7 @@ Because the gun can be rotated independently of the body, you can:
 - Aim somewhere else with the gun.
 - Keep shooting at a target while dodging in another direction.
 
-> **Image suggestion (reused SVG):** A bot whose body is facing north while the gun is rotated east, with angles
-> labeled.  
-> File: `docs/images/body-vs-gun-heading.svg`.
+![Bot with body heading (north) and gun heading (east), showing the separation between body and gun orientation.](../images/body-vs-gun-heading.svg)
 
 ### 2.3 Radar
 
