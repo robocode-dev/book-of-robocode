@@ -395,6 +395,10 @@ disabled bot can **wake back up** and start acting again.
 A bot is considered **destroyed** only when its energy goes **below 0**. At that point it is removed from the round and
 cannot come back.
 
+This illustrates a bot being hit by a bullet from the left:
+
+![Bot being hit by bullet from the right](../images/bot-hit-by-bullet.svg)
+
 > **Image suggestion:** A small diagram showing a bot colliding with a wall and a bullet hitting a bot.  
 > File: `docs/images/collisions.svg`.
 
