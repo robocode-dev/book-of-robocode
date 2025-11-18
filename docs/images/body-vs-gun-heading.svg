@@ -90,15 +90,18 @@
         </symbol>
 
         <symbol id="arrows-with-label">
-            <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
-                <polygon points="6 0, 12 3, 6 6" fill="#FF0B"/>
+            <marker id="arrow-head-1" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+                <polygon points="6 0, 12 3, 6 6" fill="#F80B"/>
+            </marker>
+            <marker id="arrow-head-2" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+                <polygon points="6 0, 12 3, 6 6" fill="#F08B"/>
             </marker>
 
-            <line x1="300" y1="605" x2="370" y2="250" stroke="#FF0B" stroke-width="10" marker-end="url(#arrow-head)"/>
-            <text x="0" y="130" class="text" fill="#FF0B">Body Heading (80°)</text>
+            <line x1="300" y1="605" x2="370" y2="250" stroke="#F80B" stroke-width="10" marker-end="url(#arrow-head-1)"/>
+            <text x="0" y="130" class="text" fill="#F80B">Body Heading (80°)</text>
 
-            <line x1="300" y1="600" x2="800" y2="512" stroke="#FF0B" stroke-width="10" marker-end="url(#arrow-head)"/>
-            <text x="570" y="700" class="text" fill="#FF0B">Gun Heading (10°)</text>
+            <line x1="300" y1="600" x2="800" y2="512" stroke="#F08B" stroke-width="10" marker-end="url(#arrow-head-2)"/>
+            <text x="570" y="700" class="text" fill="#F08B">Gun Heading (10°)</text>
         </symbol>
     </defs>
 </svg>
