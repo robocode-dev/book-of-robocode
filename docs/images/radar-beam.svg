@@ -1,8 +1,13 @@
-<svg version="1.1" width="100" height="100" viewBox="0 0 800 800"
+<svg version="1.1" width="400" height="140" viewBox="0 0 4000 1330"
      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
+    <style>
+        .text { font: 100px sans-serif; }
+    </style>
+
     <g>
-        <use xlink:href="#tank"/>
+        <use xlink:href="#tank" transform="translate(0,300)"/>
+        <use xlink:href="#arrows-with-text"/>
     </g>
 
     <defs>
@@ -25,17 +30,6 @@
 
         <symbol id="main-track">
             <rect x="20" y="75" width="95" height="450" fill="#333333" stroke="black" stroke-width="10"/>
-        </symbol>
-
-        <symbol id="track1">
-            <use xlink:href="#main-track" x="0" y="0"/>
-            <use xlink:href="#link30" x="0" y="0"/>
-            <use xlink:href="#link0" x="0" y="60"/>
-            <use xlink:href="#link0" x="0" y="140"/>
-            <use xlink:href="#link0" x="0" y="220"/>
-            <use xlink:href="#link0" x="0" y="300"/>
-            <use xlink:href="#link0" x="0" y="380"/>
-            <use xlink:href="#link30" x="0" y="448"/>
         </symbol>
 
         <symbol id="track2">
@@ -90,10 +84,34 @@
         </symbol>
 
         <symbol id="tank">
-            <use xlink:href="#body" transform="rotate(55,400,400)"/>
-            <use xlink:href="#turret" transform="rotate(35,400,400)"/>
-            <use xlink:href="#radar" transform="rotate(100,400,400)"/>
-            <circle cx="400" cy="400" r="250" fill="red" fill-opacity="0.35" stroke="red" stroke-width="10"/>
+            <use xlink:href="#body" transform="rotate(-5,400,400)"/>
+            <use xlink:href="#turret" transform="rotate(110,400,400)"/>
+            <use xlink:href="#radar" transform="rotate(81,400,400)"/>
+        </symbol>
+
+        <defs>
+            <linearGradient id="sweepGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000">
+                <stop offset="0%" stop-color="green" stop-opacity="0.8"/>
+                <stop offset="50%" stop-color="green" stop-opacity="0.1"/>
+                <stop offset="100%" stop-color="green" stop-opacity="0"/>
+            </linearGradient>
+
+            <clipPath id="sector">
+                <path d="
+                    M 400 400
+                    L 3000 0
+                    A -1500 -1500 0 0 1 3000 1000
+                    Z"/>
+            </clipPath>
+        </defs>
+
+        <symbol id="arrows-with-text">
+            <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+                <polygon points="6 0, 12 3, 6 6" fill="#8F8B"/>
+            </marker>
+            <line x1="400" y1="700" x2="3000" y2="295" stroke="#8F8B" stroke-width="10" marker-end="url(#arrow-head)"/>
+
+            <text x="800" y="690" class="text" fill="#8F8B" transform="rotate(-9)">Previous and current Heading (beam)</text>
         </symbol>
     </defs>
 </svg>

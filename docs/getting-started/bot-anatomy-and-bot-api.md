@@ -273,9 +273,13 @@ Special case – **no radar turn** this turn:
     - Great for tracking a known target precisely.
     - Easier to “lose” other enemies if you never sweep over them.
 
-> **Image suggestion (reused or new SVG):** Show a bot at the center with its previous radar heading, current radar
-> heading, and the swept sector shaded. Include a separate small example where the two headings are almost the same (
-> narrow beam).
+Here is a bot with a large shaded radar sweep:
+
+![Bot with a large shaded radar sweep showing the previous and current radar heading](../images/radar-sweep.svg)
+
+Here is a bot with a narrow radar sweep, i.e., a beam:
+
+![Bot where the radar sweep is a beam with the previous and current heading lying on top of each other](../images/radar-beam.svg)
 
 ### 5.2 Scanning each turn
 
