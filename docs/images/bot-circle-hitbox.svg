@@ -3,6 +3,7 @@
 
     <g>
         <use xlink:href="#tank"/>
+        <use xlink:href="#hitbox"/>
     </g>
 
     <defs>
@@ -93,6 +94,9 @@
             <use xlink:href="#body" transform="rotate(55,400,400)"/>
             <use xlink:href="#turret" transform="rotate(35,400,400)"/>
             <use xlink:href="#radar" transform="rotate(100,400,400)"/>
+        </symbol>
+
+        <symbol id="hitbox">
             <circle cx="400" cy="400" r="250" fill="red" fill-opacity="0.35" stroke="red" stroke-width="10"/>
         </symbol>
     </defs>
