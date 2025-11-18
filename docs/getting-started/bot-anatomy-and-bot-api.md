@@ -46,20 +46,13 @@ The **bot center** (its x/y position) and the hitbox around it are used for:
 - Detecting **bot vs bot** collisions
 - Detecting **bullet vs bot** hits
 
-<!-- TODO illustration: Make the square vs circle hitbox difference very clear for kids. -->
-<!-- - Show two bots side by side on a simple grid background. -->
-<!-- - Draw a sharp square outline around the classic bot and a circle outline around the Tank Royale bot. -->
-<!-- - Label each outline clearly: Square hitbox and Circle hitbox. -->
-<!-- - Mark each bot’s center with a dot and crosshair lines. -->
-<!-- - Use bright contrast so the hitbox shapes are easy to spot at a glance. -->
-
 Classic Robocode's square hitbox (40×40 pixel fixed square):
 
-![Classic Robocode bot hitbox](../images/bot-square-hitbox.svg)
+![Classic Robocode bot square hitbox](../images/bot-square-hitbox.svg)
 
 Robocode Tank Royale circle hitbox (36×36 pixel fixed circle):
 
-![Robocode Tank Royale bot hitbox](../images/bot-circle-hitbox.svg)
+![Robocode Tank Royale bot circle hitbox](../images/bot-circle-hitbox.svg)
 
 ---
 

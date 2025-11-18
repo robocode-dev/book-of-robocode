@@ -1,10 +1,16 @@
-<svg version="1.1" width="100" height="100" viewBox="0 0 800 800"
+<svg version="1.1" width="100" height="100" viewBox="0 0 802 802"
      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 
     <g>
         <use xlink:href="#tank"/>
+        <rect width="802" height="802" fill="url(#grid)" />
         <use xlink:href="#hitbox"/>
+        <use xlink:href="#center-cross"/>
     </g>
+
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+        <path d="M 50 0 L 0 0 0 50" fill="none" stroke="gray" stroke-width="2"/>
+    </pattern>
 
     <defs>
         <symbol id="link0">
@@ -94,12 +100,16 @@
             <use xlink:href="#body" transform="rotate(55,400,400)"/>
             <use xlink:href="#turret" transform="rotate(35,400,400)"/>
             <use xlink:href="#radar" transform="rotate(100,400,400)"/>
-
         </symbol>
 
         <symbol id="hitbox">
-            <rect x="160" y="160" width="480" height="480" fill="red" fill-opacity="0.35" stroke="red"
+            <rect x="155" y="155" width="490" height="490" fill="red" fill-opacity="0.35" stroke="red"
                   stroke-width="10"/>
+        </symbol>
+
+        <symbol id="center-cross">
+            <line x1="150" y1="400" x2="650" y2="400" stroke="#FF08" stroke-width="10"/>
+            <line x1="400" y1="150" x2="400" y2="650" stroke="#FF08" stroke-width="10"/>
         </symbol>
     </defs>
 </svg>
