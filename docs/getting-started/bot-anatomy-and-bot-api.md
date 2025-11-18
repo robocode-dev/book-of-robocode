@@ -46,6 +46,13 @@ The **bot center** (its x/y position) and the hitbox around it are used for:
 - Detecting **bot vs bot** collisions
 - Detecting **bullet vs bot** hits
 
+<!-- TODO illustration: Make the square vs circle hitbox difference very clear for kids. -->
+<!-- - Show two bots side by side on a simple grid background. -->
+<!-- - Draw a sharp square outline around the classic bot and a circle outline around the Tank Royale bot. -->
+<!-- - Label each outline clearly: Square hitbox and Circle hitbox. -->
+<!-- - Mark each bot’s center with a dot and crosshair lines. -->
+<!-- - Use bright contrast so the hitbox shapes are easy to spot at a glance. -->
+
 Classic Robocode's square hitbox (40×40 pixel fixed square):
 
 ![Classic Robocode bot hitbox](../images/bot-square-hitbox.svg)
@@ -64,6 +71,13 @@ Every Robocode-style bot is made of three main moving parts plus an energy pool:
 - **Gun / turret** – the rotating part that fires bullets.
 - **Radar** – the rotating scanner that detects enemies.
 - **Energy** – a number that acts as both health and ammunition.
+
+<!-- TODO illustration: Label the main parts of a bot like a friendly diagram. -->
+<!-- - Draw one large tank-style bot in the center of the page. -->
+<!-- - Use arrows and labels for Body, Gun, Radar, and Energy. -->
+<!-- - Show body as the chassis, gun as a rotating turret, and radar as a small dish or antenna. -->
+<!-- - Represent energy with a simple bar or battery icon near the bot. -->
+<!-- - Keep the labeling clear and big so young readers can match parts easily. -->
 
 Each moving part has their own **headings** (angles) and sometimes their own turn rate limits.
 
@@ -178,6 +192,13 @@ When parts are **independent**, those automatic rotations are turned off:
 The concept is the same everywhere: you choose whether rotations stay chained, become fully independent, or something in
 between.
 
+<!-- TODO illustration: Show chained vs independent rotation in a side-by-side comparison. -->
+<!-- - On the left, draw a bot where body, gun, and radar all face the same way (chained). -->
+<!-- - On the right, draw a bot with body facing one way, gun another, and radar sweeping elsewhere. -->
+<!-- - Add small curved arrows around each part to show which pieces are turning. -->
+<!-- - Label each side with short captions: Chained movement and Independent movement. -->
+<!-- - Use simple colors and arrows so the difference is instantly obvious. -->
+
 ### 3.2 Achieving independence
 
 Independence is mainly a **strategy tool**. You keep parts chained when you want simple behavior and make them
@@ -250,6 +271,13 @@ The radar’s job is to answer one question: **Where are the enemy bots?** It do
 the battlefield. The scan arc for a turn is defined by the **radar sweep** – the angle the radar turned between the
 previous heading and the current heading.
 You can think of this sweep as how far you swung a flashlight between two directions during that turn.
+
+<!-- TODO illustration: Visualize the scan arc like a flashlight beam on the arena. -->
+<!-- - Draw the player’s bot near the bottom with a rotating radar on top. -->
+<!-- - Show a shaded wedge-shaped area in front of the radar as the scan arc. -->
+<!-- - Place a few enemy bots, some inside and some outside the shaded wedge. -->
+<!-- - Use simple labels: Inside scan arc (seen) and Outside scan arc (not seen). -->
+<!-- - Include a small 1200 units label along one edge of the wedge to hint at range. -->
 
 Only bots that are both:
 
@@ -383,6 +411,13 @@ There are several key collision types:
     - Two bullets can collide and destroy each other.
     - Both shooters may receive bullet-related events when this happens (for example, Tank Royale has a
       **BulletHitBulletEvent**).
+
+<!-- TODO illustration: Show the three main collision types in mini scenes. -->
+<!-- - Create three small panels: Bot vs wall, Bot vs bot, and Bullet vs bot. -->
+<!-- - In each panel, draw a simple arena background with the collision in progress. -->
+<!-- - Use small icons or labels under each panel naming the collision type. -->
+<!-- - Add small energy bars that drop slightly when a collision happens. -->
+<!-- - Keep lines bold and simple so details are clear at small sizes. -->
 
 ### 6.3 Disabled bots vs. destroyed bots
 

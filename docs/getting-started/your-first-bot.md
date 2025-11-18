@@ -38,6 +38,13 @@ Enter run() loop
     └─→ Repeat each turn
 ```
 
+<!-- TODO illustration: Show the bot lifecycle as a simple loop kids can follow. -->
+<!-- - Draw a friendly tank bot in the center of a looped arrow path. -->
+<!-- - Place labeled steps around the loop: Initialize, Scan, Move, Aim, Fire, Repeat. -->
+<!-- - Use big icons for scanning, moving, aiming, and firing beside each label. -->
+<!-- - Include small arrows between steps to show the order clearly. -->
+<!-- - Keep colors bright and playful while matching the books existing palette. -->
+
 Think of your bot as a real-time agent. Each turn it senses the world, decides what to do, and acts. The exact API calls
 differ between Classic and Tank Royale, but the rhythm—sense → plan → act → repeat—stays the same.
 
@@ -47,7 +54,14 @@ Initialization runs once before the main loop. Keep it lightweight and focused o
 
 - Visual identity: Set body, gun, radar, and bullet colors so you can spot your bot during a match.
 - Defaults and parameters: Choose initial movement speed/turn rates, radar sweep strategy, and default firepower.
-- Event hooks (if applicable): Register listeners for events such as “enemy scanned,” “hit by bullet,” or “collision.”
+- Event hooks (if applicable): Register listeners for events such as enemy scanned, hit by bullet, or collision.
+
+<!-- TODO illustration: Compare a plain bot before setup and a ready bot after initialization. -->
+<!-- - On the left, show a gray, unnamed bot with no colors or labels. -->
+<!-- - On the right, show the same bot with bright team colors and a visible name tag. -->
+<!-- - Add small icons or labels for colors, defaults, and event hooks near the ready bot. -->
+<!-- - Use a simple "Before init" vs "After init" caption under each bot. -->
+<!-- - Keep expressions friendly to suggest the bot is excited to enter the arena. -->
 
 Avoid heavy computation in initialization. If you need data processing, compute lazily or spread it across early turns.
 
@@ -84,6 +98,13 @@ responses.
 - Repeat
     - Issue movement, radar, and gun commands, then proceed to the next turn.
 
+<!-- TODO illustration: Visualize one heartbeat turn with sense-plan-act steps. -->
+<!-- - Show a sequence of small panels labeled Scan, Move, Aim, Fire. -->
+<!-- - In each panel, draw the same bot doing that action on a simple arena. -->
+<!-- - Use arrows between panels to show the order within a single turn. -->
+<!-- - Include tiny icons (radar waves, wheels, crosshair, bullet) over each panel. -->
+<!-- - Choose a comic-strip style layout that feels light and fun. -->
+
 ## Event-driven reactions
 
 Most APIs surface events like:
@@ -97,13 +118,20 @@ the next turn (e.g., last known enemy position).
 
 ## Minimal platform notes
 
-- Classic Robocode typically uses a `.properties` file to define the bot. The filename usually must match your bot’s
+- Classic Robocode typically uses a `.properties` file to define the bot. The filename usually must match your bots
   class name. See the classic tutorial for exact fields and placement: [Robot properties](../appendices/robot-properties.md)
 - Robocode Tank Royale uses a JSON configuration file for bot metadata/settings. See the Tank Royale tutorial for the
   current schema and placement: https://robocode.dev/tutorial/my-first-bot.html
 
-If you’re unsure whether something belongs in config or code, rely on the tutorial for your platform—the formats and
+If youre unsure whether something belongs in config or code, rely on the tutorial for your platformthe formats and
 best practices can evolve.
+
+<!-- TODO illustration: Contrast a classic Robocode properties file with a Tank Royale JSON config. -->
+<!-- - Split the image in half with Classic on the left and Tank Royale on the right. -->
+<!-- - On the left, show a paper or file icon labeled MyFirstRobot.properties with a short key=value snippet. -->
+<!-- - On the right, show a file icon labeled my-first-bot.json with a simple brace-based outline. -->
+<!-- - Draw a bot above both files to show they describe the same kind of robot. -->
+<!-- - Use subtle icons to suggest "text config" rather than full code details. -->
 
 ## What success looks like for your first bot
 
@@ -114,8 +142,12 @@ Your initial milestone is simple and achievable:
 - Movement follows a basic pattern (not stationary!).
 - The gun turns toward detected enemies and fires when ready.
 
-With that, you’ve built a functional first bot. From here, iterate in small steps: refine movement, improve radar
-behavior, and experiment with targeting and firepower choices.
+<!-- TODO illustration: Show a simple "first match" scene that meets the success checklist. -->
+<!-- - Draw a small arena with the players colorful bot clearly visible. -->
+<!-- - Show the bot moving, with motion lines, and the radar sweeping in a visible arc. -->
+<!-- - Indicate the gun turning toward an enemy with a bullet in flight. -->
+<!-- - Add small checkmark icons near labels for Color, Radar, Movement, and Firing. -->
+<!-- - Keep the enemy bot simple so the focus stays on the players bot. -->
 
 ## Next steps
 

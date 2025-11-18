@@ -21,6 +21,13 @@ A robot properties file is a plain text file (with the `.properties` extension) 
 engine. It includes information like the bot's name, author, description, and technical details. Robocode uses this file
 to display information in the bot selection menu and to load your bot correctly.
 
+<!-- TODO illustration: Show the relationship between a bot and its properties file. -->
+<!-- - Draw a bot on the left and a document icon labeled .properties on the right. -->
+<!-- - Connect them with an arrow labeled "Metadata and settings". -->
+<!-- - Include small icons on the document for name, author, and description fields. -->
+<!-- - Show the document plugged into a simple "Robocode" box representing the engine. -->
+<!-- - Keep the shapes large and simple so labels are easy to read. -->
+
 ## Example: My First Robot properties file
 
 Here is an example properties file for the classic "MyFirstRobot":
@@ -36,11 +43,25 @@ robot.classname=sample.MyFirstRobot
 robot.name=MyFirstRobot
 ```
 
+<!-- TODO illustration: Visualize the example properties file as a filled-in form. -->
+<!-- - Draw a page with labeled lines for robot.name, robot.classname, and robot.author.name. -->
+<!-- - Fill the lines with simplified versions of the MyFirstRobot example values. -->
+<!-- - Highlight the robot.description line with a small note "can use \\n for new lines". -->
+<!-- - Add a small icon of the MyFirstRobot bot next to the form. -->
+<!-- - Use a clean, notebook-like style that feels familiar to students. -->
+
 ## Naming convention: Match the class name
 
 The filename of your properties file (excluding the `.properties` extension) **must match the class name of your bot**.
 For example, if your bot class is `MyFirstRobot`, the properties file should be named `MyFirstRobot.properties`. This is
 required for Robocode to recognize and load your bot correctly.
+
+<!-- TODO illustration: Clarify the filename and class name matching rule. -->
+<!-- - Show two side-by-side labels: Class name: MyFirstRobot and File: MyFirstRobot.properties. -->
+<!-- - Draw a bold checkmark connecting the matching pair. -->
+<!-- - Below, show a crossed-out example where the filename does not match the class name. -->
+<!-- - Add a small warning icon with text "Must match exactly, including capitals". -->
+<!-- - Use clear typography so students can see the difference at a glance. -->
 
 ## What does a properties file contain?
 
