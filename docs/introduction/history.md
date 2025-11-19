@@ -33,12 +33,7 @@ Highlights:
 RoboWiki became the reference for advanced topics such as wave surfing, GuessFactor targeting, detailed battlefield
 physics, and much more.
 
-<!-- TODO illustration: Show the classic community sharing robots and ideas. -->
-<!-- - Draw a circular group of kids at computers, each with a different bot on their screen. -->
-<!-- - Connect the computers with dotted lines or arrows to suggest sharing and competition. -->
-<!-- - Include a small open book or browser window labeled RoboWiki in the center. -->
-<!-- - Add a few sticky note icons labeled "Strategies" and "Formulas" near the book. -->
-<!-- - Keep character designs simple and diverse to feel welcoming. -->
+<img src="../images/community-sharing.png" alt="Community sharing robots and ideas" width="600" style="max-width:100%;height:auto;" />
 
 ## Handover and Community Maintenance
 
