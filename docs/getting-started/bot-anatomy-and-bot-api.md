@@ -187,6 +187,8 @@ between.
 <!-- - Label each side with short captions: Chained movement and Independent movement. -->
 <!-- - Use simple colors and arrows so the difference is instantly obvious. -->
 
+![Chained bot parts rotated 45 degrees](../images/bot-parts-chained.svg)
+
 ### 3.2 Achieving independence
 
 Independence is mainly a **strategy tool**. You keep parts chained when you want simple behavior and make them
