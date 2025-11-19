@@ -63,9 +63,4 @@ Key features:
 - Open documentation and starter kits
   at [robocode-dev.github.io/tank-royale](https://robocode-dev.github.io/tank-royale)
 
-<!-- TODO illustration: Compare classic Robocode to Tank Royale as two friendly arenas. -->
-<!-- - On the left, draw a classic desktop window with bots fighting inside. -->
-<!-- - On the right, show a server icon connected to several smaller screens with bots. -->
-<!-- - Use arrows or lines to show bots connecting to the Tank Royale server. -->
-<!-- - Label each side: Classic Robocode and Robocode Tank Royale. -->
-<!-- - Add a subtle "New Generation" banner over the Tank Royale side. -->
+<img src="../images/classic-vs-tank-royale.png" alt="Classic vs Tank Royale" width="600" style="max-width:100%;height:auto;" />
