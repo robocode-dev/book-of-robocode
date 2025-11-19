@@ -46,11 +46,11 @@ The **bot center** (its x/y position) and the hitbox around it are used for:
 - Detecting **bot vs bot** collisions
 - Detecting **bullet vs bot** hits
 
-Classic Robocode's square hitbox (40×40 pixel fixed square):
+Classic Robocode's square hitbox:
 
 ![Classic Robocode bot square hitbox](../images/bot-square-hitbox.svg)
 
-Robocode Tank Royale circle hitbox (36×36 pixel fixed circle):
+Robocode Tank Royale circle hitbox:
 
 ![Robocode Tank Royale bot circle hitbox](../images/bot-circle-hitbox.svg)
 
@@ -71,6 +71,8 @@ Every Robocode-style bot is made of three main moving parts plus an energy pool:
 <!-- - Show body as the chassis, gun as a rotating turret, and radar as a small dish or antenna. -->
 <!-- - Represent energy with a simple bar or battery icon near the bot. -->
 <!-- - Keep the labeling clear and big so young readers can match parts easily. -->
+
+![Bot parts labeled: Body, Gun, Radar, Energy](../images/bot-parts.svg)
 
 Each moving part has their own **headings** (angles) and sometimes their own turn rate limits.
 
