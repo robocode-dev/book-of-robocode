@@ -34,7 +34,7 @@ This is what bullets and walls collide with.
 
 - **Classic Robocode**
     - Each bot is a **40×40 pixel square** on the battlefield.
-    - The square’s *orientation does not rotate* when the bot turns. The sprite spins, but the underlying hitbox is
+    - The square’s orientation does not rotate when the bot turns. The sprite spins, but the underlying hitbox is
       always an axis-aligned 40×40 box.
 - **Robocode Tank Royale**
     - Each bot is modeled as a **circle with radius 18 pixels** (effectively 36×36 pixels wide and high).
