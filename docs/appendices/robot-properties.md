@@ -46,7 +46,7 @@ robot.name=MyFirstRobot
 <!-- TODO illustration: Visualize the example properties file as a filled-in form. -->
 <!-- - Draw a page with labeled lines for robot.name, robot.classname, and robot.author.name. -->
 <!-- - Fill the lines with simplified versions of the MyFirstRobot example values. -->
-<!-- - Highlight the robot.description line with a small note "can use \\n for new lines". -->
+<!-- - Highlight the robot.description line with a small note "can use \n for new lines". -->
 <!-- - Add a small icon of the MyFirstRobot bot next to the form. -->
 <!-- - Use a clean, notebook-like style that feels familiar to students. -->
 

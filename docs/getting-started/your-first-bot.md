@@ -2,7 +2,7 @@
 title: "Your First Bot"
 category: "Getting Started"
 summary: "A guided overview for new players to create and understand their first Robocode or Tank Royale bot."
-tags: ["tutorial", "first bot", "robocode", "tank-royale", "beginner"]
+tags: [ "tutorial", "first bot", "robocode", "tank-royale", "beginner" ]
 difficulty: "beginner"
 source: [
   "RoboWiki - My First Robot (classic Robocode)",
@@ -43,7 +43,7 @@ Enter run() loop
 <!-- - Place labeled steps around the loop: Initialize, Scan, Move, Aim, Fire, Repeat. -->
 <!-- - Use big icons for scanning, moving, aiming, and firing beside each label. -->
 <!-- - Include small arrows between steps to show the order clearly. -->
-<!-- - Keep colors bright and playful while matching the books existing palette. -->
+<!-- - Keep colors bright and playful while matching the book’s existing palette. -->
 
 Think of your bot as a real-time agent. Each turn it senses the world, decides what to do, and acts. The exact API calls
 differ between Classic and Tank Royale, but the rhythm—sense → plan → act → repeat—stays the same.
@@ -54,7 +54,7 @@ Initialization runs once before the main loop. Keep it lightweight and focused o
 
 - Visual identity: Set body, gun, radar, and bullet colors so you can spot your bot during a match.
 - Defaults and parameters: Choose initial movement speed/turn rates, radar sweep strategy, and default firepower.
-- Event hooks (if applicable): Register listeners for events such as enemy scanned, hit by bullet, or collision.
+- Event hooks (if applicable): Register listeners for events such as enemy scanned, hit by bullet, or collision.
 
 <!-- TODO illustration: Compare a plain bot before setup and a ready bot after initialization. -->
 <!-- - On the left, show a gray, unnamed bot with no colors or labels. -->
@@ -118,20 +118,20 @@ the next turn (e.g., last known enemy position).
 
 ## Minimal platform notes
 
-- Classic Robocode typically uses a `.properties` file to define the bot. The filename usually must match your bots
-  class name. See the classic tutorial for exact fields and placement: [Robot properties](../appendices/robot-properties.md)
+- Classic Robocode typically uses a properties (`.properties`) file to define the bot. The filename usually must match
+your bot’s class name. See the classic tutorial for exact fields and
+placement: [Robot properties](../appendices/robot-properties.md)
 - Robocode Tank Royale uses a JSON configuration file for bot metadata/settings. See the Tank Royale tutorial for the
-  current schema and placement: https://robocode.dev/tutorial/my-first-bot.html
+current schema and placement: https://robocode.dev/tutorial/my-first-bot.html
 
-If youre unsure whether something belongs in config or code, rely on the tutorial for your platformthe formats and
+If you’re unsure whether something belongs in config or code, rely on the tutorial for your platform—the formats and
 best practices can evolve.
 
-<!-- TODO illustration: Contrast a classic Robocode properties file with a Tank Royale JSON config. -->
-<!-- - Split the image in half with Classic on the left and Tank Royale on the right. -->
-<!-- - On the left, show a paper or file icon labeled MyFirstRobot.properties with a short key=value snippet. -->
-<!-- - On the right, show a file icon labeled my-first-bot.json with a simple brace-based outline. -->
-<!-- - Draw a bot above both files to show they describe the same kind of robot. -->
-<!-- - Use subtle icons to suggest "text config" rather than full code details. -->
+### Bot configuration: Classic (.properties) vs. Tank Royale JSON
+
+<img src="../images/my-first-bot-config.png" alt="Side-by-side comparison: Classic Robocode `MyFirstRobot.properties` (left) and Tank Royale `my-first-bot.json` (right). The image shows a file icon for each format with a small bot illustration above, and a short key/value snippet under each file." width="400" style="max-width:100%;height:auto;" />
+
+*Figure: Classic properties file (left) vs Tank Royale JSON file (right) — both describe the same robot.*
 
 ## What success looks like for your first bot
 
@@ -143,11 +143,11 @@ Your initial milestone is simple and achievable:
 - The gun turns toward detected enemies and fires when ready.
 
 <!-- TODO illustration: Show a simple "first match" scene that meets the success checklist. -->
-<!-- - Draw a small arena with the players colorful bot clearly visible. -->
+<!-- - Draw a small arena with the player’s colorful bot clearly visible. -->
 <!-- - Show the bot moving, with motion lines, and the radar sweeping in a visible arc. -->
 <!-- - Indicate the gun turning toward an enemy with a bullet in flight. -->
 <!-- - Add small checkmark icons near labels for Color, Radar, Movement, and Firing. -->
-<!-- - Keep the enemy bot simple so the focus stays on the players bot. -->
+<!-- - Keep the enemy bot simple so the focus stays on the player’s bot. -->
 
 ## Next steps
 
