@@ -15,7 +15,7 @@ features:
 footer: Content licensed under CC BY-SA 4.0 | Code licensed under MIT | Built with VuePress
 ---
 
-> “May your aim be true and your dodges unpredictable.” — Adopted Robocoding Motto
+> "May your aim be true and your dodges unpredictable." — Adopted Robocoding Motto
 
 **Robocode** is a programming game where you code a robot battle tank to compete against other tanks in a virtual arena. The goal is to write code that makes your tank move, scan for enemies, and fire at opponents autonomously.
 
