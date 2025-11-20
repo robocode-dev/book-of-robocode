@@ -46,13 +46,11 @@ The **bot center** (its x/y position) and the hitbox around it are used for:
 - Detecting **bot vs bot** collisions
 - Detecting **bullet vs bot** hits
 
-Classic Robocode's square hitbox:
+![Classic Robocode bot square hitbox](../images/bot-square-hitbox.svg)<br>
+*Square hitbox used in classic Robocode (40×40 pixels, axis-aligned).* 
 
-![Classic Robocode bot square hitbox](../images/bot-square-hitbox.svg)
-
-Robocode Tank Royale circle hitbox:
-
-![Robocode Tank Royale bot circle hitbox](../images/bot-circle-hitbox.svg)
+![Robocode Tank Royale bot circle hitbox](../images/bot-circle-hitbox.svg)<br>
+*Circular hitbox used in Robocode Tank Royale (diameter 36 pixels).* 
 
 ---
 
@@ -65,7 +63,8 @@ Every Robocode-style bot is made of three main moving parts plus an energy pool:
 - **Radar** – the rotating scanner that detects enemies.
 - **Energy** – a number that acts as both health and ammunition.
 
-![Bot parts labeled: Body, Gun, Radar, Energy](../images/bot-parts.svg)
+![Bot parts labeled: Body, Gun, Radar, Energy](../images/bot-parts.svg)<br>
+*Main parts of a bot: body, gun, radar, and energy pool.*
 
 Each moving part has their own **headings** (angles) and sometimes their own turn rate limits.
 
@@ -111,7 +110,8 @@ Because the gun can be rotated independently of the body, you can:
 - Aim somewhere else with the gun.
 - Keep shooting at a target while dodging in another direction.
 
-![Bot with body heading (north) and gun heading (east), showing the separation between body and gun orientation.](../images/body-vs-gun-heading.svg)
+![Bot with body heading (north) and gun heading (east), showing the separation between body and gun orientation.](../images/body-vs-gun-heading.svg)<br>
+*Body and gun can have different headings; bullets fire in gun direction.*
 
 ### 2.3 Radar
 
@@ -187,7 +187,8 @@ between.
 <!-- - Label each side with short captions: Chained movement and Independent movement. -->
 <!-- - Use simple colors and arrows so the difference is instantly obvious. -->
 
-![Chained bot parts rotated 45 degrees](../images/bot-parts-chained.svg)
+![Chained bot parts rotated 45 degrees](../images/bot-parts-chained.svg)<br>
+*Chained movement: body, gun, and radar rotate together.*
 
 ### 3.2 Achieving independence
 
@@ -291,13 +292,11 @@ Special case – **no radar turn** this turn:
     - Great for tracking a known target precisely.
     - Easier to “lose” other enemies if you never sweep over them.
 
-Here is a bot with a large shaded radar sweep:
+![Bot with a large shaded radar sweep showing the previous and current radar heading](../images/radar-sweep.svg)<br>
+*Wide radar sweep: covers a large arc to detect enemies*
 
-![Bot with a large shaded radar sweep showing the previous and current radar heading](../images/radar-sweep.svg)
-
-Here is a bot with a narrow radar sweep, i.e., a beam:
-
-![Bot where the radar sweep is a beam with the previous and current heading lying on top of each other](../images/radar-beam.svg)
+![Bot where the radar sweep is a beam with the previous and current heading lying on top of each other](../images/radar-beam.svg)<br>
+*Narrow radar sweep: a thin beam for precise tracking*
 
 ### 5.2 Scanning each turn
 
@@ -420,13 +419,11 @@ disabled bot can **wake back up** and start acting again.
 A bot is considered **destroyed** only when its energy goes **below 0**. At that point it is removed from the round and
 cannot come back.
 
-This illustrates a bot being hit by a bullet from the left:
+![Bot being hit by bullet from the right](../images/bot-hit-by-bullet.svg)<br>
+*Bot losing energy after being hit by a bullet*
 
-![Bot being hit by bullet from the right](../images/bot-hit-by-bullet.svg)
-
-Here is a bot hitting the wall to the left:
-
-![Bot hitting the wall to the left](../images/bot-hitting-wall.svg)
+![Bot hitting the wall to the left](../images/bot-hitting-wall.svg)<br>
+*Bot colliding with a wall and losing energy*
 
 ---
 
