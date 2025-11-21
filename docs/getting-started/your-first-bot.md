@@ -38,6 +38,9 @@ Enter run() loop
     └─→ Repeat each turn
 ```
 
+<img src="../images/bot-lifecycle.png" alt="Bot lifecycle diagram" width="200" style="max-width:100%;height:auto;" /><br>
+*Bot Lifecycle Diagram*
+
 <!-- TODO illustration: Show the bot lifecycle as a simple loop kids can follow. -->
 <!-- - Draw a friendly tank bot in the center of a looped arrow path. -->
 <!-- - Place labeled steps around the loop: Initialize, Scan, Move, Aim, Fire, Repeat. -->
