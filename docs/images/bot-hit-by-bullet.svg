@@ -1,10 +1,9 @@
-<svg version="1.1" width="300" height="100" viewBox="0 0 2400 800"
-     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg version="1.1" width="300" height="100" viewBox="0 0 2400 800" xmlns="http://www.w3.org/2000/svg">
 
     <g>
-        <use xlink:href="#tank"/>
-        <use xlink:href="#hitbox"/>
-        <use xlink:href="#bullet-hit"/>
+        <use href="#tank"/>
+        <use href="#hitbox"/>
+        <use href="#bullet-hit"/>
     </g>
 
     <defs>
@@ -30,41 +29,41 @@
         </symbol>
 
         <symbol id="track1">
-            <use xlink:href="#main-track" x="0" y="0"/>
-            <use xlink:href="#link30" x="0" y="0"/>
-            <use xlink:href="#link0" x="0" y="60"/>
-            <use xlink:href="#link0" x="0" y="140"/>
-            <use xlink:href="#link0" x="0" y="220"/>
-            <use xlink:href="#link0" x="0" y="300"/>
-            <use xlink:href="#link0" x="0" y="380"/>
-            <use xlink:href="#link30" x="0" y="448"/>
+            <use href="#main-track" x="0" y="0"/>
+            <use href="#link30" x="0" y="0"/>
+            <use href="#link0" x="0" y="60"/>
+            <use href="#link0" x="0" y="140"/>
+            <use href="#link0" x="0" y="220"/>
+            <use href="#link0" x="0" y="300"/>
+            <use href="#link0" x="0" y="380"/>
+            <use href="#link30" x="0" y="448"/>
         </symbol>
 
         <symbol id="track2">
-            <use xlink:href="#main-track" x="0" y="0"/>
-            <use xlink:href="#link60" x="0" y="0"/>
-            <use xlink:href="#link0" x="0" y="33"/>
-            <use xlink:href="#link0" x="0" y="113"/>
-            <use xlink:href="#link0" x="0" y="193"/>
-            <use xlink:href="#link0" x="0" y="273"/>
-            <use xlink:href="#link0" x="0" y="353"/>
-            <use xlink:href="#link0" x="0" y="433"/>
+            <use href="#main-track" x="0" y="0"/>
+            <use href="#link60" x="0" y="0"/>
+            <use href="#link0" x="0" y="33"/>
+            <use href="#link0" x="0" y="113"/>
+            <use href="#link0" x="0" y="193"/>
+            <use href="#link0" x="0" y="273"/>
+            <use href="#link0" x="0" y="353"/>
+            <use href="#link0" x="0" y="433"/>
         </symbol>
 
         <symbol id="track3">
-            <use xlink:href="#main-track" x="0" y="0"/>
-            <use xlink:href="#link0" x="0" y="7"/>
-            <use xlink:href="#link0" x="0" y="87"/>
-            <use xlink:href="#link0" x="0" y="167"/>
-            <use xlink:href="#link0" x="0" y="247"/>
-            <use xlink:href="#link0" x="0" y="327"/>
-            <use xlink:href="#link0" x="0" y="407"/>
-            <use xlink:href="#link60" x="0" y="470"/>
+            <use href="#main-track" x="0" y="0"/>
+            <use href="#link0" x="0" y="7"/>
+            <use href="#link0" x="0" y="87"/>
+            <use href="#link0" x="0" y="167"/>
+            <use href="#link0" x="0" y="247"/>
+            <use href="#link0" x="0" y="327"/>
+            <use href="#link0" x="0" y="407"/>
+            <use href="#link60" x="0" y="470"/>
         </symbol>
 
         <symbol id="body">
-            <use xlink:href="#track2" x="150" y="100"/>
-            <use xlink:href="#track3" x="515" y="100"/>
+            <use href="#track2" x="150" y="100"/>
+            <use href="#track3" x="515" y="100"/>
 
             <rect x="240" y="190" width="320" height="420" fill="#019" stroke="black" stroke-width="20" rx="10"
                   ry="10"/>
@@ -92,9 +91,9 @@
         </symbol>
 
         <symbol id="tank">
-            <use xlink:href="#body" transform="rotate(5,400,400)"/>
-            <use xlink:href="#turret" transform="rotate(0,400,400)"/>
-            <use xlink:href="#radar" transform="rotate(0,400,400)"/>
+            <use href="#body" transform="rotate(5,400,400)"/>
+            <use href="#turret" transform="rotate(0,400,400)"/>
+            <use href="#radar" transform="rotate(0,400,400)"/>
         </symbol>
 
         <symbol id="hitbox">
@@ -108,7 +107,7 @@
             </symbol>
 
             <line x1="630" y1="380" x2="3000" y2="500" stroke="#8888" stroke-width="10"/>
-            <use xlink:href="#bullet" transform="translate(580, 330)"/>
+            <use href="#bullet" transform="translate(580, 330)"/>
 
             <!-- Hit decoration -->
             <circle cx="630" cy="380" r="80" fill="#0000" stroke="#FF0C" stroke-width="20"/>

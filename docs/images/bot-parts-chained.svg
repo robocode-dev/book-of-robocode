@@ -1,22 +1,21 @@
-<svg version="1.1" width="450" height="100" viewBox="0 0 3600 800"
-     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg version="1.1" width="450" height="100" viewBox="0 0 3600 800" xmlns="http://www.w3.org/2000/svg">
 
     <g>
-        <use xlink:href="#tank" transform="translate(-100,0)"/>
-        <use xlink:href="#tank-chained-1" transform="translate(1250,0)"/>
-        <use xlink:href="#tank-chained-2" transform="translate(2650,0)"/>
+        <use href="#tank" transform="translate(-100,0)"/>
+        <use href="#tank-chained-1" transform="translate(1250,0)"/>
+        <use href="#tank-chained-2" transform="translate(2650,0)"/>
 
-        <use xlink:href="#arrow" transform="translate(700, 240)" filter="url(#shadow)"/>
-        <use xlink:href="#arrow" transform="translate(700, 240)"/>
+        <use href="#arrow" transform="translate(700, 240)" filter="url(#shadow)"/>
+        <use href="#arrow" transform="translate(700, 240)"/>
 
-        <use xlink:href="#rotate-text-1" filter="url(#shadow)"/>
-        <use xlink:href="#rotate-text-1"/>
+        <use href="#rotate-text-1" filter="url(#shadow)"/>
+        <use href="#rotate-text-1"/>
 
-        <use xlink:href="#arrow" transform="translate(2100, 240)" filter="url(#shadow)"/>
-        <use xlink:href="#arrow" transform="translate(700, 240)"/>
+        <use href="#arrow" transform="translate(2100, 240)" filter="url(#shadow)"/>
+        <use href="#arrow" transform="translate(700, 240)"/>
 
-        <use xlink:href="#rotate-text-2" filter="url(#shadow)"/>
-        <use xlink:href="#rotate-text-2"/>
+        <use href="#rotate-text-2" filter="url(#shadow)"/>
+        <use href="#rotate-text-2"/>
     </g>
 
     <defs>
@@ -42,41 +41,41 @@
         </symbol>
 
         <symbol id="track1">
-            <use xlink:href="#main-track" x="0" y="0"/>
-            <use xlink:href="#link30" x="0" y="0"/>
-            <use xlink:href="#link0" x="0" y="60"/>
-            <use xlink:href="#link0" x="0" y="140"/>
-            <use xlink:href="#link0" x="0" y="220"/>
-            <use xlink:href="#link0" x="0" y="300"/>
-            <use xlink:href="#link0" x="0" y="380"/>
-            <use xlink:href="#link30" x="0" y="448"/>
+            <use href="#main-track" x="0" y="0"/>
+            <use href="#link30" x="0" y="0"/>
+            <use href="#link0" x="0" y="60"/>
+            <use href="#link0" x="0" y="140"/>
+            <use href="#link0" x="0" y="220"/>
+            <use href="#link0" x="0" y="300"/>
+            <use href="#link0" x="0" y="380"/>
+            <use href="#link30" x="0" y="448"/>
         </symbol>
 
         <symbol id="track2">
-            <use xlink:href="#main-track" x="0" y="0"/>
-            <use xlink:href="#link60" x="0" y="0"/>
-            <use xlink:href="#link0" x="0" y="33"/>
-            <use xlink:href="#link0" x="0" y="113"/>
-            <use xlink:href="#link0" x="0" y="193"/>
-            <use xlink:href="#link0" x="0" y="273"/>
-            <use xlink:href="#link0" x="0" y="353"/>
-            <use xlink:href="#link0" x="0" y="433"/>
+            <use href="#main-track" x="0" y="0"/>
+            <use href="#link60" x="0" y="0"/>
+            <use href="#link0" x="0" y="33"/>
+            <use href="#link0" x="0" y="113"/>
+            <use href="#link0" x="0" y="193"/>
+            <use href="#link0" x="0" y="273"/>
+            <use href="#link0" x="0" y="353"/>
+            <use href="#link0" x="0" y="433"/>
         </symbol>
 
         <symbol id="track3">
-            <use xlink:href="#main-track" x="0" y="0"/>
-            <use xlink:href="#link0" x="0" y="7"/>
-            <use xlink:href="#link0" x="0" y="87"/>
-            <use xlink:href="#link0" x="0" y="167"/>
-            <use xlink:href="#link0" x="0" y="247"/>
-            <use xlink:href="#link0" x="0" y="327"/>
-            <use xlink:href="#link0" x="0" y="407"/>
-            <use xlink:href="#link60" x="0" y="470"/>
+            <use href="#main-track" x="0" y="0"/>
+            <use href="#link0" x="0" y="7"/>
+            <use href="#link0" x="0" y="87"/>
+            <use href="#link0" x="0" y="167"/>
+            <use href="#link0" x="0" y="247"/>
+            <use href="#link0" x="0" y="327"/>
+            <use href="#link0" x="0" y="407"/>
+            <use href="#link60" x="0" y="470"/>
         </symbol>
 
         <symbol id="body">
-            <use xlink:href="#track2" x="150" y="100"/>
-            <use xlink:href="#track3" x="515" y="100"/>
+            <use href="#track2" x="150" y="100"/>
+            <use href="#track3" x="515" y="100"/>
 
             <rect x="240" y="190" width="320" height="420" fill="#019" stroke="black" stroke-width="20" rx="10"
                   ry="10"/>
@@ -104,21 +103,21 @@
         </symbol>
 
         <symbol id="tank">
-            <use xlink:href="#body" transform="rotate(0,400,400)"/>
-            <use xlink:href="#turret" transform="rotate(45,400,400)"/>
-            <use xlink:href="#radar" transform="rotate(90,400,400)"/>
+            <use href="#body" transform="rotate(0,400,400)"/>
+            <use href="#turret" transform="rotate(45,400,400)"/>
+            <use href="#radar" transform="rotate(90,400,400)"/>
         </symbol>
 
         <symbol id="tank-chained-1">
-            <use xlink:href="#body" transform="rotate(45,400,400)"/>
-            <use xlink:href="#turret" transform="rotate(90,400,400)"/>
-            <use xlink:href="#radar" transform="rotate(135,400,400)"/>
+            <use href="#body" transform="rotate(45,400,400)"/>
+            <use href="#turret" transform="rotate(90,400,400)"/>
+            <use href="#radar" transform="rotate(135,400,400)"/>
         </symbol>
 
         <symbol id="tank-chained-2">
-            <use xlink:href="#body" transform="rotate(45,400,400)"/>
-            <use xlink:href="#turret" transform="rotate(135,400,400)"/>
-            <use xlink:href="#radar" transform="rotate(180,400,400)"/>
+            <use href="#body" transform="rotate(45,400,400)"/>
+            <use href="#turret" transform="rotate(135,400,400)"/>
+            <use href="#radar" transform="rotate(180,400,400)"/>
         </symbol>
 
         <symbol id="arrow">
