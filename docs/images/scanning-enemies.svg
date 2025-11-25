@@ -159,10 +159,10 @@
         </symbol>
 
         <symbol id="arrows-with-text">
-            <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+            <marker id="arrow-head" fill="orange" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
                 <polygon points="6 0, 12 3, 6 6"/>
             </marker>
-            <line x1="2300" y1="3500" x2="45" y2="700" stroke="black" stroke-width="10" marker-end="url(#arrow-head)"/>
+            <line x1="2300" y1="3500" x2="45" y2="700" stroke="orange" stroke-width="10" marker-end="url(#arrow-head)"/>
 
             <text x="600" y="380" class="text" transform="rotate(51)">1200 units</text>
         </symbol>
