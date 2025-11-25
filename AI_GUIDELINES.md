@@ -124,6 +124,12 @@ Think of the tone as:
   links (e.g., RoboWiki page titles, API class names, or external documentation).
 - This rule applies to all AI-generated and human-authored content for The Book of Robocode.
 
+# Terminology Consistency: 'Units' vs 'Pixels'
+
+- Always use **"units"** for all measurements of distance, size, and movement in Robocode and Robocode Tank Royale. Do *
+  *not** use "pixels". For example, bot size is 40x40 units, scan length is 1200 units, and a bot can move up to 8 units
+  per turn. This ensures clarity and consistency for all contributors and readers.
+
 ---
 
 ## 🏁 Final Note

@@ -76,7 +76,8 @@ Describe what this page should cover, in your own words.
 - **Approximate word limit**:  
   (Default: 500–700; max 800.)
 - **Preferred examples**:  
-  (Example: “Show a small pseudocode loop that uses angles for movement.”)
+  (Example: “Show a small pseudocode loop that uses angles for movement. Bot size is 40x40 units, scan length is 1200
+  units, and a bot can move up to 8 units per turn.”)
 - **Anything else**:  
   (Example: “Mention how this links forward to the Bullet Physics page.”)
 
@@ -85,6 +86,12 @@ Describe what this page should cover, in your own words.
 Always use the term **"bot"** instead of "robot" throughout the book, except when quoting original titles or
 references/links (e.g., RoboWiki page titles, API class names, or external documentation). This ensures consistent
 language and avoids confusion for readers.
+
+# Terminology Consistency: 'Units' vs 'Pixels'
+
+Always use **"units"** for all measurements of distance, size, and movement in Robocode and Robocode Tank Royale. Do *
+*not** use "pixels". For example, bot size is 40x40 units, scan length is 1200 units, and a bot can move up to 8 units
+per turn. This ensures clarity and consistency for all contributors and readers.
 
 # Header Numbering Consistency
 
@@ -100,16 +107,16 @@ For narrative, conceptual, or general informational pages, use unnumbered header
 Numbered (for specs/tutorials):
 
 ```
-## 1. Bot shape, size, and hitbox
-## 2. Movement and turning
+## 1. Bot shape, size (in units), and hitbox
+## 2. Movement and turning (in units)
 ## 3. Firing and targeting
 ```
 
 Unnumbered (for narrative/conceptual):
 
 ```
-## Bot shape, size, and hitbox
-## Movement and turning
+## Bot shape, size (in units), and hitbox
+## Movement and turning (in units)
 ## Firing and targeting
 ```
 

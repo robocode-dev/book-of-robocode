@@ -56,3 +56,12 @@ During a battle, you cannot control the bot directly. The only way to win is to 
 - Runs on a server + bot architecture.
 - Bots connect to a game server using network protocols.
 - You can write bots in multiple languages (for example, Java, C#, Python, Kotlin, Scala, and more).
+
+---
+
+## Terminology Note
+
+- Throughout this book, we use the term **"units"** for all measurements of distance, size, and movement in Robocode and
+  Robocode Tank Royale. This replaces the older term "pixels" and ensures clarity across both platforms.
+- We also use the term **"bot"** instead of "robot" or "tank" to describe the agent you develop and control.
+  This keeps the language consistent and focused on programming your own intelligent agent.
