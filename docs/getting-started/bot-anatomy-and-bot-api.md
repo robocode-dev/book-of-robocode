@@ -111,7 +111,7 @@ Because the gun can be rotated independently of the body, you can:
 - Keep shooting at a target while dodging in another direction.
 
 ![Bot with body heading (north) and gun heading (east), showing the separation between body and gun orientation.](../images/body-vs-gun-heading.svg)<br>
-*Body and gun can have different headings; bullets fire in gun direction.*
+*Body and gun can have different headings; bullets fire in the gun direction.*
 
 ### 2.3 Radar
 

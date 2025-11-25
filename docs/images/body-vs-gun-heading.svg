@@ -87,7 +87,6 @@
             <use href="#body" transform="rotate(10,400,400)"/>
             <use href="#turret" transform="rotate(80,400,400)"/>
             <use href="#radar" transform="rotate(127,400,400)"/>
-
         </symbol>
 
         <symbol id="arrows-with-label">

@@ -1,18 +1,46 @@
-<svg version="1.1" width="175" height="163" viewBox="0 0 1400 1304" xmlns="http://www.w3.org/2000/svg">
-
-    <style>
-        .text { font: 120px sans-serif; }
-    </style>
+<svg version="1.1" width="400" height="400" viewBox="0 0 4000 4000" xmlns="http://www.w3.org/2000/svg">
 
     <g>
-        <use href="#tank" transform="translate(-160, 150) scale(1.5, 1.5)"/>
-        <text x="270" y="155" fill="grey" font-weight="bold" font-size="210px" font-family="Arial, sans-serif">92.0</text>
-
-        <use href="#arrows-with-label" filter="url(#shadow)"/>
-        <use href="#arrows-with-label"/>
+        <use href="#tank" transform="translate(1500,2500)"
+             style="--body-rotation:-90deg; --turret-rotation:-45deg; --radar-rotation:-10deg;"/>
+        <use href="#tank" transform="translate(500,500)"
+             style="--body-rotation:10deg; --turret-rotation:80deg; --radar-rotation:127deg;"/>
+        <use href="#tank" transform="translate(1820,300)"
+             style="--body-rotation:274deg; --turret-rotation:175deg; --radar-rotation:187deg;"/>
+        <use href="#tank" transform="translate(310,1500)"
+             style="--body-rotation:190deg; --turret-rotation:27deg; --radar-rotation:150deg;"/>
+        <use href="#tank" transform="translate(1000,1200)"
+             style="--body-rotation:310deg; --turret-rotation:65deg; --radar-rotation:54deg;"/>
+        <use href="#tank" transform="translate(3000,1200)"
+             style="--body-rotation:166deg; --turret-rotation:266deg; --radar-rotation:74deg;"/>
+        <use href="#tank" transform="translate(3200,3200)"
+             style="--body-rotation:166deg; --turret-rotation:311deg; --radar-rotation:340deg;"/>
+        <use href="#radar-sweep"/>
+        <circle cx="900" cy="900" r="240" fill="none" stroke="red" stroke-width="20"/>
+        <circle cx="1400" cy="1600" r="240" fill="none" stroke="red" stroke-width="20"/>
     </g>
 
     <defs>
+        <style>
+            .tank-body,
+            .tank-turret,
+            .tank-radar {
+            transform-origin: 400px 400px;
+            }
+
+            .tank-body {
+            transform: rotate(var(--body-rotation, 10deg));
+            }
+
+            .tank-turret {
+            transform: rotate(var(--turret-rotation, 80deg));
+            }
+
+            .tank-radar {
+            transform: rotate(var(--radar-rotation, 127deg));
+            }
+        </style>
+
         <symbol id="link0">
             <rect x="5" y="55" width="125" height="25" fill="#aaaaaa"/>
             <rect x="10" y="70" width="116" height="35" fill="#666666" rx="10" ry="10"/>
@@ -85,31 +113,35 @@
         </symbol>
 
         <symbol id="tank">
-            <use href="#body" transform="rotate(10,400,400)"/>
-            <use href="#turret" transform="rotate(95,400,400)"/>
-            <use href="#radar" transform="rotate(127,400,400)"/>
+            <g class="tank-body">
+                <use href="#body"/>
+            </g>
+            <g class="tank-turret">
+                <use href="#turret"/>
+            </g>
+            <g class="tank-radar">
+                <use href="#radar"/>
+            </g>
         </symbol>
 
-        <symbol id="arrows-with-label">
-            <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
-                <polygon points="6 0, 12 3, 6 6" fill="orange"/>
-            </marker>
+        <defs>
+            <linearGradient id="sweepGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="5000" y2="0">
+                <stop offset="0%" stop-color="green" stop-opacity="0.8"/>
+                <stop offset="50%" stop-color="green" stop-opacity="0.1"/>
+                <stop offset="100%" stop-color="green" stop-opacity="0"/>
+            </linearGradient>
 
-            <line x1="1000" y1="80" x2="750" y2="80" stroke="orange" stroke-width="10" marker-end="url(#arrow-head)"/>
-            <text x="1020" y="120" class="text" fill="orange">Energy</text>
+            <clipPath id="sector">
+                <path d="
+                    M 1900 2900
+                    L 50 700
+                    A -2900 -2900 0 0 1 2100 50
+                    Z"/>
+            </clipPath>
+        </defs>
 
-            <line x1="1000" y1="530" x2="700" y2="530" stroke="orange" stroke-width="10" marker-end="url(#arrow-head)"/>
-            <text x="1020" y="570" class="text" fill="orange">Body</text>
-
-            <line x1="950" y1="1110" x2="850" y2="850" stroke="orange" stroke-width="10" marker-end="url(#arrow-head)"/>
-            <text x="860" y="1180" class="text" fill="orange">Gun</text>
-
-            <line x1="300" y1="1200" x2="400" y2="800" stroke="orange" stroke-width="10" marker-end="url(#arrow-head)"/>
-            <text x="180" y="1280" class="text" fill="orange">Radar</text>
+        <symbol id="radar-sweep">
+            <rect x="0" y="0" width="4000" height="3000" fill="url(#sweepGrad)" clip-path="url(#sector)"/>
         </symbol>
-
-        <filter id="shadow">
-            <feDropShadow dx="10" dy="10" stdDeviation="3" flood-color="black" flood-opacity="0.5"/>
-        </filter>
     </defs>
 </svg>
