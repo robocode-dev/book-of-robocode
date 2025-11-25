@@ -35,6 +35,8 @@ Each AI-generated page must:
   perspectives when the concept applies to both.
 - Be written using **UTF-8** encoding, where **emoji characters are allowed** when appropriate.
 - Keep lines at **120 characters or fewer** to make diffs and reviews easy.
+- **Where a concept benefits from a visual illustration, include a hint in the markdown for an image and a short
+  description of what the illustration should show.**
 
 ---
 

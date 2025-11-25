@@ -6,7 +6,9 @@
   (Must match the VuePress config entry, e.g., `'coordinates-and-angles'` in the sidebar.)
 - **Output path** (optional if standard): `docs/articles/coordinates-and-angles.md`
 - **Book section** (top-level): `Battlefield Physics`  
-  (Use names from BOOK_STRUCTURE.md: Introduction, Getting Started, Battlefield Physics, Radar & Scanning, Targeting Systems, Movement & Evasion, Energy & Scoring, Team Strategies, Melee Combat, Advanced Topics, Robocode Tank Royale Differences, Appendices.)
+  (Use names from BOOK_STRUCTURE.md: Introduction, Getting Started, Battlefield Physics, Radar & Scanning, Targeting
+  Systems, Movement & Evasion, Energy & Scoring, Team Strategies, Melee Combat, Advanced Topics, Robocode Tank Royale
+  Differences, Appendices.)
 - **Planned title** (if you want to override): `Coordinate Systems & Angles`
 - **Difficulty**: `beginner` | `intermediate` | `advanced`
 
@@ -28,15 +30,21 @@ List the main references so the page can attribute correctly and stay accurate.
 Describe what this page should cover, in your own words.
 
 - **Goal of the page**:  
-  (Example: “Explain how battlefield coordinates work and how angles are measured, focusing on differences between classic Robocode and Tank Royale.”)
+  (Example: “Explain how battlefield coordinates work and how angles are measured, focusing on differences between
+  classic Robocode and Tank Royale.”)
 
 - **What *must* be included** (bullet list):
     - Example: “Explain X/Y axes orientation for both platforms.”
     - Example: “Show the difference in heading conventions (clockwise vs counterclockwise, zero direction).”
-    - Example: “Include one simple formula or pseudocode snippet that uses angles, such as converting heading to movement.”
+    - Example: “Include one simple formula or pseudocode snippet that uses angles, such as converting heading to
+      movement.”
 
 - **What to avoid or keep minimal**:
     - Example: “No deep targeting math yet, just basic geometry.”
+
+- **Illustration/image suggestions** (optional but recommended):
+    - Give hints on the page in places where an illustration would help understanding and describe what each image
+      should show.
 
 ## 4. Audience & Emphasis
 
@@ -60,7 +68,8 @@ Describe what this page should cover, in your own words.
     - `[x]` Robocode Tank Royale
 
 - **Specific platform differences to highlight**:
-    - Example: “Tank Royale headings increase counterclockwise from east; classic Robocode headings increase clockwise from north (confirm exact conventions).”
+    - Example: “Tank Royale headings increase counterclockwise from east; classic Robocode headings increase clockwise
+      from north (confirm exact conventions).”
 
 ## 6. Constraints & Preferences (optional)
 
