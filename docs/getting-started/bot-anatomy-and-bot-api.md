@@ -33,11 +33,11 @@ On screen, you see a small tank-like robot, but the game engine actually cares a
 This is what bullets and walls collide with.
 
 - **Classic Robocode**
-    - Each bot is a **40×40 pixel square** on the battlefield.
+    - Each bot is a **40×40 unit square** on the battlefield.
     - The square’s orientation does not rotate when the bot turns. The sprite spins, but the underlying hitbox is
       always an axis-aligned 40×40 box.
 - **Robocode Tank Royale**
-    - Each bot is modeled as a **circle with radius 18 pixels** (effectively 36×36 pixels wide and high).
+    - Each bot is modeled as a **circle with radius 18 units** (effectively 36×36 units wide and high).
     - The circle is rotation-independent by design: turning the bot does not change the shape.
 
 The **bot center** (its x/y position) and the hitbox around it are used for:
@@ -47,10 +47,10 @@ The **bot center** (its x/y position) and the hitbox around it are used for:
 - Detecting **bullet vs bot** hits
 
 ![Classic Robocode bot square hitbox](../images/bot-square-hitbox.svg)<br>
-*Square hitbox used in classic Robocode (40×40 pixels, axis-aligned).* 
+*Square hitbox used in classic Robocode (40×40 units, axis-aligned).* 
 
 ![Robocode Tank Royale bot circle hitbox](../images/bot-circle-hitbox.svg)<br>
-*Circular hitbox used in Robocode Tank Royale (diameter 36 pixels).* 
+*Circular hitbox used in Robocode Tank Royale (diameter 36 units).* 
 
 ---
 
@@ -123,7 +123,7 @@ The **radar** is a separate rotating part used only for sensing:
 
 The radar defines a **scan arc**, which we’ll cover in detail later:
 
-- It has a **range** (up to 1200 virtual pixels).
+- It has a **range** (up to 1200 units).
 - It has a **width** (angle of the arc, narrow or wide).
 
 The radar heading plus arc width determines where your bot is “looking” that turn.
@@ -256,19 +256,15 @@ Bot Physics*.
 
 ---
 
-## 5. Scanning and the 1200‑pixel scan arc
+## 5. Scanning and the 1200‑unit scan arc
 
 The radar’s job is to answer one question: **Where are the enemy bots?** It does this by sweeping a **scan arc** over
 the battlefield. The scan arc for a turn is defined by the **radar sweep** – the angle the radar turned between the
 previous heading and the current heading.
 You can think of this sweep as how far you swung a flashlight between two directions during that turn.
 
-<!-- TODO illustration: Visualize the scan arc like a flashlight beam on the arena. -->
-<!-- - Draw the player’s bot near the bottom with a rotating radar on top. -->
-<!-- - Show a shaded wedge-shaped area in front of the radar as the scan arc. -->
-<!-- - Place a few enemy bots, some inside and some outside the shaded wedge. -->
-<!-- - Use simple labels: Inside scan arc (seen) and Outside scan arc (not seen). -->
-<!-- - Include a small 1200 units label along one edge of the wedge to hint at range. -->
+![Radar scanning enemies — shaded wedge shows the 1200-unit scan arc; enemies inside the sector are detected](../images/scanning-enemies.svg)<br>
+*Radar sweep showing the scan arc (up to 1200 units) and detected enemies within the sector.*
 
 Only bots that are both:
 
@@ -521,7 +517,7 @@ On this page you learned:
 - How **independent movement** lets you rotate body, gun, and radar separately.
 - The basic movement constraints: max speed, acceleration/deceleration limits, and separate turn limits for body, gun,
   and radar.
-- How the radar’s **1200‑pixel scan arc** and adjustable width control what you can see.
+- How the radar’s **1200‑unit scan arc** and adjustable width control what you can see.
 - How bullets, collisions, and energy gains/losses shape gameplay.
 - How the turn‑based engine, **turn timeouts**, and **events** connect your code to the game.
 

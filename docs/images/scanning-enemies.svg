@@ -1,41 +1,55 @@
 <svg version="1.1" width="400" height="400" viewBox="0 0 4000 4000" xmlns="http://www.w3.org/2000/svg">
 
+    <style>
+        .text {
+            font-size: 200px;
+            font-family: sans-serif;
+            fill: orange
+        } 
+    </style>
+
     <g>
-        <use href="#tank" transform="translate(1500,2500)"
+        <use href="#tank" transform="translate(1900,3100)"
              style="--body-rotation:-90deg; --turret-rotation:-45deg; --radar-rotation:-10deg;"/>
-        <use href="#tank" transform="translate(500,500)"
+
+        <use href="#tank" transform="translate(700,500)"
              style="--body-rotation:10deg; --turret-rotation:80deg; --radar-rotation:127deg;"/>
-        <use href="#tank" transform="translate(1820,300)"
-             style="--body-rotation:274deg; --turret-rotation:175deg; --radar-rotation:187deg;"/>
-        <use href="#tank" transform="translate(310,1500)"
-             style="--body-rotation:190deg; --turret-rotation:27deg; --radar-rotation:150deg;"/>
-        <use href="#tank" transform="translate(1000,1200)"
+        <use href="#tank" transform="translate(1000,1300)"
              style="--body-rotation:310deg; --turret-rotation:65deg; --radar-rotation:54deg;"/>
-        <use href="#tank" transform="translate(3000,1200)"
+
+        <use href="#tank" transform="translate(2100,300)"
+             style="--body-rotation:274deg; --turret-rotation:175deg; --radar-rotation:187deg;"/>
+        <use href="#tank" transform="translate(350,2300)"
+             style="--body-rotation:190deg; --turret-rotation:27deg; --radar-rotation:150deg;"/>
+        <use href="#tank" transform="translate(3000,1600)"
              style="--body-rotation:166deg; --turret-rotation:266deg; --radar-rotation:74deg;"/>
-        <use href="#tank" transform="translate(3200,3200)"
-             style="--body-rotation:166deg; --turret-rotation:311deg; --radar-rotation:340deg;"/>
+
         <use href="#radar-sweep"/>
-        <circle cx="900" cy="900" r="240" fill="none" stroke="red" stroke-width="20"/>
-        <circle cx="1400" cy="1600" r="240" fill="none" stroke="red" stroke-width="20"/>
+
+        <use href="#arrows-with-text"/>
+
+        <circle cx="1100" cy="900" r="240" fill="none" stroke="red" stroke-width="20"/>
+        <circle cx="1400" cy="1700" r="240" fill="none" stroke="red" stroke-width="20"/>
+
+        <text x="900" y="500" class="text">seen</text>
+        <text x="1200" y="1300" class="text">seen</text>
+
+        <text x="2100" y="300" class="text">not seen</text>
+        <text x="350" y="2300" class="text">not seen</text>
+        <text x="3000" y="1600" class="text">not seen</text>
     </g>
 
     <defs>
         <style>
-            .tank-body,
-            .tank-turret,
-            .tank-radar {
+            .tank-body, .tank-turret, .tank-radar {
             transform-origin: 400px 400px;
             }
-
             .tank-body {
             transform: rotate(var(--body-rotation, 10deg));
             }
-
             .tank-turret {
             transform: rotate(var(--turret-rotation, 80deg));
             }
-
             .tank-radar {
             transform: rotate(var(--radar-rotation, 127deg));
             }
@@ -133,15 +147,24 @@
 
             <clipPath id="sector">
                 <path d="
-                    M 1900 2900
+                    M 2300 3500
                     L 50 700
-                    A -2900 -2900 0 0 1 2100 50
+                    A -3500 -3500 0 0 1 2300 50
                     Z"/>
             </clipPath>
         </defs>
 
         <symbol id="radar-sweep">
-            <rect x="0" y="0" width="4000" height="3000" fill="url(#sweepGrad)" clip-path="url(#sector)"/>
+            <rect x="0" y="0" width="4000" height="4000" fill="url(#sweepGrad)" clip-path="url(#sector)"/>
+        </symbol>
+
+        <symbol id="arrows-with-text">
+            <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+                <polygon points="6 0, 12 3, 6 6"/>
+            </marker>
+            <line x1="2300" y1="3500" x2="45" y2="700" stroke="black" stroke-width="10" marker-end="url(#arrow-head)"/>
+
+            <text x="600" y="380" class="text" transform="rotate(51)">1200 units</text>
         </symbol>
     </defs>
 </svg>
