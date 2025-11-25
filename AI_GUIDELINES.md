@@ -90,6 +90,15 @@ Think of the tone as:
 
 ---
 
+## #️⃣ Header Numbering Consistency
+
+- Use numbered headers (e.g., `## 1. ...`) only for step-by-step, procedural, or specification-style pages where
+  sections are referenced by number or explicit order is important.
+- For narrative, conceptual, or general informational pages, use unnumbered headers.
+- Always follow the rule in PAGE_SPEC_TEMPLATE.md for header numbering.
+
+---
+
 ## 🧩 Multi-Agent Collaboration Workflow
 
 1. **Agent A — Extractor**
@@ -109,27 +118,11 @@ Think of the tone as:
 
 ---
 
-## #️⃣ Header Numbering Consistency
+# Terminology Consistency: 'Bot' vs 'Robot'
 
-- Use numbered headers (e.g., `## 1. ...`) only for step-by-step, procedural, or specification-style pages where
-  sections are referenced by number or explicit order is important.
-- For narrative, conceptual, or general informational pages, use unnumbered headers.
-- Always follow the rule in PAGE_SPEC_TEMPLATE.md for header numbering.
-
----
-
-## 🧭 Example Use Case
-
-Input: RoboWiki article “Linear Targeting”
-
-Output: Markdown page for `/docs/targeting/linear-targeting.md`
-
-- Title: “Linear Targeting”
-- Summary: “Aiming where your opponent is going — not where they are.”
-- Explains geometry and math concisely.
-- Includes pseudocode predicting position.
-- Adds formula and short humor line like:  
-  "_Even robots can learn to lead their shots — it’s not rocket science (well, almost)._"
+- Always use the term **"bot"** instead of "robot" in all writing, except when quoting original titles, references, or
+  links (e.g., RoboWiki page titles, API class names, or external documentation).
+- This rule applies to all AI-generated and human-authored content for The Book of Robocode.
 
 ---
 

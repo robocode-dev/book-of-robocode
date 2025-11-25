@@ -80,9 +80,16 @@ Describe what this page should cover, in your own words.
 - **Anything else**:  
   (Example: “Mention how this links forward to the Bullet Physics page.”)
 
+# Terminology Consistency: 'Bot' vs 'Robot'
+
+Always use the term **"bot"** instead of "robot" throughout the book, except when quoting original titles or
+references/links (e.g., RoboWiki page titles, API class names, or external documentation). This ensures consistent
+language and avoids confusion for readers.
+
 # Header Numbering Consistency
 
 To ensure consistency across all pages, use numbered headers (e.g., `## 1. Bot shape, size, and hitbox`) only when:
+
 - The page is a step-by-step tutorial, procedure, or specification where sections are referenced by number.
 - The structure benefits from explicit ordering (e.g., requirements, multi-part guides).
 
@@ -91,12 +98,15 @@ For narrative, conceptual, or general informational pages, use unnumbered header
 **Examples:**
 
 Numbered (for specs/tutorials):
+
 ```
 ## 1. Bot shape, size, and hitbox
 ## 2. Movement and turning
 ## 3. Firing and targeting
 ```
+
 Unnumbered (for narrative/conceptual):
+
 ```
 ## Bot shape, size, and hitbox
 ## Movement and turning
