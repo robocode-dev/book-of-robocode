@@ -57,7 +57,8 @@ export default {
           text: 'Getting Started',
           children: [
             'your-first-bot',
-            'bot-anatomy-and-bot-api'
+            'bot-anatomy-and-bot-api',
+            'your-first-battle'
           ]
         }
       ],
