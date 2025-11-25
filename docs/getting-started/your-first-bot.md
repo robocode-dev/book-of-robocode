@@ -31,11 +31,11 @@ Initialization
     ↓
 Enter run() loop
     ↓
-    ├─→ Scan for enemies
-    ├─→ Calculate movement
-    ├─→ Aim gun
-    ├─→ Fire if ready
-    └─→ Repeat each turn
+    ├→ Scan for enemies
+    ├→ Calculate movement
+    ├→ Aim gun
+    ├→ Fire if ready
+    └→ Repeat each turn
 ```
 
 <img src="../images/bot-lifecycle.png" alt="Bot lifecycle diagram" width="200" style="max-width:100%;height:auto;" /><br>
@@ -126,7 +126,7 @@ best practices can evolve.
 ### Bot configuration: Classic (.properties) vs. Tank Royale JSON
 
 <img src="../images/my-first-bot-config.png" alt="Side-by-side comparison: Classic Robocode `MyFirstRobot.properties` (left) and Tank Royale `my-first-bot.json` (right). The image shows a file icon for each format with a small bot illustration above, and a short key/value snippet under each file." width="400" style="max-width:100%;height:auto;" /><br>
-*Figure: Classic properties file (left) vs Tank Royale JSON file (right) — both describe the same robot.*
+*Figure: Classic properties file (left) vs Tank Royale JSON file (right) — both describe the same bot.*
 
 ## What success looks like for your first bot
 

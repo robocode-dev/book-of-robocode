@@ -13,7 +13,7 @@ source: [
 # A Short History of Robocode
 
 Robocode began in the early 2000s as a side project by Mathew A. Nelson. The idea was simple: learn programming by
-coding a robot tank that fights in a 2D arena. The mix of learning and competition made it popular with students,
+coding a bot tank that fights in a 2D arena. The mix of learning and competition made it popular with students,
 hobbyists, and teachers.
 
 <img src="../images/i-can-code-that.png" alt="Early 2000 Robocode" width="600" style="max-width:100%;height:auto;" /><br>
@@ -21,21 +21,21 @@ hobbyists, and teachers.
 
 ## The Classic Robocode Era
 
-The first public versions were released as a Java application. Robots extended base classes and reacted to events like
+The first public versions were released as a Java application. Bots extended base classes and reacted to events like
 `onScannedRobot` and `onHitByBullet`.
 
 Highlights:
 
 - A vibrant community formed around the game.
-- Players created hundreds of robots, from simple examples to world-class competitive bots.
+- Players created hundreds of bots, from simple examples to world-class competitive bots.
 - The community started [RoboWiki](https://robowiki.net) (classic Robocode only), collecting strategies, formulas, and
   tutorials.
 
 RoboWiki became the reference for advanced topics such as wave surfing, GuessFactor targeting, detailed battlefield
 physics, and much more.
 
-<img src="../images/community-sharing.png" alt="Community sharing robots and ideas" width="600" style="max-width:100%;height:auto;" /><br>
-*Community Sharing Robots and Ideas via the RoboWiki*
+<img src="../images/community-sharing.png" alt="Community sharing bots and ideas" width="600" style="max-width:100%;height:auto;" /><br>
+*Community Sharing Bots and Ideas via the RoboWiki*
 
 ## Handover and Community Maintenance
 

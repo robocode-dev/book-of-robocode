@@ -12,7 +12,7 @@ source: [
 
 # What is Robocode & How to Use This Book
 
-Robocode is a programming game where your code drives a battle tank. Instead of using a controller, you write the brain
+Robocode is a programming game where your code drives a battle bot. Instead of using a controller, you write the brain
 of the bot and let it fight on a 2D battlefield. This book explains the ideas behind winning bots with short,
 teen-friendly pages, light math, and practical intuition.
 
@@ -21,10 +21,10 @@ teen-friendly pages, light math, and practical intuition.
 In this book, the word Robocode is used in two closely related ways:
 
 1. [Robocode (classic)](https://robocode.sourceforge.io/) — the original Java-based programming game created by Mathew
-   A. Nelson and later maintained by Flemming N. Larsen. Battles run on a 2D battlefield where robot tanks fight using
+   A. Nelson and later maintained by Flemming N. Larsen. Battles run on a 2D battlefield where bot tanks fight using
    Java code.
 2. [Robocode Tank Royale](https://robocode.dev/) — a newer, modern Robocode platform created by Flemming N. Larsen. It
-   keeps the same core idea (code a battling tank) but supports multiple programming languages and a more flexible
+   keeps the same core idea (code a battling bot) but supports multiple programming languages and a more flexible
    architecture.
 
 Unless stated otherwise, Robocode should be read as Robocode and Robocode Tank Royale together. When a concept only
@@ -47,7 +47,7 @@ During a battle, you cannot control the bot directly. The only way to win is to 
 ### Classic Robocode
 
 - Runs on the Java platform.
-- You write Java robots that extend specific base classes from the Robocode API.
+- You write Java bots that extend specific base classes from the Robocode API.
 - Battles run inside a desktop GUI application.
 - Many classic strategies, tutorials, and bots live on [RoboWiki](https://robowiki.net) (classic Robocode only).
 

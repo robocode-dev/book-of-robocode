@@ -13,7 +13,7 @@ source: [
 # Bot Anatomy & The Bot API (Beginner Level)
 
 Understanding how a bot is built and how the game engine talks to your code is the first big step toward writing your
-own competitive robots. This chapter walks through the main parts of a bot (body, gun, radar, energy) and explains how
+own competitive bots. This chapter walks through the main parts of a bot (body, gun, radar, energy) and explains how
 the Bot APIs for classic Robocode and Robocode Tank Royale let you control them.
 
 In this book, **the engine** means the Robocode or Tank Royale **game engine** — the simulation that advances turns,
@@ -29,7 +29,7 @@ specific class or function names.
 
 ## 1. Bot shape, size, and hitbox
 
-On screen, you see a small tank-like robot, but the game engine actually cares about a simpler shape: its **hitbox**.
+On screen, you see a small tank-like bot, but the game engine actually cares about a simpler shape: its **hitbox**.
 This is what bullets and walls collide with.
 
 - **Classic Robocode**
@@ -70,7 +70,7 @@ Each moving part has their own **headings** (angles) and sometimes their own tur
 
 ### 2.1 Body
 
-The **body** is the main robot:
+The **body** is the main bot:
 
 - It has a **position** (x, y) on the battlefield.
 - It has a **heading** (direction it faces).
