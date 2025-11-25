@@ -41,13 +41,6 @@ Enter run() loop
 <img src="../images/bot-lifecycle.png" alt="Bot lifecycle diagram" width="200" style="max-width:100%;height:auto;" /><br>
 *Bot Lifecycle Diagram*
 
-<!-- TODO illustration: Show the bot lifecycle as a simple loop kids can follow. -->
-<!-- - Draw a friendly tank bot in the center of a looped arrow path. -->
-<!-- - Place labeled steps around the loop: Initialize, Scan, Move, Aim, Fire, Repeat. -->
-<!-- - Use big icons for scanning, moving, aiming, and firing beside each label. -->
-<!-- - Include small arrows between steps to show the order clearly. -->
-<!-- - Keep colors bright and playful while matching the book’s existing palette. -->
-
 Think of your bot as a real-time agent. Each turn it senses the world, decides what to do, and acts. The exact API calls
 differ between Classic and Tank Royale, but the rhythm—sense → plan → act → repeat—stays the same.
 
