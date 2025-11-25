@@ -109,6 +109,15 @@ Think of the tone as:
 
 ---
 
+## #️⃣ Header Numbering Consistency
+
+- Use numbered headers (e.g., `## 1. ...`) only for step-by-step, procedural, or specification-style pages where
+  sections are referenced by number or explicit order is important.
+- For narrative, conceptual, or general informational pages, use unnumbered headers.
+- Always follow the rule in PAGE_SPEC_TEMPLATE.md for header numbering.
+
+---
+
 ## 🧭 Example Use Case
 
 Input: RoboWiki article “Linear Targeting”

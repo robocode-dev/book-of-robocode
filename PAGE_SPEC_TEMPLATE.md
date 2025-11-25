@@ -79,3 +79,28 @@ Describe what this page should cover, in your own words.
   (Example: “Show a small pseudocode loop that uses angles for movement.”)
 - **Anything else**:  
   (Example: “Mention how this links forward to the Bullet Physics page.”)
+
+# Header Numbering Consistency
+
+To ensure consistency across all pages, use numbered headers (e.g., `## 1. Bot shape, size, and hitbox`) only when:
+- The page is a step-by-step tutorial, procedure, or specification where sections are referenced by number.
+- The structure benefits from explicit ordering (e.g., requirements, multi-part guides).
+
+For narrative, conceptual, or general informational pages, use unnumbered headers.
+
+**Examples:**
+
+Numbered (for specs/tutorials):
+```
+## 1. Bot shape, size, and hitbox
+## 2. Movement and turning
+## 3. Firing and targeting
+```
+Unnumbered (for narrative/conceptual):
+```
+## Bot shape, size, and hitbox
+## Movement and turning
+## Firing and targeting
+```
+
+Agents and contributors should follow this rule for all new and updated pages.
