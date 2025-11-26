@@ -30,6 +30,19 @@ This documentation covers both:
 3. [Learn the Physics](./articles/physics) to master game mechanics
 4. [Understand Scoring](./articles/scoring) to optimize your strategy
 
+## Battlefield Loop at a Glance
+
+```mermaid
+graph TD
+  Start[Spawn Bot] --> Scan{Scan Result?}
+  Scan -- Enemy Found --> Track[Update Radar Lock]
+  Track --> Fire[Fire Bullet]
+  Fire --> Evade[Execute Movement Plan]
+  Scan -- No Enemy --> Sweep[Rotate Radar]
+  Sweep --> Scan
+  Evade --> Scan
+```
+
 ## Community & Credits
 
 This documentation draws upon the collective knowledge of the Robocode community, with special thanks to the contributors of [RoboWiki](http://robowiki.net/) for their extensive research and documentation over the years.

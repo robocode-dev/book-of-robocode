@@ -139,8 +139,36 @@ In Tank Royale, bots are separate programs that **connect to the server**.
         - Your bot appears in the list.
         - At least one opponent bot also appears.
 
-> Illustration idea: A simplified view of the Tank Royale server/GUI showing the arena area and a side panel listing two
-> connected bots, both marked as “ready”.
+```mermaid
+flowchart TD
+    subgraph BotDirs["Bot Directories (local only)"]
+        A[List of bot directories]
+    end
+
+    A -->|Boot| B1
+    B1 -.->|Unboot| A
+
+    subgraph Booted["Booted Bots (local only)"]
+        B1["Booted bots<br>(Corners, Crazy, Fire)"]
+    end
+
+    B1 -->|Join| C1
+
+    subgraph Joined["Joined Bots (local/remote)"]
+        C1["Joined bots<br>(Crazy, Corners, Fire)"]
+    end
+
+    C1 -->|Add to battle| D1
+    D1 -.->|Remove| C1
+
+    subgraph Selected["Selected Bots (battle participants)"]
+        D1["Selected bots<br>(Crazy, Fire)"]
+    end
+
+    D1 -->|Start Battle| Arena
+
+    Arena[🔲 Arena / Battle Start]
+```
 
 Again, ensure there are **at least two bots connected**. A battle with only one participant doesn’t make sense and will
 end immediately.

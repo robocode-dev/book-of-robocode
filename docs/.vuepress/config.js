@@ -1,6 +1,7 @@
 import { defaultTheme } from '@vuepress/theme-default'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { searchPlugin } from '@vuepress/plugin-search'
+import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 
 export default {
   title: 'The Book of Robocode',
@@ -20,6 +21,9 @@ export default {
           placeholder: 'Search'
         }
       }
+    }),
+    markdownChartPlugin({
+      mermaid: true,
     }),
     '@vuepress/plugin-nprogress'
   ],
@@ -280,9 +284,5 @@ export default {
     editLink: true,
     editLinkText: 'Help improve this page!',
     smoothScroll: true
-  }),
-
-  markdown: {
-    code: { lineNumbers: true }
-  }
+  })
 }
