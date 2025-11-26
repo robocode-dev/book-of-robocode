@@ -63,8 +63,8 @@ Classic Robocode runs everything inside a single GUI: bot selection, battlefield
         - At least one sample bot as the opponent.
     - Use the **Add >>** button or double-click to move bots to the selected list.
 
-> Illustration idea: A screenshot-like diagram of the bot selection window with the “available bots” list on the left
-> and exactly two bots in the “selected bots” list, highlighting the “2+ bots required” idea.
+<img src="../images/robocode-bot-selection.png" alt="Bot selection dialog" width="500" style="max-width:100%;height:auto;" /><br>
+*Bot selection dialog*
 
 Make sure the **selected bots list contains at least two bots**. If there is only one, the battle either will not start
 or will end immediately.
