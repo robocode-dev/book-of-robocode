@@ -63,7 +63,7 @@ Classic Robocode runs everything inside a single GUI: bot selection, battlefield
         - At least one sample bot as the opponent.
     - Use the **Add >>** button or double-click to move bots to the selected list.
 
-<img src="../images/robocode-bot-selection.png" alt="Bot selection dialog" width="500" style="max-width:100%;height:auto;" /><br>
+![Bot selection dialog](../images/robocode-bot-selection.png)<br>
 *Bot selection dialog*
 
 Make sure the **selected bots list contains at least two bots**. If there is only one, the battle either will not start
@@ -166,7 +166,6 @@ flowchart TD
     end
 
     D1 -->|Start Battle| Arena
-
     Arena[🔲 Arena / Battle Start]
 ```
 
@@ -187,6 +186,9 @@ Once your bots are connected:
         - Your own bot, and
         - At least one opponent.
     - Confirm the list includes **two or more** bots.
+
+![Bot selection dialog](../images/tankroyale-bot-selection.png)<br>
+*Bot selection dialog*
 
 > **Note:** In Tank Royale, the **Start Battle** button will be inactive (grayed out) if too few or too many bots are
 > selected for the chosen game type. If the button seems inactive for no clear reason, check which game type is
@@ -224,8 +226,8 @@ The high‑level goal is the same—bots fight until only one is left—but the 
         - Starting each bot so it connects,
         - Selecting from the **connected bots list**, then launching a match.
 
-> Illustration idea: A split image comparing a classic Robocode battle window on one side and the Tank Royale
-> server/arena on the other, both running a simple 1‑on‑1 match.
+<!-- Illustration idea: A split image comparing a classic Robocode battle window on one side and the Tank Royale -->
+<!-- server/arena on the other, both running a simple 1‑on‑1 match. -->
 
 Despite these differences, many **game concepts** are shared:
 
