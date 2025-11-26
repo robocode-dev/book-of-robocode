@@ -35,7 +35,7 @@ export default {
       { text: 'Home', link: '/' },
       { text: 'Introduction', link: '/introduction/what-is-robocode' },
       { text: 'Getting Started', link: '/getting-started/your-first-bot' },
-      { text: 'Battlefield Physics', link: '/physics' },
+      { text: 'Battlefield Physics', link: '/physics/coordinates-and-angles' },
       { text: 'Targeting Systems', link: '/targeting/' },
       { text: 'Movement & Evasion', link: '/movement/' },
       { text: 'Energy Management', link: '/energy-management' },
