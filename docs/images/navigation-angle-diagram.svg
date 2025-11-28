@@ -32,10 +32,10 @@
         <path d="M 210.72 83.24 L 214.74 91.22 L 210.73 89.24 L 206.74 91.25 Z" class="arrow"/>
 
         <!-- Degree labels -->
-        <text x="351" y="205" class="text">0°</text>
-        <text x="211" y="65" class="text">90°</text>
-        <text x="61" y="205" class="text">180°</text>
-        <text x="211" y="345" class="text">270°</text>
+        <text x="351" y="205" class="text">90°</text>
+        <text x="211" y="65" class="text">0°</text>
+        <text x="61" y="205" class="text">270°</text>
+        <text x="211" y="345" class="text">180°</text>
 
         <!-- Turn arrows -->
         <path d="M 291 111 Q 271 91 238.99 83" class="line"/>

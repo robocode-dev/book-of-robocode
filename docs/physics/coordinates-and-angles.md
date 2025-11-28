@@ -26,7 +26,7 @@ Both classic Robocode and Tank Royale use a Cartesian coordinate system for the 
 - Headings and turns can be specified in **degrees (deg)** or **radians (rad)**.
 - This system is similar to a compass.
 
-> **Illustration suggestion:** Compass rose overlay on the battlefield, showing 0° at North, 90° at East, etc.
+![Navigation-style angle diagram](../images/navigation-angle-diagram.svg)
 
 ### Robocode Tank Royale
 
@@ -76,4 +76,3 @@ coordinates are used in bot movement and targeting, see the upcoming pages on Bu
 **Applies to:** Classic Robocode, Robocode Tank Royale
 
 *Always use "bot" and "units" for consistency. See Terminology Consistency guidelines.*
-
