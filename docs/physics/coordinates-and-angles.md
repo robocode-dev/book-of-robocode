@@ -12,8 +12,7 @@ Both classic Robocode and Tank Royale use a Cartesian coordinate system for the 
 - All positions and movements are measured in **units** (not pixels).
 - Example: A bot's size is 40x40 units, and the scan length is 1200 units.
 
-> **Illustration suggestion:** Show a battlefield grid with (0, 0) at the bottom left, axes labeled, and a bot
-> positioned somewhere on the field. Indicate the direction of increasing X (right) and Y (up).
+![Coordinate System Diagram](../images/coordinate-system.svg)
 
 ## Angle Conventions
 
@@ -39,7 +38,7 @@ Both classic Robocode and Tank Royale use a Cartesian coordinate system for the 
 - Only **degrees (deg)** are used for headings and turns (0–360).
 - This matches the standard mathematical convention for angles.
 
-> **Illustration suggestion:** Math-style angle diagram, with 0° at East and angles increasing counterclockwise.
+![Math-style angle diagram](../images/math-angle-diagram.svg)
 
 ## Platform Differences
 
