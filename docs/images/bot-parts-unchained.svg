@@ -3,9 +3,9 @@
     <use href="#tank" transform="translate(-100,0)"
          style="--body-rotation:0deg; --turret-rotation:45deg; --radar-rotation:90deg;"/>
     <use href="#tank" transform="translate(1250,0)"
-         style="--body-rotation:45deg; --turret-rotation:90deg; --radar-rotation:135deg;"/>
+         style="--body-rotation:45deg; --turret-rotation:45deg; --radar-rotation:90deg;"/>
     <use href="#tank" transform="translate(2650,0)"
-         style="--body-rotation:45deg; --turret-rotation:135deg; --radar-rotation:180deg;"/>
+         style="--body-rotation:45deg; --turret-rotation:90deg; --radar-rotation:90deg;"/>
 
     <use href="#arrow" transform="translate(700, 240)" filter="url(#shadow)"/>
     <use href="#arrow" transform="translate(700, 240)"/>

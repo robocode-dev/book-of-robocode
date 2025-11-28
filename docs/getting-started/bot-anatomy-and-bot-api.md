@@ -47,10 +47,10 @@ The **bot center** (its x/y position) and the hitbox around it are used for:
 - Detecting **bullet vs bot** hits
 
 ![Classic Robocode bot square hitbox](../images/bot-square-hitbox.svg)<br>
-*Square hitbox used in classic Robocode (40×40 units, axis-aligned).* 
+*Square hitbox used in classic Robocode (40×40 units, axis-aligned).*
 
 ![Robocode Tank Royale bot circle hitbox](../images/bot-circle-hitbox.svg)<br>
-*Circular hitbox used in Robocode Tank Royale (diameter 36 units).* 
+*Circular hitbox used in Robocode Tank Royale (diameter 36 units).*
 
 ---
 
@@ -187,8 +187,17 @@ between.
 <!-- - Label each side with short captions: Chained movement and Independent movement. -->
 <!-- - Use simple colors and arrows so the difference is instantly obvious. -->
 
-![Chained bot parts rotated 45 degrees](../images/bot-parts-chained.svg)<br>
+In the following illustration all body parts are chained. When the body turns 45° to the right, the gun and radar also
+turn by the same angle. And when the gun is turned, the radar also turns.
+
+![Chained bot parts rotating together](../images/bot-parts-chained.svg)<br>
 *Chained movement: body, gun, and radar rotate together.*
+
+In this second illustration, the body parts are unchained and can hence rotate independently. When the body turns 45° to
+the right, the gun and radar stay where they are. The gun can also turn separately without affecting the radar.
+
+![Unchained bot parts rotated independently](../images/bot-parts-unchained.svg)<br>
+*Independent movement: body, gun, and radar rotate separately.*
 
 ### 3.2 Achieving independence
 
