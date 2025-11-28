@@ -4,12 +4,31 @@
         .text { font: 100px sans-serif; }
     </style>
 
-    <g>
-        <use href="#tank" transform="translate(0,100)"/>
-        <use href="#arrows-with-text" transform="translate(0,-200)"/>
-    </g>
+    <use href="#tank" transform="translate(0,100)"/>
+    <use href="#arrows-with-text" transform="translate(0,-200)"/>
 
     <defs>
+        <style>
+            .tank-body, .tank-turret, .tank-radar {
+            transform-origin: 400px 400px;
+            }
+            .tank-body {
+            transform: rotate(var(--body-rotation, 10deg));
+            }
+            .tank-turret {
+            transform: rotate(var(--turret-rotation, 80deg));
+            }
+            .tank-radar {
+            transform: rotate(var(--radar-rotation, 127deg));
+            }
+        </style>
+
+        <linearGradient id="cannon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#333"/>
+            <stop offset="50%" stop-color="#CCC"/>
+            <stop offset="100%" stop-color="#333"/>
+        </linearGradient>
+
         <symbol id="link0">
             <rect x="5" y="55" width="125" height="25" fill="#aaaaaa"/>
             <rect x="10" y="70" width="116" height="35" fill="#666666" rx="10" ry="10"/>
@@ -31,31 +50,42 @@
             <rect x="20" y="75" width="95" height="450" fill="#333333" stroke="black" stroke-width="10"/>
         </symbol>
 
+        <symbol id="track1">
+            <use href="#main-track"/>
+            <use href="#link30"/>
+            <use href="#link0" y="60"/>
+            <use href="#link0" y="140"/>
+            <use href="#link0" y="220"/>
+            <use href="#link0" y="300"/>
+            <use href="#link0" y="380"/>
+            <use href="#link30" y="448"/>
+        </symbol>
+
         <symbol id="track2">
-            <use href="#main-track" x="0" y="0"/>
-            <use href="#link60" x="0" y="0"/>
-            <use href="#link0" x="0" y="33"/>
-            <use href="#link0" x="0" y="113"/>
-            <use href="#link0" x="0" y="193"/>
-            <use href="#link0" x="0" y="273"/>
-            <use href="#link0" x="0" y="353"/>
-            <use href="#link0" x="0" y="433"/>
+            <use href="#main-track"/>
+            <use href="#link60"/>
+            <use href="#link0" y="33"/>
+            <use href="#link0" y="113"/>
+            <use href="#link0" y="193"/>
+            <use href="#link0" y="273"/>
+            <use href="#link0" y="353"/>
+            <use href="#link0" y="433"/>
         </symbol>
 
         <symbol id="track3">
-            <use href="#main-track" x="0" y="0"/>
-            <use href="#link0" x="0" y="7"/>
-            <use href="#link0" x="0" y="87"/>
-            <use href="#link0" x="0" y="167"/>
-            <use href="#link0" x="0" y="247"/>
-            <use href="#link0" x="0" y="327"/>
-            <use href="#link0" x="0" y="407"/>
-            <use href="#link60" x="0" y="470"/>
+            <use href="#main-track"/>
+            <use href="#link0" y="7"/>
+            <use href="#link0" y="87"/>
+            <use href="#link0" y="167"/>
+            <use href="#link0" y="247"/>
+            <use href="#link0" y="327"/>
+            <use href="#link0" y="407"/>
+            <use href="#link60" y="470"/>
         </symbol>
 
         <symbol id="body">
-            <use href="#track2" x="150" y="100"/>
-            <use href="#track3" x="515" y="100"/>
+            <use href="#track1" x="150" y="100"/>
+            <use href="#track1" x="515" y="100"/>
 
             <rect x="240" y="190" width="320" height="420" fill="#019" stroke="black" stroke-width="20" rx="10"
                   ry="10"/>
@@ -69,12 +99,6 @@
 
             <rect x="360" y="240" width="80" height="80" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
             <rect x="375" y="70" width="50" height="170" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
-
-            <linearGradient id="cannon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#333"/>
-                <stop offset="50%" stop-color="#CCC"/>
-                <stop offset="100%" stop-color="#333"/>
-            </linearGradient>
         </symbol>
 
         <symbol id="radar">
@@ -83,9 +107,9 @@
         </symbol>
 
         <symbol id="tank">
-            <use href="#body" transform="rotate(-5,400,400)"/>
-            <use href="#turret" transform="rotate(110,400,400)"/>
-            <use href="#radar" transform="rotate(81,400,400)"/>
+            <use class="tank-body" href="#body"/>
+            <use class="tank-turret" href="#turret"/>
+            <use class="tank-radar" href="#radar"/>
         </symbol>
 
         <defs>
