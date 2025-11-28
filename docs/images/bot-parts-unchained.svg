@@ -2,10 +2,25 @@
 
     <use href="#tank" transform="translate(-100,0)"
          style="--body-rotation:0deg; --turret-rotation:45deg; --radar-rotation:90deg;"/>
+
+    <line x1="300" y1="400" x2="300" y2="0" stroke="green" stroke-width="10"/>
+    <line x1="300" y1="400" x2="300" y2="0" stroke="red" stroke-width="10" transform="rotate(45, 300, 400)"/>
+    <line x1="300" y1="400" x2="300" y2="0" stroke="cyan" stroke-width="10" transform="rotate(90, 300, 400)"/>
+
     <use href="#tank" transform="translate(1250,0)"
          style="--body-rotation:45deg; --turret-rotation:45deg; --radar-rotation:90deg;"/>
+
+    <line x1="1645" y1="400" x2="1645" y2="0" stroke="green" stroke-width="10" transform="rotate(45, 1650, 400)"/>
+    <line x1="1655" y1="400" x2="1655" y2="0" stroke="red" stroke-width="10" transform="rotate(45, 1650, 400)"/>
+
+    <line x1="1650" y1="400" x2="1650" y2="0" stroke="cyan" stroke-width="10" transform="rotate(90, 1650, 400)"/>
+
     <use href="#tank" transform="translate(2650,0)"
          style="--body-rotation:45deg; --turret-rotation:90deg; --radar-rotation:90deg;"/>
+
+    <line x1="3050" y1="400" x2="3050" y2="0" stroke="green" stroke-width="10" transform="rotate(45, 3050, 400)"/>
+    <line x1="3045" y1="400" x2="3045" y2="0" stroke="red" stroke-width="10" transform="rotate(90, 3050, 400)"/>
+    <line x1="3055" y1="400" x2="3055" y2="0" stroke="cyan" stroke-width="10" transform="rotate(90, 3050, 400)"/>
 
     <use href="#arrow" transform="translate(700, 240)" filter="url(#shadow)"/>
     <use href="#arrow" transform="translate(700, 240)"/>
