@@ -408,15 +408,12 @@ There are several key collision types:
 
 4. **Bullet vs bullet** (classic Robocode & Robocode Tank Royale)
     - Two bullets can collide and destroy each other.
-    - Both shooters may receive bullet-related events when this happens (for example, Tank Royale has a
-      **BulletHitBulletEvent**).
 
-<!-- TODO illustration: Show the three main collision types in mini scenes. -->
-<!-- - Create three small panels: Bot vs wall, Bot vs bot, and Bullet vs bot. -->
-<!-- - In each panel, draw a simple arena background with the collision in progress. -->
-<!-- - Use small icons or labels under each panel naming the collision type. -->
-<!-- - Add small energy bars that drop slightly when a collision happens. -->
-<!-- - Keep lines bold and simple so details are clear at small sizes. -->
+      ![Two bullets hitting each other](../images/bullet-hit-bullet.svg)<br>
+      *Two bullets hitting each other*
+
+  - Both shooters may receive bullet-related events when this happens (for example, Tank Royale has a
+    **BulletHitBulletEvent**).
 
 ### 6.3 Disabled bots vs. destroyed bots
 

@@ -1,0 +1,24 @@
+<svg version="1.1" width="300" height="100" viewBox="0 0 2400 800" xmlns="http://www.w3.org/2000/svg">
+
+    <use href="#tank"/>
+    <use href="#hitbox"/>
+    <use href="#bullet-hit"/>
+
+    <defs>
+        <symbol id="hit">
+            <circle cx="200" cy="200" r="40" fill="#0000" stroke="#FF0A" stroke-width="20"/>
+            <circle cx="200" cy="200" r="80" fill="#0000" stroke="#FF07" stroke-width="20"/>
+            <circle cx="200" cy="200" r="120" fill="#0000" stroke="#FF04" stroke-width="20"/>
+        </symbol>
+
+        <symbol id="bullet-hit">
+            <line x1="1200" y1="345" x2="0" y2="200" stroke="#8888" stroke-width="7"/>
+            <line x1="1200" y1="380" x2="3000" y2="300" stroke="#8888" stroke-width="10"/>
+
+            <circle cx="1150" cy="340" r="50" fill="white"/>
+            <circle cx="1200" cy="380" r="50" fill="#48C"/>
+
+            <use href="#hit" x="975" y="160"/>
+        </symbol>
+    </defs>
+</svg>

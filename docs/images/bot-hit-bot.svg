@@ -1,4 +1,4 @@
-<svg version="1.1" width="105" height="100" viewBox="0 0 1050 1000" xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" width="131" height="125" viewBox="0 0 1050 1000" xmlns="http://www.w3.org/2000/svg">
 
     <use href="#tank"/>
     <use href="#tank" transform="translate(360,300)"

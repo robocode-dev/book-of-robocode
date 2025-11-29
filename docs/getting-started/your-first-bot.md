@@ -52,13 +52,6 @@ Initialization runs once before the main loop. Keep it lightweight and focused o
 - Defaults and parameters: Choose initial movement speed/turn rates, radar sweep strategy, and default firepower.
 - Event hooks (if applicable): Register listeners for events such as enemy scanned, hit by bullet, or collision.
 
-<!-- TODO illustration: Compare a plain bot before setup and a ready bot after initialization. -->
-<!-- - On the left, show a gray, unnamed bot with no colors or labels. -->
-<!-- - On the right, show the same bot with bright team colors and a visible name tag. -->
-<!-- - Add small icons or labels for colors, defaults, and event hooks near the ready bot. -->
-<!-- - Use a simple "Before init" vs "After init" caption under each bot. -->
-<!-- - Keep expressions friendly to suggest the bot is excited to enter the arena. -->
-
 Avoid heavy computation in initialization. If you need data processing, compute lazily or spread it across early turns.
 
 ## Entering the run loop
@@ -115,10 +108,10 @@ the next turn (e.g., last known enemy position).
 ## Minimal platform notes
 
 - Classic Robocode typically uses a properties (`.properties`) file to define the bot. The filename usually must match
-your bot’s class name. See the classic tutorial for exact fields and
-placement: [Robot properties](../appendices/robot-properties.md)
+  your bot’s class name. See the classic tutorial for exact fields and
+  placement: [Robot properties](../appendices/robot-properties.md)
 - Robocode Tank Royale uses a JSON configuration file for bot metadata/settings. See the Tank Royale tutorial for the
-current schema and placement: https://robocode.dev/tutorial/my-first-bot.html
+  current schema and placement: https://robocode.dev/tutorial/my-first-bot.html
 
 If you’re unsure whether something belongs in config or code, rely on the tutorial for your platform—the formats and
 best practices can evolve.
