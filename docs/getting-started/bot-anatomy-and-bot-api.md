@@ -180,13 +180,6 @@ When parts are **independent**, those automatic rotations are turned off:
 The concept is the same everywhere: you choose whether rotations stay chained, become fully independent, or something in
 between.
 
-<!-- TODO illustration: Show chained vs independent rotation in a side-by-side comparison. -->
-<!-- - On the left, draw a bot where body, gun, and radar all face the same way (chained). -->
-<!-- - On the right, draw a bot with body facing one way, gun another, and radar sweeping elsewhere. -->
-<!-- - Add small curved arrows around each part to show which pieces are turning. -->
-<!-- - Label each side with short captions: Chained movement and Independent movement. -->
-<!-- - Use simple colors and arrows so the difference is instantly obvious. -->
-
 In the following illustration all body parts are chained. When the body turns 45° to the right, the gun and radar also
 turn by the same angle. And when the gun is turned, the radar also turns.
 
@@ -383,6 +376,10 @@ There are several key collision types:
 
 1. **Bot vs wall**
     - Happens when your body’s hitbox intersects the battlefield boundary.
+
+      ![Bot hitting the wall to the left](../images/bot-hitting-wall.svg)<br>
+      *Bot colliding with a wall and losing energy*
+
     - Typically:
         - Your bot may stop or “slide” along the wall.
         - You **lose a small amount of energy**.
@@ -390,6 +387,10 @@ There are several key collision types:
 
 2. **Bot vs bot**
     - Happens when two bots’ hitboxes overlap.
+
+      ![Bot hitting another bot](../images/bot-hit-bot.svg)<br>
+      *Bot hitting another bot*
+
     - Typically:
         - Both bots are pushed apart or blocked.
         - Both may lose a small amount of energy, depending on speed and direction.
@@ -397,6 +398,10 @@ There are several key collision types:
 
 3. **Bullet vs bot**
     - Occurs when a bullet’s position intersects a bot’s hitbox.
+
+      ![Bot being hit by bullet from the right](../images/bot-hit-by-bullet.svg)<br>
+      *Bot losing energy after being hit by a bullet*
+
     - The bullet disappears; the target loses energy.
     - The shooter may gain energy.
     - The API triggers events for the shooter (bullet hit) and sometimes for the target (got hit).
@@ -424,11 +429,7 @@ disabled bot can **wake back up** and start acting again.
 A bot is considered **destroyed** only when its energy goes **below 0**. At that point it is removed from the round and
 cannot come back.
 
-![Bot being hit by bullet from the right](../images/bot-hit-by-bullet.svg)<br>
-*Bot losing energy after being hit by a bullet*
-
-![Bot hitting the wall to the left](../images/bot-hitting-wall.svg)<br>
-*Bot colliding with a wall and losing energy*
+<!-- Should we have a bot this is disabled here -->
 
 ---
 

@@ -1,8 +1,13 @@
-<svg version="1.1" width="300" height="100" viewBox="0 0 2400 800" xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" width="105" height="100" viewBox="0 0 1050 1000" xmlns="http://www.w3.org/2000/svg">
 
     <use href="#tank"/>
+    <use href="#tank" transform="translate(360,300)"
+         style="--body-rotation:-90deg; --turret-rotation:-45deg; --radar-rotation:-10deg;"/>
+
     <use href="#hitbox"/>
-    <use href="#bullet-hit"/>
+    <use href="#hitbox" transform="translate(360,300)"/>
+
+    <use href="#hit" transform="translate(390,330)"/>
 
     <defs>
         <style>
@@ -10,13 +15,13 @@
             transform-origin: 400px 400px;
             }
             .tank-body {
-            transform: rotate(var(--body-rotation, 10deg));
+            transform: rotate(var(--body-rotation, 50deg));
             }
             .tank-turret {
-            transform: rotate(var(--turret-rotation, 80deg));
+            transform: rotate(var(--turret-rotation, 30deg));
             }
             .tank-radar {
-            transform: rotate(var(--radar-rotation, 127deg));
+            transform: rotate(var(--radar-rotation, 30deg));
             }
         </style>
 
@@ -82,7 +87,7 @@
 
         <symbol id="body">
             <use href="#track1" x="150" y="100"/>
-            <use href="#track1" x="515" y="100"/>
+            <use href="#track2" x="515" y="100"/>
 
             <rect x="240" y="190" width="320" height="420" fill="#019" stroke="black" stroke-width="20" rx="10"
                   ry="10"/>
@@ -115,20 +120,9 @@
 
         <!-- Hit decoration -->
         <symbol id="hit">
+            <circle cx="200" cy="200" r="40" fill="#0000" stroke="#FF0F" stroke-width="20"/>
             <circle cx="200" cy="200" r="80" fill="#0000" stroke="#FF0C" stroke-width="20"/>
             <circle cx="200" cy="200" r="120" fill="#0000" stroke="#FF08" stroke-width="20"/>
-        </symbol>
-
-        <symbol id="bullet-hit">
-            <symbol id="bullet">
-                <circle cx="50" cy="50" r="50" fill="white"/>
-                <circle cx="50" cy="50" r="15" fill="red"/>
-            </symbol>
-
-            <line x1="630" y1="380" x2="3000" y2="500" stroke="#8888" stroke-width="10"/>
-            <use href="#bullet" transform="translate(580, 330)"/>
-
-            <use href="#hit" x="430" y="180"/>
         </symbol>
     </defs>
 </svg>
