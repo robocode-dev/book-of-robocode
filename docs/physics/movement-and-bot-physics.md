@@ -260,9 +260,8 @@ protocol, engine differences) are not relevant to radar sweep logic.
 
 For details, refer to the physics documentation and Bot API reference for each platform.
 
-**Suggested illustration:** Two diagrams:
-
-- A bot with a swept sector between old and new radar headings, out to the platform's maximum scan range.
+![Tank Royale radar scan arc with previous and current heading + maximum scan length](../images/radar-sweep-max-length.svg)<br>
+*Tank Royale radar scan arc with previous and current heading + maximum scan length*
 
 ## Summary of key numeric rules (classic Robocode)
 
