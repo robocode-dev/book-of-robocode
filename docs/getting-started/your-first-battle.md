@@ -1,3 +1,15 @@
+---
+title: "Your First Battle"
+category: "Getting Started"
+summary: "Walkthrough for running your first bot-vs-bot battle in classic Robocode and Robocode Tank Royale."
+tags: ["getting-started", "battle", "classic-robocode", "tank-royale", "beginner"]
+difficulty: "beginner"
+source: [
+  "RoboWiki - Getting Started with Robocode",
+  "Robocode Tank Royale Docs - Getting Started"
+]
+---
+
 # Your First Battle
 
 You’ve met the basic ideas, maybe even built a tiny bot. Now it’s time for the fun part: watching bots fight.

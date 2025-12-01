@@ -1,3 +1,15 @@
+---
+title: "Coordinate Systems & Angles"
+category: "Battlefield Physics"
+summary: "Explain battlefield coordinates and angle conventions in classic Robocode and Robocode Tank Royale, and how they affect movement and targeting."
+tags: ["battlefield-physics", "coordinates", "angles", "classic-robocode", "tank-royale", "beginner"]
+difficulty: "beginner"
+source: [
+  "Robocode Game Physics (RoboWiki)",
+  "Robocode Tank Royale Docs - Coordinates and Angles"
+]
+---
+
 # Coordinate Systems & Angles
 
 Understanding how coordinates and angles work is essential for programming bots in both classic Robocode and Robocode
