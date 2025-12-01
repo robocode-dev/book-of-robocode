@@ -44,7 +44,7 @@ Describe what this page should cover, in your own words.
 
 - **Illustration/image suggestions** (optional but recommended):
     - Give hints on the page in places where an illustration would help understanding and describe what each image
-      should show.
+      should show. Should be easy for an AI to paint.
 
 ## 4. Audience & Emphasis
 
