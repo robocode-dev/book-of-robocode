@@ -258,7 +258,7 @@ Bot Physics*.
 
 ---
 
-## 5. Scanning and the 1200‑unit scan arc
+## 5. Scanning and the 1200-unit scan arc
 
 The radar’s job is to answer one question: **Where are the enemy bots?** It does this by sweeping a **scan arc** over
 the battlefield. The scan arc for a turn is defined by the **radar sweep** – the angle the radar turned between the
@@ -524,13 +524,14 @@ On this page you learned:
 - How **independent movement** lets you rotate body, gun, and radar separately.
 - The basic movement constraints: max speed, acceleration/deceleration limits, and separate turn limits for body, gun,
   and radar.
-- How the radar’s **1200‑unit scan arc** and adjustable width control what you can see.
+- How the radar’s **1200-unit scan arc** and adjustable width control what you can see.
 - How bullets, collisions, and energy gains/losses shape gameplay.
-- How the turn‑based engine, **turn timeouts**, and **events** connect your code to the game.
+- How the turn-based engine, **turn timeouts**, and **events** connect your code to the game.
 
 Next chapters dive deeper into:
 
-- **Battlefield Physics** – coordinates, precise movement constraints, and bullet travel.
+- **Battlefield Physics** – coordinates, precise movement constraints, and bullet travel (see *Coordinate Systems &
+  Angles* and *Movement Constraints & Bot Physics*).
 - **Radar & Scanning** – advanced radar patterns and enemy tracking.
 - **Targeting Systems** – how to aim and choose bullet power effectively.
 

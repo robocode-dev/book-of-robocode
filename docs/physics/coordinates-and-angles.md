@@ -79,7 +79,8 @@ Mistakes in understanding the system can lead to bots moving or firing in unexpe
 ## Linking Forward
 
 This page is foundational for understanding movement, targeting, and bullet physics. For more on how angles and
-coordinates are used in bot movement and targeting, see the upcoming pages on Bullet Physics and Targeting Systems.
+coordinates are used in bot movement and targeting, see the upcoming pages on Bullet Physics and Targeting Systems,
+as well as *Movement Constraints & Bot Physics* for the exact movement and turning formulas.
 
 ---
 
