@@ -1,0 +1,125 @@
+<svg version="1.1" width="125" height="187.5" viewBox="0 0 1000 1500" xmlns="http://www.w3.org/2000/svg">
+
+    <use href="#tank" transform="translate(0, 700)"/>
+
+    <!-- Filled scan arc sector from 270° to 280° in green, radius 800 -->
+    <path d="M400,1100 L400,100 A1000,1000 0 0,1 573.65,115.19 Z" fill="orange" opacity="0.6" />
+
+    <!-- Filled scan arc sector from 270° to 290° in red, radius 700 -->
+    <path d="M400,1100 L400,300 A800,800 0 0,1 687.6,362.2 Z" fill="red" opacity="0.6" />
+
+    <!-- Filled scan arc sector from 270° to 315° in orange, radius 600 -->
+    <path d="M400,1100 L400,500 A600,600 0 0,1 824.26,675.74 Z" fill="green" opacity="0.6" />
+
+    <defs>
+        <style>
+            .tank-body, .tank-turret, .tank-radar {
+            transform-origin: 400px 400px;
+            }
+            .tank-body {
+            transform: rotate(var(--body-rotation, 10deg));
+            }
+            .tank-turret {
+            transform: rotate(var(--turret-rotation, 20deg));
+            }
+            .tank-radar {
+            transform: rotate(var(--radar-rotation, 45deg));
+            }
+        </style>
+
+        <symbol id="link0">
+            <rect x="5" y="55" width="125" height="25" fill="#aaaaaa"/>
+            <rect x="10" y="70" width="116" height="35" fill="#666666" rx="10" ry="10"/>
+            <rect x="5" y="55" width="125" height="50" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+        </symbol>
+
+        <symbol id="link30">
+            <rect x="5" y="55" width="125" height="25" fill="#939393"/>
+            <rect x="10" y="70" width="116" height="30" fill="#585858" rx="10" ry="10"/>
+            <rect x="5" y="55" width="125" height="42" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+        </symbol>
+
+        <symbol id="link60">
+            <rect x="5" y="55" width="125" height="20" fill="#555555"/>
+            <rect x="5" y="55" width="125" height="20" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+        </symbol>
+
+        <symbol id="main-track">
+            <rect x="20" y="75" width="95" height="450" fill="#333333" stroke="black" stroke-width="10"/>
+        </symbol>
+
+        <symbol id="track1">
+            <use href="#main-track"/>
+            <use href="#link30"/>
+            <use href="#link0" y="60"/>
+            <use href="#link0" y="140"/>
+            <use href="#link0" y="220"/>
+            <use href="#link0" y="300"/>
+            <use href="#link0" y="380"/>
+            <use href="#link30" y="448"/>
+        </symbol>
+
+        <symbol id="track2">
+            <use href="#main-track"/>
+            <use href="#link60"/>
+            <use href="#link0" y="33"/>
+            <use href="#link0" y="113"/>
+            <use href="#link0" y="193"/>
+            <use href="#link0" y="273"/>
+            <use href="#link0" y="353"/>
+            <use href="#link0" y="433"/>
+        </symbol>
+
+        <symbol id="track3">
+            <use href="#main-track"/>
+            <use href="#link0" y="7"/>
+            <use href="#link0" y="87"/>
+            <use href="#link0" y="167"/>
+            <use href="#link0" y="247"/>
+            <use href="#link0" y="327"/>
+            <use href="#link0" y="407"/>
+            <use href="#link60" y="470"/>
+        </symbol>
+
+        <symbol id="body">
+            <use href="#track1" x="150" y="100"/>
+            <use href="#track1" x="515" y="100"/>
+
+            <rect x="240" y="190" width="320" height="420" fill="#019" stroke="black" stroke-width="20" rx="10"
+                  ry="10"/>
+            <rect x="250" y="520" width="300" height="80" fill="black" opacity="0.5"/>
+        </symbol>
+
+        <symbol id="turret">
+            <rect x="300" y="320" width="200" height="200" fill="#06C" stroke="black" stroke-width="20" rx="10"
+                  ry="10"/>
+            <rect x="310" y="460" width="180" height="50" fill="black" opacity="0.5"/>
+
+            <rect x="360" y="240" width="80" height="80" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+            <rect x="375" y="70" width="50" height="170" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+
+            <linearGradient id="cannon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#333"/>
+                <stop offset="50%" stop-color="#CCC"/>
+                <stop offset="100%" stop-color="#333"/>
+            </linearGradient>
+        </symbol>
+
+        <symbol id="radar">
+            <circle cx="400" cy="400" r="30" fill="#AAF" stroke="black" stroke-width="20"/>
+            <path d="M 290 420 q 110 100 220 0 z" fill="#AAF" stroke="black" stroke-width="20"/>
+        </symbol>
+
+        <symbol id="tank">
+            <g class="tank-body">
+                <use href="#body"/>
+            </g>
+            <g class="tank-turret">
+                <use href="#turret"/>
+            </g>
+            <g class="tank-radar">
+                <use href="#radar"/>
+            </g>
+        </symbol>
+    </defs>
+</svg>

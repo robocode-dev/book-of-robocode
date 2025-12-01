@@ -196,8 +196,19 @@ You typically send separate turn commands per turn. The game engine clamps headi
 than its maximum per turn. As with speed and acceleration, it is best practice to use these named constants in your bot
 code instead of hard-coded degree values.
 
-**Suggested illustration:** A bot with three arrows: one for the body, one for the gun, and one for radar, with arcs
-showing maximum turn per tick.
+![Max turn rates for each bot part](../images/bot-max-rotations.svg)<br>
+*Max turn rates for each bot part.*
+
+Legend:
+- The <span style="color: orange;">orange</span> arc shows the maximum turn rate for the body, i.e., 10°/turn at zero speed.
+- The <span style="color: red;">red</span> arc shows the maximum turn rate for the turret/gun, i.e., 20°/turn
+- The <span style="color: green;">green</span> scan arc shows the maximum turn rate for the radar, i.e., 45°/turn
+
+**Rotation facts:**
+- At zero speed, it takes <span style="color: orange;">36 turns</span> for the body to rotate 360° (360 / 10).
+- It takes <span style="color: red;">19 turns</span> for the turret/gun to rotate 360° (360 / 20).
+- It takes <span style="color: green;">8 turns</span> for the radar to sweep 360° (360 / 45).
+- When bot parts are chained (body, gun, radar), the scanner can move up to <span style="color: green;">75°</span> in one turn (10 + 20 + 45).
 
 ## Scanning physics: arc and distance (reference view)
 
