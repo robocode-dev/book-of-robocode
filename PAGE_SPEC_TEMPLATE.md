@@ -1,5 +1,36 @@
 # Page Spec – The Book of Robocode
 
+## Frontmatter Requirement
+
+All pages **must** begin with a frontmatter block, filled out according to the following example (see `/docs/getting-started/your-first-bot.md`):
+
+```yaml
+---
+title: "Your First Bot"
+category: "Getting Started"
+summary: "A guided overview for new players to create and understand their first Robocode or Tank Royale bot."
+tags: [ "tutorial", "first bot", "robocode", "tank-royale", "beginner" ]
+difficulty: "beginner"
+source: [
+  "RoboWiki - My First Robot (classic Robocode)",
+  "Robocode Tank Royale Docs - My First Bot"
+]
+---
+```
+
+- **Fill out all fields appropriately for your page.**
+- **Place the frontmatter at the very top of the file.**
+- **Update `title`, `category`, `summary`, `tags`, `difficulty`, and `source` as needed.**
+
+> **AI note:**  
+> When generating a finished page from this spec, the AI should:
+> - Derive `title` from **Planned title** in section 1 (or from the page’s main heading if different).
+> - Derive `category` from **Book section** in section 1 (matching the book’s top-level section names).
+> - Derive `summary` from the **Goal of the page** in section 3.
+> - Derive `tags` from: slug/file id, book section, difficulty, platform flags, and major topics listed in sections 1, 3, and 5.
+> - Derive `difficulty` from **Difficulty** in section 1.
+> - Derive `source` from the URLs listed in section 2.
+
 ## 1. Identity
 
 - **Slug / file id**: `coordinates-and-angles`  
