@@ -2,6 +2,7 @@ import { defaultTheme } from '@vuepress/theme-default'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { searchPlugin } from '@vuepress/plugin-search'
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
+import markdownItKatex from 'markdown-it-katex'
 
 export default {
   title: 'The Book of Robocode',
@@ -11,7 +12,7 @@ export default {
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css' }]
+    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css' }]
   ],
 
   plugins: [
@@ -24,8 +25,7 @@ export default {
     }),
     markdownChartPlugin({
       mermaid: true,
-    }),
-    '@vuepress/plugin-nprogress'
+    })
   ],
 
   theme: defaultTheme({
@@ -284,5 +284,8 @@ export default {
     editLink: true,
     editLinkText: 'Help improve this page!',
     smoothScroll: true
-  })
+  }),
+  extendsMarkdown: (md) => {
+    md.use(markdownItKatex)
+  }
 }
