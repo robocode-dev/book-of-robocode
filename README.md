@@ -62,7 +62,7 @@ Automatically deployed to **GitHub Pages** via **GitHub Actions**. Pushing chang
    ```
 2. Install
    ```bash
-   npm install
+   npm install --legacy-peer-deps
    ```
 3. Build (generate static site)
    ```bash

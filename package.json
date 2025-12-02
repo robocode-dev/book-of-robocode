@@ -27,6 +27,7 @@
   "dependencies": {
     "@vuepress/core": "^2.0.0-rc.26",
     "@vuepress/plugin-search": "^2.0.0-rc.26",
-    "@vuepress/theme-default": "^2.0.0-rc.26"
+    "@vuepress/theme-default": "^2.0.0-rc.26",
+    "markdown-it-katex": "^2.0.3"
   }
 }
