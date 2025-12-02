@@ -27,7 +27,7 @@ Automatically deployed to **GitHub Pages** via **GitHub Actions**. Pushing chang
 ## 📚 Contents Overview
 
 ### Articles (concepts & reference)
-- What is Robocode?
+- What is Robocode
 - Physics (game mechanics & formulas)
 - Scoring
 - Coordinates and Angles
@@ -62,26 +62,27 @@ Automatically deployed to **GitHub Pages** via **GitHub Actions**. Pushing chang
    ```
 2. Install
    ```bash
-   npm install --legacy-peer-deps
+   npm install
    ```
 3. Build (generate static site)
    ```bash
    npm run build
    ```
-   Output: `docs/.vuepress/dist/`
+   Output: `docs/.vitepress/dist/`
 4. Develop (serve locally)
    ```bash
    npm run dev
    ```
-   Default: http://localhost:8080/
+   Default: http://localhost:5173/
 
 ---
 
 ## 🛠️ Technology Stack
 
-- VuePress 1.x (static site generator)
-- Vue 2
+- VitePress (static site generator)
+- Vue 3
 - KaTeX (math rendering)
+- Mermaid (diagrams)
 - markdown-it (extended Markdown)
 - GitHub Pages (hosting)
 
@@ -92,14 +93,14 @@ Automatically deployed to **GitHub Pages** via **GitHub Actions**. Pushing chang
 ```
 robocoding/
 ├── docs/
-│   ├── .vuepress/
-│   │   ├── config.js          # VuePress configuration
-│   │   ├── styles/            # Custom styling (palette, dark mode)
-│   │   └── public/            # Static assets (logo, favicon)
+│   ├── .vitepress/
+│   │   ├── config.js          # VitePress configuration
+│   │   └── styles/            # Custom styling (palette, dark mode)
+│   ├── public/                # Static assets (logo, favicon)
 │   ├── articles/              # Article pages
 │   ├── tutorial/              # Tutorial pages
-│   └── README.md              # Home page (VuePress landing)
-├── .github/workflows/deploy.yml
+│   └── README.md              # Home page (VitePress landing)
+```
 ├── package.json
 ├── LICENSE-CODE               # MIT License for code examples/config
 ├── LICENSE-DOCS               # CC BY-SA 4.0 for documentation
@@ -150,29 +151,6 @@ Ways to help:
 4. Maintain heading hierarchy (`#`, `##`, `###`).
 5. Attribute external inspirations at the bottom.
 6. Run `npm run dev` and verify sidebar and nav.
-
-Sidebar example (valid JavaScript):
-```js
-// docs/.vuepress/config.js
-module.exports = {
-  // ...existing config...
-  themeConfig: {
-    // ...existing themeConfig...
-    sidebar: {
-      '/articles/': [
-        '', // maps to /articles/ README index
-        'what-is-robocode',
-        'physics',
-        'scoring',
-        'coordinates-and-angles',
-        'history',
-        'advanced-movement' // new page
-      ],
-      // ...existing sidebars...
-    }
-  }
-}
-```
 
 ---
 
