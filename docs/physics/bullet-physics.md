@@ -37,10 +37,24 @@ xychart-beta
     y-axis -5 --> 100
 
 %% number labels (grey, on top)
-bar [100, 97, 15, 0, -2]
+
 
 %% full energy background (blue-ish)
+%% number labels (grey, on top)
+
+%% safe firing range (green)
+bar [100, 97, 15, 0, -2]
+
+%% low but alive (yellow)
+
+
+%% disabled (0 energy, red)
+%% full energy background (blue-ish)
+
+%% dead (< 0 energy, dark red)
 bar [100, 100, -10, -10, -10]
+
+%% zero-energy line (red)
 
 %% safe firing range (green)
 bar [100, 97.2, -10, -10, -10]
@@ -97,22 +111,34 @@ Practical takeaway: you cannot fire every turn. Larger bullet power means a long
 
 ## Timeline of firing and cooldown
 
-<!-- ILLUSTRATION: Gun Cooldown Timeline -->
-> **Illustration marker:** Expand the mermaid timeline with icons or color-coded stages for firing, heat, cooling, and
-> ready-to-fire states. Show a sequence: gun fires (red), heats up (orange), cools (blue), ready (green). This helps
-> beginners understand why they can't fire every turn and how cooldown works.
-
 ```mermaid
+---
+config:
+  theme: 'neut'
+  themeVariables:
+    cScale0: '#9f9'
+    cScaleLabel0: black
+    cScale1: '#fa6'
+    cScaleLabel1: black
+    cScale2: '#9ff'
+    cScaleLabel2: black
+    cScale3: '#9f9'
+    cScaleLabel3: black
+---
+
 timeline
     title Gun Firing & Cooldown Sequence
-    fire: Gun fires, heat rises
-    cooling: Per-turn cooling
-    ready: Gun cool, next legal shot
+    start: ✅ Gun is cool and ready
+    fire: 💥 Gun fires, heat rises
+    cooling: ❄️ Cooldown in progress
+    ready: ✅ Gun is cool and ready again
 ```
 
-*Timeline diagram: fire → gun heat rises → per-turn cooling → next legal shot*
+*Timeline diagram: start → fire → heat rises → cooldown → ready for next shot*
 
 ## Bullet speed and travel time
+
+### Bullet speed formula
 
 <!-- ILLUSTRATION: Bullet Trajectory & Speed Comparison -->
 > **Illustration marker:** Visualize bullet paths for different powers. Show a bot firing two bullets: one high-power (
@@ -123,16 +149,30 @@ Classic Robocode bullet speed:
 
 $\text{speed (units/turn)} = 20 - 3 × \text{bulletPower}$
 
-| Bullet Power | Speed (units/turn) | Example Travel Time (400 units) |
-|--------------|--------------------|---------------------------------|
-| 3.0          | 11                 | 36                              |
-| 2.0          | 14                 | 29                              |
-| 1.0          | 17                 | 24                              |
-| 0.1          | 19.7               | 20                              |
+The table below shows bullet speed for common power levels:
+
+| Bullet Power | Speed (units/turn) |
+|--------------|-------------------:|
+| 0.1          |               19.7 |
+| 1.0          |                 17 |
+| 2.0          |                 14 |
+| 3.0          |                 11 |
+
+```mermaid
+xychart-beta
+title "Bullet Power vs Bullet Speed"
+x-axis "Energy" ["0.1", "1.0", "2.0", "3.0"]
+y-axis "Speed" 0 --> 20
+    bar [19.7, 17, 14, 11]
+line [19.7, 17, 14, 11]
+```
+*Chart: Bullet Power vs Bullet Speed. The bars and line show decreasing speed as bullet power increases.*
+
+### Travel time formula
 
 $travel time (turns) ≈ distance / speed$
 
-Example: target at 400 units with power 2.0 → 400 / 14 ≈ 29 turns of flight
+Example: target at 400 units with power 2.0 → $\frac{400}{14}$ ≈ 29 turns of flight
 
 Notes:
 
@@ -142,12 +182,13 @@ Notes:
 
 ### Bullet Power vs Bullet Speed
 
-| Bullet Power | Speed (units/turn) |
-|--------------|-------------------:|
-| 3.0          |                 11 |
-| 2.0          |                 14 |
-| 1.0          |                 17 |
-| 0.1          |               19.7 |
+
+| Bullet Power | Speed (units/turn) | Example Travel Time (400 units) |
+|--------------|--------------------|---------------------------------|
+| 0.1          | 19.7               | 20                              |
+| 1.0          | 17                 | 24                              |
+| 2.0          | 14                 | 29                              |
+| 3.0          | 11                 | 36                              |
 
 *A quick visual: higher bullet power reduces speed (see the formula and the table above). Use lower power for faster
 bullets when you need shorter travel time, and higher power for more damage when you can accept slower travel.*
@@ -168,9 +209,9 @@ The table below shows how bullet power translates to damage and energy reward:
 
 **Formula:**
 
-$ \text{damage} = 4 × \text{bullet power} + max(0, 2 × (\text{bullet power} − 1.0)) $
+$\text{damage} = 4 × \text{bullet power} + max(0, 2 × (\text{bullet power} − 1.0))$
 
-$ \text{energy reward} = 3 × \text{bullet power} $
+$\text{energy reward} = 3 × \text{bullet power}$
 
 Notes:
 
