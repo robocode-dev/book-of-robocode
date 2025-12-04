@@ -20,6 +20,55 @@ basics helps you choose when and how hard to fire.
 
 ## Bullet power and cost
 
+Understanding bullet power is really about understanding **what happens to your bot’s energy when you fire** and how
+close you are to being disabled or dying.
+
+```mermaid
+---
+config:
+  themeVariables:
+    xyChart:
+      plotColorPalette: grey, orange, green, yellow, red, darkred, red
+---
+
+xychart-beta
+    title "Energy over time across key states (full → firing → low → disabled → dead)"
+    x-axis ["🔋 Full = 100", "🔋 Firing 💥 = 97", "🪫 Low Energy = 20", "🚫 Disabled = 0", "💀 Dead = -2"]
+    y-axis -5 --> 100
+
+%% number labels (grey, on top)
+bar [100, 97, 15, 0, -2]
+
+%% full energy background (blue-ish)
+bar [100, 100, -10, -10, -10]
+
+%% safe firing range (green)
+bar [100, 97.2, -10, -10, -10]
+
+%% low but alive (yellow)
+bar [-10, -10, 15, -10, -10]
+
+%% disabled (0 energy, red)
+bar [-10, -10, -10, 0, -10]
+
+%% dead (< 0 energy, dark red)
+bar [-10, -10, -10, -10, -2]
+
+%% zero-energy line (red)
+line [0, 0, 0, 0, 0]
+```
+
+*Diagram: Bot energy across important states: full → firing → low → disabled → dead*
+
+1) You start a turn with full energy (100)
+2) fire a bullet and drop a little energy (~97)
+3) later might be low but still alive (~15)
+4) can hit 0 and become disabled (0)
+5) and finally go below 0 and die (−2)
+
+The red horizontal line at 0 highlights the critical boundary between **alive** and **disabled/dead**. This makes it
+clear why energy management and bullet power choices matter.
+
 - Bullet power is the energy you spend for a shot.
 - Typical valid range: 0.1 to 3.0 power.
 - You need at least 0.1 energy to fire the gun. If you request more power than your remaining energy, the game clamps to
@@ -48,6 +97,11 @@ Practical takeaway: you cannot fire every turn. Larger bullet power means a long
 
 ## Timeline of firing and cooldown
 
+<!-- ILLUSTRATION: Gun Cooldown Timeline -->
+> **Illustration marker:** Expand the mermaid timeline with icons or color-coded stages for firing, heat, cooling, and
+> ready-to-fire states. Show a sequence: gun fires (red), heats up (orange), cools (blue), ready (green). This helps
+> beginners understand why they can't fire every turn and how cooldown works.
+
 ```mermaid
 timeline
     title Gun Firing & Cooldown Sequence
@@ -60,9 +114,14 @@ timeline
 
 ## Bullet speed and travel time
 
+<!-- ILLUSTRATION: Bullet Trajectory & Speed Comparison -->
+> **Illustration marker:** Visualize bullet paths for different powers. Show a bot firing two bullets: one high-power (
+> slow, short arrow) and one low-power (fast, long arrow) reaching targets at different times. Use arrows of varying
+> lengths and colors to represent speed and travel time. This helps clarify the tradeoff between power and speed.
+
 Classic Robocode bullet speed:
 
-$ \text{speed (units/turn)} = 20 - 3 × \text{bulletPower} $
+$\text{speed (units/turn)} = 20 - 3 × \text{bulletPower}$
 
 | Bullet Power | Speed (units/turn) | Example Travel Time (400 units) |
 |--------------|--------------------|---------------------------------|
@@ -71,7 +130,7 @@ $ \text{speed (units/turn)} = 20 - 3 × \text{bulletPower} $
 | 1.0          | 17                 | 24                              |
 | 0.1          | 19.7               | 20                              |
 
-$ Travel time (turns) ≈ distance / speed $
+$travel time (turns) ≈ distance / speed$
 
 Example: target at 400 units with power 2.0 → 400 / 14 ≈ 29 turns of flight
 
@@ -83,17 +142,22 @@ Notes:
 
 ### Bullet Power vs Bullet Speed
 
-| Bullet Power |  Speed (units/turn) |
-|--------------|--------------------:|
-| 3.0          |                  11 |
-| 2.0          |                  14 |
-| 1.0          |                  17 |
-| 0.1          |                19.7 |
+| Bullet Power | Speed (units/turn) |
+|--------------|-------------------:|
+| 3.0          |                 11 |
+| 2.0          |                 14 |
+| 1.0          |                 17 |
+| 0.1          |               19.7 |
 
 *A quick visual: higher bullet power reduces speed (see the formula and the table above). Use lower power for faster
 bullets when you need shorter travel time, and higher power for more damage when you can accept slower travel.*
 
 ## Bullet damage
+
+<!-- ILLUSTRATION: Damage & Reward Table Visual -->
+> **Illustration marker:** Add a chart or infographic showing how bullet power affects damage and energy reward. Use
+> bars or icons to represent increasing damage and reward as power increases. This makes the formulas and table more
+> intuitive for new players.
 
 The table below shows how bullet power translates to damage and energy reward:
 
@@ -114,6 +178,11 @@ Notes:
 - When your bullet hits, you gain back energy as shown above.
 
 ## Firing constraints and safety
+
+<!-- ILLUSTRATION: Friendly Fire Vignette -->
+> **Illustration marker:** Diagram with two allied bots and a bullet path crossing one, showing the danger of friendly
+> fire in team battles. Use a warning icon or color overlay to emphasize unsafe lines of fire. This helps new players
+> visualize why line of fire matters in team play.
 
 - You cannot fire when your bot is disabled (energy = 0).
 - Firing reduces your energy immediately by the bullet power.
@@ -144,10 +213,3 @@ if (gunIsCool() and myEnergy > 0.1) {
   fire(power)
 }
 ```
-
-<!--
-## Illustration suggestions
-
-- Energy bar before and after firing to visualize energy cost and the risk of hitting 0.
-- Friendly fire vignette: two allied bots with an unsafe line of fire across one another.
--->
