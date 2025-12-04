@@ -135,7 +135,7 @@ Notes:
 
 ## Minimal example (pseudocode)
 
-```pseudo
+```text
 if (gunIsCool() and myEnergy > 0.1) {
   distance = distanceTo(target)
   // Simple distance-based power choice: closer → higher power, farther → lower power

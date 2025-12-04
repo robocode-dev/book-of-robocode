@@ -19,20 +19,41 @@ export default withMermaid(defineConfig({
   },
 
   themeConfig: {
+    appearance: 'dark',
     logo: '/robocode-logo.svg',
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Introduction', link: '/introduction/what-is-robocode' },
-      { text: 'Getting Started', link: '/getting-started/your-first-bot' },
-      { text: 'Battlefield Physics', link: '/physics/coordinates-and-angles' },
-      { text: 'Targeting Systems', link: '/targeting/' },
-      { text: 'Movement & Evasion', link: '/movement/' },
-      { text: 'Energy Management', link: '/energy-management' },
-      { text: 'Team Strategies', link: '/team-strategies' },
-      { text: 'Melee Combat', link: '/melee-combat' },
-      { text: 'Advanced Topics', link: '/advanced-topics' },
+      {
+        text: 'Core Guides',
+        items: [
+          { text: 'Introduction', link: '/introduction/what-is-robocode' },
+          { text: 'Getting Started', link: '/getting-started/your-first-bot' },
+          { text: 'Battlefield Physics', link: '/physics/coordinates-and-angles' }
+        ]
+      },
+      {
+        text: 'Combat Systems',
+        items: [
+          { text: 'Targeting Systems', link: '/targeting/' },
+          { text: 'Movement & Evasion', link: '/movement/' },
+          { text: 'Energy Management', link: '/energy-management' }
+        ]
+      },
+      {
+        text: 'Advanced Play',
+        items: [
+          { text: 'Team Strategies', link: '/team-strategies' },
+          { text: 'Melee Combat', link: '/melee-combat' },
+          { text: 'Advanced Topics', link: '/advanced-topics' }
+        ]
+      },
       { text: 'Tank Royale Differences', link: '/tank-royale' },
-      { text: 'Appendices', link: '/appendices' }
+      {
+        text: 'Reference',
+        items: [
+          { text: 'Appendices', link: '/appendices' }
+        ]
+      }
     ],
     sidebar: {
       '/introduction/': [

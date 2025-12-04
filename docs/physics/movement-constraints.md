@@ -284,7 +284,7 @@ those constants over hard-coded literals in your own code.
 This pseudocode shows a simple movement loop using the classic Robocode-style constraints above. It deliberately relies
 on the coordinate and angle conventions defined in `Coordinate Systems & Angles`.
 
-```pseudo
+```text
 const MAX_SPEED = 8
 const ACCEL = 1
 const DECEL = 2
