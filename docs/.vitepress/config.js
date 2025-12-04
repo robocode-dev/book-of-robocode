@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress'
-import markdownItKatex from 'markdown-it-katex'
 import { withMermaid } from 'vitepress-plugin-mermaid'
+import katex from './katex-plugin'
 
 export default withMermaid(defineConfig({
   title: 'The Book of Robocode',
@@ -9,18 +9,19 @@ export default withMermaid(defineConfig({
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css' }]
+    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css' }]
   ],
 
   markdown: {
-    config: (md) => {
-      md.use(markdownItKatex)
+    config(md) {
+      md.use(katex);
     }
   },
 
   themeConfig: {
     appearance: 'dark',
     logo: '/robocode-logo.svg',
+
     nav: [
       { text: 'Home', link: '/' },
       {

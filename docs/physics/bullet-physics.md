@@ -33,7 +33,7 @@ config:
 
 xychart-beta
     title "Energy over time across key states (full → firing → low → disabled → dead)"
-    x-axis ["🔋 Full = 100", "🔋 Firing 💥 = 97", "🪫 Low Energy = 20", "🚫 Disabled = 0", "💀 Dead = -2"]
+    x-axis ["1. Full 🔋", "2. 💥 Firing 🔋", "3. Low Energy🪫", "4. Disabled 🚫", "5. Dead 💀"]
     y-axis -5 --> 100
 
 %% number labels (grey, on top)
@@ -75,7 +75,7 @@ line [0, 0, 0, 0, 0]
 *Diagram: Bot energy across important states: full → firing → low → disabled → dead*
 
 1) You start a turn with full energy (100)
-2) fire a bullet and drop a little energy (~97)
+2) fire a bullet and drop a little energy (~97). The energy drop is marked as yellow
 3) later might be low but still alive (~15)
 4) can hit 0 and become disabled (0)
 5) and finally go below 0 and die (−2)
@@ -114,7 +114,6 @@ Practical takeaway: you cannot fire every turn. Larger bullet power means a long
 ```mermaid
 ---
 config:
-  theme: 'neut'
   themeVariables:
     cScale0: '#9f9'
     cScaleLabel0: black
@@ -125,7 +124,6 @@ config:
     cScale3: '#9f9'
     cScaleLabel3: black
 ---
-
 timeline
     title Gun Firing & Cooldown Sequence
     start: ✅ Gun is cool and ready
@@ -160,12 +158,13 @@ The table below shows bullet speed for common power levels:
 
 ```mermaid
 xychart-beta
-title "Bullet Power vs Bullet Speed"
-x-axis "Energy" ["0.1", "1.0", "2.0", "3.0"]
-y-axis "Speed" 0 --> 20
+    title "Bullet Power vs Bullet Speed"
+    x-axis "Energy" ["0.1", "1.0", "2.0", "3.0"]
+    y-axis "Speed" 0 --> 20
     bar [19.7, 17, 14, 11]
-line [19.7, 17, 14, 11]
+    line [19.7, 17, 14, 11]
 ```
+
 *Chart: Bullet Power vs Bullet Speed. The bars and line show decreasing speed as bullet power increases.*
 
 ### Travel time formula
@@ -182,7 +181,6 @@ Notes:
 
 ### Bullet Power vs Bullet Speed
 
-
 | Bullet Power | Speed (units/turn) | Example Travel Time (400 units) |
 |--------------|--------------------|---------------------------------|
 | 0.1          | 19.7               | 20                              |
@@ -195,10 +193,23 @@ bullets when you need shorter travel time, and higher power for more damage when
 
 ## Bullet damage
 
-<!-- ILLUSTRATION: Damage & Reward Table Visual -->
-> **Illustration marker:** Add a chart or infographic showing how bullet power affects damage and energy reward. Use
-> bars or icons to represent increasing damage and reward as power increases. This makes the formulas and table more
-> intuitive for new players.
+```mermaid
+---
+config:
+  themeVariables:
+    xyChart:
+      plotColorPalette: red, green
+---
+xychart-beta
+    title "Bullet Power vs Damage and Energy Reward"
+    x-axis "Bullet Power" ["0.1", "1.0", "2.0", "3.0"]
+    y-axis "Value" 0 --> 16
+    line "Damage" [0.4, 4, 10, 16]
+    line "Energy Reward" [0.3, 3, 6, 9]
+```
+
+*Chart: Bullet power vs. damage and energy reward. Damage (<span style="color: red;">red</span>) increases faster than
+reward (<span style="color: green;">green</span>) as power rises.*
 
 The table below shows how bullet power translates to damage and energy reward:
 
