@@ -6,7 +6,6 @@
 
     <use href="#tank" transform="translate(-100, 150)"/>
 
-    <use href="#arrows-with-label" transform="translate(0, -50)" filter="url(#shadow)"/>
     <use href="#arrows-with-label" transform="translate(0, -50)"/>
 
     <defs>
@@ -115,19 +114,15 @@
         </symbol>
 
         <symbol id="arrows-with-label">
-            <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
-                <polygon points="6 0, 12 3, 6 6" fill="chocolate"/>
+            <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="3" refY="1.5" orient="auto">
+                <polygon points="3 0, 6 1.5, 3 3" fill="chocolate"/>
             </marker>
 
-            <line x1="300" y1="605" x2="380" y2="220" stroke="chocolate" stroke-width="10" marker-end="url(#arrow-head)"/>
+            <line x1="300" y1="605" x2="380" y2="220" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
             <text x="0" y="130" class="text" fill="chocolate">Body Heading (80°)</text>
 
-            <line x1="300" y1="600" x2="800" y2="512" stroke="chocolate" stroke-width="10" marker-end="url(#arrow-head)"/>
+            <line x1="300" y1="600" x2="800" y2="512" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
             <text x="580" y="700" class="text" fill="chocolate">Gun Heading (10°)</text>
         </symbol>
-
-        <filter id="shadow">
-            <feDropShadow dx="10" dy="10" stdDeviation="3" flood-color="black" flood-opacity="0.5"/>
-        </filter>
     </defs>
 </svg>

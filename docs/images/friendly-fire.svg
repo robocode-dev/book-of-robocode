@@ -22,7 +22,7 @@
 
     <!-- Bullet Path -->
     <line x1="690" y1="900" x2="4300" y2="900" stroke="#ff4500" stroke-width="20" stroke-dasharray="70 50"/>
-    <text x="670" y="980" font-size="200" font-weight="bold" fill="#ff4500" stroke="#fff" stroke-width="4" style="text-shadow: 2px 2px 8px #fff, 0 0 12px #ff4500;">💥</text>
+    <text x="670" y="980" font-size="200" font-weight="bold" fill="#ff4500" stroke="#fff" stroke-width="4">💥</text>
 
     <text x="2100" y="78" class="text" font-weight="bold" fill="chocolate">in Line of Fire</text>
     <text x="2300" y="280" class="danger" font-weight="bold" fill="red">⚠️</text>

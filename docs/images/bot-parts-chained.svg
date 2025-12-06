@@ -21,16 +21,13 @@
     <line x1="3050" y1="400" x2="3050" y2="0" stroke="red" stroke-width="10" transform="rotate(135, 3050, 400)"/>
     <line x1="3050" y1="400" x2="3050" y2="0" stroke="cyan" stroke-width="10" transform="rotate(180, 3050, 400)"/>
 
-    <use href="#arrow" transform="translate(700, 240)" filter="url(#shadow)"/>
     <use href="#arrow" transform="translate(700, 240)"/>
 
-    <use href="#rotate-text-1" filter="url(#shadow)"/>
     <use href="#rotate-text-1"/>
 
-    <use href="#arrow" transform="translate(2100, 240)" filter="url(#shadow)"/>
+    <use href="#arrow" transform="translate(2100, 240)"/>
     <use href="#arrow" transform="translate(700, 240)"/>
 
-    <use href="#rotate-text-2" filter="url(#shadow)"/>
     <use href="#rotate-text-2"/>
 
     <defs>
@@ -156,9 +153,5 @@
         <symbol id="rotate-text-2">
             <text x="1950" y="200" font-family="Arial" font-size="100" fill="chocolate">Gun is rotated 45°</text>
         </symbol>
-
-        <filter id="shadow">
-            <feDropShadow dx="10" dy="10" stdDeviation="3" flood-color="black" flood-opacity="0.5"/>
-        </filter>
     </defs>
 </svg>
