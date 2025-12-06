@@ -141,18 +141,18 @@
                 <polygon points="6 0, 12 3, 6 6" fill="#242B"/>
             </marker>
             <marker id="arrow-head-3" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
-                <polygon points="6 0, 12 3, 6 6" fill="orange"/>
+                <polygon points="6 0, 12 3, 6 6" fill="chocolate"/>
             </marker>
 
             <line x1="400" y1="500" x2="5000" y2="95" stroke="#8F8B" stroke-width="10" marker-end="url(#arrow-head-1)"/>
             <line x1="400" y1="500" x2="5000" y2="1105" stroke="#242B" stroke-width="10" marker-end="url(#arrow-head-2)"/>
 
-            <line x1="400" y1="500" x2="5020" y2="500" stroke="orange" stroke-width="10" marker-end="url(#arrow-head-3)"/>
+            <line x1="400" y1="500" x2="5020" y2="500" stroke="chocolate" stroke-width="10" marker-end="url(#arrow-head-3)"/>
 
             <text x="1200" y="490" class="text" fill="#8F8B" transform="rotate(-5)">Current Heading</text>
             <text x="1300" y="555" class="text" fill="#484B" transform="rotate(7)">Previous Heading</text>
 
-            <text x="3960" y="620" class="text" fill="orange">scan length = 1200 units</text>
+            <text x="3960" y="620" class="text" fill="chocolate">scan length = 1200 units</text>
         </symbol>
     </defs>
 </svg>

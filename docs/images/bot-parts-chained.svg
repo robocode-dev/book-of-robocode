@@ -145,16 +145,16 @@
         </symbol>
 
         <symbol id="arrow">
-            <polygon points="10,85 300,85 300,10 500,160 300,310 300,235 10,235" fill="orange" stroke="black"
+            <polygon points="10,85 300,85 300,10 500,160 300,310 300,235 10,235" fill="chocolate" stroke="black"
                      stroke-width="4"/>
         </symbol>
 
         <symbol id="rotate-text-1">
-            <text x="600" y="200" font-family="Arial" font-size="100" fill="orange">Body is rotated 45°</text>
+            <text x="600" y="200" font-family="Arial" font-size="100" fill="chocolate">Body is rotated 45°</text>
         </symbol>
 
         <symbol id="rotate-text-2">
-            <text x="1950" y="200" font-family="Arial" font-size="100" fill="orange">Gun is rotated 45°</text>
+            <text x="1950" y="200" font-family="Arial" font-size="100" fill="chocolate">Gun is rotated 45°</text>
         </symbol>
 
         <filter id="shadow">

@@ -7,7 +7,6 @@
     <use href="#tank" transform="translate(-160, 150) scale(1.5, 1.5)"/>
     <text x="270" y="155" fill="grey" font-weight="bold" font-size="210px" font-family="Arial, sans-serif">92.0</text>
 
-    <use href="#arrows-with-label" filter="url(#shadow)"/>
     <use href="#arrows-with-label"/>
 
     <defs>
@@ -116,25 +115,21 @@
         </symbol>
 
         <symbol id="arrows-with-label">
-            <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
-                <polygon points="6 0, 12 3, 6 6" fill="orange"/>
+            <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="3" refY="1.5" orient="auto">
+                <polygon points="3 0, 6 1.5, 3 3" fill="chocolate"/>
             </marker>
 
-            <line x1="1000" y1="80" x2="750" y2="80" stroke="orange" stroke-width="10" marker-end="url(#arrow-head)"/>
-            <text x="1020" y="120" class="text" fill="orange">Energy</text>
+            <line x1="1000" y1="80" x2="750" y2="80" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <text x="1020" y="120" class="text" fill="chocolate">Energy</text>
 
-            <line x1="1000" y1="530" x2="700" y2="530" stroke="orange" stroke-width="10" marker-end="url(#arrow-head)"/>
-            <text x="1020" y="570" class="text" fill="orange">Body</text>
+            <line x1="1000" y1="530" x2="700" y2="530" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <text x="1020" y="570" class="text" fill="chocolate">Body</text>
 
-            <line x1="950" y1="1110" x2="850" y2="850" stroke="orange" stroke-width="10" marker-end="url(#arrow-head)"/>
-            <text x="860" y="1180" class="text" fill="orange">Gun</text>
+            <line x1="950" y1="1110" x2="850" y2="850" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <text x="860" y="1200" class="text" fill="chocolate">Gun</text>
 
-            <line x1="300" y1="1200" x2="400" y2="800" stroke="orange" stroke-width="10" marker-end="url(#arrow-head)"/>
-            <text x="180" y="1280" class="text" fill="orange">Radar</text>
+            <line x1="300" y1="1200" x2="400" y2="800" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <text x="180" y="1280" class="text" fill="chocolate">Radar</text>
         </symbol>
-
-        <filter id="shadow">
-            <feDropShadow dx="10" dy="10" stdDeviation="3" flood-color="black" flood-opacity="0.5"/>
-        </filter>
     </defs>
 </svg>

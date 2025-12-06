@@ -8,23 +8,23 @@
     <use href="#tank" transform="translate(0,500)"
          style="--body-rotation:0deg; --turret-rotation:90deg; --radar-rotation:90deg;"/>
 
-    <text x="200" y="1350" class="text" font-weight="bold" fill="orange">Your bot</text>
+    <text x="200" y="1350" class="text" font-weight="bold" fill="chocolate">Your bot</text>
 
     <use href="#tank" transform="translate(2000,500)"
          style="--body-rotation:30deg; --turret-rotation:45deg; --radar-rotation:90deg;"/>
 
-    <text x="2200" y="1350" class="text" font-weight="bold" fill="orange">Teammate</text>
+    <text x="2200" y="1350" class="text" font-weight="bold" fill="chocolate">Teammate</text>
 
     <use href="#tank" transform="translate(4000,500)"
          style="--body-rotation:280deg; --turret-rotation:270deg; --radar-rotation:278deg; --tank-body-color:#c00; --tank-body-accent-color:#7a0000; --tank-turret-color:#c00; --tank-radar-color:#ff6666; --tank-radar-accent-color:#9e1a1a"/>
 
-    <text x="4200" y="1350" class="text" font-weight="bold" fill="orange">Enemy</text>
+    <text x="4200" y="1350" class="text" font-weight="bold" fill="chocolate">Enemy</text>
 
     <!-- Bullet Path -->
     <line x1="690" y1="900" x2="4300" y2="900" stroke="#ff4500" stroke-width="20" stroke-dasharray="70 50"/>
     <text x="670" y="980" font-size="200" font-weight="bold" fill="#ff4500" stroke="#fff" stroke-width="4" style="text-shadow: 2px 2px 8px #fff, 0 0 12px #ff4500;">💥</text>
 
-    <text x="2100" y="78" class="text" font-weight="bold" fill="orange">in Line of Fire</text>
+    <text x="2100" y="78" class="text" font-weight="bold" fill="chocolate">in Line of Fire</text>
     <text x="2300" y="280" class="danger" font-weight="bold" fill="red">⚠️</text>
     <text x="2050" y="500" class="danger" font-weight="bold" fill="red">DANGER!</text>
 
