@@ -1,0 +1,154 @@
+<svg version="1.1" width="600" height="175" viewBox="0 0 4800 1400" xmlns="http://www.w3.org/2000/svg">
+
+    <style>
+        .text { font: 100px sans-serif; }
+        .danger { font: bold 150px sans-serif; }
+    </style>
+
+    <use href="#tank" transform="translate(0,500)"
+         style="--body-rotation:0deg; --turret-rotation:90deg; --radar-rotation:90deg;"/>
+
+    <text x="200" y="1350" class="text" font-weight="bold" fill="orange">Your bot</text>
+
+    <use href="#tank" transform="translate(2000,500)"
+         style="--body-rotation:30deg; --turret-rotation:45deg; --radar-rotation:90deg;"/>
+
+    <text x="2200" y="1350" class="text" font-weight="bold" fill="orange">Teammate</text>
+
+    <use href="#tank" transform="translate(4000,500)"
+         style="--body-rotation:280deg; --turret-rotation:270deg; --radar-rotation:278deg; --tank-body-color:#c00; --tank-body-accent-color:#7a0000; --tank-turret-color:#c00; --tank-radar-color:#ff6666; --tank-radar-accent-color:#9e1a1a"/>
+
+    <text x="4200" y="1350" class="text" font-weight="bold" fill="orange">Enemy</text>
+
+    <!-- Bullet Path -->
+    <line x1="690" y1="900" x2="4300" y2="900" stroke="#ff4500" stroke-width="20" stroke-dasharray="70 50"/>
+    <text x="670" y="980" font-size="200" font-weight="bold" fill="#ff4500" stroke="#fff" stroke-width="4" style="text-shadow: 2px 2px 8px #fff, 0 0 12px #ff4500;">💥</text>
+
+    <text x="2100" y="78" class="text" font-weight="bold" fill="orange">in Line of Fire</text>
+    <text x="2300" y="280" class="danger" font-weight="bold" fill="red">⚠️</text>
+    <text x="2050" y="500" class="danger" font-weight="bold" fill="red">DANGER!</text>
+
+    <defs>
+        <style>
+            .tank-body, .tank-turret, .tank-radar {
+            transform-origin: 400px 400px;
+            }
+            .tank-body {
+            transform: rotate(var(--body-rotation, 10deg));
+            }
+            .tank-turret {
+            transform: rotate(var(--turret-rotation, 80deg));
+            }
+            .tank-radar {
+            transform: rotate(var(--radar-rotation, 127deg));
+            }
+            svg {
+            --tank-body-color: #001199;
+            --tank-body-accent-color: #000d80;
+            --tank-turret-color: #0066cc;
+            --tank-radar-color: #aaaaff;
+            }
+            .tank-body-fill {
+            fill: var(--tank-body-color, #001199);
+            }
+            .tank-body-accent {
+            fill: var(--tank-body-accent-color, #000d80);
+            }
+            .tank-turret-fill {
+            fill: var(--tank-turret-color, #0066cc);
+            }
+            .tank-radar-fill {
+            fill: var(--tank-radar-color, #aaaaff);
+            }
+        </style>
+
+        <linearGradient id="cannon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#333"/>
+            <stop offset="50%" stop-color="#CCC"/>
+            <stop offset="100%" stop-color="#333"/>
+        </linearGradient>
+
+        <symbol id="link0">
+            <rect x="5" y="55" width="125" height="25" fill="#aaaaaa"/>
+            <rect x="10" y="70" width="116" height="35" fill="#666666" rx="10" ry="10"/>
+            <rect x="5" y="55" width="125" height="50" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+        </symbol>
+
+        <symbol id="link30">
+            <rect x="5" y="55" width="125" height="25" fill="#939393"/>
+            <rect x="10" y="70" width="116" height="30" fill="#585858" rx="10" ry="10"/>
+            <rect x="5" y="55" width="125" height="42" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+        </symbol>
+
+        <symbol id="link60">
+            <rect x="5" y="55" width="125" height="20" fill="#555555"/>
+            <rect x="5" y="55" width="125" height="20" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+        </symbol>
+
+        <symbol id="main-track">
+            <rect x="20" y="75" width="95" height="450" fill="#333333" stroke="black" stroke-width="10"/>
+        </symbol>
+
+        <symbol id="track1">
+            <use href="#main-track"/>
+            <use href="#link30"/>
+            <use href="#link0" y="60"/>
+            <use href="#link0" y="140"/>
+            <use href="#link0" y="220"/>
+            <use href="#link0" y="300"/>
+            <use href="#link0" y="380"/>
+            <use href="#link30" y="448"/>
+        </symbol>
+
+        <symbol id="track2">
+            <use href="#main-track"/>
+            <use href="#link60"/>
+            <use href="#link0" y="33"/>
+            <use href="#link0" y="113"/>
+            <use href="#link0" y="193"/>
+            <use href="#link0" y="273"/>
+            <use href="#link0" y="353"/>
+            <use href="#link0" y="433"/>
+        </symbol>
+
+        <symbol id="track3">
+            <use href="#main-track"/>
+            <use href="#link0" y="7"/>
+            <use href="#link0" y="87"/>
+            <use href="#link0" y="167"/>
+            <use href="#link0" y="247"/>
+            <use href="#link0" y="327"/>
+            <use href="#link0" y="407"/>
+            <use href="#link60" y="470"/>
+        </symbol>
+
+        <symbol id="body">
+            <use href="#track1" x="150" y="100"/>
+            <use href="#track1" x="515" y="100"/>
+
+            <rect class="tank-body-fill" x="240" y="190" width="320" height="420" stroke="black" stroke-width="20"
+                  rx="10" ry="10"/>
+            <rect class="tank-body-accent" x="250" y="520" width="300" height="80" opacity="0.85"/>
+        </symbol>
+
+        <symbol id="turret">
+            <rect class="tank-turret-fill" x="300" y="320" width="200" height="200" stroke="black" stroke-width="20"
+                  rx="10" ry="10"/>
+            <rect x="310" y="460" width="180" height="50" fill="black" opacity="0.5"/>
+
+            <rect x="360" y="240" width="80" height="80" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+            <rect x="375" y="70" width="50" height="170" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+        </symbol>
+
+        <symbol id="radar">
+            <circle class="tank-radar-fill" cx="400" cy="400" r="30" stroke="black" stroke-width="20"/>
+            <path class="tank-radar-fill" d="M 290 420 q 110 100 220 0 z" stroke="black" stroke-width="20"/>
+        </symbol>
+
+        <symbol id="tank">
+            <use class="tank-body" href="#body"/>
+            <use class="tank-turret" href="#turret"/>
+            <use class="tank-radar" href="#radar"/>
+        </symbol>
+    </defs>
+</svg>

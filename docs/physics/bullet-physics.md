@@ -36,39 +36,12 @@ xychart-beta
     x-axis ["1. Full 🔋", "2. 💥 Firing 🔋", "3. Low Energy🪫", "4. Disabled 🚫", "5. Dead 💀"]
     y-axis -5 --> 100
 
-%% number labels (grey, on top)
-
-
-%% full energy background (blue-ish)
-%% number labels (grey, on top)
-
-%% safe firing range (green)
 bar [100, 97, 15, 0, -2]
-
-%% low but alive (yellow)
-
-
-%% disabled (0 energy, red)
-%% full energy background (blue-ish)
-
-%% dead (< 0 energy, dark red)
 bar [100, 100, -10, -10, -10]
-
-%% zero-energy line (red)
-
-%% safe firing range (green)
 bar [100, 97.2, -10, -10, -10]
-
-%% low but alive (yellow)
 bar [-10, -10, 15, -10, -10]
-
-%% disabled (0 energy, red)
 bar [-10, -10, -10, 0, -10]
-
-%% dead (< 0 energy, dark red)
 bar [-10, -10, -10, -10, -2]
-
-%% zero-energy line (red)
 line [0, 0, 0, 0, 0]
 ```
 
@@ -231,16 +204,14 @@ Notes:
 
 ## Firing constraints and safety
 
-<!-- ILLUSTRATION: Friendly Fire Vignette -->
-> **Illustration marker:** Diagram with two allied bots and a bullet path crossing one, showing the danger of friendly
-> fire in team battles. Use a warning icon or color overlay to emphasize unsafe lines of fire. This helps new players
-> visualize why line of fire matters in team play.
-
 - You cannot fire when your bot is disabled (energy = 0).
 - Firing reduces your energy immediately by the bullet power.
 - Be careful not to drop yourself to zero energy (= disabled): a disabled bot becomes an easy target and can be killed
   by a fast small bullet.
 - In team battles, bullets can hit allies (friendly fire). Always consider the line of fire.
+
+![Friendly Fire Vignette](../images/friendly-fire.svg)<br>
+*Friendly fire scenario where a bot accidentally hits a teammate. Always check your line of fire in team battles.*
 
 ## How often can I fire a bullet?
 
@@ -254,7 +225,7 @@ Notes:
 - Radar does not detect bullets.
 - You can often infer a shot by observing a scanned enemy's energy dropping by the amount they spent to fire.
 
-## Minimal example (pseudocode)
+## Minimal example (Robocode-style pseudocode)
 
 ```text
 if (gunIsCool() and myEnergy > 0.1) {
@@ -265,3 +236,15 @@ if (gunIsCool() and myEnergy > 0.1) {
   fire(power)
 }
 ```
+
+## Key Takeaways
+
+- Bullet power determines energy cost, speed, and damage.
+- You can only fire when your gun is cool and you have enough energy.
+- Higher bullet power means slower bullets but more damage; lower power is faster but less damaging.
+- Gun cooldown depends on bullet power—bigger shots require longer waits.
+- Bullets travel in straight lines at constant speed, unaffected by your bot's movement after firing.
+- Hitting an enemy with a bullet rewards you with energy; hitting a wall does not.
+- Friendly fire is possible in team battles—always check your line of fire.
+- Radar does not detect bullets, but you can infer shots by watching energy drops.
+- Energy management is crucial: avoid disabling yourself by firing recklessly.
