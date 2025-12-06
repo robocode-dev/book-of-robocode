@@ -1,6 +1,7 @@
 <svg version="1.1" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
 
-    <use href="#tank"/>
+    <use href="#tank"
+         style="--tank-body-color:#c00; --tank-body-accent-color:#7a0000; --tank-turret-color:#c00; --tank-radar-color:#ff6666; --tank-radar-accent-color:#9e1a1a"/>
 
     <defs>
         <style>
@@ -15,6 +16,24 @@
             }
             .tank-radar {
                 transform: rotate(var(--radar-rotation, 127deg));
+            }
+            svg {
+                --tank-body-color: #001199;
+                --tank-body-accent-color: #000d80;
+                --tank-turret-color: #0066cc;
+                --tank-radar-color: #aaaaff;
+            }
+            .tank-body-fill {
+                fill: var(--tank-body-color, #001199);
+            }
+            .tank-body-accent {
+                fill: var(--tank-body-accent-color, #000d80);
+            }
+            .tank-turret-fill {
+                fill: var(--tank-turret-color, #0066cc);
+            }
+            .tank-radar-fill {
+                fill: var(--tank-radar-color, #aaaaff);
             }
         </style>
 
@@ -82,14 +101,14 @@
             <use href="#track1" x="150" y="100"/>
             <use href="#track1" x="515" y="100"/>
 
-            <rect x="240" y="190" width="320" height="420" fill="#019" stroke="black" stroke-width="20" rx="10"
-                  ry="10"/>
-            <rect x="250" y="520" width="300" height="80" fill="black" opacity="0.5"/>
+            <rect class="tank-body-fill" x="240" y="190" width="320" height="420" stroke="black" stroke-width="20"
+                  rx="10" ry="10"/>
+            <rect class="tank-body-accent" x="250" y="520" width="300" height="80" opacity="0.85"/>
         </symbol>
 
         <symbol id="turret">
-            <rect x="300" y="320" width="200" height="200" fill="#06C" stroke="black" stroke-width="20" rx="10"
-                  ry="10"/>
+            <rect class="tank-turret-fill" x="300" y="320" width="200" height="200" stroke="black" stroke-width="20"
+                  rx="10" ry="10"/>
             <rect x="310" y="460" width="180" height="50" fill="black" opacity="0.5"/>
 
             <rect x="360" y="240" width="80" height="80" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
@@ -97,8 +116,8 @@
         </symbol>
 
         <symbol id="radar">
-            <circle cx="400" cy="400" r="30" fill="#AAF" stroke="black" stroke-width="20"/>
-            <path d="M 290 420 q 110 100 220 0 z" fill="#AAF" stroke="black" stroke-width="20"/>
+            <circle class="tank-radar-fill" cx="400" cy="400" r="30" stroke="black" stroke-width="20"/>
+            <path class="tank-radar-fill" d="M 290 420 q 110 100 220 0 z" stroke="black" stroke-width="20"/>
         </symbol>
 
         <symbol id="tank">
