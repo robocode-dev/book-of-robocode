@@ -2,13 +2,13 @@
 
     <use href="#tank" transform="translate(0, 700)"/>
 
-    <!-- Filled scan arc sector from 270° to 280° in green, radius 800 -->
-    <path d="M400,1100 L400,100 A1000,1000 0 0,1 573.65,115.19 Z" fill="chocolate" opacity="0.6" />
+    <!-- Filled scan arc sector from 270° to 280° in orange, radius 800 -->
+    <path d="M400,1100 L400,100 A1000,1000 0 0,1 573.65,115.19 Z" fill="orange" opacity="0.6" />
 
     <!-- Filled scan arc sector from 270° to 290° in red, radius 700 -->
     <path d="M400,1100 L400,300 A800,800 0 0,1 687.6,362.2 Z" fill="red" opacity="0.6" />
 
-    <!-- Filled scan arc sector from 270° to 315° in orange, radius 600 -->
+    <!-- Filled scan arc sector from 270° to 315° in green, radius 600 -->
     <path d="M400,1100 L400,500 A600,600 0 0,1 824.26,675.74 Z" fill="green" opacity="0.6" />
 
     <defs>
