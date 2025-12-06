@@ -1,12 +1,12 @@
-<svg version="1.1" width="550" height="113" viewBox="0 0 5500 1130" xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" width="550" height="120" viewBox="0 0 5500 1200" xmlns="http://www.w3.org/2000/svg">
 
     <style>
         .text { font: 100px sans-serif; }
     </style>
 
-    <use href="#tank" transform="translate(0,50)"/>
-    <use href="#radar-sweep" transform="translate(0,50)"/>
-    <use href="#arrows-with-text" transform="translate(0,-50)"/>
+    <use href="#tank" transform="translate(0,100)"/>
+    <use href="#radar-sweep" transform="translate(0,100)"/>
+    <use href="#arrows-with-text" transform="translate(0,0)"/>
 
     <defs>
         <style>
@@ -135,24 +135,22 @@
 
         <symbol id="arrows-with-text">
             <marker id="arrow-head-1" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
-                <polygon points="6 0, 12 3, 6 6" fill="#8F8B"/>
+                <polygon points="6 0, 12 3, 6 6" fill="chocolate"/>
             </marker>
             <marker id="arrow-head-2" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
-                <polygon points="6 0, 12 3, 6 6" fill="#242B"/>
+                <polygon points="6 0, 12 3, 6 6" fill="chocolate"/>
             </marker>
             <marker id="arrow-head-3" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
                 <polygon points="6 0, 12 3, 6 6" fill="chocolate"/>
             </marker>
 
-            <line x1="400" y1="500" x2="5000" y2="95" stroke="#8F8B" stroke-width="10" marker-end="url(#arrow-head-1)"/>
-            <line x1="400" y1="500" x2="5000" y2="1105" stroke="#242B" stroke-width="10" marker-end="url(#arrow-head-2)"/>
+            <line x1="400" y1="500" x2="5000" y2="95" stroke="chocolate" stroke-width="10" marker-end="url(#arrow-head-1)"/>
+            <line x1="400" y1="500" x2="5000" y2="1105" stroke="chocolate" stroke-width="10" marker-end="url(#arrow-head-2)"/>
 
-            <line x1="400" y1="500" x2="5020" y2="500" stroke="chocolate" stroke-width="10" marker-end="url(#arrow-head-3)"/>
+            <text x="1200" y="490" class="text" fill="chocolate" transform="rotate(-5)">Current Heading</text>
+            <text x="1300" y="555" class="text" fill="chocolate" transform="rotate(7)">Previous Heading</text>
 
-            <text x="1200" y="490" class="text" fill="#8F8B" transform="rotate(-5)">Current Heading</text>
-            <text x="1300" y="555" class="text" fill="#484B" transform="rotate(7)">Previous Heading</text>
-
-            <text x="3960" y="620" class="text" fill="chocolate">scan length = 1200 units</text>
+            <text x="3600" y="490" class="text" fill="chocolate" transform="rotate(-5)">◄ scan length = 1200 units ►</text>
         </symbol>
     </defs>
 </svg>
