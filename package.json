@@ -4,9 +4,9 @@
   "description": "The Book of Robocode - Documentation for Robocode & Robocode Tank Royale",
   "main": "index.js",
   "scripts": {
-    "dev": "vitepress dev docs",
-    "build": "vitepress build docs",
-    "preview": "vitepress preview docs"
+    "dev": "vitepress dev book",
+    "build": "vitepress build book",
+    "preview": "vitepress preview book"
   },
   "keywords": [
     "robocode",

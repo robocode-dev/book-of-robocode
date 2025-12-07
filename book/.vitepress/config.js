@@ -255,7 +255,7 @@ export default withMermaid(defineConfig({
       ]
     },
     editLink: {
-      pattern: 'https://github.com/robocode-dev/robocoding/edit/main/docs/:path',
+      pattern: 'https://github.com/robocode-dev/robocoding/edit/main/book/:path',
       text: 'Help improve this page!'
     },
     lastUpdated: true,

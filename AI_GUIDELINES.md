@@ -152,7 +152,7 @@ When you are asked to generate a page, you will typically receive a
 Using that request, the `/specs` files, `BOOK_STRATEGY.md`,
 `BOOK_STRUCTURE.md`, and the rules in this file, you MUST output a
 single, complete Markdown page ready to be saved as
-`docs/articles/<slug>.md` (or another path provided in the request).
+`book/articles/<slug>.md` (or another path provided in the request).
 
 Do not include extra explanation outside the Markdown file content,
 unless the user explicitly asks for commentary.
@@ -197,7 +197,7 @@ Think of the tone as:
     - Adapts tone and style.
 
 3. **Agent C — Publisher**
-    - Integrates into `/docs/` with frontmatter.
+    - Integrates into `/book/` with frontmatter.
     - Validates build formatting.
     - Adds attribution entries.
 

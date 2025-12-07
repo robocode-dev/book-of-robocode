@@ -61,7 +61,7 @@ Given a filled-in `page-request-template.md`, follow this workflow:
 
 1. **Identity and placement**  
    - Use the `slug` and `book section` from the request to determine the
-     output path, typically `docs/articles/<slug>.md`, unless an explicit
+     output path, typically `book/articles/<slug>.md`, unless an explicit
      path is provided.
    - Ensure the `category` frontmatter field matches the top-level book
      section.
@@ -132,7 +132,7 @@ For humans creating a new page:
    > "Write the file according to this page request and the specs in
    > `specs/spec.md`."
 
-4. Save the AI output as `docs/articles/<slug>.md` (or the specified path).
+4. Save the AI output as `book/articles/<slug>.md` (or the specified path).
 
 This keeps the human-facing flow short and moves the complexity into this
 `/specs` folder for AI agents to handle.

@@ -77,7 +77,7 @@ transfer between classic Java-based Robocode and Robocode Tank Royale.
    ```bash
    npm run build
    ```
-   Output: `docs/.vitepress/dist/`
+   Output: `book/.vitepress/dist/`
 4. Develop (serve locally)
    ```bash
    npm run dev
@@ -101,7 +101,7 @@ transfer between classic Java-based Robocode and Robocode Tank Royale.
 
 ```
 robocoding/
-├── docs/
+├── book/
 │   ├── .vitepress/
 │   │   ├── config.js          # VitePress configuration
 │   │   └── styles/            # Custom styling (palette, dark mode)
@@ -156,9 +156,9 @@ Ways to help:
 - Cite sources (RoboWiki, forum posts) when adapting analysis
 
 ### Adding a New Page
-1. Create a Markdown file in `docs/articles/` or `docs/tutorial/` (e.g. `advanced-movement.md`).
+1. Create a Markdown file in `book/articles/` or `book/tutorial/` (e.g. `advanced-movement.md`).
 2. Start with `# Title` as first header.
-3. Add the filename (without extension) to the relevant sidebar list in `docs/.vuepress/config.js`.
+3. Add the filename (without extension) to the relevant sidebar list in `book/.vitepress/config.js`.
 4. Maintain heading hierarchy (`#`, `##`, `###`).
 5. Attribute external inspirations at the bottom.
 6. Run `npm run dev` and verify sidebar and nav.
