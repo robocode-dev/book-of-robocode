@@ -3,7 +3,6 @@
 # Images (request from AI)
 
 - Consider gradually converting key conceptual diagrams from PNG to SVG or Mermaid where practical:
-  - `book/images/bot-lifecycle.png`
   - `book/images/classic-vs-tank-royale.png`
   - `book/images/my-first-bot-config.png`
 - Decide whether any non-screenshot/non-historical PNG images should be regenerated (or re-exported) to better match

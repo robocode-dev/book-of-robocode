@@ -26,20 +26,17 @@ the shared lifecycle every bot follows.
 
 ## The bot lifecycle at a glance
 
-```
-Initialization
-    ↓
-Enter run() loop
-    ↓
-    ├→ Scan for enemies
-    ├→ Calculate movement
-    ├→ Aim gun
-    ├→ Fire if ready
-    └→ Repeat each turn
-```
+```mermaid
+flowchart TB
+    init([⚙️ Initialize])
+scan([📡 Scan])
+move([➡️ Move])
+aim([🎯 Aim])
+fire([💥 Fire])
 
-<img src="../images/bot-lifecycle.png" alt="Bot lifecycle diagram" width="200" style="max-width:100%;height:auto;" /><br>
-*Bot Lifecycle Diagram*
+init --> scan
+scan --> move --> aim --> fire -->|"🔁 Repeat"| scan
+```
 
 Think of your bot as a real-time agent. Each turn it senses the world, decides what to do, and acts. The exact API calls
 differ between Classic and Tank Royale, but the rhythm—sense → plan → act → repeat—stays the same.
