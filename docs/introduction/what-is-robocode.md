@@ -42,6 +42,9 @@ Your bot must:
 
 During a battle, you cannot control the bot directly. The only way to win is to write smarter code.
 
+Bullets themselves follow simple physics: they cost energy to fire, travel in straight lines along the gun heading, and
+reduce an opponent’s energy when they hit.
+
 ## Classic Robocode vs. Tank Royale
 
 ### Classic Robocode

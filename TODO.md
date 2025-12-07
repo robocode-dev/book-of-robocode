@@ -1,7 +1,5 @@
 # TODO
 
-- When scanning, teammates will show up. Bot should not treat them as enemies. AND, avoid firing at them, e.g., when
-  seeing an enemy behind them.
 - Teammates will take damage when they are hit by your bot (friendly fire).
 
 - Consider gradually converting key conceptual diagrams from PNG to SVG or Mermaid where practical:

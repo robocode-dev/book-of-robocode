@@ -2,7 +2,7 @@
 title: "Your First Battle"
 category: "Getting Started"
 summary: "Walkthrough for running your first bot-vs-bot battle in classic Robocode and Robocode Tank Royale."
-tags: ["getting-started", "battle", "classic-robocode", "tank-royale", "beginner"]
+tags: [ "getting-started", "battle", "classic-robocode", "tank-royale", "beginner" ]
 difficulty: "beginner"
 source: [
   "RoboWiki - Getting Started with Robocode",
@@ -218,6 +218,25 @@ Once your bots are connected:
         - Energy bars dropping as bots take hits.
 
 The GUI usually shows a **scoreboard** and/or **per‑round results** so you can see which bot is winning over time.
+
+---
+
+## Bullet basics: what your shots really do
+
+When a bot fires, it is not free. Each shot spends some of the bot’s energy and creates a bullet that follows simple
+physics on the battlefield.
+
+- **Bullets cost energy** to fire. The more powerful the shot, the more energy it costs.
+- **You cannot fire every turn.** After each shot, the gun heats up and must cool down before firing again.
+- **Bullets travel in straight lines.** They follow the gun’s heading at the moment of firing and do not curve or home
+  in on targets.
+- **Bullets do not inherit your movement.** Only the gun direction and bullet power matter for the bullet path and
+  speed.
+- **Power vs speed tradeoff:** low‑power shots are cheaper and fly faster; high‑power shots are stronger but slower.
+- **Friendly fire exists** in team battles: a bullet will hit the first bot in its path, ally or enemy.
+
+For a full explanation of bullet power, speed, damage, and cooldown (including formulas and charts), see
+[Bullet Travel & Bullet Physics](../physics/bullet-physics.md) in the **Battlefield Physics** section.
 
 ---
 

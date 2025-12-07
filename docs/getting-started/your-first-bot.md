@@ -66,6 +66,10 @@ After initialization, your bot enters its main `run()` loop. Conceptually, each 
 Events that occur during the turn (e.g., you were scanned or hit) can adjust your next decisions or trigger immediate
 responses.
 
+> **Energy and bullets in one sentence**
+> Firing always spends some of your bot’s energy to create a bullet; too many big shots can leave your bot weak or even
+> disabled, so smart bots balance when and how hard they fire.
+
 ## Per-turn actions (the heartbeat)
 
 - Scan for enemies
