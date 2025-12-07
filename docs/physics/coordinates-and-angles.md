@@ -89,3 +89,6 @@ as well as *Movement Constraints & Bot Physics* for the exact movement and turni
 **Applies to:** Classic Robocode, Robocode Tank Royale
 
 *Always use "bot" and "units" for consistency. See Terminology Consistency guidelines.*
+
+*Based on RoboWiki content (CC BY-SA 3.0) for classic Robocode and the official Robocode Tank Royale documentation.
+Rewritten and structured for The Book of Robocode.*
