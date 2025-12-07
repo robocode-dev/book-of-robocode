@@ -6,13 +6,15 @@
 
 [![Deploy Documentation](https://github.com/robocode-dev/robocoding/actions/workflows/deploy.yml/badge.svg)](https://github.com/robocode-dev/robocoding/actions/workflows/deploy.yml)
 
-A structured, modern knowledge base covering **Robocode** and **Robocode Tank Royale** — from fundamentals and physics to movement, targeting, and competitive strategy — distilling two decades of community experience.
+A structured, modern knowledge base covering **Robocode** and **Robocode Tank Royale** — from fundamentals and physics
+to movement, targeting, and competitive strategy — distilling two decades of community experience.
 
 ---
 
 ## 📦 Deployable Documentation
 
-Automatically deployed to **GitHub Pages** via **GitHub Actions**. Pushing changes to `main` triggers a new build and publication.
+Automatically deployed to **GitHub Pages** via **GitHub Actions**. Pushing changes to `main` triggers a new build and
+publication.
 
 🔗 **Live Site**: https://robocode-dev.github.io/robocoding/
 
@@ -20,13 +22,17 @@ Automatically deployed to **GitHub Pages** via **GitHub Actions**. Pushing chang
 
 ## 🎯 Purpose
 
-**The Book of Robocode** (authored by **Flemming Nørnberg Larsen**) unifies knowledge previously scattered across RoboWiki.net, forums, and historical sources. It focuses on concepts, strategy patterns, math, and reasoning. Code examples appear when they clarify principles; otherwise, pseudocode is preferred. The goal is to teach ideas that transfer between classic Java-based Robocode and Robocode Tank Royale.
+**The Book of Robocode** (authored by **Flemming Nørnberg Larsen**) unifies knowledge previously scattered across
+RoboWiki.net, forums, and historical sources. It focuses on concepts, strategy patterns, math, and reasoning. Code
+examples appear when they clarify principles; otherwise, pseudocode is preferred. The goal is to teach ideas that
+transfer between classic Java-based Robocode and Robocode Tank Royale.
 
 ---
 
 ## 📚 Contents Overview
 
 ### Articles (concepts & reference)
+
 - What is Robocode
 - Physics (game mechanics & formulas)
 - Scoring
@@ -42,6 +48,7 @@ Automatically deployed to **GitHub Pages** via **GitHub Actions**. Pushing chang
 - References & Credits
 
 ### Tutorials (guided learning)
+
 - Getting Started
 - My First Bot
 - Beyond the Basics
@@ -51,10 +58,12 @@ Automatically deployed to **GitHub Pages** via **GitHub Actions**. Pushing chang
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 14+ (or newer)
 - npm (or yarn)
 
 ### Local Development
+
 1. Clone
    ```bash
    git clone https://github.com/robocode-dev/robocoding.git
@@ -101,12 +110,14 @@ robocoding/
 │   ├── tutorial/              # Tutorial pages
 │   └── README.md              # Home page (VitePress landing)
 ```
+
 ├── package.json
-├── LICENSE-CODE               # MIT License for code examples/config
-├── LICENSE-DOCS               # CC BY-SA 4.0 for documentation
-├── ATTRIBUTION.md             # Detailed author & contributor credits
-├── NOTICE.md                  # Source & license provenance notes
-└── README.md                  # This file
+├── LICENSE-CODE # MIT License for code examples/config
+├── LICENSE-DOCS # CC BY-SA 4.0 for documentation
+├── ATTRIBUTION.md # Detailed author & contributor credits
+├── NOTICE.md # Source & license provenance notes
+└── README.md # This file
+
 ```
 
 ---
@@ -206,4 +217,3 @@ See `ATTRIBUTION.md` and `NOTICE.md` for detailed credits and licensing provenan
 (Already shown at top; not repeated.)
 
 ---
-

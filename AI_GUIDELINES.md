@@ -40,36 +40,122 @@ Each AI-generated page must:
 
 ---
 
-## 🧠 AI Prompt Template — RoboWiki → Robocoding
+## 🧠 Page Generation Contract
 
-Use this prompt when generating a new page or section:
+When generating a **new concept page** (from a page request or spec), AI
+agents MUST follow this contract.
 
-"""
-You are contributing to *The Book of Robocode*, an educational guide for Robocode and Robocode Tank Royale.
+### 1. Use core reference documents
 
-Your task:
+Treat these root documents as authoritative context:
 
-1. Summarize the given RoboWiki article(s) or notes clearly and factually.
-2. Capture the community consensus, not personal opinions.
-3. Rewrite for clarity and education using short paragraphs, examples, and formulas.
-4. Use pseudocode instead of real code when possible.
-5. Write in an enthusiastic and friendly tone for students and young AI learners — factual, engaging, and concise, with
-   a small hint of humor or personality (no slang, no fluff).
-6. If a topic applies differently to Robocode and Tank Royale, explain both briefly.
-7. Include formulas in LaTeX/KaTeX format.
-8. Attribute original sources in the footer using:  
-   "_Based on RoboWiki content (CC BY-SA 3.0). Rewritten and structured for The Book of Robocode._"
-9. Output in Markdown format suitable for VuePress.
-10. **Use American English spelling and grammar throughout all writing and editing.**
+- `BOOK_STRATEGY.md` – audience, tone, page structure, and
+  math/pseudocode rules.
+- `BOOK_STRUCTURE.md` – complete table of contents (sections, planned
+  pages, and relationships).
+- `AI_GUIDELINES.md` (this file) – detailed AI writing rules and
+  terminology consistency ("bot", "units", etc.).
 
-Follow these writing rules:
+The `/specs` folder (`specs/spec.md`, `specs/page-request-template.md`,
+and `specs/page-spec-detailed.md`) defines how to interpret a human page
+request and map it into a finished page.
 
-- Max 800 words per page.
-- Max 2 formulas or pseudocode blocks per concept.
-- Always define all symbols in formulas.
-- Include a short summary (2–3 lines) at the top.
-- Avoid “I” or personal tone — speak to the reader as a friendly guide.
-  """
+### 2. Audience & tone
+
+Assume:
+
+- Audience: curious teenagers and students (technical schools,
+  universities, and similar) plus people learning how to code who want
+  **something fun to code for**, fans of live-programming games, hobby
+  programmers, and educators.
+- Tone: neutral, friendly, encouraging, clear. No sarcasm, memes, or
+  slang.
+- Voice: no first person ("I", "we"); write as a helpful guide, not as
+  yourself.
+- Complexity: start with intuition and simple examples, then add math or
+  deeper detail.
+- Paragraphs: short, 2–4 sentences max.
+
+These rules expand on the general tone guidance in `BOOK_STRATEGY.md`.
+
+### 3. Content style
+
+- Focus on **concepts, intuition, and reasoning**, not large code dumps.
+- Prefer **pseudocode** over real code; keep it short and readable.
+- Use **1–2 formulas or pseudocode blocks** per page; always define
+  symbols.
+- Use Markdown features: headings, lists, callouts (tip/warning), and
+  tables when helpful.
+- Keep each page roughly **300–800 words** unless the spec clearly
+  allows more (hard cap 800 words unless explicitly overridden).
+- Write all content as **UTF-8** text; emoji characters are allowed when
+  they support the explanation or tone.
+- Wrap text so that each line stays at **120 characters or fewer**.
+
+### 4. Platform & sources
+
+- In this book, "Robocode" usually means **both classic Robocode and
+  Robocode Tank Royale**.
+- When a concept applies only to one platform, be explicit: say
+  **"Classic Robocode"** or **"Robocode Tank Royale"**.
+- **Source separation is critical**:
+  - RoboWiki.net documents **classic Robocode only**.
+  - `robocode-dev.github.io/tank-royale` and its GitHub project pages
+    document **Robocode Tank Royale**.
+- When you adapt or summarize content:
+  - From RoboWiki → treat it as classic Robocode information.
+  - From robocode-dev/GitHub → treat it as Tank Royale information.
+- When possible, explain how a concept maps between classic Robocode and
+  Tank Royale (similarities and key differences).
+
+Follow all licensing and attribution rules from `BOOK_STRATEGY.md` and
+`ATTRIBUTION.md`.
+
+### 5. Page structure & frontmatter
+
+Every page is a **self-contained concept** with VuePress-compatible
+Markdown and MUST begin with frontmatter:
+
+---
+title: "<Title>"
+category: "<Top-level section, e.g., Battlefield Physics>"
+summary: "<1–2 sentence summary for sidebar/SEO.>"
+tags: ["<topic>", "robocode", "tank-royale",
+  "beginner|intermediate|advanced"]
+difficulty: "beginner|intermediate|advanced"
+source: [
+  "RoboWiki - <Article Name> (classic Robocode)",
+  "Robocode Tank Royale Docs - <page or section>"
+]
+---
+
+After frontmatter:
+
+- Include a short 2–3 line overview that matches or expands the summary.
+- Structure the page with 3–6 sections, using headings such as:
+  - "Why This Matters" / "Overview"
+  - "Core Ideas" / "Key Concepts"
+  - "Math / Pseudocode"
+  - "Platform Notes (Classic vs Tank Royale)"
+  - "Tips & Common Mistakes"
+- End every page with an attribution footer like:
+
+  *Based on RoboWiki content (CC BY-SA 3.0) for classic Robocode and the
+  official Robocode Tank Royale documentation. Rewritten and structured
+  for The Book of Robocode.*
+
+### 6. Output contract
+
+When you are asked to generate a page, you will typically receive a
+**page request** created from `specs/page-request-template.md`.
+
+Using that request, the `/specs` files, `BOOK_STRATEGY.md`,
+`BOOK_STRUCTURE.md`, and the rules in this file, you MUST output a
+single, complete Markdown page ready to be saved as
+`docs/articles/<slug>.md` (or another path provided in the request).
+
+Do not include extra explanation outside the Markdown file content,
+unless the user explicitly asks for commentary.
 
 ---
 
@@ -95,7 +181,6 @@ Think of the tone as:
 - Use numbered headers (e.g., `## 1. ...`) only for step-by-step, procedural, or specification-style pages where
   sections are referenced by number or explicit order is important.
 - For narrative, conceptual, or general informational pages, use unnumbered headers.
-- Always follow the rule in PAGE_SPEC_TEMPLATE.md for header numbering.
 
 ---
 
