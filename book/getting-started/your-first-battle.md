@@ -257,8 +257,27 @@ The high‑level goal is the same—bots fight until only one is left—but the 
         - Starting each bot so it connects,
         - Selecting from the **connected bots list**, then launching a match.
 
-<!-- Illustration idea: A split image comparing a classic Robocode battle window on one side and the Tank Royale -->
-<!-- server/arena on the other, both running a simple 1‑on‑1 match. -->
+![Classic vs Tank Royale comparison](../images/classic-vs-tank-royale.png)<br>
+*Classic Robocode (left) vs Robocode Tank Royale (right)*
+
+Pair this split screenshot with the emoji diagram below to keep the contrasts handy:
+
+```mermaid
+flowchart LR
+    hub((⚔️ Classic vs Tank Royale))
+    subgraph classic[�?️ Classic Robocode]
+        c1[🖥️ All-in-one GUI arena]
+        c2[📂 Bots loaded from local directory]
+        c3[▶️ Pick bots and press Start]
+    end
+    subgraph royale[🌐 Tank Royale]
+        r1[🏢 Server + external bot processes]
+        r2[🔌 Bots connect over a network protocol]
+        r3[📋 Launch server, start bots, select connected roster]
+    end
+    hub --> classic
+    hub --> royale
+```
 
 Despite these differences, many **game concepts** are shared:
 
