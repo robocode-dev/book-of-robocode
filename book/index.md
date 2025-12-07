@@ -15,6 +15,10 @@ features:
 footer: Content licensed under CC BY-SA 4.0 | Code licensed under MIT | Built with VuePress
 ---
 
+<div style="text-align:center;">
+  <img src="./images/the-book-of-robocode.png" alt="The Book of Robocode cover illustration" width="300" />
+</div>
+
 > "May your aim be true and your dodges unpredictable." — Adopted Robocoding Motto
 
 **Robocode** is a programming game where you code a robot battle tank to compete against other tanks in a virtual arena. The goal is to write code that makes your tank move, scan for enemies, and fire at opponents autonomously.
@@ -29,19 +33,6 @@ This documentation covers both:
 2. [Follow the Tutorial](./getting-started/your-first-bot) to create your first bot
 3. [Learn the Physics](./articles/physics) to master game mechanics
 4. [Understand Scoring](./articles/scoring) to optimize your strategy
-
-## Battlefield Loop at a Glance
-
-```mermaid
-graph TD
-  Start[Spawn Bot] --> Scan{Scan Result?}
-  Scan -- Enemy Found --> Track[Update Radar Lock]
-  Track --> Fire[Fire Bullet]
-  Fire --> Evade[Execute Movement Plan]
-  Scan -- No Enemy --> Sweep[Rotate Radar]
-  Sweep --> Scan
-  Evade --> Scan
-```
 
 ## Community & Credits
 
@@ -68,5 +59,3 @@ Found an error or want to contribute? Visit our [GitHub repository](https://gith
   }
 }
 </style>
-
-
