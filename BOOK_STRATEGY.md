@@ -23,20 +23,23 @@ It aims to make Robocode approachable to students, educators, hobbyists, and AI 
 
 Core principles:
 
- - Clarity first: short, focused explanations over walls of text.
- - Primarily teen-friendly: explain ideas as if to a curious teenager, then deepen formality and math in advanced sections.
- - Visual and mathematical reasoning preferred over code dumps.
- - Neutral tone, summarizing community consensus.
- - Pseudocode over real code for conceptual teaching.
- - Parallel support for both Robocode and Tank Royale.
- - Attribution to RoboWiki authors and contributors.
- - Educational reuse under CC BY-SA 4.0.
- - Clear separation of sources: RoboWiki for classic Robocode, robocode.dev, and its GitHub pages for Robocode Tank Royale.
+- Clarity first: short, focused explanations over walls of text.
+- Primarily teen-friendly: explain ideas as if to a curious teenager, then deepen formality and math in advanced
+  sections.
+- Visual and mathematical reasoning preferred over code dumps.
+- Neutral tone, summarizing community consensus.
+- Pseudocode over real code for conceptual teaching.
+- Parallel support for both Robocode and Tank Royale.
+- Attribution to RoboWiki authors and contributors.
+- Educational reuse under CC BY-SA 4.0.
+- Clear separation of sources: RoboWiki for classic Robocode, robocode.dev, and its GitHub pages for Robocode Tank
+  Royale.
 
 Difficulty progression:
 
 - Beginner & intermediate chapters assume a teen reader who may be new to programming.
-- Advanced Topics may assume university-level math or prior competitive Robocode experience but still aim to be readable and inspiring.
+- Advanced Topics may assume university-level math or prior competitive Robocode experience but still aim to be readable
+  and inspiring.
 
 ## 🧩 Structure Overview
 
@@ -123,8 +126,8 @@ Rewritten and structured for The Book of Robocode.*
 - Build system: reuse robocode-dev/tank-royale/docs-build
 - Output: GitHub Pages
 - Features: sidebar, search, dark mode, KaTeX, pseudocode highlighting, SVG/Mermaid diagrams.
-- Prefer SVG or Mermaid for new diagrams when practical; PNG or JPEG is acceptable for screenshots, historical photos,
-  and legacy or illustrative artwork.
+- Prefer SVG or Mermaid (including emojis) for new diagrams when practical; PNG or JPEG is acceptable for screenshots,
+  historical photos, and legacy or illustrative artwork.
 
 ## 📜 Page Metadata Template
 
