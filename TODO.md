@@ -1,6 +1,6 @@
 # TODO
 
-- Teammates will take damage when they are hit by your bot (friendly fire).
+# Images (request from AI)
 
 - Consider gradually converting key conceptual diagrams from PNG to SVG or Mermaid where practical:
   - `docs/images/bot-lifecycle.png`
