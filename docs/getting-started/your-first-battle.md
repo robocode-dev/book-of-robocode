@@ -178,7 +178,7 @@ flowchart TD
     end
 
     D1 -->|Start Battle| Arena
-    Arena[🔲 Arena / Battle Start]
+    Arena[Arena / Battle Start]
 ```
 
 Again, ensure there are **at least two bots connected**. A battle with only one participant doesn’t make sense and will
@@ -274,3 +274,6 @@ For more detailed, up‑to‑date instructions and screenshots, you can always r
 
 Your first battle is just the beginning. The real fun comes from iterating: tweak your bot, run a few battles, observe,
 and improve.
+
+*Based on RoboWiki content (CC BY-SA 3.0) for classic Robocode and the official Robocode Tank Royale documentation.
+Rewritten and structured for The Book of Robocode.*

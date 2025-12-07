@@ -111,12 +111,20 @@ y_new = y + v * cos(theta)
 - Attribution in ATTRIBUTION.md
 - Summarize consensus, avoid forum debates.
 
+Every AI-assisted page that adapts RoboWiki or official Tank Royale docs SHOULD end with a short attribution footer, for
+example:
+
+*Based on RoboWiki content (CC BY-SA 3.0) for classic Robocode and the official Robocode Tank Royale documentation.
+Rewritten and structured for The Book of Robocode.*
+
 ## 🏗️ Technical Setup
 
 - Framework: Vue 2 + VuePress 1.x
 - Build system: reuse robocode-dev/tank-royale/docs-build
 - Output: GitHub Pages
 - Features: sidebar, search, dark mode, KaTeX, pseudocode highlighting, SVG/Mermaid diagrams.
+- Prefer SVG or Mermaid for new diagrams when practical; PNG or JPEG is acceptable for screenshots, historical photos,
+  and legacy or illustrative artwork.
 
 ## 📜 Page Metadata Template
 

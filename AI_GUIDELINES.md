@@ -111,7 +111,7 @@ These rules expand on the general tone guidance in `BOOK_STRATEGY.md`.
 Follow all licensing and attribution rules from `BOOK_STRATEGY.md` and
 `ATTRIBUTION.md`.
 
-### 5. Page structure & frontmatter
+### 5. Page structure, frontmatter, and attribution
 
 Every page is a **self-contained concept** with VuePress-compatible
 Markdown and MUST begin with frontmatter:

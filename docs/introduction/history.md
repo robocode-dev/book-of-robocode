@@ -67,3 +67,6 @@ Key features:
 
 <img src="../images/classic-vs-tank-royale.png" alt="Classic vs Tank Royale" width="600" style="max-width:100%;height:auto;" /><br>
 *Classic (UI only) vs. Tank Royale (server-based engine)*
+
+*Based on RoboWiki content (CC BY-SA 3.0) for classic Robocode and the official Robocode Tank Royale documentation.
+Rewritten and structured for The Book of Robocode.*
