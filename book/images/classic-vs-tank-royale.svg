@@ -1,0 +1,54 @@
+<svg version="1.1" width="600" viewBox="0 0 1152 600" xmlns="http://www.w3.org/2000/svg">
+
+    <title id="title">Classic Robocode versus Robocode Tank Royale configuration formats</title>
+    <desc id="desc">Split comparison showing Classic properties file on the left, a Tank Royale JSON file on the right,
+        and a stylized blue tank icon centered between them.
+    </desc>
+    <defs>
+        <style>
+            text { font-family: 'Inter','Segoe UI',sans-serif; fill: #0d2a4a; }
+            .heading { font-size: 50px; font-weight: 700; letter-spacing: 2px; }
+            .label { font-size: 24px; font-weight: 600; }
+            .code { font-family: 'JetBrains Mono','Fira Code',monospace; fill: #142642; font-size: 26px; }
+            .footer { font-size: 22px; font-weight: 600; fill: #142642; }
+            .json { fill: #e8f1fd; }
+            .properties { fill: #fffdf7; }
+        </style>
+    </defs>
+    <rect width="1152" height="600" rx="32" fill="#f6f0dc"/>
+    <line x1="576" x2="576" y1="40" y2="560" stroke="#e0cfa6" stroke-width="6" stroke-linecap="round"/>
+    <text class="heading" x="290" y="60" text-anchor="middle">CLASSIC</text>
+    <text class="heading" x="860" y="60" text-anchor="middle">TANK ROYALE</text>
+    <g transform="translate(50 100)">
+        <path class="properties" d="M60 0h350l52 52v366c0 22-18 40-40 40H60c-22 0-40-18-40-40V40C20 18 38 0 60 0z"
+              stroke="#0d2a4a" stroke-width="6"/>
+        <path d="M410 0v52h52" fill="none" stroke="#0d2a4a" stroke-width="6"/>
+        <g transform="translate(50 80)">
+            <text class="label">robocode.version=1.0</text>
+            <text class="label" y="50">robot.name=MyFirstRobot</text>
+            <text class="label" y="100">robot.classname=sample.MyFirstR...</text>
+            <text class="label" y="150">robot.description=A sample robot...</text>
+            <text class="label" y="200">robot.author.name=Mathew Nelson</text>
+            <text class="label" y="250">...</text>
+        </g>
+        <text class="footer" x="245" y="420" text-anchor="middle">MyFirstRobot.properties</text>
+    </g>
+
+    <g transform="translate(630 100)">
+        <path class="properties" d="M60 0h350l52 52v366c0 22-18 40-40 40H60c-22 0-40-18-40-40V40C20 18 38 0 60 0z"
+              stroke="#0d2a4a" stroke-width="6"/>
+        <path d="M410 0v52h52" fill="none" stroke="#0d2a4a" stroke-width="6"/>
+        <g transform="translate(50 50)">
+            <text class="label">{</text>
+            <text class="label" x="30" y="50">"name": "My First Bot",</text>
+            <text class="label" x="30" y="100">"version": "1.0",</text>
+            <text class="label" x="30" y="150">"authors": [</text>
+            <text class="label" x="60" y="200">"Mathew Nelson",</text>
+            <text class="label" x="60" y="250">"Flemming N. Larsen",</text>
+            <text class="label" x="30" y="300">]</text>
+            <text class="label" x="30" y="350">...</text>
+        </g>
+        <text class="footer" x="245" y="420" text-anchor="middle">MyFirstBot.json</text>
+    </g>
+</svg>
+

@@ -257,7 +257,7 @@ The high‑level goal is the same—bots fight until only one is left—but the 
         - Starting each bot so it connects,
         - Selecting from the **connected bots list**, then launching a match.
 
-![Classic vs Tank Royale comparison](../images/classic-vs-tank-royale.png)<br>
+![Classic vs Tank Royale comparison](../images/classic-vs-tank-royale.svg)<br>
 *Classic Robocode (left) vs Robocode Tank Royale (right)*
 
 Pair this split screenshot with the emoji diagram below to keep the contrasts handy:
@@ -315,3 +315,5 @@ and improve.
 
 *Based on RoboWiki content (CC BY-SA 3.0) for classic Robocode and the official Robocode Tank Royale documentation.
 Rewritten and structured for The Book of Robocode.*
+
+
