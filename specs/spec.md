@@ -67,7 +67,7 @@ Given a filled-in `page-request-template.md`, follow this workflow:
      section.
 
 2. **Frontmatter generation**  
-   Derive VuePress-compatible frontmatter automatically:
+   Derive VitePress-compatible frontmatter automatically:
    - `title` – use `planned title` from the request, or derive a clear title
      from the described topic if not provided.  
    - `category` – top-level section name from `BOOK_STRUCTURE.md`.  

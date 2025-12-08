@@ -122,7 +122,7 @@ Rewritten and structured for The Book of Robocode.*
 
 ## 🏗️ Technical Setup
 
-- Framework: Vue 2 + VuePress 1.x
+- Framework: VitePress
 - Build system: reuse robocode-dev/tank-royale/docs-build
 - Output: GitHub Pages
 - Features: sidebar, search, dark mode, KaTeX, pseudocode highlighting, SVG/Mermaid diagrams.
@@ -171,11 +171,9 @@ Maintain educational tone, short paragraphs, and proper attribution format."
 
 ## 🧱 Deliverables
 
-- /docs/*.md — concept pages.
+- /book/*.md — concept pages.
 - /ATTRIBUTION.md — source credits.
 - /NOTICE.md — acknowledgments.
-- /docs-build/ — VuePress setup from tank-royale.
-- GitHub Pages deployment from main.
 
 ## 🧩 Future Goals
 

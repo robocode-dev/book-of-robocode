@@ -12,7 +12,7 @@ features:
   details: Understand game mechanics with detailed physics explanations and mathematical formulas using KaTeX rendering.
 - title: Complete Documentation
   details: From getting started to advanced techniques - everything you need to become a master Robocoder.
-footer: Content licensed under CC BY-SA 4.0 | Code licensed under MIT | Built with VuePress
+footer: Content licensed under CC BY-SA 4.0 | Code licensed under MIT | Built with VitePress
 ---
 
 <div style="text-align:center;">

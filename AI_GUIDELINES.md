@@ -113,7 +113,7 @@ Follow all licensing and attribution rules from `BOOK_STRATEGY.md` and
 
 ### 5. Page structure, frontmatter, and attribution
 
-Every page is a **self-contained concept** with VuePress-compatible
+Every page is a **self-contained concept** with VitePress-compatible
 Markdown and MUST begin with frontmatter:
 
 ---

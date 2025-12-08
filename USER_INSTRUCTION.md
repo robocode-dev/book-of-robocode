@@ -6,7 +6,7 @@
 4. In your message to the AI, include the filled-in request and add an instruction like:
 
    "Here is a page request for *The Book of Robocode* (see `specs/spec.md`).
-   Please write the page as Markdown suitable for VuePress, including frontmatter."
+   Please write the page as Markdown suitable for VitePress, including frontmatter."
 
 5. Save the AI's output to `book/articles/<slug>.md` (or the path you specified in the request).
 

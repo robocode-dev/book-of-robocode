@@ -13,7 +13,7 @@ generation contract and `/specs` workflow).
 ## 1. Identity
 
 - **Slug / file id**  
-  Short, URL-friendly id for the page, usually matching the VuePress
+  Short, URL-friendly id for the page, usually matching the VitePress
   sidebar entry. Example: `coordinates-and-angles`.
 
 - **Book section (top-level)**  
