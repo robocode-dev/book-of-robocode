@@ -99,12 +99,12 @@ These rules expand on the general tone guidance in `BOOK_STRATEGY.md`.
 - When a concept applies only to one platform, be explicit: say
   **"Classic Robocode"** or **"Robocode Tank Royale"**.
 - **Source separation is critical**:
-  - RoboWiki.net documents **classic Robocode only**.
-  - `robocode-dev.github.io/tank-royale` and its GitHub project pages
-    document **Robocode Tank Royale**.
+    - RoboWiki.net documents **classic Robocode only**.
+    - `robocode-dev.github.io/tank-royale` and its GitHub project pages
+      document **Robocode Tank Royale**.
 - When you adapt or summarize content:
-  - From RoboWiki → treat it as classic Robocode information.
-  - From robocode-dev/GitHub → treat it as Tank Royale information.
+    - From RoboWiki → treat it as classic Robocode information.
+    - From robocode-dev/GitHub → treat it as Tank Royale information.
 - When possible, explain how a concept maps between classic Robocode and
   Tank Royale (similarities and key differences).
 
@@ -121,11 +121,11 @@ title: "<Title>"
 category: "<Top-level section, e.g., Battlefield Physics>"
 summary: "<1–2 sentence summary for sidebar/SEO.>"
 tags: ["<topic>", "robocode", "tank-royale",
-  "beginner|intermediate|advanced"]
+"beginner|intermediate|advanced"]
 difficulty: "beginner|intermediate|advanced"
 source: [
-  "RoboWiki - <Article Name> (classic Robocode)",
-  "Robocode Tank Royale Docs - <page or section>"
+"RoboWiki - <Article Name> (classic Robocode)",
+"Robocode Tank Royale Docs - <page or section>"
 ]
 ---
 
@@ -133,16 +133,19 @@ After frontmatter:
 
 - Include a short 2–3 line overview that matches or expands the summary.
 - Structure the page with 3–6 sections, using headings such as:
-  - "Why This Matters" / "Overview"
-  - "Core Ideas" / "Key Concepts"
-  - "Math / Pseudocode"
-  - "Platform Notes (Classic vs Tank Royale)"
-  - "Tips & Common Mistakes"
+    - "Why This Matters" / "Overview"
+    - "Core Ideas" / "Key Concepts"
+    - "Math / Pseudocode"
+    - "Platform Notes (Classic vs Tank Royale)"
+    - "Tips & Common Mistakes"
 - End every page with an attribution footer like:
 
   *Based on RoboWiki content (CC BY-SA 3.0) for classic Robocode and the
   official Robocode Tank Royale documentation. Rewritten and structured
   for The Book of Robocode.*
+
+  > **Note:** The attribution footer is now handled globally by VitePress configuration. Do **not** add it manually to
+  individual pages.
 
 ### 6. Output contract
 
