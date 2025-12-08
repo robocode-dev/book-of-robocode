@@ -303,7 +303,7 @@ Then, move on to deeper topics in the book:
 - How the **battlefield** works (geometry, coordinates, walls).
 - **Radar and scanning** to find enemies more reliably.
 - **Targeting and movement** strategies to win more battles.
-- **Energy and scoring** to understand why some bots “win” even without many kills.
+- **Energy and scoring** to understand why some bots "win" even without many kills.
 
 For more detailed, up‑to‑date instructions and screenshots, you can always refer to:
 
@@ -312,8 +312,3 @@ For more detailed, up‑to‑date instructions and screenshots, you can always r
 
 Your first battle is just the beginning. The real fun comes from iterating: tweak your bot, run a few battles, observe,
 and improve.
-
-*Based on RoboWiki content (CC BY-SA 3.0) for classic Robocode and the official Robocode Tank Royale documentation.
-Rewritten and structured for The Book of Robocode.*
-
-

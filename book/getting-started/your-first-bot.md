@@ -144,10 +144,7 @@ Your initial milestone is simple and achievable:
 - Explore radar strategies (sweeping vs. locking) for better tracking.
 - Study energy and scoring to make smarter firepower decisions.
 
-When you’re ready for platform-specific details and code, return to:
+When you're ready for platform-specific details and code, return to:
 
 - Classic Robocode: https://robowiki.net/wiki/Robocode/My_First_Robot
 - Robocode Tank Royale: https://robocode.dev/tutorial/my-first-bot.html
-
-*Based on RoboWiki content (CC BY-SA 3.0) for classic Robocode and the official Robocode Tank Royale documentation.
-Rewritten and structured for The Book of Robocode.*

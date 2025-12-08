@@ -261,7 +261,11 @@ export default withMermaid(defineConfig({
     lastUpdated: true,
     socialLinks: [
       { icon: 'github', link: 'https://github.com/robocode-dev/robocode' }
-    ]
+    ],
+    footer: {
+      message: 'Based on RoboWiki content (CC BY-SA 3.0) for classic Robocode and the official Robocode Tank Royale documentation.',
+      copyright: 'Rewritten and structured for The Book of Robocode.'
+    }
   },
   vite: {
     server: {

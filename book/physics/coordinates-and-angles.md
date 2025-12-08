@@ -81,14 +81,3 @@ Mistakes in understanding the system can lead to bots moving or firing in unexpe
 This page is foundational for understanding movement, targeting, and bullet physics. For more on how angles and
 coordinates are used in bot movement and targeting, see the upcoming pages on Bullet Physics and Targeting Systems,
 as well as *Movement Constraints & Bot Physics* for the exact movement and turning formulas.
-
----
-
-**Audience:** New players with basic programming knowledge
-**Emphasis:** Conceptual understanding, historical context
-**Applies to:** Classic Robocode, Robocode Tank Royale
-
-*Always use "bot" and "units" for consistency. See Terminology Consistency guidelines.*
-
-*Based on RoboWiki content (CC BY-SA 3.0) for classic Robocode and the official Robocode Tank Royale documentation.
-Rewritten and structured for The Book of Robocode.*

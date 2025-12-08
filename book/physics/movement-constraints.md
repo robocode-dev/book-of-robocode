@@ -321,6 +321,3 @@ own movement systems.
 
 This page focuses on bot movement, turning, and radar physics. For bullet speed, bullet travel time, and collision
 rules, see the **Bullet Physics** page in this section.
-
-*Based on RoboWiki content (CC BY-SA 3.0) for classic Robocode and the official Robocode Tank Royale documentation.
-Rewritten and structured for The Book of Robocode.*

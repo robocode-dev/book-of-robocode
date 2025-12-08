@@ -81,6 +81,3 @@ flowchart LR
     hub --> classic
     hub --> royale
 ```
-
-*Based on RoboWiki content (CC BY-SA 3.0) for classic Robocode and the official Robocode Tank Royale documentation.
-Rewritten and structured for The Book of Robocode.*
