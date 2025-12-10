@@ -45,6 +45,47 @@
             .tank-radar {
             transform: rotate(var(--radar-rotation, 127deg));
             }
+            svg {
+            --tank-body-color: #019;
+            --tank-turret-color: #06c;
+            --tank-radar-color: #aaf;
+            --left-belt-track-1: inline;
+            --left-belt-track-2: none;
+            --left-belt-track-3: none;
+            --right-belt-track-1: none;
+            --right-belt-track-2: inline;
+            --right-belt-track-3: none;
+            }
+            .tank-body-fill {
+            fill: var(--tank-body-color, #019);
+            }
+            .tank-turret-fill {
+            fill: var(--tank-turret-color, #06c);
+            }
+            .tank-radar-fill {
+            fill: var(--tank-radar-color, #aaf);
+            }
+            .left-belt, .right-belt {
+            display: none;
+            }
+            .left-belt.track1 {
+            display: var(--left-belt-track-1, none);
+            }
+            .left-belt.track2 {
+            display: var(--left-belt-track-2, none);
+            }
+            .left-belt.track3 {
+            display: var(--left-belt-track-3, none);
+            }
+            .right-belt.track1 {
+            display: var(--right-belt-track-1, none);
+            }
+            .right-belt.track2 {
+            display: var(--right-belt-track-2, none);
+            }
+            .right-belt.track3 {
+            display: var(--right-belt-track-3, none);
+            }
         </style>
 
         <linearGradient id="cannon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -108,17 +149,21 @@
         </symbol>
 
         <symbol id="body">
-            <use href="#track1" x="150" y="100"/>
-            <use href="#track1" x="515" y="100"/>
+            <use href="#track1" x="150" y="100" class="left-belt track1"/>
+            <use href="#track2" x="150" y="100" class="left-belt track2"/>
+            <use href="#track3" x="150" y="100" class="left-belt track3"/>
+            <use href="#track1" x="515" y="100" class="right-belt track1"/>
+            <use href="#track2" x="515" y="100" class="right-belt track2"/>
+            <use href="#track3" x="515" y="100" class="right-belt track3"/>
 
-            <rect x="240" y="190" width="320" height="420" fill="#019" stroke="black" stroke-width="20" rx="10"
-                  ry="10"/>
-            <rect x="250" y="520" width="300" height="80" fill="black" opacity="0.5"/>
+            <rect class="tank-body-fill" x="240" y="190" width="320" height="420" stroke="black" stroke-width="20"
+                  rx="10" ry="10"/>
+            <rect x="250" y="520" width="300" height="80" opacity="0.5"/>
         </symbol>
 
         <symbol id="turret">
-            <rect x="300" y="320" width="200" height="200" fill="#06C" stroke="black" stroke-width="20" rx="10"
-                  ry="10"/>
+            <rect class="tank-turret-fill" x="300" y="320" width="200" height="200" stroke="black" stroke-width="20"
+                  rx="10" ry="10"/>
             <rect x="310" y="460" width="180" height="50" fill="black" opacity="0.5"/>
 
             <rect x="360" y="240" width="80" height="80" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
@@ -126,8 +171,8 @@
         </symbol>
 
         <symbol id="radar">
-            <circle cx="400" cy="400" r="30" fill="#AAF" stroke="black" stroke-width="20"/>
-            <path d="M 290 420 q 110 100 220 0 z" fill="#AAF" stroke="black" stroke-width="20"/>
+            <circle class="tank-radar-fill" cx="400" cy="400" r="30" stroke="black" stroke-width="20"/>
+            <path class="tank-radar-fill" d="M 290 420 q 110 100 220 0 z" stroke="black" stroke-width="20"/>
         </symbol>
 
         <symbol id="tank">

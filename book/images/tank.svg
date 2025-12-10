@@ -21,6 +21,12 @@
             --tank-body-color: #019;
             --tank-turret-color: #06c;
             --tank-radar-color: #aaf;
+            --left-belt-track-1: inline;
+            --left-belt-track-2: none;
+            --left-belt-track-3: none;
+            --right-belt-track-1: none;
+            --right-belt-track-2: inline;
+            --right-belt-track-3: none;
             }
             .tank-body-fill {
             fill: var(--tank-body-color, #019);
@@ -30,6 +36,27 @@
             }
             .tank-radar-fill {
             fill: var(--tank-radar-color, #aaf);
+            }
+            .left-belt, .right-belt {
+            display: none;
+            }
+            .left-belt.track1 {
+            display: var(--left-belt-track-1, none);
+            }
+            .left-belt.track2 {
+            display: var(--left-belt-track-2, none);
+            }
+            .left-belt.track3 {
+            display: var(--left-belt-track-3, none);
+            }
+            .right-belt.track1 {
+            display: var(--right-belt-track-1, none);
+            }
+            .right-belt.track2 {
+            display: var(--right-belt-track-2, none);
+            }
+            .right-belt.track3 {
+            display: var(--right-belt-track-3, none);
             }
         </style>
 
@@ -94,8 +121,12 @@
         </symbol>
 
         <symbol id="body">
-            <use href="#track1" x="150" y="100"/>
-            <use href="#track1" x="515" y="100"/>
+            <use href="#track1" x="150" y="100" class="left-belt track1"/>
+            <use href="#track2" x="150" y="100" class="left-belt track2"/>
+            <use href="#track3" x="150" y="100" class="left-belt track3"/>
+            <use href="#track1" x="515" y="100" class="right-belt track1"/>
+            <use href="#track2" x="515" y="100" class="right-belt track2"/>
+            <use href="#track3" x="515" y="100" class="right-belt track3"/>
 
             <rect class="tank-body-fill" x="240" y="190" width="320" height="420" stroke="black" stroke-width="20"
                   rx="10" ry="10"/>
