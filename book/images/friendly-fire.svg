@@ -43,22 +43,18 @@
             transform: rotate(var(--radar-rotation, 127deg));
             }
             svg {
-            --tank-body-color: #001199;
-            --tank-body-accent-color: #000d80;
-            --tank-turret-color: #0066cc;
-            --tank-radar-color: #aaaaff;
+            --tank-body-color: #019;
+            --tank-turret-color: #06c;
+            --tank-radar-color: #aaf;
             }
             .tank-body-fill {
-            fill: var(--tank-body-color, #001199);
-            }
-            .tank-body-accent {
-            fill: var(--tank-body-accent-color, #000d80);
+            fill: var(--tank-body-color, #019);
             }
             .tank-turret-fill {
-            fill: var(--tank-turret-color, #0066cc);
+            fill: var(--tank-turret-color, #06c);
             }
             .tank-radar-fill {
-            fill: var(--tank-radar-color, #aaaaff);
+            fill: var(--tank-radar-color, #aaf);
             }
         </style>
 
@@ -128,7 +124,7 @@
 
             <rect class="tank-body-fill" x="240" y="190" width="320" height="420" stroke="black" stroke-width="20"
                   rx="10" ry="10"/>
-            <rect class="tank-body-accent" x="250" y="520" width="300" height="80" opacity="0.85"/>
+            <rect x="250" y="520" width="300" height="80" opacity="0.5"/>
         </symbol>
 
         <symbol id="turret">

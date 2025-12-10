@@ -1,39 +1,35 @@
 <svg version="1.1" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
 
     <use href="#tank"
-         style="--tank-body-color:#c00; --tank-body-accent-color:#7a0000; --tank-turret-color:#c00; --tank-radar-color:#ff6666; --tank-radar-accent-color:#9e1a1a"/>
+         style="--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa"/>
 
     <defs>
         <style>
             .tank-body, .tank-turret, .tank-radar {
-                transform-origin: 400px 400px;
+            transform-origin: 400px 400px;
             }
             .tank-body {
-                transform: rotate(var(--body-rotation, 10deg));
+            transform: rotate(var(--body-rotation, 10deg));
             }
             .tank-turret {
-                transform: rotate(var(--turret-rotation, 80deg));
+            transform: rotate(var(--turret-rotation, 80deg));
             }
             .tank-radar {
-                transform: rotate(var(--radar-rotation, 127deg));
+            transform: rotate(var(--radar-rotation, 127deg));
             }
             svg {
-                --tank-body-color: #001199;
-                --tank-body-accent-color: #000d80;
-                --tank-turret-color: #0066cc;
-                --tank-radar-color: #aaaaff;
+            --tank-body-color: #019;
+            --tank-turret-color: #06c;
+            --tank-radar-color: #aaf;
             }
             .tank-body-fill {
-                fill: var(--tank-body-color, #001199);
-            }
-            .tank-body-accent {
-                fill: var(--tank-body-accent-color, #000d80);
+            fill: var(--tank-body-color, #019);
             }
             .tank-turret-fill {
-                fill: var(--tank-turret-color, #0066cc);
+            fill: var(--tank-turret-color, #06c);
             }
             .tank-radar-fill {
-                fill: var(--tank-radar-color, #aaaaff);
+            fill: var(--tank-radar-color, #aaf);
             }
         </style>
 
@@ -103,7 +99,7 @@
 
             <rect class="tank-body-fill" x="240" y="190" width="320" height="420" stroke="black" stroke-width="20"
                   rx="10" ry="10"/>
-            <rect class="tank-body-accent" x="250" y="520" width="300" height="80" opacity="0.85"/>
+            <rect x="250" y="520" width="300" height="80" opacity="0.5"/>
         </symbol>
 
         <symbol id="turret">
