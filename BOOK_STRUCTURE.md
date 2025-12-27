@@ -6,19 +6,20 @@
 ├─ Introduction
 │  ├─ What is Robocode & How to Use This Book
 │  └─ A Short History of Robocode
-
+│
 ├─ Getting Started
 │  ├─ Your First Bot (Guided Tutorial)
 │  ├─ Bot Anatomy & The Bot API (Beginner Level)
 │  └─ Your First Battle
-
+│
 ├─ Battlefield Physics
 │  ├─ Coordinate Systems & Angles
 │  ├─ Movement Constraints & Bot Physics
 │  ├─ Bullet Travel & Bullet Physics
+│  ├─ Gun Heat and Cooling
 │  ├─ Wall Collisions
-│  └─ Gun Heat, Cooling & Scoring Basics
-
+|  └─ Scoring Basics
+│
 ├─ Radar & Scanning
 │  ├─ Radar Basics
 │  ├─ One-on-One Radar
@@ -29,7 +30,7 @@
 │     ├─ Spinning & Corner Arc
 │     ├─ Oldest Scanned
 │     └─ Gun Heat Lock
-
+│
 ├─ Targeting Systems
 │  ├─ Simple Targeting
 │  │  ├─ Head-On Targeting
@@ -56,7 +57,7 @@
 │  └─ Targeting Tactics
 │     ├─ Fire Power & Timing Decisions
 │     └─ Saving Gun Data
-
+│
 ├─ Movement & Evasion
 │  ├─ Basic Movement
 │  │  ├─ Movement Fundamentals & GoTo
@@ -80,36 +81,36 @@
 │     ├─ Pattern & Enemy Dodging Movement
 │     ├─ Ramming & Mirror Movement
 │     └─ Movement Analysis
-
+│
 ├─ Energy & Scoring
 │  ├─ Energy as a Resource
 │  ├─ Bullet Power Selection Strategy
 │  ├─ Scoring Systems & Battle Types
 │  └─ Energy Management in 1v1 and Melee
-
+│
 ├─ Team Strategies
 │  ├─ Team Basics
 │  ├─ Twin Duel Strategy Guide
 │  ├─ Communication & Coordination
 │  └─ Team Roles & Formations
-
+│
 ├─ Melee Combat
 │  ├─ Melee Strategy
 │  ├─ Melee-Specific Targeting
 │  ├─ Melee Movement Tactics
 │  └─ Staying Alive in Chaos
-
+│
 ├─ Advanced Topics
 │  ├─ Multiple Choice & BestPSpace
 │  ├─ Targeting Matrix
 │  ├─ Testing & Analysis Tools
 │  └─ Optimization Techniques
-
+│
 ├─ Robocode Tank Royale Differences
 │  ├─ API Changes
 │  ├─ Physics Differences
 │  └─ Migration Guide
-
+│
 ├─ Appendices
 │  ├─ Glossary
 │  ├─ Quick Reference (Formulas)
