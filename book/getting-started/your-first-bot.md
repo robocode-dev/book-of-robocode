@@ -28,11 +28,11 @@ the shared lifecycle every bot follows.
 
 ```mermaid
 flowchart TB
-    init([⚙️ Initialize])
-scan([📡 Scan])
-move([➡️ Move])
-aim([🎯 Aim])
-fire([💥 Fire])
+    init(["⚙️ Initialize"])
+scan(["📡 Scan"])
+move(["➡️ Move"])
+aim(["🎯 Aim"])
+fire(["💥 Fire"])
 
 init --> scan
 scan --> move --> aim --> fire -->|"🔁 Repeat"| scan
@@ -88,12 +88,7 @@ responses.
 - Repeat
     - Issue movement, radar, and gun commands, then proceed to the next turn.
 
-<!-- TODO illustration: Visualize one heartbeat turn with sense-plan-act steps. -->
-<!-- - Show a sequence of small panels labeled Scan, Move, Aim, Fire. -->
-<!-- - In each panel, draw the same bot doing that action on a simple arena. -->
-<!-- - Use arrows between panels to show the order within a single turn. -->
-<!-- - Include tiny icons (radar waves, wheels, crosshair, bullet) over each panel. -->
-<!-- - Choose a comic-strip style layout that feels light and fun. -->
+<img src="../images/heartbeat-turn.png" alt="Comic-strip style illustration showing a robot performing the four main actions in a turn: scanning, moving, aiming, and firing." width="400" style="max-width:100%;height:auto;" /><br>
 
 ## Event-driven reactions
 
@@ -119,8 +114,30 @@ best practices can evolve.
 
 ### Bot configuration: Classic (.properties) vs. Tank Royale JSON
 
-<img src="../images/my-first-bot-config.png" alt="Side-by-side comparison: Classic Robocode `MyFirstRobot.properties` (left) and Tank Royale `my-first-bot.json` (right). The image shows a file icon for each format with a small bot illustration above, and a short key/value snippet under each file." width="400" style="max-width:100%;height:auto;" /><br>
-*Figure: Classic properties file (left) vs Tank Royale JSON file (right) — both describe the same bot.*
+```mermaid
+flowchart LR
+  %% Two-panel comparison: Classic .properties (left) vs Tank Royale JSON (right)
+  subgraph Classic["Classic Robocode"]
+    direction TB
+    c_file(["📄 MyFirstRobot.properties"])
+    c_snip["robot.name: MyFirstRobot<br>robot.author.name: You<br>robot.description: A simple bot"]
+    c_file --> c_snip
+  end
+
+  subgraph Tank["Tank Royale"]
+    direction TB
+    t_file(["📄 MyFirstBot.json"])
+    t_snip["{''name'': ''My First Bot'',<br>''author'': ''you'',<br>''description'':&nbsp;''A&nbsp;simple&nbsp;bot''}"]
+    t_file --> t_snip
+  end
+
+  Classic <--->|"same bot metadata"| Tank
+
+  classDef fileStyle color:black,fill:#f6f9ff,stroke:#2b6cb0,stroke-width:1px;
+  classDef jsonStyle color:black,fill:#fff7f7,stroke:#e74c3c,stroke-width:1px;
+  class c_file,c_snip fileStyle
+  class t_file,t_snip jsonStyle
+```
 
 ## What success looks like for your first bot
 
@@ -131,12 +148,7 @@ Your initial milestone is simple and achievable:
 - Movement follows a basic pattern (not stationary!).
 - The gun turns toward detected enemies and fires when ready.
 
-<!-- TODO illustration: Show a simple "first match" scene that meets the success checklist. -->
-<!-- - Draw a small arena with the player’s colorful bot clearly visible. -->
-<!-- - Show the bot moving, with motion lines, and the radar sweeping in a visible arc. -->
-<!-- - Indicate the gun turning toward an enemy with a bullet in flight. -->
-<!-- - Add small checkmark icons near labels for Color, Radar, Movement, and Firing. -->
-<!-- - Keep the enemy bot simple so the focus stays on the player’s bot. -->
+*Sequence: scan, move (motion stripes), aim, fire — then repeat.*
 
 ## Next steps
 
