@@ -30,7 +30,7 @@ generation contract and `/specs` workflow).
   `beginner` | `intermediate` | `advanced`.
 
 - **Output path** (optional)  
-  Default is `docs/articles/<slug>.md`. Override only if needed.
+  Default is `book/introduction/<slug>.md`. Override only if needed.
 
 ---
 
@@ -69,7 +69,7 @@ Write a few short bullet points in your own words.
   Topics that belong on other pages or would distract beginners.
 
 - **Suggested illustrations** (optional)  
-  Describe any images that would help, and where they might go.
+  Describe any images that would help, and where they might go. Use: <!-- TODO: Illustration -->
 
 ---
 

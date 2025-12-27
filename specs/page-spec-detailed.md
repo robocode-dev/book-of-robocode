@@ -19,9 +19,14 @@ From the page request:
 - **Book section (top-level)** → maps to frontmatter `category`.  
   Use the exact spelling from `BOOK_STRUCTURE.md`.
 
-- **Planned title** → maps to frontmatter `title`.  
-  If missing, derive a concise, descriptive title from the goal and
-  required topics.
+- **Planned title** → maps to frontmatter `title`.
+  - If **Planned title** is provided in the request, you MUST use it for the page title.
+    - Do not rewrite it, do not substitute synonyms, and do not "improve" it.
+    - Only fix obvious typos if the request explicitly asks you to.
+  - Only if **Planned title** is blank or missing, derive a concise, descriptive title from the goal and required topics.
+  - The chosen title MUST appear in two places:
+    1) frontmatter as `title: "..."`
+    2) as the first visible H1 heading in the page body: `# Title of the page`
 
 - **Difficulty** → maps directly to the frontmatter `difficulty` field.  
   Valid values: `beginner`, `intermediate`, `advanced`.
