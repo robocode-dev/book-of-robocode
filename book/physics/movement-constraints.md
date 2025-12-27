@@ -12,6 +12,8 @@ source: [
 ]
 ---
 
+# Movement Constraints & Bot Physics
+
 This page summarizes the movement and turning rules that define how a bot can move, turn, and scan in both classic
 Robocode and Robocode Tank Royale. It is meant as a compact reference you can keep open while coding.
 

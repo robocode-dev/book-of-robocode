@@ -83,8 +83,8 @@ export default withMermaid(defineConfig({
             { text: 'Coordinates and Angles', link: '/physics/coordinates-and-angles' },
             { text: 'Movement Constraints', link: '/physics/movement-constraints' },
             { text: 'Bullet Physics', link: '/physics/bullet-physics' },
-            { text: 'Wall Collisions', link: '/physics/wall-collisions' },
-            { text: 'Gun Heat & Cooling', link: '/physics/gun-heat-cooling' }
+            { text: 'Gun Heat & Cooling', link: '/physics/gun-heat-and-cooling' },
+            { text: 'Wall Collisions', link: '/physics/wall-collisions' }
           ]
         }
       ],
