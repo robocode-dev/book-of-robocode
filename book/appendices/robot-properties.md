@@ -21,12 +21,20 @@ A robot properties file is a plain text file (with the `.properties` extension) 
 engine. It includes information like the bot's name, author, description, and technical details. Robocode uses this file
 to display information in the bot selection menu and to load your bot correctly.
 
-<!-- TODO illustration: Show the relationship between a bot and its properties file. -->
-<!-- - Draw a bot on the left and a document icon labeled .properties on the right. -->
-<!-- - Connect them with an arrow labeled "Metadata and settings". -->
-<!-- - Include small icons on the document for name, author, and description fields. -->
-<!-- - Show the document plugged into a simple "Robocode" box representing the engine. -->
-<!-- - Keep the shapes large and simple so labels are easy to read. -->
+```mermaid
+flowchart LR
+  Bot["🤖 MyFirstRobot<br/>(bot)"]
+  Props["🔧 MyFirstRobot.properties<br><br>robot.name: MyFirstRobot<br>robot.classname:&nbsp;sample.MyFirstRobot<br>robot.author.name: Mathew Nelson"]
+  Engine["⚙️ Robocode<br/>(engine)"]
+  Rule["⚠️ Filename must match<br>class name<br>(case-sensitive)"]
+
+  Bot -->|metadata| Props
+  Props -->|loaded by Robocode| Engine
+  Props -.->|must match| Rule
+
+  classDef warning fill:#f99,color:black,stroke:red,stroke-width:1px;
+  class Rule warning;
+```
 
 ## Example: My First Robot properties file
 
@@ -43,12 +51,27 @@ robot.classname=sample.MyFirstRobot
 robot.name=MyFirstRobot
 ```
 
-<!-- TODO illustration: Visualize the example properties file as a filled-in form. -->
-<!-- - Draw a page with labeled lines for robot.name, robot.classname, and robot.author.name. -->
-<!-- - Fill the lines with simplified versions of the MyFirstRobot example values. -->
-<!-- - Highlight the robot.description line with a small note "can use \n for new lines". -->
-<!-- - Add a small icon of the MyFirstRobot bot next to the form. -->
-<!-- - Use a clean, notebook-like style that feels familiar to students. -->
+```mermaid
+flowchart LR
+  subgraph Form["Properties Form"]
+    direction TB
+    name["robot.name:<br>MyFirstRobot"]
+    classname["robot.classname:<br>sample.MyFirstRobot"]
+    author["robot.author.name:<br>Mathew Nelson"]
+    desc["robot.description:<br>A sample bot<br>Moves in a seesaw motion<br>Spins the gun at each end"]
+  end
+
+  icon(("🤖<br>MyFirstRobot"))
+  icon --- Form
+
+  note["can use `#92;n` for new lines"]
+  desc -.-> note
+
+  class Form notebook
+  class note note
+
+  classDef note color:black,fill:#fff7c0,stroke:#f2b400,stroke-width:1.5px;
+```
 
 ## Naming convention: Match the class name
 
@@ -56,12 +79,37 @@ The filename of your properties file (excluding the `.properties` extension) **m
 For example, if your bot class is `MyFirstRobot`, the properties file should be named `MyFirstRobot.properties`. This is
 required for Robocode to recognize and load your bot correctly.
 
-<!-- TODO illustration: Clarify the filename and class name matching rule. -->
-<!-- - Show two side-by-side labels: Class name: MyFirstRobot and File: MyFirstRobot.properties. -->
-<!-- - Draw a bold checkmark connecting the matching pair. -->
-<!-- - Below, show a crossed-out example where the filename does not match the class name. -->
-<!-- - Add a small warning icon with text "Must match exactly, including capitals". -->
-<!-- - Use clear typography so students can see the difference at a glance. -->
+```mermaid
+flowchart LR
+  subgraph Good["Correct&nbsp;—&nbsp;filename&nbsp;matches&nbsp;class&nbsp;name"]
+    direction TB
+    A[/"Class name:<br/>MyFirstRobot"/]
+    B[/"File name:<br/>MyFirstRobot.properties"/]
+    C(["✅ Match"])
+    A --> B
+    B --> C
+  end
+
+  subgraph Bad["Incorrect&nbsp;—&nbsp;filename&nbsp;does&nbsp;not&nbsp;match&nbsp;class&nbsp;name"]
+    direction TB
+    D[/"Class name:<br/>MyFirstRobot"/]
+    E[/"File name:<br/>myfirstrobot.properties"/]
+    F(["❌ Mismatch"])
+    D --> E
+    E --> F
+  end
+
+  W(["⚠️ Must match exactly, including capital letters"])
+  C -.-> W
+  F -.-> W
+
+  classDef correct color:black,fill:#e6ffea,stroke:#2ecc71,stroke-width:1px;
+  classDef incorrect color:black,fill:#ffecec,stroke:#e74c3c,stroke-width:1px;
+  classDef warning color:black,fill:#fff7c0,stroke:#f2b400,stroke-width:1px;
+  class A,B correct
+  class D,E incorrect
+  class W warning
+```
 
 ## What does a properties file contain?
 
