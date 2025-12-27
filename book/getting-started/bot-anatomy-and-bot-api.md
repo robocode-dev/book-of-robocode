@@ -63,7 +63,7 @@ Every Robocode-style bot is made of three main moving parts plus an energy pool:
 - **Radar** – the rotating scanner that detects enemies.
 - **Energy** – a number that acts as both health and ammunition.
 
-![Bot parts labeled: Body, Gun, Radar, Energy](../images/bot-parts.svg)<br>
+<img src="../images/bot-parts.svg" alt="Bot parts labeled: Body, Gun, Radar, Energy" width="150"/><br>
 *Main parts of a bot: body, gun, radar, and energy pool.*
 
 Each moving part has their own **headings** (angles) and sometimes their own turn rate limits.
@@ -426,7 +426,8 @@ disabled bot can **wake back up** and start acting again.
 A bot is considered **destroyed** only when its energy goes **below 0**. At that point it is removed from the round and
 cannot come back.
 
-<!-- Should we have a bot this is disabled here -->
+<img src="../images/disabled-bot.svg" alt="Disabled bot with zero energy" width="175"/><br>
+*Disabled bot with zero energy — it cannot move or act until it regains energy.*
 
 ---
 

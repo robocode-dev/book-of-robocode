@@ -1,7 +1,7 @@
-<svg version="1.1" width="188" height="100" viewBox="0 0 1504 848" xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" width="225" height="106" viewBox="0 0 1800 848" xmlns="http://www.w3.org/2000/svg">
 
     <style>
-        .text { font: 100px sans-serif; }
+        .text { font: 125px sans-serif; }
     </style>
 
     <use href="#tank" transform="translate(-100, 150)"/>
@@ -164,7 +164,7 @@
             </marker>
 
             <line x1="300" y1="605" x2="380" y2="220" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
-            <text x="0" y="130" class="text" fill="chocolate">Body Heading (80°)</text>
+            <text x="0" y="145" class="text" fill="chocolate">Body Heading (80°)</text>
 
             <line x1="300" y1="600" x2="800" y2="512" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
             <text x="580" y="700" class="text" fill="chocolate">Gun Heading (10°)</text>

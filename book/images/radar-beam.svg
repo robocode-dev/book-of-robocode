@@ -1,7 +1,7 @@
-<svg version="1.1" width="400" height="78" viewBox="0 0 4000 780" xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" width="500" height="98" viewBox="0 0 4000 780" xmlns="http://www.w3.org/2000/svg">
 
     <style>
-        .text { font: 100px sans-serif; }
+        .text { font: 125px sans-serif; }
     </style>
 
     <use href="#tank" transform="translate(0,100)"/>
@@ -173,7 +173,7 @@
             </marker>
             <line x1="400" y1="700" x2="3000" y2="295" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
 
-            <text x="800" y="690" class="text" fill="chocolate" transform="rotate(-9)">Previous and current Heading (beam)</text>
+            <text x="650" y="690" class="text" fill="chocolate" transform="rotate(-9)">Previous + current Heading (beam)</text>
         </symbol>
     </defs>
 </svg>

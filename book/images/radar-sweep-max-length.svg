@@ -1,7 +1,7 @@
-<svg version="1.1" width="550" height="120" viewBox="0 0 5500 1200" xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" width="688" height="150" viewBox="0 0 5500 1200" xmlns="http://www.w3.org/2000/svg">
 
     <style>
-        .text { font: 100px sans-serif; }
+        .text { font: 140px sans-serif; }
     </style>
 
     <use href="#tank" transform="translate(0,100)"/>
@@ -193,9 +193,9 @@
             <line x1="400" y1="500" x2="5000" y2="1105" stroke="chocolate" stroke-width="10" marker-end="url(#arrow-head-2)"/>
 
             <text x="1200" y="490" class="text" fill="chocolate" transform="rotate(-5)">Current Heading</text>
-            <text x="1300" y="555" class="text" fill="chocolate" transform="rotate(7)">Previous Heading</text>
+            <text x="1300" y="600" class="text" fill="chocolate" transform="rotate(7)">Previous Heading</text>
 
-            <text x="3600" y="490" class="text" fill="chocolate" transform="rotate(-5)">◄ scan length = 1200 units ►</text>
+            <text x="2800" y="490" class="text" fill="chocolate" transform="rotate(-5)">◄ scan length = 1200 units ►</text>
         </symbol>
     </defs>
 </svg>
