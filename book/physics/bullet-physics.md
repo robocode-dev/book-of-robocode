@@ -35,14 +35,13 @@ xychart-beta
     title "Energy over time across key states (full → firing → low → disabled → dead)"
     x-axis ["1. Full 🔋", "2. 💥 Firing 🔋", "3. Low Energy🪫", "4. Disabled 🚫", "5. Dead 💀"]
     y-axis -5 --> 100
-
-bar [100, 97, 15, 0, -2]
-bar [100, 100, -10, -10, -10]
-bar [100, 97.2, -10, -10, -10]
-bar [-10, -10, 15, -10, -10]
-bar [-10, -10, -10, 0, -10]
-bar [-10, -10, -10, -10, -2]
-line [0, 0, 0, 0, 0]
+    bar [100, 97, 15, 0, -2]
+    bar [100, 100, -10, -10, -10]
+    bar [100, 97.2, -10, -10, -10]
+    bar [-10, -10, 15, -10, -10]
+    bar [-10, -10, -10, 0, -10]
+    bar [-10, -10, -10, -10, -2]
+    line [0, 0, 0, 0, 0]
 ```
 
 *Diagram: Bot energy across important states: full → firing → low → disabled → dead*
@@ -111,10 +110,9 @@ timeline
 
 ### Bullet speed formula
 
-<!-- ILLUSTRATION: Bullet Trajectory & Speed Comparison -->
-> **Illustration marker:** Visualize bullet paths for different powers. Show a bot firing two bullets: one high-power (
-> slow, short arrow) and one low-power (fast, long arrow) reaching targets at different times. Use arrows of varying
-> lengths and colors to represent speed and travel time. This helps clarify the tradeoff between power and speed.
+<img src="../images/light-vs-heavy-bullet.svg" alt="Bullet Trajectory & Speed Comparison" width="300"/><br>
+*Illustration: Two bullets fired by a bot — a high-power bullet (slower, shown in red/orange) and a low-power bullet
+(faster, shown in green/orange) — demonstrating their different trajectories and speeds.*
 
 Classic Robocode bullet speed:
 
