@@ -72,6 +72,7 @@ export default withMermaid(defineConfig({
           items: [
             { text: 'Your First Bot', link: '/getting-started/your-first-bot' },
             { text: 'Bot Anatomy and API', link: '/getting-started/bot-anatomy-and-bot-api' },
+            { text: 'Robot Properties File', link: '/getting-started/robot-properties-file' },
             { text: 'Your First Battle', link: '/getting-started/your-first-battle' }
           ]
         }

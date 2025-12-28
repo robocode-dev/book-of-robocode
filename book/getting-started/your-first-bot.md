@@ -105,7 +105,7 @@ the next turn (e.g., last known enemy position).
 
 - Classic Robocode typically uses a properties (`.properties`) file to define the bot. The filename usually must match
   your bot’s class name. See the classic tutorial for exact fields and
-  placement: [Robot properties](../appendices/robot-properties.md)
+  placement: [Robot properties](robot-properties-files.md)
 - Robocode Tank Royale uses a JSON configuration file for bot metadata/settings. See the Tank Royale tutorial for the
   current schema and placement: https://robocode.dev/tutorial/my-first-bot.html
 
