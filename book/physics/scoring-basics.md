@@ -67,7 +67,7 @@ Legend:
 
 ## Where points come from (high-level)
 
-The exact formulas differ by platform and ruleset, but the categories are similar:
+The categories are similar across all Robocode variants:
 
 - **Bullet damage points**: gained when bullets hit and deal damage.
 - **Kill / last-hit bonus**: gained when a bot delivers the final damage that kills an opponent.
@@ -115,9 +115,8 @@ This page focuses on *how to think about scoring* rather than memorizing every c
 - **Classic Robocode**: scoring is traditionally described in terms of damage points plus bonuses (e.g., for kills and
   survival). The RoboWiki page breaks down the classic categories and formulas.
 - **Robocode Tank Royale**: scoring is documented explicitly in the Tank Royale scoring page. The categories are
-  similar,
-  but details and naming may differ.
-
+  similar, but details and naming may differ.
+  
 If a bot's goal is "win more rounds," it should be written to maximize score under the platform's rules:
 
 - Prefer behavior that *converts energy into hits* (good targeting and selection of when to fire).
