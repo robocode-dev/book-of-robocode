@@ -65,6 +65,8 @@ Given a filled-in `page-request-template.md`, follow this workflow:
       path is provided.
     - Ensure the `category` frontmatter field matches the top-level book
       section.
+    - **All new pages must be saved in UTF-8 encoding, with no escape characters. Emoji characters are allowed and
+      preserved.**
 
 2. **Frontmatter generation**  
    Derive VitePress-compatible frontmatter automatically:
@@ -95,6 +97,8 @@ Given a filled-in `page-request-template.md`, follow this workflow:
       external references.
     - Express distances and sizes in **units**, not pixels.
     - Line length ≤ 120 characters.
+    - **All content must be in UTF-8 encoding, with no escape characters. Emoji characters are welcome and should be
+      preserved.**
 
 5. **Attribution**  
    The standard attribution footer is now handled globally by VitePress configuration. Do **not** add it manually to

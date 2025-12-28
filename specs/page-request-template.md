@@ -1,5 +1,8 @@
 # page request template – human-facing
 
+**Note: All new pages must be saved in UTF-8 encoding, with no escape characters. Emoji characters are allowed and
+preserved.**
+
 Fill this in (or a copy of it) when you want an AI agent to create a new
 page for *The Book of Robocode*.
 
@@ -38,17 +41,17 @@ generation contract and `/specs` workflow).
 
 List the main references so the AI can attribute them correctly.
 
-- **RoboWiki (classic Robocode)**  
-  - `http://robowiki.net/wiki/...`
-  - `https://robocode.sourceforge.io/developerWorks.php/...`
+- **RoboWiki (classic Robocode)**
+    - `http://robowiki.net/wiki/...`
+    - `https://robocode.sourceforge.io/developerWorks.php/...`
 
-- **Robocode Tank Royale docs / GitHub**  
-  - `https://robocode.dev/...`
-  - `https://github.com/robocode-dev/tank-royale/...`
+- **Robocode Tank Royale docs / GitHub**
+    - `https://robocode.dev/...`
+    - `https://github.com/robocode-dev/tank-royale/...`
 
-- **Robocode Home Page / official resources**  
-  - `https://robocode.sourceforge.io/...`
-  - `https://robocode.sourceforge.io/developerWorks.php`
+- **Robocode Home Page / official resources**
+    - `https://robocode.sourceforge.io/...`
+    - `https://robocode.sourceforge.io/developerWorks.php`
 
 - **Other notes or drafts** (optional)  
   Links to diagrams, internal notes, or prior drafts you want reflected.
@@ -75,27 +78,26 @@ Write a few short bullet points in your own words.
 
 ## 4. Audience & emphasis (optional but helpful)
 
-- **Primary audience** (pick one or describe):  
-  - New players with basic programming knowledge  
-  - Intermediate Robocode players  
-  - Advanced or competitive players
+- **Primary audience** (pick one or describe):
+    - New players with basic programming knowledge
+    - Intermediate Robocode players
+    - Advanced or competitive players
 
-- **Emphasis** (pick a few):  
-  - Conceptual understanding  
-  - Practical how-to  
-  - Tutorial / step-by-step  
-  - Historical or background context
+- **Emphasis** (pick a few):
+    - Conceptual understanding
+    - Practical how-to
+    - Tutorial / step-by-step
+    - Historical or background context
 
-Add a short note if needed, for example:  
-“Mostly conceptual with one practical example using pseudocode.”
+Add a short note if needed, for example, “Mostly conceptual with one practical example using pseudocode.”
 
 ---
 
 ## 5. Platform notes
 
-- **Applies to** (tick or describe):  
-  - classic Robocode  
-  - Robocode Tank Royale
+- **Applies to** (tick or describe):
+    - classic Robocode
+    - Robocode Tank Royale
 
 - **Important platform differences to highlight**  
   Any specific differences the AI should call out between the two
