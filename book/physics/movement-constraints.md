@@ -19,7 +19,7 @@ Robocode and Robocode Tank Royale. It is meant as a compact reference you can ke
 
 It assumes you have already read:
 
-- `Bot Anatomy & The Bot API` (for bot parts, chaining vs independent movement, and scan concepts)
+- `Bot Anatomy & The Bot API` (for bot parts, chaining vs. independent movement, and scan concepts)
 - `Coordinate Systems & Angles` (for coordinate system, angle conventions, and basic terminology)
 
 Where numbers differ between classic Robocode and Tank Royale, both are listed explicitly.
@@ -89,7 +89,7 @@ Where:
 
 ### Robocode Tank Royale
 
-Tank Royale uses the same style of physics, but the concrete values are exposed as constants in the Bot API so you do
+Tank Royale uses the same style of physics, but the concrete values are exposed as constants in the Bot API, so you do
 not need to remember them or hard-code numbers in your own bot:
 
 - Max speed: `MAX_SPEED`
@@ -195,22 +195,26 @@ MAX_RADAR_TURN_RATE    // for radar
 ```
 
 You typically send separate turn commands per turn. The game engine clamps heading changes so that no part turns more
-than its maximum per turn. As with speed and acceleration, it is best practice to use these named constants in your bot
-code instead of hard-coded degree values.
+than its maximum per turn. As with speed and acceleration, it is the best practice to use these named constants in your
+bot code instead of hard-coded degree values.
 
 ![Max turn rates for each bot part](../images/bot-max-rotations.svg)<br>
 *Max turn rates for each bot part.*
 
 Legend:
-- The <span style="color: orange;">orange</span> arc shows the maximum turn rate for the body, i.e., 10°/turn at zero speed.
+
+- The <span style="color: orange;">orange</span> arc shows the maximum turn rate for the body, i.e., 10°/turn at zero
+  speed.
 - The <span style="color: red;">red</span> arc shows the maximum turn rate for the turret/gun, i.e., 20°/turn
 - The <span style="color: green;">green</span> scan arc shows the maximum turn rate for the radar, i.e., 45°/turn
 
 **Rotation facts:**
+
 - At zero speed, it takes <span style="color: orange;">36 turns</span> for the body to rotate 360° (360 / 10).
 - It takes <span style="color: red;">19 turns</span> for the turret/gun to rotate 360° (360 / 20).
 - It takes <span style="color: green;">8 turns</span> for the radar to sweep 360° (360 / 45).
-- When bot parts are chained (body, gun, radar), the scanner can move up to <span style="color: green;">75°</span> in one turn (10 + 20 + 45).
+- When bot parts are chained (body, gun, radar), the scanner can move up to <span style="color: green;">75°</span> in
+  one turn (10 + 20 + 45).
 
 ## Scanning physics: arc and distance (reference view)
 

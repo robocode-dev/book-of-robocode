@@ -54,7 +54,7 @@ Both classic Robocode and Tank Royale use a Cartesian coordinate system for the 
 
 ## Platform Differences
 
-- **Classic Robocode:** Headings increase clockwise from North; supports both degrees and radians.
+- **Classic Robocode:** Headings increase clockwise from the North; supports both degrees and radians.
 - **Tank Royale:** Headings increase counterclockwise from East; uses only degrees.
 - Both use the same coordinate system, but angle conventions differ.
 

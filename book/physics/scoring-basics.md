@@ -108,7 +108,7 @@ So the best scoring choice is rarely 'always fire max power'. It usually is:
 
 (See `Bullet Travel & Bullet Physics` and `Gun Heat and Cooling` for the underlying mechanics.)
 
-## Platform notes (Classic vs Tank Royale)
+## Platform notes (Classic vs. Tank Royale)
 
 This page focuses on *how to think about scoring* rather than memorizing every constant.
 

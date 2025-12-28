@@ -25,7 +25,7 @@ Gun heat is a built-in reload mechanic.
 
 - If the gun is too hot, `fire()` / `setFire()` won’t produce a bullet.
 - Heat depends on bullet power: stronger bullets create more heat.
-- Cooling is gradual and happens every turn.
+- Cooling is gradual and happens at every turn.
 
 This creates a simple trade-off:
 
@@ -116,7 +116,7 @@ Differences to watch for:
 - **Don’t waste “ready turns”**: if the gun is at zero heat, but the bot doesn’t have a target solution ready, that’s a
   missed opportunity.
 - **Avoid panic-power**: firing max power at long distance usually means low hit chance *and* long cooldown.
-- **Separate “aiming” and “firing” decisions**: aim can be updated every turn, but firing should be gated by heat.
+- **Separate “aiming” and “firing” decisions**: aim can be updated at every turn, but firing should be gated by heat.
 - **Remember the goal**: the best shot is often the one fired at the best *moment*, not the earliest moment.
 
 ```mermaid

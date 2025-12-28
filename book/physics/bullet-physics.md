@@ -238,7 +238,7 @@ if (gunIsCool() and myEnergy > 0.1) {
 ## Key Takeaways
 
 - Bullet power determines energy cost, speed, and damage.
-- You can only fire when your gun is cool and you have enough energy.
+- You can only fire when your gun is cool, and you have enough energy.
 - Higher bullet power means slower bullets but more damage; lower power is faster but less damaging.
 - Gun cooldown depends on bullet power—bigger shots require longer waits.
 - Bullets travel in straight lines at constant speed, unaffected by your bot's movement after firing.
