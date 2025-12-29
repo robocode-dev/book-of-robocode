@@ -22,7 +22,7 @@
 |  └─ Scoring Basics [B] [✅]
 │
 ├─ Radar & Scanning [I]
-│  ├─ Radar Basics [B]
+│  ├─ Radar Basics [B] [✅]
 │  ├─ One-on-One Radar [I]
 │  │  ├─ Spinning Radar [I]
 │  │  ├─ Infinity Lock [I]
