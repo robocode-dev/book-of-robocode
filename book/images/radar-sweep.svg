@@ -20,7 +20,7 @@
             transform: rotate(var(--turret-rotation, 80deg));
             }
             .tank-radar {
-            transform: rotate(var(--radar-rotation, 127deg));
+            transform: rotate(var(--radar-rotation, 80deg));
             }
             svg {
             --tank-body-color: #019;
@@ -159,7 +159,7 @@
         </symbol>
 
         <defs>
-            <linearGradient id="sweepGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1000">
+            <linearGradient id="sweepGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1500">
                 <stop offset="0%" stop-color="green" stop-opacity="0.8"/>
                 <stop offset="50%" stop-color="green" stop-opacity="0.1"/>
                 <stop offset="100%" stop-color="green" stop-opacity="0"/>
