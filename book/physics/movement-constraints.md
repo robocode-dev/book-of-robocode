@@ -267,7 +267,8 @@ protocol, engine differences) are not relevant to radar sweep logic.
 For details, refer to the physics documentation and Bot API reference for each platform.
 
 ![Tank Royale radar scan arc with previous and current heading + maximum scan length](../images/radar-sweep-max-length.svg)<br>
-*Tank Royale radar scan arc with previous and current heading + maximum scan length*
+*The illustration is not to scale – the scan arc is actually longer than shown. The illustration shows the radar scan
+arc with previous and current heading and the maximum scan length*
 
 ## Summary of key numeric rules (classic Robocode)
 

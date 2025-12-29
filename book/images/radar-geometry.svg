@@ -1,10 +1,10 @@
-<svg version="1.1" width="500" height="275" viewBox="0 0 6000 3000" xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" width="750" height="375" viewBox="0 0 6000 3000" xmlns="http://www.w3.org/2000/svg">
 
     <style>
         .text { font: 125px sans-serif; }
     </style>
 
-    <use href="#tank" transform="translate(0,1100)"/>
+    <use href="#tank" transform="scale(.5,.5) translate(0,2600)"/>
     <use href="#radar-sweep" transform="translate(0,0)"/>
     <use href="#arrows-with-text" transform="translate(0,0)"/>
 
@@ -167,7 +167,7 @@
 
             <clipPath id="sector">
                 <path d="
-                    M 400 1500
+                    M 200 1500
                     L 5500 0
                     A 5500 5500 0 0 1 5500 3000
                     Z"/>
@@ -183,19 +183,20 @@
                 <polygon points="6 0, 12 3, 6 6" fill="chocolate"/>
             </marker>
 
-            <line x1="400" y1="1500" x2="5500" y2="0" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="200" y1="1500" x2="2200" y2="940" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <text x="400" y="1450" class="text" fill="chocolate" transform="rotate(-16)">Radar Heading</text>
 
-            <text x="1200" y="1400" class="text" fill="chocolate" transform="rotate(-17)">Current Heading</text>
+            <line x1="200" y1="1500" x2="5400" y2="2950" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <text x="2600" y="1500" class="text" fill="chocolate" transform="rotate(16)">◄ Scan length = 1200 units ►</text>
+
+            <path
+                    d="M 5500 2970 A 5500 5500 0 0 0 5530 110"
+                    fill="none"
+                    stroke="chocolate"
+                    stroke-width="20"
+                    marker-end="url(#arrow-head)"
+            />
+            <text x="500" y="-5790" class="text" fill="chocolate" transform="rotate(90)">◄ Scan Arc Angle = 30 degrees ►</text>
         </symbol>
     </defs>
-
-    <defs>
-    </defs>
-    <path
-            d="M 4500 2700 A 4500 4500 0 0 0 4500 400"
-            fill="none"
-            stroke="chocolate"
-            stroke-width="20"
-            marker-end="url(#arrow-head)"
-    />
 </svg>

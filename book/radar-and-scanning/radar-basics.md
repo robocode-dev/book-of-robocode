@@ -42,8 +42,10 @@ The radar can be thought of as a rotating wedge (an arc) extending outward from 
 - **Scan arc width**: how wide the radar beam is.
 - **Scan range**: how far the scan reaches (commonly described as 1200 units).
 
-<!-- TODO: Illustration -->
-<!-- Diagram idea: show the bot, the radar heading arrow, and a wedge-shaped scan arc with labeled width and range. -->
+<img src="../images/radar-geometry.svg" alt="Radar geometry" width="675"><br>
+*Radar geometry: The illustration is not to scale – the scan arc is actually longer than shown. The scan length is
+always 1200 units. The radar heading is depicted, and in this illustration the scan arc is 30 deg, but can be up to 45
+deg*
 
 Narrow arcs can be precise, but they also make it easier to miss scans if the target slips outside the beam between
 turns. Wide arcs are easier to hit with, but can waste time scanning empty space.
