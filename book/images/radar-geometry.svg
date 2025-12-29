@@ -196,7 +196,7 @@
                     stroke-width="20"
                     marker-end="url(#arrow-head)"
             />
-            <text x="500" y="-5790" class="text" fill="chocolate" transform="rotate(90)">◄ Scan arc angle = 30 degrees ►</text>
+            <text x="720" y="-5790" class="text" fill="chocolate" transform="rotate(90)">◄ Scan arc angle = 30° ►</text>
         </symbol>
     </defs>
 </svg>

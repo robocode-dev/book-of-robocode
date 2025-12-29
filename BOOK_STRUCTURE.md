@@ -124,3 +124,6 @@ Legend:
 [I] = Intermediate Chapter
 [A] = Advanced Chapter
 [✅] = Done 
+
+Missing:
+- Why use setters, setForward() vs forward()
