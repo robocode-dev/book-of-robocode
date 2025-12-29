@@ -39,8 +39,8 @@ built on observations.
 The radar can be thought of as a rotating wedge (an arc) extending outward from the bot:
 
 - **Radar heading**: where the radar is pointing.
-- **Scan arc width**: how wide the radar beam is.
-- **Scan range**: how far the scan reaches (commonly described as 1200 units).
+- **Scan arc angle**: how "wide" the radar beam is.
+- **Scan length**: how far the scan reaches (commonly described as 1200 units).
 
 <img src="../images/radar-geometry.svg" alt="Radar geometry" width="675"><br>
 *Radar geometry: The illustration is not to scale – the scan arc is actually longer than shown. The scan length is

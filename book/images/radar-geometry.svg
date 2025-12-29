@@ -184,7 +184,7 @@
             </marker>
 
             <line x1="200" y1="1500" x2="2200" y2="940" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
-            <text x="400" y="1450" class="text" fill="chocolate" transform="rotate(-16)">Radar Heading</text>
+            <text x="400" y="1450" class="text" fill="chocolate" transform="rotate(-16)">Radar heading</text>
 
             <line x1="200" y1="1500" x2="5400" y2="2950" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
             <text x="2600" y="1500" class="text" fill="chocolate" transform="rotate(16)">◄ Scan length = 1200 units ►</text>
@@ -196,7 +196,7 @@
                     stroke-width="20"
                     marker-end="url(#arrow-head)"
             />
-            <text x="500" y="-5790" class="text" fill="chocolate" transform="rotate(90)">◄ Scan Arc Angle = 30 degrees ►</text>
+            <text x="500" y="-5790" class="text" fill="chocolate" transform="rotate(90)">◄ Scan arc angle = 30 degrees ►</text>
         </symbol>
     </defs>
 </svg>

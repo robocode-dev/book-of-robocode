@@ -35,6 +35,7 @@ export default withMermaid(defineConfig({
       {
         text: 'Combat Systems',
         items: [
+          { text: 'Radar & Scanning', link: '/radar/radar-basics' },
           { text: 'Targeting Systems', link: '/targeting/' },
           { text: 'Movement & Evasion', link: '/movement/' },
           { text: 'Energy Management', link: '/energy-management' }
