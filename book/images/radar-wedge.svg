@@ -1,12 +1,12 @@
-<svg version="1.1" width="500" height="141" viewBox="0 0 4000 1160" xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" width="500" height="275" viewBox="0 0 6000 3000" xmlns="http://www.w3.org/2000/svg">
 
     <style>
         .text { font: 125px sans-serif; }
     </style>
 
-    <use href="#tank" transform="translate(0,50)"/>
-    <use href="#radar-sweep" transform="translate(0,50)"/>
-    <use href="#arrows-with-text" transform="translate(0,-50)"/>
+    <use href="#tank" transform="translate(0,1100)"/>
+    <use href="#radar-sweep" transform="translate(0,0)"/>
+    <use href="#arrows-with-text" transform="translate(0,0)"/>
 
     <defs>
         <style>
@@ -20,7 +20,7 @@
             transform: rotate(var(--turret-rotation, 80deg));
             }
             .tank-radar {
-            transform: rotate(var(--radar-rotation, 80deg));
+            transform: rotate(var(--radar-rotation, 70deg));
             }
             svg {
             --tank-body-color: #019;
@@ -159,7 +159,7 @@
         </symbol>
 
         <defs>
-            <linearGradient id="sweepGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1500">
+            <linearGradient id="sweepGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="6000">
                 <stop offset="0%" stop-color="green" stop-opacity="0.8"/>
                 <stop offset="50%" stop-color="green" stop-opacity="0.1"/>
                 <stop offset="100%" stop-color="green" stop-opacity="0"/>
@@ -167,15 +167,15 @@
 
             <clipPath id="sector">
                 <path d="
-                    M 400 400
-                    L 3000 0
-                    A -1500 -1500 0 0 1 3000 1000
+                    M 400 1500
+                    L 5500 0
+                    A 5500 5500 0 0 1 5500 3000
                     Z"/>
             </clipPath>
         </defs>
 
         <symbol id="radar-sweep">
-            <rect x="0" y="0" width="4000" height="4000" fill="url(#sweepGrad)" clip-path="url(#sector)"/>
+            <rect x="0" y="0" width="6000" height="4000" fill="url(#sweepGrad)" clip-path="url(#sector)"/>
         </symbol>
 
         <symbol id="arrows-with-text">
@@ -183,11 +183,19 @@
                 <polygon points="6 0, 12 3, 6 6" fill="chocolate"/>
             </marker>
 
-            <line x1="400" y1="500" x2="3000" y2="95" stroke="chocolate" stroke-width="10" marker-end="url(#arrow-head)"/>
-            <line x1="400" y1="500" x2="3000" y2="1105" stroke="chocolate" stroke-width="10" marker-end="url(#arrow-head)"/>
+            <line x1="400" y1="1500" x2="5500" y2="0" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
 
-            <text x="1200" y="490" class="text" fill="chocolate" transform="rotate(-9)">Current Heading</text>
-            <text x="1370" y="545" class="text" fill="chocolate" transform="rotate(13)">Previous Heading</text>
+            <text x="1200" y="1400" class="text" fill="chocolate" transform="rotate(-17)">Current Heading</text>
         </symbol>
     </defs>
+
+    <defs>
+    </defs>
+    <path
+            d="M 4500 2700 A 4500 4500 0 0 0 4500 400"
+            fill="none"
+            stroke="chocolate"
+            stroke-width="20"
+            marker-end="url(#arrow-head)"
+    />
 </svg>
