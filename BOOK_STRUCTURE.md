@@ -34,7 +34,7 @@
 │
 ├─ Targeting Systems [I]
 │  ├─ Simple Targeting [B]
-│  │  ├─ Head-On Targeting [B]
+│  │  ├─ Head-On Targeting [B] [✅]
 │  │  ├─ Linear Targeting [I]
 │  │  ├─ Circular Targeting (with Walkthrough) [I]
 │  │  ├─ Random & Area Targeting [I]
