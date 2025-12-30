@@ -1,0 +1,227 @@
+<svg version="1.1" width="300" height="175" viewBox="0 0 2400 1400" xmlns="http://www.w3.org/2000/svg">
+
+    <style>
+        .text { font: 125px sans-serif; }
+    </style>
+
+    <use href="#tank" transform="translate(0,700)"/>
+    <use href="#paths"/>
+
+    <defs>
+        <style>
+            .tank-body, .tank-turret, .tank-radar {
+            transform-origin: 400px 400px;
+            }
+            .tank-body {
+            transform: rotate(var(--body-rotation, 0deg));
+            }
+            .tank-turret {
+            transform: rotate(var(--turret-rotation, 0deg));
+            }
+            .tank-radar {
+            transform: rotate(var(--radar-rotation, 0deg));
+            }
+            svg {
+            --tank-body-color: #019;
+            --tank-turret-color: #06c;
+            --tank-radar-color: #aaf;
+            --left-belt-track-1: inline;
+            --left-belt-track-2: none;
+            --left-belt-track-3: none;
+            --right-belt-track-1: none;
+            --right-belt-track-2: inline;
+            --right-belt-track-3: none;
+            }
+            .tank-body-fill {
+            fill: var(--tank-body-color, #019);
+            }
+            .tank-turret-fill {
+            fill: var(--tank-turret-color, #06c);
+            }
+            .tank-radar-fill {
+            fill: var(--tank-radar-color, #aaf);
+            }
+            .left-belt, .right-belt {
+            display: none;
+            }
+            .left-belt.track1 {
+            display: var(--left-belt-track-1, none);
+            }
+            .left-belt.track2 {
+            display: var(--left-belt-track-2, none);
+            }
+            .left-belt.track3 {
+            display: var(--left-belt-track-3, none);
+            }
+            .right-belt.track1 {
+            display: var(--right-belt-track-1, none);
+            }
+            .right-belt.track2 {
+            display: var(--right-belt-track-2, none);
+            }
+            .right-belt.track3 {
+            display: var(--right-belt-track-3, none);
+            }
+        </style>
+
+        <linearGradient id="cannon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#333"/>
+            <stop offset="50%" stop-color="#CCC"/>
+            <stop offset="100%" stop-color="#333"/>
+        </linearGradient>
+
+        <symbol id="link0">
+            <rect x="5" y="55" width="125" height="25" fill="#aaaaaa"/>
+            <rect x="10" y="70" width="116" height="35" fill="#666666" rx="10" ry="10"/>
+            <rect x="5" y="55" width="125" height="50" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+        </symbol>
+
+        <symbol id="link30">
+            <rect x="5" y="55" width="125" height="25" fill="#939393"/>
+            <rect x="10" y="70" width="116" height="30" fill="#585858" rx="10" ry="10"/>
+            <rect x="5" y="55" width="125" height="42" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+        </symbol>
+
+        <symbol id="link60">
+            <rect x="5" y="55" width="125" height="20" fill="#555555"/>
+            <rect x="5" y="55" width="125" height="20" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+        </symbol>
+
+        <symbol id="main-track">
+            <rect x="20" y="75" width="95" height="450" fill="#333333" stroke="black" stroke-width="10"/>
+        </symbol>
+
+        <symbol id="track1">
+            <use href="#main-track"/>
+            <use href="#link30"/>
+            <use href="#link0" y="60"/>
+            <use href="#link0" y="140"/>
+            <use href="#link0" y="220"/>
+            <use href="#link0" y="300"/>
+            <use href="#link0" y="380"/>
+            <use href="#link30" y="448"/>
+        </symbol>
+
+        <symbol id="track2">
+            <use href="#main-track"/>
+            <use href="#link60"/>
+            <use href="#link0" y="33"/>
+            <use href="#link0" y="113"/>
+            <use href="#link0" y="193"/>
+            <use href="#link0" y="273"/>
+            <use href="#link0" y="353"/>
+            <use href="#link0" y="433"/>
+        </symbol>
+
+        <symbol id="track3">
+            <use href="#main-track"/>
+            <use href="#link0" y="7"/>
+            <use href="#link0" y="87"/>
+            <use href="#link0" y="167"/>
+            <use href="#link0" y="247"/>
+            <use href="#link0" y="327"/>
+            <use href="#link0" y="407"/>
+            <use href="#link60" y="470"/>
+        </symbol>
+
+        <symbol id="body">
+            <use href="#track1" x="150" y="100" class="left-belt track1"/>
+            <use href="#track2" x="150" y="100" class="left-belt track2"/>
+            <use href="#track3" x="150" y="100" class="left-belt track3"/>
+            <use href="#track1" x="515" y="100" class="right-belt track1"/>
+            <use href="#track2" x="515" y="100" class="right-belt track2"/>
+            <use href="#track3" x="515" y="100" class="right-belt track3"/>
+
+            <rect class="tank-body-fill" x="240" y="190" width="320" height="420" stroke="black" stroke-width="20"
+                  rx="10" ry="10"/>
+            <rect x="250" y="520" width="300" height="80" opacity="0.5"/>
+        </symbol>
+
+        <symbol id="turret">
+            <rect class="tank-turret-fill" x="300" y="320" width="200" height="200" stroke="black" stroke-width="20"
+                  rx="10" ry="10"/>
+            <rect x="310" y="460" width="180" height="50" fill="black" opacity="0.5"/>
+
+            <rect x="360" y="240" width="80" height="80" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+            <rect x="375" y="70" width="50" height="170" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+        </symbol>
+
+        <symbol id="radar">
+            <circle class="tank-radar-fill" cx="400" cy="400" r="30" stroke="black" stroke-width="20"/>
+            <path class="tank-radar-fill" d="M 290 420 q 110 100 220 0 z" stroke="black" stroke-width="20"/>
+        </symbol>
+
+        <symbol id="tank">
+            <use class="tank-body" href="#body"/>
+            <use class="tank-turret" href="#turret"/>
+            <use class="tank-radar" href="#radar"/>
+        </symbol>
+
+        <defs>
+            <linearGradient id="sweepGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="6000">
+                <stop offset="0%" stop-color="green" stop-opacity="0.8"/>
+                <stop offset="50%" stop-color="green" stop-opacity="0.1"/>
+                <stop offset="100%" stop-color="green" stop-opacity="0"/>
+            </linearGradient>
+
+            <clipPath id="sector">
+                <path d="
+                    M 200 1500
+                    L 5500 0
+                    A 5500 5500 0 0 1 5500 3000
+                    Z"/>
+            </clipPath>
+        </defs>
+
+        <symbol id="paths">
+            <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="3" refY="1.5" orient="auto">
+                <polygon points="3 0, 6 1.5, 3 3" fill="chocolate"/>
+            </marker>
+
+            <marker id="arrow-head-2" markerWidth="20" markerHeight="20" refX="3" refY="1.5" orient="auto">
+                <polygon points="3 0, 6 1.5, 3 3" fill="royalblue"/>
+            </marker>
+
+            <!-- Arrows tilting right, starting at (400,2400), each segment 200 units -->
+            <line x1="400" y1="900"  x2="420"  y2="701"  stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="420" y1="701"  x2="479"  y2="514"  stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="479" y1="514"  x2="575"  y2="347"  stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="575" y1="347"  x2="705"  y2="209"  stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="705" y1="209"  x2="862"  y2="109"  stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="862" y1="109"  x2="1040" y2="52"   stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="1040" y1="52"  x2="1230" y2="43"   stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="1230" y1="43"  x2="1423" y2="84"   stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="1423" y1="84"  x2="1607" y2="174"  stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="1607" y1="174" x2="1772" y2="306"  stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="1772" y1="306" x2="1911" y2="472"  stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="1911" y1="472" x2="2018" y2="662"  stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="2018" y1="662" x2="2088" y2="868"  stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="2088" y1="868" x2="2118" y2="1083" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="2118" y1="1083" x2="2105" y2="1298" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+
+            <!-- Arrows tilting right, starting at (400,2400), each segment 75 units -->
+            <line x1="400" y1="900"  x2="407"  y2="825"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="407" y1="825"  x2="422"  y2="752"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="422" y1="752"  x2="447"  y2="683"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="447" y1="683"  x2="479"  y2="619"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="479" y1="619"  x2="519"  y2="561"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="519" y1="561"  x2="566"  y2="510"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="566" y1="510"  x2="619"  y2="467"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="619" y1="467"  x2="677"  y2="433"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="677" y1="433"  x2="739"  y2="408"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="739" y1="408"  x2="804"  y2="393"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="804" y1="393"  x2="869"  y2="387"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="869" y1="387"  x2="935"  y2="392"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="935" y1="392"  x2="998"  y2="407"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="998" y1="407"  x2="1059" y2="431"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="1059" y1="431" x2="1116" y2="465"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="1116" y1="465" x2="1168" y2="508"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="1168" y1="508" x2="1214" y2="560"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="1214" y1="560" x2="1252" y2="619"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="1252" y1="619" x2="1283" y2="684  " stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="1283" y1="684" x2="1305" y2="754"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="1305" y1="754" x2="1318" y2="827"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+            <line x1="1318" y1="827" x2="1322" y2="902"  stroke="royalblue" stroke-width="20" marker-end="url(#arrow-head-2)"/>
+        </symbol>
+    </defs>
+</svg>
