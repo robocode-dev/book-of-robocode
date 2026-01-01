@@ -68,3 +68,6 @@ reduce an opponent’s energy when they hit.
   Robocode Tank Royale. This replaces the older term "pixels" and ensures clarity across both platforms.
 - We also use the term **"bot"** instead of "robot" or "tank" to describe the agent you develop and control.
   This keeps the language consistent and focused on programming your own intelligent agent.
+- The word **"intent"** refers to the set of commands (move, turn, fire, etc.) your bot issues for the current turn.
+  When you commit the turn (using `execute()` or `go()`), your bot sends this intent to the game engine or server to be
+  carried out.

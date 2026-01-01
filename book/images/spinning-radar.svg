@@ -1,0 +1,193 @@
+<svg version="1.1" width="1125" height="1125" viewBox="0 0 9000 9000" xmlns="http://www.w3.org/2000/svg">
+
+    <style>
+        .text {
+            font-size: 150px;
+            font-family: sans-serif;
+            fill: chocolate;
+        } 
+    </style>
+
+    <use href="#radar-sweep"/>
+
+    <use href="#tank" transform="translate(4200 4200) scale(.75,.75)"
+         style="--body-rotation:11deg; --turret-rotation:50deg; --radar-rotation:18+0deg;"/>
+
+    <use href="#tank" x="5500" y="0" transform="translate(350,100) scale(.75,.75)"
+         style="
+         --body-rotation:280deg;
+         --turret-rotation:270deg;
+         --radar-rotation:278deg;
+         --tank-body-color:#c00;
+         --tank-turret-color:#c00;
+         --tank-radar-color:#ff6666;"
+    />
+
+    <defs>
+        <style>
+            .tank-body, .tank-turret, .tank-radar {
+            transform-origin: 400px 400px;
+            }
+            .tank-body {
+            transform: rotate(var(--body-rotation, 10deg));
+            }
+            .tank-turret {
+            transform: rotate(var(--turret-rotation, 80deg));
+            }
+            .tank-radar {
+            transform: rotate(var(--radar-rotation, 127deg));
+            }
+            svg {
+            --tank-body-color: #019;
+            --tank-turret-color: #06c;
+            --tank-radar-color: #aaf;
+            --left-belt-track-1: inline;
+            --left-belt-track-2: none;
+            --left-belt-track-3: none;
+            --right-belt-track-1: none;
+            --right-belt-track-2: inline;
+            --right-belt-track-3: none;
+            }
+            .tank-body-fill {
+            fill: var(--tank-body-color, #019);
+            }
+            .tank-turret-fill {
+            fill: var(--tank-turret-color, #06c);
+            }
+            .tank-radar-fill {
+            fill: var(--tank-radar-color, #aaf);
+            }
+            .left-belt, .right-belt {
+            display: none;
+            }
+            .left-belt.track1 {
+            display: var(--left-belt-track-1, none);
+            }
+            .left-belt.track2 {
+            display: var(--left-belt-track-2, none);
+            }
+            .left-belt.track3 {
+            display: var(--left-belt-track-3, none);
+            }
+            .right-belt.track1 {
+            display: var(--right-belt-track-1, none);
+            }
+            .right-belt.track2 {
+            display: var(--right-belt-track-2, none);
+            }
+            .right-belt.track3 {
+            display: var(--right-belt-track-3, none);
+            }
+        </style>
+
+        <linearGradient id="cannon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#333"/>
+            <stop offset="50%" stop-color="#CCC"/>
+            <stop offset="100%" stop-color="#333"/>
+        </linearGradient>
+
+        <symbol id="link0">
+            <rect x="5" y="55" width="125" height="25" fill="#aaaaaa"/>
+            <rect x="10" y="70" width="116" height="35" fill="#666666" rx="10" ry="10"/>
+            <rect x="5" y="55" width="125" height="50" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+        </symbol>
+
+        <symbol id="link30">
+            <rect x="5" y="55" width="125" height="25" fill="#939393"/>
+            <rect x="10" y="70" width="116" height="30" fill="#585858" rx="10" ry="10"/>
+            <rect x="5" y="55" width="125" height="42" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+        </symbol>
+
+        <symbol id="link60">
+            <rect x="5" y="55" width="125" height="20" fill="#555555"/>
+            <rect x="5" y="55" width="125" height="20" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+        </symbol>
+
+        <symbol id="main-track">
+            <rect x="20" y="75" width="95" height="450" fill="#333333" stroke="black" stroke-width="10"/>
+        </symbol>
+
+        <symbol id="track1">
+            <use href="#main-track"/>
+            <use href="#link30"/>
+            <use href="#link0" y="60"/>
+            <use href="#link0" y="140"/>
+            <use href="#link0" y="220"/>
+            <use href="#link0" y="300"/>
+            <use href="#link0" y="380"/>
+            <use href="#link30" y="448"/>
+        </symbol>
+
+        <symbol id="track2">
+            <use href="#main-track"/>
+            <use href="#link60"/>
+            <use href="#link0" y="33"/>
+            <use href="#link0" y="113"/>
+            <use href="#link0" y="193"/>
+            <use href="#link0" y="273"/>
+            <use href="#link0" y="353"/>
+            <use href="#link0" y="433"/>
+        </symbol>
+
+        <symbol id="track3">
+            <use href="#main-track"/>
+            <use href="#link0" y="7"/>
+            <use href="#link0" y="87"/>
+            <use href="#link0" y="167"/>
+            <use href="#link0" y="247"/>
+            <use href="#link0" y="327"/>
+            <use href="#link0" y="407"/>
+            <use href="#link60" y="470"/>
+        </symbol>
+
+        <symbol id="body">
+            <use href="#track1" x="150" y="100" class="left-belt track1"/>
+            <use href="#track2" x="150" y="100" class="left-belt track2"/>
+            <use href="#track3" x="150" y="100" class="left-belt track3"/>
+            <use href="#track1" x="515" y="100" class="right-belt track1"/>
+            <use href="#track2" x="515" y="100" class="right-belt track2"/>
+            <use href="#track3" x="515" y="100" class="right-belt track3"/>
+
+            <rect class="tank-body-fill" x="240" y="190" width="320" height="420" stroke="black" stroke-width="20"
+                  rx="10" ry="10"/>
+            <rect x="250" y="520" width="300" height="80" opacity="0.5"/>
+        </symbol>
+
+        <symbol id="turret">
+            <rect class="tank-turret-fill" x="300" y="320" width="200" height="200" stroke="black" stroke-width="20"
+                  rx="10" ry="10"/>
+            <rect x="310" y="460" width="180" height="50" fill="black" opacity="0.5"/>
+
+            <rect x="360" y="240" width="80" height="80" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+            <rect x="375" y="70" width="50" height="170" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+        </symbol>
+
+        <symbol id="radar">
+            <circle class="tank-radar-fill" cx="400" cy="400" r="30" stroke="black" stroke-width="20"/>
+            <path class="tank-radar-fill" d="M 290 420 q 110 100 220 0 z" stroke="black" stroke-width="20"/>
+        </symbol>
+
+        <symbol id="tank">
+            <use class="tank-body" href="#body"/>
+            <use class="tank-turret" href="#turret"/>
+            <use class="tank-radar" href="#radar"/>
+        </symbol>
+
+        <!-- radial gradient for radar sweep: centered at the sector start point (the 'L' point) -->
+        <clipPath id="sector">
+            <!-- full circle centered at (4500,4500) with radius 4500 (translated -500,-500) -->
+            <circle cx="4500" cy="4500" r="4500"/>
+        </clipPath>
+
+        <symbol id="radar-sweep">
+            <path d="M 4500.000 4500.000 L 0.000 4500.000 A 4500.000 4500.000 0 0 1 1318.019 1318.019 Z" fill="green" fill-opacity="0.3"/>
+            <path d="M 4500.000 4500.000 L 1318.019 1318.019 A 4500.000 4500.000 0 0 1 4500.000 0.000 Z" fill="green" fill-opacity="0.2"/>
+            <path d="M 4500.000 4500.000 L 4500.000 0.000 A 4500.000 4500.000 0 0 1 7681.981 1318.019 Z" fill="green" fill-opacity="0.9"/>
+            <path d="M 4500.000 4500.000 L 7681.981 1318.019 A 4500.000 4500.000 0 0 1 9000.000 4500.000 Z" fill="green" fill-opacity="0.8"/>
+            <path d="M 4500.000 4500.000 L 9000.000 4500.000 A 4500.000 4500.000 0 0 1 7681.981 7681.981 Z" fill="green" fill-opacity="0.7"/>
+            <path d="M 4500.000 4500.000 L 7681.981 7681.981 A 4500.000 4500.000 0 0 1 4500.000 9000.000 Z" fill="green" fill-opacity="0.6"/>
+            <path d="M 4500.000 4500.000 L 4500.000 9000.000 A 4500.000 4500.000 0 0 1 1318.019 7681.981 Z" fill="green" fill-opacity="0.5"/>
+            <path d="M 4500.000 4500.000 L 1318.019 7681.981 A 4500.000 4500.000 0 0 1 0.000 4500.000 Z" fill="green" fill-opacity="0.4"/>
+         </symbol>
+    </defs>
+</svg>
