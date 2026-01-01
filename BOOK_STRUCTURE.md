@@ -9,8 +9,11 @@
 │
 ├─ Getting Started [B] [✅]
 │  ├─ Your First Bot (Guided Tutorial) [B] [✅]
-│  ├─ Bot Anatomy & The Bot API (Beginner Level) [B] [✅]
-|  ├─ Robot Properties File [B]✅]
+│  ├─ Bot Anatomy [B] [✅]
+│  ├─ The Bot API [B] [✅]
+│  ├─ Blocking vs Non-Blocking Movement (Setters) [B] [✅]
+│  ├─ Bot Anatomy & The Bot API (Moved) [B] [✅]
+│  ├─ Robot Properties File [B] [✅]
 │  └─ Your First Battle [B] [✅]
 │
 ├─ Battlefield Physics [B] [✅]
@@ -123,7 +126,4 @@ Legend:
 [B] = Beginner Chapter
 [I] = Intermediate Chapter
 [A] = Advanced Chapter
-[✅] = Done 
-
-Missing:
-- Why use setters, setForward() vs forward()
+[✅] = Done

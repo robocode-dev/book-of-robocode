@@ -19,7 +19,8 @@ Robocode and Robocode Tank Royale. It is meant as a compact reference you can ke
 
 It assumes you have already read:
 
-- `Bot Anatomy & The Bot API` (for bot parts, chaining vs. independent movement, and scan concepts)
+- `Bot Anatomy` (for bot parts, chaining vs. independent movement)
+- `The Bot API` (for scanning concepts, turns, and events)
 - `Coordinate Systems & Angles` (for coordinate system, angle conventions, and basic terminology)
 
 Where numbers differ between classic Robocode and Tank Royale, both are listed explicitly.
@@ -34,7 +35,7 @@ Where numbers differ between classic Robocode and Tank Royale, both are listed e
 
 This section is a light reminder, not a full re-explanation. For details and diagrams, see:
 
-- `Bot Anatomy & The Bot API` (bot shape, hitbox, and collisions)
+- `Bot Anatomy` (bot shape, hitbox, collisions, and chained vs. independent parts)
 - `Coordinate Systems & Angles` (battlefield coordinates)
 
 Key points:
@@ -158,7 +159,7 @@ than hard-coding numeric turn rates in your own code.
 
 ## Gun and radar turning (constraints only)
 
-The structure and roles of body, gun, and radar are already covered in `Bot Anatomy & The Bot API`, including diagrams
+The structure and roles of body, gun, and radar are already covered in `Bot Anatomy`, including diagrams
 and chained vs independent movement. This section only focuses on **numeric limits and clamping rules**.
 
 ### Classic Robocode
@@ -171,7 +172,7 @@ Per-turn angular limits:
 By default, turning the body also rotates the gun and radar, and turning the gun also rotates the radar. The
 `setAdjust*`
 methods in the classic API control whether those automatic rotations are applied. For a full conceptual explanation and
-examples, see `Bot Anatomy & The Bot API`.
+examples, see `Bot Anatomy`.
 
 From a physics perspective, the engine applies a simple clamp each turn:
 
@@ -218,7 +219,7 @@ Legend:
 
 ## Scanning physics: arc and distance (reference view)
 
-The idea of a **scan arc** and the 1200-unit scan range have already been introduced in `Bot Anatomy & The Bot API`.
+The idea of a **scan arc** and the 1200-unit scan range have already been introduced in `The Bot API`.
 That page also explains beginner-friendly strategies like wide sweeps and radar locks. Here, the focus is on the
 underlying rules the engine uses each tick.
 

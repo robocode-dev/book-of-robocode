@@ -72,7 +72,10 @@ export default withMermaid(defineConfig({
           text: 'Getting Started',
           items: [
             { text: 'Your First Bot', link: '/getting-started/your-first-bot' },
-            { text: 'Bot Anatomy and API', link: '/getting-started/bot-anatomy-and-bot-api' },
+            { text: 'Bot Anatomy', link: '/getting-started/bot-anatomy' },
+            { text: 'The Bot API', link: '/getting-started/the-bot-api' },
+            { text: 'Blocking vs Non-Blocking Movement (Setters)', link: '/getting-started/blocking-vs-non-blocking-movement-setters' },
+            { text: 'Bot Anatomy and API (Moved)', link: '/getting-started/bot-anatomy-and-bot-api' },
             { text: 'Robot Properties File', link: '/getting-started/robot-properties-file' },
             { text: 'Your First Battle', link: '/getting-started/your-first-battle' }
           ]
@@ -162,30 +165,20 @@ export default withMermaid(defineConfig({
           text: 'Movement & Evasion',
           items: [
             { text: 'Basic Movement', items: [
-              { text: 'Movement Fundamentals Goto', link: '/movement/movement-fundamentals-goto' },
-              { text: 'Wall Avoidance Wall Smoothing', link: '/movement/wall-avoidance-wall-smoothing' },
+              { text: 'Movement Fundamentals & GoTo', link: '/movement/movement-fundamentals-goto' },
+              { text: 'Wall Avoidance & Wall Smoothing', link: '/movement/wall-avoidance-wall-smoothing' },
               { text: 'Distancing', link: '/movement/distancing' }
             ]},
-            { text: 'Simple Evasion', items: [
-              { text: 'Random Movement', link: '/movement/random-movement' },
-              { text: 'Stop and Go', link: '/movement/stop-and-go' },
-              { text: 'Oscillator Movement', link: '/movement/oscillator-movement' }
-            ]},
-            { text: 'Strategic Movement', items: [
-              { text: 'Anti-Gravity Movement', link: '/movement/anti-gravity-movement' },
-              { text: 'Minimum Risk Movement', link: '/movement/minimum-risk-movement' },
-              { text: 'Corner Movement', link: '/movement/corner-movement' }
-            ]},
             { text: 'Advanced Evasion', items: [
-              { text: 'Gun Heat Waves Bullet Shadows', link: '/movement/gun-heat-waves-bullet-shadows' },
+              { text: 'Gun Heat Waves & Bullet Shadows', link: '/movement/gun-heat-waves-bullet-shadows' },
               { text: 'Dodging Bullets', link: '/movement/dodging-bullets' },
               { text: 'Wave Surfing Introduction', link: '/movement/wave-surfing-introduction' },
               { text: 'Wave Surfing Implementations', link: '/movement/wave-surfing-implementations' },
               { text: 'Flattener', link: '/movement/flattener' }
             ]},
             { text: 'Offensive Movement', items: [
-              { text: 'Pattern Enemy Dodging Movement', link: '/movement/pattern-enemy-dodging-movement' },
-              { text: 'Ramming Mirror Movement', link: '/movement/ramming-mirror-movement' },
+              { text: 'Pattern & Enemy Dodging Movement', link: '/movement/pattern-enemy-dodging-movement' },
+              { text: 'Ramming & Mirror Movement', link: '/movement/ramming-mirror-movement' },
               { text: 'Movement Analysis', link: '/movement/movement-analysis' }
             ]}
           ]
@@ -252,7 +245,7 @@ export default withMermaid(defineConfig({
             { text: 'Glossary', link: '/appendices/glossary' },
             { text: 'Quick Reference', link: '/appendices/quick-reference' },
             { text: 'Debugging Tips', link: '/appendices/debugging-tips' },
-            { text: 'References Credits', link: '/appendices/references-credits' }
+            { text: 'References & Credits', link: '/appendices/references-credits' }
           ]
         }
       ]
