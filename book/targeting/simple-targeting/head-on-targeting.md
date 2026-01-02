@@ -70,7 +70,7 @@ Definitions:
 
 > **Note:** `sin` is used for X and `cos` for Y in classic Robocode because 0° points up (North) and angles increase
 > clockwise. The trig functions need radians, so convert degrees using `toRadians()`.
-> See [Coordinate Systems & Angles](../physics/coordinates-and-angles.md).
+> See [Coordinate Systems & Angles](../../physics/coordinates-and-angles.md).
 
 ## Aiming the gun at that point
 
@@ -81,7 +81,7 @@ Aiming is basically "what is the angle from `(myX, myY)` to `(enemyX, enemyY)`?"
 - In **classic Robocode**, typical code computes a gun turn angle and uses `setTurnGunRight(...)`.
 - In **Tank Royale**, the API offers helpers like `calcHeadingTo(x, y)` that returns the heading to a point.
 
-<img src="../images/heads-on-targeting.svg" alt="Heads-on targeting illustration" width="650" /><br>
+<img src="../../images/heads-on-targeting.svg" alt="Heads-on targeting illustration" width="650" /><br>
 **Illustration:** The bot aims its gun directly at the enemy's last scanned position. However, the enemy bot has already moved to a new position*
 
 ## Minimal examples

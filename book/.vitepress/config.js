@@ -36,7 +36,7 @@ export default withMermaid(defineConfig({
         text: 'Combat Systems',
         items: [
           { text: 'Radar & Scanning', link: '/radar/radar-basics' },
-          { text: 'Targeting Systems', link: '/targeting/head-on-targeting' },
+          { text: 'Targeting Systems', link: '/targeting/simple-targeting/head-on-targeting' },
           { text: 'Movement & Evasion', link: '/movement/' },
           { text: 'Energy Management', link: '/energy-management' }
         ]
@@ -127,11 +127,11 @@ export default withMermaid(defineConfig({
           text: 'Targeting Systems',
           items: [
             { text: 'Simple Targeting', items: [
-              { text: 'Head-On Targeting', link: '/targeting/head-on-targeting' },
-              { text: 'Linear Targeting', link: '/targeting/linear-targeting' },
-              { text: 'Circular Targeting', link: '/targeting/circular-targeting' },
-              { text: 'Random Area Targeting', link: '/targeting/random-area-targeting' },
-              { text: 'Virtual Guns Mean Targeting', link: '/targeting/virtual-guns-mean-targeting' }
+              { text: 'Head-On Targeting', link: '/targeting/simple-targeting/head-on-targeting' },
+              { text: 'Linear Targeting', link: '/targeting/simple-targeting/linear-targeting' },
+              { text: 'Circular Targeting', link: '/targeting/simple-targeting/circular-targeting' },
+              { text: 'Random Area Targeting', link: '/targeting/simple-targeting/random-area-targeting' },
+              { text: 'Virtual Guns Mean Targeting', link: '/targeting/simple-targeting/virtual-guns-mean-targeting' }
             ]},
             { text: 'The Targeting Problem', items: [
               { text: 'Understanding the Challenge', link: '/targeting/understanding-the-challenge' },

@@ -27,7 +27,7 @@
 ├─ Radar & Scanning [I]
 │  ├─ Radar Basics [B] [✅]
 │  ├─ One-on-One Radar [I]
-│  │  ├─ Spinning Radar [I]
+│  │  ├─ Spinning Radar [I] [✅]
 │  │  ├─ Infinity Lock [I]
 │  │  └─ Perfect Locks (Turn Multiplier & Width Lock) [A]
 │  └─ Melee Radar [A]
