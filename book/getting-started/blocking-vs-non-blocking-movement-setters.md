@@ -169,4 +169,4 @@ Even if you keep moving toward a goal, you can still keep the radar sweeping and
 
 - [Bot Anatomy](./bot-anatomy) — body/gun/radar independence
 - [The Bot API](./the-bot-api) — events, turns, and timeouts
-- [Movement Fundamentals & GoTo](../movement/movement-fundamentals-goto) — building movement that can be updated every tick
+- [Movement Fundamentals & GoTo](../movement/basic/movement-fundamentals-goto.md) — building movement that can be updated every tick

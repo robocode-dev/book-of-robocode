@@ -52,9 +52,9 @@ This is the most important “real world” rule to remember:
 > A fast-moving bot turns in a wide arc; it can’t pivot instantly.
 
 For the exact numbers and formulas, see
-[Movement Constraints & Bot Physics](../physics/movement-constraints.md).
+[Movement Constraints & Bot Physics](../../physics/movement-constraints.md).
 
-<img src="../images/speed-vs-turn-radius.svg" alt="Speed vs. Turn Radius" width="300"><br>
+<img src="../../images/speed-vs-turn-radius.svg" alt="Speed vs. Turn Radius" width="300"><br>
 *Illustration: Higher speed means a wider turn radius.*
 
 Legend:
@@ -135,7 +135,7 @@ A practical beginner rule:
 
 This doesn’t replace real wall smoothing, but it prevents many accidental wall hits.
 
-For wall damage and why it matters, see [Wall Collisions](../physics/wall-collisions.md).
+For wall damage and why it matters, see [Wall Collisions](../../physics/wall-collisions.md).
 
 ## Platform notes (Classic vs. Tank Royale)
 

@@ -37,7 +37,7 @@ export default withMermaid(defineConfig({
         items: [
           { text: 'Radar & Scanning', link: '/radar/radar-basics' },
           { text: 'Targeting Systems', link: '/targeting/simple-targeting/head-on-targeting' },
-          { text: 'Movement & Evasion', link: '/movement/' },
+          { text: 'Movement & Evasion', link: '/movement/basic/movement-fundamentals-goto' },
           { text: 'Energy Management', link: '/energy-management' }
         ]
       },
@@ -158,21 +158,21 @@ export default withMermaid(defineConfig({
           text: 'Movement & Evasion',
           items: [
             { text: 'Basic Movement', items: [
-              { text: 'Movement Fundamentals & GoTo', link: '/movement/movement-fundamentals-goto' },
-              { text: 'Wall Avoidance & Wall Smoothing', link: '/movement/wall-avoidance-wall-smoothing' },
-              { text: 'Distancing', link: '/movement/distancing' }
+              { text: 'Movement Fundamentals & GoTo', link: '/movement/basic/movement-fundamentals-goto' },
+              { text: 'Wall Avoidance & Wall Smoothing', link: '/movement/basic/wall-avoidance-wall-smoothing' },
+              { text: 'Distancing', link: '/movement/basic/distancing' }
             ]},
             { text: 'Advanced Evasion', items: [
-              { text: 'Gun Heat Waves & Bullet Shadows', link: '/movement/gun-heat-waves-bullet-shadows' },
-              { text: 'Dodging Bullets', link: '/movement/dodging-bullets' },
-              { text: 'Wave Surfing Introduction', link: '/movement/wave-surfing-introduction' },
-              { text: 'Wave Surfing Implementations', link: '/movement/wave-surfing-implementations' },
-              { text: 'Flattener', link: '/movement/flattener' }
+              { text: 'Gun Heat Waves & Bullet Shadows', link: '/movement/advanced-evasion/gun-heat-waves-bullet-shadows' },
+              { text: 'Dodging Bullets', link: '/movement/advanced-evasion/dodging-bullets' },
+              { text: 'Wave Surfing Introduction', link: '/movement/advanced-evasion/wave-surfing-introduction' },
+              { text: 'Wave Surfing Implementations', link: '/movement/advanced-evasion/wave-surfing-implementations' },
+              { text: 'Flattener', link: '/movement/advanced-evasion/flattener' }
             ]},
             { text: 'Offensive Movement', items: [
-              { text: 'Pattern & Enemy Dodging Movement', link: '/movement/pattern-enemy-dodging-movement' },
-              { text: 'Ramming & Mirror Movement', link: '/movement/ramming-mirror-movement' },
-              { text: 'Movement Analysis', link: '/movement/movement-analysis' }
+              { text: 'Pattern & Enemy Dodging Movement', link: '/movement/offensive/pattern-enemy-dodging-movement' },
+              { text: 'Ramming & Mirror Movement', link: '/movement/offensive/ramming-mirror-movement' },
+              { text: 'Movement Analysis', link: '/movement/offensive/movement-analysis' }
             ]}
           ]
         }
