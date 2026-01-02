@@ -1,8 +1,8 @@
 ---
 title: "Spinning Radar"
 category: "Radar & Scanning"
-summary: "A simple radar pattern that keeps turning forever to find enemies quickly, then switches to a tighter lock in 1v1."
-tags: [ "spinning-radar", "radar", "scanning", "setters", "one-on-one", "robocode", "tank-royale", "intermediate" ]
+summary: "A simple radar pattern that keeps turning forever to quickly find enemies; in 1v1, pair it with Infinite Lock for tight tracking."
+tags: [ "spinning-radar", "infinite-lock", "infinite", "radar", "scanning", "setters", "one-on-one", "robocode", "tank-royale", "intermediate" ]
 difficulty: "intermediate"
 source: [
   "RoboWiki – One on One Radar (classic Robocode) https://robowiki.net/wiki/One_on_One_Radar"
@@ -28,8 +28,8 @@ Spinning radar is most valuable for:
 - **Reacquire:** finding an enemy again after it has not been scanned for a while.
 - **Simple melee awareness:** steadily collecting scan data on multiple enemies.
 
-In 1v1, spinning forever is usually not optimal. Once the enemy is found, frequent re-scans of *that one bot* are more
-important than sweeping empty space.
+In 1v1, spinning forever is usually not optimal once the enemy is found; you typically switch to a lock pattern like
+**Infinite Lock** (covered below) to get more frequent re-scans of *that one bot*.
 
 <!-- TODO: Illustration -->
 <!-- Show a top-down arena with a bot and a radar beam spinning 360° and intersecting an enemy. -->
@@ -37,30 +37,24 @@ important than sweeping empty space.
 <img src="../../images/spinning-radar.svg" alt="Spinning Radar Illustration" width="600"><br>
 *Top-down arena view: a bot with a radar beam spinning 360°, sweeping the battlefield and intersecting an enemy.*
 
-## The one-liner: use a setter with an “infinite” turn
+## The one-liner: spin forever
 
-Most APIs offer a setter-style radar turn method. The classic spinning radar pattern is set up once, before the main loop:
+Most APIs offer a setter-style radar turn method. The classic spinning radar pattern is set up once, before the main
+loop.
 
 Conceptual pseudocode:
 
 ```text
 // Before the main loop (e.g., in run()):
-turnRadarLeft(INFINITY)
+setTurnRadarLeft(INFINITY)
 
 // Main loop:
 while (true) {
-    // If an enemy is found, break the infinite spin by setting a specific radar turn
-    if (enemyFound) {
-        setTurnRadarRight(targetBearing - currentRadarHeading)
-    }
+    // No special logic needed: keep spinning until you get a scan
     // Commit the turn (Classic: execute(); Tank Royale: go())
     commitTurn()
 }
 ```
-
-- `turnRadarLeft(INFINITY)` (or `turnRadarRight(INFINITY)`) is called once to start spinning the radar and searching for enemies.
-- Once an enemy is found, use `setTurnRadarRight()` or `setTurnRadarLeft()` to lock onto the target or adjust the sweep.
-- Each turn, commit your intent with `execute()` (Classic) or `go()` (Tank Royale).
 
 Notes:
 
@@ -70,6 +64,57 @@ Notes:
     - a symbolic constant (like positive infinity) if the language supports it.
 - The key is to set the infinite spin only once, not every turn.
 
+## Infinite Lock (recommended for 1v1)
+
+Once you have a target in a 1v1 battle, you usually want the radar to **stay on that opponent** instead of sweeping
+empty
+space.
+
+The classic pattern from RoboWiki is called **Infinite Lock**:
+
+- While you keep getting scans, you continuously turn your radar toward the enemy.
+- You typically **overshoot a little** so the radar beam crosses the enemy even if one (or both) bots turn between
+  ticks.
+- If scans stop arriving (lost contact), fall back to a wide spin to reacquire.
+
+Conceptual pseudocode:
+
+```text
+// State:
+turnsSinceLastScan = BIG_NUMBER
+
+// Before the main loop:
+setTurnRadarLeft(INFINITY)  // start in search mode
+
+// onScannedBot/onScannedRobot:
+turnsSinceLastScan = 0
+
+// Each turn (main loop):
+while (true) {
+    turnsSinceLastScan++
+
+    if (turnsSinceLastScan == 0) {
+        // We scanned the enemy this tick:
+        // Turn radar toward the enemy bearing, plus a small overshoot.
+        // (This is where you use setTurnRadarRight/Left based on your relative angles.)
+        setTurnRadarRight(enemyBearingFromRadar + overshoot)
+    } else if (turnsSinceLastScan > LOST_CONTACT_TURNS) {
+        // Lost contact: spin again to find the enemy
+        setTurnRadarLeft(INFINITY)
+    }
+
+    commitTurn()
+}
+```
+
+Notes:
+
+- The *exact* math varies by API, but the intent is always:
+    1) compute the enemy angle relative to the **current radar heading**, then
+    2) add a small overshoot in the direction you want the radar to continue.
+- This section is where `setTurnRadarRight(targetBearing - currentRadarHeading)`-style code belongs: it’s a **tracking**
+  behavior that you do *after* you’ve scanned an enemy, not part of the basic spinning radar itself.
+
 ## Setters overwrite: last command wins
 
 Setter-style calls update intent for the current turn. If the same setter is called multiple times in a single turn, the
@@ -78,25 +123,11 @@ Setter-style calls update intent for the current turn. If the same setter is cal
 That can be handy when radar logic is refined step-by-step:
 
 - start with `setTurnRadarLeft(INFINITY)` while searching,
-- later in the same turn, once an enemy is found, update the intent to a tighter turn,
+- later in the same turn, once an enemy is found, update the intent to a tighter tracking turn,
 - then commit the turn.
 
 This “overwrite” behavior also makes recursion or multi-pass calculations practical: the final decision is simply the
 last intent set before `execute()` / `go()`.
-
-## When to stop spinning in 1v1
-
-In a one-on-one battle, once the opponent is found, the radar should usually switch to a **lock** pattern:
-
-- Turn the radar toward the enemy’s last known bearing.
-- Overshoot a bit so the beam crosses the enemy even if both bots turn.
-- If scans stop arriving, fall back to a wide spin again.
-
-A simple state-machine mindset works well:
-
-- **Searching:** spin radar.
-- **Tracking:** lock radar.
-- **Lost contact:** spin again.
 
 ## Platform notes (Classic vs Tank Royale)
 
@@ -112,7 +143,7 @@ If a bot only calls setters but never commits the turn, it will look stuck becau
 ## Tips and common mistakes
 
 - **Forgetting to commit the turn:** setter-only bots must call `execute()` / `go()` every turn.
-- **Spinning forever in 1v1:** it works, but locking usually gives more frequent scans.
+- **Spinning forever in 1v1:** it works, but Infinite Lock usually gives more frequent scans.
 - **Coupled radar:** if the radar is dragged around by body/gun turns, the “spin” might not behave as expected.
   (See [Radar Basics](../radar-basics).)
 
