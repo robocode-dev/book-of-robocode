@@ -68,7 +68,8 @@ Definitions:
 - `relativeBearing`: from `ScannedRobotEvent` (in degrees).
 - `distance`: from `ScannedRobotEvent`.
 
-> **Note:** `sin` is used for X and `cos` for Y in classic Robocode because 0° points up (North) and angles increase
+> [!Note] Note
+> `sin` is used for X and `cos` for Y in classic Robocode because 0° points up (North) and angles increase
 > clockwise. The trig functions need radians, so convert degrees using `toRadians()`.
 > See [Coordinate Systems & Angles](../../physics/coordinates-and-angles.md).
 
@@ -86,7 +87,7 @@ Aiming is basically "what is the angle from `(myX, myY)` to `(enemyX, enemyY)`?"
 
 ## Minimal examples
 
-> **Keep it small:**
+> [!NOTE] Keep it small
 > The examples below focus on the “head-on” idea only: compute (or read) the enemy position, turn the gun, and fire.
 > More advanced bots usually also decouple radar from gun/body and choose firepower based on distance and energy.
 

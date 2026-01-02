@@ -18,6 +18,7 @@ how bots are represented on the battlefield and the main parts you can control: 
 In this book, **the engine** means the Robocode or Tank Royale **game engine** — the simulation that advances turns,
 moves bots and bullets, and delivers events to your bot.
 
+> [!NOTE] Note
 > **Applies to:** Classic Robocode & Robocode Tank Royale  
 > **Focus:** Conceptual understanding for new players with basic programming knowledge
 

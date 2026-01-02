@@ -42,7 +42,7 @@ So, two bots can have very different end-results:
 - **Accurate attacker**: dies earlier, but hits many bullets — earns high damage points.
 - **Passive survivor**: stays alive by avoiding fights — earns few damage points — often loses on score.
 
-> **Tip:**
+> [!TIP] Tip
 > If the bot fires a lot but doesn't hit, it's paying energy for shots (see bullet physics) but not earning damage
 > points.
 >

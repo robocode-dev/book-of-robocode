@@ -63,7 +63,8 @@ After initialization, your bot enters its main `run()` loop. Conceptually, each 
 Events that occur during the turn (e.g., you were scanned or hit) can adjust your next decisions or trigger immediate
 responses.
 
-> **Energy and bullets in one sentence**
+> [!INFO] Info
+> **Energy and bullets in one sentence**:
 > Firing always spends some of your bot’s energy to create a bullet; too many big shots can leave your bot weak or even
 > disabled, so smart bots balance when and how hard they fire.
 
@@ -105,7 +106,7 @@ the next turn (e.g., last known enemy position).
 
 - Classic Robocode typically uses a properties (`.properties`) file to define the bot. The filename usually must match
   your bot’s class name. See the classic tutorial for exact fields and
-  placement: [Robot properties](robot-properties-files.md)
+  placement: [Robot properties](robot-properties-file.md)
 - Robocode Tank Royale uses a JSON configuration file for bot metadata/settings. See the Tank Royale tutorial for the
   current schema and placement: https://robocode.dev/tutorial/my-first-bot.html
 

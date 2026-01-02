@@ -25,6 +25,7 @@ It assumes you have already read:
 
 Where numbers differ between classic Robocode and Tank Royale, both are listed explicitly.
 
+> [!INFO] Info
 > Numbers and rules on this page are based on:
 > - Classic Robocode: [Game Physics](https://robowiki.net/wiki/Robocode/Game_Physics),
     > [Rules](https://robocode.sourceforge.io/docs/robocode/robocode/Rules.html)

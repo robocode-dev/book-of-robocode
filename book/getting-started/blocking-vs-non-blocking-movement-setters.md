@@ -21,7 +21,8 @@ This difference is the reason for many first bots:
 - point the gun the wrong way while turning, or
 - feel "unresponsive".
 
-> **Goal:** Keep issuing movement / gun / radar commands every turn, instead of getting stuck inside a blocking call.
+> [!INFO] Goal
+> Keep issuing movement / gun / radar commands every turn, instead of getting stuck inside a blocking call.
 
 ---
 

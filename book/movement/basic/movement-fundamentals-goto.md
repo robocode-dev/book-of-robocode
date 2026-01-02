@@ -48,6 +48,7 @@ Key idea: **speed and turning are linked**.
 
 This is the most important “real world” rule to remember:
 
+> [!NOTE] Note
 > **Max speed (forward and backward) restricts turning.**
 > A fast-moving bot turns in a wide arc; it can’t pivot instantly.
 

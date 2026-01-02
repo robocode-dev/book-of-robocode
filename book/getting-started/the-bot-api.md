@@ -20,6 +20,7 @@ This page explains how the game engine and your bot communicate:
 We intentionally stay language-agnostic. Examples talk in terms of “API methods”, “events”, and “properties”, not
 specific classes.
 
+> [!INFO] Info
 > **Applies to:** Classic Robocode & Robocode Tank Royale
 
 ---

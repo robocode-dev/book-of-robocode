@@ -96,9 +96,9 @@ double enemyX = getX() + Math.sin(absoluteBearing) * event.getDistance();
 double enemyY = getY() + Math.cos(absoluteBearing) * event.getDistance();
 ```
 
-> **Note:** In classic Robocode, `sin` is used for X and `cos` for Y because the coordinate system has (0,0) at the
-> bottom left, 0° points up (North), and angles increase clockwise. This is the opposite of the standard math
-> convention.
+> [!NOTE] Note
+> In classic Robocode, `sin` is used for X and `cos` for Y because the coordinate system has (0,0) at the bottom left,
+> 0° points up (North), and angles increase clockwise. This is the opposite of the standard math convention.
 > See [Coordinate Systems & Angles](../physics/coordinates-and-angles.md) for details.
 
 **Tank Royale:** Use the provided `x` and `y` fields from the scan event (`ScannedBotEvent`) for the enemy's position.

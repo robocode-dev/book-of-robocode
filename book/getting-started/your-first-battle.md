@@ -35,10 +35,10 @@ Before you start a battle, make sure you have:
     - Your own simple bot (for example, from the [Your First Bot](your-first-bot.md) chapter), and
     - At least one opponent bot (often a sample bot).
 
-> Note: With Robocode Tank Royale, the server and booter come built-in with the GUI. You do not need to install the
-> server (for running battles) or booter (for booting bots locally) separately, unless you wish to use them as
-> stand-alone applications. Stand-alone versions are provided in releases for running the server and/or booter without
-> the GUI.
+> [!NOTE] Note
+> With Robocode Tank Royale, the server and booter come built-in with the GUI. You do not need to install the server
+> (for running battles) or booter (for booting bots locally) separately, unless you wish to use them as stand-alone
+> applications. Stand-alone versions are provided in releases for running the server and/or booter without the GUI.
 
 ### Sample bots and opponent ideas
 
@@ -49,7 +49,8 @@ Before you start a battle, make sure you have:
     - Provides **sample bots** as part of the distribution or example repositories.
     - You can use those, plus any bot you’ve created yourself.
 
-> Tip: Don’t overthink your first opponent. A simple “dummy” bot is fine; the goal is to see a battle run from start to
+> [!TIP] Tip
+> Don’t overthink your first opponent. A simple “dummy” bot is fine; the goal is to see a battle run from start to
 > finish.
 
 ---
@@ -132,7 +133,8 @@ connect to it.
 
 2. Keep the server/GUI running while you start bots.
 
-> Note: The server and booter are included with the GUI installation. Stand-alone server and booter applications
+> [!NOTE] Note
+> The server and booter are included with the GUI installation. Stand-alone server and booter applications
 > are also available in releases for users who want to run them independently of the GUI.
 
 ### Starting and Joining Bots
@@ -202,10 +204,11 @@ Once your bots are connected:
 ![Bot selection dialog](../images/tankroyale-bot-selection.png)<br>
 *Bot selection dialog*
 
-> **Note:** In Tank Royale, the **Start Battle** button will be inactive (grayed out) if too few or too many bots are
-> selected for the chosen game type. If the button seems inactive for no clear reason, check which game type is
-> selected—each game type has specific rules for the minimum and maximum number of bots allowed in a battle. Adjust your
-> selection or game type to meet these requirements.
+> [!NOTE] Note
+> In Tank Royale, the **Start Battle** button will be inactive (grayed out) if too few or too many bots are selected for
+> the chosen game type. If the button seems inactive for no clear reason, check which game type is selected—each game
+> type has specific rules for the minimum and maximum number of bots allowed in a battle. Adjust your selection or game
+> type to meet these requirements.
 
 3. **Use default settings**
     - Keep the default arena size and number of rounds for your first battle.

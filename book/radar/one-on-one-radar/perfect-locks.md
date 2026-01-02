@@ -134,8 +134,9 @@ Notes:
 - A farther enemy has a smaller `enemyAngularWidth`, so the overshoot becomes smaller.
 - A closer enemy has a larger `enemyAngularWidth`, so the overshoot grows automatically.
 
-> **Tip:** If the lock becomes unstable when both bots turn hard, increase the overshoot slightly (for example by
-> multiplying by `1.1`), but keep it small to avoid wasting turns.
+> [!TIP] Tip
+> If the lock becomes unstable when both bots turn hard, increase the overshoot slightly (for example, by multiplying by
+> `1.1`), but keep it small to avoid wasting turns.
 
 ## Platform notes (Classic vs Tank Royale)
 
