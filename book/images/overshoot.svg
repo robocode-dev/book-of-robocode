@@ -4,9 +4,21 @@
         .text { font: 125px sans-serif; }
     </style>
 
-    <use href="#tank" transform="scale(0.5,0.5) translate(0,500)"/>
-    <use href="#radar-sweep" transform="translate(-200,50)"/>
+    <use href="#radar-sweep" transform="translate(0,0)"/>
     <use href="#arrows-with-text" transform="translate(-200,-50)"/>
+
+    <use href="#tank" transform="scale(0.5,0.5) translate(0,500)"/>
+
+    <use href="#tank" transform="scale(0.5,0.5) translate(4700,920)"
+         style="
+         --body-rotation:190deg;
+         --turret-rotation:270deg;
+         --radar-rotation:278deg;
+         --tank-body-color:#c00;
+         --tank-turret-color:#c00;
+         --tank-radar-color:#ff6666;"
+    />
+
 
     <defs>
         <style>
@@ -160,22 +172,31 @@
 
         <defs>
             <linearGradient id="sweepGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="1500">
-                <stop offset="0%" stop-color="green" stop-opacity="0.8"/>
-                <stop offset="50%" stop-color="green" stop-opacity="0.1"/>
-                <stop offset="100%" stop-color="green" stop-opacity="0"/>
+                <stop offset="0%" stop-color="green" stop-opacity="0.0"/>
+                <stop offset="50%" stop-color="green" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="green" stop-opacity="0.9"/>
             </linearGradient>
 
             <clipPath id="sector">
                 <path d="
-                    M 400 400
-                    L 3000 0
-                    A -1500 -1500 0 0 1 3000 1000
+                    M 200 450
+                    L 2800 50
+                    A -1500 -1500 0 0 1 2820 700
+                    Z"/>
+            </clipPath>
+
+            <clipPath id="sector2">
+                <path d="
+                    M 200 450
+                    L 2820 700
+                    A 0 0 0 0 1 2750 1050
                     Z"/>
             </clipPath>
         </defs>
 
         <symbol id="radar-sweep">
             <rect x="0" y="0" width="4000" height="4000" fill="url(#sweepGrad)" clip-path="url(#sector)"/>
+            <rect x="0" y="0" width="4000" height="4000" fill="#33AB" clip-path="url(#sector2)"/>
         </symbol>
 
         <symbol id="arrows-with-text">
@@ -184,10 +205,12 @@
             </marker>
 
             <line x1="400" y1="500" x2="3000" y2="95" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
-            <line x1="400" y1="500" x2="3000" y2="1105" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="400" y1="500" x2="2300" y2="680" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="400" y1="500" x2="2950" y2="1100" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
 
-            <text x="1200" y="490" class="text" fill="chocolate" transform="rotate(-9)">Current Heading</text>
-            <text x="1370" y="545" class="text" fill="chocolate" transform="rotate(13)">Previous Heading</text>
+            <text x="1200" y="510" class="text" fill="chocolate" transform="rotate(-9)">Radar Heading</text>
+            <text x="1200" y="460" class="text" fill="chocolate" transform="rotate(4)">Enemy Heading</text>
+            <text x="1350" y="530" class="text" fill="chocolate" transform="rotate(13)">Overshoot Heading</text>
         </symbol>
     </defs>
 </svg>

@@ -103,14 +103,7 @@ export default withMermaid(defineConfig({
               text: 'One-on-One Radar',
               items: [
                 { text: 'Spinning Radar', link: '/radar/one-on-one-radar/spinning-radar' },
-                { text: 'Infinity Lock', link: '/radar/one-on-one-radar/infinity-lock' },
-                {
-                  text: 'Perfect Locks',
-                  items: [
-                    { text: 'Turn Multiplier', link: '/radar/one-on-one-radar/perfect-locks/turn-multiplier' },
-                    { text: 'Width Lock', link: '/radar/one-on-one-radar/perfect-locks/width-lock' }
-                  ]
-                }
+                { text: 'Perfect Locks', link: '/radar/one-on-one-radar/perfect-locks' }
               ]
             },
             {
