@@ -29,8 +29,11 @@ get moving again. That’s extra time being an easy target.
 Walls also reduce your options. Near the center, a bot can dodge left or right with similar freedom. Near a border,
 half the escape space is gone.
 
-<!-- TODO: Illustration -->
-<!-- Show the battlefield rectangle, an inner “safe rectangle” (margin from each wall), and a bot near the edge. -->
+<img src="../../images/wall-avoidance-safe-rectangle.svg" alt="Battlefield with safe rectangle and bot near wall" class="screenshot"><br>
+*Battlefield with safe rectangle and bot near wall*
+
+Legend:
+- `M`: Margin from the wall, typically around 80–150 units
 
 > [!TIP] Goal
 > Wall handling should be part of normal movement logic, not a special case that runs only after a collision.
@@ -70,8 +73,8 @@ The key idea:
 If the bot repeats this at every turn, the result is a smooth, tangential path that naturally follows the wall instead
 of slamming into it.
 
-<!-- TODO: Illustration -->
-<!-- Show a bot near the right wall with a desired heading pointing out of bounds, and an adjusted heading that is tangent. -->
+<img src="../../images/wall-smoothing.svg" alt="Bot with adjusted heading that is tangent to the wall" width="150"><br>
+*Bot with a desired heading (red) that is set to an adjusted heading (green) that is tangent to the wall*
 
 ### A “safe rectangle” test (one-step lookahead)
 
@@ -135,10 +138,10 @@ This keeps the bot in motion even when a target point or enemy pressure pushes i
 
 The concept is the same on both platforms: keep the bot’s path inside an inset rectangle and slide along edges.
 
-Main differences are implementation details:
+The main differences are implementation details:
 
-- **Angle conventions differ.** Classic Robocode and Robocode Tank Royale use different “zero” direction and rotation
-  direction. Use the platform’s helpers (or a consistent math wrapper) and don’t mix conventions.
+- **Angle conventions differ.** Classic Robocode and Robocode Tank Royale use different “zero” directions and rotation
+  directions. Use the platform’s helpers (or a consistent math wrapper) and don’t mix conventions.
 - **APIs differ.** Classic has `setTurnRight` / `setAhead`. Tank Royale bindings expose similar control, but naming is
   language-specific.
 
@@ -155,4 +158,3 @@ Main differences are implementation details:
 - [Movement Fundamentals & GoTo](./movement-fundamentals-goto.md)
 - [Movement Constraints & Bot Physics](../../physics/movement-constraints.md)
 - [Wall Collisions](../../physics/wall-collisions.md)
-
