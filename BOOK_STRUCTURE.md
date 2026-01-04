@@ -64,7 +64,7 @@
 ├─ Movement & Evasion [I]
 │  ├─ Basic Movement [B]
 │  │  ├─ Movement Fundamentals & GoTo [B] [✅]
-│  │  ├─ Wall Avoidance & Wall Smoothing [I]
+│  │  ├─ Wall Avoidance & Wall Smoothing [I] [✅]
 │  │  └─ Distancing [I]
 │  ├─ Simple Evasion [I]
 │  │  ├─ Random Movement [I]
