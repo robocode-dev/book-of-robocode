@@ -15,25 +15,32 @@ generation contract and `/specs` workflow).
 
 ## 1. Identity
 
-- **Slug / file id**  
-  Short, URL-friendly id for the page, usually matching the VitePress
-  sidebar entry. Example: `coordinates-and-angles`.
+- **Slug / file id**
+  Example: `coordinates-and-angles`.
 
 - **Book section (top-level)**  
-  One of the main sections from `BOOK_STRUCTURE.md`, for example:  
-  `Introduction`, `Getting Started`, `Battlefield Physics`,
-  `Radar & Scanning`, `Targeting Systems`, `Movement & Evasion`,
-  `Energy & Scoring`, `Team Strategies`, `Melee Combat`,
-  `Advanced Topics`, `Robocode Tank Royale Differences`, `Appendices`.
+  One of the main sections from `BOOK_STRUCTURE.md`:  
+  `Introduction`
+  `Getting Started`
+  `Battlefield Physics`
+  `Radar & Scanning`
+  `Targeting Systems`
+  `Movement & Evasion`
+  `Energy & Scoring`
+  `Team Strategies`
+  `Melee Combat`
+  `Advanced Topics`
+  `Robocode Tank Royale Differences`
+  `Appendices`
 
 - **Planned title** (optional)  
-  Leave empty to let the AI choose a clear title.
+  XXX
 
 - **Difficulty**  
   `beginner` | `intermediate` | `advanced`.
 
-- **Output path** (optional)  
-  Default is `book/introduction/<slug>.md`. Override only if needed.
+- **Output path**  
+  E.g.: `book/introduction/<slug>.md`
 
 ---
 
@@ -71,9 +78,9 @@ Write a few short bullet points in your own words.
 - **Avoid or keep minimal**  
   Topics that belong on other pages or would distract beginners.
 
-- **Suggested illustrations** (optional)  
-  Describe any images that would help, and where they might go. Use: <!-- TODO: Illustration -->
-
+- **Suggested illustrations** (optional)
+    - Describe any images that would help, and where they might go. Make a detailed description of what is on each image
+      and what colors are used etc. Use: <!-- TODO: Illustration -->
 ---
 
 ## 4. Audience & emphasis (optional but helpful)

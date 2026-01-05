@@ -26,7 +26,7 @@
 │
 ├─ Radar & Scanning [I]
 │  ├─ Radar Basics [B] [✅]
-│  ├─ One-on-One Radar [I]
+│  ├─ One-on-One Radar [I] [✅]
 │  │  ├─ Spinning Radar [I] [✅] / Infinity Lock [I] [✅]
 │  │  └─ Perfect Locks (Turn Multiplier & Width Lock) [A] [✅]
 │  └─ Melee Radar [A]
@@ -62,7 +62,7 @@
 │     └─ Saving Gun Data [I]
 │
 ├─ Movement & Evasion [I]
-│  ├─ Basic Movement [B]
+│  ├─ Basic Movement [B] [✅]
 │  │  ├─ Movement Fundamentals & GoTo [B] [✅]
 │  │  ├─ Wall Avoidance & Wall Smoothing [I] [✅]
 │  │  └─ Distancing [I] [✅]
