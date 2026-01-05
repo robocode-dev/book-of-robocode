@@ -65,8 +65,11 @@ close is better,” but “reduce distance because the risk is low and the round
 
 ## Dynamic distancing (the idea)
 
-Dynamic distancing means the preferred distance is not fixed. Instead, the bot continuously adjusts the desired distance
-based on context.
+Dynamic distancing means the preferred distance is not fixed. Instead, the bot continuously adjusts the desired
+distance based on context.
+
+When the situation becomes more dangerous (for example, in a crowded melee), the usual adjustment is to **increase the
+preferred distance**. In calmer situations, the preferred distance can be smaller.
 
 Typical inputs for a dynamic distancing rule:
 
@@ -124,5 +127,5 @@ movement, waypoint navigation, orbiting, or any advanced evasive system.
   retreats).
 - **Remember wall space is part of distance.** “Far away” is not helpful if the bot has no room to turn.
 
-<!-- TODO: Illustration - Top-down battlefield sketch showing a bot maintaining a buffer distance to a nearby cluster,
-     and how the preferred distance increases as local crowding increases. -->
+<img src="../../images/dynamic-distancing.svg" alt="Dynamic distancing: preferred distance increases in crowded situations" width="800"><br>
+*Illustration: Dynamic distancing. The preferred distance is larger when the area is crowded.*
