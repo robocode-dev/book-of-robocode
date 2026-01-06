@@ -79,8 +79,11 @@ Write a few short bullet points in your own words.
   Topics that belong on other pages or would distract beginners.
 
 - **Suggested illustrations** (optional)
-    - Describe any images that would help, and where they might go. Make a detailed description of what is on each image
-      and what colors are used etc. Use: <!-- TODO: Illustration -->
+    - Describe any images that would help, and where they might go.
+    - For each suggested illustration:
+      - Use <!-- TODO: Illustration --> to mark where it should go.
+      - Make a detailed description of what is on each image and what colors are used etc.
+      - Give the illustration a short caption and suggest a proper filename.
 ---
 
 ## 4. Audience & emphasis (optional but helpful)
