@@ -132,9 +132,6 @@ A typical flow-through movement loop looks like this:
 
 This keeps the bot in motion even when a target point or enemy pressure pushes it toward the border.
 
-<!-- TODO: Illustration -->
-<!-- Show a waypoint near an edge and the bot following an arc that stays inside, instead of hitting the wall. -->
-
 <img src="../../images/wall-smoothing-with-goto.svg" alt="Bot following an arc that stays away from the wall using a GoTo waypoint" width="150"><br>
 *Illustration: Bot following an arc that stays away from the wall using a GoTo waypoint (green) and hence moves in a
 curve away from the wall*

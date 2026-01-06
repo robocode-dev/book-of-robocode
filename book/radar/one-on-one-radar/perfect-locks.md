@@ -27,9 +27,6 @@ Frequent scans make everything else easier:
 
 The radar is the sensor. A perfect lock is how to keep that sensor “glued” to the opponent.
 
-<!-- TODO: Illustration -->
-<!-- Show two bots turning while a narrow radar beam keeps crossing the enemy every tick; label “overshoot”. -->
-
 <img src="../../images/overshoot.svg" alt="Radar beam overshooting enemy"><br>
 *Illustration: The radar beam overshooting an enemy*
 

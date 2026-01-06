@@ -1,47 +1,28 @@
-<svg version="1.1" width="1000" height="750" viewBox="0 0 8000 6000" xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" width="500" height="250" viewBox="0 0 4000 2000" xmlns="http://www.w3.org/2000/svg">
 
     <style>
         .text { font: 150px sans-serif; }
     </style>
 
-    <rect x="0" y="0" width="8000" height="6000" fill="grey"/>
-    <rect x="200" y="200" width="7600" height="5600" fill="black"/>
-
-    <circle cx="1500" cy="4500" r="3000" fill="none" stroke="#7ecbff" stroke-width="10"/>
-    <circle cx="1500" cy="4500" r="5000" fill="none" stroke="#7fff7e" stroke-width="10"/>
-
-    <text class="text" x="500" y="1150" fill="#7ecbff">preferred distance when</text>
-    <text class="text" x="500" y="1400" fill="#7ecbff">few enemies are nearby</text>
-
-    <text class="text" x="3000" y="750" fill="#7fff7e">preferred distance when</text>
-    <text class="text" x="3000" y="1000" fill="#7fff7e">when the area is crowded</text>
-
-    <circle cx="6200" cy="1900" r="1500" fill="none" stroke="red" stroke-width="10" stroke-dasharray="50 50"/>
-    <text class="text" x="5700" y="2000" fill="red">enemy cluster</text>
-
-    <marker id="arrow-head" markerWidth="24" markerHeight="24" refX="12" refY="6" orient="auto">
-        <polygon points="12 0, 24 6, 12 12" fill="white"/>
+    <marker id="arrow-head" markerWidth="12" markerHeight="12" refX="6" refY="3" orient="auto">
+        <polygon points="6 0, 12 3, 6 6" fill="chocolate"/>
     </marker>
 
-    <line x1="1500" y1="4500" x2="4800" y2="2700" stroke="white" stroke-width="10" stroke-dasharray="50 50"
-          marker-end="url(#arrow-head)"/>
+    <marker id="arrow-head-2" markerWidth="12" markerHeight="12" refX="6" refY="3" orient="auto">
+        <polygon points="6 0, 12 3, 6 6" fill="#cc0"/>
+    </marker>
 
-    <use href="#tank" transform="translate(1200,4200) scale(0.75,0.75)"
-        style="--body-rotation:150deg; --turret-rotation:52deg; --radar-rotation:63deg;"/>
+    <line x1="400" y1="1650" x2="2760" y2="250" stroke="#cc0" stroke-width="20" marker-end="url(#arrow-head-2)" stroke-dasharray="370 20"/>
+    <line x1="3650" y1="1350" x2="2940" y2="300" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)" stroke-dasharray="150 20"/>
 
-    <use href="#tank" transform="translate(6500,800) scale(0.75,0.75) "
+    <circle cx="2870" cy="200" r="100" fill="none" stroke="red" stroke-width="20"/>
+
+    <use href="#tank" transform="translate(0,1250)"
+         style="--body-rotation:20deg; --turret-rotation:60deg; --radar-rotation:90deg;"/>
+
+    <use href="#tank" transform="translate(3250,950)"
          style="--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa;
-                --body-rotation:10deg; --turret-rotation:200deg; --radar-rotation:260deg;"/>
-
-    <use href="#tank" transform="translate(5000,1400) scale(0.75,0.75) "
-         style="--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa;
-                --body-rotation:180deg; --turret-rotation:100deg; --radar-rotation:70deg;"/>
-
-    <use href="#tank" transform="translate(5800,2700) scale(0.75,0.75) "
-         style="--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa;
-                --body-rotation:60deg; --turret-rotation:240deg; --radar-rotation:253deg;"/>
-
-    <text class="text" x="500" y="4600" fill="white" transform="rotate(-29)">distance to cluster is ~400 units</text>
+                --body-rotation:-31deg; --turret-rotation:260deg; --radar-rotation:260deg;"/>
 
     <defs>
         <style>
