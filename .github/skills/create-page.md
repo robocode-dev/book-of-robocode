@@ -88,6 +88,37 @@ source: [
 - American English spelling.
 - Short paragraphs (2–4 sentences).
 
+#### Illustration Placeholders
+
+For concepts that benefit from visual explanation, insert TODO comments where illustrations should go:
+
+```markdown
+<!-- TODO: Illustration
+**Filename:** circular-targeting-geometry.svg
+**Caption:** "Circular targeting predicts where the enemy will be based on its turn rate"
+**Description:** Show a bot (blue) at center-left aiming at an enemy (red) that is moving in a 
+circular arc. Draw the enemy's curved path as a dashed arc. Show the predicted intercept point 
+with a crosshair marker. Draw the bullet trajectory as a straight line from the bot to the 
+intercept point. Label: "turn rate", "predicted position", "bullet path".
+**Colors:** Bot = blue (#3B82F6), Enemy = red (#EF4444), Path = gray dashed, Bullet = orange (#F59E0B)
+**Size:** 600×400 px recommended
+-->
+```
+
+**When to include illustration placeholders:**
+- Geometric concepts (angles, trajectories, predictions)
+- Movement patterns (orbiting, strafing, wave surfing)
+- Coordinate systems and angle conventions
+- Before/after comparisons
+- Algorithm visualizations
+
+**Placeholder requirements:**
+- `Filename`: kebab-case, descriptive, with `.svg` extension (preferred) or `.png`
+- `Caption`: Short description for display under the image
+- `Description`: Detailed enough for a human to create or commission the illustration
+- `Colors`: Specific hex codes for consistency across the book
+- `Size`: Recommended dimensions
+
 ### 4. Update `config.js`
 
 After generating the page, update `book/.vitepress/config.js`:
@@ -152,7 +183,10 @@ Map to the existing `themeConfig.nav` structure. The nav typically links to the 
 5. Sources from `robowiki-links.md`:
    - https://robowiki.net/wiki/Circular_Targeting
    - https://robowiki.net/wiki/Circular_Targeting/Walkthrough
-6. Generated page with frontmatter and body.
+6. Generated page with:
+   - Frontmatter (title, category, summary, tags, difficulty, source)
+   - Body sections (overview, key idea, math, pseudocode, platform notes, tips)
+   - Illustration placeholders with detailed descriptions for geometric concepts
 7. Updated `config.js`:
    - Added to `/targeting/` sidebar under "Simple Targeting" items.
 

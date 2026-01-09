@@ -141,6 +141,55 @@ source: [
 
 5. **Platform Comparison** — Include when behavior differs between classic Robocode and Tank Royale.
 
+6. **Illustration Placeholders** — Insert TODO comments where visuals would help (see Section 4.1).
+
+### 4.1 Illustration Placeholders
+
+For concepts that benefit from visual explanation, insert detailed TODO comments:
+
+```markdown
+<!-- TODO: Illustration
+**Filename:** circular-targeting-geometry.svg
+**Caption:** "Circular targeting predicts where the enemy will be based on its turn rate"
+**Description:** Show a bot (blue) at center-left aiming at an enemy (red) that is moving in a 
+circular arc. Draw the enemy's curved path as a dashed arc. Show the predicted intercept point 
+with a crosshair marker. Draw the bullet trajectory as a straight line from the bot to the 
+intercept point. Label: "turn rate", "predicted position", "bullet path".
+**Colors:** Bot = blue (#3B82F6), Enemy = red (#EF4444), Path = gray dashed, Bullet = orange (#F59E0B)
+**Size:** 600×400 px recommended
+-->
+```
+
+**When to include:**
+- Geometric concepts (angles, trajectories, predictions)
+- Movement patterns (orbiting, strafing, wave surfing)
+- Coordinate systems and angle conventions
+- Before/after comparisons
+- Algorithm visualizations
+
+**Required fields in each placeholder:**
+
+| Field | Description |
+|-------|-------------|
+| `Filename` | Kebab-case, descriptive name with `.svg` (preferred) or `.png` extension |
+| `Caption` | Short description for display under the image (1 sentence) |
+| `Description` | Detailed instructions for creating the illustration — what to show, how to arrange elements, what to label |
+| `Colors` | Specific hex codes for consistency (use book color palette below) |
+| `Size` | Recommended dimensions in pixels |
+
+**Book color palette:**
+
+| Element | Color | Hex |
+|---------|-------|-----|
+| Bot (self) | Blue | `#3B82F6` |
+| Enemy | Red | `#EF4444` |
+| Bullet | Orange | `#F59E0B` |
+| Path/trajectory | Gray | `#6B7280` |
+| Safe zone | Green | `#10B981` |
+| Danger zone | Red | `#EF4444` (lighter: `#FCA5A5`) |
+| Highlight | Yellow | `#FBBF24` |
+| Walls/boundaries | Dark gray | `#374151` |
+
 ### Heading Style
 
 - **Procedural/tutorial pages:** Use numbered headings (`## 1. First Step`).
