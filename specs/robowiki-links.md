@@ -1,4 +1,13 @@
-Radar:
+# RoboWiki Links — Classic Robocode Only
+
+> [!IMPORTANT]
+> These links are for **classic Robocode** documentation only.
+> For **Robocode Tank Royale**, use https://robocode.dev (APIs, physics, game rules, sample bots).
+
+---
+
+## Radar
+
 - Radar: https://robowiki.net/wiki/Radar
 - One on One Radar: https://robowiki.net/wiki/One_on_One_Radar
   - Simple Radar Locks
