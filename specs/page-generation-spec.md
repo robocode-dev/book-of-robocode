@@ -141,11 +141,20 @@ source: [
 
 5. **Platform Comparison** — Include when behavior differs between classic Robocode and Tank Royale.
 
-6. **Illustration Placeholders** — Insert TODO comments where visuals would help (see Section 4.1).
+6. **Illustration Placeholders** — **REQUIRED** for visual concepts (see Section 4.1).
 
-### 4.1 Illustration Placeholders
+### 4.1 Illustration Placeholders (REQUIRED)
 
-For concepts that benefit from visual explanation, insert detailed TODO comments:
+**You MUST include at least one illustration placeholder** for any page that involves:
+- Geometric concepts (angles, trajectories, predictions)
+- Movement patterns (orbiting, strafing, wave surfing)
+- Coordinate systems and angle conventions
+- Before/after comparisons
+- Algorithm visualizations
+
+Most targeting, movement, and physics pages will need 1–3 illustration placeholders.
+
+Insert detailed TODO comments where illustrations should go:
 
 ```markdown
 <!-- TODO: Illustration

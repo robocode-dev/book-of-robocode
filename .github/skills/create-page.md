@@ -78,6 +78,7 @@ source: [
 3. **3–6 sections** with clear headings (e.g., "Key Idea", "How It Works", "Platform Notes", "Tips").
 4. **1–2 pseudocode or formula blocks** per major concept.
 5. **Platform comparison section** when concepts differ between classic and Tank Royale.
+6. **Illustration placeholders** (REQUIRED for visual concepts — see below).
 
 #### Rules
 
@@ -88,9 +89,18 @@ source: [
 - American English spelling.
 - Short paragraphs (2–4 sentences).
 
-#### Illustration Placeholders
+#### Illustration Placeholders (REQUIRED)
 
-For concepts that benefit from visual explanation, insert TODO comments where illustrations should go:
+**You MUST include at least one illustration placeholder** for any page that involves:
+- Geometric concepts (angles, trajectories, predictions)
+- Movement patterns (orbiting, strafing, wave surfing)
+- Coordinate systems and angle conventions
+- Before/after comparisons
+- Algorithm visualizations
+
+Most targeting, movement, and physics pages will need 1–3 illustration placeholders.
+
+Insert TODO comments where illustrations should go:
 
 ```markdown
 <!-- TODO: Illustration
@@ -105,12 +115,6 @@ intercept point. Label: "turn rate", "predicted position", "bullet path".
 -->
 ```
 
-**When to include illustration placeholders:**
-- Geometric concepts (angles, trajectories, predictions)
-- Movement patterns (orbiting, strafing, wave surfing)
-- Coordinate systems and angle conventions
-- Before/after comparisons
-- Algorithm visualizations
 
 **Placeholder requirements:**
 - `Filename`: kebab-case, descriptive, with `.svg` extension (preferred) or `.png`
