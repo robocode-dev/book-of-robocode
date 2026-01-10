@@ -100,28 +100,45 @@ source: [
 
 Most targeting, movement, and physics pages will need 1–3 illustration placeholders.
 
+Use the structured format from `specs/page-generation-spec.md` Section 4.1. These placeholders can be
+converted to SVG images using the `/create-illustration` skill.
+
 Insert TODO comments where illustrations should go:
 
 ```markdown
 <!-- TODO: Illustration
 **Filename:** circular-targeting-geometry.svg
 **Caption:** "Circular targeting predicts where the enemy will be based on its turn rate"
-**Description:** Show a bot (blue) at center-left aiming at an enemy (red) that is moving in a 
-circular arc. Draw the enemy's curved path as a dashed arc. Show the predicted intercept point 
-with a crosshair marker. Draw the bullet trajectory as a straight line from the bot to the 
-intercept point. Label: "turn rate", "predicted position", "bullet path".
-**Colors:** Bot = blue (#3B82F6), Enemy = red (#EF4444), Path = gray dashed, Bullet = orange (#F59E0B)
-**Size:** 600×400 px recommended
+**Viewport:** 8000x6000
+**Battlefield:** true
+**Bots:**
+  - type: friendly, position: (1000, 4500), body: 20, turret: 60, radar: 90
+  - type: enemy, position: (6500, 1500), body: -3, turret: 260, radar: 260
+**Lines:**
+  - from: (1400, 4500), to: (6100, 1700), color: #cc0, arrow: true, dashed: true
+**Arcs:**
+  - center: (7000, 2000), radius: 1000, startAngle: 180, endAngle: 270, color: chocolate, arrow: true, dashed: true
+**Circles:**
+  - center: (6100, 1600), radius: 100, color: red, fill: none
+**Texts:**
+  - text: "turn rate", position: (5500, 2800), color: chocolate
+  - text: "predicted position", position: (5800, 1200), color: chocolate
+  - text: "bullet path", position: (3000, 3000), color: #cc0
 -->
 ```
 
-
-**Placeholder requirements:**
-- `Filename`: kebab-case, descriptive, with `.svg` extension (preferred) or `.png`
+**Required fields:**
+- `Filename`: kebab-case, descriptive, with `.svg` extension
 - `Caption`: Short description for display under the image
-- `Description`: Detailed enough for a human to create or commission the illustration
-- `Colors`: Specific hex codes for consistency across the book
-- `Size`: Recommended dimensions
+- `Viewport`: Dimensions as `WxH` (max 8000×8000); display size = W/8 × H/8
+- `Battlefield`: `true` for grey border + black arena; `false` for transparent
+
+**Optional fields:**
+- `Bots`: List with `type` (friendly/enemy), `position`, `body`/`turret`/`radar` angles
+- `Lines`, `Arcs`, `Circles`, `Texts`, `Bullets`: Structured element definitions
+- `Description`: Free-form description for complex illustrations
+
+See `specs/page-generation-spec.md` Section 4.1 for full field definitions and color palette.
 
 ### 4. Update `config.js`
 

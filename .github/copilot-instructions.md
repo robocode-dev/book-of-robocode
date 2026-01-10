@@ -19,6 +19,22 @@ The skill will:
 3. Generate the page following `specs/page-generation-spec.md`.
 4. Update `book/.vitepress/config.js` with sidebar and nav entries.
 
+## Creating Illustrations
+
+Use the **create-illustration** skill to generate SVG images from TODO markers:
+
+- **Slash command:** `/create-illustration`
+- **Natural language:** "Create illustration", "Generate the illustration", "Draw the SVG"
+
+The skill scans the current file for `<!-- TODO: Illustration` markers and generates SVG files to `book/images/`.
+
+The skill will:
+1. Parse the TODO marker to extract filename, viewport, bots, lines, texts, etc.
+2. Validate required fields (Filename, Caption, Viewport).
+3. Generate the SVG with proper tank rendering and battlefield background.
+4. Save the SVG to `book/images/<filename>`.
+5. Insert an `<img>` tag below the TODO marker (keeping the TODO for regeneration).
+
 ## Reference Documents
 
 - `/AI_GUIDELINES.md` — Writing rules, terminology, page generation contract.
@@ -27,3 +43,4 @@ The skill will:
 - `/specs/page-generation-spec.md` — Detailed frontmatter and body structure rules.
 - `/specs/robowiki-links.md` — RoboWiki links for classic Robocode sources (not Tank Royale).
 - `/.github/skills/create-page.md` — The create-page skill definition.
+- `/.github/skills/create-illustration.md` — The create-illustration skill definition.

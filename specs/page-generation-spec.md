@@ -154,18 +154,29 @@ source: [
 
 Most targeting, movement, and physics pages will need 1–3 illustration placeholders.
 
+Use the `/create-illustration` skill (see `.github/skills/create-illustration.md`) to generate SVG images
+from these placeholders.
+
 Insert detailed TODO comments where illustrations should go:
 
 ```markdown
 <!-- TODO: Illustration
 **Filename:** circular-targeting-geometry.svg
 **Caption:** "Circular targeting predicts where the enemy will be based on its turn rate"
-**Description:** Show a bot (blue) at center-left aiming at an enemy (red) that is moving in a 
-circular arc. Draw the enemy's curved path as a dashed arc. Show the predicted intercept point 
-with a crosshair marker. Draw the bullet trajectory as a straight line from the bot to the 
-intercept point. Label: "turn rate", "predicted position", "bullet path".
-**Colors:** Bot = blue (#3B82F6), Enemy = red (#EF4444), Path = gray dashed, Bullet = orange (#F59E0B)
-**Size:** 600×400 px recommended
+**Viewport:** 8000x6000
+**Battlefield:** true
+**Bots:**
+  - type: friendly, position: (1000, 4500), body: 20, turret: 60, radar: 90
+  - type: enemy, position: (6500, 1500), body: -3, turret: 260, radar: 260
+**Lines:**
+  - from: (1400, 4500), to: (6100, 1700), color: #cc0, arrow: true, dashed: true, label: "bullet path"
+**Arcs:**
+  - center: (7000, 2000), radius: 1000, startAngle: 180, endAngle: 270, color: chocolate, arrow: true, 
+    dashed: true, label: "enemy arc"
+**Circles:**
+  - center: (6100, 1600), radius: 100, color: red, fill: none, label: "predicted position"
+**Texts:**
+  - text: "turn rate", position: (5500, 2800), color: chocolate
 -->
 ```
 
@@ -180,24 +191,52 @@ intercept point. Label: "turn rate", "predicted position", "bullet path".
 
 | Field | Description |
 |-------|-------------|
-| `Filename` | Kebab-case, descriptive name with `.svg` (preferred) or `.png` extension |
+| `Filename` | Kebab-case, descriptive name with `.svg` extension |
 | `Caption` | Short description for display under the image (1 sentence) |
-| `Description` | Detailed instructions for creating the illustration — what to show, how to arrange elements, what to label |
-| `Colors` | Specific hex codes for consistency (use book color palette below) |
-| `Size` | Recommended dimensions in pixels |
+| `Viewport` | Viewport dimensions as `WxH` (max 8000×8000). Display size = W/8 × H/8 |
+| `Battlefield` | `true` to draw grey border + black arena background; `false` for transparent |
+
+**Optional structured fields:**
+
+| Field | Description |
+|-------|-------------|
+| `Bots` | List of bots with: `type` (friendly/enemy), `position` (x,y), `body`/`turret`/`radar` angles in degrees |
+| `Lines` | List of lines with: `from` (x,y), `to` (x,y), `color`, `arrow` (bool), `dashed` (bool), `label` |
+| `Arcs` | List of arcs with: `center` (x,y), `radius`, `startAngle`, `endAngle`, `color`, `arrow`, `dashed`, `label` |
+| `Circles` | List of circles with: `center` (x,y), `radius`, `color`, `fill` (color or `none`), `label` |
+| `Texts` | List of text labels with: `text`, `position` (x,y), `color`, `rotate` (optional angle) |
+| `Bullets` | List of bullets with: `position` (x,y), `radius` (50–100), `color` |
+| `Description` | Free-form description for complex illustrations not fully captured by structured fields |
 
 **Book color palette:**
 
-| Element | Color | Hex |
-|---------|-------|-----|
-| Bot (self) | Blue | `#3B82F6` |
-| Enemy | Red | `#EF4444` |
+| Element | Color | Hex/Name |
+|---------|-------|----------|
+| Friendly bot (body) | Blue | `#019` |
+| Friendly bot (turret) | Blue | `#06c` |
+| Friendly bot (radar) | Light blue | `#aaf` |
+| Enemy bot (body) | Red | `#c00` |
+| Enemy bot (turret) | Red | `#e22` |
+| Enemy bot (radar) | Light red | `#faa` |
+| Default text/lines | Chocolate | `chocolate` |
 | Bullet | Orange | `#F59E0B` |
-| Path/trajectory | Gray | `#6B7280` |
+| Path/trajectory | Gray dashed | `#6B7280` |
 | Safe zone | Green | `#10B981` |
-| Danger zone | Red | `#EF4444` (lighter: `#FCA5A5`) |
-| Highlight | Yellow | `#FBBF24` |
-| Walls/boundaries | Dark gray | `#374151` |
+| Danger zone | Red | `#EF4444` |
+| Highlight | Yellow | `#cc0` |
+| Battlefield border | Gray | `grey` |
+| Battlefield arena | Black | `black` |
+
+**SVG sizing rules:**
+- Viewport is set via `viewBox="0 0 W H"` where W and H are from the `Viewport` field
+- Display width = viewport width / 8 (e.g., 8000 → 1000px)
+- Display height = viewport height / 8 (e.g., 6000 → 750px)
+- Maximum viewport: 8000×8000 (maximum display: 1000×1000px)
+- Tank size is 800×800 units, centered at (400, 400) relative to its position
+
+**Battlefield rendering (when `Battlefield: true`):**
+- Grey rectangle fills entire viewport (border)
+- Black rectangle inset by 200 units on all sides (arena)
 
 ### Heading Style
 
