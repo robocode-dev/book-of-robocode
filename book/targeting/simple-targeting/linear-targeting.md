@@ -4,7 +4,7 @@ category: "Targeting Systems"
 summary: "A simple predictive aiming method: assume the enemy keeps moving in a straight line at constant speed, then aim
   where it will be when the bullet arrives."
 tags: [ "targeting", "simple-targeting", "linear-targeting", "predictive-aiming", "classic-robocode", "tank-royale",
-  "intermediate" ]
+        "intermediate" ]
 difficulty: "intermediate"
 source: [
   "RoboWiki - Linear Targeting (classic Robocode) https://robowiki.net/wiki/Linear_Targeting"
@@ -85,8 +85,9 @@ enemy is effectively moving away too fast in the assumed direction).
 > In classic Robocode, bullet speed is `20 - 3*power`.
 > (See [Bullet Travel & Bullet Physics](../../physics/bullet-physics.md).)
 
-<img src="../../images/linear-targeting.svg" alt="Bot firing a bullet at a predicted intercept point based on enemy velocity" width="500"/><br>
-*Diagram: A bot firing a bullet at a predicted intercept point based on enemy velocity*
+<img src="../../images/linear-targeting.svg" alt="Top-down diagram showing a blue shooter bot firing a yellow bullet at the predicted intercept point on an orange enemy bot's curved trajectory" width="500"/><br>
+*Diagram: Circular targeting predicts the enemy's linear path and aims at the intercept point where the bullet meets the
+enemy.*
 
 ## Minimal pseudocode
 
@@ -137,16 +138,17 @@ fire()
 The math above is the same, but *inputs* differ.
 
 - **Angles and trig:**
-  - Classic Robocode uses 0° = North and angles increase clockwise.
-  - Tank Royale uses 0° = East and angles increase counterclockwise.
-  Use the correct conversion helpers for the platform.
-  See [Coordinate Systems & Angles](../../physics/coordinates-and-angles.md).
+    - Classic Robocode uses 0° = North and angles increase clockwise.
+    - Tank Royale uses 0° = East and angles increase counterclockwise.
+      Use the correct conversion helpers for the platform.
+      See [Coordinate Systems & Angles](../../physics/coordinates-and-angles.md).
 
 - **Deriving `(enemyVx, enemyVy)`:**
-  - Classic Robocode: `enemyVx = sin(enemyHeading) * enemySpeed`, `enemyVy = cos(enemyHeading) * enemySpeed` using the
-    same “sin is X / cos is Y” convention as other classic Robocode coordinate math.
-  - Tank Royale: velocity components are usually `enemyVx = cos(dir) * speed`, `enemyVy = sin(dir) * speed` because the
-    axis/angle conventions are different.
+    - Classic Robocode: `enemyVx = sin(enemyHeading) * enemySpeed`, `enemyVy = cos(enemyHeading) * enemySpeed` using the
+      same “sin is X / cos is Y” convention as other classic Robocode coordinate math.
+    - Tank Royale: velocity components are usually `enemyVx = cos(dir) * speed`, `enemyVy = sin(dir) * speed` because
+      the
+      axis/angle conventions are different.
 
 - **Prediction outside the battlefield:** linear prediction can point outside the walls.
   Many bots clamp the aim point to a “safe rectangle” or fall back to head-on when the predicted point is invalid.

@@ -1,8 +1,8 @@
 ---
 title: "Circular Targeting (with Walkthrough)"
 category: "Targeting Systems"
-summary: "A predictive aiming method that assumes the enemy keeps turning at a constant rate, so its path curves." 
-tags: ["targeting", "simple-targeting", "circular-targeting", "predictive-aiming", "classic-robocode", "tank-royale", "intermediate"]
+summary: "A predictive aiming method that assumes the enemy keeps turning at a constant rate, so its path curves."
+tags: [ "targeting", "simple-targeting", "circular-targeting", "predictive-aiming", "classic-robocode", "tank-royale", "intermediate" ]
 difficulty: "intermediate"
 source: [
   "RoboWiki - Circular Targeting (classic Robocode) https://robowiki.net/wiki/Circular_Targeting",
@@ -16,7 +16,8 @@ Circular targeting predicts where to aim by assuming the enemy keeps moving with
 turn rate**.
 That means the enemy follows an arc (part of a circle), not a straight line.
 
-Compared to [Linear Targeting](./linear-targeting.md), this tends to hit better against bots that keep turning while they
+Compared to [Linear Targeting](./linear-targeting.md), this tends to hit better against bots that keep turning while
+they
 strafe (a very common movement style).
 
 ## When does circular targeting work well?
@@ -54,16 +55,9 @@ Then it simulates forward, one tick at a time:
 
 This "play it forward" loop avoids hard math and stays readable.
 
-<!-- TODO: Illustration -->
-<!-- A top-down diagram with a light gray battlefield rectangle.
-     - Draw the shooter bot as a blue square near the bottom-left.
-     - Draw the enemy bot as an orange square near the center.
-     - Show the enemy trajectory as a curved orange arc with small tick marks for each turn.
-     - Show headings at two or three steps as thin orange rays.
-     - Draw the bullet path as a straight yellow line from the shooter to the predicted intercept point on the arc.
-     - Label: "enemyTurnRate" near a curved arrow, "enemySpeed" along the arc, and "bulletSpeed" along the bullet line.
-     Suggested filename: circular-targeting-arc-intercept.svg
-     Caption: "Circular targeting predicts a curved enemy path and aims at the intercept point." -->
+<img src="../../images/circular-targeting.svg" alt="Top-down diagram showing a blue shooter bot firing a yellow bullet at the predicted intercept point on an orange enemy bot's curved trajectory" width="500"/><br>
+*Diagram: Circular targeting predicts the enemy's curved path and aims at the intercept point where the bullet meets the
+enemy.*
 
 ## Minimal pseudocode (platform-agnostic)
 
