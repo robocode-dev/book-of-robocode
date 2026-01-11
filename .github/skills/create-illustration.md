@@ -24,16 +24,19 @@ When invoked, perform these steps in order:
 ### 2. Validate Fields
 
 **Required fields:**
+
 - `Filename` — Must end with `.svg`
 - `Caption` — Short description for the image
 - `Viewport` — Dimensions as `WxH` (e.g., `8000x6000`)
 
 **Optional but recommended:**
+
 - `Battlefield` — `true` or `false` (default: `false`)
 - `Bots`, `Lines`, `Arcs`, `Circles`, `Texts`, `Bullets` — Structured element lists
 - `Description` — Free-form description for complex illustrations
 
 **If required fields are missing:**
+
 - Output an error message listing the missing fields.
 - Do not generate the SVG.
 
@@ -73,24 +76,24 @@ After generating the SVG, insert the `<img>` tag immediately after the TODO mark
 
 ### Required Fields
 
-| Field | Format | Example |
-|-------|--------|---------|
-| `Filename` | `kebab-case.svg` | `circular-targeting-geometry.svg` |
-| `Caption` | String (1 sentence) | `"Circular targeting predicts enemy position"` |
-| `Viewport` | `WxH` (max 8000×8000) | `8000x6000` |
+| Field      | Format                | Example                                        |
+|------------|-----------------------|------------------------------------------------|
+| `Filename` | `kebab-case.svg`      | `circular-targeting-geometry.svg`              |
+| `Caption`  | String (1 sentence)   | `"Circular targeting predicts enemy position"` |
+| `Viewport` | `WxH` (max 8000×8000) | `8000x6000`                                    |
 
 ### Optional Fields
 
-| Field | Format | Description |
-|-------|--------|-------------|
-| `Battlefield` | `true`/`false` | Draw grey border + black arena |
-| `Bots` | YAML list | List of bot definitions |
-| `Lines` | YAML list | List of line definitions |
-| `Arcs` | YAML list | List of arc definitions |
-| `Circles` | YAML list | List of circle definitions |
-| `Texts` | YAML list | List of text label definitions |
-| `Bullets` | YAML list | List of bullet definitions |
-| `Description` | Free text | Additional instructions for complex illustrations |
+| Field         | Format         | Description                                       |
+|---------------|----------------|---------------------------------------------------|
+| `Battlefield` | `true`/`false` | Draw grey border + black arena                    |
+| `Bots`        | YAML list      | List of bot definitions                           |
+| `Lines`       | YAML list      | List of line definitions                          |
+| `Arcs`        | YAML list      | List of arc definitions                           |
+| `Circles`     | YAML list      | List of circle definitions                        |
+| `Texts`       | YAML list      | List of text label definitions                    |
+| `Bullets`     | YAML list      | List of bullet definitions                        |
+| `Description` | Free text      | Additional instructions for complex illustrations |
 
 ### Bot Definition
 
@@ -160,22 +163,22 @@ After generating the SVG, insert the `<img>` tag immediately after the TODO mark
 
 Use these colors for consistency across all illustrations:
 
-| Element | Color | Value |
-|---------|-------|-------|
-| Friendly bot (body) | Blue | `#019` |
-| Friendly bot (turret) | Blue | `#06c` |
-| Friendly bot (radar) | Light blue | `#aaf` |
-| Enemy bot (body) | Red | `#c00` |
-| Enemy bot (turret) | Red | `#e22` |
-| Enemy bot (radar) | Light red | `#faa` |
-| Default text/lines | Chocolate | `chocolate` |
-| Bullet | Orange | `#F59E0B` |
-| Path/trajectory | Gray | `#6B7280` |
-| Highlight/prediction | Yellow | `#cc0` |
-| Safe zone | Green | `#10B981` |
-| Danger zone | Red | `#EF4444` |
-| Battlefield border | Gray | `grey` |
-| Battlefield arena | Black | `black` |
+| Element               | Color      | Value       |
+|-----------------------|------------|-------------|
+| Friendly bot (body)   | Blue       | `#019`      |
+| Friendly bot (turret) | Blue       | `#06c`      |
+| Friendly bot (radar)  | Light blue | `#aaf`      |
+| Enemy bot (body)      | Red        | `#c00`      |
+| Enemy bot (turret)    | Red        | `#e22`      |
+| Enemy bot (radar)     | Light red  | `#faa`      |
+| Default text/lines    | Chocolate  | `chocolate` |
+| Bullet                | Orange     | `#F59E0B`   |
+| Path/trajectory       | Gray       | `#6B7280`   |
+| Highlight/prediction  | Yellow     | `#cc0`      |
+| Safe zone             | Green      | `#10B981`   |
+| Danger zone           | Red        | `#EF4444`   |
+| Battlefield border    | Gray       | `grey`      |
+| Battlefield arena     | Black      | `black`     |
 
 ---
 
@@ -184,7 +187,8 @@ Use these colors for consistency across all illustrations:
 ### Viewport and Display Size
 
 ```xml
-<svg version="1.1" width="W/8" height="H/8" viewBox="0 0 W H" xmlns="http://www.w3.org/2000/svg">
+
+<svg version="1.1" width="W/8" height="H/8" viewBox="0 0 W H" xmlns="http://www.w3.org/2000/svg"/>
 ```
 
 - `viewBox` uses the `Viewport` dimensions (e.g., `8000x6000`)
@@ -194,6 +198,7 @@ Use these colors for consistency across all illustrations:
 ### SVG Template
 
 ```xml
+
 <svg version="1.1" width="1000" height="750" viewBox="0 0 8000 6000" xmlns="http://www.w3.org/2000/svg">
 
     <style>
@@ -249,6 +254,7 @@ Use these colors for consistency across all illustrations:
 ### Friendly Bot (Blue)
 
 ```xml
+
 <use href="#tank" transform="translate(1000,4500)"
      style="--body-rotation:20deg; --turret-rotation:60deg; --radar-rotation:90deg;"/>
 ```
@@ -258,6 +264,7 @@ Uses default colors from `<defs>`: body `#019`, turret `#06c`, radar `#aaf`.
 ### Enemy Bot (Red)
 
 ```xml
+
 <use href="#tank" transform="translate(6500,1500)"
      style="--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa;
             --body-rotation:-3deg; --turret-rotation:260deg; --radar-rotation:260deg;"/>
@@ -265,12 +272,20 @@ Uses default colors from `<defs>`: body `#019`, turret `#06c`, radar `#aaf`.
 
 ### Scaling Tanks
 
-To scale a tank, add `scale(sx, sy)` AFTER `translate()`:
+**Important:** For large illustrations (viewport 8000×6000 or larger), scale tanks down using `scale()` to avoid them
+appearing too large. Always add `scale()` AFTER `translate()`:
 
 ```xml
-<use href="#tank" transform="translate(1000,4500) scale(0.75,0.75)"
+
+<use href="#tank" transform="translate(1000,4500) scale(0.75)"
      style="--body-rotation:20deg; --turret-rotation:60deg; --radar-rotation:90deg;"/>
 ```
+
+**Scaling guidelines:**
+
+- **8000×6000 or larger viewport:** Use `scale(0.75)` or `scale(0.5)`
+- **4000×3000 or smaller viewport:** Use `scale(1)` or `scale(0.5)` depending on tank prominence
+- Scale must come AFTER `translate()` in the transform attribute
 
 ---
 
@@ -279,20 +294,23 @@ To scale a tank, add `scale(sx, sy)` AFTER `translate()`:
 ### Basic Line
 
 ```xml
+
 <line x1="400" y1="700" x2="3000" y2="295" stroke="chocolate" stroke-width="20"/>
 ```
 
 ### Line with Arrow
 
 ```xml
-<line x1="400" y1="700" x2="3000" y2="295" stroke="chocolate" stroke-width="20" 
+
+<line x1="400" y1="700" x2="3000" y2="295" stroke="chocolate" stroke-width="20"
       marker-end="url(#arrow-head)"/>
 ```
 
 ### Dashed Line
 
 ```xml
-<line x1="400" y1="700" x2="3000" y2="295" stroke="chocolate" stroke-width="20" 
+
+<line x1="400" y1="700" x2="3000" y2="295" stroke="chocolate" stroke-width="20"
       stroke-dasharray="150 20"/>
 ```
 
@@ -301,16 +319,17 @@ To scale a tank, add `scale(sx, sy)` AFTER `translate()`:
 Each arrow color needs its own marker definition:
 
 ```xml
+
 <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
     <polygon points="6 0, 12 3, 6 6" fill="chocolate"/>
 </marker>
 
 <marker id="arrow-head-yellow" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
-    <polygon points="6 0, 12 3, 6 6" fill="#cc0"/>
+<polygon points="6 0, 12 3, 6 6" fill="#cc0"/>
 </marker>
 
 <marker id="arrow-head-red" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
-    <polygon points="6 0, 12 3, 6 6" fill="red"/>
+<polygon points="6 0, 12 3, 6 6" fill="red"/>
 </marker>
 ```
 
@@ -321,18 +340,21 @@ Each arrow color needs its own marker definition:
 Arcs use SVG path with the `A` (arc) command:
 
 ```xml
-<path d="M startX startY A radius radius 0 largeArcFlag sweepFlag endX endY" 
+
+<path d="M startX startY A radius radius 0 largeArcFlag sweepFlag endX endY"
       stroke="chocolate" stroke-width="20" fill="none" marker-end="url(#arrow-head)"/>
 ```
 
 **Arc flags:**
+
 - `largeArcFlag`: 0 for arc ≤180°, 1 for arc >180°
 - `sweepFlag`: 0 for counter-clockwise, 1 for clockwise
 
 **Example (quarter circle arc):**
 
 ```xml
-<path d="M 3650 1350 A 1000 1000 0 0 0 2760 230" 
+
+<path d="M 3650 1350 A 1000 1000 0 0 0 2760 230"
       stroke="chocolate" stroke-width="20" fill="none" stroke-dasharray="150 20"
       marker-end="url(#arrow-head)"/>
 ```
@@ -344,12 +366,14 @@ Arcs use SVG path with the `A` (arc) command:
 ### Basic Text
 
 ```xml
+
 <text class="text" x="650" y="690" fill="chocolate">Label text</text>
 ```
 
 ### Rotated Text
 
 ```xml
+
 <text class="text" x="650" y="690" fill="chocolate" transform="rotate(-45, 650, 690)">Rotated label</text>
 ```
 
@@ -360,6 +384,7 @@ Arcs use SVG path with the `A` (arc) command:
 Include in the `<style>` block:
 
 ```xml
+
 <style>
     .text { font: 150px sans-serif; }
 </style>
@@ -374,6 +399,7 @@ Font size is typically 120–150px depending on overall image size.
 Bullets are filled circles:
 
 ```xml
+
 <circle cx="2500" cy="1800" r="75" fill="#F59E0B"/>
 ```
 
@@ -390,11 +416,13 @@ When `Battlefield: true`, render:
 <!-- Grey border (full viewport) -->
 <rect x="0" y="0" width="8000" height="6000" fill="grey"/>
 
-<!-- Black arena (inset by 200 units) -->
+        <!-- Black arena (inset by 200 units) -->
 <rect x="200" y="200" width="7600" height="5600" fill="black"/>
 ```
 
-The battlefield represents an 800×600 unit arena (at 1:10 scale in the viewport).
+**Important:** Only include the battlefield if the arena borders are relevant to the illustration (e.g., wall collision
+mechanics, boundary demonstrations). For most targeting and movement concept illustrations, omit the battlefield
+background for clarity.
 
 ---
 
@@ -420,6 +448,7 @@ After generating the SVG, insert below the TODO marker:
 ```
 
 **Rules:**
+
 - `src` uses absolute path from site root: `/images/<filename>`
 - `alt` matches the `Caption` field
 - `width` = viewport width / 8
@@ -432,6 +461,7 @@ After generating the SVG, insert below the TODO marker:
 Copy this entire `<defs>` block into every generated SVG. This is from `book/images/tank.svg`:
 
 ```xml
+
 <defs>
     <style>
         .tank-body, .tank-turret, .tank-radar {
@@ -615,14 +645,14 @@ Copy this entire `<defs>` block into every generated SVG. This is from `book/ima
 **Output:**
 
 1. Creates `book/images/circular-targeting-geometry.svg` with:
-   - Viewport 8000×6000, display size 1000×750
-   - Grey/black battlefield background
-   - Friendly bot at (600, 4500) with rotations 20°/60°/90°
-   - Enemy bot at (6100, 1100) with red colors and rotations -3°/260°/260°
-   - Yellow dashed line with arrow from (1000, 4900) to (5700, 1300)
-   - Chocolate dashed arc with arrow
-   - Red circle at predicted position
-   - Text labels
+    - Viewport 8000×6000, display size 1000×750
+    - Grey/black battlefield background
+    - Friendly bot at (600, 4500) with rotations 20°/60°/90°
+    - Enemy bot at (6100, 1100) with red colors and rotations -3°/260°/260°
+    - Yellow dashed line with arrow from (1000, 4900) to (5700, 1300)
+    - Chocolate dashed arc with arrow
+    - Red circle at predicted position
+    - Text labels
 
 2. Inserts below the TODO marker:
 
