@@ -168,39 +168,6 @@ See [Coordinates and Angles](../../physics/coordinates-and-angles.md) for platfo
 
 ## Illustration placeholder
 
-<!-- TODO: Illustration
-**Filename:** random-area-targeting-patterns.svg
-**Caption:** "Random and Area Targeting patterns compared: Random fires scattered shots around a reference direction, while Area Targeting fires a spray across a predicted movement zone."
-**Viewport:** 8000x4000
-**Battlefield:** true
-**Description:** Side-by-side comparison. Left half shows Random Targeting, right half shows Area Targeting.
-**Bots:**
-  - type: friendly, position: (600, 2800), body: -30, turret: -50, radar: -50
-  - type: enemy, position: (2400, 800), body: 90, turret: 90, radar: 90
-  - type: friendly, position: (4600, 2800), body: -30, turret: -50, radar: -50
-  - type: enemy, position: (6400, 800), body: 90, turret: 90, radar: 90
-**Lines:**
-  - from: (1000, 3200), to: (2800, 1200), color: chocolate, arrow: true, dashed: false, label: "Reference bearing"
-  - from: (1000, 3200), to: (2200, 900), color: #F59E0B, arrow: true, dashed: false
-  - from: (1000, 3200), to: (2500, 700), color: #F59E0B, arrow: true, dashed: false
-  - from: (1000, 3200), to: (2900, 1000), color: #F59E0B, arrow: true, dashed: false
-  - from: (1000, 3200), to: (3100, 1400), color: #F59E0B, arrow: true, dashed: false
-  - from: (1000, 3200), to: (2600, 1500), color: #F59E0B, arrow: true, dashed: false
-  - from: (5000, 3200), to: (6600, 900), color: #F59E0B, arrow: true, dashed: false
-  - from: (5000, 3200), to: (6900, 1100), color: #F59E0B, arrow: true, dashed: false
-  - from: (5000, 3200), to: (7100, 800), color: #F59E0B, arrow: true, dashed: false
-  - from: (5000, 3200), to: (6700, 1400), color: #F59E0B, arrow: true, dashed: false
-  - from: (5000, 3200), to: (7000, 1600), color: #F59E0B, arrow: true, dashed: false
-**Circles:**
-  - center: (6800, 1200), radius: 600, color: #6B7280, fill: none, dashed: true, label: "Zone of uncertainty"
-**Texts:**
-  - text: "Random Targeting", position: (600, 500), color: chocolate
-  - text: "Random offsets", position: (1800, 2200), color: #F59E0B
-  - text: "Area Targeting", position: (4600, 500), color: chocolate
-  - text: "Last known position", position: (6000, 1800), color: chocolate
-  - text: "Spray coverage", position: (5600, 2600), color: #F59E0B
--->
-
 <img src="../../images/random-area-targeting-patterns.svg" alt="Random and Area Targeting patterns compared: Random fires scattered shots around a reference direction, while Area Targeting fires a spray across a predicted movement zone." width="1000">
 <br>
 *Random and Area Targeting patterns compared: Random fires scattered shots around a reference direction, while Area Targeting fires a spray across a predicted movement zone.*
