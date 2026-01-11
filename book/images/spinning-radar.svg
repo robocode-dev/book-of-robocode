@@ -10,10 +10,10 @@
 
     <use href="#radar-sweep"/>
 
-    <use href="#tank" transform="translate(4200 4200) scale(.75,.75)"
+    <use href="#tank" transform="translate(4200 4200) scale(.75)"
          style="--body-rotation:11deg; --turret-rotation:50deg; --radar-rotation:18+0deg;"/>
 
-    <use href="#tank" x="5500" y="0" transform="translate(350,100) scale(.75,.75)"
+    <use href="#tank" x="5500" y="0" transform="translate(350,100) scale(.75)"
          style="
          --body-rotation:280deg;
          --turret-rotation:270deg;

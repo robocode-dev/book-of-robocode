@@ -7,7 +7,7 @@
     <rect x="0" y="0" width="2400" height="2400" fill="grey"/>
     <rect x="200" y="0" width="4600" height="2400" fill="black"/>
 
-    <use href="#tank" transform="scale(0.75,0.75) translate(1000,500)"/>
+    <use href="#tank" transform="scale(0.75) translate(1000,500)"/>
 
     <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
         <polygon points="6 0, 12 4, 6 6" fill="chocolate"/>
