@@ -18,7 +18,7 @@ But as soon as enemies start changing their direction, speeding up unpredictably
 drop.
 The core problem is that **the enemy has time to react** before the bullet arrives.
 
-This page explores why targeting is inherently difficult, and introduces the mindset shift that leads to advanced
+This page explores why targeting is inherently challenging and introduces the mindset shift that leads to advanced
 targeting strategies.
 
 ## The fundamental problem: travel time
@@ -34,15 +34,15 @@ Consider a typical scenario:
 
 In those 36 turns, the enemy can:
 
-- Move up to 288 units (at max speed of 8 units/turn).
+- Move up to 288 units (at a max speed of 8 units/turn).
 - Change direction multiple times.
-- Detect the bullet was fired (via energy drop or direct scan).
+- Detect the bullet was fired (via an energy drop or direct scan).
 - Deliberately move to minimize danger.
 
 **Simple targeting assumes the enemy follows a pattern:** head-on assumes the enemy doesn't move, linear assumes
 straight-line motion, and circular assumes constant turn rate. But smart enemies break these assumptions intentionally.
 
-<img src="/images/targeting-problem-travel-time.svg" alt="During the 36 turns a bullet travels 400 units, the enemy can move up to 288 units in any direction" width="1000"><br>
+<img src="../../images/targeting-problem-travel-time.svg" alt="During the 36 turns a bullet travels 400 units, the enemy can move up to 288 units in any direction" width="800"><br>
 *During the 36 turns a bullet travels 400 units, the enemy can move up to 288 units in any direction*
 
 ## Why prediction alone isn't enough
@@ -61,27 +61,7 @@ a whole range of possible positions.
 
 Advanced targeting shifts to a different question: **"Which direction has the highest probability of hitting?"**
 
-<!-- TODO: Illustration
-**Filename:** targeting-problem-prediction-cone.svg
-**Caption:** "Instead of predicting one point, advanced targeting considers a probability distribution across all possible enemy positions"
-**Viewport:** 8000x6000
-**Battlefield:** true
-**Bots:**
-  - type: friendly, position: (1000, 3000), body: 0, turret: 15, radar: 15
-  - type: enemy, position: (6000, 3000), body: 90, turret: 90, radar: 90
-**Lines:**
-  - from: (1400, 3000), to: (5600, 1800), color: #6B7280, dashed: true
-  - from: (1400, 3000), to: (6200, 3000), color: #cc0, arrow: true
-  - from: (1400, 3000), to: (5600, 4200), color: #6B7280, dashed: true
-**Arcs:**
-  - center: (1400, 3000), radius: 5000, startAngle: -25, endAngle: 25, color: #10B981
-**Texts:**
-  - text: "Simple targeting:\nPredicts one point", position: (6200, 2600), color: #cc0
-  - text: "Advanced targeting:\nProbability distribution", position: (4500, 1400), color: #10B981
-  - text: "Possible enemy positions", position: (5000, 4600), color: #6B7280
--->
-
-<img src="/images/targeting-problem-prediction-cone.svg" alt="Instead of predicting one point, advanced targeting considers a probability distribution across all possible enemy positions" width="1000"><br>
+<img src="../../images/targeting-problem-prediction-cone.svg" alt="Instead of predicting one point, advanced targeting considers a probability distribution across all possible enemy positions" width="800"><br>
 *Instead of predicting one point, advanced targeting considers a probability distribution across all possible enemy
 positions*
 
@@ -112,7 +92,7 @@ When the wave reaches the enemy, that's the moment the bullet would have arrived
 Over many rounds, these recorded angles form a probability distribution. The bot aims at the angle with the highest
 hit probability.
 
-Waves are covered in detail in the next page: [Introducing Waves](./introducing-waves.md).
+Waves are covered in detail in the next page: [Introducing Waves](introducing-waves.md).
 
 ## What makes an enemy "hard to hit"?
 
@@ -148,18 +128,19 @@ and enemies can move during that time.
 | Aspect                 | Classic Robocode                   | Tank Royale                  |
 |------------------------|------------------------------------|------------------------------|
 | Coordinate system      | 0° = North, clockwise              | 0° = East, counter-clockwise |
-| Bullet speed formula   | `20 - 3 × firepower`               | `20 - 3 × firepower` (same)  |
 | Max bullet travel time | ~91 turns (firepower 0.1, 800×600) | Varies with arena size       |
 | Scan data timing       | Previous turn                      | Current turn                 |
 
-The core strategies—waves, GuessFactor, statistical targeting—translate directly between platforms, but
-coordinate conversions and scan timing need careful handling.
+> Note: The bullet speed formula is the same on both platforms (`20 - 3 × firepower`)
+
+The core strategies—waves, GuessFactor, statistical targeting—translate directly between platforms, but coordinate
+conversions and scan timing need careful handling.
 
 ## Next steps
 
 Now that the core challenge is clear, the next page introduces the tool that makes advanced targeting possible:
 
-- **[Introducing Waves](./introducing-waves.md):** How to track bullet travel and measure enemy positions.
+- **[Introducing Waves](introducing-waves.md):** How to track bullet travel and measure enemy positions.
 
 After understanding waves, explore the major targeting approaches:
 
@@ -176,6 +157,5 @@ After understanding waves, explore the major targeting approaches:
   improve together.
 
 > [!TIP] Mindset shift
-> The key to advanced targeting is accepting that **you can't predict the future perfectly**.
+> The key to advanced targeting is accepting that **you can't predict the future perfectly**
 > Instead, aim at the *most likely* future based on past data.
-
