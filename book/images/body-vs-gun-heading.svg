@@ -159,14 +159,14 @@
         </symbol>
 
         <symbol id="arrows-with-label">
-            <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="3" refY="1.5" orient="auto">
+            <marker id="arrow" markerWidth="20" markerHeight="20" refX="3" refY="1.5" orient="auto">
                 <polygon points="3 0, 6 1.5, 3 3" fill="chocolate"/>
             </marker>
 
-            <line x1="300" y1="605" x2="380" y2="220" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="300" y1="605" x2="380" y2="220" stroke="chocolate" stroke-width="20" marker-end="url(#arrow)"/>
             <text x="0" y="145" class="text" fill="chocolate">Body Heading (80°)</text>
 
-            <line x1="300" y1="600" x2="800" y2="512" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="300" y1="600" x2="800" y2="512" stroke="chocolate" stroke-width="20" marker-end="url(#arrow)"/>
             <text x="580" y="700" class="text" fill="chocolate">Gun Heading (10°)</text>
         </symbol>
     </defs>

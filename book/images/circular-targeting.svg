@@ -4,16 +4,16 @@
         .text { font: 150px sans-serif; }
     </style>
 
-    <marker id="arrow-head" markerWidth="12" markerHeight="12" refX="6" refY="3" orient="auto">
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="6" refY="3" orient="auto">
         <polygon points="6 0, 12 3, 6 6" fill="chocolate"/>
     </marker>
 
-    <marker id="arrow-head-2" markerWidth="12" markerHeight="12" refX="6" refY="3" orient="auto">
+    <marker id="arrow-2" markerWidth="12" markerHeight="12" refX="6" refY="3" orient="auto">
         <polygon points="6 0, 12 3, 6 6" fill="#cc0"/>
     </marker>
 
-    <line x1="400" y1="1650" x2="2550" y2="280" stroke="#cc0" stroke-width="20" marker-end="url(#arrow-head-2)" stroke-dasharray="240 20"/>
-    <path d="M 3650 1350 A 1000 1000 0 0 0 2760 230" stroke="chocolate" stroke-width="20" fill="none" marker-end="url(#arrow-head)" stroke-dasharray="150 20"/>
+    <line x1="400" y1="1650" x2="2550" y2="280" stroke="#cc0" stroke-width="20" marker-end="url(#arrow-2)" stroke-dasharray="240 20"/>
+    <path d="M 3650 1350 A 1000 1000 0 0 0 2760 230" stroke="chocolate" stroke-width="20" fill="none" marker-end="url(#arrow)" stroke-dasharray="150 20"/>
 
     <circle cx="2660" cy="210" r="100" fill="none" stroke="red" stroke-width="20"/>
 

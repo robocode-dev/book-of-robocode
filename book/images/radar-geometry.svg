@@ -179,14 +179,14 @@
         </symbol>
 
         <symbol id="arrows-with-text">
-            <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+            <marker id="arrow" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
                 <polygon points="6 0, 12 3, 6 6" fill="chocolate"/>
             </marker>
 
-            <line x1="200" y1="1500" x2="2200" y2="940" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="200" y1="1500" x2="2200" y2="940" stroke="chocolate" stroke-width="20" marker-end="url(#arrow)"/>
             <text x="400" y="1450" class="text" fill="chocolate" transform="rotate(-16)">Radar heading</text>
 
-            <line x1="200" y1="1500" x2="5400" y2="2950" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="200" y1="1500" x2="5400" y2="2950" stroke="chocolate" stroke-width="20" marker-end="url(#arrow)"/>
             <text x="2600" y="1500" class="text" fill="chocolate" transform="rotate(16)">◄ Scan length = 1200 units ►</text>
 
             <path
@@ -194,7 +194,7 @@
                     fill="none"
                     stroke="chocolate"
                     stroke-width="20"
-                    marker-end="url(#arrow-head)"
+                    marker-end="url(#arrow)"
             />
             <text x="720" y="-5790" class="text" fill="chocolate" transform="rotate(90)">◄ Scan arc angle = 30° ►</text>
         </symbol>

@@ -5,27 +5,27 @@
     </style>
 
     <!-- Arrow markers -->
-    <marker id="arrow-head-yellow" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+    <marker id="arrow-yellow" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
         <polygon points="6 0, 12 3, 6 6" fill="#cc0"/>
     </marker>
 
-    <marker id="arrow-head-chocolate" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+    <marker id="arrow-chocolate" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
         <polygon points="6 0, 12 3, 6 6" fill="chocolate"/>
     </marker>
 
-    <marker id="arrow-head-green" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+    <marker id="arrow-green" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
         <polygon points="6 0, 12 3, 6 6" fill="#10B981"/>
     </marker>
 
     <!-- Lines (drawn BEFORE bots so bots appear on top) -->
     <!-- Head-on gun (yellow) -->
-    <line x1="400" y1="1900" x2="4000" y2="500" stroke="#cc0" stroke-width="20" stroke-dasharray="150 20" marker-end="url(#arrow-head-yellow)"/>
+    <line x1="400" y1="1900" x2="4000" y2="500" stroke="#cc0" stroke-width="20" stroke-dasharray="150 20" marker-end="url(#arrow-yellow)"/>
 
     <!-- Linear gun (chocolate) -->
-    <line x1="400" y1="1900" x2="3700" y2="50" stroke="chocolate" stroke-width="20" stroke-dasharray="150 20" marker-end="url(#arrow-head-chocolate)"/>
+    <line x1="400" y1="1900" x2="3700" y2="50" stroke="chocolate" stroke-width="20" stroke-dasharray="150 20" marker-end="url(#arrow-chocolate)"/>
 
     <!-- Circular gun (green) -->
-    <line x1="400" y1="1900" x2="4300" y2="300" stroke="#10B981" stroke-width="20" stroke-dasharray="150 20" marker-end="url(#arrow-head-green)"/>
+    <line x1="400" y1="1900" x2="4300" y2="300" stroke="#10B981" stroke-width="20" stroke-dasharray="150 20" marker-end="url(#arrow-green)"/>
 
     <!-- Active gun (blue, thick solid line) -->
     <line x1="400" y1="1900" x2="3900" y2="400" stroke="#06c" stroke-width="40"/>

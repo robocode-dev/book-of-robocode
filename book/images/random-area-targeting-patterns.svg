@@ -4,22 +4,22 @@
         .text { font: 150px sans-serif; }
     </style>
 
-    <marker id="arrow-head-orange" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+    <marker id="arrow-orange" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
         <polygon points="6 0, 12 3, 6 6" fill="#F59E0B"/>
     </marker>
 
     <!-- Lines (drawn before bots) -->
-    <line x1="400" y1="3000" x2="2200" y2="1000" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-head-orange)"/>
-    <line x1="400" y1="3000" x2="1600" y2="700" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-head-orange)"/>
-    <line x1="400" y1="3000" x2="1900" y2="500" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-head-orange)"/>
-    <line x1="400" y1="3000" x2="2100" y2="800" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-head-orange)"/>
-    <line x1="400" y1="3000" x2="2500" y2="1200" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-head-orange)"/>
-    <line x1="400" y1="3000" x2="2000" y2="1300" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-head-orange)"/>
-    <line x1="4000" y1="3000" x2="5400" y2="750" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-head-orange)"/>
-    <line x1="4000" y1="3000" x2="5900" y2="900" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-head-orange)"/>
-    <line x1="4000" y1="3000" x2="5800" y2="750" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-head-orange)"/>
-    <line x1="4000" y1="3000" x2="5700" y2="1200" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-head-orange)"/>
-    <line x1="4000" y1="3000" x2="6000" y2="1400" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-head-orange)"/>
+    <line x1="400" y1="3000" x2="2200" y2="1000" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-orange)"/>
+    <line x1="400" y1="3000" x2="1600" y2="700" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-orange)"/>
+    <line x1="400" y1="3000" x2="1900" y2="500" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-orange)"/>
+    <line x1="400" y1="3000" x2="2100" y2="800" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-orange)"/>
+    <line x1="400" y1="3000" x2="2500" y2="1200" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-orange)"/>
+    <line x1="400" y1="3000" x2="2000" y2="1300" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-orange)"/>
+    <line x1="4000" y1="3000" x2="5400" y2="750" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-orange)"/>
+    <line x1="4000" y1="3000" x2="5900" y2="900" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-orange)"/>
+    <line x1="4000" y1="3000" x2="5800" y2="750" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-orange)"/>
+    <line x1="4000" y1="3000" x2="5700" y2="1200" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-orange)"/>
+    <line x1="4000" y1="3000" x2="6000" y2="1400" stroke="#F59E0B" stroke-width="20" marker-end="url(#arrow-orange)"/>
 
     <!-- Circles -->
     <circle cx="5800" cy="1000" r="600" stroke="#6B7280" stroke-width="20" fill="none" stroke-dasharray="150 20"/>
