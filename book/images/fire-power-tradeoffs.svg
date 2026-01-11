@@ -1,4 +1,4 @@
-<svg version="1.1" width="1000" height="600" viewBox="0 0 8000 4800" xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" width="1000" height="390" viewBox="0 0 8000 3120" xmlns="http://www.w3.org/2000/svg">
 
     <style>
         .text { font: 150px sans-serif; }
@@ -16,51 +16,51 @@
     </marker>
 
     <!-- Title and subtitle -->
-    <text class="text-large" x="4000" y="450" fill="white" text-anchor="middle">Fire Power Tradeoffs</text>
-    <text class="text-medium" x="4000" y="700" fill="lightgray" text-anchor="middle">Speed vs Damage vs Accuracy</text>
+    <text class="text-large" x="4000" y="200" fill="gray" text-anchor="middle">Fire Power Tradeoffs</text>
+    <text class="text-medium" x="4000" y="400" fill="gray" text-anchor="middle">Speed vs Damage vs Accuracy</text>
 
     <!-- Lines (drawn BEFORE bots so bots appear on top) -->
     <!-- Low power bullet path (straight to target) -->
-    <line x1="1000" y1="2400" x2="6800" y2="2000" stroke="orange" stroke-width="30" marker-end="url(#arrow-head-orange)"/>
+    <line x1="1000" y1="1400" x2="6800" y2="900" stroke="orange" stroke-width="30" marker-end="url(#arrow-head-orange)"/>
 
     <!-- High power bullet path (misses) -->
-    <line x1="1000" y1="2400" x2="6400" y2="2240" stroke="red" stroke-width="40" marker-end="url(#arrow-head-red)"/>
+    <line x1="1000" y1="1400" x2="5000" y2="1240" stroke="red" stroke-width="40" marker-end="url(#arrow-head-red)"/>
 
     <!-- Bots (drawn AFTER lines so they appear on top) -->
     <!-- FireBot (blue, friendly) at left -->
-    <use href="#tank" transform="translate(600,2000) scale(0.75)"
-         style="--body-rotation:0deg; --turret-rotation:0deg; --radar-rotation:0deg;"/>
+    <use href="#tank" transform="translate(700,1100) scale(0.75)"
+         style="--body-rotation:5deg; --turret-rotation:85deg; --radar-rotation:90deg;"/>
 
     <!-- Target (red, enemy) at right -->
-    <use href="#tank" transform="translate(6400,1600) scale(0.75)"
+    <use href="#tank" transform="translate(6400,600) scale(0.75)"
          style="--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa;
-                --body-rotation:180deg; --turret-rotation:180deg; --radar-rotation:180deg;"/>
+                --body-rotation:-10deg; --turret-rotation:265deg; --radar-rotation:260deg;"/>
 
     <!-- Labels -->
-    <text class="text" x="3800" y="1800" fill="orange" text-anchor="middle">Low power (fast)</text>
-    <text class="text" x="3400" y="2600" fill="red" text-anchor="middle">High power (slow, misses)</text>
+    <text class="text" x="3900" y="1000" fill="orange" text-anchor="middle">Low power (fast)</text>
+    <text class="text" x="3600" y="1530" fill="red" text-anchor="middle">High power (slow, misses)</text>
 
     <!-- Bot labels -->
-    <text class="text-medium" x="1000" y="3300" fill="#06c" text-anchor="middle">FireBot</text>
-    <text class="text-medium" x="6800" y="1450" fill="#e22" text-anchor="middle">Target</text>
+    <text class="text" x="1000" y="1080" fill="#06c" text-anchor="middle">FireBot</text>
+    <text class="text" x="6700" y="550" fill="#e22" text-anchor="middle">Target</text>
 
     <!-- Additional info boxes -->
     <g>
         <!-- Low power info -->
-        <rect x="500" y="3600" width="3000" height="900" fill="#1a1a1a" stroke="orange" stroke-width="15" rx="50"/>
-        <text class="text-medium" x="2000" y="3850" fill="orange" text-anchor="middle">Low Power (1.0)</text>
-        <text class="text" x="2000" y="4050" fill="white" text-anchor="middle">Speed: 17 units/turn</text>
-        <text class="text" x="2000" y="4250" fill="white" text-anchor="middle">Damage: 4.0</text>
-        <text class="text" x="2000" y="4450" fill="white" text-anchor="middle">Cooldown: 12 turns</text>
+        <rect x="500" y="2100" width="3000" height="1000" fill="#1a1a1a" stroke="orange" stroke-width="15" rx="50"/>
+        <text class="text-medium" x="2000" y="2300" fill="orange" text-anchor="middle">Low Power (1.0)</text>
+        <text class="text" x="2000" y="2550" fill="white" text-anchor="middle">Speed: 17 units/turn</text>
+        <text class="text" x="2000" y="2750" fill="white" text-anchor="middle">Damage: 4.0</text>
+        <text class="text" x="2000" y="2950" fill="white" text-anchor="middle">Cooldown: 12 turns</text>
     </g>
 
     <g>
         <!-- High power info -->
-        <rect x="4500" y="3600" width="3000" height="900" fill="#1a1a1a" stroke="red" stroke-width="15" rx="50"/>
-        <text class="text-medium" x="6000" y="3850" fill="red" text-anchor="middle">High Power (3.0)</text>
-        <text class="text" x="6000" y="4050" fill="white" text-anchor="middle">Speed: 11 units/turn</text>
-        <text class="text" x="6000" y="4250" fill="white" text-anchor="middle">Damage: 16.0</text>
-        <text class="text" x="6000" y="4450" fill="white" text-anchor="middle">Cooldown: 16 turns</text>
+        <rect x="4500" y="2100" width="3000" height="1000" fill="#1a1a1a" stroke="red" stroke-width="15" rx="50"/>
+        <text class="text-medium" x="6000" y="2300" fill="red" text-anchor="middle">High Power (3.0)</text>
+        <text class="text" x="6000" y="2550" fill="white" text-anchor="middle">Speed: 11 units/turn</text>
+        <text class="text" x="6000" y="2750" fill="white" text-anchor="middle">Damage: 16.0</text>
+        <text class="text" x="6000" y="2950" fill="white" text-anchor="middle">Cooldown: 16 turns</text>
     </g>
 
     <!-- Tank defs block -->

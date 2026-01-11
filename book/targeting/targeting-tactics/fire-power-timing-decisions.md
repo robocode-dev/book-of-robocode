@@ -2,7 +2,7 @@
 title: "Fire Power & Timing Decisions"
 category: "Targeting Systems"
 summary: "Strategic considerations for choosing bullet power and when to fire — balancing damage, accuracy, energy, and gun heat."
-tags: ["fire-power", "bullet-power", "timing", "targeting-tactics", "strategy", "robocode", "tank-royale", "intermediate"]
+tags: [ "fire-power", "bullet-power", "timing", "targeting-tactics", "strategy", "robocode", "tank-royale", "intermediate" ]
 difficulty: "intermediate"
 source: [
   "RoboWiki - Bullet (classic Robocode) https://robowiki.net/wiki/Bullet",
@@ -12,38 +12,13 @@ source: [
 
 # Fire Power & Timing Decisions
 
-Choosing when to fire and how much power to use is a strategic balancing act. Fire too weak and you waste shots; fire too strong and you miss more often while draining your energy. This page explores the factors that influence bullet power selection and timing decisions in competitive play.
+Choosing when to fire and how much power to use is a strategic balancing act. Fire is too weak, and you waste shots;
+fire is too strong, and you miss more often while draining your energy. This page explores the factors that influence
+bullet power selection and timing decisions in competitive play.
 
-<!-- TODO: Illustration
-Filename: fire-power-tradeoffs.svg
-Caption: Comparing low-power (fast, weak) vs high-power (slow, strong) bullets traveling toward a moving target
-Viewport: 0 0 1000 600
-Bots:
-- name: FireBot
-  x: 200
-  y: 300
-  bodyAngle: 0
-  gunAngle: 0
-  radarAngle: 0
-  color: blue
-- name: Target
-  x: 800
-  y: 250
-  bodyAngle: 180
-  gunAngle: 180
-  radarAngle: 180
-  color: red
-Lines:
-- x1: 200, y1: 300, x2: 800, y2: 250, color: orange, width: 2, label: "Low power (fast)"
-- x1: 200, y1: 300, x2: 750, y2: 280, color: red, width: 3, label: "High power (slow, misses)"
-Texts:
-- x: 500, y: 50, text: "Fire Power Tradeoffs", size: 24, weight: bold, color: white
-- x: 500, y: 100, text: "Speed vs Damage vs Accuracy", size: 16, color: lightgray
--->
-
-<img src="/images/fire-power-tradeoffs.svg" alt="Comparing low-power (fast, weak) vs high-power (slow, strong) bullets traveling toward a moving target" width="1000">
+<img src="../../images/fire-power-tradeoffs.svg" alt="Comparing low-power (fast, weak) vs high-power (slow, strong) bullets traveling toward a moving target" width="1000">
 <br>
-*Comparing low-power (fast, weak) vs high-power (slow, strong) bullets traveling toward a moving target*
+*Comparing low-power (fast, weak) vs. high power (slow, strong) bullets traveling toward a moving target*
 
 ## Why bullet power matters
 
@@ -54,48 +29,67 @@ Bullet power affects three critical aspects of combat:
 3. **Gun heat generated** — Higher power adds more heat (1 + power/5), delaying your next shot.
 4. **Energy cost** — Firing consumes energy equal to the bullet power, risking disablement if you run low.
 
-These tradeoffs mean there's rarely a "best" power for all situations — the right choice depends on range, enemy behavior, your energy level, and your targeting confidence.
+These tradeoffs mean there's rarely a "best" power for all situations — the right choice depends on range, enemy
+behavior, your energy level, and your targeting confidence.
 
 ## The core tradeoffs
 
-### Speed vs damage
+### Speed vs. damage
 
-Lower power bullets are faster and harder to dodge, but deal less damage. Against agile opponents with unpredictable movement, a faster bullet that hits is better than a slow, powerful bullet that misses.
+Lower power bullets are faster and harder to dodge but deal less damage. Against agile opponents with unpredictable
+movement, a faster bullet that hits is better than a slow, powerful bullet that misses.
 
 **Rule of thumb:**
+
 - **Power 0.1 to 1.5** — Fast bullets for distant or erratic targets.
 - **Power 1.5 to 3.0** — Strong bullets for close range or predictable movement.
 
 ### Accuracy vs power
 
-High-power bullets travel slower, giving the enemy more time to move out of the predicted impact zone. This amplifies any error in your targeting algorithm.
+High-power bullets travel slower, giving the enemy more time to move out of the predicted impact zone. This amplifies
+any error in your targeting algorithm.
+
+For many aiming strategies, time-to-impact (bullet travel time) is the dominant factor that controls hit probability:
+shorter travel times reduce the window during which the enemy can deviate from the predicted position, so prediction
+error (and therefore miss chance) typically grows with travel time. Bullet travel time is distance / bullet_speed, where
+bullet_speed = 20 - 3×power. Example: at 400 units, a 0.1-power bullet has speed 19.7 → time ≈ 20.3 turns, while a
+3.0-power bullet has speed 11 → time ≈ 36.4 turns. With the same aiming strategy, the faster (lower-power) bullet
+usually has a higher chance to hit, especially against agile opponents — because there's less time for the opponent to
+move away from the predicted intercept point.
 
 For statistical or adaptive targeting systems, accuracy often matters more than raw power:
-- If your hit rate drops significantly with high power, you'll score more total damage with moderate power at higher accuracy.
+
+- If your hit rate drops significantly with high power, you'll score more total damage with moderate power at higher
+  accuracy.
 
 ### Energy management
 
-Every shot costs energy. Firing a 3.0 power bullet drains 3.0 energy immediately, but you only gain back energy (3× power) if it hits.
+Every shot costs energy. Firing a 3.0 power bullet drains 3.0 energy immediately, but you only gain back energy (3×
+power) if it hits.
 
 **Dangerous scenario:**
+
 - Your energy is low (< 10).
 - Enemy fires back with high power.
 - You fire a 3.0 bullet and miss → you're now at 7 energy and vulnerable.
 - Enemy hits you → you drop below 0 and die.
 
-**Safer strategy:** Use lower power when your energy is critical, preserving enough buffer to survive a hit.
+**Safer strategy:** Use lower power when your energy is critical, preserving enough buffers to survive a hit.
 
-## Common fire power strategies
+## Common firepower strategies
 
 ### Fixed power
 
-The simplest approach: always fire the same power (e.g., 2.0 or 1.9). This works well for bots that prioritize consistent gun heat cycles and predictable energy drain.
+The simplest approach: always fire the same power (e.g., 2.0 or 1.9). This works well for bots that prioritize
+consistent gun heat cycles and predictable energy drain.
 
 **Pros:**
+
 - Predictable cooldown timing.
 - Simpler code and debugging.
 
 **Cons:**
+
 - Ignores situational advantages (close range, high confidence, energy imbalances).
 
 ### Distance-based power
@@ -111,14 +105,15 @@ else:
     power = 1.2
 ```
 
-**Rationale:** Close targets are easier to hit and slower bullets don't matter as much. Distant targets require speed over power.
+**Rationale:** Close targets are easier to hit and slower bullets don't matter as much. Distant targets require speed
+over power.
 
 ### Confidence-based power
 
 If your targeting system tracks hit rate or prediction confidence, scale power accordingly:
 
 ```pseudocode
-hitRate = hits / (hits + misses)
+hitRate = hits / shots (i.e. hits + misses)
 if hitRate > 0.7:
     power = 3.0  # High confidence
 else if hitRate > 0.4:
@@ -127,7 +122,8 @@ else:
     power = 1.0  # Low confidence, prefer speed
 ```
 
-This approach is common with virtual guns or statistical targeting: fire strong when you're landing shots, and fire light when you're struggling.
+This approach is common with virtual guns or statistical targeting: fire strong when you're landing shots, and fire
+light when you're struggling.
 
 ### Energy-based power
 
@@ -145,7 +141,8 @@ else:
     power = 2.0  # Balanced
 ```
 
-**Insight:** If you have a large energy advantage, you can afford to fire heavy bullets and pressure the enemy. If you're behind, lighter shots keep you in the fight longer.
+**Insight:** If you have a large energy advantage, you can afford to fire heavy bullets and pressure the enemy.
+If you're behind, lighter shots keep you in the fight longer.
 
 ### Hybrid strategies
 
@@ -169,15 +166,17 @@ if distance < 150 and hitRate > 0.6:
 
 ## Timing decisions: when to fire
 
-### Fire every turn?
+### Fire at every turn?
 
-You **cannot** fire every turn due to gun heat. After firing, your gun must cool down (typically 0.1 heat/turn) before the next shot.
+You **cannot** fire at every turn due to gun heat. After firing, your gun must cool down (typically 0.1 heat/turn)
+before the next shot.
 
-Attempting to fire while gun heat > 0 results in no shot.
+Attempting to fire while the gun heats > 0 results in no shot.
 
 ### Predictive firing
 
 For advanced bots using wave-based targeting, fire when:
+
 - A bullet wave reaches the enemy's predicted position.
 - Your gun is aimed at the highest-probability angle.
 - Gun heat is 0 (gun is cool).
@@ -187,12 +186,15 @@ This often means firing every *N* turns (depending on bullet power and cooling r
 ### Opportunistic firing
 
 Some situations favor delaying a shot:
-- **Wait for a better angle:** If the enemy is about to move into a more predictable position (e.g., heading toward a wall), delay firing.
+
+- **Wait for a better angle:** If the enemy is about to move into a more predictable position (e.g., heading toward a
+  wall), delay firing.
 - **Conserve energy:** If you're low on energy and the shot isn't critical, skip it.
-- **Gun heat alignment:** If your gun will be cool in 1 turn and the enemy will be in a better position, wait.
+- **Gun heat alignment:** If your gun is cool in 1 turn and the enemy will be in a better position, wait.
 
 > [!TIP] Fire when ready
-> Most competitive bots fire whenever gun heat is 0 and the gun is aimed. Delaying too much can mean missed opportunities, especially in fast-paced 1v1 battles.
+> Most competitive bots fire whenever gun heat is 0 and the gun is aimed. Delaying too much can mean missed
+> opportunities, especially in fast-paced 1v1 battles.
 
 ## Bullet power and cooldown timing
 
@@ -212,7 +214,8 @@ $t = 10 + 2(3.0) = 16 \text{ turns}$
 For power 1.0:
 $t = 10 + 2(1.0) = 12 \text{ turns}$
 
-**Implication:** Higher power means fewer shots per round. If you fire 3.0 power every time, you might only get 5–10 shots in a 100-turn match. Lighter bullets mean more shots and more chances to hit.
+**Implication:** Higher power means fewer shots per round. If you fire 3.0 power every time, you might only get 5–10
+shots in a 100-turn match. Lighter bullets mean more shots and more chances to hit.
 
 ## Platform notes
 
@@ -228,7 +231,8 @@ $t = 10 + 2(1.0) = 12 \text{ turns}$
 - Cooling rate: 0.1 per turn (standard)
 - Bullet speed: $20 - 3p$ (same)
 
-The mechanics are consistent across both platforms, so strategies developed for classic Robocode apply directly to Tank Royale.
+The mechanics are consistent across both platforms, so strategies developed for classic Robocode apply directly to Tank
+Royale.
 
 ## Tips and common mistakes
 
@@ -248,12 +252,13 @@ The mechanics are consistent across both platforms, so strategies developed for 
 
 ## Summary
 
-Fire power and timing decisions are strategic choices that balance speed, damage, energy, and gun heat. The best approach depends on:
+Firepower and timing decisions are strategic choices that balance speed, damage, energy, and gun heat. The best
+approach depends on:
 
 - **Range to target** — Closer = stronger, farther = faster.
 - **Your targeting accuracy** — High confidence = more power, low confidence = lighter shots.
 - **Energy levels** — Yours and the enemy's.
-- **Gun heat cycle** — Fire when cool, not before.
+- **Gun heat cycle** — You can fire when cool, not before.
 
-Experiment with different strategies, track your hit rates, and adapt to each opponent's movement style. Mastering fire power selection is a key step from intermediate to advanced play.
-
+Experiment with different strategies, track your hit rates, and adapt to each opponent's movement style. Mastering
+firepower selection is a key step from intermediate to advanced play.
