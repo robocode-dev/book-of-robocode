@@ -89,7 +89,7 @@ Limitations:
 
 Width Lock uses a more “geometry-aware” overshoot.
 
-The enemy bot has a physical width (about 36–40 units depending on platform and hitbox rules), so from a distance it
+The enemy bot has a physical width (about 36 units depending on platform and hitbox rules), so from a distance it
 occupies some **angular width**. If the radar overshoots by roughly half that angular width, the beam is much more
 likely to cross the enemy again next tick.
 

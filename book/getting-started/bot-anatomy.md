@@ -29,13 +29,20 @@ moves bots and bullets, and delivers events to your bot.
 On screen, you see a small tank-like bot, but the game engine actually cares about a simpler shape: its **hitbox**.
 This is what bullets and walls collide with.
 
+### Collision detection differences
+
 - **Classic Robocode**
-    - Each bot is a **40×40 unit square** on the battlefield.
-    - The square’s orientation does not rotate when the bot turns. The sprite spins, but the underlying hitbox is
-      always an axis-aligned 40×40 box.
+    - Each bot is a **36×36 unit square** on the battlefield.
+    - Uses **axis-aligned collision detection**: the square does *not* rotate when the bot turns. The sprite spins, but
+      the underlying hitbox always stays axis-aligned (horizontal and vertical edges).
+    - This means a bullet can pass through the corner of the bot's visual representation even though it didn't hit the
+      rotated square.
 - **Robocode Tank Royale**
-    - Each bot is modeled as a **circle with radius 18 units** (effectively 36×36 units wide and high).
-    - The circle is rotation-independent by design: turning the bot does not change the shape.
+    - Each bot is modeled as a **circle with radius 18 units** (effectively 36 units in diameter).
+    - Collision detection uses a **bounding circle** that is rotation-independent by design: turning the bot does not
+      change the shape or collision behavior.
+    - This simplifies calculations: a hit is simply any bullet within 18 units of the bot's center, regardless of
+      heading.
 
 The **bot center** (its x/y position) and the hitbox around it are used for:
 
@@ -44,10 +51,17 @@ The **bot center** (its x/y position) and the hitbox around it are used for:
 - Detecting **bullet vs bot** hits
 
 ![Classic Robocode bot square hitbox](../images/bot-square-hitbox.svg)<br>
-*Square hitbox used in classic Robocode (40×40 units, axis-aligned).*
+*Square hitbox used in classic Robocode (36×36 units, axis-aligned).*
 
 ![Robocode Tank Royale bot circle hitbox](../images/bot-circle-hitbox.svg)<br>
 *Circular hitbox used in Robocode Tank Royale (diameter 36 units).*
+
+> [!TIP] Important for targeting
+> When calculating virtual bullet hits (for targeting), remember to use the correct hitbox shape and rules for your
+> platform. Classic Robocode's axis-aligned square behaves differently from Tank Royale's circle, especially near bot
+> corners and edges.
+> See [Tank Royale anatomy documentation](https://robocode.dev/articles/anatomy.html#collision-detection) for more
+> details on Tank Royale collision detection.
 
 ---
 
@@ -202,5 +216,5 @@ On this page you learned:
 Next, continue with:
 
 - **The Bot API** — how the engine delivers scan/collision/bullet events and how you send commands back.
-- **Blocking vs Non-Blocking Movement (Setters)** — why `forward()/ahead()` behaves differently from `setForward()/setAhead()`.
-
+- **Blocking vs Non-Blocking Movement (Setters)** — why `forward()/ahead()` behaves differently from
+  `setForward()/setAhead()`.

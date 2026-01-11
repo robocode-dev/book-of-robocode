@@ -41,7 +41,7 @@ This section is a light reminder, not a full re-explanation. For details and dia
 
 Key points:
 
-- Classic Robocode bot hitbox: **40 × 40 units** (axis-aligned square), centered on the bot position.
+- Classic Robocode bot hitbox: **36×36 units** (axis-aligned square), centered on the bot position.
 - Tank Royale bot hitbox: **circle with radius 18 units**.
 - Battlefield coordinates on both platforms:
     - Origin `(0, 0)` at bottom-left; `x` to the right, `y` up.
@@ -283,7 +283,7 @@ Classic Robocode movement and turning constants you will most often use:
 - Body turn penalty: **0.75° per unit of speed**
 - Max gun turn: **20°/turn**
 - Max radar turn: **45°/turn**
-- Bot size: **40 × 40 units**
+- Bot size: **36×36 units**
 
 For Robocode Tank Royale, refer to `dev.robocode.tankroyale.botapi.Constants` for the corresponding numbers, and prefer
 those constants over hard-coded literals in your own code.

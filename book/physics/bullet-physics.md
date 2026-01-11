@@ -200,6 +200,15 @@ Notes:
 - If a bullet hits a wall, it does **not** deal damage.
 - When your bullet hits, you gain back energy as shown above.
 
+### Platform note: Collision detection
+
+The way bullets detect hits on bots differs between platforms:
+
+- **Classic Robocode:** Uses an axis-aligned bounding box (36×36 units) that does not rotate with the bot's heading. A
+  bullet hits if it passes within the square's bounds.
+- **Tank Royale:** Uses a bounding circle (radius 18 units) that is independent of the bot's heading. A bullet hits if
+  it comes within 18 units of the bot's center.
+
 ## Firing constraints and safety
 
 - You cannot fire when your bot is disabled (energy = 0).

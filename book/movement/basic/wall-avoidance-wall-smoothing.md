@@ -151,7 +151,7 @@ The main differences are implementation details:
 
 - **Only avoiding walls during destination picking:** a bot can still drift into a wall due to turn radius and inertia.
   Smoothing handles this.
-- **Margin too small:** the bot’s 40×40 unit body needs room to turn; a tiny margin makes corner behavior worse.
+- **Margin too small:** the bot’s 36×26 unit body needs room to turn; a tiny margin makes corner behavior worse.
 - **Always smoothing in the same direction:** this can create a predictable wall-following pattern. Some bots choose the
   smoothing turn direction based on current orbit direction or enemy bearing.
 

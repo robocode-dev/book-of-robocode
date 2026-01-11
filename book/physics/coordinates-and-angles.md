@@ -22,7 +22,7 @@ Both classic Robocode and Tank Royale use a Cartesian coordinate system for the 
 
 - The origin (0, 0) is in the **bottom left corner** of the battlefield—not the top left as in most computer graphics.
 - All positions and movements are measured in **units** (not pixels).
-- Example: A bot's size is 40x40 units, and the scan length is 1200 units.
+- Example: A bot's size is 36×36 units, and the scan length is 1200 units.
 
 ![Coordinate System Diagram](../images/coordinate-system.svg)
 

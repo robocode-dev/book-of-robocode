@@ -82,7 +82,7 @@ If there is no positive solution, it means “with this bullet speed, a straight
 enemy is effectively moving away too fast in the assumed direction).
 
 > [!NOTE] Bullet speed
-> In classic Robocode, bullet speed is `20 - 3*power`.
+> In classic Robocode, bullet speed is `20 - 3×power`.
 > (See [Bullet Travel & Bullet Physics](../../physics/bullet-physics.md).)
 
 <img src="../../images/linear-targeting.svg" alt="Top-down diagram showing a blue shooter bot firing a yellow bullet at the predicted intercept point on an orange enemy bot's curved trajectory" width="500"/><br>

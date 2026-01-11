@@ -96,7 +96,7 @@ to save. No extra explanation unless explicitly requested.
 Always use **"bot"** (except when quoting original titles, API names, or external docs).
 
 **"Units" vs "Pixels":**
-Always use **"units"** for measurements (e.g., 40×40 units, 1200 units, 8 units/turn).
+Always use **"units"** for measurements (e.g., 36×36 units, 1200 units, 8 units/turn).
 
 **Header Numbering:**
 Use numbered headers (e.g., `## 1. ...`) only for step-by-step or procedural pages. Use unnumbered headers for
