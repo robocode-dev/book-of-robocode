@@ -2,7 +2,7 @@
 title: "Understanding the Challenge"
 category: "Targeting Systems"
 summary: "Why hitting a moving target in Robocode is fundamentally harder than it looks, and the key insights that lead to advanced targeting methods."
-tags: ["targeting", "the-targeting-problem", "prediction", "intermediate", "robocode", "tank-royale"]
+tags: [ "targeting", "the-targeting-problem", "prediction", "intermediate", "robocode", "tank-royale" ]
 difficulty: "intermediate"
 source: [
   "RoboWiki - The Targeting Problem (classic Robocode) https://robowiki.net/wiki/The_Targeting_Problem",
@@ -14,7 +14,8 @@ source: [
 # Understanding the Challenge
 
 The simple targeting methods—head-on, linear, and circular—work great against predictable bots.
-But as soon as enemies start changing direction, accelerating unpredictably, or deliberately dodging, hit rates drop.
+But as soon as enemies start changing their direction, speeding up unpredictably, or deliberately dodging, hit rates
+drop.
 The core problem is that **the enemy has time to react** before the bullet arrives.
 
 This page explores why targeting is inherently difficult, and introduces the mindset shift that leads to advanced
@@ -81,7 +82,8 @@ Advanced targeting shifts to a different question: **"Which direction has the hi
 -->
 
 <img src="/images/targeting-problem-prediction-cone.svg" alt="Instead of predicting one point, advanced targeting considers a probability distribution across all possible enemy positions" width="1000"><br>
-*Instead of predicting one point, advanced targeting considers a probability distribution across all possible enemy positions*
+*Instead of predicting one point, advanced targeting considers a probability distribution across all possible enemy
+positions*
 
 ## Key insight: treat targeting as a search problem
 
@@ -143,12 +145,12 @@ and enemies can move during that time.
 
 **Key differences:**
 
-| Aspect | Classic Robocode | Tank Royale |
-|--------|------------------|-------------|
-| Coordinate system | 0° = North, clockwise | 0° = East, counter-clockwise |
-| Bullet speed formula | `20 - 3 × firepower` | `20 - 3 × firepower` (same) |
-| Max bullet travel time | ~91 turns (firepower 0.1, 800×600) | Varies with arena size |
-| Scan data timing | Previous turn | Current turn |
+| Aspect                 | Classic Robocode                   | Tank Royale                  |
+|------------------------|------------------------------------|------------------------------|
+| Coordinate system      | 0° = North, clockwise              | 0° = East, counter-clockwise |
+| Bullet speed formula   | `20 - 3 × firepower`               | `20 - 3 × firepower` (same)  |
+| Max bullet travel time | ~91 turns (firepower 0.1, 800×600) | Varies with arena size       |
+| Scan data timing       | Previous turn                      | Current turn                 |
 
 The core strategies—waves, GuessFactor, statistical targeting—translate directly between platforms, but
 coordinate conversions and scan timing need careful handling.

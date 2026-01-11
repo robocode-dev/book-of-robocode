@@ -58,8 +58,8 @@
     </style>
 
     <defs>
-        <marker id="arrow-yellow" markerWidth="20" markerHeight="20" refX="10" refY="5" orient="auto">
-            <polygon points="0 0, 10 5, 0 10" fill="#cc0"/>
+        <marker id="arrow-yellow" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+            <polygon points="3 0, 9 3, 3 6" fill="#cc0"/>
         </marker>
 
         <linearGradient id="cannon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -165,28 +165,28 @@
           stroke="#10B981" stroke-width="40" fill="none" stroke-dasharray="150 50"/>
 
     <!-- Possible enemy position lines (gray, dashed) -->
-    <line x1="1400" y1="3000" x2="5600" y2="1800" stroke="#6B7280" stroke-width="25" stroke-dasharray="100 50"/>
-    <line x1="1400" y1="3000" x2="5600" y2="4200" stroke="#6B7280" stroke-width="25" stroke-dasharray="100 50"/>
+    <line x1="1400" y1="3000" x2="6000" y2="1800" stroke="#6B7280" stroke-width="25" stroke-dasharray="100 50"/>
+    <line x1="1400" y1="3000" x2="6000" y2="4200" stroke="#6B7280" stroke-width="25" stroke-dasharray="100 50"/>
 
     <!-- Central prediction line (yellow with arrow) -->
-    <line x1="1400" y1="3000" x2="5800" y2="3000" stroke="#cc0" stroke-width="35" marker-end="url(#arrow-yellow)"/>
+    <line x1="1400" y1="3000" x2="5700" y2="3000" stroke="#cc0" stroke-width="35" marker-end="url(#arrow-yellow)"/>
 
     <!-- Bots -->
-    <use href="#tank" transform="translate(600,2600)"
-         style="--body-rotation:0deg; --turret-rotation:15deg; --radar-rotation:15deg;"/>
+    <use href="#tank" transform="translate(1100,2700) scale(.75)"
+         style="--body-rotation:10deg; --turret-rotation:90deg; --radar-rotation:90deg;"/>
 
-    <use href="#tank" transform="translate(5600,2600)"
+    <use href="#tank" transform="translate(5800,2700) scale(.75)"
          style="--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa;
-                --body-rotation:90deg; --turret-rotation:90deg; --radar-rotation:90deg;"/>
+                --body-rotation:20deg; --turret-rotation:265deg; --radar-rotation:275deg;"/>
 
     <!-- Text labels -->
-    <text class="text" x="6200" y="2750" fill="#cc0">Simple targeting:</text>
-    <text class="text" x="6200" y="2950" fill="#cc0">Predicts one point</text>
+    <text class="text" x="5600" y="2400" fill="#cc0">Simple targeting:</text>
+    <text class="text" x="5600" y="2600" fill="#cc0">Predicts one point</text>
 
-    <text class="text" x="4500" y="1250" fill="#10B981">Advanced targeting:</text>
-    <text class="text" x="4500" y="1450" fill="#10B981">Probability distribution</text>
+    <text class="text" x="4000" y="1200" fill="#10B981">Advanced targeting:</text>
+    <text class="text" x="4000" y="1400" fill="#10B981">Probability distribution</text>
 
-    <text class="text" x="5000" y="4750" fill="#6B7280">Possible enemy positions</text>
+    <text class="text" x="5000" y="4450" fill="#6B7280">Possible enemy positions</text>
 
 </svg>
 
