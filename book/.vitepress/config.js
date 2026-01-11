@@ -124,7 +124,7 @@ export default withMermaid(defineConfig({
               { text: 'Linear Targeting', link: '/targeting/simple-targeting/linear-targeting' },
               { text: 'Circular Targeting', link: '/targeting/simple-targeting/circular-targeting' },
               { text: 'Random Area Targeting', link: '/targeting/simple-targeting/random-area-targeting' },
-              { text: 'Virtual Guns Mean Targeting', link: '/targeting/simple-targeting/virtual-guns-mean-targeting' }
+              { text: 'Virtual Guns & Mean Targeting', link: '/targeting/simple-targeting/virtual-guns-mean-targeting' }
             ]},
             { text: 'The Targeting Problem', items: [
               { text: 'Understanding the Challenge', link: '/targeting/understanding-the-challenge' },
