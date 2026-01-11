@@ -1,40 +1,82 @@
-<svg version="1.1" width="625" height="625" viewBox="0 0 5000 5000" xmlns="http://www.w3.org/2000/svg">
+<svg version="1.1" width="1000" height="600" viewBox="0 0 8000 4800" xmlns="http://www.w3.org/2000/svg">
 
     <style>
         .text { font: 150px sans-serif; }
+        .text-large { font: 200px sans-serif; font-weight: bold; }
+        .text-medium { font: 130px sans-serif; }
     </style>
 
-    <rect x="0" y="0" width="5000" height="5000" fill="grey"/>
-    <rect x="200" y="200" width="4600" height="4600" fill="black"/>
-    <rect x="500" y="500" width="4000" height="4000" stroke="green" stroke-width="20"/>
-
-    <use href="#tank" transform="scale(0.75) translate(300,1800)"
-         style="--tank-body-color:#0c0; --tank-turret-color:#2e2; --tank-radar-color:#afa"/>
-
-    <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="3" refY="1.5" orient="auto">
-        <polygon points="3 0, 6 1.5, 3 3" fill="chocolate"/>
+    <!-- Arrow markers -->
+    <marker id="arrow-head-orange" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+        <polygon points="6 0, 12 3, 6 6" fill="orange"/>
     </marker>
 
-    <line x1="200" y1="600" x2="460" y2="600" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
-    <line x1="600" y1="200" x2="600" y2="460" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+    <marker id="arrow-head-red" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+        <polygon points="6 0, 12 3, 6 6" fill="red"/>
+    </marker>
 
-    <text x="350" y="420" class="text" fill="chocolate">M</text>
-    <text x="2400" y="4300" class="text" fill="green">Safe</text>
-    <text x="2320" y="4730" class="text" fill="chocolate">Unsafe</text>
+    <!-- Title and subtitle -->
+    <text class="text-large" x="4000" y="450" fill="white" text-anchor="middle">Fire Power Tradeoffs</text>
+    <text class="text-medium" x="4000" y="700" fill="lightgray" text-anchor="middle">Speed vs Damage vs Accuracy</text>
 
+    <!-- Lines (drawn BEFORE bots so bots appear on top) -->
+    <!-- Low power bullet path (straight to target) -->
+    <line x1="1000" y1="2400" x2="6800" y2="2000" stroke="orange" stroke-width="30" marker-end="url(#arrow-head-orange)"/>
+
+    <!-- High power bullet path (misses) -->
+    <line x1="1000" y1="2400" x2="6400" y2="2240" stroke="red" stroke-width="40" marker-end="url(#arrow-head-red)"/>
+
+    <!-- Bots (drawn AFTER lines so they appear on top) -->
+    <!-- FireBot (blue, friendly) at left -->
+    <use href="#tank" transform="translate(600,2000) scale(0.75)"
+         style="--body-rotation:0deg; --turret-rotation:0deg; --radar-rotation:0deg;"/>
+
+    <!-- Target (red, enemy) at right -->
+    <use href="#tank" transform="translate(6400,1600) scale(0.75)"
+         style="--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa;
+                --body-rotation:180deg; --turret-rotation:180deg; --radar-rotation:180deg;"/>
+
+    <!-- Labels -->
+    <text class="text" x="3800" y="1800" fill="orange" text-anchor="middle">Low power (fast)</text>
+    <text class="text" x="3400" y="2600" fill="red" text-anchor="middle">High power (slow, misses)</text>
+
+    <!-- Bot labels -->
+    <text class="text-medium" x="1000" y="3300" fill="#06c" text-anchor="middle">FireBot</text>
+    <text class="text-medium" x="6800" y="1450" fill="#e22" text-anchor="middle">Target</text>
+
+    <!-- Additional info boxes -->
+    <g>
+        <!-- Low power info -->
+        <rect x="500" y="3600" width="3000" height="900" fill="#1a1a1a" stroke="orange" stroke-width="15" rx="50"/>
+        <text class="text-medium" x="2000" y="3850" fill="orange" text-anchor="middle">Low Power (1.0)</text>
+        <text class="text" x="2000" y="4050" fill="white" text-anchor="middle">Speed: 17 units/turn</text>
+        <text class="text" x="2000" y="4250" fill="white" text-anchor="middle">Damage: 4.0</text>
+        <text class="text" x="2000" y="4450" fill="white" text-anchor="middle">Cooldown: 12 turns</text>
+    </g>
+
+    <g>
+        <!-- High power info -->
+        <rect x="4500" y="3600" width="3000" height="900" fill="#1a1a1a" stroke="red" stroke-width="15" rx="50"/>
+        <text class="text-medium" x="6000" y="3850" fill="red" text-anchor="middle">High Power (3.0)</text>
+        <text class="text" x="6000" y="4050" fill="white" text-anchor="middle">Speed: 11 units/turn</text>
+        <text class="text" x="6000" y="4250" fill="white" text-anchor="middle">Damage: 16.0</text>
+        <text class="text" x="6000" y="4450" fill="white" text-anchor="middle">Cooldown: 16 turns</text>
+    </g>
+
+    <!-- Tank defs block -->
     <defs>
         <style>
             .tank-body, .tank-turret, .tank-radar {
             transform-origin: 400px 400px;
             }
             .tank-body {
-            transform: rotate(var(--body-rotation, 10deg));
+            transform: rotate(var(--body-rotation, 0deg));
             }
             .tank-turret {
-            transform: rotate(var(--turret-rotation, 80deg));
+            transform: rotate(var(--turret-rotation, 0deg));
             }
             .tank-radar {
-            transform: rotate(var(--radar-rotation, 127deg));
+            transform: rotate(var(--radar-rotation, 0deg));
             }
             svg {
             --tank-body-color: #019;
@@ -173,3 +215,4 @@
         </symbol>
     </defs>
 </svg>
+

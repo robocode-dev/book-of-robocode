@@ -127,8 +127,8 @@ export default withMermaid(defineConfig({
               { text: 'Virtual Guns & Mean Targeting', link: '/targeting/simple-targeting/virtual-guns-mean-targeting' }
             ]},
             { text: 'The Targeting Problem', items: [
-              { text: 'Understanding the Challenge', link: '/targeting/understanding-the-challenge' },
-              { text: 'Introducing Waves', link: '/targeting/introducing-waves' }
+              { text: 'Understanding the Challenge', link: '/targeting/the-targeting-problem/understanding-the-challenge' },
+              { text: 'Introducing Waves', link: '/targeting/the-targeting-problem/introducing-waves' }
             ]},
             { text: 'Statistical Targeting', items: [
               { text: 'GuessFactor Targeting', link: '/targeting/guessfactor-targeting' },
@@ -147,7 +147,7 @@ export default withMermaid(defineConfig({
               { text: 'Neural Experimental Targeting', link: '/targeting/neural-experimental-targeting' }
             ]},
             { text: 'Targeting Tactics', items: [
-              { text: 'Fire Power Timing Decisions', link: '/targeting/fire-power-timing-decisions' },
+              { text: 'Fire Power & Timing Decisions', link: '/targeting/targeting-tactics/fire-power-timing-decisions' },
               { text: 'Saving Gun Data', link: '/targeting/saving-gun-data' }
             ]}
           ]

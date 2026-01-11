@@ -26,18 +26,18 @@
     <line x1="1500" y1="4500" x2="4800" y2="2700" stroke="white" stroke-width="10" stroke-dasharray="50 50"
           marker-end="url(#arrow-head)"/>
 
-    <use href="#tank" transform="translate(1200,4200) scale(0.75,0.75)"
+    <use href="#tank" transform="translate(1200,4200) scale(0.75)"
         style="--body-rotation:150deg; --turret-rotation:52deg; --radar-rotation:63deg;"/>
 
-    <use href="#tank" transform="translate(6500,800) scale(0.75,0.75) "
+    <use href="#tank" transform="translate(6500,800) scale(0.75) "
          style="--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa;
                 --body-rotation:10deg; --turret-rotation:200deg; --radar-rotation:260deg;"/>
 
-    <use href="#tank" transform="translate(5000,1400) scale(0.75,0.75) "
+    <use href="#tank" transform="translate(5000,1400) scale(0.75) "
          style="--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa;
                 --body-rotation:180deg; --turret-rotation:100deg; --radar-rotation:70deg;"/>
 
-    <use href="#tank" transform="translate(5800,2700) scale(0.75,0.75) "
+    <use href="#tank" transform="translate(5800,2700) scale(0.75) "
          style="--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa;
                 --body-rotation:60deg; --turret-rotation:240deg; --radar-rotation:253deg;"/>
 

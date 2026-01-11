@@ -7,9 +7,9 @@
     <use href="#radar-sweep" transform="translate(0,0)"/>
     <use href="#arrows-with-text" transform="translate(-200,-50)"/>
 
-    <use href="#tank" transform="scale(0.5,0.5) translate(0,500)"/>
+    <use href="#tank" transform="scale(0.5) translate(0,500)"/>
 
-    <use href="#tank" transform="scale(0.5,0.5) translate(4700,920)"
+    <use href="#tank" transform="scale(0.5) translate(4700,920)"
          style="
          --body-rotation:190deg;
          --turret-rotation:270deg;
