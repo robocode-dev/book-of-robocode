@@ -179,12 +179,12 @@
         </symbol>
 
         <symbol id="arrows-with-text">
-            <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+            <marker id="arrow" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
                 <polygon points="6 0, 12 3, 6 6" fill="chocolate"/>
             </marker>
 
-            <line x1="400" y1="500" x2="5000" y2="95" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
-            <line x1="400" y1="500" x2="5000" y2="1105" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="400" y1="500" x2="5000" y2="95" stroke="chocolate" stroke-width="20" marker-end="url(#arrow)"/>
+            <line x1="400" y1="500" x2="5000" y2="1105" stroke="chocolate" stroke-width="20" marker-end="url(#arrow)"/>
 
             <text x="1200" y="490" class="text" fill="chocolate" transform="rotate(-5)">Current Heading</text>
             <text x="1300" y="600" class="text" fill="chocolate" transform="rotate(7)">Previous Heading</text>

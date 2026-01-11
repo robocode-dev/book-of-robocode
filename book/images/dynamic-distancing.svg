@@ -19,12 +19,12 @@
     <circle cx="6200" cy="1900" r="1500" fill="none" stroke="red" stroke-width="10" stroke-dasharray="50 50"/>
     <text class="text" x="5700" y="2000" fill="red">enemy cluster</text>
 
-    <marker id="arrow-head" markerWidth="24" markerHeight="24" refX="12" refY="6" orient="auto">
+    <marker id="arrow" markerWidth="24" markerHeight="24" refX="12" refY="6" orient="auto">
         <polygon points="12 0, 24 6, 12 12" fill="white"/>
     </marker>
 
     <line x1="1500" y1="4500" x2="4800" y2="2700" stroke="white" stroke-width="10" stroke-dasharray="50 50"
-          marker-end="url(#arrow-head)"/>
+          marker-end="url(#arrow)"/>
 
     <use href="#tank" transform="translate(1200,4200) scale(0.75)"
         style="--body-rotation:150deg; --turret-rotation:52deg; --radar-rotation:63deg;"/>

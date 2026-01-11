@@ -9,19 +9,19 @@
 
     <use href="#tank" transform="scale(0.75) translate(1000,500)"/>
 
-    <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+    <marker id="arrow" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
         <polygon points="6 0, 12 4, 6 6" fill="chocolate"/>
     </marker>
     <!--
-        <line x1="1050" y1="670" x2="200" y2="1500" stroke="red" stroke-width="20" marker-end="url(#arrow-head-red)"/>
-        <line x1="1050" y1="670" x2="1050" y2="2000" stroke="green" stroke-width="20" marker-end="url(#arrow-head-green)"/>
+        <line x1="1050" y1="670" x2="200" y2="1500" stroke="red" stroke-width="20" marker-end="url(#arrow-red)"/>
+        <line x1="1050" y1="670" x2="1050" y2="2000" stroke="green" stroke-width="20" marker-end="url(#arrow-green)"/>
 
         <text x="-600" y="1150" class="text" transform="rotate(-45)" fill="red" stroke-width="3" stroke="black">desired</text>
         <text x="-1700" y="990" class="text" transform="rotate(-90)" fill="green">adjusted</text>
     -->
     <path d="M 1050 670
              A -1500 -1500 0 0 0 600 2200"
-          stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+          stroke="chocolate" stroke-width="20" marker-end="url(#arrow)"/>
 
     <circle cx="600" cy="1700" r="50" fill="green"/>
 

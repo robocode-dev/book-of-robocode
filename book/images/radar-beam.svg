@@ -167,10 +167,10 @@
         </defs>
 
         <symbol id="arrows-with-text">
-            <marker id="arrow-head" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+            <marker id="arrow" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
                 <polygon points="6 0, 12 3, 6 6" fill="chocolate"/>
             </marker>
-            <line x1="400" y1="700" x2="3000" y2="295" stroke="chocolate" stroke-width="20" marker-end="url(#arrow-head)"/>
+            <line x1="400" y1="700" x2="3000" y2="295" stroke="chocolate" stroke-width="20" marker-end="url(#arrow)"/>
 
             <text x="650" y="690" class="text" fill="chocolate" transform="rotate(-9)">Previous + current Heading (beam)</text>
         </symbol>
