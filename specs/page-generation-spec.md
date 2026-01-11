@@ -279,9 +279,10 @@ Use these VitePress/Markdown features:
 
 ### Formula Rules
 
+- Use KaTeX notation enclosed in single dollar signs: `$formula$`
+- **Do not** use `$$` blocks (display math).
 - Define all symbols before or immediately after the formula.
-- Prefer inline math for simple expressions.
-- Use display math (block) for important or complex equations.
+- All formulas, whether simple or complex, should use inline `$formula$` notation.
 
 ---
 
