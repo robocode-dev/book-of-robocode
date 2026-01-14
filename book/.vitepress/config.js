@@ -163,7 +163,9 @@ export default withMermaid(defineConfig({
               { text: 'Distancing', link: '/movement/basic/distancing' }
             ]},
             { text: 'Simple Evasion', items: [
-              { text: 'Random Movement', link: '/movement/simple-evasion/random-movement' }
+              { text: 'Random Movement', link: '/movement/simple-evasion/random-movement' },
+              { text: 'Stop and Go', link: '/movement/simple-evasion/stop-and-go' },
+              { text: 'Oscillator Movement', link: '/movement/simple-evasion/oscillator-movement' }
             ]},
             { text: 'Advanced Evasion', items: [
               { text: 'Gun Heat Waves & Bullet Shadows', link: '/movement/advanced-evasion/gun-heat-waves-bullet-shadows' },
