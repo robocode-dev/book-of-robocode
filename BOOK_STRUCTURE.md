@@ -68,7 +68,7 @@
 │  │  └─ Distancing [I] [✅]
 │  ├─ Simple Evasion [I]
 │  │  ├─ Random Movement [I] [✅]
-│  │  ├─ Stop and Go (with Tutorial) [I]
+│  │  ├─ Stop and Go (with Tutorial) [I] [✅]
 │  │  └─ Oscillator Movement [I] [✅]
 │  ├─ Strategic Movement [A]
 │  │  ├─ Anti-Gravity Movement (with Tutorial) [A]
