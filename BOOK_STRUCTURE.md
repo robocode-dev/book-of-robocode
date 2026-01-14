@@ -35,7 +35,7 @@
 │     └─ Gun Heat Lock [A]
 │
 ├─ Targeting Systems [I]
-│  ├─ Simple Targeting [B]
+│  ├─ Simple Targeting [B] [✅]
 │  │  ├─ Head-On Targeting [B] [✅]
 │  │  ├─ Linear Targeting [I] [✅]
 │  │  ├─ Circular Targeting (with Walkthrough) [I] [✅]
@@ -57,9 +57,9 @@
 │  │  ├─ Angular Targeting (Factored Variants) [A]
 │  │  ├─ Anti-Surfer Targeting [A]
 │  │  └─ Neural & Experimental Targeting [A]
-│  └─ Targeting Tactics [I]
+│  └─ Targeting Tactics [I] [✅]
 │     ├─ Fire Power & Timing Decisions [I] [✅]
-│     └─ Saving Gun Data [I]
+│     └─ Saving Gun Data [I] [✅]
 │
 ├─ Movement & Evasion [I]
 │  ├─ Basic Movement [B] [✅]
