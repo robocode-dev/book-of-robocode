@@ -162,6 +162,9 @@ export default withMermaid(defineConfig({
               { text: 'Wall Avoidance & Wall Smoothing', link: '/movement/basic/wall-avoidance-wall-smoothing' },
               { text: 'Distancing', link: '/movement/basic/distancing' }
             ]},
+            { text: 'Simple Evasion', items: [
+              { text: 'Random Movement', link: '/movement/simple-evasion/random-movement' }
+            ]},
             { text: 'Advanced Evasion', items: [
               { text: 'Gun Heat Waves & Bullet Shadows', link: '/movement/advanced-evasion/gun-heat-waves-bullet-shadows' },
               { text: 'Dodging Bullets', link: '/movement/advanced-evasion/dodging-bullets' },
