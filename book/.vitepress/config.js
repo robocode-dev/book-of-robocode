@@ -148,7 +148,7 @@ export default withMermaid(defineConfig({
             ]},
             { text: 'Targeting Tactics', items: [
               { text: 'Fire Power & Timing Decisions', link: '/targeting/targeting-tactics/fire-power-timing-decisions' },
-              { text: 'Saving Gun Data', link: '/targeting/saving-gun-data' }
+              { text: 'Saving Gun Data', link: '/targeting/targeting-tactics/saving-gun-data' }
             ]}
           ]
         }

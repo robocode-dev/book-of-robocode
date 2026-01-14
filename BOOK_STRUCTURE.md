@@ -42,7 +42,7 @@
 │  │  ├─ Random & Area Targeting [I] [✅]
 │  │  └─ Virtual Guns & Mean Targeting [A] [✅]
 │  ├─ The Targeting Problem [I]
-│  │  ├─ Understanding the Challenge [I]
+│  │  ├─ Understanding the Challenge [I] [✅]
 │  │  └─ Introducing Waves [A]
 │  ├─ Statistical Targeting [A]
 │  │  ├─ GuessFactor Targeting (with Tutorial) [A]
@@ -58,7 +58,7 @@
 │  │  ├─ Anti-Surfer Targeting [A]
 │  │  └─ Neural & Experimental Targeting [A]
 │  └─ Targeting Tactics [I]
-│     ├─ Fire Power & Timing Decisions [I]
+│     ├─ Fire Power & Timing Decisions [I] [✅]
 │     └─ Saving Gun Data [I]
 │
 ├─ Movement & Evasion [I]

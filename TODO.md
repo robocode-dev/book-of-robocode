@@ -7,6 +7,10 @@
 - Decide whether any non-screenshot/non-historical PNG images should be regenerated (or re-exported) to better match
   the book’s visual style and new SVG/Mermaid preference.
 
+# In the end
+
+- We need to links on terms like `GuessFactor`
+
 # FAQ
 
 - Make sure we cover all these in the end: https://robowiki.net/wiki/Robocode/FAQ
