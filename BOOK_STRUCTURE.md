@@ -86,7 +86,7 @@
 │     └─ Movement Analysis [A]
 │
 ├─ Energy & Scoring [I]
-│  ├─ Energy as a Resource [I]
+│  ├─ Energy as a Resource [I] [✅]
 │  ├─ Bullet Power Selection Strategy [I]
 │  ├─ Scoring Systems & Battle Types [I]
 │  └─ Energy Management in 1v1 and Melee [A]
