@@ -184,12 +184,12 @@ export default withMermaid(defineConfig({
       ],
       '/energy-and-scoring/': [
         {
-          text: 'Energy Management',
+          text: 'Energy & Scoring',
           items: [
-            { text: 'Energy Resource', link: '/energy-and-scoring/energy-resource' },
-            { text: 'Bullet Power Selection', link: '/energy-and-scoring/bullet-power-selection' },
-            { text: 'Energy Management 1v1', link: '/energy-and-scoring/energy-management-1v1' },
-            { text: 'Energy Management Melee', link: '/energy-and-scoring/energy-management-melee' }
+            { text: 'Energy as a Resource', link: '/energy-and-scoring/energy-as-a-resource' },
+            { text: 'Bullet Power Selection Strategy', link: '/energy-and-scoring/bullet-power-selection-strategy' },
+            { text: 'Scoring Systems & Battle Types', link: '/energy-and-scoring/scoring-systems-battle-types' },
+            { text: 'Energy Management in 1v1 and Melee', link: '/energy-and-scoring/energy-management-1v1-melee' }
           ]
         }
       ],
