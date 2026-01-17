@@ -125,4 +125,5 @@ Legend:
 [B] = Beginner Chapter
 [I] = Intermediate Chapter
 [A] = Advanced Chapter
+[X] = Expert Chapter (Not Covered)
 [✅] = Done

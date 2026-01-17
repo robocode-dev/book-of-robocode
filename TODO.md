@@ -10,6 +10,8 @@
 # In the end
 
 - We need to links on terms like `GuessFactor`
+- How to people contribute?
+- Links to the book of Robocode -> make PR? How to file/correct an issue?
 
 # FAQ
 
