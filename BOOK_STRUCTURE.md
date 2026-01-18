@@ -88,7 +88,8 @@
 ├─ Energy & Scoring [I]
 │  ├─ Energy as a Resource [I] [✅]
 │  ├─ Bullet Power Selection Strategy [I] [✅]
-│  ├─ Scoring Systems & Battle Types [I]
+│  ├─ Scoring Systems & Battle Types [I] [✅]
+│  ├─ Competition Formats & Rankings [I] [✅]
 │  └─ Energy Management in 1v1 and Melee [A]
 │
 ├─ Team Strategies [A]
@@ -115,7 +116,7 @@
 │  └─ Migration Guide [A]
 │
 ├─ Appendices [B]
-│  ├─ Glossary [B]
+│  ├─ Glossary [B] [✅]
 │  ├─ Quick Reference (Formulas) [I]
 │  ├─ Debugging Tips [I]
 │  └─ References & Credits [B]
