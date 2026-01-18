@@ -21,3 +21,11 @@
 # Future
 
 - We might be able to enable/disable friendly fire. Perhaps wait for the community to ask for it?
+
+# IMPORTANT!
+
+- Add links to the book of in both Robocode and Tank Royale:
+  - in About dialog AND Help menu
+- Contact Julian Kent ("Skilgannon") with link to Book of Robocode (add to RoboWiki?)
+
+- Refactor all documents of robocode.dev to use the book of Robocode as a reference.
