@@ -43,7 +43,21 @@ Your bot must:
 During a battle, you cannot control the bot directly. The only way to win is to write smarter code.
 
 Bullets themselves follow simple physics: they cost energy to fire, travel in straight lines along the gun heading, and
-reduce an opponent’s energy when they hit.
+reduce an opponent's energy when they hit.
+
+## Battle Formats
+
+Robocode supports three main battle formats. Each rewards different strategies:
+
+- **1v1 (Duel)** — Two bots face off in direct combat. The most popular competitive format. Success depends on targeting
+  accuracy and energy management.
+- **Melee** — Three or more bots battle simultaneously until one remains. Survival often matters more than raw damage
+  output. *(Fun fact: The name "Tank Royale" is inspired by melee battles resembling the "Battle Royale" game genre!)*
+- **Team** — Multiple bots per side share a collective score. Enables role specialization and coordinated tactics.
+
+For detailed scoring rules, see [Scoring Systems & Battle Types](../energy-and-scoring/scoring-systems-battle-types.md).
+For competition standards used in community rankings,
+see [Competition Formats & Rankings](../energy-and-scoring/competition-formats-rankings.md).
 
 ## Classic Robocode vs. Tank Royale
 
@@ -52,6 +66,8 @@ reduce an opponent’s energy when they hit.
 - Runs on the Java platform.
 - You write Java bots that extend specific base classes from the Robocode API.
 - Battles run inside a desktop GUI application.
+- Has the **RoboRumble client built-in** for participating in community rankings
+  via [LiteRumble](https://literumble.appspot.com/).
 - Many classic strategies, tutorials, and bots live on [RoboWiki](https://robowiki.net) (classic Robocode only).
 
 ### Robocode Tank Royale
@@ -59,6 +75,7 @@ reduce an opponent’s energy when they hit.
 - Runs on a server + bot architecture.
 - Bots connect to a game server using network protocols.
 - You can write bots in multiple languages (for example, Java, C#, Python, Kotlin, Scala, and more).
+- Does not have a community competition system like RoboRumble and LiteRumble yet.
 
 ---
 

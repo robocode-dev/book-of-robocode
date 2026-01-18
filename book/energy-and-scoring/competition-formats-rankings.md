@@ -14,13 +14,16 @@ source: [
 # Competition Formats & Rankings
 
 The community behind classic Robocode has developed standardized competition formats to ensure fair comparisons between
-bots.
-These formats define specific battlefield sizes, round counts, and battle configurations used in official rankings.
+bots. These formats define specific battlefield sizes, round counts, and battle configurations used in official
+rankings:
 
-- **RoboRumble** — the distributed battle client built into classic Robocode — runs battles and submits results to *
-- *LiteRumble**, the external ranking system that tracks scores and displays rankings.
+- **RoboRumble** — the distributed battle client built into classic Robocode — runs battles and submits results
+  to **LiteRumble**
+- **LiteRumble** — the external ranking system that tracks scores and displays rankings.
 
-Understanding these standards is crucial for developing competitive bots and participating in community tournaments.
+Understanding these standards is crucial for developing competitive bots and participating in community tournaments. For
+details on how scoring works across different battle types, see
+**[Scoring Systems & Battle Types](./scoring-systems-battle-types.md)**.
 
 > [!NOTE] Platform availability
 > RoboRumble is built into **classic Robocode only**. Tank Royale does not yet have an integrated ranking system, though
@@ -50,9 +53,10 @@ server.
 **[LiteRumble](https://literumble.appspot.com/)** is the external ranking system that collects all battle results from
 RoboRumble clients worldwide and computes the official rankings. It maintains several competition categories:
 
-- **1v1** — One-on-one dueling rankings
-- **Melee** — Multi-bot survival rankings
-- **Teams** — Coordinated team battle rankings
+- **[1v1](./scoring-systems-battle-types.md#1v1-strategy-maximize-damage-efficiency)** — One-on-one dueling rankings
+- **[Melee](./scoring-systems-battle-types.md#melee-strategy-survive-and-opportunize)** — Multi-bot survival rankings
+- **[Teams](./scoring-systems-battle-types.md#team-strategy-coordinate-for-collective-score)** — Coordinated team battle
+  rankings
 
 Visit the [RoboRumble/Enter The Competition](https://robowiki.net/wiki/RoboRumble/Enter_The_Competition) page to learn
 how to submit your bot and participate in the rankings.
@@ -64,12 +68,15 @@ how to submit your bot and participate in the rankings.
 
 ## Community competition categories
 
-The Robocode community recognizes three main competitive categories, each with distinct characteristics and strategies:
+The Robocode community recognizes three main competitive categories, each with distinct characteristics and strategies.
+These battle types use the same scoring system but reward different tactics. For details on how scoring works in each
+format, see **[Scoring Systems & Battle Types](./scoring-systems-battle-types.md)**.
 
 ### 1v1 (One-on-One)
 
 Pure dueling format where two bots face off in direct combat. Success requires maximizing damage output while
-maintaining energy efficiency.
+maintaining energy
+efficiency. [Learn about 1v1 scoring strategy →](./scoring-systems-battle-types.md#1v1-strategy-maximize-damage-efficiency)
 
 **Key characteristics:**
 
@@ -81,7 +88,7 @@ maintaining energy efficiency.
 ### Melee
 
 Multi-bot chaos where 3+ bots battle simultaneously until only one survives. Survival often matters more than raw damage
-output.
+output. [Learn about melee scoring strategy →](./scoring-systems-battle-types.md#melee-strategy-survive-and-opportunize)
 
 > [!TIP] Fun fact
 > The name "Tank Royale" is inspired by Melee battles — they resemble the popular "Battle Royale" game genre where
@@ -97,7 +104,8 @@ output.
 ### Teams
 
 Coordinated team battles where multiple bots work together toward a common goal. Communication and role specialization
-become critical.
+become
+critical. [Learn about team scoring strategy →](./scoring-systems-battle-types.md#team-strategy-coordinate-for-collective-score)
 
 **Key characteristics:**
 
