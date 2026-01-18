@@ -31,7 +31,7 @@
 │  │  ├─ Spinning Radar [I] [✅] / Infinity Lock [I] [✅]
 │  │  └─ Perfect Locks (Turn Multiplier & Width Lock) [A] [✅]
 │  └─ Melee Radar [A]
-│     ├─ Spinning & Corner Arc [A]
+│     ├─ Spinning & Corner Arc [A] [✅]
 │     ├─ Oldest Scanned [A]
 │     └─ Gun Heat Lock [A]
 │
