@@ -12,6 +12,7 @@
 - We need to links on terms like `GuessFactor`
 - How to people contribute?
 - Links to the book of Robocode -> make PR? How to file/correct an issue?
+- Update ATTRIBUTION.md and also a page in the book with credits to _all_ the people behind the pages.
 
 # FAQ
 
