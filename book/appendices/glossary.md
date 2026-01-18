@@ -141,6 +141,12 @@ An advanced evasion technique where the bot tracks incoming "waves" (potential b
 
 A normalized value (-1 to 1) representing where a bot could be when a bullet arrives, used in statistical targeting and movement systems.
 
+### Ramming
+
+A combat strategy where a bot deliberately collides with opponents to deal damage. Each collision deals damage based on relative velocity ($\text{damage} = 0.6 \times \text{relativeVelocity}$) and awards double the damage as points. Ramming is most effective against stationary, disabled, or low-energy bots. When a bot kills an enemy by ramming, it receives a 30% bonus of all ram damage dealt to that enemy.
+
+See: [Scoring Systems & Battle Types](../energy-and-scoring/scoring-systems-battle-types.md#2-ram-damage-points)
+
 ---
 
 ## Targeting terms
