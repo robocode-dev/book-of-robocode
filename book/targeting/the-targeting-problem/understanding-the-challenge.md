@@ -14,7 +14,7 @@ source: [
 # Understanding the Challenge
 
 > [!TIP] Origins
-> The **wave-based targeting** concept and **GuessFactor Targeting** were pioneered by **Paul Evans ("PEZ")** and
+> The **wave-based targeting** concept and **GuessFactor Targeting** were pioneered by **Peter Strömberg ("PEZ")** and
 > refined by the RoboWiki community, revolutionizing competitive Robocode.
 
 The simple targeting methods—head-on, linear, and circular—work great against predictable bots.

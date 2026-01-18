@@ -19,22 +19,32 @@ and sharing their discoveries. This page honors those who shaped the game's comp
 
 These individuals made foundational contributions to Robocode strategy and community infrastructure.
 
-### Paul Evans (PEZ)
+### Peter Strömberg (PEZ)
 
-Co-founder of the [RoboWiki](https://robowiki.net/), the central knowledge repository for Robocode strategy. Creator of
-legendary bots **CassiusClay** and **Pugilist**. PEZ pioneered **Wave Surfing** and **GuessFactor Targeting** — two
-techniques that revolutionized competitive Robocode and remain foundational to this day.
+[RoboWiki User Page](https://robowiki.net/wiki/User:PEZ)
+
+Founder of the original [RoboWiki](https://robowiki.net/), the central knowledge repository for Robocode strategy. 
+Creator of legendary bots **CassiusClay** and **Pugilist**. PEZ pioneered **Wave Surfing** and **GuessFactor 
+Targeting** — two techniques that revolutionized competitive Robocode and remain foundational to this day.
 
 Beyond technical contributions, PEZ was instrumental in building the collaborative community culture that made RoboWiki
-thrive.
+thrive. His vision of open knowledge sharing shaped the entire Robocode community.
+
+> [!NOTE]
+> If you know who else co-founded RoboWiki with PEZ in the early days, please contribute this information via a pull 
+> request or issue on the [GitHub repository](https://github.com/robocode-dev/book-of-robocode).
 
 ### Patrick Cupka (Voidious)
+
+[RoboWiki User Page](https://robowiki.net/wiki/User:Voidious)
 
 Author of **Dookious**, which held the #1 ranking for an extended period. Voidious refined Wave Surfing, GuessFactor
 segmentation, and movement flattening to near-perfection. His extensive tutorials and detailed explanations on RoboWiki
 helped countless bot developers understand advanced concepts.
 
 ### Julian Kent (Skilgannon)
+
+[RoboWiki User Page](https://robowiki.net/wiki/User:Skilgannon)
 
 Author of **DrussGT**, one of the most dominant bots in Robocode history. Skilgannon advanced **Dynamic Clustering**,
 **anti-surfer targeting**, and melee strategies. His work pushed the boundaries of what statistical targeting could
@@ -46,11 +56,15 @@ community's knowledge base remains accessible.
 
 ### Albert Perez
 
+[RoboWiki User Page](https://robowiki.net/wiki/User:Albert)
+
 Creator of **[RoboRumble](https://robowiki.net/wiki/RoboRumble)**, the original continuous ranking system that
 transformed Robocode from casual experimentation into a competitive sport. RoboRumble allowed bot authors worldwide to
 compare their creations against thousands of opponents, driving rapid innovation in targeting and movement strategies.
 
 ### David Alves
+
+[RoboWiki User Page](https://robowiki.net/wiki/User:David_Alves)
 
 Author of **Phoenix** and **Falcon**. David contributed extensively to **pattern matching**, **precise prediction**, and
 physics documentation. His analytical approach helped formalize many concepts that were previously understood only
@@ -62,10 +76,14 @@ These contributors ensured that knowledge was preserved and accessible.
 
 ### MultiplyByZer0
 
+[RoboWiki User Page](https://robowiki.net/wiki/User:MultiplyByZer0)
+
 Active wiki editor who documented targeting strategies, wave mechanics, and provided numerous code samples. Helped
 maintain and expand RoboWiki's coverage of intermediate and advanced topics.
 
 ### Kawigi
+
+[RoboWiki User Page](https://robowiki.net/wiki/User:Kawigi)
 
 Early contributor of movement and targeting tutorials. Kawigi's beginner-friendly explanations helped bridge the gap
 between novice and intermediate bot development.
@@ -76,15 +94,21 @@ These developers created influential bots that introduced new techniques or push
 
 ### ABC
 
+[RoboWiki User Page](https://robowiki.net/wiki/User:Abc)
+
 Author of **Shadow**, which introduced innovative melee gun techniques. Shadow's approach to multi-target engagement
-influenced subsequent melee bot development.
+influenced subsequent melee bot development. ABC was also an early contributor to RoboWiki's founding and development.
 
 ### Simonton
+
+[RoboWiki User Page](https://robowiki.net/wiki/User:Simonton)
 
 Author of **Diamond**, which refined Dynamic Clustering targeting to exceptional accuracy. Diamond demonstrated how
 careful segmentation and statistical methods could outperform simpler approaches.
 
 ### Rednaxela
+
+[RoboWiki User Page](https://robowiki.net/wiki/User:Rednaxela)
 
 Implemented efficient **KD-Tree** data structures for clustering algorithms. These optimizations made advanced
 statistical techniques practical for real-time bot decision-making.
@@ -117,3 +141,8 @@ Special recognition goes to **Flemming N. Larsen**, the original creator of Robo
 
 Know someone who should be recognized here? The Book of Robocode is open source. Submit a pull request or open an issue
 on the [GitHub repository](https://github.com/robocode-dev/book-of-robocode) to suggest additions.
+
+> [!NOTE]
+> If you know the real names behind the aliases **MultiplyByZer0**, **Kawigi**, **ABC**, **Simonton**, or 
+> **Rednaxela**, please contribute this information so we can properly credit these contributors.
+
