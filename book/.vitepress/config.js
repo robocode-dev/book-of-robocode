@@ -27,7 +27,7 @@ export default withMermaid(defineConfig({
       {
         text: 'Core Guides',
         items: [
-          { text: 'Introduction', link: '/introduction/what-is-robocode' },
+          { text: 'Introduction', link: '/introduction/foreword' },
           { text: 'Getting Started', link: '/getting-started/your-first-bot' },
           { text: 'Battlefield Physics', link: '/physics/coordinates-and-angles' }
         ]
@@ -62,6 +62,7 @@ export default withMermaid(defineConfig({
         {
           text: 'Introduction',
           items: [
+            { text: 'Author\'s Foreword', link: '/introduction/foreword' },
             { text: 'What is Robocode?', link: '/introduction/what-is-robocode' },
             { text: 'History', link: '/introduction/history' }
           ]

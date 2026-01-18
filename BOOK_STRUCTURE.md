@@ -4,6 +4,7 @@
 📘 The Book of Robocode
 
 ├─ Introduction [B] [✅]
+│  ├─ Author's Foreword [B] [✅]
 │  ├─ What is Robocode & How to Use This Book [B] [✅]
 │  └─ A Short History of Robocode [B] [✅]
 │
