@@ -34,10 +34,6 @@ Complete at least: **Waves**, **GuessFactor Targeting**, **Anti-Gravity Movement
 - Links to the book of Robocode -> make PR? How to file/correct an issue?
 - Update ATTRIBUTION.md and also a page in the book with credits to _all_ the people behind the pages.
 
-**Wall of Fame Options (page created at `book/appendices/wall-of-fame.md`):**
-- Use inline `::: tip Origins` callouts on pages where specific people invented/refined techniques
-- Add optional `credits` frontmatter field to `specs/page-generation-spec.md`
-
 # FAQ
 
 - Make sure we cover all these in the end: https://robowiki.net/wiki/Robocode/FAQ
