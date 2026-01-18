@@ -245,7 +245,8 @@ export default withMermaid(defineConfig({
             { text: 'Glossary', link: '/appendices/glossary' },
             { text: 'Quick Reference', link: '/appendices/quick-reference' },
             { text: 'Debugging Tips', link: '/appendices/debugging-tips' },
-            { text: 'References & Credits', link: '/appendices/references-credits' }
+            { text: 'References & Credits', link: '/appendices/references-credits' },
+            { text: 'Wall of Fame', link: '/appendices/wall-of-fame' }
           ]
         }
       ]
