@@ -13,6 +13,10 @@ source: [
 
 # Understanding the Challenge
 
+> [!TIP] Origins
+> The **wave-based targeting** concept and **GuessFactor Targeting** were pioneered by **Paul Evans ("PEZ")** and
+> refined by the RoboWiki community, revolutionizing competitive Robocode.
+
 The simple targeting methods—head-on, linear, and circular—work great against predictable bots.
 But as soon as enemies start changing their direction, speeding up unpredictably, or deliberately dodging, hit rates
 drop.
@@ -159,3 +163,8 @@ After understanding waves, explore the major targeting approaches:
 > [!TIP] Mindset shift
 > The key to advanced targeting is accepting that **you can't predict the future perfectly**
 > Instead, aim at the *most likely* future based on past data.
+
+## Further Reading
+
+- [The Targeting Problem](https://robowiki.net/wiki/The_Targeting_Problem) — RoboWiki (classic Robocode)
+- [Waves](https://robowiki.net/wiki/Waves) — RoboWiki (classic Robocode)

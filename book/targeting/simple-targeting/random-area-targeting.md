@@ -12,6 +12,10 @@ source: [
 
 # Random & Area Targeting
 
+> [!TIP] Origins
+> **Random Targeting** and **Area Targeting** were developed and documented by the RoboWiki community as fallback
+> strategies for unpredictable opponents.
+
 **Random Targeting** and **Area Targeting** are two simple strategies for firing when an enemy is unpredictable or when
 more advanced targeting methods fail.
 Neither assumes the enemy moves in a predictable straight line—instead, they cover a zone or scatter shots
@@ -169,7 +173,8 @@ See [Coordinates and Angles](../../physics/coordinates-and-angles.md) for platfo
 ## Illustration placeholder
 
 <img src="../../images/random-area-targeting-patterns.svg" alt="Random and Area Targeting patterns compared: Random fires scattered shots around a reference direction, while Area Targeting fires a spray across a predicted movement zone." width="1000"><br>
-*Random and Area Targeting patterns compared: Random fires scattered shots around a reference direction, while Area Targeting fires a spray across a predicted movement zone.*
+*Random and Area Targeting patterns compared: Random fires scattered shots around a reference direction, while Area
+Targeting fires a spray across a predicted movement zone.*
 
 ---
 
@@ -180,4 +185,9 @@ See [Coordinates and Angles](../../physics/coordinates-and-angles.md) for platfo
 - Both are simple to implement and useful in specific scenarios (chaos, lost locks, unpredictable foes).
 - Use them as supplements to smarter tactics, not replacements.
 - Combine with good radar and energy management for best results.
+
+## Further Reading
+
+- [Area Targeting](https://robowiki.net/wiki/Area_Targeting) — RoboWiki (classic Robocode)
+- [Random Targeting](https://robowiki.net/wiki/Random_Targeting) — RoboWiki (classic Robocode)
 

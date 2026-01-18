@@ -13,6 +13,10 @@ source: [
 
 # Stop and Go
 
+> [!TIP] Origins
+> **Stop and Go** movement was developed and documented by the RoboWiki community as an effective counter to linear and
+> simple statistical targeting systems.
+
 Stop and Go is a simple yet effective evasion strategy that alternates between moving at full speed and coming to a
 complete stop. By dramatically varying velocity, the bot makes linear targeting predictions fail and confuses
 statistical targeting systems that expect consistent movement patterns.
@@ -386,4 +390,9 @@ After mastering Stop and Go, consider:
 
 Stop and Go remain a valuable component even in advanced bots, often used as one option in a multiple-choice movement
 system.
+
+## Further Reading
+
+- [Stop And Go](https://robowiki.net/wiki/Stop_And_Go) — RoboWiki (classic Robocode)
+- [Stop And Go Tutorial](https://robowiki.net/wiki/Stop_And_Go_Tutorial) — RoboWiki (classic Robocode)
 

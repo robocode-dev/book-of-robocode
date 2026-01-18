@@ -12,6 +12,9 @@ source: [
 
 # Distancing
 
+> [!TIP] Origins
+> **Distancing** and **Dynamic Distancing** concepts were developed and documented by the RoboWiki community.
+
 Distancing is the movement idea of deliberately choosing a range to opponents instead of letting range happen by
 accident. Distance changes bullet flight time, how much room there is to maneuver, and how easy it is for either bot to
 aim.
@@ -129,3 +132,9 @@ movement, waypoint navigation, orbiting, or any advanced evasive system.
 
 <img src="../../images/dynamic-distancing.svg" alt="Dynamic distancing: preferred distance increases in crowded situations" width="800"><br>
 *Illustration: Dynamic distancing. The preferred distance is larger when the area is crowded.*
+
+## Further Reading
+
+- [Distancing](https://robowiki.net/wiki/Distancing) — RoboWiki (classic Robocode)
+- [Talk:Dynamic Distancing](https://robowiki.net/wiki/Talk:Dynamic_Distancing) — RoboWiki (classic Robocode)
+

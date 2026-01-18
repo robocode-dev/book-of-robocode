@@ -12,6 +12,9 @@ source: [
 
 # Oscillator Movement
 
+> [!TIP] Origins
+> **Oscillator Movement** was developed and documented by the RoboWiki community as an intermediate evasion technique.
+
 Oscillator movement is a simple evasion technique where the bot moves back and forth in a rhythmic pattern, alternating
 the direction at regular intervals or when hitting specific conditions. While predictable to advanced targeting systems,
 it effectively dodges head-on and linear targeting while maintaining a consistent distance and battlefield position.
@@ -172,4 +175,9 @@ Oscillator movement is a stepping stone to more sophisticated evasion:
 
 Once opponents start using pattern matching or statistical targeting, you'll need to move beyond simple oscillation to
 more adaptive strategies.
+
+## Further Reading
+
+- [Oscillator Movement](https://robowiki.net/wiki/Oscillator_Movement) — RoboWiki (classic Robocode)
+- [Oscillator Movement/Period](https://robowiki.net/wiki/Oscillator_Movement/Period) — RoboWiki (classic Robocode)
 

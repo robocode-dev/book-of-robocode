@@ -11,6 +11,10 @@ source: [
 
 # Head-On Targeting
 
+> [!TIP] Origins
+> **Head-On Targeting** is the simplest targeting method, documented by the RoboWiki community as the baseline all other
+> targeting systems aim to beat.
+
 Head-on targeting means aiming directly at where the enemy was when it was last scanned.
 It does **not** try to predict where the enemy will be when the bullet arrives.
 
@@ -83,7 +87,8 @@ Aiming is basically "what is the angle from `(myX, myY)` to `(enemyX, enemyY)`?"
 - In **Tank Royale**, the API offers helpers like `calcHeadingTo(x, y)` that returns the heading to a point.
 
 <img src="../../images/heads-on-targeting.svg" alt="Heads-on targeting illustration" width="650" /><br>
-**Illustration:** The bot aims its gun directly at the enemy's last scanned position. However, the enemy bot has already moved to a new position*
+**Illustration:** The bot aims its gun directly at the enemy's last scanned position. However, the enemy bot has already
+moved to a new position*
 
 ## Minimal examples
 
@@ -108,8 +113,11 @@ double gunTurn = robocode.util.Utils.normalRelativeAngle(gunAbsHeading - getGunH
 setTurnGunRight(gunTurn);
 
 // Fire when roughly aligned
-if (Math.abs(getGunTurnRemaining()) < 2) {
-    setFire(1.5);
+if(Math.
+
+abs(getGunTurnRemaining()) < 2){
+
+setFire(1.5);
 }
 ```
 
@@ -127,10 +135,14 @@ double gunHeadingToEnemy = calcHeadingTo(e.getX(), e.getY());
 // Turn the gun the shortest way toward the target heading
 // (Method names can vary slightly by base class / language binding.)
 double gunTurn = normalizeRelativeAngle(gunHeadingToEnemy - getGunHeading());
+
 setTurnGunRight(gunTurn);
 
-if (Math.abs(getGunTurnRemaining()) < 2) {
-    setFire(1.5);
+if(Math.
+
+abs(getGunTurnRemaining()) < 2){
+
+setFire(1.5);
 }
 ```
 
@@ -153,3 +165,8 @@ if (Math.abs(getGunTurnRemaining()) < 2) {
 - **Assuming head-on will work at long range:** bullets take time to travel; prediction methods exist for a reason.
 - **Not scanning often enough:** head-on targeting gets worse quickly if the last scan is several turns old. Radar
   strategy matters.
+
+## Further Reading
+
+- [Head-On Targeting](https://robowiki.net/wiki/Head-On_Targeting) — RoboWiki (classic Robocode)
+

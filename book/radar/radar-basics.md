@@ -15,6 +15,10 @@ source: [
 
 # Radar Basics
 
+> [!TIP] Origins
+> Radar strategies and techniques were developed and documented by the RoboWiki community, building on the core game
+> mechanics.
+
 Radar is the main sensor in Robocode. If scan data is stale, a bot aims worse, reacts slower, and makes questionable
 movement decisions.
 
@@ -148,5 +152,10 @@ When there are many enemies, it is often better to keep good data on a few impor
 
 ## Linking forward
 
-- **One-on-One Radar**: spinning radar, infinity lock, and “perfect lock” patterns.
+- **One-on-One Radar**: spinning radar, infinity lock, and "perfect lock" patterns.
 - **Melee Radar**: oldest-scanned strategies, corner arcs, and selective focus under chaos.
+
+## Further Reading
+
+- [Radar](https://robowiki.net/wiki/Radar) — RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Anatomy](https://robocode.dev/articles/anatomy.html) — Tank Royale documentation

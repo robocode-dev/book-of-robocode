@@ -12,6 +12,10 @@ source: [
 
 # Energy as a Resource
 
+> [!TIP] Origins
+> Energy management strategies were developed and documented by the RoboWiki community, with significant contributions
+> from **Patrick Cupka ("Voidious")** and other competitive bot developers.
+
 In Robocode, energy is more than a health bar — it's the currency of battle. Every shot fired, every hit taken, and
 every hit landed creates an energy transaction that can swing the battle. Understanding how to manage, conserve, and
 exploit energy gives bots a critical strategic edge.
@@ -310,3 +314,8 @@ enemy's energy, and adjusting their strategy based on the energy differential.
 
 > "In Robocode, the bot with the most energy isn't necessarily winning — but the bot that manages energy best usually
 > is."
+
+## Further Reading
+
+- [Energy](https://robowiki.net/wiki/Energy) — RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html) — Tank Royale documentation

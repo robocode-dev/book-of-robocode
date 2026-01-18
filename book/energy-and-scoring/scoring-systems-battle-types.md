@@ -13,6 +13,10 @@ source: [
 
 # Scoring Systems & Battle Types
 
+> [!TIP] Origins
+> Scoring mechanics and battle type strategies were documented by the RoboWiki community through years of competitive
+> play and analysis.
+
 Robocode battles come in three main formats: **[1v1 duels](#1v1-strategy-maximize-damage-efficiency)**,
 **[melee battles](#melee-strategy-survive-and-opportunize)**, and
 **[team battles](#team-strategy-coordinate-for-collective-score)**. Each format uses the same basic scoring system but
@@ -82,7 +86,9 @@ $\text{ramDamage} = 0.6 \times \text{relativeVelocity}$
 **Ram damage bonus:** When a bot kills an enemy by ramming, it scores an additional **30% of all the ram damage** it did
 to that enemy.
 
-**Example calculation:** If a bot dealt 30 points of ram damage to an enemy across multiple collisions before delivering a fatal ram:
+**Example calculation:** If a bot dealt 30 points of ram damage to an enemy across multiple collisions before delivering
+a fatal ram:
+
 - **Regular ram scoring:** $2 \times 30 = 60$ points (earned throughout the fight)
 - **Ram kill bonus:** $0.30 \times 30 = 9$ points (earned when the enemy dies)
 - **Total ram score:** $60 + 9 = $ **69 points**
@@ -108,12 +114,14 @@ you win rounds that would otherwise be close.
 **Concrete example (1v1, 3 rounds):**
 
 Without kill bonus:
+
 - Round 1: Bot A deals 100 damage (wins) → 100 + 50 survival + 10 last survivor = **160 points**
 - Round 2: Bot B deals 100 damage (wins) → **160 points**
 - Round 3: Bot A deals 100 damage (wins) → **160 points**
 - **Final: Bot A 320, Bot B 160 → Bot A wins by 160**
 
 With kill bonus:
+
 - Round 1: Bot A deals 100 damage + 20 bonus (wins) → 120 + 50 + 10 = **180 points**
 - Round 2: Bot B deals 100 damage + 20 bonus (wins) → **180 points**
 - Round 3: Bot A deals 100 damage + 20 bonus (wins) → **180 points**
@@ -278,3 +286,9 @@ Now that you understand how scoring works across battle types, explore format-sp
 
 Understanding scoring is the foundation. Winning requires applying that knowledge to strategic decision-making in
 real-time combat.
+
+## Further Reading
+
+- [Robocode/Scoring](https://robowiki.net/wiki/Robocode/Scoring) — RoboWiki (classic Robocode)
+- [Melee](https://robowiki.net/wiki/Melee) — RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Scoring](https://robocode.dev/articles/scoring.html) — Tank Royale documentation

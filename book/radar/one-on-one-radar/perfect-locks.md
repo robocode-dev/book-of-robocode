@@ -11,6 +11,10 @@ source: [
 
 # Perfect Locks
 
+> [!TIP] Origins
+> **Perfect Lock** patterns (Turn Multiplier Lock and Width Lock) were developed and documented by the RoboWiki
+> community for optimal 1v1 radar tracking.
+
 A radar *lock* tries to re-scan the same enemy at every turn. A **perfect lock** goes one step further: it turns the
 radar so the enemy is guaranteed to be inside the radar beam again next tick, even while both bots are turning.
 
@@ -31,6 +35,7 @@ The radar is the sensor. A perfect lock is how to keep that sensor “glued” t
 *Illustration: The radar beam overshooting an enemy*
 
 Legend:
+
 - Green color: The scan arc from the current radar heading to the enemy
 - Blue color: The overshoot arc past the enemy
 
@@ -100,11 +105,9 @@ A common approximation is:
 
 Approximate formula (small-angle approximation):
 
-
 $\text{enemyAngularWidth} \approx 2 \cdot \arctan\left(\frac{\text{enemyWidth}/2}{\text{distance}}\right)$
 
 Then overshoot by about half of that:
-
 
 $\text{overshoot} \approx \frac{\text{enemyAngularWidth}}{2}$
 
@@ -165,4 +168,9 @@ and the scan geometry in [Radar Basics](../radar-basics).
 
 - [Radar Basics](../radar-basics) — radar geometry, scan events, and the lock vs sweep mindset
 - [Spinning Radar](./spinning-radar) — fast discovery and a simple reacquire fallback
+
+## Further Reading
+
+- [One on One Radar](https://robowiki.net/wiki/One_on_One_Radar) — RoboWiki (classic Robocode)
+- [Radar](https://robowiki.net/wiki/Radar) — RoboWiki (classic Robocode)
 

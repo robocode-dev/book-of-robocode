@@ -12,6 +12,10 @@ source: [
 
 # Bullet Power Selection Strategy
 
+> [!TIP] Origins
+> **Fire power selection** strategies were developed and documented by the RoboWiki community, with notable
+> contributions including **Albert's power selection** algorithm.
+
 Choosing the right bullet power is one of the most consequential tactical decisions in Robocode. Fire is too weak, and
 you leave damage on the table; fire is too strong, and you waste energy on slow bullets that miss. This page presents a
 strategic framework for bullet power selection that adapts to distance, energy levels, targeting confidence, and battle
@@ -215,6 +219,7 @@ For lower powers (0.1–1.0), use the simpler formula:
 $\text{power} \approx \frac{\text{enemyEnergy}}{4}$
 
 **Example:** Enemy has 8 energy remaining.
+
 - Using the general formula: $\text{power} \approx \frac{8}{6} \approx 1.33$
 - A 1.5 power bullet deals $4 \times 1.5 + 2 \times (1.5 - 1) = 6 + 1 = 7$ damage (not quite enough)
 - A 2.0 power bullet deals $4 \times 2.0 + 2 \times (2.0 - 1) = 8 + 2 = 10$ damage (kills them)
@@ -339,3 +344,8 @@ develop intuition for power selection that matches your bot's strengths and your
 - See [Fire Power & Timing Decisions](../targeting/targeting-tactics/fire-power-timing-decisions.md) for
   targeting-focused power considerations.
 - Explore [Bullet Travel & Bullet Physics](../physics/bullet-physics.md) for the underlying mechanics.
+
+## Further Reading
+
+- [Selecting Fire Power](https://robowiki.net/wiki/Selecting_Fire_Power) — RoboWiki (classic Robocode)
+- [Bullet](https://robowiki.net/wiki/Bullet) — RoboWiki (classic Robocode)

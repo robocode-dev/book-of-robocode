@@ -12,6 +12,10 @@ source: [
 
 # Circular Targeting (with Walkthrough)
 
+> [!TIP] Origins
+> **Circular Targeting** is a foundational technique documented by the RoboWiki community as the next step after linear
+> targeting.
+
 Circular targeting predicts where to aim by assuming the enemy keeps moving with **constant speed** and a **constant
 turn rate**.
 That means the enemy follows an arc (part of a circle), not a straight line.
@@ -166,3 +170,10 @@ The *idea* is the same across platforms, but be careful with two details:
 
 - **Firing too early (gun not aligned):** prediction doesn't help if the gun isn't turned.
   Many bots wait until gun error is below a small threshold.
+
+## Further Reading
+
+- [Circular Targeting](https://robowiki.net/wiki/Circular_Targeting) — RoboWiki (classic Robocode)
+- [Circular Targeting/Walkthrough](https://robowiki.net/wiki/Circular_Targeting/Walkthrough) — RoboWiki (classic
+  Robocode)
+

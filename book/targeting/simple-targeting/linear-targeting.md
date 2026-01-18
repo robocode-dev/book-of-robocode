@@ -13,6 +13,10 @@ source: [
 
 # Linear Targeting
 
+> [!TIP] Origins
+> **Linear Targeting** is a foundational technique documented by the RoboWiki community as the classic first step beyond
+> head-on targeting.
+
 Linear targeting is the classic “next step” after head-on targeting.
 Instead of firing at the enemy’s last scanned position, it predicts an intercept point by assuming the enemy keeps
 moving in a straight line at constant velocity.
@@ -169,3 +173,10 @@ The math above is the same, but *inputs* differ.
 
 - **Forgetting unit limits:** enemy speed is capped (e.g., 8 units/turn in classic), but can still be large enough to
   make some intercept solutions impossible with low bullet speed.
+
+## Further Reading
+
+- [Linear Targeting](https://robowiki.net/wiki/Linear_Targeting) — RoboWiki (classic Robocode)
+- [Linear Targeting/Buggy Implementations](https://robowiki.net/wiki/Linear_Targeting/Buggy_Implementations) —
+  RoboWiki (classic Robocode)
+

@@ -12,6 +12,10 @@ source: [
 
 # Virtual Guns & Mean Targeting
 
+> [!TIP] Origins
+> **Virtual Guns** and **Mean Targeting** were developed and refined by the RoboWiki community as adaptive targeting
+> strategies that run multiple guns in parallel.
+
 Virtual guns let a bot run multiple targeting strategies at the same time and dynamically choose the one performing best
 against each opponent.
 Instead of committing to a single algorithm, the bot "fires" imaginary bullets from each strategy and tracks which one
@@ -194,3 +198,9 @@ Advanced bots extend the virtual gun idea with:
 - **Hybrid aiming** (average multiple gun angles weighted by success rate).
 
 But the core principle remains: measure performance, then adapt.
+
+## Further Reading
+
+- [Virtual Guns](https://robowiki.net/wiki/Virtual_Guns) — RoboWiki (classic Robocode)
+- [Mean Targeting](https://robowiki.net/wiki/Mean_Targeting) — RoboWiki (classic Robocode)
+

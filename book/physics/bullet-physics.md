@@ -255,3 +255,8 @@ if (gunIsCool() and myEnergy > 0.1) {
 - Friendly fire is possible in team battles—always check your line of fire.
 - Radar does not detect bullets, but you can infer shots by watching energy drops.
 - Energy management is crucial: avoid disabling yourself by firing recklessly.
+
+## Further Reading
+
+- [Bullet](https://robowiki.net/wiki/Bullet) — RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html#bullets) — Tank Royale documentation

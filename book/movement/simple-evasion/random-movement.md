@@ -12,6 +12,10 @@ source: [
 
 # Random Movement
 
+> [!TIP] Origins
+> **Random Movement** strategies were developed and documented by the RoboWiki community as foundational evasion
+> techniques.
+
 Random movement is an evasion strategy that uses unpredictable changes in speed and direction to make the bot harder to
 target. By introducing randomness into movement decisions, the bot avoids falling into predictable patterns that simple
 or statistical targeting systems can exploit.
@@ -169,15 +173,17 @@ Both classic Robocode and Tank Royale support random movement with similar APIs:
 **Classic Robocode:**
 
 ```java
-setTurnRight(Math.random() * 180 - 90);
-setAhead(Math.random() * 200 - 100);
+setTurnRight(Math.random() *180-90);
+
+setAhead(Math.random() *200-100);
 ```
 
 **Tank Royale (Java):**
 
 ```java
-setTurnRight(Math.random() * 180 - 90);
-setForward(Math.random() * 200 - 100);
+setTurnRight(Math.random() *180-90);
+
+setForward(Math.random() *200-100);
 ```
 
 The physics and movement rules are identical, so random movement strategies transfer directly between platforms.
@@ -218,3 +224,8 @@ with efficiency.
 
 Random movement proves that sometimes the best defense is simply being impossible to predict—no complex calculations
 required.
+
+## Further Reading
+
+- [Random Movement](https://robowiki.net/wiki/Random_Movement) — RoboWiki (classic Robocode)
+

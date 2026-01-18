@@ -13,6 +13,10 @@ source: [
 
 # Saving Gun Data
 
+> [!TIP] Origins
+> **Data persistence** techniques for targeting were developed and documented by the RoboWiki community to enable
+> learning across battles.
+
 Advanced targeting systems improve by learning from past encounters. Saving gun data between rounds and battles allows
 a bot to remember enemy movement patterns, hit rates, and statistical profiles. This transforms a bot from reactive to
 adaptive — recognizing opponents and applying learned strategies instantly.
@@ -331,3 +335,8 @@ Saving gun data transforms a bot from a one-round learner to a persistent strate
 start and saving updated data at the round end, advanced targeting systems accumulate knowledge across battles,
 improving hit rates and adapting to specific opponents. Implement load/save logic carefully, validate data integrity,
 and test both cold and warm start scenarios to ensure robust performance.
+
+## Further Reading
+
+- [Saving Gun Data](https://robowiki.net/wiki/Saving_Gun_Data) — RoboWiki (classic Robocode)
+- [Data Files](https://robowiki.net/wiki/Data_Files) — RoboWiki (classic Robocode)

@@ -11,6 +11,10 @@ source: [
 
 # Spinning Radar
 
+> [!TIP] Origins
+> **Spinning Radar** and **Infinite Lock** patterns were developed and documented by the RoboWiki community as
+> foundational radar strategies.
+
 A spinning radar is the simplest radar strategy: keep the radar turning all the time so it eventually sweeps over every
 enemy bot.
 
@@ -147,4 +151,9 @@ If a bot only calls setters but never commits the turn, it will look stuck becau
 ## Related pages
 
 - [Radar Basics](../radar-basics) — scan geometry, events, and lock vs sweep
-- One-on-One Radar — spinning radar, infinity lock, and “perfect lock” patterns (planned)
+- One-on-One Radar — spinning radar, infinity lock, and "perfect lock" patterns (planned)
+
+## Further Reading
+
+- [One on One Radar](https://robowiki.net/wiki/One_on_One_Radar) — RoboWiki (classic Robocode)
+- [Radar](https://robowiki.net/wiki/Radar) — RoboWiki (classic Robocode)

@@ -12,6 +12,10 @@ source: [
 
 # Fire Power & Timing Decisions
 
+> [!TIP] Origins
+> Fire power and timing strategies were developed and documented by the RoboWiki community through extensive competitive
+> testing.
+
 Choosing when to fire and how much power to use is a strategic balancing act. Fire is too weak, and you waste shots;
 fire is too strong, and you miss more often while draining your energy. This page explores the factors that influence
 bullet power selection and timing decisions in competitive play.
@@ -261,3 +265,9 @@ approach depends on:
 
 Experiment with different strategies, track your hit rates, and adapt to each opponent's movement style. Mastering
 firepower selection is a key step from intermediate to advanced play.
+
+## Further Reading
+
+- [Selecting Fire Power](https://robowiki.net/wiki/Selecting_Fire_Power) — RoboWiki (classic Robocode)
+- [When To Fire](https://robowiki.net/wiki/When_To_Fire) — RoboWiki (classic Robocode)
+- [Bullet](https://robowiki.net/wiki/Bullet) — RoboWiki (classic Robocode)

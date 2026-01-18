@@ -131,3 +131,8 @@ If a bot's goal is "win more rounds," it should be written to maximize score und
 - **Finish fights when possible**: securing the last hit often matters.
 - **Watch melee interactions**: in melees, third-party bots can steal kills and damage points; choosing *when* to engage
   can be as important as aiming.
+
+## Further Reading
+
+- [Robocode/Scoring](https://robowiki.net/wiki/Robocode/Scoring) — RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Scoring](https://robocode.dev/articles/scoring.html) — Tank Royale documentation

@@ -16,6 +16,10 @@ source: [
 
 # Movement Fundamentals & GoTo
 
+> [!TIP] Origins
+> **GoTo** movement and navigation fundamentals were developed and documented by the RoboWiki community as essential
+> building blocks for bot movement.
+
 Movement is the defensive half of Robocode. Even the best gun misses if the enemy keeps changing position, speed, and
 turn rate.
 
@@ -59,6 +63,7 @@ For the exact numbers and formulas, see
 *Illustration: Higher speed means a wider turn radius.*
 
 Legend:
+
 - Orange path: High speed with wider turn radius.
 - Blue path: Low speed with tighter turn radius.
 
@@ -163,3 +168,9 @@ The movement ideas are the same on both platforms, but a few details differ:
 - Wall Avoidance & Wall Smoothing (next page)
 - Distancing (how to choose “too close” vs “too far”)
 - Random Movement and Stop-and-Go (simple evasive patterns)
+
+## Further Reading
+
+- [GoTo](https://robowiki.net/wiki/GoTo) — RoboWiki (classic Robocode)
+- [Movement](https://robowiki.net/wiki/Movement) — RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html) — Tank Royale documentation

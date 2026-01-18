@@ -12,6 +12,10 @@ source: [
 
 # Wall Avoidance & Wall Smoothing
 
+> [!TIP] Origins
+> **Wall Smoothing** techniques were developed and refined by the RoboWiki community, with notable implementations
+> contributed by **Kawigi** and other early bot developers.
+
 Walls are more dangerous than they look. A wall hit costs energy, can stop the bot or force a slow turn, and often
 leaves the bot in a predictable position.
 
@@ -160,3 +164,11 @@ The main differences are implementation details:
 - [Movement Fundamentals & GoTo](./movement-fundamentals-goto.md)
 - [Movement Constraints & Bot Physics](../../physics/movement-constraints.md)
 - [Wall Collisions](../../physics/wall-collisions.md)
+
+## Further Reading
+
+- [Wall Avoidance](https://robowiki.net/wiki/Wall_Avoidance) — RoboWiki (classic Robocode)
+- [Wall Smoothing](https://robowiki.net/wiki/Wall_Smoothing) — RoboWiki (classic Robocode)
+- [Wall Smoothing/Implementations](https://robowiki.net/wiki/Wall_Smoothing/Implementations) — RoboWiki (classic
+  Robocode)
+

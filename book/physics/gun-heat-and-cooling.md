@@ -140,3 +140,8 @@ Legend:
 
 * Green: p=1.0 (ΔH=1.2)
 * Blue: p=3.0 (ΔH=1.6)
+
+## Further Reading
+
+- [Gun Heat](https://robowiki.net/wiki/Gun_Heat) — RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html) — Tank Royale documentation

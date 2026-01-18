@@ -13,6 +13,10 @@ source: [
 
 # Competition Formats & Rankings
 
+> [!TIP] Origins
+> **RoboRumble** was created by **Albert Perez** as the original continuous ranking system. **LiteRumble** was created
+> by **Julian Kent ("Skilgannon")** as the modern successor, who also hosts [RoboWiki.net](https://robowiki.net/).
+
 The community behind classic Robocode has developed standardized competition formats to ensure fair comparisons between
 bots. These formats define specific battlefield sizes, round counts, and battle configurations used in official
 rankings:
@@ -314,3 +318,10 @@ The Robocode competition infrastructure exists thanks to dedicated community mem
   base for the Robocode community.
 
 The continuous operation of these systems enables the global Robocode community to compete, learn, and improve together.
+
+## Further Reading
+
+- [RoboRumble](https://robowiki.net/wiki/RoboRumble) — RoboWiki (classic Robocode)
+- [LiteRumble](https://robowiki.net/wiki/LiteRumble) — RoboWiki (classic Robocode)
+- [RoboRumble/Enter The Competition](https://robowiki.net/wiki/RoboRumble/Enter_The_Competition) — RoboWiki (classic
+  Robocode)
