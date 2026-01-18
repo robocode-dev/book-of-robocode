@@ -180,11 +180,57 @@ Map to the existing `themeConfig.nav` structure. The nav typically links to the 
 - Flag for human review with a comment: `// TODO: Review nav entry for <section>`
 - Do not create new nav dropdowns automatically.
 
-### 5. Validate
+### 5. Update Glossary (if needed)
+
+After generating the page, check if any new terms should be added to `book/appendices/glossary.md`.
+
+#### When to add glossary entries
+
+Add a glossary entry when the page introduces:
+
+1. **New terminology** — Technical terms not yet defined in the glossary (e.g., "wave surfing", "GuessFactor", "pattern matching")
+2. **Battle format references** — If the page discusses 1v1, melee, or team battles in depth, ensure these are in the glossary
+3. **Algorithm names** — Specific targeting or movement algorithms (e.g., "circular targeting", "minimum risk movement")
+4. **Physics concepts** — Game mechanics terms (e.g., "gun heat", "bullet power", "energy")
+
+#### How to check
+
+1. Read `book/appendices/glossary.md` to see existing terms.
+2. Identify key terms introduced or heavily used in the new page.
+3. For each term, check if it already exists in the glossary.
+
+#### How to add entries
+
+If a term is missing, add it to the appropriate section in the glossary:
+
+- **Battle formats** — 1v1, melee, team definitions
+- **General terms** — Core game concepts (bot, energy, turn, wave, etc.)
+- **Platform-specific terms** — Classic Robocode, Tank Royale, RoboRumble, LiteRumble
+- **Movement terms** — Movement strategies and techniques
+- **Targeting terms** — Targeting algorithms and concepts
+
+**Entry format:**
+
+```markdown
+### Term Name
+
+Brief 1-3 sentence definition explaining what the term means in the Robocode context.
+
+See: [Related Page](../path/to/related-page.md) (optional, if a dedicated page exists)
+```
+
+#### When NOT to add entries
+
+- The term is already defined in the glossary
+- The term is self-explanatory (e.g., "battlefield", "bullet")
+- The term is only used once and explained inline in the page
+
+### 6. Validate
 
 1. Check for errors in the generated `.md` file.
 2. Check for errors in `config.js` after the update.
-3. Report any issues to the user.
+3. Check for errors in `glossary.md` if updated.
+4. Report any issues to the user.
 
 ---
 
@@ -210,6 +256,9 @@ Map to the existing `themeConfig.nav` structure. The nav typically links to the 
    - Illustration placeholders with detailed descriptions for geometric concepts
 7. Updated `config.js`:
    - Added to `/targeting/` sidebar under "Simple Targeting" items.
+8. Checked glossary:
+   - "Circular targeting" already exists in glossary → no update needed.
+   - (If missing, would add entry under "Targeting terms" section)
 
 ---
 
