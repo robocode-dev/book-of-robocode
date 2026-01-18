@@ -3,12 +3,12 @@
 ```
 📘 The Book of Robocode
 
-├─ Introduction [B] [✅]
+├─ Introduction [B]
 │  ├─ Author's Foreword [B] [✅]
 │  ├─ What is Robocode & How to Use This Book [B] [✅]
 │  └─ A Short History of Robocode [B] [✅]
 │
-├─ Getting Started [B] [✅]
+├─ Getting Started [B]
 │  ├─ Your First Bot (Guided Tutorial) [B] [✅]
 │  ├─ Bot Anatomy [B] [✅]
 │  ├─ The Bot API [B] [✅]
@@ -17,7 +17,7 @@
 │  ├─ Robot Properties File [B] [✅]
 │  └─ Your First Battle [B] [✅]
 │
-├─ Battlefield Physics [B] [✅]
+├─ Battlefield Physics [B]
 │  ├─ Coordinate Systems & Angles [B] [✅]
 │  ├─ Movement Constraints & Bot Physics [B] [✅]
 │  ├─ Bullet Travel & Bullet Physics [B] [✅]
@@ -33,7 +33,7 @@
 │  └─ Melee Radar [A]
 │     ├─ Spinning & Corner Arc [A] [✅]
 │     ├─ Oldest Scanned [A] [✅]
-│     └─ Gun Heat Lock [A]
+│     └─ Gun Heat Lock [A] [✅]
 │
 ├─ Targeting Systems [I]
 │  ├─ Simple Targeting [B] [✅]
@@ -58,12 +58,12 @@
 │  │  ├─ Angular Targeting (Factored Variants) [A]
 │  │  ├─ Anti-Surfer Targeting [A]
 │  │  └─ Neural & Experimental Targeting [A]
-│  └─ Targeting Tactics [I] [✅]
+│  └─ Targeting Tactics [I]
 │     ├─ Fire Power & Timing Decisions [I] [✅]
 │     └─ Saving Gun Data [I] [✅]
 │
 ├─ Movement & Evasion [I]
-│  ├─ Basic Movement [B] [✅]
+│  ├─ Basic Movement [B]
 │  │  ├─ Movement Fundamentals & GoTo [B] [✅]
 │  │  ├─ Wall Avoidance & Wall Smoothing [I] [✅]
 │  │  └─ Distancing [I] [✅]

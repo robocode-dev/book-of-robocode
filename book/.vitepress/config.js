@@ -111,7 +111,8 @@ export default withMermaid(defineConfig({
               text: 'Melee Radar',
               items: [
                 { text: 'Spinning & Corner Arc', link: '/radar/melee-radar/spinning-and-corner-arc' },
-                { text: 'Oldest Scanned', link: '/radar/melee-radar/oldest-scanned' }
+                { text: 'Oldest Scanned', link: '/radar/melee-radar/oldest-scanned' },
+                { text: 'Gun Heat Lock', link: '/radar/melee-radar/gun-heat-lock' }
               ]
             }
           ]
