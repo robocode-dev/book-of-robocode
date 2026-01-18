@@ -73,12 +73,17 @@ source: [
 
 #### Body Structure
 
+Follow the detailed structure rules in `specs/page-generation-spec.md` Section 4.
+
+**Required elements:**
 1. **H1 heading** matching the title.
-2. **2–3 line overview** expanding the summary.
-3. **3–6 sections** with clear headings (e.g., "Key Idea", "How It Works", "Platform Notes", "Tips").
-4. **1–2 pseudocode or formula blocks** per major concept.
-5. **Platform comparison section** when concepts differ between classic and Tank Royale.
-6. **Illustration placeholders** (REQUIRED for visual concepts — see below).
+2. **Origins callout** (see Section 4.2 in page-generation-spec.md).
+3. **2–3 line overview** expanding the summary.
+4. **3–6 sections** with clear headings (e.g., "Key Idea", "How It Works", "Platform Notes", "Tips").
+5. **1–2 pseudocode or formula blocks** per major concept.
+6. **Platform comparison section** when concepts differ between classic and Tank Royale.
+7. **Illustration placeholders** (see Section 4.3 in page-generation-spec.md).
+8. **Further Reading section** (see Section 4.4 in page-generation-spec.md).
 
 #### Rules
 
@@ -89,21 +94,17 @@ source: [
 - American English spelling.
 - Short paragraphs (2–4 sentences).
 
-#### Illustration Placeholders (REQUIRED)
+#### Illustration Placeholders
 
-**You MUST include at least one illustration placeholder** for any page that involves:
-- Geometric concepts (angles, trajectories, predictions)
-- Movement patterns (orbiting, strafing, wave surfing)
-- Coordinate systems and angle conventions
-- Before/after comparisons
-- Algorithm visualizations
+**You MUST include at least one illustration placeholder** for any page that involves geometric concepts, movement patterns, coordinate systems, or algorithm visualizations.
 
-Most targeting, movement, and physics pages will need 1–3 illustration placeholders.
+See `specs/page-generation-spec.md` Section 4.3 for the complete structured format specification, including:
+- Required fields (Filename, Caption, Viewport, Battlefield)
+- Optional fields (Bots, Lines, Arcs, Circles, Texts, Bullets, Description)
+- Book color palette
+- SVG sizing rules
 
-Use the structured format from `specs/page-generation-spec.md` Section 4.1. These placeholders can be
-converted to SVG images using the `/create-illustration` skill.
-
-Insert TODO comments where illustrations should go:
+**Quick reference example:**
 
 ```markdown
 <!-- TODO: Illustration
@@ -116,29 +117,43 @@ Insert TODO comments where illustrations should go:
   - type: enemy, position: (6500, 1500), body: -3, turret: 260, radar: 260
 **Lines:**
   - from: (1400, 4500), to: (6100, 1700), color: #cc0, arrow: true, dashed: true
-**Arcs:**
-  - center: (7000, 2000), radius: 1000, startAngle: 180, endAngle: 270, color: chocolate, arrow: true, dashed: true
-**Circles:**
-  - center: (6100, 1600), radius: 100, color: red, fill: none
 **Texts:**
-  - text: "turn rate", position: (5500, 2800), color: chocolate
-  - text: "predicted position", position: (5800, 1200), color: chocolate
   - text: "bullet path", position: (3000, 3000), color: #cc0
 -->
 ```
 
-**Required fields:**
-- `Filename`: kebab-case, descriptive, with `.svg` extension
-- `Caption`: Short description for display under the image
-- `Viewport`: Dimensions as `WxH` (max 8000×8000); display size = W/8 × H/8
-- `Battlefield`: `true` for grey border + black arena; `false` for transparent
+#### Origins Callout
 
-**Optional fields:**
-- `Bots`: List with `type` (friendly/enemy), `position`, `body`/`turret`/`radar` angles
-- `Lines`, `Arcs`, `Circles`, `Texts`, `Bullets`: Structured element definitions
-- `Description`: Free-form description for complex illustrations
+**Every page MUST include an Origins callout** immediately after the H1 heading.
 
-See `specs/page-generation-spec.md` Section 4.1 for full field definitions and color palette.
+See `specs/page-generation-spec.md` Section 4.2 for complete attribution guidelines and format. Key points:
+
+1. Check `book/appendices/wall-of-fame.md` for known originators.
+2. Credit specific people when known (e.g., Paul Evans "PEZ" for Wave Surfing).
+3. Otherwise credit the RoboWiki community.
+
+**Format:**
+
+```markdown
+> [!TIP] Origins
+> **Technique Name** was developed by **Person Name ("Alias")** and refined by the RoboWiki community.
+```
+
+#### Further Reading Section
+
+**Every page MUST end with a Further Reading section** linking to RoboWiki and Tank Royale documentation.
+
+See `specs/page-generation-spec.md` Section 4.4 for complete guidelines.
+
+**Format:**
+
+```markdown
+## Further Reading
+
+- [Article Name](https://robowiki.net/wiki/Article_Name) — RoboWiki (classic Robocode)
+- [Tank Royale Topic](https://robocode.dev/articles/topic.html) — Tank Royale documentation
+```
+
 
 ### 4. Update `config.js`
 
@@ -252,13 +267,48 @@ See: [Related Page](../path/to/related-page.md) (optional, if a dedicated page e
    - https://robowiki.net/wiki/Circular_Targeting/Walkthrough
 6. Generated page with:
    - Frontmatter (title, category, summary, tags, difficulty, source)
+   - **Origins callout** crediting the RoboWiki community
    - Body sections (overview, key idea, math, pseudocode, platform notes, tips)
    - Illustration placeholders with detailed descriptions for geometric concepts
+   - **Further Reading section** with RoboWiki links
 7. Updated `config.js`:
    - Added to `/targeting/` sidebar under "Simple Targeting" items.
 8. Checked glossary:
    - "Circular targeting" already exists in glossary → no update needed.
    - (If missing, would add entry under "Targeting terms" section)
+
+**Generated page structure:**
+
+```markdown
+---
+title: "Circular Targeting"
+# ...frontmatter...
+---
+
+# Circular Targeting
+
+> [!TIP] Origins
+> **Circular Targeting** is a foundational technique documented by the RoboWiki community as the next step after linear targeting.
+
+Circular targeting predicts where to aim by assuming the enemy...
+
+## Key Idea
+...
+
+## How It Works
+...
+
+## Platform Notes
+...
+
+## Tips
+...
+
+## Further Reading
+
+- [Circular Targeting](https://robowiki.net/wiki/Circular_Targeting) — RoboWiki (classic Robocode)
+- [Circular Targeting/Walkthrough](https://robowiki.net/wiki/Circular_Targeting/Walkthrough) — RoboWiki (classic Robocode)
+```
 
 ---
 
@@ -269,4 +319,5 @@ See: [Related Page](../path/to/related-page.md) (optional, if a dedicated page e
 - `BOOK_STRUCTURE.md` — Complete table of contents with hierarchy and difficulty markers.
 - `BOOK_STRATEGY.md` — Audience, tone, and content philosophy.
 - `specs/robowiki-links.md` — RoboWiki links for classic Robocode sources.
+- `book/appendices/wall-of-fame.md` — Known originators of techniques for Origins attributions.
 

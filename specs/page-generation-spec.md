@@ -127,9 +127,11 @@ source: [
 
 1. **H1 Heading** — Must match the frontmatter `title` exactly.
 
-2. **Overview** — 2–3 lines expanding the summary. Explain what the concept is and why it matters.
+2. **Origins Callout** — **REQUIRED** immediately after the H1 heading (see Section 4.2).
 
-3. **Main Sections** — 3–6 sections with clear headings. Suggested patterns:
+3. **Overview** — 2–3 lines expanding the summary. Explain what the concept is and why it matters.
+
+4. **Main Sections** — 3–6 sections with clear headings. Suggested patterns:
    - "Key Idea" or "Core Concept"
    - "How It Works" or "The Math"
    - "Pseudocode" or "Algorithm"
@@ -137,13 +139,50 @@ source: [
    - "Tips & Common Mistakes"
    - "When to Use It"
 
-4. **Pseudocode/Formulas** — 1–2 blocks per major concept. Keep them short and readable.
+5. **Pseudocode/Formulas** — 1–2 blocks per major concept. Keep them short and readable.
 
-5. **Platform Comparison** — Include when behavior differs between classic Robocode and Tank Royale.
+6. **Platform Comparison** — Include when behavior differs between classic Robocode and Tank Royale.
 
-6. **Illustration Placeholders** — **REQUIRED** for visual concepts (see Section 4.1).
+7. **Illustration Placeholders** — **REQUIRED** for visual concepts (see Section 4.3).
 
-### 4.1 Illustration Placeholders (REQUIRED)
+8. **Further Reading Section** — **REQUIRED** at the end of the page (see Section 4.4).
+
+### 4.2 Origins Callout (REQUIRED)
+
+**Every page MUST include an Origins callout** immediately after the H1 heading. This credits the people and community
+who developed the technique or concept.
+
+**Format:**
+
+```markdown
+# Page Title
+
+> [!TIP] Origins
+> **Technique Name** was developed by **Person Name ("Alias")** and refined by the RoboWiki community.
+```
+
+**Attribution guidelines:**
+
+1. **Check `book/appendices/wall-of-fame.md`** for known originators of techniques.
+2. **Known attributions include:**
+   - **Paul Evans ("PEZ")** — Wave Surfing, GuessFactor Targeting, waves concept
+   - **Julian Kent ("Skilgannon")** — Dynamic Clustering, LiteRumble, RoboWiki.net hosting
+   - **Albert Perez** — RoboRumble
+   - **Patrick Cupka ("Voidious")** — Energy management, movement flattening, Dookious techniques
+   - **Kawigi** — Wall smoothing implementations, early tutorials
+   - **David Alves** — Pattern matching, precise prediction
+3. **If no specific originator is known**, credit the RoboWiki community:
+   ```markdown
+   > [!TIP] Origins
+   > **Technique Name** was developed and documented by the RoboWiki community.
+   ```
+4. **If multiple people contributed**, list them:
+   ```markdown
+   > [!TIP] Origins
+   > **Technique Name** was pioneered by **Person A ("Alias")** and refined by **Person B ("Alias")** and the RoboWiki community.
+   ```
+
+### 4.3 Illustration Placeholders (REQUIRED)
 
 **You MUST include at least one illustration placeholder** for any page that involves:
 - Geometric concepts (angles, trajectories, predictions)
@@ -237,6 +276,28 @@ Insert detailed TODO comments where illustrations should go:
 **Battlefield rendering (when `Battlefield: true`):**
 - Grey rectangle fills entire viewport (border)
 - Black rectangle inset by 200 units on all sides (arena)
+
+### 4.4 Further Reading Section (REQUIRED)
+
+**Every page MUST end with a Further Reading section** that links to relevant RoboWiki pages and Tank Royale documentation.
+
+**Format:**
+
+```markdown
+## Further Reading
+
+- [Article Name](https://robowiki.net/wiki/Article_Name) — RoboWiki (classic Robocode)
+- [Sub-page Name](https://robowiki.net/wiki/Article_Name/Sub_page) — RoboWiki (classic Robocode)
+- [Tank Royale Topic](https://robocode.dev/articles/topic.html) — Tank Royale documentation
+```
+
+**Guidelines:**
+
+1. Include all RoboWiki links from the `source` frontmatter field.
+2. Add any additional relevant RoboWiki pages found in `specs/robowiki-links.md`.
+3. Include Tank Royale documentation links when applicable.
+4. Use descriptive link text matching the article title.
+5. Add the suffix "— RoboWiki (classic Robocode)" or "— Tank Royale documentation" for clarity.
 
 ### Heading Style
 
