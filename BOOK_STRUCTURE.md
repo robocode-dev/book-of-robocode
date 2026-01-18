@@ -32,7 +32,7 @@
 │  │  └─ Perfect Locks (Turn Multiplier & Width Lock) [A] [✅]
 │  └─ Melee Radar [A]
 │     ├─ Spinning & Corner Arc [A] [✅]
-│     ├─ Oldest Scanned [A]
+│     ├─ Oldest Scanned [A] [✅]
 │     └─ Gun Heat Lock [A]
 │
 ├─ Targeting Systems [I]
