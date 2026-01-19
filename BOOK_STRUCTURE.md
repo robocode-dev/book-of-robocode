@@ -72,7 +72,7 @@
 │  │  ├─ Stop and Go (with Tutorial) [I] [✅]
 │  │  └─ Oscillator Movement [I] [✅]
 │  ├─ Strategic Movement [A]
-│  │  ├─ Anti-Gravity Movement (with Tutorial) [A]
+│  │  ├─ Anti-Gravity Movement (with Tutorial) [A] [✅]
 │  │  ├─ Minimum Risk Movement [A]
 │  │  └─ Corner Movement [A]
 │  ├─ Advanced Evasion [A]

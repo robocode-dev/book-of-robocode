@@ -170,6 +170,9 @@ export default withMermaid(defineConfig({
               { text: 'Stop and Go', link: '/movement/simple-evasion/stop-and-go' },
               { text: 'Oscillator Movement', link: '/movement/simple-evasion/oscillator-movement' }
             ]},
+            { text: 'Strategic Movement', items: [
+              { text: 'Anti-Gravity Movement', link: '/movement/strategic-movement/anti-gravity-movement' }
+            ]},
             { text: 'Advanced Evasion', items: [
               { text: 'Gun Heat Waves & Bullet Shadows', link: '/movement/advanced-evasion/gun-heat-waves-bullet-shadows' },
               { text: 'Dodging Bullets', link: '/movement/advanced-evasion/dodging-bullets' },
