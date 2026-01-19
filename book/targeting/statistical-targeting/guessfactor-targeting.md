@@ -42,7 +42,7 @@ predictions often miss. The enemy could end up anywhere within a wide arc.
 
 This approach works against any movement style because it learns from actual outcomes rather than assumptions.
 
-<img src="/images/guessfactor-targeting-comparison.svg" alt="Simple targeting predicts a single position; GuessFactor Targeting aims at the most statistically likely position" width="1000"><br>
+<img src="/images/guessfactor-targeting-comparison.svg" alt="Simple targeting predicts a single position; GuessFactor Targeting aims at the most statistically likely position" width="800"><br>
 *Simple targeting predicts a single position; GuessFactor Targeting aims at the most statistically likely position*
 
 ## Prerequisites: Understanding waves
