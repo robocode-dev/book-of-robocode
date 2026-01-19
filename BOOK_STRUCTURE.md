@@ -44,7 +44,7 @@
 │  │  └─ Virtual Guns & Mean Targeting [A] [✅]
 │  ├─ The Targeting Problem [I]
 │  │  ├─ Understanding the Challenge [I] [✅]
-│  │  └─ Introducing Waves [A]
+│  │  └─ Introducing Waves [A] [✅]
 │  ├─ Statistical Targeting [A]
 │  │  ├─ GuessFactor Targeting (with Tutorial) [A]
 │  │  ├─ Segmentation & Visit Count Stats [A]
