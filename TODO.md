@@ -39,6 +39,10 @@ Complete at least: **Waves**, **GuessFactor Targeting**, **Anti-Gravity Movement
 - Links to the book of Robocode -> make PR? How to file/correct an issue?
 - Update ATTRIBUTION.md and also a page in the book with credits to _all_ the people behind the pages.
 
+# Also
+
+- Add specs/retroactive-hit-analysis.md to the book of Robocode alongside waves.
+
 # FAQ
 
 - Make sure we cover all these in the end: https://robowiki.net/wiki/Robocode/FAQ
