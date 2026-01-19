@@ -27,6 +27,11 @@ Complete at least: **Waves**, **GuessFactor Targeting**, **Anti-Gravity Movement
 - Decide whether any non-screenshot/non-historical PNG images should be regenerated (or re-exported) to better match
   the book’s visual style and new SVG/Mermaid preference.
 
+# Links need to be checked/fixed
+
+- Some links are broken as they are created before the articles to create an important reference.
+- We should also create links for to pages from the page content itself.
+
 # In the end
 
 - We need to links on terms like `GuessFactor`
