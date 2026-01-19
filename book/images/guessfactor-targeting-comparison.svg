@@ -1,0 +1,186 @@
+<svg version="1.1" width="1000" height="750" viewBox="0 0 8000 6000" xmlns="http://www.w3.org/2000/svg">
+
+    <style>
+        .text { font: 150px sans-serif; }
+    </style>
+
+    <!-- Arrow markers -->
+    <marker id="arrow-head-yellow" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+        <polygon points="6 0, 12 3, 6 6" fill="#cc0"/>
+    </marker>
+
+    <!-- Battlefield background -->
+    <rect x="0" y="0" width="8000" height="6000" fill="grey"/>
+    <rect x="200" y="200" width="7600" height="5600" fill="black"/>
+
+    <!-- Circle showing possible enemy positions (drawn first) -->
+    <circle cx="1900" cy="3400" r="5000" stroke="chocolate" stroke-width="30" fill="none" stroke-dasharray="150 50"/>
+
+    <!-- Line from friendly bot to head-on aim (drawn before bots) -->
+    <line x1="1900" y1="3400" x2="6900" y2="3900" stroke="#cc0" stroke-width="30" stroke-dasharray="150 50" marker-end="url(#arrow-head-yellow)"/>
+
+    <!-- Bots (drawn on top) -->
+    <use href="#tank" transform="translate(1500, 3100) scale(0.75)"
+         style="--body-rotation:0deg; --turret-rotation:95deg; --radar-rotation:90deg;"/>
+
+    <use href="#tank" transform="translate(6600, 3100) scale(0.75)"
+         style="--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa;
+                --body-rotation:0deg; --turret-rotation:270deg; --radar-rotation:270deg;"/>
+
+    <!-- Text labels -->
+    <text class="text" x="3800" y="3900" fill="#cc0">head-on aim</text>
+    <text class="text" x="4000" y="1600" fill="chocolate">enemy could be anywhere in this arc</text>
+    <text class="text" x="4000" y="3200" fill="#10B981">GFT aims at the most likely position</text>
+
+    <!-- Tank defs block -->
+    <defs>
+        <style>
+            .tank-body, .tank-turret, .tank-radar {
+            transform-origin: 400px 400px;
+            }
+            .tank-body {
+            transform: rotate(var(--body-rotation, 0deg));
+            }
+            .tank-turret {
+            transform: rotate(var(--turret-rotation, 0deg));
+            }
+            .tank-radar {
+            transform: rotate(var(--radar-rotation, 0deg));
+            }
+            svg {
+            --tank-body-color: #019;
+            --tank-turret-color: #06c;
+            --tank-radar-color: #aaf;
+            --left-belt-track-1: inline;
+            --left-belt-track-2: none;
+            --left-belt-track-3: none;
+            --right-belt-track-1: none;
+            --right-belt-track-2: inline;
+            --right-belt-track-3: none;
+            }
+            .tank-body-fill {
+            fill: var(--tank-body-color, #019);
+            }
+            .tank-turret-fill {
+            fill: var(--tank-turret-color, #06c);
+            }
+            .tank-radar-fill {
+            fill: var(--tank-radar-color, #aaf);
+            }
+            .left-belt, .right-belt {
+            display: none;
+            }
+            .left-belt.track1 {
+            display: var(--left-belt-track-1, none);
+            }
+            .left-belt.track2 {
+            display: var(--left-belt-track-2, none);
+            }
+            .left-belt.track3 {
+            display: var(--left-belt-track-3, none);
+            }
+            .right-belt.track1 {
+            display: var(--right-belt-track-1, none);
+            }
+            .right-belt.track2 {
+            display: var(--right-belt-track-2, none);
+            }
+            .right-belt.track3 {
+            display: var(--right-belt-track-3, none);
+            }
+        </style>
+
+        <linearGradient id="cannon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#333"/>
+            <stop offset="50%" stop-color="#CCC"/>
+            <stop offset="100%" stop-color="#333"/>
+        </linearGradient>
+
+        <symbol id="link0">
+            <rect x="5" y="55" width="125" height="25" fill="#aaaaaa"/>
+            <rect x="10" y="70" width="116" height="35" fill="#666666" rx="10" ry="10"/>
+            <rect x="5" y="55" width="125" height="50" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+        </symbol>
+
+        <symbol id="link30">
+            <rect x="5" y="55" width="125" height="25" fill="#939393"/>
+            <rect x="10" y="70" width="116" height="30" fill="#585858" rx="10" ry="10"/>
+            <rect x="5" y="55" width="125" height="42" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+        </symbol>
+
+        <symbol id="link60">
+            <rect x="5" y="55" width="125" height="20" fill="#555555"/>
+            <rect x="5" y="55" width="125" height="20" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+        </symbol>
+
+        <symbol id="main-track">
+            <rect x="20" y="75" width="95" height="450" fill="#333333" stroke="black" stroke-width="10"/>
+        </symbol>
+
+        <symbol id="track1">
+            <use href="#main-track"/>
+            <use href="#link30"/>
+            <use href="#link0" y="60"/>
+            <use href="#link0" y="140"/>
+            <use href="#link0" y="220"/>
+            <use href="#link0" y="300"/>
+            <use href="#link0" y="380"/>
+            <use href="#link30" y="448"/>
+        </symbol>
+
+        <symbol id="track2">
+            <use href="#main-track"/>
+            <use href="#link60"/>
+            <use href="#link0" y="33"/>
+            <use href="#link0" y="113"/>
+            <use href="#link0" y="193"/>
+            <use href="#link0" y="273"/>
+            <use href="#link0" y="353"/>
+            <use href="#link0" y="433"/>
+        </symbol>
+
+        <symbol id="track3">
+            <use href="#main-track"/>
+            <use href="#link0" y="7"/>
+            <use href="#link0" y="87"/>
+            <use href="#link0" y="167"/>
+            <use href="#link0" y="247"/>
+            <use href="#link0" y="327"/>
+            <use href="#link0" y="407"/>
+            <use href="#link60" y="470"/>
+        </symbol>
+
+        <symbol id="body">
+            <use href="#track1" x="150" y="100" class="left-belt track1"/>
+            <use href="#track2" x="150" y="100" class="left-belt track2"/>
+            <use href="#track3" x="150" y="100" class="left-belt track3"/>
+            <use href="#track1" x="515" y="100" class="right-belt track1"/>
+            <use href="#track2" x="515" y="100" class="right-belt track2"/>
+            <use href="#track3" x="515" y="100" class="right-belt track3"/>
+
+            <rect class="tank-body-fill" x="240" y="190" width="320" height="420" stroke="black" stroke-width="20"
+                  rx="10" ry="10"/>
+            <rect x="250" y="520" width="300" height="80" opacity="0.5"/>
+        </symbol>
+
+        <symbol id="turret">
+            <rect class="tank-turret-fill" x="300" y="320" width="200" height="200" stroke="black" stroke-width="20"
+                  rx="10" ry="10"/>
+            <rect x="310" y="460" width="180" height="50" fill="black" opacity="0.5"/>
+
+            <rect x="360" y="240" width="80" height="80" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+            <rect x="375" y="70" width="50" height="170" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+        </symbol>
+
+        <symbol id="radar">
+            <circle class="tank-radar-fill" cx="400" cy="400" r="30" stroke="black" stroke-width="20"/>
+            <path class="tank-radar-fill" d="M 290 420 q 110 100 220 0 z" stroke="black" stroke-width="20"/>
+        </symbol>
+
+        <symbol id="tank">
+            <use class="tank-body" href="#body"/>
+            <use class="tank-turret" href="#turret"/>
+            <use class="tank-radar" href="#radar"/>
+        </symbol>
+    </defs>
+</svg>

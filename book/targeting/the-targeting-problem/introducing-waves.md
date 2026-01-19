@@ -18,6 +18,11 @@ source: [
 > later adopted for **Wave Surfing**. This innovation revolutionized competitive Robocode by providing a precise way
 > to track bullet travel and enemy positioning.
 
+> [!NOTE] Implementation Guide
+> This page explains the **concepts** behind waves and GuessFactors. For a **step-by-step tutorial** with complete 
+> code to build a working GuessFactor gun, see 
+> [GuessFactor Targeting](../statistical-targeting/guessfactor-targeting.md).
+
 In the [Understanding the Challenge](understanding-the-challenge.md), we saw that effective targeting requires tracking
 **where the enemy is when a bullet arrives**, not just where they are when fired. **Waves** are the tool that makes this
 possible.

@@ -46,7 +46,7 @@
 │  │  ├─ Understanding the Challenge [I] [✅]
 │  │  └─ Introducing Waves [A] [✅]
 │  ├─ Statistical Targeting [A]
-│  │  ├─ GuessFactor Targeting (with Tutorial) [A]
+│  │  ├─ GuessFactor Targeting (with Tutorial) [A] [✅]
 │  │  ├─ Segmentation & Visit Count Stats [A]
 │  │  ├─ Dynamic Clustering (with Tutorial) [A]
 │  │  └─ Advanced Statistical Methods [A]

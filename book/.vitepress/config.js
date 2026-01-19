@@ -134,10 +134,10 @@ export default withMermaid(defineConfig({
               { text: 'Introducing Waves', link: '/targeting/the-targeting-problem/introducing-waves' }
             ]},
             { text: 'Statistical Targeting', items: [
-              { text: 'GuessFactor Targeting', link: '/targeting/guessfactor-targeting' },
-              { text: 'Segmentation Visit Count Stats', link: '/targeting/segmentation-visit-count-stats' },
-              { text: 'Dynamic Clustering', link: '/targeting/dynamic-clustering' },
-              { text: 'Advanced Statistical Methods', link: '/targeting/advanced-statistical-methods' }
+              { text: 'GuessFactor Targeting', link: '/targeting/statistical-targeting/guessfactor-targeting' },
+              { text: 'Segmentation Visit Count Stats', link: '/targeting/statistical-targeting/segmentation-visit-count-stats' },
+              { text: 'Dynamic Clustering', link: '/targeting/statistical-targeting/dynamic-clustering' },
+              { text: 'Advanced Statistical Methods', link: '/targeting/statistical-targeting/advanced-statistical-methods' }
             ]},
             { text: 'Predictive Targeting', items: [
               { text: 'Precise Prediction', link: '/targeting/precise-prediction' },
