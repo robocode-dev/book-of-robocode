@@ -53,7 +53,9 @@ export default withMermaid(defineConfig({
       {
         text: 'Reference',
         items: [
-          { text: 'Appendices', link: '/appendices' }
+          { text: 'Glossary', link: '/appendices/glossary' },
+          { text: 'Quick Reference (Formulas)', link: '/appendices/quick-reference' },
+          { text: 'Wall of Fame', link: '/appendices/wall-of-fame' }
         ]
       }
     ],
