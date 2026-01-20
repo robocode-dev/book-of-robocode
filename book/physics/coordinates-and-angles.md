@@ -2,7 +2,7 @@
 title: "Coordinate Systems & Angles"
 category: "Battlefield Physics"
 summary: "Explain battlefield coordinates and angle conventions in classic Robocode and Robocode Tank Royale, and how they affect movement and targeting."
-tags: ["battlefield-physics", "coordinates", "angles", "classic-robocode", "tank-royale", "beginner"]
+tags: [ "battlefield-physics", "coordinates", "angles", "classic-robocode", "tank-royale", "beginner" ]
 difficulty: "beginner"
 source: [
   "Robocode Game Physics (RoboWiki)",
@@ -38,6 +38,10 @@ Both classic Robocode and Tank Royale use a Cartesian coordinate system for the 
 - Headings and turns can be specified in **degrees (deg)** or **radians (rad)**.
 - This system is similar to a compass.
 
+Mathew Nelson, Robocode's original Robocode creator, chose this navigation-style convention to make angles easier to
+understand—North is "up" at 0°, and angles follow the familiar clockwise direction of a compass. However, this can be
+confusing when using standard trigonometric functions, which expect mathematical angles.
+
 ![Navigation-style angle diagram](../images/navigation-angle-diagram.svg)
 
 ### Robocode Tank Royale
@@ -49,6 +53,10 @@ Both classic Robocode and Tank Royale use a Cartesian coordinate system for the 
     - 270° = South
 - Only **degrees (deg)** are used for headings and turns (0–360).
 - This matches the standard mathematical convention for angles.
+
+Tank Royale adopted the standard mathematical coordinate system to make trigonometry intuitive. With 0° pointing East
+and angles increasing counterclockwise, standard functions like `sin()`, `cos()`, and `atan2()` work directly without
+conversion—the same convention used in mathematics, physics, and most programming libraries.
 
 ![Math-style angle diagram](../images/math-angle-diagram.svg)
 

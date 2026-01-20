@@ -134,7 +134,7 @@ movement patterns. The two strategies work best when matched to the bot's overal
 
 Both strategies work identically in classic Robocode and Tank Royale. The main difference is angle conventions:
 - **Classic Robocode:** 0° is north (up), angles increase clockwise.
-- **Tank Royale:** 0° is east (right), angles increase clockwise.
+- **Tank Royale:** 0° is east (right), angles increase counterclockwise.
 
 Corner arc implementations must account for these when calculating arc boundaries.
 

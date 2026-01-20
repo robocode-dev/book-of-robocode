@@ -2,7 +2,7 @@
 
 ## Missing Crucial Pages for First Version
 
-### High Priority (Core Concepts)
+### High Priority (Core Concepts) - done
 
 | Section            | Page                            | Why Crucial                                   |
 |--------------------|---------------------------------|-----------------------------------------------|
