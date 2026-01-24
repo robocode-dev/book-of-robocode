@@ -2,6 +2,7 @@
 *.log
 
 .idea/
+!.idea/icon.svg
 
 /node_modules
 /package-lock.json
