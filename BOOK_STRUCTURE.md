@@ -78,7 +78,7 @@
 │  ├─ Advanced Evasion [A]
 │  │  ├─ Gun Heat Waves & Bullet Shadows [A]
 │  │  ├─ Dodging Bullets [A]
-│  │  ├─ Wave Surfing Introduction (with Tutorial) [A]
+│  │  ├─ Wave Surfing Introduction (with Tutorial) [A] [✅]
 │  │  ├─ Wave Surfing Implementations [A]
 │  │  └─ Flattener [A]
 │  └─ Offensive Movement [A]
@@ -118,7 +118,7 @@
 │
 ├─ Appendices [B]
 │  ├─ Glossary [B] [✅]
-│  ├─ Quick Reference (Formulas) [I]
+│  ├─ Quick Reference (Formulas) [I] [✅]
 │  ├─ Debugging Tips [I]
 │  ├─ References & Credits [B]
 │  └─ Wall of Fame [B] [✅]

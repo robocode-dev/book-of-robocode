@@ -1,0 +1,102 @@
+<svg version="1.1" width="1000" height="500" viewBox="0 0 8000 4000" xmlns="http://www.w3.org/2000/svg">
+
+  <style>
+    .text { font: 150px sans-serif; }
+  </style>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="8000" height="4000" fill="#1a1a1a"/>
+
+  <!-- Chart area background -->
+  <rect x="800" y="400" width="6800" height="2800" fill="#0a0a0a" stroke="#444" stroke-width="4"/>
+
+  <!-- Grid lines -->
+  <g opacity="0.3">
+    <!-- Horizontal grid lines (danger levels) -->
+    <line x1="800" y1="900" x2="7600" y2="900" stroke="#444" stroke-width="2"/>
+    <line x1="800" y1="1400" x2="7600" y2="1400" stroke="#444" stroke-width="2"/>
+    <line x1="800" y1="1900" x2="7600" y2="1900" stroke="#444" stroke-width="2"/>
+    <line x1="800" y1="2400" x2="7600" y2="2400" stroke="#444" stroke-width="2"/>
+    <line x1="800" y1="2900" x2="7600" y2="2900" stroke="#444" stroke-width="2"/>
+
+    <!-- Vertical grid lines (GuessFactor markers) -->
+    <line x1="1400" y1="400" x2="1400" y2="3200" stroke="#444" stroke-width="2"/>
+    <line x1="2000" y1="400" x2="2000" y2="3200" stroke="#444" stroke-width="2"/>
+    <line x1="2600" y1="400" x2="2600" y2="3200" stroke="#444" stroke-width="2"/>
+    <line x1="3200" y1="400" x2="3200" y2="3200" stroke="#444" stroke-width="2"/>
+    <line x1="3800" y1="400" x2="3800" y2="3200" stroke="#444" stroke-width="2"/>
+    <line x1="4400" y1="400" x2="4400" y2="3200" stroke="#444" stroke-width="2"/>
+    <line x1="5000" y1="400" x2="5000" y2="3200" stroke="#444" stroke-width="2"/>
+    <line x1="5600" y1="400" x2="5600" y2="3200" stroke="#444" stroke-width="2"/>
+    <line x1="6200" y1="400" x2="6200" y2="3200" stroke="#444" stroke-width="2"/>
+    <line x1="6800" y1="400" x2="6800" y2="3200" stroke="#444" stroke-width="2"/>
+    <line x1="7400" y1="400" x2="7400" y2="3200" stroke="#444" stroke-width="2"/>
+  </g>
+
+  <!-- Axes -->
+  <line x1="800" y1="3200" x2="7600" y2="3200" stroke="#666" stroke-width="6"/>
+  <line x1="800" y1="400" x2="800" y2="3200" stroke="#666" stroke-width="6"/>
+
+  <!-- Danger bars (GuessFactor range from -1.0 to +1.0) -->
+  <!-- Center at x=4200 (GF 0.0), baseline at y=3200 -->
+
+  <!-- Left side (negative GuessFactors) - lower danger -->
+  <rect x="900" y="2700" width="250" height="500" fill="#DC2626" opacity="0.5"/>
+  <rect x="1200" y="2400" width="250" height="800" fill="#DC2626" opacity="0.6"/>
+  <rect x="1500" y="2100" width="250" height="1100" fill="#DC2626" opacity="0.65"/>
+  <rect x="1800" y="1700" width="250" height="1500" fill="#DC2626" opacity="0.7"/>
+  <rect x="2100" y="1400" width="250" height="1800" fill="#DC2626" opacity="0.75"/>
+  <rect x="2400" y="1600" width="250" height="1600" fill="#DC2626" opacity="0.7"/>
+  <rect x="2700" y="1900" width="250" height="1300" fill="#DC2626" opacity="0.65"/>
+  <rect x="3000" y="2300" width="250" height="900" fill="#DC2626" opacity="0.6"/>
+  <rect x="3300" y="2600" width="250" height="600" fill="#DC2626" opacity="0.55"/>
+  <rect x="3600" y="2800" width="250" height="400" fill="#DC2626" opacity="0.5"/>
+
+  <!-- Center (GF 0.0) - safest, very low -->
+  <rect x="3900" y="3000" width="250" height="200" fill="#10B981" opacity="0.8"/>
+
+  <!-- Right side (positive GuessFactors) - higher danger, peak at GF +0.6 -->
+  <rect x="4200" y="2900" width="250" height="300" fill="#DC2626" opacity="0.5"/>
+  <rect x="4500" y="2700" width="250" height="500" fill="#DC2626" opacity="0.55"/>
+  <rect x="4800" y="2400" width="250" height="800" fill="#DC2626" opacity="0.65"/>
+  <rect x="5100" y="2000" width="250" height="1200" fill="#DC2626" opacity="0.7"/>
+  <rect x="5400" y="1600" width="250" height="1600" fill="#DC2626" opacity="0.75"/>
+  <rect x="5700" y="1100" width="250" height="2100" fill="#DC2626" opacity="0.85"/>
+  <rect x="6000" y="900" width="250" height="2300" fill="#DC2626" opacity="0.9"/>
+  <rect x="6300" y="1300" width="250" height="1900" fill="#DC2626" opacity="0.8"/>
+  <rect x="6600" y="1800" width="250" height="1400" fill="#DC2626" opacity="0.7"/>
+  <rect x="6900" y="2300" width="250" height="900" fill="#DC2626" opacity="0.6"/>
+  <rect x="7200" y="2700" width="250" height="500" fill="#DC2626" opacity="0.5"/>
+
+  <!-- Axis labels - GuessFactor values -->
+  <text class="text" x="900" y="3400" fill="#888" text-anchor="middle">-1.0</text>
+  <text class="text" x="1800" y="3400" fill="#888" text-anchor="middle">-0.7</text>
+  <text class="text" x="2700" y="3400" fill="#888" text-anchor="middle">-0.4</text>
+  <text class="text" x="4025" y="3400" fill="#888" text-anchor="middle">0.0</text>
+  <text class="text" x="5100" y="3400" fill="#888" text-anchor="middle">+0.4</text>
+  <text class="text" x="6125" y="3400" fill="#888" text-anchor="middle">+0.6</text>
+  <text class="text" x="7400" y="3400" fill="#888" text-anchor="middle">+1.0</text>
+
+  <!-- Axis labels - Danger levels -->
+  <text class="text" x="600" y="3250" fill="#888" text-anchor="end">0</text>
+  <text class="text" x="600" y="2750" fill="#888" text-anchor="end">20</text>
+  <text class="text" x="600" y="2250" fill="#888" text-anchor="end">40</text>
+  <text class="text" x="600" y="1750" fill="#888" text-anchor="end">60</text>
+  <text class="text" x="600" y="1250" fill="#888" text-anchor="end">80</text>
+  <text class="text" x="600" y="750" fill="#888" text-anchor="end">100</text>
+
+  <!-- Axis titles -->
+  <text class="text" x="4000" y="3700" fill="#D2691E" text-anchor="middle">GuessFactor</text>
+  <text class="text" x="500" y="2000" fill="#D2691E" text-anchor="middle" transform="rotate(-90, 500, 2000)">Danger</text>
+
+  <!-- Annotations -->
+  <text class="text" x="4025" y="900" fill="#10B981" text-anchor="middle" font-weight="bold">Safest: GF 0.0</text>
+  <text class="text" x="6125" y="700" fill="#EF4444" text-anchor="middle" font-weight="bold">Dangerous: GF +0.6</text>
+
+  <!-- Arrow pointing to safest -->
+  <line x1="4025" y1="950" x2="4025" y2="2850" stroke="#10B981" stroke-width="6" stroke-dasharray="20,10" opacity="0.5"/>
+
+  <!-- Arrow pointing to most dangerous -->
+  <line x1="6125" y1="750" x2="6125" y2="850" stroke="#EF4444" stroke-width="6" stroke-dasharray="20,10" opacity="0.5"/>
+
+</svg>
