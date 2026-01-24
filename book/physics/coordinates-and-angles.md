@@ -38,7 +38,7 @@ Both classic Robocode and Tank Royale use a Cartesian coordinate system for the 
 - Headings and turns can be specified in **degrees (deg)** or **radians (rad)**.
 - This system is similar to a compass.
 
-Mathew Nelson, Robocode's original Robocode creator, chose this navigation-style convention to make angles easier to
+Mathew A. Nelson, Robocode's original Robocode creator, chose this navigation-style convention to make angles easier to
 understand—North is "up" at 0°, and angles follow the familiar clockwise direction of a compass. However, this can be
 confusing when using standard trigonometric functions, which expect mathematical angles.
 
