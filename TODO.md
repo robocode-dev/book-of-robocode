@@ -1,5 +1,10 @@
 # TODO
 
+- Should we replace all code examples? 
+  - Instead of pseudocode, we would use `::: code-group` with: 
+    - classic Robocode (java) and
+    - Tank Royale (java, C# amd Python)
+
 ## Missing Crucial Pages for First Version
 
 ### High Priority (Core Concepts) - done
