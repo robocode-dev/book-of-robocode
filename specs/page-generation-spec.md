@@ -360,7 +360,21 @@ Use these VitePress/Markdown features:
 
 ### When Concepts Differ
 
-If a concept works differently between platforms:
+**ONLY include a "Platform Notes" or "Platform Differences" section when there are ACTUAL differences** between 
+classic Robocode and Tank Royale that affect the technique or concept.
+
+**Do NOT create a platform section if:**
+- The mechanics are identical (e.g., gun heat cooling rate, bullet power formulas)
+- Only API method names differ but both platforms have equivalent methods
+- The concept works the same way in both platforms
+
+**DO create a platform section if:**
+- Physics behavior differs (e.g., coordinate systems, angle conventions)
+- API capabilities differ (e.g., one platform has features the other doesn't)
+- Game rules differ (e.g., team damage, scoring mechanics)
+- Implementation approaches differ significantly
+
+When you identify actual differences:
 
 1. Explain the general concept first (platform-agnostic).
 2. Add a "Platform Notes" section with specific differences.
@@ -371,6 +385,27 @@ If a concept works differently between platforms:
 > In classic Robocode, heading 0° points north (up).
 > In Tank Royale, heading 0° points east (right).
 ```
+
+**Example of what NOT to do:**
+
+```markdown
+### Platform Differences
+
+**Classic Robocode:**
+- Gun heat cooling: 0.1 per turn
+- Gun heat after firing: `1.0 + bulletPower / 5.0`
+
+**Tank Royale:**
+- Gun heat cooling: 0.1 per turn (same)
+- Gun heat after firing: `1.0 + bulletPower / 5.0` (same)
+
+The mechanics are identical.
+```
+
+**Better approach when mechanics are identical:**
+
+Simply state: "Gun heat mechanics work identically in both classic Robocode and Tank Royale, with a cooling rate of 
+0.1 per turn and heat generation of `1.0 + bulletPower / 5.0` after firing." No separate platform section needed.
 
 ---
 
