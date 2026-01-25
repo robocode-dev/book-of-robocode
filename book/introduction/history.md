@@ -1,4 +1,3 @@
-```
 ---
 title: "A Short History of Robocode"
 category: "Introduction"
@@ -67,6 +66,7 @@ Key features:
   at [robocode-dev.github.io/tank-royale](https://robocode-dev.github.io/tank-royale)
 
 ```mermaid
+flowchart LR
     hub((⚔️ Classic vs Tank Royale))
     subgraph classic[💻️ Classic Robocode]
         c1[🖥️ All-in-one GUI arena]
@@ -80,3 +80,4 @@ Key features:
     end
     hub --> classic
     hub --> royale
+```
