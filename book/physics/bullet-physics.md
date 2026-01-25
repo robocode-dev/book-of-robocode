@@ -73,6 +73,8 @@ clear why energy management and bullet power choices matter.
 
 ## When can you fire? (gun cooldown)
 
+- **At round start**: Bots begin with gun heat of **3.0**. With the default cooling rate of 0.1/turn, the first shot is
+  possible on **turn 30**.
 - After you fire, the gun becomes hot and must cool before the next shot.
 - Conceptually: each shot adds heat; every turn, some heat is removed. You can only fire when the heat reaches zero.
 - Classic Robocode specifics you will see in the docs:

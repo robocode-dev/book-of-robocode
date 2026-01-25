@@ -33,7 +33,25 @@ This creates a simple trade-off:
 - **Low power**: faster rate of fire, but weaker bullets.
 
 A classic “good moment” to have zero gun heat is when an enemy is in trouble — cornered, stuck on a wall, or disabled
-(not moving). Being ready then is often worth more than shooting “as soon as possible.”
+(not moving). Being ready then is often worth more than shooting "as soon as possible."
+
+## Initial gun heat
+
+Bots start each round with their gun **already hot**:
+
+- **Initial gun heat: 3.0** (both Classic Robocode and Tank Royale)
+- **Default cooling rate: 0.1** heat per turn
+
+This means bots cannot fire immediately at round start. With default settings:
+
+$T_{\text{first shot}} = \frac{3.0}{0.1} = 30 \text{ turns}$
+
+The first shot is possible on **turn 30**. This gives bots time to scan, position, and aim before the first shots are
+exchanged.
+
+> [!TIP] Opening moves
+> Use the first 30 turns wisely! Scan all enemies, establish radar lock, move to a favorable position, and pre-aim your
+> gun. When turn 30 arrives, you should be ready to fire immediately.
 
 ## The gun heat formula
 
