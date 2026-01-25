@@ -20,7 +20,7 @@ Choosing when to fire and how much power to use is a strategic balancing act. Fi
 fire is too strong, and you miss more often while draining your energy. This page explores the factors that influence
 bullet power selection and timing decisions in competitive play.
 
-<img src="../../images/fire-power-tradeoffs.svg" alt="Comparing low-power (fast, weak) vs high-power (slow, strong) bullets traveling toward a moving target" width="800"><br>
+<img src="../../images/fire-power-tradeoffs.svg" alt="Comparing low-power (fast, weak) vs high-power (slow, strong) bullets traveling toward a moving target" style="max-width:100%;height:auto;"><br>
 *Comparing low-power (fast, weak) vs. high power (slow, strong) bullets traveling toward a moving target*
 
 ## Why bullet power matters

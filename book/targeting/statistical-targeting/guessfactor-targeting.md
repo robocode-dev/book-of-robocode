@@ -42,7 +42,7 @@ predictions often miss. The enemy could end up anywhere within a wide arc.
 
 This approach works against any movement style because it learns from actual outcomes rather than assumptions.
 
-<img src="/images/guessfactor-targeting-comparison.svg" alt="Simple targeting predicts a single position; GuessFactor Targeting aims at the most statistically likely position" width="800"><br>
+<img src="/images/guessfactor-targeting-comparison.svg" alt="Simple targeting predicts a single position; GuessFactor Targeting aims at the most statistically likely position" style="max-width:100%;height:auto;"><br>
 *Simple targeting predicts a single position; GuessFactor Targeting aims at the most statistically likely position*
 
 ## Prerequisites: Understanding waves
@@ -396,7 +396,7 @@ Once your GuessFactor gun is working, explore:
 
 - **[Segmentation & Visit Count Stats](segmentation-visit-count-stats.md)** — Split statistics by enemy behavior
   (distance, velocity, etc.) for more precise targeting
-<!-- TODO: Add link when page is created - **[Dynamic Clustering](dynamic-clustering.md)** — Advanced multi-dimensional segmentation -->
+- **[Dynamic Clustering](dynamic-clustering.md)** — Advanced multi-dimensional segmentation
 - **[Virtual Guns](../simple-targeting/virtual-guns-mean-targeting.md)** — Run multiple targeting systems and pick the
   best one
 

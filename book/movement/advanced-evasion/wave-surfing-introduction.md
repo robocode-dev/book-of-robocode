@@ -60,7 +60,7 @@ wave.bulletSpeed = 20 - 3 * bulletPower
 wave.direction = angleFromEnemyToMe
 ```
 
-<img src="../../images/wave-surfing-enemy-wave.svg" alt="Enemy wave expanding from fire position toward the surfing bot" width="800"/><br>
+<img src="../../images/wave-surfing-enemy-wave.svg" alt="Enemy wave expanding from fire position toward the surfing bot" style="max-width:100%;height:auto;"/><br>
 *Enemy wave expanding from fire position toward the surfing bot*
 
 ### 3. Record Danger When Hit
@@ -158,7 +158,7 @@ preference for targeting clockwise movement more than counter-clockwise.
   - text: "Dangerous: GF +0.6", position: (6000, 1000), color: #EF4444
 -->
 
-<img src="../../images/wave-surfing-danger-profile.svg" alt="Danger profile showing enemy's firing tendencies across GuessFactors" width="800"/><br>
+<img src="../../images/wave-surfing-danger-profile.svg" alt="Danger profile showing enemy's firing tendencies across GuessFactors" style="max-width:100%;height:auto;"/><br>
 *Danger profile showing enemy's firing tendencies across GuessFactors*
 
 ## Wave Management
@@ -244,13 +244,10 @@ Even against these, Wave Surfing is rarely *worse* than traditional movement—i
 
 Once you have basic Wave Surfing working:
 
-<!-- TODO: Add links when pages are created
 - **[Wave Surfing Implementations](./wave-surfing-implementations.md)** — Compare GoTo vs. True Surfing approaches
 - **[Flattener](./flattener.md)** — Counter enemies who learn your surfing patterns
-- **[Anti-Surfer Targeting](../../targeting/advanced-targeting/anti-surfer-targeting.md)** — Understand how enemies 
-  counter Wave Surfing
--->
-- **[Segmentation & Visit Count Stats](../../targeting/statistical-targeting/segmentation-visit-count-stats.md)** — 
+- **[Segmentation & Visit Count Stats](../../targeting/statistical-targeting/segmentation-visit-count-stats.md)** —
+  Apply segmentation to danger calculation
   Apply segmentation to danger calculation
 
 ## Further Reading

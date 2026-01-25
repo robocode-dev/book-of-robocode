@@ -78,7 +78,7 @@ The key idea:
 If the bot repeats this at every turn, the result is a smooth, tangential path that naturally follows the wall instead
 of slamming into it.
 
-<img src="../../images/wall-smoothing.svg" alt="Bot with adjusted heading that is tangent to the wall" width="150"><br>
+<img src="../../images/wall-smoothing.svg" alt="Bot with adjusted heading that is tangent to the wall" style="max-width:100%;height:auto;"><br>
 *Illustration: Bot with a desired heading (red) that is set to an adjusted heading (green) that is tangent to the wall*
 
 ### A “safe rectangle” test (one-step lookahead)
@@ -136,7 +136,7 @@ A typical flow-through movement loop looks like this:
 
 This keeps the bot in motion even when a target point or enemy pressure pushes it toward the border.
 
-<img src="../../images/wall-smoothing-with-goto.svg" alt="Bot following an arc that stays away from the wall using a GoTo waypoint" width="150"><br>
+<img src="../../images/wall-smoothing-with-goto.svg" alt="Bot following an arc that stays away from the wall using a GoTo waypoint" style="max-width:100%;height:auto;"><br>
 *Illustration: Bot following an arc that stays away from the wall using a GoTo waypoint (green) and hence moves in a
 curve away from the wall*
 

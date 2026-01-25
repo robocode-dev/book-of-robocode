@@ -57,7 +57,7 @@ After generating the SVG, insert the `<img>` tag immediately after the TODO mark
 ...existing marker content...
 -->
 
-<img src="/images/filename.svg" alt="Caption text" width="1000">
+<img src="/images/filename.svg" alt="Caption text" style="max-width:100%;height:auto;">
 <br>
 *Caption text*
 ```
@@ -674,7 +674,7 @@ Copy this entire `<defs>` block into every generated SVG. This is from `book/ima
 2. Inserts below the TODO marker:
 
 ```markdown
-<img src="/images/circular-targeting-geometry.svg" alt="Circular targeting predicts where the enemy will be based on its turn rate" width="1000">
+<img src="/images/circular-targeting-geometry.svg" alt="Circular targeting predicts where the enemy will be based on its turn rate" style="max-width:100%;height:auto;">
 <br>
 *Circular targeting predicts where the enemy will be based on its turn rate*
 ```

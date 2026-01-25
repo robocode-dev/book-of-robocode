@@ -20,7 +20,7 @@ In Robocode, energy is more than a health bar — it's the currency of battle. E
 every hit landed creates an energy transaction that can swing the battle. Understanding how to manage, conserve, and
 exploit energy gives bots a critical strategic edge.
 
-<img src="/images/energy-flow-diagram.svg" alt="Energy flows between bots through bullets — draining the attacker, damaging the defender, and rewarding successful hits" width="800"><br>
+<img src="/images/energy-flow-diagram.svg" alt="Energy flows between bots through bullets — draining the attacker, damaging the defender, and rewarding successful hits" style="max-width:100%;height:auto;"><br>
 *Energy flows between bots through bullets — draining the attacker, damaging the defender, and rewarding successful
 hits*
 

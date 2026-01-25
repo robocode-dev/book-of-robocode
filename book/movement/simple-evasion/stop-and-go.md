@@ -76,7 +76,7 @@ The key variables are:
 - **Stop duration:** How many turns to remain stopped
 - **Direction:** Whether moving forward or backward (can vary)
 
-<img src="../../images/stop-and-go-movement.svg" alt="Stop and Go creates velocity spikes that confuse targeting predictions" width="720"><br>
+<img src="../../images/stop-and-go-movement.svg" alt="Stop and Go creates velocity spikes that confuse targeting predictions" style="max-width:100%;height:auto;"><br>
 *Stop and Go creates velocity spikes that confuse targeting predictions*
 
 ## Tutorial: Building Your First Stop and Go Bot

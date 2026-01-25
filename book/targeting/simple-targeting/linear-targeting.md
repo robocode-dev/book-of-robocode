@@ -89,7 +89,7 @@ enemy is effectively moving away too fast in the assumed direction).
 > In classic Robocode, bullet speed is `20 - 3×power`.
 > (See [Bullet Travel & Bullet Physics](../../physics/bullet-physics.md).)
 
-<img src="../../images/linear-targeting.svg" alt="Top-down diagram showing a blue shooter bot firing a yellow bullet at the predicted intercept point on an orange enemy bot's curved trajectory" width="500"/><br>
+<img src="../../images/linear-targeting.svg" alt="Top-down diagram showing a blue shooter bot firing a yellow bullet at the predicted intercept point on an orange enemy bot's curved trajectory" style="max-width:100%;height:auto;"/><br>
 *Diagram: Circular targeting predicts the enemy's linear path and aims at the intercept point where the bullet meets the
 enemy.*
 

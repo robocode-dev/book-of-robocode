@@ -46,7 +46,7 @@ The radar can be thought of as a rotating wedge (an arc) extending outward from 
 - **Scan arc angle**: how "wide" the radar beam is.
 - **Scan length**: how far the scan reaches (commonly described as 1200 units).
 
-<img src="../images/radar-geometry.svg" alt="Radar geometry" width="675"><br>
+<img src="../images/radar-geometry.svg" alt="Radar geometry" style="max-width:100%;height:auto;"><br>
 *Radar geometry: The illustration is not to scale – the scan arc is actually longer than shown. The scan length is
 always 1200 units. The radar heading is depicted, and in this illustration the scan arc is 30°, but can be up to 45°*
 

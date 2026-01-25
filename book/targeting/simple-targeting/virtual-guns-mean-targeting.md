@@ -40,7 +40,7 @@ At fire time:
 
 Over time, the system learns which strategy works best against each opponent's movement style.
 
-<img src="../../images/virtual-guns-concept.svg" alt="Multiple virtual guns aim at different predicted positions; the bot fires using the one with the best track record" width="500"><br>
+<img src="../../images/virtual-guns-concept.svg" alt="Multiple virtual guns aim at different predicted positions; the bot fires using the one with the best track record" style="max-width:100%;height:auto;"><br>
 *Multiple virtual guns aim at different predicted positions; the bot fires using the one with the best track record*
 
 ## How virtual guns work

@@ -86,7 +86,7 @@ Aiming is basically "what is the angle from `(myX, myY)` to `(enemyX, enemyY)`?"
 - In **classic Robocode**, typical code computes a gun turn angle and uses `setTurnGunRight(...)`.
 - In **Tank Royale**, the API offers helpers like `calcHeadingTo(x, y)` that returns the heading to a point.
 
-<img src="../../images/heads-on-targeting.svg" alt="Heads-on targeting illustration" width="650" /><br>
+<img src="../../images/heads-on-targeting.svg" alt="Heads-on targeting illustration" style="max-width:100%;height:auto;" /><br>
 **Illustration:** The bot aims its gun directly at the enemy's last scanned position. However, the enemy bot has already
 moved to a new position*
 

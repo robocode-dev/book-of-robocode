@@ -49,7 +49,7 @@ The strategy uses **gun heat** as a trigger to switch radar behavior:
 This ensures that the targeting system receives the freshest possible data about the enemy's position and velocity at
 the moment of firing, improving hit rates without sacrificing situational awareness.
 
-<img src="../../images/gun-heat-lock-pattern.svg" alt="Gun heat lock focuses radar on the firing target when gun heat is low" width="800">
+<img src="../../images/gun-heat-lock-pattern.svg" alt="Gun heat lock focuses radar on the firing target when gun heat is low" style="max-width:100%;height:auto;">
 <br>
 *Gun heat lock focuses radar on the firing target when gun heat is low*
 

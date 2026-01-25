@@ -35,7 +35,7 @@ Spinning radar is most valuable for:
 In 1v1, spinning forever is usually not optimal once the enemy is found; you typically switch to a lock pattern like
 **Infinite Lock** (covered below) to get more frequent re-scans of *that one bot*.
 
-<img src="../../images/spinning-radar.svg" alt="Spinning Radar Illustration" width="600"><br>
+<img src="../../images/spinning-radar.svg" alt="Spinning Radar Illustration" style="max-width:100%;height:auto;"><br>
 *Top-down arena view: a bot with a radar beam spinning 360°, sweeping the battlefield and intersecting an enemy.*
 
 ## The one-liner: spin forever

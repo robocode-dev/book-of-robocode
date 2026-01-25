@@ -16,7 +16,7 @@ footer: Content licensed under CC BY-SA 4.0 | Code licensed under MIT | Built wi
 ---
 
 <div style="text-align:center;">
-  <img src="./images/the-book-of-robocode.png" alt="The Book of Robocode cover illustration" width="300" />
+  <img src="./images/the-book-of-robocode.png" alt="The Book of Robocode cover illustration" style="max-width:100%;height:auto;" />
 </div>
 
 > "May your aim be true and your dodges unpredictable." — Adopted Robocoding Motto

@@ -37,7 +37,7 @@ The downside is efficiency: in a 10-bot melee, the radar spends most of its time
 opponents. More sophisticated strategies like **oldest scanned** or **gun heat lock** can improve scan frequency on 
 high-priority targets.
 
-<img src="../../images/spinning-radar-melee.svg" alt="Spinning radar in melee" width="800"><br>
+<img src="../../images/spinning-radar-melee.svg" alt="Spinning radar in melee" style="max-width:100%;height:auto;"><br>
 *Spinning radar in melee provides even coverage but sweeps through empty space*
 
 ### Implementation Pattern
@@ -73,7 +73,7 @@ This geometric constraint allows the radar to scan more efficiently:
 Corner arc is most effective when combined with **corner movement** strategies that keep the bot positioned against 
 walls. If the bot moves away from corners frequently, the reduced arc becomes a liability, creating large blind spots.
 
-<img src="../../images/corner-arc-radar.svg" alt="Corner arc radar" width="800"><br>
+<img src="../../images/corner-arc-radar.svg" alt="Corner arc radar" style="max-width:100%;height:auto;"><br>
 *Corner arc radar covers only the 90° quadrant in front of a corner-positioned bot*
 
 ### Implementation Pattern

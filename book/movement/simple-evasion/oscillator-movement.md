@@ -79,7 +79,7 @@ every turn:
   - text: "Time →", position: (3600, 1600), color: chocolate
 -->
 
-<img src="../../images/oscillator-movement-pattern.svg" alt="Oscillator movement creates a back-and-forth pattern along a line" width="800"><br>
+<img src="../../images/oscillator-movement-pattern.svg" alt="Oscillator movement creates a back-and-forth pattern along a line" style="max-width:100%;height:auto;"><br>
 *Oscillator movement creates a back-and-forth pattern along a line*
 
 ## Choosing the Period

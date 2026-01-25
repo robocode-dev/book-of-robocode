@@ -85,7 +85,7 @@ on turn:
 
 More sophisticated implementations use wall smoothing to maintain randomness while preventing collisions.
 
-<img src="../../images/random-movement-pattern.svg" alt="A bot using random movement creates an unpredictable zigzag pattern compared to linear movement" width="800"><br>
+<img src="../../images/random-movement-pattern.svg" alt="A bot using random movement creates an unpredictable zigzag pattern compared to linear movement" style="max-width:100%;height:auto;"><br>
 *A bot using random movement creates an unpredictable zigzag pattern compared to linear movement*
 
 ## Variations and Enhancements

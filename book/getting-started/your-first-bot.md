@@ -70,26 +70,15 @@ responses.
 
 ## Per-turn actions (the heartbeat)
 
-- Scan for enemies
-    - Keep the radar moving to maintain situational awareness. A stationary radar loses track quickly.
-    - Choose between continuous sweeping (good for discovery) and locking onto a single target (good for 1v1 tracking).
+Each turn follows the same rhythm:
 
-- Calculate movement
-    - For your first bot, a simple movement is enough—move forward, turn occasionally, and avoid getting stuck.
-    - Later, add wall avoidance, distancing, or evasive patterns.
+1. **Scan** — Keep the radar moving to maintain awareness. Choose between sweeping (discovery) or locking (1v1 tracking).
+2. **Move** — Start with simple patterns. Later, add wall avoidance and evasive maneuvers.
+3. **Aim** — Point the gun at the detected enemy. Advanced bots predict future positions.
+4. **Fire** — Only when the gun is ready. Use modest, consistent firepower at first.
+5. **Repeat** — Issue commands, then proceed to the next turn.
 
-- Aim the gun
-    - Point the gun at the detected enemy. Initially, aim directly at the current bearing.
-    - Advanced bots predict future positions (leading shots).
-
-- Fire if ready
-    - Fire only when the gun is ready (both platforms expose gun heat/cooldown).
-    - Start with modest, consistent firepower; tune it as you learn.
-
-- Repeat
-    - Issue movement, radar, and gun commands, then proceed to the next turn.
-
-<img src="../images/heartbeat-turn.png" alt="Comic-strip style illustration showing a robot performing the four main actions in a turn: scanning, moving, aiming, and firing." width="400" style="max-width:100%;height:auto;" /><br>
+<img src="../images/heartbeat-cycle.svg" alt="The bot heartbeat cycle: Scan, Move, Aim, Fire, Repeat" style="max-width:100%;height:auto;" />
 
 ## Event-driven reactions
 

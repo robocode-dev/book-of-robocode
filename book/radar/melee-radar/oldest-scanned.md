@@ -50,7 +50,7 @@ The algorithm follows this pattern:
 This creates an adaptive scanning pattern that focuses attention where information is most stale, naturally balancing
 coverage across all active threats.
 
-<img src="../../images/oldest-scanned-radar-pattern.svg" alt="Oldest scanned radar prioritizes the enemy with the most stale scan data" width="800">
+<img src="../../images/oldest-scanned-radar-pattern.svg" alt="Oldest scanned radar prioritizes the enemy with the most stale scan data" style="max-width:100%;height:auto;">
 <br>
 *Oldest scanned radar prioritizes the enemy with the most stale scan data*
 

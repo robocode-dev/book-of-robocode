@@ -46,7 +46,7 @@ water when a stone is dropped:
 Waves are **imaginary**—they don't exist in the game engine. The bot calculates and tracks them to measure timing and
 angles accurately.
 
-<img src="../../images/wave-concept-basic.svg" alt="A wave expands from the firing position at bullet speed, tracking when a bullet would reach each point" width="800"><br>
+<img src="../../images/wave-concept-basic.svg" alt="A wave expands from the firing position at bullet speed, tracking when a bullet would reach each point" style="max-width:100%;height:auto;"><br>
 *A wave expands from the firing position at bullet speed, tracking when a bullet would reach each point*
 
 ## Why waves matter for targeting
@@ -116,7 +116,7 @@ guessFactor = bearingOffset / maxEscapeAngle
 
 Over many shots, the bot accumulates GuessFactor data and aims at the GF with the highest hit count.
 
-<img src="../../images/wave-guessfactor-concept.svg" alt="GuessFactor measures where the enemy is within the maximum escape angle range" width="800"><br>
+<img src="../../images/wave-guessfactor-concept.svg" alt="GuessFactor measures where the enemy is within the maximum escape angle range" style="max-width:100%;height:auto;"><br>
 *GuessFactor measures where the enemy is within the maximum escape angle range*
 
 ## Wave creation and tracking

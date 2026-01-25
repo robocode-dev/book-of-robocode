@@ -59,7 +59,7 @@ This is the most important “real world” rule to remember:
 For the exact numbers and formulas, see
 [Movement Constraints & Bot Physics](../../physics/movement-constraints.md).
 
-<img src="../../images/speed-vs-turn-radius.svg" alt="Speed vs. Turn Radius" width="300"><br>
+<img src="../../images/speed-vs-turn-radius.svg" alt="Speed vs. Turn Radius" style="max-width:100%;height:auto;"><br>
 *Illustration: Higher speed means a wider turn radius.*
 
 Legend:

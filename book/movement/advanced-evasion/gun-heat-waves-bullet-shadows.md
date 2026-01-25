@@ -239,7 +239,7 @@ This creates a "shadow" region where you're guaranteed not to encounter that spe
   - text: "Danger: bullet ahead", position: (6000, 2200), color: #EF4444
 -->
 
-<img src="../../images/bullet-shadow-safe-zone.svg" alt="Once a bullet is detected, the region behind it forms a safe shadow" width="800"/>
+<img src="../../images/bullet-shadow-safe-zone.svg" alt="Once a bullet is detected, the region behind it forms a safe shadow" style="max-width:100%;height:auto;"/>
 
 ### Implementation
 
@@ -378,14 +378,12 @@ else:
 ## Next Steps
 
 - **[Wave Surfing Introduction](./wave-surfing-introduction.md)** — Use Gun Heat Waves to improve wave detection
-<!-- TODO: Add links when pages are created
 - **[Dodging Bullets](./dodging-bullets.md)** — Reactive bullet avoidance using Bullet Shadows
 - **[Melee Movement Tactics](../../melee-combat/melee-movement.md)** — Apply these techniques to multi-opponent battles
 -->
 
 ## Further Reading
 
-- [Gun Heat Waves](https://robowiki.net/wiki/Gun_Heat_Waves) — RoboWiki (classic Robocode)
 - [Bullet Shadow](https://robowiki.net/wiki/Bullet_Shadow) — RoboWiki (classic Robocode)
 - [Wave Surfing](https://robowiki.net/wiki/Wave_Surfing) — RoboWiki (classic Robocode)
 - [Waves](https://robowiki.net/wiki/Waves) — RoboWiki (classic Robocode)

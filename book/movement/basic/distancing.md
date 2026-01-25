@@ -130,7 +130,7 @@ movement, waypoint navigation, orbiting, or any advanced evasive system.
   retreats).
 - **Remember wall space is part of distance.** “Far away” is not helpful if the bot has no room to turn.
 
-<img src="../../images/dynamic-distancing.svg" alt="Dynamic distancing: preferred distance increases in crowded situations" width="800"><br>
+<img src="../../images/dynamic-distancing.svg" alt="Dynamic distancing: preferred distance increases in crowded situations" style="max-width:100%;height:auto;"><br>
 *Illustration: Dynamic distancing. The preferred distance is larger when the area is crowded.*
 
 ## Further Reading

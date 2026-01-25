@@ -74,7 +74,7 @@ Every Robocode-style bot is made of three main moving parts plus an energy pool:
 - **Radar** – the rotating scanner that detects enemies.
 - **Energy** – a number that acts as both health and ammunition.
 
-<img src="../images/bot-parts.svg" alt="Bot parts labeled: Body, Gun, Radar, Energy" width="150"/><br>
+<img src="../images/bot-parts.svg" alt="Bot parts labeled: Body, Gun, Radar, Energy" style="max-width:100%;height:auto;"/><br>
 *Main parts of a bot: body, gun, radar, and energy pool.*
 
 Each moving part has their own **headings** (angles) and sometimes their own turn rate limits.

@@ -172,7 +172,7 @@ See [Coordinates and Angles](../../physics/coordinates-and-angles.md) for platfo
 
 ## Illustration placeholder
 
-<img src="../../images/random-area-targeting-patterns.svg" alt="Random and Area Targeting patterns compared: Random fires scattered shots around a reference direction, while Area Targeting fires a spray across a predicted movement zone." width="800"><br>
+<img src="../../images/random-area-targeting-patterns.svg" alt="Random and Area Targeting patterns compared: Random fires scattered shots around a reference direction, while Area Targeting fires a spray across a predicted movement zone." style="max-width:100%;height:auto;"><br>
 *Random and Area Targeting patterns compared: Random fires scattered shots around a reference direction, while Area
 Targeting fires a spray across a predicted movement zone.*
 

@@ -36,7 +36,7 @@ depends on:
 The bot sums all force vectors to get a resultant force, then moves in the direction that minimizes or maximizes this
 force (depending on whether forces are repulsive or attractive).
 
-<img src="../../images/anti-gravity-force-vectors.svg" alt="Multiple enemies exert repulsive forces on the bot, creating a resultant force vector away from crowded areas" width="800"><br>
+<img src="../../images/anti-gravity-force-vectors.svg" alt="Multiple enemies exert repulsive forces on the bot, creating a resultant force vector away from crowded areas" style="max-width:100%;height:auto;"><br>
 *Multiple enemies exert repulsive forces on the bot, creating a resultant force vector away from crowded areas*
 
 ## Why Anti-Gravity Works
@@ -209,7 +209,7 @@ The effectiveness depends heavily on tuning:
 Start with enemy strength around 50,000 and wall strength around 20,000, then adjust based on battlefield size and
 combat style.
 
-<img src="../../images/anti-gravity-movement-pattern.svg" alt="Antigravity movement creates smooth, adaptive paths that maintain distance from multiple threats" width="800"><br>
+<img src="../../images/anti-gravity-movement-pattern.svg" alt="Antigravity movement creates smooth, adaptive paths that maintain distance from multiple threats" style="max-width:100%;height:auto;"><br>
 *Antigravity movement creates smooth, adaptive paths that maintain distance from multiple threats*
 
 ## Advanced Variations

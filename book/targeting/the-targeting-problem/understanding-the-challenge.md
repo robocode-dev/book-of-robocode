@@ -46,7 +46,7 @@ In those 36 turns, the enemy can:
 **Simple targeting assumes the enemy follows a pattern:** head-on assumes the enemy doesn't move, linear assumes
 straight-line motion, and circular assumes constant turn rate. But smart enemies break these assumptions intentionally.
 
-<img src="../../images/targeting-problem-travel-time.svg" alt="During the 36 turns a bullet travels 400 units, the enemy can move up to 288 units in any direction" width="800"><br>
+<img src="../../images/targeting-problem-travel-time.svg" alt="During the 36 turns a bullet travels 400 units, the enemy can move up to 288 units in any direction" style="max-width:100%;height:auto;"><br>
 *During the 36 turns a bullet travels 400 units, the enemy can move up to 288 units in any direction*
 
 ## Why prediction alone isn't enough
@@ -65,7 +65,7 @@ a whole range of possible positions.
 
 Advanced targeting shifts to a different question: **"Which direction has the highest probability of hitting?"**
 
-<img src="../../images/targeting-problem-prediction-cone.svg" alt="Instead of predicting one point, advanced targeting considers a probability distribution across all possible enemy positions" width="800"><br>
+<img src="../../images/targeting-problem-prediction-cone.svg" alt="Instead of predicting one point, advanced targeting considers a probability distribution across all possible enemy positions" style="max-width:100%;height:auto;"><br>
 *Instead of predicting one point, advanced targeting considers a probability distribution across all possible enemy
 positions*
 

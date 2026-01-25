@@ -112,7 +112,7 @@ timeline
 
 ### Bullet speed formula
 
-<img src="../images/light-vs-heavy-bullet.svg" alt="Bullet Trajectory & Speed Comparison" width="300"/><br>
+<img src="../images/light-vs-heavy-bullet.svg" alt="Bullet Trajectory & Speed Comparison" style="max-width:100%;height:auto;"/><br>
 *Illustration: Two bullets fired by a bot — a high-power bullet (slower, shown in red/orange) and a low-power bullet
 (faster, shown in green/orange) — demonstrating their different trajectories and speeds.*
 
