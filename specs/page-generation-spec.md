@@ -346,7 +346,6 @@ Use these VitePress/Markdown features:
 - Define all symbols before or immediately after the formula.
 - All formulas, whether simple or complex, should use inline `$formula$` notation.
 
----
 
 ## 6. Platform Distinction
 

@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8000 6000">
+  <defs>
+    <!-- Tank component styles -->
+    <style>
+      .tank-body, .tank-turret, .tank-radar {
+        transform-origin: 400px 400px;
+      }
+      .tank-body-fill { fill: var(--tank-body-color, #019); }
+      .tank-turret-fill { fill: var(--tank-turret-color, #06c); }
+      .tank-radar-fill { fill: var(--tank-radar-color, #aaf); }
+      .left-belt, .right-belt { display: none; }
+      .left-belt.track1, .right-belt.track1 { display: inline; }
+    </style>
+
+    <linearGradient id="cannon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#333"/>
+      <stop offset="50%" stop-color="#CCC"/>
+      <stop offset="100%" stop-color="#333"/>
+    </linearGradient>
+
+    <!-- Arrow marker -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#d2691e"/>
+    </marker>
+
+    <!-- Tank symbols -->
+    <symbol id="link0">
+      <rect x="5" y="55" width="125" height="25" fill="#aaaaaa"/>
+      <rect x="10" y="70" width="116" height="35" fill="#666666" rx="10" ry="10"/>
+      <rect x="5" y="55" width="125" height="50" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+    </symbol>
+
+    <symbol id="link30">
+      <rect x="5" y="55" width="125" height="25" fill="#939393"/>
+      <rect x="10" y="70" width="116" height="30" fill="#585858" rx="10" ry="10"/>
+      <rect x="5" y="55" width="125" height="42" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+    </symbol>
+
+    <symbol id="link60">
+      <rect x="5" y="55" width="125" height="20" fill="#555555"/>
+      <rect x="5" y="55" width="125" height="20" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+    </symbol>
+
+    <symbol id="main-track">
+      <rect x="20" y="75" width="95" height="450" fill="#333333" stroke="black" stroke-width="10"/>
+    </symbol>
+
+    <symbol id="track1">
+      <use href="#main-track"/>
+      <use href="#link30"/>
+      <use href="#link0" y="60"/>
+      <use href="#link0" y="140"/>
+      <use href="#link0" y="220"/>
+      <use href="#link0" y="300"/>
+      <use href="#link0" y="380"/>
+      <use href="#link30" y="448"/>
+    </symbol>
+
+    <symbol id="body">
+      <use href="#track1" x="150" y="100" class="left-belt track1"/>
+      <use href="#track1" x="515" y="100" class="right-belt track1"/>
+      <rect class="tank-body-fill" x="240" y="190" width="320" height="420" stroke="black" stroke-width="20" rx="10" ry="10"/>
+      <rect x="250" y="520" width="300" height="80" opacity="0.5"/>
+    </symbol>
+
+    <symbol id="turret">
+      <rect class="tank-turret-fill" x="300" y="320" width="200" height="200" stroke="black" stroke-width="20" rx="10" ry="10"/>
+      <rect x="310" y="460" width="180" height="50" fill="black" opacity="0.5"/>
+      <rect x="360" y="240" width="80" height="80" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+      <rect x="375" y="70" width="50" height="170" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+    </symbol>
+
+    <symbol id="radar">
+      <circle class="tank-radar-fill" cx="400" cy="400" r="30" stroke="black" stroke-width="20"/>
+      <path class="tank-radar-fill" d="M 290 420 q 110 100 220 0 z" stroke="black" stroke-width="20"/>
+    </symbol>
+
+    <symbol id="tank">
+      <g class="tank-body"><use href="#body"/></g>
+      <g class="tank-turret"><use href="#turret"/></g>
+      <g class="tank-radar"><use href="#radar"/></g>
+    </symbol>
+  </defs>
+
+  <!-- Background - battlefield -->
+  <rect width="8000" height="6000" fill="#1a1a2e"/>
+
+  <!-- Grid pattern for battlefield feel -->
+  <g stroke="#2a2a4e" stroke-width="2">
+    <line x1="0" y1="1000" x2="8000" y2="1000"/>
+    <line x1="0" y1="2000" x2="8000" y2="2000"/>
+    <line x1="0" y1="3000" x2="8000" y2="3000"/>
+    <line x1="0" y1="4000" x2="8000" y2="4000"/>
+    <line x1="0" y1="5000" x2="8000" y2="5000"/>
+    <line x1="1000" y1="0" x2="1000" y2="6000"/>
+    <line x1="2000" y1="0" x2="2000" y2="6000"/>
+    <line x1="3000" y1="0" x2="3000" y2="6000"/>
+    <line x1="4000" y1="0" x2="4000" y2="6000"/>
+    <line x1="5000" y1="0" x2="5000" y2="6000"/>
+    <line x1="6000" y1="0" x2="6000" y2="6000"/>
+    <line x1="7000" y1="0" x2="7000" y2="6000"/>
+  </g>
+
+  <!-- Safe shadow zone (behind the bullet) - filled area -->
+  <ellipse cx="3200" cy="3000" rx="1000" ry="600" fill="rgba(16, 185, 129, 0.25)" stroke="#10B981" stroke-width="4" stroke-dasharray="20,10"/>
+
+  <!-- Danger zone ahead of bullet -->
+  <ellipse cx="5500" cy="3000" rx="800" ry="500" fill="rgba(239, 68, 68, 0.15)" stroke="#EF4444" stroke-width="4" stroke-dasharray="20,10"/>
+
+  <!-- Bullet path line (dashed) -->
+  <line x1="2000" y1="3000" x2="7200" y2="3000" stroke="#d2691e" stroke-width="6" stroke-dasharray="30,15" marker-end="url(#arrowhead)"/>
+
+  <!-- Bullet -->
+  <circle cx="4500" cy="3000" r="80" fill="#F59E0B" stroke="#fff" stroke-width="4"/>
+  <circle cx="4500" cy="3000" r="40" fill="#FBBF24"/>
+
+  <!-- Enemy bot (left side, facing right) -->
+  <g transform="translate(1800, 2800) scale(0.5)"
+     style="--tank-body-color: #c00; --tank-turret-color: #e22; --tank-radar-color: #faa;">
+    <use href="#tank"/>
+  </g>
+
+  <!-- Friendly bot (right side, facing left) -->
+  <g transform="translate(5800, 2800) scale(0.5) rotate(180, 400, 400)"
+     style="--tank-body-color: #0a0; --tank-turret-color: #2d2; --tank-radar-color: #afa;">
+    <use href="#tank"/>
+  </g>
+
+  <!-- Labels -->
+  <!-- Bullet detected label -->
+  <text x="4500" y="2400" font-family="Arial, sans-serif" font-size="140" font-weight="bold" fill="#d2691e" text-anchor="middle">Bullet detected here</text>
+  <line x1="4500" y1="2450" x2="4500" y2="2850" stroke="#d2691e" stroke-width="3"/>
+
+  <!-- Safe zone label -->
+  <text x="3200" y="2200" font-family="Arial, sans-serif" font-size="140" font-weight="bold" fill="#10B981" text-anchor="middle">Safe: bullet has passed</text>
+  <line x1="3200" y1="2250" x2="3200" y2="2450" stroke="#10B981" stroke-width="3"/>
+
+  <!-- Danger zone label -->
+  <text x="5800" y="2200" font-family="Arial, sans-serif" font-size="140" font-weight="bold" fill="#EF4444" text-anchor="middle">Danger: bullet ahead</text>
+  <line x1="5800" y1="2250" x2="5800" y2="2550" stroke="#EF4444" stroke-width="3"/>
+
+  <!-- Bot labels -->
+  <text x="2000" y="3300" font-family="Arial, sans-serif" font-size="120" fill="#e22" text-anchor="middle">Enemy</text>
+  <text x="6000" y="3300" font-family="Arial, sans-serif" font-size="120" fill="#2d2" text-anchor="middle">You</text>
+
+  <!-- Bullet path label -->
+  <text x="6800" y="2850" font-family="Arial, sans-serif" font-size="100" fill="#d2691e" text-anchor="middle">bullet path</text>
+
+  <!-- Shadow zone explanation -->
+  <rect x="400" y="4400" width="2400" height="400" rx="20" fill="rgba(16, 185, 129, 0.15)" stroke="#10B981" stroke-width="3"/>
+  <text x="1600" y="4550" font-family="Arial, sans-serif" font-size="100" fill="#10B981" text-anchor="middle">🟢 Shadow Zone</text>
+  <text x="1600" y="4700" font-family="Arial, sans-serif" font-size="80" fill="#aaa" text-anchor="middle">No bullet can exist here — safe to move through</text>
+
+  <!-- Danger zone explanation -->
+  <rect x="5200" y="4400" width="2400" height="400" rx="20" fill="rgba(239, 68, 68, 0.15)" stroke="#EF4444" stroke-width="3"/>
+  <text x="6400" y="4550" font-family="Arial, sans-serif" font-size="100" fill="#EF4444" text-anchor="middle">🔴 Danger Zone</text>
+  <text x="6400" y="4700" font-family="Arial, sans-serif" font-size="80" fill="#aaa" text-anchor="middle">Bullet is traveling toward this area — avoid!</text>
+</svg>
