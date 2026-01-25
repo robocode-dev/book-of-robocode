@@ -120,11 +120,7 @@ Differences to watch for:
 - **Remember the goal**: the best shot is often the one fired at the best *moment*, not the earliest moment.
 
 ```mermaid
----
-config:
-    xyChart:
-        showDataLabel: true
----
+%%{init: {'theme': 'base', 'themeVariables': { 'xyChart': { 'backgroundColor': 'transparent', 'xAxisLabelColor': '#d2691e', 'yAxisLabelColor': '#d2691e', 'xAxisTitleColor': '#d2691e', 'yAxisTitleColor': '#d2691e', 'xAxisTickColor': '#d2691e', 'yAxisTickColor': '#d2691e', 'xAxisLineColor': '#d2691e', 'yAxisLineColor': '#d2691e', 'titleColor': '#d2691e' }, 'xyChart': { 'showDataLabel': true, 'backgroundColor': 'transparent', 'xAxisLabelColor': '#d2691e', 'yAxisLabelColor': '#d2691e', 'xAxisTitleColor': '#d2691e', 'yAxisTitleColor': '#d2691e', 'xAxisTickColor': '#d2691e', 'yAxisTickColor': '#d2691e', 'xAxisLineColor': '#d2691e', 'yAxisLineColor': '#d2691e', 'titleColor': '#d2691e' } }}}%%
 xychart-beta
     title "Gun heat after a shot (cooling c = 0.1 per turn)"
     x-axis "Turn" 0 --> 16

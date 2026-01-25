@@ -98,6 +98,15 @@ Always use **"bot"** (except when quoting original titles, API names, or externa
 **"Units" vs "Pixels":**
 Always use **"units"** for measurements (e.g., 36×36 units, 1200 units, 8 units/turn).
 
+**Diagrams & Graphics (Theme Compatibility):**
+All diagrams, SVGs, and Mermaid charts must be readable on **both light and dark themes** (VitePress supports theme
+switching). For SVGs, avoid pure white (`#fff`) or pure black (`#000`) backgrounds—use semi-transparent or neutral 
+colors that work in both modes. For Mermaid charts, use this pattern with chocolate (`#d2691e`) for axes and text:
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'xyChart': { 'backgroundColor': 'transparent', 'plotColorPalette': '#3b82f6', 'xAxisLabelColor': '#d2691e', 'yAxisLabelColor': '#d2691e', 'xAxisTitleColor': '#d2691e', 'yAxisTitleColor': '#d2691e', 'xAxisTickColor': '#d2691e', 'yAxisTickColor': '#d2691e', 'xAxisLineColor': '#d2691e', 'yAxisLineColor': '#d2691e', 'titleColor': '#d2691e' } }}}%%
+```
+
 **Header Numbering:**
 Use numbered headers (e.g., `## 1. ...`) only for step-by-step or procedural pages. Use unnumbered headers for
 narrative/conceptual content.

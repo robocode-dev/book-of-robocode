@@ -49,6 +49,7 @@ So, two bots can have very different end-results:
 > "Make every shot count" is not just strategy advice — it's a scoring rule in disguise.
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'xyChart': { 'backgroundColor': 'transparent', 'xAxisLabelColor': '#d2691e', 'yAxisLabelColor': '#d2691e', 'xAxisTitleColor': '#d2691e', 'yAxisTitleColor': '#d2691e', 'xAxisTickColor': '#d2691e', 'yAxisTickColor': '#d2691e', 'xAxisLineColor': '#d2691e', 'yAxisLineColor': '#d2691e', 'titleColor': '#d2691e' } }}}%%
 xychart-beta
     title "Score Over Time"
 x-axis "Turn" [0, 10, 20, 30, 40, 50]

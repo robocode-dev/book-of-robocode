@@ -165,12 +165,7 @@ bullets when you need shorter travel time, and higher power for more damage when
 ## Bullet damage
 
 ```mermaid
----
-config:
-  themeVariables:
-    xyChart:
-      plotColorPalette: red, green
----
+%%{init: {'theme': 'base', 'themeVariables': { 'xyChart': { 'backgroundColor': 'transparent', 'plotColorPalette': 'red, green', 'xAxisLabelColor': '#d2691e', 'yAxisLabelColor': '#d2691e', 'xAxisTitleColor': '#d2691e', 'yAxisTitleColor': '#d2691e', 'xAxisTickColor': '#d2691e', 'yAxisTickColor': '#d2691e', 'xAxisLineColor': '#d2691e', 'yAxisLineColor': '#d2691e', 'titleColor': '#d2691e' } }}}%%
 xychart-beta
     title "Bullet Power vs Damage and Energy Reward"
     x-axis "Bullet Power" ["0.1", "1.0", "2.0", "3.0"]
