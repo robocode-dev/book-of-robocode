@@ -396,7 +396,7 @@ Once your GuessFactor gun is working, explore:
 
 - **[Segmentation & Visit Count Stats](segmentation-visit-count-stats.md)** — Split statistics by enemy behavior
   (distance, velocity, etc.) for more precise targeting
-- **[Dynamic Clustering](dynamic-clustering.md)** — Advanced multi-dimensional segmentation
+<!-- TODO: Add link when page is created - **[Dynamic Clustering](dynamic-clustering.md)** — Advanced multi-dimensional segmentation -->
 - **[Virtual Guns](../simple-targeting/virtual-guns-mean-targeting.md)** — Run multiple targeting systems and pick the
   best one
 

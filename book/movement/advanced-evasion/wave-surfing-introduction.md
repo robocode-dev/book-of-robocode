@@ -244,12 +244,14 @@ Even against these, Wave Surfing is rarely *worse* than traditional movement—i
 
 Once you have basic Wave Surfing working:
 
+<!-- TODO: Add links when pages are created
 - **[Wave Surfing Implementations](./wave-surfing-implementations.md)** — Compare GoTo vs. True Surfing approaches
 - **[Flattener](./flattener.md)** — Counter enemies who learn your surfing patterns
-- **[Segmentation & Visit Count Stats](../../targeting/statistical-targeting/segmentation-visit-count-stats.md)** — 
-  Apply segmentation to danger calculation
 - **[Anti-Surfer Targeting](../../targeting/advanced-targeting/anti-surfer-targeting.md)** — Understand how enemies 
   counter Wave Surfing
+-->
+- **[Segmentation & Visit Count Stats](../../targeting/statistical-targeting/segmentation-visit-count-stats.md)** — 
+  Apply segmentation to danger calculation
 
 ## Further Reading
 

@@ -274,8 +274,10 @@ the same bot all the time, you won't achieve the benefits.
 
 Once you have effective segmentation:
 
+<!-- TODO: Add links when pages are created
 - **[Dynamic Clustering](./dynamic-clustering.md)** — Replace fixed segments with adaptive similarity matching
 - **[Anti-Surfer Targeting](../advanced-targeting/anti-surfer-targeting.md)** — Counter enemies who use Wave Surfing
+-->
 - **[Virtual Guns](../simple-targeting/virtual-guns-mean-targeting.md)** — Run multiple segmented guns simultaneously
 
 ## Further Reading

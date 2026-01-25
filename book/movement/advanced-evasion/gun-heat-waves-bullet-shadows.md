@@ -378,8 +378,10 @@ else:
 ## Next Steps
 
 - **[Wave Surfing Introduction](./wave-surfing-introduction.md)** — Use Gun Heat Waves to improve wave detection
+<!-- TODO: Add links when pages are created
 - **[Dodging Bullets](./dodging-bullets.md)** — Reactive bullet avoidance using Bullet Shadows
 - **[Melee Movement Tactics](../../melee-combat/melee-movement.md)** — Apply these techniques to multi-opponent battles
+-->
 
 ## Further Reading
 
