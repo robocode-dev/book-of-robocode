@@ -18,8 +18,8 @@ source: [
 > contributions from **Patrick Cupka ("Voidious")** and **Julian Kent ("Skilgannon")** in their optimization of 
 > statistical targeting systems.
 
-Basic GuessFactor Targeting treats all enemy movement equally, recording every dodge attempt into a single array. This 
-works well against bots with consistent behavior, but fails when enemies adapt their movement based on distance, 
+Basic GuessFactor Targeting treats all enemy movements equally, recording every dodge attempt into a single array. This 
+works well against bots with consistent behavior but fails when enemies adapt their movement based on distance, 
 bullet power, or wall proximity.
 
 **Segmentation** solves this by splitting statistical data into separate buffers based on battlefield conditions. 
@@ -36,13 +36,21 @@ Imagine an enemy that:
 - Uses Stop-and-Go at medium range (predictable timing)
 - Oscillates predictably at long range (pattern-based)
 
-Without segmentation, your stats mix all three behaviors together. The close-range randomness pollutes your long-range 
+Without segmentation, your stats mix all three behaviors. The close-range randomness pollutes your long-range
 predictions, and vice versa. Your targeting accuracy suffers everywhere.
 
 With distance segmentation, you maintain separate statistics for each range band. At long range, you see the clean 
 oscillation pattern. At close range, you see the randomness and aim accordingly. Your hit rate improves dramatically.
 
 ## The Core Concept
+
+> [!IMPORTANT] Track Per Enemy
+> **Always maintain separate statistics for each enemy.** Store segmented data in a map keyed by enemy name:
+> ```pseudocode
+> enemyStats[enemyName][segment][guessfactor] += 1
+> ```
+> Mixing data from different enemies will severely degrade targeting accuracy. Each bot has unique movement patterns 
+> that must be learned independently.
 
 Instead of:
 
@@ -54,14 +62,14 @@ You do:
 
 ```pseudocode
 segment = calculateSegment(distance, lateralVelocity, advancingVelocity, bulletPower, ...)
-segmentedStats[segment][guessfactor] += 1
+segmentedStats[enemyName][segment][guessfactor] += 1
 ```
 
-When firing, you query the specific segment:
+When firing, you query the specific segment for that enemy:
 
 ```pseudocode
 currentSegment = calculateSegment(currentConditions)
-bestGuessFactor = findPeak(segmentedStats[currentSegment])
+bestGuessFactor = findPeak(segmentedStats[enemyName][currentSegment])
 ```
 
 ## Common Segmentation Axes
@@ -155,7 +163,7 @@ segmentIndex =
   (advancingSegment)
 ```
 
-This creates a multi-dimensional array. For example, 6 distance × 7 lateral × 3 advancing = 126 total segments.
+This creates a multidimensional array. For example, 6 distance × 7 lateral × 3 advancing = 126 total segments.
 
 > [!WARNING] The Curse of Dimensionality
 > More segments = more precision, but also = more data sparsity. Each segment needs enough samples to be reliable. 
@@ -167,21 +175,34 @@ With 100+ segments, some will rarely be visited. Solutions:
 
 ### 1. Decay Old Data
 
-Weight recent shots more heavily:
+Weight recent shots more heavily by decaying **all** data before recording the new hit:
 
 ```pseudocode
-stats[segment][gf] = stats[segment][gf] * 0.95 + 1  // New shot worth 1.0, old shots decay
+// Decay all bins for this enemy across all segments
+for each seg in allSegments:
+  for each gf in allGuessFactors:
+    stats[enemyName][seg][gf] *= 0.98
+
+// Then record the new hit
+stats[enemyName][currentSegment][hitGF] += 1
 ```
+
+The decay factor (e.g., 0.98) controls how quickly old data is forgotten. Lower values (0.9–0.95) forget faster; higher 
+values (0.98–0.995) retain historical data longer.
+
+> [!TIP] Optimizing Decay
+> Decaying every bin on every wave hit can be expensive with large datasets. Some implementations decay only when 
+> recording hits or use a timestamp-based approach that calculates effective decay on-demand when reading data.
 
 ### 2. Use Fallback Segments
 
-If current segment has < N samples, fall back to less-specific segmentation:
+If the current segment has < N samples, fall back to a less-specific segmentation:
 
 ```pseudocode
-if samples[currentSegment] < 10:
+if samples[enemyName][currentSegment] < 10:
   use onlyDistanceSegment  // Ignore lateral/advancing
-if samples[onlyDistanceSegment] < 5:
-  use noSegmentation  // Use all data
+if samples[enemyName][onlyDistanceSegment] < 5:
+  use noSegmentation  // Use all data for this enemy
 ```
 
 ### 3. Kernel Density Estimation
@@ -191,7 +212,7 @@ Spread each hit across nearby GuessFactors (smoothing):
 ```pseudocode
 for offset in [-2, -1, 0, 1, 2]:
   if inBounds(gf + offset):
-    stats[segment][gf + offset] += kernel[offset]  // e.g., [0.1, 0.2, 0.4, 0.2, 0.1]
+    stats[enemyName][segment][gf + offset] += kernel[offset]  // e.g., [0.1, 0.2, 0.4, 0.2, 0.1]
 ```
 
 ## Finding the Peak
@@ -202,18 +223,34 @@ Once you have segmented stats, find the most-visited GuessFactor:
 bestGF = 0
 maxVisits = 0
 for gf in range(-bins, +bins):
-  if stats[segment][gf] > maxVisits:
-    maxVisits = stats[segment][gf]
+  if stats[enemyName][segment][gf] > maxVisits:
+    maxVisits = stats[enemyName][segment][gf]
     bestGF = gf
 return bestGF
 ```
 
-For smoother targeting, use **weighted average** of nearby peaks instead of a single peak.
+### Smoothing with Rolling Averages
 
-## Platform Notes
+For smoother targeting, instead of aiming at the single highest bin, **sum nearby bins** to reduce noise:
 
-Both classic Robocode and Tank Royale support segmentation identically—it's a pure data structure technique. The only 
-differences are in API calls to retrieve enemy state (velocity, position, etc.).
+```pseudocode
+bestGF = 0
+bestSum = 0
+for gf in range(-bins + 1, +bins - 1):  // Skip edges
+  // Sum this bin and its neighbors
+  sum = stats[enemyName][segment][gf - 1] +
+        stats[enemyName][segment][gf] +
+        stats[enemyName][segment][gf + 1]
+  
+  if sum > bestSum:
+    bestSum = sum
+    bestGF = gf
+
+return bestGF
+```
+
+This helps when data is sparse—a single bin with 1 lucky hit won't outweigh a cluster of bins with consistent hits. 
+The rolling average finds the **center of mass** of your data rather than a single outlier peak.
 
 ## Practical Tips
 
@@ -222,7 +259,7 @@ differences are in API calls to retrieve enemy state (velocity, position, etc.).
 **Log everything:** Save segment indices, hit rates per segment, and sample counts. Analyze offline to tune bin counts.
 
 **Test against diverse opponents:** Segmentation helps most against adaptive enemies. If you only test against 
-SittingDuck, you won't see the benefits.
+the same bot all the time, you won't achieve the benefits.
 
 **Avoid over-segmentation:** 200+ segments often perform worse than 50–100 well-chosen segments due to data sparsity.
 
