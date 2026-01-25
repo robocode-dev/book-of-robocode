@@ -1,70 +1,58 @@
 # TODO
 
-- Should we replace all code examples? 
-  - Instead of pseudocode, we would use `::: code-group` with: 
-    - classic Robocode (java) and
-    - Tank Royale (java, C# amd Python)
+## Code Examples
 
-## Missing Crucial Pages for First Version
+- Replace pseudocode with `::: code-group` containing:
+  - Classic Robocode (Java)
+  - Tank Royale (Java, C#, Python)
 
-### High Priority (Core Concepts) - done
+## Missing Pages (Currently Commented Out)
 
-| Section            | Page                            | Why Crucial                                   |
-|--------------------|---------------------------------|-----------------------------------------------|
-| Radar & Scanning   | **Melee Radar** (all sub-pages) | Incomplete radar coverage                     |
-| Targeting Systems  | **Introducing Waves**           | Foundation for all advanced targeting         |
-| Targeting Systems  | **GuessFactor Targeting**       | Most important intermediate targeting concept |
-| Movement & Evasion | **Anti-Gravity Movement**       | Key strategic movement pattern                |
-| Movement & Evasion | **Wave Surfing Introduction**   | Essential advanced evasion technique          |
-| Appendices         | **Quick Reference (Formulas)**  | Practical reference users will need           |
+Create these advanced pages and uncomment their links (search for `<!-- TODO: Add link when page is created`):
 
-### Medium Priority (Completeness)
+**Targeting Systems:**
+- Dynamic Clustering — Advanced multi-dimensional segmentation
+- Anti-Surfer Targeting — Counter enemies who use Wave Surfing
+- Precise Prediction — Enables accurate future position calculation
+- Pattern Matching — Fundamental log-based targeting
 
-- **The Targeting Problem → Introducing Waves** — bridges simple to statistical targeting
-- **Precise Prediction** — enables accurate future position calculation
-- **Pattern Matching** — fundamental log-based targeting
+**Movement & Evasion:**
+- Dodging Bullets — Reactive bullet avoidance
+- Wave Surfing Implementations — Compare GoTo vs. True Surfing
+- Flattener — Counter enemies who learn surfing patterns
 
-### Suggested Minimum for V1
+**Melee Combat:**
+- Melee Movement Tactics — Apply techniques to multi-opponent battles
 
-Complete at least: **Waves**, **GuessFactor Targeting**, **Anti-Gravity Movement**, and **Quick Reference**.
+## Images
 
-# Images (request from AI)
+- Convert key PNG diagrams to SVG or Mermaid where practical (e.g., `book/images/my-first-bot-config.png`)
+- Regenerate any non-screenshot PNG images to match the book's visual style
 
-- Consider gradually converting key conceptual diagrams from PNG to SVG or Mermaid where practical:
-    - `book/images/my-first-bot-config.png`
-- Decide whether any non-screenshot/non-historical PNG images should be regenerated (or re-exported) to better match
-  the book’s visual style and new SVG/Mermaid preference.
+## Content & Links
 
-# Links need to be checked/fixed
+- Add term glossary links throughout content (e.g., `GuessFactor` linking to glossary)
+- Add specs/retroactive-hit-analysis.md (Flemming's idea) to the book alongside waves content
 
-- Some links are broken as they are created before the articles to create an important reference.
-- We should also create links for to pages from the page content itself.
+## Contribution & Attribution
 
-# In the end
+- Create contribution guidelines (how to contribute, make PRs, file issues)
+- Update ATTRIBUTION.md with all contributors
+- Create a credits page in the book
 
-- We need to links on terms like `GuessFactor`
-- How to people contribute?
-- Links to the book of Robocode -> make PR? How to file/correct an issue?
-- Update ATTRIBUTION.md and also a page in the book with credits to _all_ the people behind the pages.
+## Examples & Resources
 
-- SHOULD WE PROVIDE BOT EXAMPLES in a GITHUB REPO?!
+- Consider providing bot examples in a GitHub repo
+- Add FAQ section covering https://robowiki.net/wiki/Robocode/FAQ
 
-# Also
+## Integration & Outreach (IMPORTANT!)
 
-- Add specs/retroactive-hit-analysis.md to the book of Robocode alongside waves.
+- Add links to Book of Robocode in both Robocode and Tank Royale:
+  - About dialog
+  - Help menu
+- Contact Julian Kent ("Skilgannon") to add Book of Robocode to RoboWiki
+- Refactor robocode.dev docs to reference Book of Robocode
 
-# FAQ
+## Future Considerations
 
-- Make sure we cover all these in the end: https://robowiki.net/wiki/Robocode/FAQ
-
-# Future
-
-- We might be able to enable/disable friendly fire. Perhaps wait for the community to ask for it?
-
-# IMPORTANT!
-
-- Add links to the book of in both Robocode and Tank Royale:
-    - in About dialog AND Help menu
-- Contact Julian Kent ("Skilgannon") with link to Book of Robocode (add to RoboWiki?)
-
-- Refactor all documents of robocode.dev to use the book of Robocode as a reference.
+- Friendly fire toggle (wait for community feedback before implementing)
