@@ -16,7 +16,7 @@ Robocode began in the early 2000s as a side project by Mathew A. Nelson. The ide
 coding a bot tank that fights in a 2D arena. The mix of learning and competition made it popular with students,
 hobbyists, and teachers.
 
-<img src="../images/i-can-code-that.png" alt="Early 2000 Robocode" width="600" style="max-width:100%;height:auto;" /><br>
+<img src="../images/i-can-code-that.png" alt="Early 2000 Robocode" style="max-width:100%;height:auto;" /><br>
 *Early 2000 Robocode*
 
 ## The Classic Robocode Era
@@ -34,7 +34,7 @@ Highlights:
 RoboWiki became the reference for advanced topics such as wave surfing, GuessFactor targeting, detailed battlefield
 physics, and much more.
 
-<img src="../images/community-sharing.png" alt="Community sharing bots and ideas" width="600" style="max-width:100%;height:auto;" /><br>
+<img src="../images/community-sharing.png" alt="Community sharing bots and ideas" style="max-width:100%;height:auto;" /><br>
 *Community Sharing Bots and Ideas via the RoboWiki*
 
 ## Handover and Community Maintenance

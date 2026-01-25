@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4a5568"/>
+    </marker>
+    <marker id="arrowhead-loop" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#38a169"/>
+    </marker>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="280" fill="#1a1a2e"/>
+
+  <!-- Step 1: Scan -->
+  <g transform="translate(60, 40)">
+    <rect x="0" y="0" width="150" height="110" rx="12" fill="#2d3748" stroke="#4299e1" stroke-width="2" filter="url(#shadow)"/>
+    <text x="75" y="30" text-anchor="middle" fill="#4299e1" font-family="Arial, sans-serif" font-size="14" font-weight="bold">📡 SCAN</text>
+    <line x1="10" y1="42" x2="140" y2="42" stroke="#4a5568" stroke-width="1"/>
+    <text x="75" y="62" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="11">Keep radar moving</text>
+    <text x="75" y="80" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="11">Sweep or lock target</text>
+    <text x="75" y="98" text-anchor="middle" fill="#718096" font-family="Arial, sans-serif" font-size="10" font-style="italic">Maintain awareness</text>
+  </g>
+
+  <!-- Arrow 1→2 -->
+  <line x1="220" y1="95" x2="250" y2="95" stroke="#4a5568" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 2: Move -->
+  <g transform="translate(260, 40)">
+    <rect x="0" y="0" width="150" height="110" rx="12" fill="#2d3748" stroke="#48bb78" stroke-width="2" filter="url(#shadow)"/>
+    <text x="75" y="30" text-anchor="middle" fill="#48bb78" font-family="Arial, sans-serif" font-size="14" font-weight="bold">➡️ MOVE</text>
+    <line x1="10" y1="42" x2="140" y2="42" stroke="#4a5568" stroke-width="1"/>
+    <text x="75" y="62" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="11">Simple pattern first</text>
+    <text x="75" y="80" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="11">Avoid getting stuck</text>
+    <text x="75" y="98" text-anchor="middle" fill="#718096" font-family="Arial, sans-serif" font-size="10" font-style="italic">Later: evasion tactics</text>
+  </g>
+
+  <!-- Arrow 2→3 -->
+  <line x1="420" y1="95" x2="450" y2="95" stroke="#4a5568" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 3: Aim -->
+  <g transform="translate(460, 40)">
+    <rect x="0" y="0" width="150" height="110" rx="12" fill="#2d3748" stroke="#ed8936" stroke-width="2" filter="url(#shadow)"/>
+    <text x="75" y="30" text-anchor="middle" fill="#ed8936" font-family="Arial, sans-serif" font-size="14" font-weight="bold">🎯 AIM</text>
+    <line x1="10" y1="42" x2="140" y2="42" stroke="#4a5568" stroke-width="1"/>
+    <text x="75" y="62" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="11">Point at enemy</text>
+    <text x="75" y="80" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="11">Use current bearing</text>
+    <text x="75" y="98" text-anchor="middle" fill="#718096" font-family="Arial, sans-serif" font-size="10" font-style="italic">Later: lead shots</text>
+  </g>
+
+  <!-- Arrow 3→4 -->
+  <line x1="620" y1="95" x2="650" y2="95" stroke="#4a5568" stroke-width="2" marker-end="url(#arrowhead)"/>
+
+  <!-- Step 4: Fire -->
+  <g transform="translate(660, 40)">
+    <rect x="0" y="0" width="130" height="110" rx="12" fill="#2d3748" stroke="#e53e3e" stroke-width="2" filter="url(#shadow)"/>
+    <text x="65" y="30" text-anchor="middle" fill="#e53e3e" font-family="Arial, sans-serif" font-size="14" font-weight="bold">💥 FIRE</text>
+    <line x1="10" y1="42" x2="120" y2="42" stroke="#4a5568" stroke-width="1"/>
+    <text x="65" y="62" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="11">Check gun heat</text>
+    <text x="65" y="80" text-anchor="middle" fill="#a0aec0" font-family="Arial, sans-serif" font-size="11">Modest firepower</text>
+    <text x="65" y="98" text-anchor="middle" fill="#718096" font-family="Arial, sans-serif" font-size="10" font-style="italic">Tune as you learn</text>
+  </g>
+
+  <!-- Repeat loop arrow (curved, going back) -->
+  <path d="M 725 160
+           Q 725 220 400 220
+           Q 190 220 115 160"
+        fill="none" stroke="#38a169" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrowhead-loop)"/>
+
+  <!-- Repeat label -->
+  <rect x="360" y="205" width="80" height="24" rx="12" fill="#38a169"/>
+  <text x="400" y="222" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif" font-size="12" font-weight="bold">🔁 REPEAT</text>
+
+  <!-- Title -->
+  <text x="400" y="268" text-anchor="middle" fill="#e2e8f0" font-family="Arial, sans-serif" font-size="13">The Bot Heartbeat: Scan → Move → Aim → Fire → Repeat</text>
+</svg>
