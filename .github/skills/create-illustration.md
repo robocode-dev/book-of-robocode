@@ -287,6 +287,23 @@ appearing too large. Always add `scale()` AFTER `translate()`:
 - **4000×3000 or smaller viewport:** Use `scale(1)` or `scale(0.5)` depending on tank prominence
 - Scale must come AFTER `translate()` in the transform attribute
 
+**Offset compensation for scaling:**
+
+When scaling a tank, the visual center shifts. To position a tank's center at coordinates `(cx, cy)`, apply these
+offset rules:
+
+| Scale | X Offset | Y Offset | Formula for translate                  |
+|-------|----------|----------|----------------------------------------|
+| 1.0   | 0        | 0        | `translate(cx - 400, cy - 400)`        |
+| 0.75  | +100     | +100     | `translate(cx - 400 + 100, cy - 400 + 100)` = `translate(cx - 300, cy - 300)` |
+| 0.5   | +200     | +200     | `translate(cx - 400 + 200, cy - 400 + 200)` = `translate(cx - 200, cy - 200)` |
+
+**Example:** To place a tank center at (2000, 3000) with scale 0.5:
+
+```xml
+<use href="#tank" transform="translate(1800, 2800) scale(0.5)" .../>
+```
+
 ---
 
 ## Line Rendering
