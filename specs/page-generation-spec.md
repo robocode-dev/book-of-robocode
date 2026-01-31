@@ -168,13 +168,13 @@ who developed the technique or concept.
 
 1. **Check `book/appendices/wall-of-fame.md`** for known originators of techniques.
 2. **Known attributions include:**
-    - **Paul Evans** — GuessFactor Targeting inventor (SandboxGT bot)
-    - **ABC** — Wave Surfing inventor, Shadow bot, early RoboWiki contributor
-    - **Peter Strömberg ("PEZ")** — RoboWiki founder, host, and administrator; CassiusClay and Pugilist bots
+    - **Paul Evans, David Alves, Albert Perez** — Co-pioneers of GuessFactor Targeting (early 2000s)
+    - **Kawigi** — Popularized GuessFactor Targeting through tutorials and FloodMini; wall smoothing implementations
+    - **ABC** — Inventor of Wave Surfing, Shadow bot, early RoboWiki contributor
+    - **Peter Strömberg ("PEZ")** — RoboWiki founder, host, and administrator; popularized GuessFactor Targeting through GFTargetingBot; CassiusClay and Pugilist bots
     - **Julian Kent ("Skilgannon")** — Dynamic Clustering, LiteRumble, current RoboWiki.net hosting
     - **Albert Perez** — RoboRumble
-    - **Patrick Cupka ("Voidious")** — Energy management, movement flattening, Dookious techniques
-    - **Kawigi** — Wall smoothing implementations, early tutorials
+    - **Patrick Cupka ("Voidious")** — Wave Surfing refinement, movement flattening, Dookious techniques
     - **David Alves** — Pattern matching, precise prediction
 3. **If no specific originator is known**, credit the RoboWiki community:
    ```markdown
@@ -430,8 +430,7 @@ The sidebar uses nested `items` arrays:
 
 ```javascript
 sidebar: {
-    '/targeting/'
-:
+    '/targeting/':
     [
         {
             text: 'Targeting Systems',

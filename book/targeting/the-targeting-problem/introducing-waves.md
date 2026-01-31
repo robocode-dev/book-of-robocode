@@ -14,9 +14,10 @@ source: [
 # Introducing Waves
 
 > [!TIP] Origins
-> The **wave** concept was developed as the foundation for **GuessFactor Targeting**, invented by **Paul Evans** 
-> (SandboxGT), and later adopted for **Wave Surfing**, invented by **ABC**. This innovation revolutionized competitive 
-> Robocode by providing a precise way to track bullet travel and enemy positioning.
+> The **wave** concept was developed as the foundation for **GuessFactor Targeting**, co-pioneered by **Paul Evans**, 
+> **David Alves**, and **Albert Perez** in the early 2000s, and later adopted for **Wave Surfing**, invented by **ABC**. 
+> This innovation revolutionized competitive Robocode by providing a precise way to track bullet travel and enemy 
+> positioning.
 
 > [!NOTE] Implementation Guide
 > This page explains the **concepts** behind waves and GuessFactors. For a **step-by-step tutorial** with complete 
