@@ -93,42 +93,20 @@ the next turn (e.g., last known enemy position).
 ## Minimal platform notes
 
 - Classic Robocode typically uses a properties (`.properties`) file to define the bot. The filename usually must match
-  your bot’s class name. See the classic tutorial for exact fields and
+  your bot's class name. See the classic tutorial for exact fields and
   placement: [Robot properties](robot-properties-file.md)
 - Robocode Tank Royale uses a JSON configuration file for bot metadata/settings. See the Tank Royale tutorial for the
   current schema and placement: https://robocode.dev/tutorial/my-first-bot.html
 
-If you’re unsure whether something belongs in config or code, rely on the tutorial for your platform—the formats and
+If you're unsure whether something belongs in config or code, rely on the tutorial for your platform—the formats and
 best practices can evolve.
 
-### Bot configuration: Classic (.properties) vs. Tank Royale JSON
+> [!TIP] How battles differ between platforms
+> Beyond configuration files, the platforms differ in how battles are run (GUI vs. server architecture).
+> See [Classic vs Tank Royale: How Battles Differ](your-first-battle.md#classic-vs-tank-royale-how-battles-differ) for
+> details.
 
-```mermaid
-flowchart LR
-  %% Two-panel comparison: Classic .properties (left) vs Tank Royale JSON (right)
-  subgraph Classic["Classic Robocode"]
-    direction TB
-    c_file(["📄 MyFirstRobot.properties"])
-    c_snip["robot.name: MyFirstRobot<br>robot.author.name: You<br>robot.description: A simple bot<br>..."]
-    c_file --> c_snip
-  end
-
-  subgraph Tank["Tank Royale"]
-    direction TB
-    t_file(["📄 MyFirstBot.json"])
-    t_snip["{''name'': ''My First Bot'',<br>''author'': ''you'',<br>''description'':&nbsp;''A&nbsp;simple&nbsp;bot''<br>...}"]
-    t_file --> t_snip
-  end
-
-  Classic <--->|"same bot metadata"| Tank
-
-  classDef fileStyle color:black,fill:#f6f9ff,stroke:#2b6cb0,stroke-width:1px;
-  classDef jsonStyle color:black,fill:#fff7f7,stroke:#e74c3c,stroke-width:1px;
-  class c_file,c_snip fileStyle
-  class t_file,t_snip jsonStyle
-```
-
-#### Example: Classic Robocode properties file
+### Example: Classic Robocode properties file
 
 **MyFirstRobot.properties**
 
@@ -145,7 +123,7 @@ robot.classname=sample.MyFirstRobot
 robot.name=MyFirstRobot
 ```
 
-#### Example: Tank Royale JSON file
+### Example: Tank Royale JSON file
 
 **MyFirstBot.json**
 

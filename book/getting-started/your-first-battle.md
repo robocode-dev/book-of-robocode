@@ -260,23 +260,18 @@ The high‑level goal is the same—bots fight until only one is left—but the 
         - Starting each bot so it connects,
         - Selecting from the **connected bots list**, then launching a match.
 
-![Classic vs Tank Royale comparison](../images/classic-vs-tank-royale.svg)<br>
-*Classic Robocode (left) vs Robocode Tank Royale (right)*
-
-Pair this split screenshot with the emoji diagram below to keep the contrasts handy:
-
 ```mermaid
 flowchart LR
-    hub((⚔️ Classic vs Tank Royale))
-    subgraph classic[�?️ Classic Robocode]
-        c1[🖥️ All-in-one GUI arena]
-        c2[📂 Bots loaded from local directory]
-        c3[▶️ Pick bots and press Start]
+    hub((Classic vs Tank Royale))
+    subgraph classic["Classic Robocode"]
+        c1["🖥️ All-in-one GUI arena"]
+        c2["📂 Bots loaded from local directory"]
+        c3["▶️ Pick bots and press Start"]
     end
-    subgraph royale[🌐 Tank Royale]
-        r1[🏢 Server + external bot processes]
-        r2[🔌 Bots connect over a network protocol]
-        r3[📋 Launch server, start bots, select connected roster]
+    subgraph royale["Tank Royale"]
+        r1["🏢 Server + external bot processes"]
+        r2["🔌 Bots connect over a network protocol"]
+        r3["📋 Launch server, start bots, select connected roster"]
     end
     hub --> classic
     hub --> royale
@@ -287,6 +282,10 @@ Despite these differences, many **game concepts** are shared:
 - 1‑on‑1 vs melee battles with many bots.
 - Movement, targeting, and energy management.
 - Running many quick battles to test improvements.
+
+> [!TIP] Bot configuration files
+> The platforms also differ in how bots are configured: Classic uses `.properties` files, while Tank Royale uses JSON.
+> See [Your First Bot](your-first-bot.md#example-classic-robocode-properties-file) for concrete examples of both formats.
 
 ---
 

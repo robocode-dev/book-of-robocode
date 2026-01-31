@@ -4,7 +4,7 @@
 
 “Build the best — destroy the rest!” — Mathew A. Nelson
 
-[![Deploy Documentation](https://github.com/robocode-dev/robocoding/actions/workflows/deploy.yml/badge.svg)](https://github.com/robocode-dev/robocoding/actions/workflows/deploy.yml)
+[![Deploy Documentation](https://github.com/robocode-dev/book-of-robocode/actions/workflows/deploy.yml/badge.svg)](https://github.com/robocode-dev/book-of-robocode/actions/workflows/deploy.yml)
 
 A structured, modern knowledge base covering **Robocode** and **Robocode Tank Royale** — from fundamentals and physics
 to movement, targeting, and competitive strategy — distilling two decades of community experience.

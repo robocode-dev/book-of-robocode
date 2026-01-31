@@ -34,7 +34,7 @@ This documentation covers both:
 1. [Read the Introduction](./introduction/what-is-robocode) to understand what Robocode is
 2. [Follow the Tutorial](./getting-started/your-first-bot) to create your first bot
 3. [Learn the Physics](./physics/coordinates-and-angles) to master game mechanics
-4. [Understand Scoring](./articles/scoring) to optimize your strategy
+4. [Understand Scoring](./energy-and-scoring/scoring-systems-battle-types) to optimize your strategy
 
 ## Community & Credits
 
@@ -43,7 +43,7 @@ contributors of [RoboWiki](http://robowiki.net/) for their extensive research an
 
 ### Contributing
 
-Found an error or want to contribute? Visit our [GitHub repository](https://github.com/robocode-dev/robocoding) to help
+Found an error or want to contribute? Visit our [GitHub repository](https://github.com/robocode-dev/book-of-robocode) to help
 improve this documentation.
 
 ## License
