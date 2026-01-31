@@ -19,13 +19,23 @@ and sharing their discoveries. This page honors those who shaped the game's comp
 
 These individuals made foundational contributions to Robocode strategy and community infrastructure.
 
+### Paul Evans (SandboxDT)
+
+[RoboWiki - SandboxDT](https://robowiki.net/wiki/SandboxDT)
+
+Creator of **SandboxDT** and **SandboxGT**, Paul Evans invented **GuessFactor Targeting** — the statistical targeting 
+approach that revolutionized competitive Robocode. Instead of predicting enemy movement with formulas, GuessFactor 
+Targeting records where enemies actually go and aims at the most probable position. This technique remains fundamental 
+to advanced bot development today.
+
 ### Peter Strömberg (PEZ)
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:PEZ)
 
-Founder of the original [RoboWiki](https://robowiki.net/), the central knowledge repository for Robocode strategy. 
-Creator of legendary bots **CassiusClay** and **Pugilist**. PEZ pioneered **Wave Surfing** and **GuessFactor 
-Targeting** — two techniques that revolutionized competitive Robocode and remain foundational to this day.
+Founder, host, and administrator of the original [RoboWiki](https://robowiki.net/), the central knowledge repository 
+for Robocode strategy. Creator of legendary bots **CassiusClay** and **Pugilist**. PEZ maintained the site's 
+infrastructure, wrote articles, shared insights, and preserved Robocode history by maintaining a static copy of the 
+old RoboWiki to ensure early knowledge wasn't lost.
 
 Beyond technical contributions, PEZ was instrumental in building the collaborative community culture that made RoboWiki
 thrive. His vision of open knowledge sharing shaped the entire Robocode community.
@@ -96,8 +106,9 @@ These developers created influential bots that introduced new techniques or push
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:Abc)
 
-Author of **Shadow**, which introduced innovative melee gun techniques. Shadow's approach to multi-target engagement
-influenced subsequent melee bot development. ABC was also an early contributor to RoboWiki's founding and development.
+Inventor of **Wave Surfing**, the defensive movement technique that revolutionized how bots evade enemy fire. Author of 
+**Shadow**, which introduced innovative melee gun techniques. Shadow's approach to multi-target engagement influenced 
+subsequent melee bot development. ABC was also an early contributor to RoboWiki's founding and development.
 
 ### Simonton
 

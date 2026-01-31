@@ -165,8 +165,9 @@ who developed the technique or concept.
 
 1. **Check `book/appendices/wall-of-fame.md`** for known originators of techniques.
 2. **Known attributions include:**
-   - **Peter Strömberg ("PEZ")** — Wave Surfing, GuessFactor Targeting, waves concept, RoboWiki co-founder
-   - **ABC** — Shadow bot, early RoboWiki contributor
+   - **Paul Evans ("SandboxDT")** — GuessFactor Targeting inventor (SandboxGT)
+   - **ABC** — Wave Surfing inventor, Shadow bot, early RoboWiki contributor
+   - **Peter Strömberg ("PEZ")** — RoboWiki founder, host, and administrator; CassiusClay and Pugilist bots
    - **Julian Kent ("Skilgannon")** — Dynamic Clustering, LiteRumble, current RoboWiki.net hosting
    - **Albert Perez** — RoboRumble
    - **Patrick Cupka ("Voidious")** — Energy management, movement flattening, Dookious techniques

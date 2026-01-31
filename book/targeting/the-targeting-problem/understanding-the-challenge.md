@@ -14,8 +14,8 @@ source: [
 # Understanding the Challenge
 
 > [!TIP] Origins
-> The **wave-based targeting** concept and **GuessFactor Targeting** were pioneered by **Peter Strömberg ("PEZ")** and
-> refined by the RoboWiki community, revolutionizing competitive Robocode.
+> **GuessFactor Targeting** was invented by **Paul Evans** (SandboxGT), while **Wave Surfing** was invented by **ABC**.
+> These techniques, refined by the RoboWiki community, revolutionized competitive Robocode.
 
 The simple targeting methods—head-on, linear, and circular—work great against predictable bots.
 But as soon as enemies start changing their direction, speeding up unpredictably, or deliberately dodging, hit rates

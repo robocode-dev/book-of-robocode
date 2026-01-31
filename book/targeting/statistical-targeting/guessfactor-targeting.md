@@ -7,6 +7,7 @@ difficulty: "advanced"
 source: [
   "RoboWiki - GuessFactor Targeting (traditional) (classic Robocode) https://robowiki.net/wiki/GuessFactor_Targeting_(traditional)",
   "RoboWiki - Waves (classic Robocode) https://robowiki.net/wiki/Waves",
+  "RoboWiki - SandboxDT (classic Robocode) https://robowiki.net/wiki/SandboxDT",
   "Robocode Tank Royale Docs - Bullet Physics https://robocode.dev/articles/physics.html"
 ]
 ---
@@ -14,9 +15,9 @@ source: [
 # GuessFactor Targeting
 
 > [!TIP] Origins
-> **GuessFactor Targeting** was pioneered by **Peter Strömberg ("PEZ")** and revolutionized competitive Robocode.
-> Instead of trying to predict exactly where an enemy will be, it tracks where enemies *actually go* and aims at the
-> statistically most likely position. This technique remains fundamental to advanced bot development.
+> **GuessFactor Targeting** was invented by **Paul Evans** in his bot **SandboxGT** and revolutionized competitive 
+> Robocode. Instead of trying to predict exactly where an enemy will be, it tracks where enemies *actually go* and 
+> aims at the statistically most likely position. This technique remains fundamental to advanced bot development.
 
 GuessFactor Targeting (GFT) is a statistical targeting system that learns from experience. Instead of predicting enemy
 movement with mathematical formulas, it records where enemies are when bullets arrive and fires at the positions they
