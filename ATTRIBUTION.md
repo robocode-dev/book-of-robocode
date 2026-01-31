@@ -1,10 +1,12 @@
 # Attribution
 
-This project, The Book of Robocode, builds on two decades of work by many people across Robocode and Robocode Tank Royale.
+This project, The Book of Robocode, builds on two decades of work by many people across Robocode and Robocode Tank
+Royale.
 
 ## Primary Authors
 
-- Flemming Nørnberg Larsen — Author of The Book of Robocode; Robocode maintainer (2005–present); creator of Robocode Tank Royale
+- Flemming Nørnberg Larsen — Author of The Book of Robocode; Robocode maintainer (2005–present); creator of Robocode
+  Tank Royale
 - Mathew A. Nelson — Original creator of Robocode (2001–2005)
 
 ## Notable Contributors
@@ -15,31 +17,36 @@ This project, The Book of Robocode, builds on two decades of work by many people
 
 ## RoboWiki
 
-- Peter Strömberg (PEZ) — Founder, host, and administrator of RoboWiki (2003–2007); creator of CassiusClay and Pugilist bots
-  - Reference: http://robowiki.net/wiki/User:PEZ
+- Peter Strömberg (PEZ) — Founder, host, and administrator of RoboWiki (2003–2007); creator of CassiusClay and Pugilist
+  bots
+    - Reference: http://robowiki.net/wiki/User:PEZ
 - Crippa — Co-founder of RoboWiki (2003)
+    - Reference: http://robowiki.net/wiki/User:Crippa
 - Julian Kent (Skilgannon) — Current host of RoboWiki.net; creator/maintainer of LiteRumble; creator of DrussGT bot
-  - Reference: http://robowiki.net/wiki/User:Skilgannon
+    - Reference: http://robowiki.net/wiki/User:Skilgannon
 
 ## RoboRumble and LiteRumble
 
 - Albert Perez — Creator of RoboRumble
-  - Reference: http://robowiki.net/wiki/RoboRumble
+    - Reference: http://robowiki.net/wiki/RoboRumble
 - Julian Kent (Skilgannon) — Creator/maintainer of LiteRumble
-  - Reference: http://robowiki.net/wiki/LiteRumble
+    - Reference: http://robowiki.net/wiki/LiteRumble
 
 ## Pioneering Techniques
 
-- Paul Evans (SandboxDT) — Inventor of GuessFactor Targeting
-  - Reference: http://robowiki.net/wiki/SandboxDT
+- Paul Evans — Inventor of GuessFactor Targeting (SandboxGT bot)
+    - Reference: http://robowiki.net/wiki/Paul_Evans
+    - Bot: http://robowiki.net/wiki/SandboxDT
 - ABC — Inventor of Wave Surfing; creator of Shadow bot
-  - Reference: http://robowiki.net/wiki/User:Abc
+    - Reference: http://robowiki.net/wiki/User:Abc
 
 For more detailed contributor histories and discussions, please consult the respective RoboWiki pages above.
 
 ## Source Acknowledgments
 
-Some explanatory text, formulas, and strategy descriptions in this repository are inspired by or derived from articles on RoboWiki.net, which is licensed under CC BY-SA 3.0. When content is adapted, we provide attribution in-page where practical and include page references in NOTICE.md.
+Some explanatory text, formulas, and strategy descriptions in this repository are inspired by or derived from articles
+on RoboWiki.net, which is licensed under CC BY-SA 3.0. When content is adapted, we provide attribution in-page where
+practical and include page references in NOTICE.md.
 
 - RoboWiki: http://robowiki.net/ — License: CC BY-SA 3.0 (https://creativecommons.org/licenses/by-sa/3.0/)
 

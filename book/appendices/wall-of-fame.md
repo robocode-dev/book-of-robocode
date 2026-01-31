@@ -23,20 +23,22 @@ These individuals made foundational contributions to Robocode strategy and commu
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:PEZ)
 
-Founder, host, and administrator of the original [RoboWiki](https://robowiki.net/), the central knowledge repository 
-for Robocode strategy. Creator of legendary bots **CassiusClay** and **Pugilist**. PEZ maintained the site's 
-infrastructure, wrote articles, shared insights, and preserved Robocode history by maintaining a static copy of the 
+Founder, host, and administrator of the original [RoboWiki](https://robowiki.net/), the central knowledge repository
+for Robocode strategy. Creator of legendary bots **CassiusClay** and **Pugilist**. PEZ maintained the site's
+infrastructure, wrote articles, shared insights, and preserved Robocode history by maintaining a static copy of the
 old RoboWiki to ensure early knowledge wasn't lost.
 
 Beyond technical contributions, PEZ was instrumental in building the collaborative community culture that made RoboWiki
-thrive. His vision of open knowledge sharing shaped the entire Robocode community. Together with **Crippa**, PEZ 
+thrive. His vision of open knowledge sharing shaped the entire Robocode community. Together with **Crippa**, PEZ
 co-founded RoboWiki in January 2003, initially as a private site before opening it to the public on January 20, 2003.
 In late 2007, PEZ entrusted the site's direction and hosting to Voidious, Fnl (Flemming N. Larsen), and David Alves.
 
 ### Crippa
 
-Co-founder of [RoboWiki](https://robowiki.net/) alongside PEZ. In January 2003, Crippa and PEZ initially created the 
-wiki as a private site to host their robot homepages and share information. Recognizing its potential for the broader 
+[RoboWiki User Page](https://robowiki.net/wiki/User:Crippa)
+
+Co-founder of [RoboWiki](https://robowiki.net/) alongside PEZ. In January 2003, Crippa and PEZ initially created the
+wiki as a private site to host their robot homepages and share information. Recognizing its potential for the broader
 community, they opened it to the public on January 20, 2003, announcing it via the Robocode Yahoo! Groups.
 
 ### Julian Kent (Skilgannon)
@@ -51,13 +53,14 @@ Beyond bot development, Skilgannon created and maintains **[LiteRumble](https://
 modern ranking system that succeeded RoboRumble. He also hosts **[RoboWiki.net](https://robowiki.net/)**, ensuring the
 community's knowledge base remains accessible.
 
-### Paul Evans (SandboxDT)
+### Paul Evans
 
-[RoboWiki - SandboxDT](https://robowiki.net/wiki/SandboxDT)
+[RoboWiki User Page](https://robowiki.net/wiki/Paul_Evans)
 
-Creator of **SandboxDT** and **SandboxGT**, Paul Evans invented **GuessFactor Targeting** — the statistical targeting 
-approach that revolutionized competitive Robocode. Instead of predicting enemy movement with formulas, GuessFactor 
-Targeting records where enemies actually go and aims at the most probable position. This technique remains fundamental 
+Creator of **[SandboxDT](https://robowiki.net/wiki/SandboxDT)** and **SandboxGT**, Paul Evans invented **GuessFactor
+Targeting** — the statistical targeting
+approach that revolutionized competitive Robocode. Instead of predicting enemy movement with formulas, GuessFactor
+Targeting records where enemies actually go and aims at the most probable position. This technique remains fundamental
 to advanced bot development today.
 
 ### Patrick Cupka (Voidious)
@@ -67,7 +70,6 @@ to advanced bot development today.
 Author of **Dookious**, which held the #1 ranking for an extended period. Voidious refined Wave Surfing, GuessFactor
 segmentation, and movement flattening to near-perfection. His extensive tutorials and detailed explanations on RoboWiki
 helped countless bot developers understand advanced concepts.
-
 
 ### Albert Perez
 
@@ -111,8 +113,8 @@ These developers created influential bots that introduced new techniques or push
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:Abc)
 
-Inventor of **Wave Surfing**, the defensive movement technique that revolutionized how bots evade enemy fire. Author of 
-**Shadow**, which introduced innovative melee gun techniques. Shadow's approach to multi-target engagement influenced 
+Inventor of **Wave Surfing**, the defensive movement technique that revolutionized how bots evade enemy fire. Author of
+**Shadow**, which introduced innovative melee gun techniques. Shadow's approach to multi-target engagement influenced
 subsequent melee bot development. ABC was also an early contributor to RoboWiki's founding and development.
 
 ### Simonton
@@ -159,6 +161,5 @@ Know someone who should be recognized here? The Book of Robocode is open source.
 on the [GitHub repository](https://github.com/robocode-dev/book-of-robocode) to suggest additions.
 
 > [!NOTE]
-> If you know the real names behind the aliases **MultiplyByZer0**, **Kawigi**, **ABC**, **Simonton**, or 
+> If you know the real names behind the aliases **MultiplyByZer0**, **Kawigi**, **ABC**, **Simonton**, or
 > **Rednaxela**, please contribute this information so we can properly credit these contributors.
-

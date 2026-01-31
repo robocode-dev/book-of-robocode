@@ -1,4 +1,4 @@
-# Page Generation Specification
+~~# Page Generation Specification
 
 This document defines how AI agents generate pages for *The Book of Robocode*.
 It consolidates rules from the previous spec files into a single reference.
@@ -13,14 +13,14 @@ The AI receives a page name exactly as it appears in `BOOK_STRUCTURE.md`.
 
 From the book structure hierarchy, extract:
 
-| Field | Source | Example |
-|-------|--------|---------|
-| **Title** | Page name (strip suffixes) | "Circular Targeting" |
-| **Top-level section** | Parent section | "Targeting Systems" |
-| **Sub-section** | Intermediate parent (if any) | "Simple Targeting" |
-| **Difficulty** | Marker: `[B]`/`[I]`/`[A]` | `intermediate` |
-| **Slug** | Kebab-case of title | `circular-targeting` |
-| **Output path** | `book/<section>/<subsection>/<slug>.md` | `book/targeting/simple-targeting/circular-targeting.md` |
+| Field                 | Source                                  | Example                                                 |
+|-----------------------|-----------------------------------------|---------------------------------------------------------|
+| **Title**             | Page name (strip suffixes)              | "Circular Targeting"                                    |
+| **Top-level section** | Parent section                          | "Targeting Systems"                                     |
+| **Sub-section**       | Intermediate parent (if any)            | "Simple Targeting"                                      |
+| **Difficulty**        | Marker: `[B]`/`[I]`/`[A]`               | `intermediate`                                          |
+| **Slug**              | Kebab-case of title                     | `circular-targeting`                                    |
+| **Output path**       | `book/<section>/<subsection>/<slug>.md` | `book/targeting/simple-targeting/circular-targeting.md` |
 
 ### Title Suffix Handling
 
@@ -33,20 +33,20 @@ Strip these suffixes from the display title, but use them for source lookup:
 
 ### Section to Folder Mapping
 
-| Book Section | Folder |
-|--------------|--------|
-| Introduction | `introduction` |
-| Getting Started | `getting-started` |
-| Battlefield Physics | `physics` |
-| Radar & Scanning | `radar` |
-| Targeting Systems | `targeting` |
-| Movement & Evasion | `movement` |
-| Energy & Scoring | `energy-and-scoring` |
-| Team Strategies | `team-strategies` |
-| Melee Combat | `melee-combat` |
-| Advanced Topics | `advanced` |
-| Robocode Tank Royale Differences | `tank-royale` |
-| Appendices | `appendices` |
+| Book Section                     | Folder               |
+|----------------------------------|----------------------|
+| Introduction                     | `introduction`       |
+| Getting Started                  | `getting-started`    |
+| Battlefield Physics              | `physics`            |
+| Radar & Scanning                 | `radar`              |
+| Targeting Systems                | `targeting`          |
+| Movement & Evasion               | `movement`           |
+| Energy & Scoring                 | `energy-and-scoring` |
+| Team Strategies                  | `team-strategies`    |
+| Melee Combat                     | `melee-combat`       |
+| Advanced Topics                  | `advanced`           |
+| Robocode Tank Royale Differences | `tank-royale`        |
+| Appendices                       | `appendices`         |
 
 ---
 
@@ -61,6 +61,7 @@ Search `specs/robowiki-links.md` for matching entries. Include:
 - Category pages when relevant
 
 **Format in frontmatter:**
+
 ```yaml
 source: [
   "RoboWiki - Circular Targeting (classic Robocode) https://robowiki.net/wiki/Circular_Targeting",
@@ -77,6 +78,7 @@ Reference https://robocode.dev for:
 - Sample bots and tutorials
 
 **Format in frontmatter:**
+
 ```yaml
 source: [
   "Robocode Tank Royale Docs - API Reference https://robocode.dev/api/"
@@ -86,6 +88,7 @@ source: [
 ### Historical Sources (Optional)
 
 For classic Robocode historical content:
+
 - https://robocode.sourceforge.io/developerWorks.php
 
 ---
@@ -99,7 +102,7 @@ Every page begins with VitePress-compatible YAML frontmatter:
 title: "<Title>"
 category: "<Top-level Section>"
 summary: "<1–2 sentence summary for sidebar/SEO>"
-tags: ["<slug>", "<section>", "<subsection>", "<difficulty>", "robocode", "tank-royale"]
+tags: [ "<slug>", "<section>", "<subsection>", "<difficulty>", "robocode", "tank-royale" ]
 difficulty: "beginner|intermediate|advanced"
 source: [
   "<Source 1>",
@@ -110,14 +113,14 @@ source: [
 
 ### Field Rules
 
-| Field | Rule |
-|-------|------|
-| `title` | Use the cleaned title exactly. Do not rewrite or "improve" it. |
-| `category` | Exact spelling from `BOOK_STRUCTURE.md` top-level section. |
-| `summary` | 1–2 sentences describing what the reader will learn. |
-| `tags` | Include: slug, section folder, subsection folder, difficulty, "robocode", "tank-royale". |
-| `difficulty` | One of: `beginner`, `intermediate`, `advanced`. |
-| `source` | Array of source strings with URLs. |
+| Field        | Rule                                                                                     |
+|--------------|------------------------------------------------------------------------------------------|
+| `title`      | Use the cleaned title exactly. Do not rewrite or "improve" it.                           |
+| `category`   | Exact spelling from `BOOK_STRUCTURE.md` top-level section.                               |
+| `summary`    | 1–2 sentences describing what the reader will learn.                                     |
+| `tags`       | Include: slug, section folder, subsection folder, difficulty, "robocode", "tank-royale". |
+| `difficulty` | One of: `beginner`, `intermediate`, `advanced`.                                          |
+| `source`     | Array of source strings with URLs.                                                       |
 
 ---
 
@@ -132,12 +135,12 @@ source: [
 3. **Overview** — 2–3 lines expanding the summary. Explain what the concept is and why it matters.
 
 4. **Main Sections** — 3–6 sections with clear headings. Suggested patterns:
-   - "Key Idea" or "Core Concept"
-   - "How It Works" or "The Math"
-   - "Pseudocode" or "Algorithm"
-   - "Platform Notes" (when concepts differ)
-   - "Tips & Common Mistakes"
-   - "When to Use It"
+    - "Key Idea" or "Core Concept"
+    - "How It Works" or "The Math"
+    - "Pseudocode" or "Algorithm"
+    - "Platform Notes" (when concepts differ)
+    - "Tips & Common Mistakes"
+    - "When to Use It"
 
 5. **Pseudocode/Formulas** — 1–2 blocks per major concept. Keep them short and readable.
 
@@ -165,14 +168,14 @@ who developed the technique or concept.
 
 1. **Check `book/appendices/wall-of-fame.md`** for known originators of techniques.
 2. **Known attributions include:**
-   - **Paul Evans ("SandboxDT")** — GuessFactor Targeting inventor (SandboxGT)
-   - **ABC** — Wave Surfing inventor, Shadow bot, early RoboWiki contributor
-   - **Peter Strömberg ("PEZ")** — RoboWiki founder, host, and administrator; CassiusClay and Pugilist bots
-   - **Julian Kent ("Skilgannon")** — Dynamic Clustering, LiteRumble, current RoboWiki.net hosting
-   - **Albert Perez** — RoboRumble
-   - **Patrick Cupka ("Voidious")** — Energy management, movement flattening, Dookious techniques
-   - **Kawigi** — Wall smoothing implementations, early tutorials
-   - **David Alves** — Pattern matching, precise prediction
+    - **Paul Evans** — GuessFactor Targeting inventor (SandboxGT bot)
+    - **ABC** — Wave Surfing inventor, Shadow bot, early RoboWiki contributor
+    - **Peter Strömberg ("PEZ")** — RoboWiki founder, host, and administrator; CassiusClay and Pugilist bots
+    - **Julian Kent ("Skilgannon")** — Dynamic Clustering, LiteRumble, current RoboWiki.net hosting
+    - **Albert Perez** — RoboRumble
+    - **Patrick Cupka ("Voidious")** — Energy management, movement flattening, Dookious techniques
+    - **Kawigi** — Wall smoothing implementations, early tutorials
+    - **David Alves** — Pattern matching, precise prediction
 3. **If no specific originator is known**, credit the RoboWiki community:
    ```markdown
    > [!TIP] Origins
@@ -187,6 +190,7 @@ who developed the technique or concept.
 ### 4.3 Illustration Placeholders (REQUIRED)
 
 **You MUST include at least one illustration placeholder** for any page that involves:
+
 - Geometric concepts (angles, trajectories, predictions)
 - Movement patterns (orbiting, strafing, wave surfing)
 - Coordinate systems and angle conventions
@@ -222,6 +226,7 @@ Insert detailed TODO comments where illustrations should go:
 ```
 
 **When to include:**
+
 - Geometric concepts (angles, trajectories, predictions)
 - Movement patterns (orbiting, strafing, wave surfing)
 - Coordinate systems and angle conventions
@@ -230,45 +235,46 @@ Insert detailed TODO comments where illustrations should go:
 
 **Required fields in each placeholder:**
 
-| Field | Description |
-|-------|-------------|
-| `Filename` | Kebab-case, descriptive name with `.svg` extension |
-| `Caption` | Short description for display under the image (1 sentence) |
-| `Viewport` | Viewport dimensions as `WxH` (max 8000×8000). Display size = W/8 × H/8 |
+| Field         | Description                                                                  |
+|---------------|------------------------------------------------------------------------------|
+| `Filename`    | Kebab-case, descriptive name with `.svg` extension                           |
+| `Caption`     | Short description for display under the image (1 sentence)                   |
+| `Viewport`    | Viewport dimensions as `WxH` (max 8000×8000). Display size = W/8 × H/8       |
 | `Battlefield` | `true` to draw grey border + black arena background; `false` for transparent |
 
 **Optional structured fields:**
 
-| Field | Description |
-|-------|-------------|
-| `Bots` | List of bots with: `type` (friendly/enemy), `position` (x,y), `body`/`turret`/`radar` angles in degrees |
-| `Lines` | List of lines with: `from` (x,y), `to` (x,y), `color`, `arrow` (bool), `dashed` (bool), `label` |
-| `Arcs` | List of arcs with: `center` (x,y), `radius`, `startAngle`, `endAngle`, `color`, `arrow`, `dashed`, `label` |
-| `Circles` | List of circles with: `center` (x,y), `radius`, `color`, `fill` (color or `none`), `label` |
-| `Texts` | List of text labels with: `text`, `position` (x,y), `color`, `rotate` (optional angle) |
-| `Bullets` | List of bullets with: `position` (x,y), `radius` (50–100), `color` |
-| `Description` | Free-form description for complex illustrations not fully captured by structured fields |
+| Field         | Description                                                                                                |
+|---------------|------------------------------------------------------------------------------------------------------------|
+| `Bots`        | List of bots with: `type` (friendly/enemy), `position` (x,y), `body`/`turret`/`radar` angles in degrees    |
+| `Lines`       | List of lines with: `from` (x,y), `to` (x,y), `color`, `arrow` (bool), `dashed` (bool), `label`            |
+| `Arcs`        | List of arcs with: `center` (x,y), `radius`, `startAngle`, `endAngle`, `color`, `arrow`, `dashed`, `label` |
+| `Circles`     | List of circles with: `center` (x,y), `radius`, `color`, `fill` (color or `none`), `label`                 |
+| `Texts`       | List of text labels with: `text`, `position` (x,y), `color`, `rotate` (optional angle)                     |
+| `Bullets`     | List of bullets with: `position` (x,y), `radius` (50–100), `color`                                         |
+| `Description` | Free-form description for complex illustrations not fully captured by structured fields                    |
 
 **Book color palette:**
 
-| Element | Color | Hex/Name |
-|---------|-------|----------|
-| Friendly bot (body) | Blue | `#019` |
-| Friendly bot (turret) | Blue | `#06c` |
-| Friendly bot (radar) | Light blue | `#aaf` |
-| Enemy bot (body) | Red | `#c00` |
-| Enemy bot (turret) | Red | `#e22` |
-| Enemy bot (radar) | Light red | `#faa` |
-| Default text/lines | Chocolate | `chocolate` |
-| Bullet | Orange | `#F59E0B` |
-| Path/trajectory | Gray dashed | `#6B7280` |
-| Safe zone | Green | `#10B981` |
-| Danger zone | Red | `#EF4444` |
-| Highlight | Yellow | `#cc0` |
-| Battlefield border | Gray | `grey` |
-| Battlefield arena | Black | `black` |
+| Element               | Color       | Hex/Name    |
+|-----------------------|-------------|-------------|
+| Friendly bot (body)   | Blue        | `#019`      |
+| Friendly bot (turret) | Blue        | `#06c`      |
+| Friendly bot (radar)  | Light blue  | `#aaf`      |
+| Enemy bot (body)      | Red         | `#c00`      |
+| Enemy bot (turret)    | Red         | `#e22`      |
+| Enemy bot (radar)     | Light red   | `#faa`      |
+| Default text/lines    | Chocolate   | `chocolate` |
+| Bullet                | Orange      | `#F59E0B`   |
+| Path/trajectory       | Gray dashed | `#6B7280`   |
+| Safe zone             | Green       | `#10B981`   |
+| Danger zone           | Red         | `#EF4444`   |
+| Highlight             | Yellow      | `#cc0`      |
+| Battlefield border    | Gray        | `grey`      |
+| Battlefield arena     | Black       | `black`     |
 
 **SVG sizing rules:**
+
 - Viewport is set via `viewBox="0 0 W H"` where W and H are from the `Viewport` field
 - Display width = viewport width / 8 (e.g., 8000 → 1000px)
 - Display height = viewport height / 8 (e.g., 6000 → 750px)
@@ -276,12 +282,14 @@ Insert detailed TODO comments where illustrations should go:
 - Tank size is 800×800 units, centered at (400, 400) relative to its position
 
 **Battlefield rendering (when `Battlefield: true`):**
+
 - Grey rectangle fills entire viewport (border)
 - Black rectangle inset by 200 units on all sides (arena)
 
 ### 4.4 Further Reading Section (REQUIRED)
 
-**Every page MUST end with a Further Reading section** that links to relevant RoboWiki pages and Tank Royale documentation.
+**Every page MUST end with a Further Reading section** that links to relevant RoboWiki pages and Tank Royale
+documentation.
 
 **Format:**
 
@@ -317,10 +325,10 @@ Insert detailed TODO comments where illustrations should go:
 
 ### Required Terminology
 
-| Always Use | Never Use | Exception |
-|------------|-----------|-----------|
-| **bot** | robot | Quoted titles, API names, external docs |
-| **units** | pixels | — |
+| Always Use | Never Use | Exception                               |
+|------------|-----------|-----------------------------------------|
+| **bot**    | robot     | Quoted titles, API names, external docs |
+| **units**  | pixels    | —                                       |
 
 ### Text Formatting
 
@@ -347,28 +355,29 @@ Use these VitePress/Markdown features:
 - Define all symbols before or immediately after the formula.
 - All formulas, whether simple or complex, should use inline `$formula$` notation.
 
-
 ## 6. Platform Distinction
 
 ### Source Rules
 
-| Source | Platform | Use For |
-|--------|----------|---------|
-| RoboWiki.net | Classic Robocode only | Concepts, strategies, historical implementations |
-| robocode.dev | Tank Royale only | APIs, physics, game rules, sample bots |
-| robocode.sourceforge.io | Classic Robocode only | Historical documentation |
+| Source                  | Platform              | Use For                                          |
+|-------------------------|-----------------------|--------------------------------------------------|
+| RoboWiki.net            | Classic Robocode only | Concepts, strategies, historical implementations |
+| robocode.dev            | Tank Royale only      | APIs, physics, game rules, sample bots           |
+| robocode.sourceforge.io | Classic Robocode only | Historical documentation                         |
 
 ### When Concepts Differ
 
-**ONLY include a "Platform Notes" or "Platform Differences" section when there are ACTUAL differences** between 
+**ONLY include a "Platform Notes" or "Platform Differences" section when there are ACTUAL differences** between
 classic Robocode and Tank Royale that affect the technique or concept.
 
 **Do NOT create a platform section if:**
+
 - The mechanics are identical (e.g., gun heat cooling rate, bullet power formulas)
 - Only API method names differ but both platforms have equivalent methods
 - The concept works the same way in both platforms
 
 **DO create a platform section if:**
+
 - Physics behavior differs (e.g., coordinate systems, angle conventions)
 - API capabilities differ (e.g., one platform has features the other doesn't)
 - Game rules differ (e.g., team damage, scoring mechanics)
@@ -392,10 +401,12 @@ When you identify actual differences:
 ### Platform Differences
 
 **Classic Robocode:**
+
 - Gun heat cooling: 0.1 per turn
 - Gun heat after firing: `1.0 + bulletPower / 5.0`
 
 **Tank Royale:**
+
 - Gun heat cooling: 0.1 per turn (same)
 - Gun heat after firing: `1.0 + bulletPower / 5.0` (same)
 
@@ -404,7 +415,7 @@ The mechanics are identical.
 
 **Better approach when mechanics are identical:**
 
-Simply state: "Gun heat mechanics work identically in both classic Robocode and Tank Royale, with a cooling rate of 
+Simply state: "Gun heat mechanics work identically in both classic Robocode and Tank Royale, with a cooling rate of
 0.1 per turn and heat generation of `1.0 + bulletPower / 5.0` after firing." No separate platform section needed.
 
 ---
@@ -419,22 +430,27 @@ The sidebar uses nested `items` arrays:
 
 ```javascript
 sidebar: {
-  '/targeting/': [
-    {
-      text: 'Targeting Systems',
-      items: [
-        { text: 'Simple Targeting', items: [
-          { text: 'Head-On Targeting', link: '/targeting/simple-targeting/head-on-targeting' },
-          { text: 'Linear Targeting', link: '/targeting/simple-targeting/linear-targeting' },
-          { text: 'Circular Targeting', link: '/targeting/simple-targeting/circular-targeting' },
-        ]},
-      ]
-    }
-  ],
+    '/targeting/'
+:
+    [
+        {
+            text: 'Targeting Systems',
+            items: [
+                {
+                    text: 'Simple Targeting', items: [
+                        {text: 'Head-On Targeting', link: '/targeting/simple-targeting/head-on-targeting'},
+                        {text: 'Linear Targeting', link: '/targeting/simple-targeting/linear-targeting'},
+                        {text: 'Circular Targeting', link: '/targeting/simple-targeting/circular-targeting'},
+                    ]
+                },
+            ]
+        }
+    ],
 }
 ```
 
 **Rules:**
+
 - Find the sidebar key matching the section folder (e.g., `'/targeting/'`).
 - Navigate to the correct nested `items` array.
 - Add the new entry with `text` (display name) and `link` (path without `.md`).
@@ -445,6 +461,7 @@ sidebar: {
 The nav typically links to the first page of each section. Do not add new nav dropdowns automatically.
 
 **If the section is missing from nav:**
+
 - Add a comment: `// TODO: Review nav entry for <section>`
 - Flag for human review.
 
@@ -463,5 +480,5 @@ Before completing, verify:
 - [ ] Uses "units" not "pixels".
 - [ ] `config.js` has valid JavaScript syntax after update.
 - [ ] Sidebar entry is in the correct nested location.
-- [ ] Updated `book/introduction/whats-coming-next.md` to remove the completed page from pending lists.
+- [ ] Updated `book/introduction/whats-coming-next.md` to remove the completed page from pending lists.~~
 
