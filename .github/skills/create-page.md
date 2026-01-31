@@ -67,10 +67,9 @@ category: "<Top-level Section>"
 summary: "<1–2 sentence summary>"
 tags: [ "<slug>", "<section>", "<subsection>", "<difficulty>", "robocode", "tank-royale" ]
 difficulty: "<beginner|intermediate|advanced>"
-source: [
-  "RoboWiki - <Article Name> (classic Robocode) <URL>",
-  "Robocode Tank Royale Docs - <relevant section> https://robocode.dev/..."
-]
+source:
+  - "RoboWiki - <Article Name> (classic Robocode) <URL>"
+  - "Robocode Tank Royale Docs - <relevant section> https://robocode.dev/..."
 ---
 ```
 
@@ -170,19 +169,16 @@ Add the new page to the appropriate sidebar section. The sidebar uses this neste
 
 ```javascript
 sidebar: {
-    '/targeting/'
-:
-    [
+    '/targeting/': [
         {
             text: 'Targeting Systems',
             items: [
-                {
-                    text: 'Simple Targeting', items: [
-                        {text: 'Head-On Targeting', link: '/targeting/simple-targeting/head-on-targeting'},
-                        {text: 'Linear Targeting', link: '/targeting/simple-targeting/linear-targeting'},
-                        // Add new page here in correct position
-                    ]
-                },
+                { text: 'Simple Targeting', items: [
+                    { text: 'Head-On Targeting', link: '/targeting/simple-targeting/head-on-targeting' },
+                    { text: 'Linear Targeting', link: '/targeting/simple-targeting/linear-targeting' },
+                    { text: 'Circular Targeting', link: '/targeting/simple-targeting/circular-targeting' },
+                    // Add new page here in correct position
+                ]},
                 // ...
             ]
         }
