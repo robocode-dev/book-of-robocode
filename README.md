@@ -16,7 +16,7 @@ to movement, targeting, and competitive strategy — distilling two decades of c
 Automatically deployed to **GitHub Pages** via **GitHub Actions**. Pushing changes to `main` triggers a new build and
 publication.
 
-🔗 **Live Site**: https://robocode-dev.github.io/robocoding/
+🔗 **Live Site**: https://book.robocode.dev/
 
 ---
 
@@ -172,38 +172,15 @@ book-of-robocode/
 
 ## 🤝 Contributing
 
-Ways to help:
+We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 
-- Report issues
-- Improve explanations
-- Add examples / diagrams
-- Refine formulas
-- Suggest new topics
+- How to report issues and suggest improvements
+- Local development setup
+- Writing guidelines
+- AI-assisted workflow with GitHub Copilot skills
+- Pull request process
 
-### Workflow
-
-1. Fork & branch: `git checkout -b feature/topic`
-2. Implement & preview locally
-3. Commit: `git commit -m "Describe change"`
-4. Push & open a Pull Request
-
-### Writing Guidelines
-
-- Prefer clarity over cleverness
-- Use headings for structure
-- Keep paragraphs short
-- Use KaTeX for math (`$inline$`, `$$block$$`)
-- Favor pseudocode when language neutrality helps
-- Cite sources (RoboWiki, forum posts) when adapting analysis
-
-### Adding a New Page
-
-1. Create a Markdown file in the appropriate chapter folder (e.g., `book/movement/basic/my-topic.md`).
-2. Start with `# Title` as first header.
-3. Add the filename (without extension) to the relevant sidebar list in `book/.vitepress/config.js`.
-4. Maintain heading hierarchy (`#`, `##`, `###`).
-5. Attribute external inspirations at the bottom.
-6. Run `npm run dev` and verify sidebar and nav.
+Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.
 
 ---
 
