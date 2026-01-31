@@ -13,12 +13,27 @@ This project, The Book of Robocode, builds on two decades of work by many people
 - RoboWiki contributors — Foundational research, analysis, and documentation
 - All bot authors, tournament organizers, and knowledge sharers in the Robocode community
 
+## RoboWiki
+
+- Peter Strömberg (PEZ) — Founder, host, and administrator of RoboWiki (2003–2007); creator of CassiusClay and Pugilist bots
+  - Reference: http://robowiki.net/wiki/User:PEZ
+- Crippa — Co-founder of RoboWiki (2003)
+- Julian Kent (Skilgannon) — Current host of RoboWiki.net; creator/maintainer of LiteRumble; creator of DrussGT bot
+  - Reference: http://robowiki.net/wiki/User:Skilgannon
+
 ## RoboRumble and LiteRumble
 
 - Albert Perez — Creator of RoboRumble
-  - Reference: http://robowiki.net/robowiki/RoboRumble
-- Julian Kent (Skilgannon) — Creator/maintainer of LiteRumble; host of RoboWiki.net
-  - Reference: http://robowiki.net/robowiki/LiteRumble
+  - Reference: http://robowiki.net/wiki/RoboRumble
+- Julian Kent (Skilgannon) — Creator/maintainer of LiteRumble
+  - Reference: http://robowiki.net/wiki/LiteRumble
+
+## Pioneering Techniques
+
+- Paul Evans (SandboxDT) — Inventor of GuessFactor Targeting
+  - Reference: http://robowiki.net/wiki/SandboxDT
+- ABC — Inventor of Wave Surfing; creator of Shadow bot
+  - Reference: http://robowiki.net/wiki/User:Abc
 
 For more detailed contributor histories and discussions, please consult the respective RoboWiki pages above.
 

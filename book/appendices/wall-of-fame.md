@@ -19,15 +19,6 @@ and sharing their discoveries. This page honors those who shaped the game's comp
 
 These individuals made foundational contributions to Robocode strategy and community infrastructure.
 
-### Paul Evans (SandboxDT)
-
-[RoboWiki - SandboxDT](https://robowiki.net/wiki/SandboxDT)
-
-Creator of **SandboxDT** and **SandboxGT**, Paul Evans invented **GuessFactor Targeting** — the statistical targeting 
-approach that revolutionized competitive Robocode. Instead of predicting enemy movement with formulas, GuessFactor 
-Targeting records where enemies actually go and aims at the most probable position. This technique remains fundamental 
-to advanced bot development today.
-
 ### Peter Strömberg (PEZ)
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:PEZ)
@@ -38,19 +29,15 @@ infrastructure, wrote articles, shared insights, and preserved Robocode history 
 old RoboWiki to ensure early knowledge wasn't lost.
 
 Beyond technical contributions, PEZ was instrumental in building the collaborative community culture that made RoboWiki
-thrive. His vision of open knowledge sharing shaped the entire Robocode community.
+thrive. His vision of open knowledge sharing shaped the entire Robocode community. Together with **Crippa**, PEZ 
+co-founded RoboWiki in January 2003, initially as a private site before opening it to the public on January 20, 2003.
+In late 2007, PEZ entrusted the site's direction and hosting to Voidious, Fnl (Flemming N. Larsen), and David Alves.
 
-> [!NOTE]
-> If you know who else co-founded RoboWiki with PEZ in the early days, please contribute this information via a pull 
-> request or issue on the [GitHub repository](https://github.com/robocode-dev/book-of-robocode).
+### Crippa
 
-### Patrick Cupka (Voidious)
-
-[RoboWiki User Page](https://robowiki.net/wiki/User:Voidious)
-
-Author of **Dookious**, which held the #1 ranking for an extended period. Voidious refined Wave Surfing, GuessFactor
-segmentation, and movement flattening to near-perfection. His extensive tutorials and detailed explanations on RoboWiki
-helped countless bot developers understand advanced concepts.
+Co-founder of [RoboWiki](https://robowiki.net/) alongside PEZ. In January 2003, Crippa and PEZ initially created the 
+wiki as a private site to host their robot homepages and share information. Recognizing its potential for the broader 
+community, they opened it to the public on January 20, 2003, announcing it via the Robocode Yahoo! Groups.
 
 ### Julian Kent (Skilgannon)
 
@@ -63,6 +50,24 @@ achieve.
 Beyond bot development, Skilgannon created and maintains **[LiteRumble](https://robowiki.net/wiki/LiteRumble)**, the
 modern ranking system that succeeded RoboRumble. He also hosts **[RoboWiki.net](https://robowiki.net/)**, ensuring the
 community's knowledge base remains accessible.
+
+### Paul Evans (SandboxDT)
+
+[RoboWiki - SandboxDT](https://robowiki.net/wiki/SandboxDT)
+
+Creator of **SandboxDT** and **SandboxGT**, Paul Evans invented **GuessFactor Targeting** — the statistical targeting 
+approach that revolutionized competitive Robocode. Instead of predicting enemy movement with formulas, GuessFactor 
+Targeting records where enemies actually go and aims at the most probable position. This technique remains fundamental 
+to advanced bot development today.
+
+### Patrick Cupka (Voidious)
+
+[RoboWiki User Page](https://robowiki.net/wiki/User:Voidious)
+
+Author of **Dookious**, which held the #1 ranking for an extended period. Voidious refined Wave Surfing, GuessFactor
+segmentation, and movement flattening to near-perfection. His extensive tutorials and detailed explanations on RoboWiki
+helped countless bot developers understand advanced concepts.
+
 
 ### Albert Perez
 
