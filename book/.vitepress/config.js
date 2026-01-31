@@ -75,7 +75,8 @@ export default withMermaid(defineConfig({
           items: [
             { text: 'Author\'s Foreword', link: '/introduction/foreword' },
             { text: 'What is Robocode?', link: '/introduction/what-is-robocode' },
-            { text: 'History', link: '/introduction/history' }
+            { text: 'History', link: '/introduction/history' },
+            { text: 'What\'s Coming Next', link: '/introduction/whats-coming-next' }
           ]
         }
       ],

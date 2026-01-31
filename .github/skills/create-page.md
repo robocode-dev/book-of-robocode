@@ -7,7 +7,8 @@ This skill creates a new page for *The Book of Robocode* from just a page name.
 - Slash command: `/create-page <Page Name>`
 - Natural language: "Create page: <Page Name>"
 
-Where `<Page Name>` is the exact title from `BOOK_STRUCTURE.md` (e.g., "Circular Targeting", "Wave Surfing Introduction").
+Where `<Page Name>` is the exact title from `BOOK_STRUCTURE.md` (e.g., "Circular Targeting", "Wave Surfing
+Introduction").
 
 ---
 
@@ -19,18 +20,20 @@ When invoked, perform these steps in order:
 
 1. Look up the page name in `BOOK_STRUCTURE.md`.
 2. Extract from the hierarchy:
-   - **Top-level section** (e.g., "Targeting Systems", "Movement & Evasion")
-   - **Sub-section** if any (e.g., "Simple Targeting", "Advanced Evasion")
-   - **Difficulty** from the `[B]`, `[I]`, or `[A]` marker:
-     - `[B]` → `beginner`
-     - `[I]` → `intermediate`
-     - `[A]` → `advanced`
-3. Strip suffixes like "(with Walkthrough)", "(with Tutorial)", "(Guided Tutorial)" from the title — but remember them for source lookup.
-4. Derive the **slug** by converting the cleaned title to kebab-case (e.g., "Circular Targeting" → `circular-targeting`).
+    - **Top-level section** (e.g., "Targeting Systems", "Movement & Evasion")
+    - **Sub-section** if any (e.g., "Simple Targeting", "Advanced Evasion")
+    - **Difficulty** from the `[B]`, `[I]`, or `[A]` marker:
+        - `[B]` → `beginner`
+        - `[I]` → `intermediate`
+        - `[A]` → `advanced`
+3. Strip suffixes like "(with Walkthrough)", "(with Tutorial)", "(Guided Tutorial)" from the title — but remember them
+   for source lookup.
+4. Derive the **slug** by converting the cleaned title to kebab-case (e.g., "Circular Targeting" →
+   `circular-targeting`).
 5. Derive the **output path** from the hierarchy:
-   - Top-level section → folder name (e.g., "Targeting Systems" → `targeting`)
-   - Sub-section → subfolder (e.g., "Simple Targeting" → `simple-targeting`)
-   - Final path: `book/<section>/<subsection>/<slug>.md`
+    - Top-level section → folder name (e.g., "Targeting Systems" → `targeting`)
+    - Sub-section → subfolder (e.g., "Simple Targeting" → `simple-targeting`)
+    - Final path: `book/<section>/<subsection>/<slug>.md`
 
 **If the page name is not found in `BOOK_STRUCTURE.md`**, ask the user to confirm or provide the correct name.
 
@@ -62,7 +65,7 @@ Follow the rules in `AGENTS.md` and `specs/page-generation-spec.md`:
 title: "<Cleaned Title>"
 category: "<Top-level Section>"
 summary: "<1–2 sentence summary>"
-tags: ["<slug>", "<section>", "<subsection>", "<difficulty>", "robocode", "tank-royale"]
+tags: [ "<slug>", "<section>", "<subsection>", "<difficulty>", "robocode", "tank-royale" ]
 difficulty: "<beginner|intermediate|advanced>"
 source: [
   "RoboWiki - <Article Name> (classic Robocode) <URL>",
@@ -76,6 +79,7 @@ source: [
 Follow the detailed structure rules in `specs/page-generation-spec.md` Section 4.
 
 **Required elements:**
+
 1. **H1 heading** matching the title.
 2. **Origins callout** (see Section 4.2 in page-generation-spec.md).
 3. **2–3 line overview** expanding the summary.
@@ -96,9 +100,11 @@ Follow the detailed structure rules in `specs/page-generation-spec.md` Section 4
 
 #### Illustration Placeholders
 
-**You MUST include at least one illustration placeholder** for any page that involves geometric concepts, movement patterns, coordinate systems, or algorithm visualizations.
+**You MUST include at least one illustration placeholder** for any page that involves geometric concepts, movement
+patterns, coordinate systems, or algorithm visualizations.
 
 See `specs/page-generation-spec.md` Section 4.3 for the complete structured format specification, including:
+
 - Required fields (Filename, Caption, Viewport, Battlefield)
 - Optional fields (Bots, Lines, Arcs, Circles, Texts, Bullets, Description)
 - Book color palette
@@ -154,7 +160,6 @@ See `specs/page-generation-spec.md` Section 4.4 for complete guidelines.
 - [Tank Royale Topic](https://robocode.dev/articles/topic.html) — Tank Royale documentation
 ```
 
-
 ### 4. Update `config.js`
 
 After generating the page, update `book/.vitepress/config.js`:
@@ -165,24 +170,29 @@ Add the new page to the appropriate sidebar section. The sidebar uses this neste
 
 ```javascript
 sidebar: {
-  '/targeting/': [
-    {
-      text: 'Targeting Systems',
-      items: [
-        { text: 'Simple Targeting', items: [
-          { text: 'Head-On Targeting', link: '/targeting/simple-targeting/head-on-targeting' },
-          { text: 'Linear Targeting', link: '/targeting/simple-targeting/linear-targeting' },
-          // Add new page here in correct position
-        ]},
-        // ...
-      ]
-    }
-  ],
-  // ...
+    '/targeting/'
+:
+    [
+        {
+            text: 'Targeting Systems',
+            items: [
+                {
+                    text: 'Simple Targeting', items: [
+                        {text: 'Head-On Targeting', link: '/targeting/simple-targeting/head-on-targeting'},
+                        {text: 'Linear Targeting', link: '/targeting/simple-targeting/linear-targeting'},
+                        // Add new page here in correct position
+                    ]
+                },
+                // ...
+            ]
+        }
+    ],
+    // ...
 }
 ```
 
 **Placement rules:**
+
 - Find the correct top-level sidebar key (e.g., `'/targeting/'`).
 - Navigate to the correct nested `items` array based on the sub-section.
 - Add the new entry in logical order (alphabetical or following book structure order).
@@ -192,6 +202,7 @@ sidebar: {
 Map to the existing `themeConfig.nav` structure. The nav typically links to the first page of each section.
 
 **If the section is not found in nav:**
+
 - Flag for human review with a comment: `// TODO: Review nav entry for <section>`
 - Do not create new nav dropdowns automatically.
 
@@ -203,8 +214,10 @@ After generating the page, check if any new terms should be added to `book/appen
 
 Add a glossary entry when the page introduces:
 
-1. **New terminology** — Technical terms not yet defined in the glossary (e.g., "wave surfing", "GuessFactor", "pattern matching")
-2. **Battle format references** — If the page discusses 1v1, melee, or team battles in depth, ensure these are in the glossary
+1. **New terminology** — Technical terms not yet defined in the glossary (e.g., "wave surfing", "GuessFactor", "pattern
+   matching")
+2. **Battle format references** — If the page discusses 1v1, melee, or team battles in depth, ensure these are in the
+   glossary
 3. **Algorithm names** — Specific targeting or movement algorithms (e.g., "circular targeting", "minimum risk movement")
 4. **Physics concepts** — Game mechanics terms (e.g., "gun heat", "bullet power", "energy")
 
@@ -240,12 +253,31 @@ See: [Related Page](../path/to/related-page.md) (optional, if a dedicated page e
 - The term is self-explanatory (e.g., "battlefield", "bullet")
 - The term is only used once and explained inline in the page
 
-### 6. Validate
+### 6. Update What's Coming Next
+
+After generating the page, update `book/introduction/whats-coming-next.md`:
+
+1. Locate the newly completed page in the appropriate section of the pending content list.
+2. Remove the entry for the newly completed page.
+3. If this was the last page in a subsection, consider removing the subsection header as well.
+4. Maintain the section structure and difficulty labels for remaining items.
+
+**Example:**
+
+If you just completed "Dynamic Clustering (with Tutorial)", remove this line from the "Statistical Targeting (Advanced)"
+section:
+
+```markdown
+- Dynamic Clustering (with Tutorial)
+```
+
+### 7. Validate
 
 1. Check for errors in the generated `.md` file.
 2. Check for errors in `config.js` after the update.
 3. Check for errors in `glossary.md` if updated.
-4. Report any issues to the user.
+4. Check for errors in `whats-coming-next.md` after the update.
+5. Report any issues to the user.
 
 ---
 
@@ -254,28 +286,29 @@ See: [Related Page](../path/to/related-page.md) (optional, if a dedicated page e
 **Input:** `/create-page Circular Targeting`
 
 **Actions:**
+
 1. Found in `BOOK_STRUCTURE.md` under:
-   - Section: "Targeting Systems"
-   - Sub-section: "Simple Targeting"
-   - Full entry: "Circular Targeting (with Walkthrough) [I]"
-   - Difficulty: intermediate
+    - Section: "Targeting Systems"
+    - Sub-section: "Simple Targeting"
+    - Full entry: "Circular Targeting (with Walkthrough) [I]"
+    - Difficulty: intermediate
 2. Cleaned title: "Circular Targeting"
 3. Slug: `circular-targeting`
 4. Output path: `book/targeting/simple-targeting/circular-targeting.md`
 5. Sources from `robowiki-links.md`:
-   - https://robowiki.net/wiki/Circular_Targeting
-   - https://robowiki.net/wiki/Circular_Targeting/Walkthrough
+    - https://robowiki.net/wiki/Circular_Targeting
+    - https://robowiki.net/wiki/Circular_Targeting/Walkthrough
 6. Generated page with:
-   - Frontmatter (title, category, summary, tags, difficulty, source)
-   - **Origins callout** crediting the RoboWiki community
-   - Body sections (overview, key idea, math, pseudocode, platform notes, tips)
-   - Illustration placeholders with detailed descriptions for geometric concepts
-   - **Further Reading section** with RoboWiki links
+    - Frontmatter (title, category, summary, tags, difficulty, source)
+    - **Origins callout** crediting the RoboWiki community
+    - Body sections (overview, key idea, math, pseudocode, platform notes, tips)
+    - Illustration placeholders with detailed descriptions for geometric concepts
+    - **Further Reading section** with RoboWiki links
 7. Updated `config.js`:
-   - Added to `/targeting/` sidebar under "Simple Targeting" items.
+    - Added to `/targeting/` sidebar under "Simple Targeting" items.
 8. Checked glossary:
-   - "Circular targeting" already exists in glossary → no update needed.
-   - (If missing, would add entry under "Targeting terms" section)
+    - "Circular targeting" already exists in glossary → no update needed.
+    - (If missing, would add entry under "Targeting terms" section)
 
 **Generated page structure:**
 
@@ -288,26 +321,32 @@ title: "Circular Targeting"
 # Circular Targeting
 
 > [!TIP] Origins
-> **Circular Targeting** is a foundational technique documented by the RoboWiki community as the next step after linear targeting.
+> **Circular Targeting** is a foundational technique documented by the RoboWiki community as the next step after linear
+targeting.
 
 Circular targeting predicts where to aim by assuming the enemy...
 
 ## Key Idea
+
 ...
 
 ## How It Works
+
 ...
 
 ## Platform Notes
+
 ...
 
 ## Tips
+
 ...
 
 ## Further Reading
 
 - [Circular Targeting](https://robowiki.net/wiki/Circular_Targeting) — RoboWiki (classic Robocode)
-- [Circular Targeting/Walkthrough](https://robowiki.net/wiki/Circular_Targeting/Walkthrough) — RoboWiki (classic Robocode)
+- [Circular Targeting/Walkthrough](https://robowiki.net/wiki/Circular_Targeting/Walkthrough) — RoboWiki (classic
+  Robocode)
 ```
 
 ---

@@ -462,4 +462,5 @@ Before completing, verify:
 - [ ] Uses "units" not "pixels".
 - [ ] `config.js` has valid JavaScript syntax after update.
 - [ ] Sidebar entry is in the correct nested location.
+- [ ] Updated `book/introduction/whats-coming-next.md` to remove the completed page from pending lists.
 

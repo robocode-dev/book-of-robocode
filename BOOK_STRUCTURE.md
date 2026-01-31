@@ -6,7 +6,8 @@
 ├─ Introduction [B]
 │  ├─ Author's Foreword [B] [✅]
 │  ├─ What is Robocode & How to Use This Book [B] [✅]
-│  └─ A Short History of Robocode [B] [✅]
+│  ├─ A Short History of Robocode [B] [✅]
+│  └─ What's Coming Next [B] [✅]
 │
 ├─ Getting Started [B]
 │  ├─ Your First Bot (Guided Tutorial) [B] [✅]
