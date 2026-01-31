@@ -63,8 +63,7 @@ After initialization, your bot enters its main `run()` loop. Conceptually, each 
 Events that occur during the turn (e.g., you were scanned or hit) can adjust your next decisions or trigger immediate
 responses.
 
-> [!INFO] Info
-> **Energy and bullets in one sentence**:
+> [!INFO] Energy and bullets in one sentence
 > Firing always spends some of your bot’s energy to create a bullet; too many big shots can leave your bot weak or even
 > disabled, so smart bots balance when and how hard they fire.
 
@@ -110,14 +109,14 @@ flowchart LR
   subgraph Classic["Classic Robocode"]
     direction TB
     c_file(["📄 MyFirstRobot.properties"])
-    c_snip["robot.name: MyFirstRobot<br>robot.author.name: You<br>robot.description: A simple bot"]
+    c_snip["robot.name: MyFirstRobot<br>robot.author.name: You<br>robot.description: A simple bot<br>..."]
     c_file --> c_snip
   end
 
   subgraph Tank["Tank Royale"]
     direction TB
     t_file(["📄 MyFirstBot.json"])
-    t_snip["{''name'': ''My First Bot'',<br>''author'': ''you'',<br>''description'':&nbsp;''A&nbsp;simple&nbsp;bot''}"]
+    t_snip["{''name'': ''My First Bot'',<br>''author'': ''you'',<br>''description'':&nbsp;''A&nbsp;simple&nbsp;bot''<br>...}"]
     t_file --> t_snip
   end
 
@@ -129,6 +128,46 @@ flowchart LR
   class t_file,t_snip jsonStyle
 ```
 
+#### Example: Classic Robocode properties file
+
+**MyFirstRobot.properties**
+
+```properties
+robot.description=\
+  A sample robot\n\
+  Moves in a seesaw motion, and spins the gun around at each end\n\
+  Turns perpendicular to the direction of a bullet that hits it
+robot.webpage=http\://robocode.sourceforge.net/myfirstrobot/MyFirstRobot.html
+robocode.version=1.0
+robot.java.source.included=true
+robot.author.name=Mathew Nelson
+robot.classname=sample.MyFirstRobot
+robot.name=MyFirstRobot
+```
+
+#### Example: Tank Royale JSON file
+
+**MyFirstBot.json**
+
+```json
+{
+  "name": "My First Bot",
+  "version": "1.0",
+  "authors": [
+    "Mathew Nelson",
+    "Flemming N. Larsen"
+  ],
+  "description": "A sample bot that is probably the first bot you will learn about.",
+  "homepage": "",
+  "countryCodes": [
+    "us",
+    "dk"
+  ],
+  "platform": "JVM",
+  "programmingLang": "Java 11"
+}
+```
+
 ## What success looks like for your first bot
 
 Your initial milestone is simple and achievable:
@@ -137,8 +176,6 @@ Your initial milestone is simple and achievable:
 - Radar is continuously scanning to keep awareness up.
 - Movement follows a basic pattern (not stationary!).
 - The gun turns toward detected enemies and fires when ready.
-
-*Sequence: scan, move (motion stripes), aim, fire — then repeat.*
 
 ## Next steps
 
