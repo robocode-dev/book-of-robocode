@@ -2,7 +2,7 @@
 
 ## Core Guidelines
 
-Follow the rules in `/AI_GUIDELINES.md` for all content generation.
+Follow the rules in `/AGENTS.md` for all content generation.
 
 ## Creating New Pages
 
@@ -37,7 +37,7 @@ The skill will:
 
 ## Reference Documents
 
-- `/AI_GUIDELINES.md` — Writing rules, terminology, page generation contract.
+- `/AGENTS.md` — Writing rules, terminology, page generation contract.
 - `/BOOK_STRATEGY.md` — Audience, tone, and content philosophy.
 - `/BOOK_STRUCTURE.md` — Complete table of contents with hierarchy and difficulty markers.
 - `/specs/page-generation-spec.md` — Detailed frontmatter and body structure rules.

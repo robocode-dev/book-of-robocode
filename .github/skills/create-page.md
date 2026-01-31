@@ -53,7 +53,7 @@ When invoked, perform these steps in order:
 
 ### 3. Generate the Page
 
-Follow the rules in `AI_GUIDELINES.md` and `specs/page-generation-spec.md`:
+Follow the rules in `AGENTS.md` and `specs/page-generation-spec.md`:
 
 #### Frontmatter
 
@@ -314,7 +314,7 @@ Circular targeting predicts where to aim by assuming the enemy...
 
 ## Reference Documents
 
-- `AI_GUIDELINES.md` — Writing rules, terminology, page generation contract.
+- `AGENTS.md` — Writing rules, terminology, page generation contract.
 - `specs/page-generation-spec.md` — Detailed frontmatter and body structure rules.
 - `BOOK_STRUCTURE.md` — Complete table of contents with hierarchy and difficulty markers.
 - `BOOK_STRATEGY.md` — Audience, tone, and content philosophy.

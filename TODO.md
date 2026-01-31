@@ -24,11 +24,6 @@ Create these advanced pages and uncomment their links (search for `<!-- TODO: Ad
 **Melee Combat:**
 - Melee Movement Tactics — Apply techniques to multi-opponent battles
 
-## Images
-
-- Convert key PNG diagrams to SVG or Mermaid where practical (e.g., `book/images/my-first-bot-config.png`)
-- Regenerate any non-screenshot PNG images to match the book's visual style
-
 ## Content & Links
 
 - Add term glossary links throughout content (e.g., `GuessFactor` linking to glossary)

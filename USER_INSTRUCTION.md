@@ -43,4 +43,4 @@ The AI will only prompt you if:
 
 - Skill definition: `.github/skills/create-page.md`
 - Page generation rules: `specs/page-generation-spec.md`
-- Writing guidelines: `AI_GUIDELINES.md`
+- Writing guidelines: `AGENTS.md`

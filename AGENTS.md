@@ -30,7 +30,7 @@ Transform knowledge from [RoboWiki.net](https://robowiki.net/) and
 
 - `BOOK_STRATEGY.md` – audience, tone, page structure, math/pseudocode rules
 - `BOOK_STRUCTURE.md` – complete table of contents
-- `AI_GUIDELINES.md` (this file) – writing rules and terminology
+- `AGENTS.md` (this file) – writing rules and terminology
 - `/specs` folder – page request interpretation and mapping
 
 ### Audience & Tone

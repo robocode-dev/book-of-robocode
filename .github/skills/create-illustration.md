@@ -685,5 +685,5 @@ Copy this entire `<defs>` block into every generated SVG. This is from `book/ima
 
 - `specs/page-generation-spec.md` — Illustration placeholder format and color palette
 - `book/images/tank.svg` — Tank symbol definitions (source of truth for bot rendering)
-- `AI_GUIDELINES.md` — General writing and content rules
+- `AGENTS.md` — General writing and content rules
 
