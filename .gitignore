@@ -5,7 +5,6 @@
 !.idea/icon.svg
 
 /node_modules
-/package-lock.json
 
 /book/.vitepress/dist
 /book/.vitepress/cache
