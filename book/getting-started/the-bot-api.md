@@ -17,10 +17,10 @@ This page explains how the game engine and your bot communicate:
 - Each turn your bot reads the current state and **issues commands**.
 - The engine performs the simulation step and then sends your bot **events** (scan, hits, collisions, etc.).
 
-We intentionally stay language-agnostic. Examples talk in terms of “API methods”, “events”, and “properties”, not
+We intentionally stay language-agnostic. Examples talk in terms of "API methods", "events", and "properties", not
 specific classes.
 
-> [!INFO] Info
+> [!NOTE] Note
 > **Applies to:** Classic Robocode & Robocode Tank Royale
 
 ---

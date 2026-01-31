@@ -31,27 +31,62 @@ transfer between classic Java-based Robocode and Robocode Tank Royale.
 
 ## 📚 Contents Overview
 
-### Articles (concepts & reference)
+### Introduction
 
-- What is Robocode
-- Physics (game mechanics & formulas)
-- Scoring
-- Coordinates and Angles
+- Author's Foreword
+- What is Robocode?
 - History (classic Robocode → Tank Royale)
-- Targeting Systems
-- Movement & Evasion
-- Energy Management
-- Radar & Scanning
-- Team Robots
-- Robocode Tank Royale Differences
+
+### Getting Started
+
+- Your First Bot
+- Bot Anatomy
+- The Bot API
+- Blocking vs Non-Blocking Movement
+- Robot Properties File
+- Your First Battle
+
+### Battlefield Physics
+
+- Coordinates and Angles
+- Movement Constraints
+- Bullet Physics
+- Gun Heat & Cooling
+- Wall Collisions
+- Scoring Basics
+
+### Radar & Scanning
+
+- Radar Basics
+- One-on-One Radar (Spinning, Perfect Locks)
+- Melee Radar (Spinning & Corner Arc, Oldest Scanned, Gun Heat Lock)
+
+### Targeting Systems
+
+- Simple Targeting (Head-On, Linear, Circular, Random Area)
+- The Targeting Problem (Understanding the Challenge, Introducing Waves)
+- Statistical Targeting (GuessFactor, Segmentation Visit Count Stats)
+- Targeting Tactics (Fire Power & Timing, Saving Gun Data)
+
+### Movement & Evasion
+
+- Basic Movement (Fundamentals, Wall Avoidance, Distancing)
+- Simple Evasion (Random, Stop and Go, Oscillator)
+- Strategic Movement (Anti-Gravity)
+- Advanced Evasion (Gun Heat Waves & Bullet Shadows, Wave Surfing)
+
+### Energy & Scoring
+
+- Energy as a Resource
+- Bullet Power Selection Strategy
+- Scoring Systems & Battle Types
+- Competition Formats & Rankings
+
+### Appendices
+
 - Glossary
-- References & Credits
-
-### Tutorials (guided learning)
-
-- Getting Started
-- My First Bot
-- Beyond the Basics
+- Quick Reference (Formulas)
+- Wall of Fame
 
 ---
 
@@ -66,23 +101,21 @@ transfer between classic Java-based Robocode and Robocode Tank Royale.
 
 1. Clone
    ```bash
-   git clone https://github.com/robocode-dev/robocoding.git
-   cd robocoding
+   git clone https://github.com/robocode-dev/book-of-robocode.git
+   cd book-of-robocode
    ```
 2. Install
    ```bash
    npm install
    ```
-3. Build (generate static site)
-   ```bash
-   npm run build
-   ```
-   Output: `book/.vitepress/dist/`
-4. Develop (serve locally)
+3. Develop (serve locally with hot reload)
    ```bash
    npm run dev
    ```
    Default: http://localhost:5173/
+
+> **Note:** Production builds (`npm run build`) are handled automatically by GitHub Actions when pushing to `main`. You
+> can preview a production build locally with `npm run preview` after building.
 
 ---
 
@@ -100,24 +133,29 @@ transfer between classic Java-based Robocode and Robocode Tank Royale.
 ## 📝 Project Structure
 
 ```
-robocoding/
+book-of-robocode/
 ├── book/
 │   ├── .vitepress/
 │   │   ├── config.js          # VitePress configuration
 │   │   └── styles/            # Custom styling (palette, dark mode)
 │   ├── public/                # Static assets (logo, favicon)
-│   ├── articles/              # Article pages
-│   ├── tutorial/              # Tutorial pages
-│   └── README.md              # Home page (VitePress landing)
-```
-
+│   ├── images/                # SVG illustrations
+│   ├── introduction/          # Foreword, What is Robocode?, History
+│   ├── getting-started/       # First bot, Bot anatomy, API basics
+│   ├── physics/               # Coordinates, Movement, Bullets, Scoring
+│   ├── radar/                 # Radar basics, 1v1 and Melee strategies
+│   ├── targeting/             # Simple to Statistical targeting systems
+│   ├── movement/              # Basic to Advanced evasion techniques
+│   ├── energy-and-scoring/    # Energy management, Scoring systems
+│   ├── appendices/            # Glossary, Quick Reference, Wall of Fame
+│   └── index.md               # Home page (VitePress landing)
+├── specs/                     # Page generation specs, RoboWiki links
 ├── package.json
-├── LICENSE-CODE # MIT License for code examples/config
-├── LICENSE-DOCS # CC BY-SA 4.0 for documentation
-├── ATTRIBUTION.md # Detailed author & contributor credits
-├── NOTICE.md # Source & license provenance notes
-└── README.md # This file
-
+├── LICENSE-CODE               # MIT License for code examples/config
+├── LICENSE-DOCS               # CC BY-SA 4.0 for documentation
+├── ATTRIBUTION.md             # Detailed author & contributor credits
+├── NOTICE.md                  # Source & license provenance notes
+└── README.md                  # This file
 ```
 
 ---
@@ -135,6 +173,7 @@ robocoding/
 ## 🤝 Contributing
 
 Ways to help:
+
 - Report issues
 - Improve explanations
 - Add examples / diagrams
@@ -142,12 +181,14 @@ Ways to help:
 - Suggest new topics
 
 ### Workflow
+
 1. Fork & branch: `git checkout -b feature/topic`
 2. Implement & preview locally
 3. Commit: `git commit -m "Describe change"`
 4. Push & open a Pull Request
 
 ### Writing Guidelines
+
 - Prefer clarity over cleverness
 - Use headings for structure
 - Keep paragraphs short
@@ -156,7 +197,8 @@ Ways to help:
 - Cite sources (RoboWiki, forum posts) when adapting analysis
 
 ### Adding a New Page
-1. Create a Markdown file in `book/articles/` or `book/tutorial/` (e.g. `advanced-movement.md`).
+
+1. Create a Markdown file in the appropriate chapter folder (e.g., `book/movement/basic/my-topic.md`).
 2. Start with `# Title` as first header.
 3. Add the filename (without extension) to the relevant sidebar list in `book/.vitepress/config.js`.
 4. Maintain heading hierarchy (`#`, `##`, `###`).
@@ -170,10 +212,12 @@ Ways to help:
 Dual licensed:
 
 ### Documentation
+
 Creative Commons Attribution–ShareAlike 4.0 (CC BY-SA 4.0)
 https://creativecommons.org/licenses/by-sa/4.0/
 
 ### Code Examples & Configuration
+
 MIT License
 https://opensource.org/licenses/MIT
 
@@ -181,18 +225,22 @@ https://opensource.org/licenses/MIT
 
 ## 🙏 Credits & Acknowledgments
 
-This project draws on the collective effort of an informal Robocode community: developers, competitors, researchers, infrastructure maintainers (RoboRumble / LiteRumble), and documentation contributors.
+This project draws on the collective effort of an informal Robocode community: developers, competitors, researchers,
+infrastructure maintainers (RoboRumble / LiteRumble), and documentation contributors.
 
 ### Special Thanks
+
 - **Mathew A. Nelson** — Original creator of Robocode (2001–2005)
 - **Flemming Nørnberg Larsen** — Maintainer (2005–present); creator of Robocode Tank Royale; author of this book
 - **Pavel Savara** — Major Robocode contributor (modularization, replay, refactoring)
 - **Albert Perez** — Creator of RoboRumble ([RoboRumble](http://robowiki.net/robowiki/RoboRumble))
-- **Julian Kent (Skilgannon)** — Creator/maintainer of LiteRumble; host of RoboWiki.net ([LiteRumble](http://robowiki.net/robowiki/LiteRumble))
+- **Julian Kent (Skilgannon)** — Creator/maintainer of LiteRumble; host of
+  RoboWiki.net ([LiteRumble](http://robowiki.net/robowiki/LiteRumble))
 - **RoboWiki contributors** — Foundational research & analysis
 - All bot authors, tournament organizers, and knowledge sharers
 
 ### Source Foundations
+
 - Official Robocode & Tank Royale documentation
 - RoboWiki analytical articles (CC BY-SA 3.0)
 - Historic forum discussions
@@ -206,13 +254,16 @@ See `ATTRIBUTION.md` and `NOTICE.md` for detailed credits and licensing provenan
 
 - Mathew A. Nelson — Original creator (2001–2005)
 - Flemming Nørnberg Larsen — Maintainer & primary author (2005–present)
-- Additional notable contributors: Pavel Savara, Albert Perez, Julian Kent (Skilgannon) — plus others listed in `ATTRIBUTION.md`.
+- Additional notable contributors: Pavel Savara, Albert Perez, Julian Kent (Skilgannon) — plus others listed in
+  `ATTRIBUTION.md`.
 
 ---
 
 ## Robocode Community & Motto
 
-"Robocode community" informally refers to everyone engaged in engine development, bot design, competitions, infrastructure (RoboRumble / LiteRumble), documentation, and knowledge sharing. The motto is an adopted, inspirational phrase — not an official historical slogan — and is intentionally placed under the title for visibility.
+"Robocode community" informally refers to everyone engaged in engine development, bot design, competitions,
+infrastructure (RoboRumble / LiteRumble), documentation, and knowledge sharing. The motto is an adopted, inspirational
+phrase — not an official historical slogan — and is intentionally placed under the title for visibility.
 
 (Already shown at top; not repeated.)
 
