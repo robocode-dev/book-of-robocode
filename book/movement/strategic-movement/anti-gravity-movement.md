@@ -13,8 +13,9 @@ source: [
 # Anti-Gravity Movement
 
 > [!TIP] Origins
-> **Anti-Gravity Movement** was developed and documented by the RoboWiki community, with significant contributions from
-> melee bot developers seeking dynamic positioning strategies.
+> **Anti-Gravity Movement** was one of the primary movement strategies before **Wave Surfing** was invented. Along 
+> with Random movement, Anti-Gravity was how bots evaded bullets—by maintaining distance and avoiding predictable 
+> patterns. **Minimum Risk Movement** (a related technique for melee combat) was pioneered by **Aelryen** and **ABC**.
 
 Antigravity movement treats battlefield entities—enemies, walls, bullets, and even teammates—as gravitational sources
 that exert repulsive (or attractive) forces on the bot. By calculating the combined effect of all forces and moving in

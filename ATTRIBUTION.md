@@ -34,19 +34,31 @@ Royale.
 
 ## Pioneering Techniques
 
-- Paul Evans, David Alves, Albert Perez — Co-pioneers of GuessFactor Targeting (early 2000s)
-    - Paul Evans: http://robowiki.net/wiki/Paul_Evans (SandboxDT bot: http://robowiki.net/wiki/SandboxDT)
-    - David Alves: http://robowiki.net/wiki/User:David_Alves (formalized the concept through early descriptions)
-    - Albert Perez: http://robowiki.net/wiki/User:Albert (contributed FuturePosition code for precise prediction)
+### Targeting Innovations
+- David Alves — Invented the Wave concept; co-pioneer of GuessFactor Targeting; pioneered Pattern Matching (Phoenix)
+    - Reference: http://robowiki.net/wiki/User:David_Alves
+- Paul Evans — Co-pioneer of GuessFactor Targeting (discovered "bins"); popularized Segmentation
+    - Reference: http://robowiki.net/wiki/Paul_Evans
+    - Bot: http://robowiki.net/wiki/SandboxDT
+- ABC — Pioneered Dynamic Clustering (later perfected by Skilgannon)
+    - Reference: http://robowiki.net/wiki/User:Abc
+- Julian Kent (Skilgannon) — Perfected Dynamic Clustering with K-Nearest Neighbor approach
+    - Reference: http://robowiki.net/wiki/User:Skilgannon
 - Kawigi — Popularized GuessFactor Targeting through the definitive tutorial and FloodMini bot
     - Reference: http://robowiki.net/wiki/User:Kawigi
-    - Bot: http://robowiki.net/wiki/FloodMini
-- Peter Strömberg (PEZ) — Popularized GuessFactor Targeting through GFTargetingBot and RoboWiki examples
-    - Reference: http://robowiki.net/wiki/User:PEZ
-- ABC — Inventor of Wave Surfing; creator of Shadow bot
+
+### Movement Innovations
+- ABC — Invented Wave Surfing; co-pioneered Minimum Risk Movement (with Aelryen)
     - Reference: http://robowiki.net/wiki/User:Abc
-- Patrick Cupka (Voidious) — Refined Wave Surfing and movement flattening; creator of Dookious
+    - Bot: http://robowiki.net/wiki/Shadow
+- David Alves — Pioneered Random Orbital Movement to defeat Linear/Circular targeting
+    - Reference: http://robowiki.net/wiki/User:David_Alves
+- Patrick Cupka (Voidious) — Refined Wave Surfing and movement flattening
     - Reference: http://robowiki.net/wiki/User:Voidious
+
+### Structural & Math Innovations
+- Albert Perez — Pioneered Precise Prediction (physics simulation for movement prediction)
+    - Reference: http://robowiki.net/wiki/User:Albert
 
 For more detailed contributor histories and discussions, please consult the respective RoboWiki pages above.
 

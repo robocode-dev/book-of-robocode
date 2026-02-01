@@ -14,14 +14,15 @@ source: [
 # Introducing Waves
 
 > [!TIP] Origins
-> The **wave** concept was developed as the foundation for **GuessFactor Targeting**, co-pioneered by **Paul Evans**, 
-> **David Alves**, and **Albert Perez** in the early 2000s, and later adopted for **Wave Surfing**, invented by **ABC**. 
-> This innovation revolutionized competitive Robocode by providing a precise way to track bullet travel and enemy 
-> positioning.
+> David Alves**** invented The wave concept****. He realized that since bullets travel at a constant speed, you can
+> create an abstract "circle" expanding from the shooter. When that circle hits the target, you know exactly what the
+> GuessFactor was. This is the foundation for almost all modern bot data collection, enabling both
+> **GuessFactor Targeting** (co-pioneered by **Paul Evans** and **David Alves**) and **Wave Surfing** (invented by
+> **ABC**).
 
 > [!NOTE] Implementation Guide
-> This page explains the **concepts** behind waves and GuessFactors. For a **step-by-step tutorial** with complete 
-> code to build a working GuessFactor gun, see 
+> This page explains the **concepts** behind waves and GuessFactors. For a **step-by-step tutorial** with complete
+> code to build a working GuessFactor gun, see
 > [GuessFactor Targeting](../statistical-targeting/guessfactor-targeting.md).
 
 In the [Understanding the Challenge](understanding-the-challenge.md), we saw that effective targeting requires tracking

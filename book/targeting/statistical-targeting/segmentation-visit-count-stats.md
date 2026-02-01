@@ -2,7 +2,7 @@
 title: "Segmentation & Visit Count Stats"
 category: "Targeting Systems"
 summary: "Segmentation divides statistical data by enemy behavior patterns, dramatically improving targeting accuracy by recognizing that the same enemy acts differently in different situations."
-tags: ["segmentation", "visit-count-stats", "statistical-targeting", "guessfactor", "advanced", "robocode", "tank-royale"]
+tags: [ "segmentation", "visit-count-stats", "statistical-targeting", "guessfactor", "advanced", "robocode", "tank-royale" ]
 difficulty: "advanced"
 source: [
   "RoboWiki - Visit Count Stats (classic Robocode) https://robowiki.net/wiki/Visit_Count_Stats",
@@ -14,16 +14,16 @@ source: [
 # Segmentation & Visit Count Stats
 
 > [!TIP] Origins
-> **Visit Count Stats** and **segmentation** techniques were refined by the RoboWiki community, with significant 
-> contributions from **Patrick Cupka ("Voidious")** and **Julian Kent ("Skilgannon")** in their optimization of 
+> **Visit Count Stats** and **segmentation** techniques were refined by the RoboWiki community, with significant
+> contributions from **Patrick Cupka ("Voidious")** and **Julian Kent ("Skilgannon")** in their optimization of
 > statistical targeting systems.
 
-Basic GuessFactor Targeting treats all enemy movements equally, recording every dodge attempt into a single array. This 
-works well against bots with consistent behavior but fails when enemies adapt their movement based on distance, 
+Basic GuessFactor Targeting treats all enemy movements equally, recording every dodge attempt into a single array. This
+works well against bots with consistent behavior but fails when enemies adapt their movement based on distance,
 bullet power, or wall proximity.
 
-**Segmentation** solves this by splitting statistical data into separate buffers based on battlefield conditions. 
-Instead of one array tracking "how the enemy dodges," you maintain multiple arrays tracking "how the enemy dodges when 
+**Segmentation** solves this by splitting statistical data into separate buffers based on battlefield conditions.
+Instead of one array tracking "how the enemy dodges," you maintain multiple arrays tracking "how the enemy dodges when
 close," "how the enemy dodges when far," "how the enemy dodges near walls," and so on.
 
 This technique transforms mediocre statistical guns into top-tier targeting systems.
@@ -39,7 +39,7 @@ Imagine an enemy that:
 Without segmentation, your stats mix all three behaviors. The close-range randomness pollutes your long-range
 predictions, and vice versa. Your targeting accuracy suffers everywhere.
 
-With distance segmentation, you maintain separate statistics for each range band. At long range, you see the clean 
+With distance segmentation, you maintain separate statistics for each range band. At long range, you see the clean
 oscillation pattern. At close range, you see the randomness and aim accordingly. Your hit rate improves dramatically.
 
 ## The Core Concept
@@ -49,7 +49,7 @@ oscillation pattern. At close range, you see the randomness and aim accordingly.
 > ```pseudocode
 > enemyStats[enemyName][segment][guessfactor] += 1
 > ```
-> Mixing data from different enemies will severely degrade targeting accuracy. Each bot has unique movement patterns 
+> Mixing data from different enemies will severely degrade targeting accuracy. Each bot has unique movement patterns
 > that must be learned independently.
 
 Instead of:
@@ -81,6 +81,7 @@ The most effective segmentation dimensions, roughly ordered by importance:
 The single most impactful segmentation. Many bots behave differently at various ranges.
 
 **Implementation:**
+
 ```pseudocode
 distanceSegment = floor(distance / 200)  // Segments: 0-200, 200-400, 400-600, etc.
 ```
@@ -92,6 +93,7 @@ Typical range: 4–8 segments.
 How fast the enemy moves perpendicular to your line of fire.
 
 **Implementation:**
+
 ```pseudocode
 lateralVelocity = enemyVelocity * sin(enemyHeading - absoluteBearing)
 lateralSegment = floor((lateralVelocity + 8) / 2)  // Maps -8 to +8 into segments
@@ -104,6 +106,7 @@ Typical range: 5–9 segments.
 How fast the enemy moves toward or away from you.
 
 **Implementation:**
+
 ```pseudocode
 advancingVelocity = enemyVelocity * cos(enemyHeading - absoluteBearing)
 advancingSegment = floor((advancingVelocity + 8) / 2)
@@ -116,6 +119,7 @@ Typical range: 3–5 segments (often less important than lateral).
 Some enemies dodge differently against heavy bullets vs. light bullets.
 
 **Implementation:**
+
 ```pseudocode
 bulletFlightTime = distance / bulletSpeed
 timeSegment = floor(bulletFlightTime / 10)  // Segments by 10-turn intervals
@@ -128,6 +132,7 @@ Typical range: 3–5 segments.
 Enemies near walls can't dodge as freely.
 
 **Implementation:**
+
 ```pseudocode
 wallDistance = min(
   enemy.x, 
@@ -145,6 +150,7 @@ Typical range: 3–4 segments.
 Tracks enemy acceleration patterns.
 
 **Implementation:**
+
 ```pseudocode
 timeSinceDirectionChange = currentTime - lastDirectionChangeTime
 accelSegment = min(floor(timeSinceDirectionChange / 5), 4)
@@ -166,7 +172,7 @@ segmentIndex =
 This creates a multidimensional array. For example, 6 distance × 7 lateral × 3 advancing = 126 total segments.
 
 > [!WARNING] The Curse of Dimensionality
-> More segments = more precision, but also = more data sparsity. Each segment needs enough samples to be reliable. 
+> More segments = more precision, but also = more data sparsity. Each segment needs enough samples to be reliable.
 > Too many segments and you'll have empty buckets. Too few and you lose predictive power.
 
 ## Data Sparsity & Rolling Averages
@@ -187,11 +193,11 @@ for each seg in allSegments:
 stats[enemyName][currentSegment][hitGF] += 1
 ```
 
-The decay factor (e.g., 0.98) controls how quickly old data is forgotten. Lower values (0.9–0.95) forget faster; higher 
+The decay factor (e.g., 0.98) controls how quickly old data is forgotten. Lower values (0.9–0.95) forget faster; higher
 values (0.98–0.995) retain historical data longer.
 
 > [!TIP] Optimizing Decay
-> Decaying every bin on every wave hit can be expensive with large datasets. Some implementations decay only when 
+> Decaying every bin on every wave hit can be expensive with large datasets. Some implementations decay only when
 > recording hits or use a timestamp-based approach that calculates effective decay on-demand when reading data.
 
 ### 2. Use Fallback Segments
@@ -249,7 +255,7 @@ for gf in range(-bins + 1, +bins - 1):  // Skip edges
 return bestGF
 ```
 
-This helps when data is sparse—a single bin with 1 lucky hit won't outweigh a cluster of bins with consistent hits. 
+This helps when data is sparse—a single bin with 1 lucky hit won't outweigh a cluster of bins with consistent hits.
 The rolling average finds the **center of mass** of your data rather than a single outlier peak.
 
 ## Practical Tips
@@ -258,7 +264,7 @@ The rolling average finds the **center of mass** of your data rather than a sing
 
 **Log everything:** Save segment indices, hit rates per segment, and sample counts. Analyze offline to tune bin counts.
 
-**Test against diverse opponents:** Segmentation helps most against adaptive enemies. If you only test against 
+**Test against diverse opponents:** Segmentation helps most against adaptive enemies. If you only test against
 the same bot all the time, you won't achieve the benefits.
 
 **Avoid over-segmentation:** 200+ segments often perform worse than 50–100 well-chosen segments due to data sparsity.
@@ -274,13 +280,16 @@ the same bot all the time, you won't achieve the benefits.
 
 Once you have effective segmentation:
 
-- **[Dynamic Clustering](./dynamic-clustering.md)** — Replace fixed segments with adaptive similarity matching
-- **[Anti-Surfer Targeting](../advanced-targeting/anti-surfer-targeting.md)** — Counter enemies who use Wave Surfing
--->
+- **[Dynamic Clustering](../statistical-targeting/dynamic-clustering.md)** — Replace fixed segments with adaptive
+  similarity matching (pioneered by ABC, perfected by Skilgannon). See
+  also: [RoboWiki - Dynamic Clustering](https://robowiki.net/wiki/Dynamic_Clustering)
+- **[Anti-Surfer Targeting](../targeting-tactics/anti-surfer-targeting.md)** — Counter enemies who use Wave Surfing. See
+  also: [RoboWiki - Anti-Surfer Targeting](https://robowiki.net/wiki/Anti-Surfer_Targeting)
 
 ## Further Reading
 
 - [Visit Count Stats](https://robowiki.net/wiki/Visit_Count_Stats) — RoboWiki (classic Robocode)
-- [GuessFactor Targeting (traditional)](https://robowiki.net/wiki/GuessFactor_Targeting_(traditional)) — RoboWiki (classic Robocode)
+- [GuessFactor Targeting (traditional)](https://robowiki.net/wiki/GuessFactor_Targeting_(traditional)) — RoboWiki (
+  classic Robocode)
 - [Dynamic Clustering](https://robowiki.net/wiki/Dynamic_Clustering) — RoboWiki (classic Robocode)
 - [Symbolic Dynamic Segmentation](https://robowiki.net/wiki/Symbolic_Dynamic_Segmentation) — RoboWiki (classic Robocode)

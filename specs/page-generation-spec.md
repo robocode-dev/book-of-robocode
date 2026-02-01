@@ -168,14 +168,16 @@ who developed the technique or concept.
 
 1. **Check `book/appendices/wall-of-fame.md`** for known originators of techniques.
 2. **Known attributions include:**
-    - **Paul Evans, David Alves, Albert Perez** — Co-pioneers of GuessFactor Targeting (early 2000s)
-    - **Kawigi** — Popularized GuessFactor Targeting through tutorials and FloodMini; wall smoothing implementations
-    - **ABC** — Inventor of Wave Surfing, Shadow bot, early RoboWiki contributor
-    - **Peter Strömberg ("PEZ")** — RoboWiki founder, host, and administrator; popularized GuessFactor Targeting through GFTargetingBot; CassiusClay and Pugilist bots
-    - **Julian Kent ("Skilgannon")** — Dynamic Clustering, LiteRumble, current RoboWiki.net hosting
-    - **Albert Perez** — RoboRumble
-    - **Patrick Cupka ("Voidious")** — Wave Surfing refinement, movement flattening, Dookious techniques
-    - **David Alves** — Pattern matching, precise prediction
+    - **David Alves** — Invented the Wave concept; co-pioneer of GuessFactor Targeting; pioneered Pattern Matching (Phoenix); pioneered Random Orbital Movement
+    - **Paul Evans** — Co-pioneer of GuessFactor Targeting (discovered "bins"); popularized Segmentation
+    - **ABC** — Invented Wave Surfing; pioneered Dynamic Clustering; co-pioneered Minimum Risk Movement (with Aelryen)
+    - **Albert Perez** — Created RoboRumble; pioneered Precise Prediction
+    - **Julian Kent ("Skilgannon")** — Perfected Dynamic Clustering; LiteRumble maintainer; current RoboWiki.net host
+    - **Kawigi** — Popularized GuessFactor Targeting through tutorials and FloodMini
+    - **Patrick Cupka ("Voidious")** — Refined Wave Surfing and movement flattening
+    - **Peter Strömberg ("PEZ")** — RoboWiki founder; popularized techniques through GFTargetingBot
+    - **Aelryen** — Co-pioneered Minimum Risk Movement (with ABC)
+    - **Mathew Nelson** — Linear/Circular Targeting (original IBM samples)
 3. **If no specific originator is known**, credit the RoboWiki community:
    ```markdown
    > [!TIP] Origins

@@ -33,29 +33,33 @@ public to serve as the community's central knowledge hub.
 ### Julian Kent (Skilgannon)
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:Skilgannon)  
-Author of **[DrussGT](https://robowiki.net/wiki/DrussGT)**, one of the most dominant bots in history. Skilgannon
-advanced **Dynamic Clustering** and melee strategies. He is the primary administrator and developer of the modern
-**[LiteRumble](https://robowiki.net/wiki/LiteRumble)** ranking system.
+Author of **[DrussGT](https://robowiki.net/wiki/DrussGT)**, one of the most dominant bots in history. Skilgannon 
+perfected **[Dynamic Clustering](https://robowiki.net/wiki/Dynamic_Clustering)** (originally pioneered by ABC), moving 
+away from fixed "bins" toward a "nearest neighbor" search (K-Nearest Neighbor). He also advanced melee strategies and 
+is the primary administrator and developer of the modern **[LiteRumble](https://robowiki.net/wiki/LiteRumble)** 
+ranking system.
 
 ### Paul Evans
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:Paul_Evans)  
 Creator of **[SandboxDT](https://robowiki.net/wiki/SandboxDT)**. Paul Evans is a co-pioneer of
-**[GuessFactor Targeting](https://robowiki.net/wiki/GuessFactor_Targeting)**. His work in the early 2000s set the
-standard for statistical targeting that remains the foundation of high-level competitive play today.
+**[GuessFactor Targeting](https://robowiki.net/wiki/GuessFactor_Targeting)**, discovering the concept of "bins" 
+(statistical buckets) to track enemy movement. He also popularized **Segmentation**—showing that you should have 
+different stats for "Close Range," "Long Range," "Near Walls," etc. His work in the early 2000s set the standard for 
+statistical targeting that remains the foundation of high-level competitive play today.
 
 ### David Alves
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:David_Alves)  
-Author of **[Phoenix](https://robowiki.net/wiki/Phoenix)** and **[Falcon](https://robowiki.net/wiki/Falcon)**. Along
-with Paul Evans, David is credited as a co-pioneer of
-**[GuessFactor Targeting](https://robowiki.net/wiki/GuessFactor_Targeting)**,
-providing the first formalized descriptions of the "bin" and "wave" systems. He is also a primary architect of
-**[Pattern Matching](https://robowiki.net/wiki/Pattern_Matching)**, which he used in
-**[Phoenix](https://robowiki.net/wiki/Phoenix)**
-to create the first dominant high-level targeting strategy. Pattern Matching remains a valid alternative to
-**[GuessFactor Targeting](https://robowiki.net/wiki/GuessFactor_Targeting)** in specific scenarios, particularly
-against bots with repetitive movement patterns.
+Author of **[Phoenix](https://robowiki.net/wiki/Phoenix)** and **[Falcon](https://robowiki.net/wiki/Falcon)**. David 
+Alves **invented the Wave concept**—realizing that since bullets travel at a constant speed, you can create an 
+abstract "circle" expanding from the shooter, and when it hits the target, you know exactly what the GuessFactor was. 
+This is the foundation for almost all modern bot data collection. Along with Paul Evans, he co-pioneered 
+**[GuessFactor Targeting](https://robowiki.net/wiki/GuessFactor_Targeting)**, formalizing the math of Waves to track 
+when bins should be updated. He also pioneered **[Pattern Matching](https://robowiki.net/wiki/Pattern_Matching)** 
+with **[Phoenix](https://robowiki.net/wiki/Phoenix)**, creating the first dominant high-level targeting strategy by 
+storing enemy movement as a string of characters and searching for "repeats" to predict the future. Additionally, 
+David pioneered **Random Orbital Movement** to defeat Linear/Circular targeting.
 
 ### Patrick Cupka (Voidious)
 
@@ -67,9 +71,11 @@ strategy guides.
 ### Albert Perez
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:Albert)  
-Creator of the original **[RoboRumble](https://robowiki.net/wiki/RoboRumble)** client and contributor of the
-**FuturePosition** code. This distributed ranking system transformed Robocode into a true competitive sport by providing
-a massive, live testing ground for every bot created.
+Creator of the original **[RoboRumble](https://robowiki.net/wiki/RoboRumble)** client. This distributed ranking system 
+transformed Robocode into a true competitive sport by providing a massive, live testing ground for every bot created. 
+Albert also pioneered **Precise Prediction**—writing code that perfectly simulated Robocode's physics (acceleration, 
+velocity, wall-bouncing) so bots could "re-run" the turn in their heads before moving. This was a critical part for
+making GuessFactor Targeting effective.
 
 ### Kawigi
 
@@ -84,8 +90,13 @@ adopt the technique.
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:Abc)  
 Inventor of **[Wave Surfing](https://robowiki.net/wiki/Wave_Surfing)**, the most significant defensive discovery in
-Robocode history. Author of **[Shadow](https://robowiki.net/wiki/Shadow)**, which introduced sophisticated melee gun
-techniques and multi-target engagement.
+Robocode history. Before ABC, bots used "Anti-Gravity" or "Random" movement. ABC realized that if the enemy is using 
+GuessFactors (waves), the player should "surf" those same waves to find the position the enemy is least likely to fire 
+at. He also pioneered **[Dynamic Clustering](https://robowiki.net/wiki/Dynamic_Clustering)** (later perfected by 
+Skilgannon), moving away from fixed "bins" toward a "nearest neighbor" search. Along with **Aelryen**, ABC pioneered 
+**[Minimum Risk Movement](https://robowiki.net/wiki/Minimum_Risk_Movement)** for melee combat. Author of 
+**[Shadow](https://robowiki.net/wiki/Shadow)**, which introduced sophisticated melee gun techniques and multi-target 
+engagement.
 
 ### Simonton
 
