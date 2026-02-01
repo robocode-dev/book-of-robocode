@@ -178,6 +178,10 @@ who developed the technique or concept.
     - **Peter Strömberg ("PEZ")** — RoboWiki founder; popularized techniques through GFTargetingBot
     - **Aelryen** — Co-pioneered Minimum Risk Movement (with ABC)
     - **Mathew Nelson** — Linear/Circular Targeting (original IBM samples)
+    - **Corbos** — First to mention K-D Trees on RoboWiki
+    - **Chase-san** — Early explorer of K-D trees in Robocode
+    - **Simonton** — Early K-D tree adopter; pushed Dynamic Clustering to its limits with Diamond
+    - **Alex Schultz ("Rednaxela")** — Developed optimized K-D tree implementation; popularized K-D trees in Dynamic Clustering
 3. **If no specific originator is known**, credit the RoboWiki community:
    ```markdown
    > [!TIP] Origins
