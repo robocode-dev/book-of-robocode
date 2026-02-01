@@ -23,8 +23,7 @@ The original creator of Robocode at IBM in 2001. His vision of "learning through
 
 ### Flemming Nørnberg Larsen (fnl)
 
-[GitHub Profile](https://github.com/flemming-n-larsen)
-[RoboWiki User Page](https://robowiki.net/wiki/User:FlemmingLarsen)  
+[GitHub Profile](https://github.com/flemming-n-larsen) | [RoboWiki User Page](https://robowiki.net/wiki/User:FlemmingLarsen)  
 The long-time maintainer of the classic [Robocode project](https://robocode.sourceforge.io) and the creator of
 **[Robocode Tank Royale](https://robocode.dev/)**. Flemming has kept the game alive and evolving for over two decades.
 
