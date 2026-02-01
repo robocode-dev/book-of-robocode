@@ -14,9 +14,11 @@ source: [
 # Segmentation & Visit Count Stats
 
 > [!TIP] Origins
-> **Visit Count Stats** and **segmentation** techniques were refined by the RoboWiki community, with significant
-> contributions from **Patrick Cupka ("Voidious")** and **Julian Kent ("Skilgannon")** in their optimization of
-> statistical targeting systems.
+> **Visit Count Stats** and **segmentation** techniques were refined by the RoboWiki community. **Paul Evans**
+> popularized segmentation with **SandboxDT**, demonstrating that different stats for "close range," "long range," and
+> "near walls" dramatically improved targeting accuracy. **Patrick Cupka ("Voidious")** and **Julian Kent
+> ("Skilgannon")** further optimized these systems, with Simonton's **Diamond** proving that well-tuned segmentation
+> could achieve near-perfect accuracy.
 
 Basic GuessFactor Targeting treats all enemy movements equally, recording every dodge attempt into a single array. This
 works well against bots with consistent behavior but fails when enemies adapt their movement based on distance,

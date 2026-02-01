@@ -1,7 +1,7 @@
 ---
 title: "Anti-Gravity Movement"
 category: "Movement & Evasion"
-summary: "Anti-gravity movement uses repulsive force fields to maintain optimal positioning relative to enemies, walls, and battlefield features. This strategic movement approach excels in melee combat and provides flexible, dynamic positioning in one-on-one battles."
+summary: "Anti-gravity movement uses repulsive force fields to maintain optimal positioning relative to enemies, walls, and battlefield features. This strategic movement approach excels in melee combat, though it has been superseded by Wave Surfing for competitive 1v1 play."
 tags: [ "anti-gravity-movement", "movement", "strategic-movement", "melee", "advanced", "robocode", "tank-royale" ]
 difficulty: "advanced"
 source: [
@@ -16,6 +16,12 @@ source: [
 > **Anti-Gravity Movement** was one of the primary movement strategies before **Wave Surfing** was invented. Along 
 > with Random movement, Anti-Gravity was how bots evaded bullets—by maintaining distance and avoiding predictable 
 > patterns. **Minimum Risk Movement** (a related technique for melee combat) was pioneered by **Aelryen** and **ABC**.
+
+> [!WARNING] Historical Context
+> Anti-Gravity Movement was largely **superseded by Wave Surfing for competitive 1v1 play around 2003**. While it
+> remains an excellent learning tool and performs well in melee battles, top-tier 1v1 bots use Wave Surfing because
+> it directly counters statistical targeting systems. If your goal is competitive 1v1 performance, study
+> [Wave Surfing Introduction](../advanced-evasion/wave-surfing-introduction.md) instead.
 
 Antigravity movement treats battlefield entities—enemies, walls, bullets, and even teammates—as gravitational sources
 that exert repulsive (or attractive) forces on the bot. By calculating the combined effect of all forces and moving in
@@ -340,19 +346,19 @@ predictable patterns.
 
 **Ideal for:**
 
-- **Melee combat**: Natural multi-target awareness and spacing
+- **Melee combat**: Natural multi-target awareness and spacing — this is where Anti-Gravity still shines
 - **Dynamic positioning**: Situations requiring smooth adaptation to changing conditions
 - **Learning platforms**: Simple to implement, easy to visualize and tune
 - **Hybrid systems**: As a base layer combined with wave surfing or statistical analysis
 
-**Less effective for:**
+**Not recommended for:**
 
+- **Competitive 1v1**: Wave Surfing provides far superior bullet evasion against statistical targeting systems
 - **Precision positioning**: Fixed radius orbits or specific angles are better with geometric movement
-- **Wave surfing integration**: Requires careful integration to avoid conflicting with danger calculations
-- **Bullet dodging**: React to actual bullet positions rather than forces for better accuracy
+- **Bullet dodging**: Reacting to actual wave danger calculations beats force-based approximations
 
-Antigravity shines when you need fluid, multifactor positioning without complex decision trees. It's a powerful
-foundation that many advanced bots build upon.
+Antigravity shines in melee when you need fluid, multifactor positioning without complex decision trees. For 1v1
+competitive play, it has been obsolete since approximately 2003 when ABC invented Wave Surfing.
 
 ## Further Reading
 
