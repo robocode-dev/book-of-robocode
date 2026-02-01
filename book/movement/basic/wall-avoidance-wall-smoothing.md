@@ -14,7 +14,7 @@ source: [
 
 > [!TIP] Origins
 > **Wall Smoothing** techniques were developed and refined by the RoboWiki community, with notable implementations
-> contributed by **Kawigi** and other early bot developers.
+> contributed by **Kyle Huntington (Kawigi)** and other early bot developers.
 
 Walls are more dangerous than they look. A wall hit costs energy, can stop the bot or force a slow turn, and often
 leaves the bot in a predictable position.

@@ -15,11 +15,11 @@ source: [
 # GuessFactor Targeting
 
 > [!TIP] Origins
-> **GuessFactor Targeting** was co-pioneered by **Paul Evans** and **David Alves** in the early 2000s, revolutionizing 
-> competitive Robocode. Paul Evans discovered the concept of "bins" (statistical buckets), while David Alves formalized 
-> the math of "Waves" to track when those bins should be updated. Because Paul Evans' bots were often closed-source, 
-> **Kawigi** played a crucial role in popularizing the technique through his definitive tutorial and open-source 
-> **FloodMini** bot—ensuring it wasn't just a "secret weapon" of the top bots.
+> **GuessFactor Targeting** was co-pioneered by **Paul Evans** and **David Alves** in the early 2000s, revolutionizing
+> competitive Robocode. Paul Evans discovered the concept of "bins" (statistical buckets), while David Alves formalized
+> the math of "Waves" to track when those bins should be updated. Because Paul Evans' bots were often closed-source,
+> **Kyle Huntington (Kawigi)** played a crucial role in popularizing the technique through his definitive tutorial and
+> open-source **FloodMini** bot—ensuring it wasn't just a "secret weapon" of the top bots.
 
 GuessFactor Targeting (GFT) is a statistical targeting system that learns from experience. Instead of predicting enemy
 movement with mathematical formulas, it records where enemies are when bullets arrive and fires at the positions they

@@ -7,7 +7,7 @@ Royale.
 
 - **Flemming Nørnberg Larsen (fnl)** — Author of *The Book of Robocode*; Robocode maintainer (2005–present); creator of
   Robocode Tank Royale.
-    - [GitHub Profile](https://github.com/flemming-n-larsen) 
+    - [GitHub Profile](https://github.com/flemming-n-larsen)
     - [RoboWiki User Page](https://robowiki.net/wiki/User:FlemmingLarsen)
 - **Mathew A. Nelson** — Original creator of Robocode (2001–2005).
 - **Julian Kent (Skilgannon)** — Current host and administrator of RoboWiki.net; creator/maintainer of the LiteRumble
@@ -18,6 +18,8 @@ Royale.
 
 - **Pavel Savara** — Major contributions to Robocode core development (modularization, replays, and build systems).
     - [GitHub Profile](https://github.com/pavelsavara)
+- **Kev (kc)** — Author of **[GresSuffurd](https://robowiki.net/wiki/GresSuffurd)**; holder of the current 1-vs-1 crown.
+    - [RoboWiki User Page](https://robowiki.net/wiki/User:Kev)
 - **RoboWiki Contributors** — Decades of foundational research and mathematical analysis by the community.
 - **Tournament Organizers & Bot Authors** — All those who shared their code and knowledge.
 
@@ -54,16 +56,17 @@ Royale.
 - **Albert Perez** — Creator of **[RoboRumble](https://robowiki.net/wiki/RoboRumble)**; pioneered **Precise Prediction**
   physics simulation.
     - [RoboWiki User Page](https://robowiki.net/wiki/User:Albert)
-- **Corbos** — First to introduce **k-D Trees** to the Robocode community via the RoboWiki.
+- **Corbos** — First to mention **k-D Trees** on the RoboWiki.
     - [RoboWiki User Page](https://robowiki.net/wiki/User:Corbos)
-- **Chase-san** — Early pioneer and explorer of k-D tree applications.
-    - [RoboWiki User Page](https://robowiki.net/wiki/User:Chase-san)
-- **Nathaniel Simonton (Simonton)** — Early pioneer of k-D trees; creator of
-  **[Diamond](https://robowiki.net/wiki/Diamond)**.
+- **Nathaniel Simonton (Simonton)** — Built the first k-D tree implementation in a bot (*
+  *[Diamond](https://robowiki.net/wiki/Diamond)**).
     - [RoboWiki User Page](https://robowiki.net/wiki/User:Simonton)
-- **Alex Schultz (Rednaxela)** — Developed the highly optimized Java **k-D Tree** implementation and popularized its use
-  in modern Dynamic Clustering.
+- **Alex Schultz (Rednaxela)** — Developed highly optimized Java k-D Tree implementations and introduced advanced
+  pruning strategies.
     - [RoboWiki User Page](https://robowiki.net/wiki/User:Rednaxela)
+- **Julian Kent (Skilgannon)** — Developed the **Bucket-PR k-D tree**, extending the performance race to
+  commercial-grade efficiency.
+    - [Bucket-PR GitHub](https://github.com/jkflying/bucket-pr-kdtree/blob/master/C%2B%2B/README.md)
 
 ---
 

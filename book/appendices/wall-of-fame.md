@@ -88,6 +88,13 @@ Author of **[Dookious](https://robowiki.net/wiki/Dookious)**. Patrick refined **
 to a science. He managed the RoboWiki for many years starting in 2007 and wrote many of the community's definitive
 strategy guides.
 
+### Kev (kc)
+
+[RoboWiki User Page](https://robowiki.net/wiki/User:Kev)  
+Author of **[GresSuffurd](https://robowiki.net/wiki/GresSuffurd)**. Kev represents the pinnacle of 1-vs-1 performance,
+holding the current RoboRumble crown by a massive margin. His bots pushed statistical targeting and movement to their
+absolute limits.
+
 ---
 
 ## Algorithmic & Data Innovations
@@ -97,17 +104,16 @@ strategy guides.
 The early pioneers of **k-D Trees** in Robocode. **[Corbos](https://robowiki.net/wiki/User:Corbos)** was the first to
 mention the data structure on the RoboWiki, sparking interest from
 **[Chase-san](https://robowiki.net/wiki/User:Chase-san)** and
-**[Nathaniel Simonton](https://robowiki.net/wiki/User:Simonton)**. Simonton later pushed **Dynamic Clustering** to its
-limits with his bot **[Diamond](https://robowiki.net/wiki/Diamond)**, proving that nearest-neighbor searches could
-achieve near-perfect accuracy.
+**[Nathaniel Simonton](https://robowiki.net/wiki/User:Simonton)**. Simonton built the first k-D tree in a bot and
+pushed **Dynamic Clustering** to its limits with **[Diamond](https://robowiki.net/wiki/Diamond)**.
 
-### Alex Schultz (Rednaxela)
+### Alex Schultz (Rednaxela) and Julian Kent (Skilgannon)
 
-[RoboWiki User Page](https://robowiki.net/wiki/User:Rednaxela)  
-Known for high-performance algorithms and his bot **[Toad](https://robowiki.net/wiki/Toad)**, Alex developed the
-**highly optimized Java k-D Tree** implementation that became the community standard. While not the first to introduce
-the structure, his work on efficiency and his enthusiasm for the implementation allowed modern bots to search massive
-amounts of data instantly.
+Alex Schultz, known for his bot **[Toad](https://robowiki.net/wiki/Toad)**, introduced advanced k-D tree pruning
+strategies that sparked a performance race with Julian Kent. This collaboration and competition resulted in some
+of the fastest Java and C++ k-D tree implementations in existence, including Julian's
+**[Bucket-PR k-D tree](https://github.com/jkflying/bucket-pr-kdtree/blob/master/C%2B%2B/README.md)** which is now used
+in several commercial products.
 
 ### Albert Perez
 

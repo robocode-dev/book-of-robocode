@@ -18,7 +18,7 @@ source: [
 > create an abstract "circle" expanding from the shooter. When that circle hits the target, you know exactly what the
 > GuessFactor was. This is the foundation for almost all modern bot data collection, enabling both
 > **GuessFactor Targeting** (co-pioneered by **Paul Evans** and **David Alves**) and **Wave Surfing** (invented by
-> **ABC**).
+> **Alexandros (ABC)**).
 
 > [!NOTE] Implementation Guide
 > This page explains the **concepts** behind waves and GuessFactors. For a **step-by-step tutorial** with complete
