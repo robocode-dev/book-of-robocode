@@ -16,17 +16,18 @@ source: [
 
 > [!TIP] Origins
 > **GuessFactor Targeting** was co-pioneered by **Paul Evans**, **David Alves**, and **Albert Perez** in the early 
-> 2000s, and revolutionized competitive Robocode. Instead of trying to predict exactly where an enemy will be, it 
-> tracks where enemies *actually go* and aims at the statistically most likely position. **Kawigi** popularized the 
-> technique through his definitive tutorial and open-source **FloodMini** bot, making it accessible to the broader 
-> community. This technique remains fundamental to advanced bot development.
+> 2000s, revolutionizing competitive Robocode. Instead of trying to predict exactly where an enemy will be, it tracks 
+> where enemies *actually go* and aims at the statistically most likely position. Because Paul Evans' bots were often 
+> closed-source, **Kawigi** played a crucial role in popularizing the technique through his definitive tutorial and 
+> open-source **FloodMini** bot—ensuring it wasn't just a "secret weapon" of the top bots.
 
 GuessFactor Targeting (GFT) is a statistical targeting system that learns from experience. Instead of predicting enemy
 movement with mathematical formulas, it records where enemies are when bullets arrive and fires at the positions they
 favor most often.
 
-This shift from prediction to probability transformed competitive Robocode. GFT works well against both predictable and
-unpredictable movements, adapting automatically to each opponent's behavior.
+This shift from prediction to probability transformed competitive Robocode. GFT emerged from the collaborative 
+experimentation of multiple community members and works well against both predictable and unpredictable movements, 
+adapting automatically to each opponent's behavior.
 
 ## Why simple prediction fails
 

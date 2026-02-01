@@ -30,6 +30,10 @@ Highlights:
 - Players created hundreds of bots, from simple examples to world-class competitive bots.
 - The community started [RoboWiki](https://robowiki.net) (classic Robocode only), collecting strategies, formulas, and
   tutorials.
+- **Albert Perez** created the **[RoboRumble](https://robowiki.net/wiki/RoboRumble)**, a continuous distributed ranking 
+  system that transformed Robocode into a true competitive sport. Without this ranking system, the "evolutionary war" 
+  between strategies like GuessFactor Targeting and Wave Surfing would never have happened—developers wouldn't have 
+  had a way to prove which bot was actually better.
 
 RoboWiki became the reference for advanced topics such as wave surfing, GuessFactor targeting, detailed battlefield
 physics, and much more.
