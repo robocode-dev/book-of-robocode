@@ -5,64 +5,65 @@ Royale.
 
 ## Primary Authors & Stewards
 
-- **Flemming Nørnberg Larsen** — Author of *The Book of Robocode*; Robocode maintainer (2005–present); creator of
+- **Flemming Nørnberg Larsen (fnl)** — Author of *The Book of Robocode*; Robocode maintainer (2005–present); creator of
   Robocode Tank Royale.
+    - [GitHub Profile](https://github.com/flemming-n-larsen) 
+    - [RoboWiki User Page](https://robowiki.net/wiki/User:FlemmingLarsen)
 - **Mathew A. Nelson** — Original creator of Robocode (2001–2005).
 - **Julian Kent (Skilgannon)** — Current host and administrator of RoboWiki.net; creator/maintainer of the LiteRumble
-  ranking system; creator of the legendary bot *DrussGT*.
+  ranking system; creator of **[DrussGT](https://robowiki.net/wiki/DrussGT)**.
+    - [RoboWiki User Page](https://robowiki.net/wiki/User:Skilgannon)
 
 ## Notable Contributors
 
-- **Pavel Savara** — Major contributions to Robocode core development (modularization, replays, refactoring, and build
-  systems).
-- **RoboWiki Contributors** — Decades of foundational research, mathematical analysis, and collective documentation.
-- **Tournament Organizers & Bot Authors** — All those who shared their code and knowledge to advance the competitive
-  state of the art.
+- **Pavel Savara** — Major contributions to Robocode core development (modularization, replays, and build systems).
+    - [GitHub Profile](https://github.com/pavelsavara)
+- **RoboWiki Contributors** — Decades of foundational research and mathematical analysis by the community.
+- **Tournament Organizers & Bot Authors** — All those who shared their code and knowledge.
 
 ## The RoboWiki Foundation
 
-- **Peter Strömberg (PEZ)** — Founder, host, and original administrator of RoboWiki (2003–2007); creator of
-  *CassiusClay* and *Pugilist*.
+- **Peter Strömberg (PEZ)** — Founder and original administrator of RoboWiki (2003–2007); creator of
+  **[CassiusClay](https://robowiki.net/wiki/CassiusClay)**.
+    - [RoboWiki User Page](https://robowiki.net/wiki/User:PEZ)
 - **Crippa** — Co-founder of RoboWiki (2003).
-- **Patrick Cupka (Voidious)** — Former RoboWiki manager (2007+) and author of definitive strategy guides and the bot
-  *Dookious*.
-
-## Competitive Infrastructure
-
-- **Albert Perez** — Creator of the original **RoboRumble** distributed ranking system.
-- **Julian Kent (Skilgannon)** — Creator and maintainer of **LiteRumble**, the modern standard for bot rankings.
-
----
+    - [RoboWiki User Page](https://robowiki.net/wiki/User:Crippa)
+- **Patrick Cupka (Voidious)** — Former RoboWiki manager and author of definitive strategy guides; creator of
+  **[Dookious](https://robowiki.net/wiki/Dookious)**.
+    - [RoboWiki User Page](https://robowiki.net/wiki/User:Voidious)
 
 ## Pioneering Techniques
 
-### Targeting Innovations
+### Targeting & Movement
 
-- **David Alves** — **Invented the Wave concept**; co-pioneer of GuessFactor Targeting; pioneered Pattern Matching (
-  *Phoenix*).
-- **Paul Evans** — Co-pioneer of **GuessFactor Targeting** (discovered the "bins" approach); popularized Segmentation.
-- **ABC** — Pioneered the earliest forms of **Dynamic Clustering** (later refined into modern KNN approaches).
-- **Julian Kent (Skilgannon)** — Perfected Dynamic Clustering using the **K-Nearest Neighbor (KNN)** approach.
-- **Kawigi** — Author of the definitive GuessFactor Targeting tutorial and the *FloodMini* bot, which educated
-  generations of coders.
+- **David Alves** — Invented the **Wave concept**; co-pioneer of **GuessFactor Targeting**; creator of
+  **[Phoenix](https://robowiki.net/wiki/Phoenix)**.
+    - [RoboWiki User Page](https://robowiki.net/wiki/User:David_Alves)
+- **Paul Evans** — Co-pioneer of **GuessFactor Targeting** (statistical bins); popularized **Segmentation**; creator of
+  **[SandboxDT](https://robowiki.net/wiki/SandboxDT)**.
+    - [RoboWiki User Page](https://robowiki.net/wiki/User:Paul_Evans)
+- **Alexandros (ABC)** — Invented **Wave Surfing**; pioneered **Dynamic Clustering**; creator of
+  **[Shadow](https://robowiki.net/wiki/Shadow)**.
+    - [RoboWiki User Page](https://robowiki.net/wiki/User:Abc)
+- **Kyle Huntington (Kawigi)** — Popularized high-level targeting through tutorials and the
+  **[FloodMini](https://robowiki.net/wiki/FloodMini)** bot.
+    - [RoboWiki User Page](https://robowiki.net/wiki/User:Kawigi)
 
-### Movement Innovations
+### Structural & Algorithmic
 
-- **ABC** — **Invented Wave Surfing**, the most significant defensive discovery in Robocode; co-pioneered Minimum Risk
-  Movement.
-- **David Alves** — Pioneered Random Orbital Movement to counter linear and circular targeting.
-- **Patrick Cupka (Voidious)** — Refined Wave Surfing and movement flattening into a precise science.
-
-### Structural & Algorithmic Innovations
-
-- **Albert Perez** — Pioneered **Precise Prediction**, providing the physics simulation necessary for high-level
-  movement prediction.
-- **Corbos** — The first to mention **K-D Trees** on the RoboWiki, initiating the community's move toward efficient data
-  structures.
-- **Chase-san & Simonton** — Early explorers and pioneers of K-D tree implementations; Simonton's bot *Diamond* pushed
-  these structures to their competitive limits.
-- **Alex Schultz (Rednaxela)** — Developed the **highly optimized Java K-D tree implementation** that became the gold
-  standard for modern Dynamic Clustering.
+- **Albert Perez** — Creator of **[RoboRumble](https://robowiki.net/wiki/RoboRumble)**; pioneered **Precise Prediction**
+  physics simulation.
+    - [RoboWiki User Page](https://robowiki.net/wiki/User:Albert)
+- **Corbos** — First to introduce **k-D Trees** to the Robocode community via the RoboWiki.
+    - [RoboWiki User Page](https://robowiki.net/wiki/User:Corbos)
+- **Chase-san** — Early pioneer and explorer of k-D tree applications.
+    - [RoboWiki User Page](https://robowiki.net/wiki/User:Chase-san)
+- **Nathaniel Simonton (Simonton)** — Early pioneer of k-D trees; creator of
+  **[Diamond](https://robowiki.net/wiki/Diamond)**.
+    - [RoboWiki User Page](https://robowiki.net/wiki/User:Simonton)
+- **Alex Schultz (Rednaxela)** — Developed the highly optimized Java **k-D Tree** implementation and popularized its use
+  in modern Dynamic Clustering.
+    - [RoboWiki User Page](https://robowiki.net/wiki/User:Rednaxela)
 
 ---
 
@@ -71,12 +72,8 @@ Royale.
 Much of the knowledge contained in this book is derived from the collaborative efforts on **RoboWiki.net**.
 
 - **RoboWiki**: [http://robowiki.net/](http://robowiki.net/) — Licensed under **CC BY-SA 3.0**.
-- Where content is significantly adapted or quoted, specific in-page attributions and references are provided in
-  `NOTICE.md`.
 
 ## Licenses
 
-- **Documentation (The Book of Robocode)**: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
-- **Code Examples & Configuration**: [MIT License](https://opensource.org/licenses/MIT)
-
-*If you notice missing attributions or have further historical corrections, please open an issue or pull request.*
+- **Documentation**: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- **Code Examples**: [MIT License](https://opensource.org/licenses/MIT)
