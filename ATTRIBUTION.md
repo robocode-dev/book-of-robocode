@@ -61,8 +61,8 @@ Royale.
 - **Nathaniel Simonton (Simonton)** — Built the first k-D tree implementation in a bot (*
   *[Diamond](https://robowiki.net/wiki/Diamond)**).
     - [RoboWiki User Page](https://robowiki.net/wiki/User:Simonton)
-- **Alex Schultz (Rednaxela)** — Developed highly optimized Java k-D Tree implementations and introduced advanced
-  pruning strategies.
+- **Rednaxela** — Developed highly optimized Java k-D Tree implementations and introduced advanced pruning strategies;
+  creator of **[RougeDC](https://robowiki.net/wiki/RougeDC)** and **[PolishedRuby](https://robowiki.net/wiki/PolishedRuby)**.
     - [RoboWiki User Page](https://robowiki.net/wiki/User:Rednaxela)
 - **Julian Kent (Skilgannon)** — Developed the **Bucket-PR k-D tree**, extending the performance race to
   commercial-grade efficiency.

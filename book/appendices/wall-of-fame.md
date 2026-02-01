@@ -106,11 +106,12 @@ mention the data structure on the RoboWiki, sparking interest from
 **[Nathaniel Simonton](https://robowiki.net/wiki/User:Simonton)**. Simonton built the first k-D tree in a bot and
 pushed **Dynamic Clustering** to its limits with **[Diamond](https://robowiki.net/wiki/Diamond)**.
 
-### Alex Schultz (Rednaxela) and Julian Kent (Skilgannon)
+### Rednaxela and Julian Kent (Skilgannon)
 
-Alex Schultz, known for his bot **[Toad](https://robowiki.net/wiki/Toad)**, introduced advanced k-D tree pruning
-strategies that sparked a performance race with Julian Kent. This collaboration and competition resulted in some
-of the fastest Java and C++ k-D tree implementations in existence, including Julian's
+[RoboWiki User Page](https://robowiki.net/wiki/User:Rednaxela)  
+Rednaxela, creator of **[RougeDC](https://robowiki.net/wiki/RougeDC)** and **[PolishedRuby](https://robowiki.net/wiki/PolishedRuby)**, 
+introduced advanced k-D tree pruning strategies that sparked a performance race with Julian Kent. This collaboration 
+and competition resulted in some of the fastest Java and C++ k-D tree implementations in existence, including Julian's
 **[Bucket-PR k-D tree](https://github.com/jkflying/bucket-pr-kdtree/blob/master/C%2B%2B/README.md)** which is now used
 in several commercial products.
 

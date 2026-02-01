@@ -167,31 +167,40 @@ who developed the technique or concept.
 **Attribution guidelines:**
 
 1. **Check `book/appendices/wall-of-fame.md`** for known originators of techniques.
-2. **Known attributions include:**
+2. **Naming policy:** Use real names and aliases in the format "Real Name (Alias)" ONLY if the real name is officially
+   documented on RoboWiki. If a contributor prefers to be credited by alias only, respect that preference. When in
+   doubt, use the alias/handle.
+3. **Known attributions include:**
     - **Mathew A. Nelson (Mat Nelson)** — Original creator of Robocode; Linear/Circular Targeting (original IBM samples)
     - **Flemming Nørnberg Larsen (fnl)** — Long-time maintainer of classic Robocode; creator of Robocode Tank Royale
-    - **David Alves** — Invented the Wave concept; co-pioneer of GuessFactor Targeting; pioneered Pattern Matching (Phoenix); pioneered Random Orbital Movement
+    - **David Alves** — Invented the Wave concept; co-pioneer of GuessFactor Targeting; pioneered Pattern Matching
+      (Phoenix); pioneered Random Orbital Movement
     - **Paul Evans** — Co-pioneer of GuessFactor Targeting (discovered "bins"); popularized Segmentation
-    - **Alexandros (ABC)** — Invented Wave Surfing; pioneered Dynamic Clustering; co-pioneered Minimum Risk Movement (with Aelryen)
+    - **Alexandros (ABC)** — Invented Wave Surfing; pioneered Dynamic Clustering; co-pioneered Minimum Risk Movement
+      (with Aelryen)
     - **Patrick Cupka (Voidious)** — Refined Wave Surfing and movement flattening; former RoboWiki manager
-    - **Kev (kc)** — Current 1-vs-1 champion; author of GresSuffurd; pushed statistical targeting and movement to absolute limits
+    - **Kev (kc)** — Current 1-vs-1 champion; author of GresSuffurd; pushed statistical targeting and movement to
+      absolute limits
     - **Albert Perez** — Creator of RoboRumble; pioneered Precise Prediction physics simulation
-    - **Julian Kent (Skilgannon)** — Perfected Dynamic Clustering; developed Bucket-PR k-D tree; LiteRumble maintainer; current RoboWiki.net host
+    - **Julian Kent (Skilgannon)** — Perfected Dynamic Clustering; developed Bucket-PR k-D tree; LiteRumble maintainer;
+      current RoboWiki.net host
     - **Kyle Huntington (Kawigi)** — Popularized GuessFactor Targeting through tutorials and FloodMini
     - **Peter Strömberg (PEZ)** — RoboWiki founder (2003); popularized techniques through CassiusClay
     - **Crippa** — Co-founder of RoboWiki (2003)
     - **Corbos** — First to mention k-D Trees on RoboWiki
     - **Chase-san** — Early explorer of k-D trees in Robocode
-    - **Nathaniel Simonton (Simonton)** — Built the first k-D tree implementation in a bot (Diamond); pushed Dynamic Clustering to its limits
-    - **Alex Schultz (Rednaxela)** — Developed highly optimized Java k-D tree implementations with advanced pruning strategies; sparked performance race with Skilgannon
+    - **Nathaniel Simonton (Simonton)** — Built the first k-D tree implementation in a bot (Diamond); pushed Dynamic
+      Clustering to its limits
+    - **Rednaxela** — Developed highly optimized Java k-D tree implementations with advanced pruning strategies; sparked
+      performance race with Skilgannon; creator of RougeDC and PolishedRuby
     - **Aelryen** — Co-pioneered Minimum Risk Movement (with ABC)
     - **MultiplyByZer0** — Documented complex wave mechanics and provided code samples
-3. **If no specific originator is known**, credit the RoboWiki community:
+4. **If no specific originator is known**, credit the RoboWiki community:
    ```markdown
    > [!TIP] Origins
    > **Technique Name** was developed and documented by the RoboWiki community.
    ```
-4. **If multiple people contributed**, list them:
+5. **If multiple people contributed**, list them:
    ```markdown
    > [!TIP] Origins
    > **Technique Name** was pioneered by **Person A ("Alias")** and refined by **Person B ("Alias")** and the RoboWiki community.
