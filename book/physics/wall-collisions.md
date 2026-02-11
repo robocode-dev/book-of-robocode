@@ -27,6 +27,26 @@ Walls are the invisible barriers at the edges of the battlefield. They form a re
 
 Your bot cannot move beyond these edges. If you try, your bot will collide, stop, and take damage.
 
+## Battlefield Dimensions
+
+Battlefields vary in size depending on the battle type and format. The allowed size range and standard configurations
+are:
+
+### Size Range
+
+- **Minimum size:** 400 × 400 units
+- **Maximum size:** 5000 × 5000 units
+
+### Standard Battle Sizes
+
+- **1v1 (Standard):** 800 × 600 units
+- **Melee (Free-for-all):** 1000 × 1000 units
+
+Larger battlefields give bots more space to maneuver and evade, while smaller battlefields force closer combat. The
+dimensions affect movement strategy significantly—on a 400 × 400 battlefield, escape routes are limited, while a 5000 ×
+5000
+battlefield allows for extended long-range engagements.
+
 ## Damage from Wall Collisions
 
 When your bot hits a wall, you lose energy based on your velocity at impact:
