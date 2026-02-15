@@ -92,7 +92,7 @@
 │  ├─ Bullet Power Selection Strategy [I] [✅]
 │  ├─ Scoring Systems & Battle Types [I] [✅]
 │  ├─ Competition Formats & Rankings [I] [✅]
-│  └─ Energy Management in 1v1 and Melee [A]
+│  └─ Energy Management in 1v1 and Melee [A] [✅]
 │
 ├─ Team Strategies [A]
 │  ├─ Team Basics [I]
