@@ -29,6 +29,10 @@ export default withMermaid(defineConfig({
     appearance: 'dark',
     logo: '/robocode-logo.svg',
 
+    search: {
+      provider: 'local'
+    },
+
     socialLinks: [
       { icon: 'github', link: 'https://github.com/robocode-dev/book-of-robocode', ariaLabel: 'Book of Robocode on GitHub' },
       {
