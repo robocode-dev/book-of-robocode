@@ -9,7 +9,14 @@ export default withMermaid(defineConfig({
 
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css' }]
+    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css' }],
+    // Privacy-friendly, cookieless analytics (GoatCounter) — no GDPR consent banner needed.
+    // TODO: replace "book-of-robocode" below with your own GoatCounter site code.
+    ['script', {
+      'data-goatcounter': 'https://book-of-robocode.goatcounter.com/count',
+      async: '',
+      src: 'https://gc.zgo.at/count.js'
+    }]
   ],
 
   markdown: {
