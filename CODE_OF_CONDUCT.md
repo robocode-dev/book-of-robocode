@@ -39,8 +39,9 @@ the community in public spaces.
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to contact@robocode.dev. For less
-sensitive matters, you may also open an issue in this repository (preferred method).
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the project maintainer via
+[GitHub](https://github.com/flemming-n-larsen). For less sensitive matters, you may also open an issue in this
+repository (preferred method).
 
 All complaints will be reviewed and investigated promptly and fairly. Project maintainer(s) will respect the
 confidentiality of the reporter of any incident.
