@@ -1,0 +1,38 @@
+name: Suggest an improvement
+description: Propose a change to existing content: a clearer explanation, a missing caveat, a better example.
+title: "[suggestion]: "
+labels: ["suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for a concrete, actionable change to a specific page. For open-ended ideas, questions, or "what about X" discussions, use [Discussions](https://github.com/robocode-dev/book-of-robocode/discussions) instead.
+  - type: input
+    id: page
+    attributes:
+      label: Page or area
+      description: Which page or section does this affect?
+      placeholder: /movement/advanced-evasion/wave-surfing-introduction  or  the Targeting topic
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: Current state
+      description: What does the book say now, and where does it fall short?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: What should change? Be as concrete as you can.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters
+      description: What does the reader gain? A failure mode the book misses, a clearer path, a sharper example.
+    validations:
+      required: false

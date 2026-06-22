@@ -75,7 +75,8 @@ export default withMermaid(defineConfig({
         items: [
           { text: 'Glossary', link: '/appendices/glossary' },
           { text: 'Quick Reference (Formulas)', link: '/appendices/quick-reference' },
-          { text: 'Wall of Fame', link: '/appendices/wall-of-fame' }
+          { text: 'Wall of Fame', link: '/appendices/wall-of-fame' },
+          { text: 'Feedback & Contributing', link: '/appendices/feedback' }
         ]
       }
     ],
@@ -208,14 +209,15 @@ export default withMermaid(defineConfig({
           items: [
             { text: 'Glossary', link: '/appendices/glossary' },
             { text: 'Quick Reference', link: '/appendices/quick-reference' },
-            { text: 'Wall of Fame', link: '/appendices/wall-of-fame' }
+            { text: 'Wall of Fame', link: '/appendices/wall-of-fame' },
+            { text: 'Feedback & Contributing', link: '/appendices/feedback' }
           ]
         }
       ]
     },
     editLink: {
-      pattern: 'https://github.com/robocode-dev/robocoding/edit/main/book/:path',
-      text: 'Help improve this page!'
+      pattern: 'https://github.com/robocode-dev/book-of-robocode/edit/main/book/:path',
+      text: 'Suggest a change to this page'
     },
     lastUpdated: true,
     footer: {

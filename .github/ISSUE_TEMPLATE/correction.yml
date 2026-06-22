@@ -1,0 +1,39 @@
+name: Report an error or erratum
+description: Something in the book is wrong: a factual mistake, a broken link, a bad example, a typo.
+title: "[correction]: "
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For a one-line typo or fix, the fastest path is the "Suggest a change to this page" link in the footer of any page. It opens an edit PR directly. Use this form when the fix needs explanation or you would rather not open a PR.
+  - type: input
+    id: page
+    attributes:
+      label: Page or URL
+      description: Which page is affected? Paste the URL or the path under book/.
+      placeholder: /targeting/simple-targeting/head-on-targeting  or  book/physics/wall-collisions.md
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong
+      description: Quote the text or describe the error as precisely as you can.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: The correction
+      description: What should it say instead?
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source (optional)
+      description: If the correction rests on a reference, name it so the fix stays traceable.
+      placeholder: RoboWiki page, official Tank Royale docs, or a URL
+    validations:
+      required: false
