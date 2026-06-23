@@ -26,7 +26,7 @@ hit than a stationary target, while remaining in a predictable area that helps w
 makes it particularly effective in the intermediate skill range where opponents use simple targeting but haven't yet
 implemented pattern recognition.
 
-The rhythmic nature also provides control — the bot can maintain optimal distance from the enemy without wandering into
+The rhythmic nature also provides control. the bot can maintain optimal distance from the enemy without wandering into
 corners or poor positions.
 
 ## How It Works
@@ -178,6 +178,6 @@ more adaptive strategies.
 
 ## Further Reading
 
-- [Oscillator Movement](https://robowiki.net/wiki/Oscillator_Movement) — RoboWiki (classic Robocode)
-- [Oscillator Movement/Period](https://robowiki.net/wiki/Oscillator_Movement/Period) — RoboWiki (classic Robocode)
+- [Oscillator Movement](https://robowiki.net/wiki/Oscillator_Movement) - RoboWiki (classic Robocode)
+- [Oscillator Movement/Period](https://robowiki.net/wiki/Oscillator_Movement/Period) - RoboWiki (classic Robocode)
 

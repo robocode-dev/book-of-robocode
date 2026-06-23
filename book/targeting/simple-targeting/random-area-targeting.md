@@ -18,7 +18,7 @@ source: [
 
 **Random Targeting** and **Area Targeting** are two simple strategies for firing when an enemy is unpredictable or when
 more advanced targeting methods fail.
-Neither assumes the enemy moves in a predictable straight line—instead, they cover a zone or scatter shots
+Neither assumes the enemy moves in a predictable straight line, instead, they cover a zone or scatter shots
 probabilistically.
 
 These approaches are sometimes overlooked as "too simple," but they serve important roles: as defensive mechanisms
@@ -188,6 +188,6 @@ Targeting fires a spray across a predicted movement zone.*
 
 ## Further Reading
 
-- [Area Targeting](https://robowiki.net/wiki/Area_Targeting) — RoboWiki (classic Robocode)
-- [Random Targeting](https://robowiki.net/wiki/Random_Targeting) — RoboWiki (classic Robocode)
+- [Area Targeting](https://robowiki.net/wiki/Area_Targeting) - RoboWiki (classic Robocode)
+- [Random Targeting](https://robowiki.net/wiki/Random_Targeting) - RoboWiki (classic Robocode)
 

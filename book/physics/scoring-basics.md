@@ -12,6 +12,10 @@ source: [
 
 # Scoring Basics
 
+> [!TIP] Origins
+> **Scoring rules** were defined by classic Robocode and later documented for Tank Royale, with strategy guidance
+> refined by the RoboWiki community.
+
 Scoring decides who *wins the battle*, and it is a different thing as "who stayed alive the longest".
 In both classic Robocode and Robocode Tank Royale, the biggest points usually come from **dealing damage**
 (consistently hitting with bullets) and finishing opponents.
@@ -39,14 +43,14 @@ Most scoring systems in Robocode are built around a simple idea:
 
 So, two bots can have very different end-results:
 
-- **Accurate attacker**: dies earlier, but hits many bullets — earns high damage points.
-- **Passive survivor**: stays alive by avoiding fights — earns few damage points — often loses on score.
+- **Accurate attacker**: dies earlier, but hits many bullets: earns high damage points.
+- **Passive survivor**: stays alive by avoiding fights, earns few damage points, and often loses on score.
 
 > [!TIP] Tip
 > If the bot fires a lot but doesn't hit, it's paying energy for shots (see bullet physics) but not earning damage
 > points.
 >
-> "Make every shot count" is not just strategy advice — it's a scoring rule in disguise.
+> "Make every shot count" is not just strategy advice. It is a scoring rule in disguise.
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'xyChart': { 'backgroundColor': 'transparent', 'xAxisLabelColor': '#d2691e', 'yAxisLabelColor': '#d2691e', 'xAxisTitleColor': '#d2691e', 'yAxisTitleColor': '#d2691e', 'xAxisTickColor': '#d2691e', 'yAxisTickColor': '#d2691e', 'xAxisLineColor': '#d2691e', 'yAxisLineColor': '#d2691e', 'titleColor': '#d2691e' } }}}%%
@@ -96,9 +100,9 @@ This is why another bot might outscore you even if it gets eliminated sooner:
 
 ## Bullet power affects scoring (indirectly, but strongly)
 
-Bullet power doesn't just change damage — it changes *how easy it is to score damage*.
+Bullet power does not just change damage. It changes *how easy it is to score damage*.
 
-- Higher power — higher damage per hit — more points when it connects.
+- Higher power: higher damage per hit and more points when it connects.
 - But higher power is also **slower bullets** and **more gun heat**, which often reduces hit rate and rate of fire.
 
 So the best scoring choice is rarely 'always fire max power'. It usually is:
@@ -135,5 +139,5 @@ If a bot's goal is "win more rounds," it should be written to maximize score und
 
 ## Further Reading
 
-- [Robocode/Scoring](https://robowiki.net/wiki/Robocode/Scoring) — RoboWiki (classic Robocode)
-- [Robocode Tank Royale - Scoring](https://robocode.dev/articles/scoring.html) — Tank Royale documentation
+- [Robocode/Scoring](https://robowiki.net/wiki/Robocode/Scoring) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Scoring](https://robocode.dev/articles/scoring.html) - Tank Royale documentation

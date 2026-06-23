@@ -1,13 +1,19 @@
 ---
 title: "Author's Foreword"
 category: "Introduction"
-summary: "Why this book exists: distilling RoboWiki's wisdom into an accessible, structured guide for newcomers and veterans alike."
+summary: >-
+  Why this book exists: distilling RoboWiki's wisdom into an accessible,
+  structured guide for newcomers and veterans alike.
 tags: [ "introduction", "robocode", "tank-royale", "community" ]
 difficulty: "beginner"
 source: []
 ---
 
 # Author's Foreword
+
+> [!TIP] Origins
+> This book stands on the work of the RoboWiki community and the Robocode and Tank Royale maintainers who documented,
+> tested, and shared these ideas over many years.
 
 This book exists because of a simple truth: RoboWiki is an incredible treasure, built by a passionate community over
 decades, but it can be overwhelming for newcomers. The Book of Robocode aims to distill that wisdom into something
@@ -23,8 +29,8 @@ But RoboWiki grew organically. Articles vary in depth, structure, and assumed kn
 it can be hard to know where to start or how concepts connect. Even experienced players sometimes struggle to find
 quick, clear explanations when they need them.
 
-This book is meant to complement RoboWiki, not replace it. It takes the classic topics — targeting, movement, radar
-strategies, energy management — and presents them in a unified, progressive structure. Each page is short, focused,
+This book is meant to complement RoboWiki, not replace it. It takes the classic topics of targeting, movement, radar
+strategies, and energy management, then presents them in a unified, progressive structure. Each page is short, focused,
 and written with beginners in mind, while still offering depth for advanced readers.
 
 ## Goals of This Book
@@ -55,5 +61,10 @@ you are standing on the shoulders of a dedicated and generous community.
 
 Now, let's build some bots.
 
-— **Flemming N. Larsen**  
+**Flemming N. Larsen**  
 Creator of Robocode Tank Royale and longtime maintainer of classic Robocode
+
+## Further Reading
+
+- [RoboWiki](https://robowiki.net/) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale](https://robocode.dev/) - Tank Royale documentation

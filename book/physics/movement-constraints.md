@@ -14,6 +14,10 @@ source: [
 
 # Movement Constraints & Bot Physics
 
+> [!TIP] Origins
+> **Movement physics** were codified in classic Robocode and later mirrored in Robocode Tank Royale, with both platforms
+> documenting the same core limits on speed, turning, and radar.
+
 This page summarizes the movement and turning rules that define how a bot can move, turn, and scan in both classic
 Robocode and Robocode Tank Royale. It is meant as a compact reference you can keep open while coding.
 
@@ -246,8 +250,8 @@ If the radar does not turn, the sector collapses into a thin beam along a single
 ### Robocode Tank Royale
 
 Tank Royale uses the same radar sweep/scan arc logic as classic Robocode. The game engine checks for bots within the
-angular sector swept by the radar each turn, using the same mechanism for both platforms. Only constants—such as maximum
-scan distance (`RADAR_RANGE`), maximum radar turn rate (`MAX_RADAR_TURN_RATE`), and angle conventions—may differ between
+angular sector swept by the radar each turn, using the same mechanism for both platforms. Only constants, such as maximum
+scan distance (`RADAR_RANGE`), maximum radar turn rate (`MAX_RADAR_TURN_RATE`), and angle conventions, may differ between
 platforms.
 
 - The radar has a **heading** and an associated **scan arc** around that heading.
@@ -333,5 +337,5 @@ rules, see the **Bullet Physics** page in this section.
 
 ## Further Reading
 
-- [Robocode Game Physics](https://robowiki.net/wiki/Robocode/Game_Physics) — RoboWiki (classic Robocode)
-- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html) — Tank Royale documentation
+- [Robocode Game Physics](https://robowiki.net/wiki/Robocode/Game_Physics) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html) - Tank Royale documentation

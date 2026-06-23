@@ -7,19 +7,31 @@ actionText: Get Started →
 actionLink: /tutorial/getting-started
 features:
   - title: Learn Programming
-    details: Robocode is a programming game where you code autonomous battle tanks. Perfect for learning and improving your programming skills.
+    details: >-
+      Robocode is a programming game where you code autonomous battle tanks.
+      Perfect for learning and improving your programming skills.
   - title: Physics & Formulas
-    details: Understand game mechanics with detailed physics explanations and mathematical formulas using KaTeX rendering.
+    details: >-
+      Understand game mechanics with detailed physics explanations and
+      mathematical formulas using KaTeX rendering.
   - title: Complete Documentation
     details: From getting started to advanced techniques - everything you need to become a master Robocoder.
 footer: Content licensed under CC BY-SA 4.0 | Code licensed under MIT | Built with VitePress
 ---
 
 <div style="text-align:center;">
-  <img src="./images/the-book-of-robocode.png" alt="The Book of Robocode cover illustration" style="max-width:100%;height:auto;" />
+  <img
+    src="./images/the-book-of-robocode.png"
+    alt="The Book of Robocode cover illustration"
+    style="max-width:100%;height:auto;"
+  />
 </div>
 
-> "May your aim be true and your dodges unpredictable." — Adopted Robocoding Motto
+> "May your aim be true and your dodges unpredictable.", Adopted Robocoding Motto
+
+> [!TIP] Origins
+> The Book of Robocode draws on the RoboWiki community's classic Robocode knowledge and the official Tank Royale
+> documentation.
 
 **Robocode** is a programming game where you code a robot battle tank to compete against other tanks in a virtual arena.
 The goal is to write code that makes your tank move, scan for enemies, and fire at opponents autonomously.
@@ -43,13 +55,20 @@ contributors of [RoboWiki](http://robowiki.net/) for their extensive research an
 
 ### Contributing
 
-Found an error or want to contribute? Visit our [GitHub repository](https://github.com/robocode-dev/book-of-robocode) to help
+Found an error or want to contribute? Visit the
+[GitHub repository](https://github.com/robocode-dev/book-of-robocode) to help
 improve this documentation.
 
 ## License
 
-- **Documentation**: Licensed under: [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)
+- **Documentation**: Licensed under:
+  [Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/)
 - **Code Examples**: Licensed under [MIT License](https://opensource.org/licenses/MIT)
+
+## Further Reading
+
+- [What is Robocode & How to Use This Book](./introduction/what-is-robocode.md) - Introduction
+- [Author's Foreword](./introduction/foreword.md) - Introduction
 
 <style>
 .home .hero img {

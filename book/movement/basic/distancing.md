@@ -119,7 +119,7 @@ movement style. For example, if you are too close, bias your movement to increas
 distance. The actual movement method can be circling, waypoint, random, or any style, as long as it steers toward your
 target distance.
 
-This approach does not require a specific movement style—the “range bias” concept can be incorporated into random
+This approach does not require a specific movement style, the “range bias” concept can be incorporated into random
 movement, waypoint navigation, orbiting, or any advanced evasive system.
 
 ## Tips and common mistakes
@@ -135,6 +135,6 @@ movement, waypoint navigation, orbiting, or any advanced evasive system.
 
 ## Further Reading
 
-- [Distancing](https://robowiki.net/wiki/Distancing) — RoboWiki (classic Robocode)
-- [Talk:Dynamic Distancing](https://robowiki.net/wiki/Talk:Dynamic_Distancing) — RoboWiki (classic Robocode)
+- [Distancing](https://robowiki.net/wiki/Distancing) - RoboWiki (classic Robocode)
+- [Talk:Dynamic Distancing](https://robowiki.net/wiki/Talk:Dynamic_Distancing) - RoboWiki (classic Robocode)
 

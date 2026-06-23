@@ -9,6 +9,10 @@ source: []
 
 # What's Coming Next
 
+> [!TIP] Origins
+> This roadmap reflects the structure planned by the maintainers of The Book of Robocode and the topics documented by
+> the RoboWiki and Tank Royale communities.
+
 The Book of Robocode is an evolving project. This page lists the articles and tutorials planned for future releases,
 organized by section and difficulty level. As each page is completed, it will be removed from this list and published
 in the book.
@@ -99,3 +103,8 @@ Migration and platform comparison guides:
 > These pages will be written based on RoboWiki documentation and Robocode Tank Royale official docs. If you'd like to
 > contribute or suggest changes to the roadmap, please visit the
 > [Book of Robocode repository](https://github.com/robocode-dev/book-of-robocode).
+
+## Further Reading
+
+- [RoboWiki](https://robowiki.net/) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale](https://robocode.dev/) - Tank Royale documentation

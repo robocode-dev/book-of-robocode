@@ -188,7 +188,7 @@ difference is event handling syntax:
 - **Classic Robocode:** Override `onScannedRobot()` and `onRobotDeath()` methods.
 - **Tank Royale:** Register event handlers for `ScannedBotEvent` and `BotDeathEvent`.
 
-The core algorithm—tracking timestamps and calculating radar turns—is identical across platforms.
+The core algorithm, tracking timestamps and calculating radar turns, is identical across platforms.
 
 ## Tips & Common Mistakes
 
@@ -203,7 +203,7 @@ The core algorithm—tracking timestamps and calculating radar turns—is identi
 
 - Always normalize angles to the range [-180°, 180°] before turning.
 - Add a scan buffer (10-30°) in the direction of turn to ensure enemy is hit.
-- Test buffer values empirically—too small misses enemies, too large wastes time.
+- Test buffer values empirically, too small misses enemies, too large wastes time.
 
 **Initial discovery:**
 
@@ -219,6 +219,6 @@ The core algorithm—tracking timestamps and calculating radar turns—is identi
 
 ## Further Reading
 
-- [Melee Radar](https://robowiki.net/wiki/Melee_Radar) — RoboWiki (classic Robocode)
-- [Radar](https://robowiki.net/wiki/Radar) — RoboWiki (classic Robocode)
-- [Robocode Tank Royale - Anatomy](https://robocode.dev/articles/anatomy.html) — Tank Royale documentation
+- [Melee Radar](https://robowiki.net/wiki/Melee_Radar) - RoboWiki (classic Robocode)
+- [Radar](https://robowiki.net/wiki/Radar) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Anatomy](https://robocode.dev/articles/anatomy.html) - Tank Royale documentation

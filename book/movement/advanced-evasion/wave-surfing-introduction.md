@@ -17,15 +17,15 @@ source: [
 > [!TIP] Origins
 > **Wave Surfing** was invented by **Alexandros (ABC)** (author of **Shadow**) in the early 2000s and represents one of
 > the most significant innovations in competitive Robocode. Before Wave Surfing, movement strategies were mostly
-> **Random** or **Oscillating**—bots would move erratically hoping to avoid bullets by chance. Alexandros (ABC)'s
+> **Random** or **Oscillating**, bots would move erratically hoping to avoid bullets by chance. Alexandros (ABC)'s
 > discovery changed the game from a test of luck to a test of statistical prediction, revolutionizing defensive movement
 > by transforming bullet dodging from reactive guesswork into predictive statistical analysis.
 
-Wave Surfing is more than just "dodging bullets"—it's the defensive counterpart to GuessFactor Targeting. While 
+Wave Surfing is more than just "dodging bullets", it's the defensive counterpart to GuessFactor Targeting. While 
 GuessFactor guns track *where enemies dodge to*, Wave Surfing tracks *where enemies shoot* and move to locations 
 they're least likely to target.
 
-This technique enables bots to achieve hit rates below 10% against strong statistical guns—a dramatic improvement over 
+This technique enables bots to achieve hit rates below 10% against strong statistical guns, a dramatic improvement over 
 traditional evasion methods like random movement or oscillators, which typically get hit 20-40% of the time.
 
 ## The Core Insight
@@ -44,7 +44,7 @@ locations they historically *don't* shoot at, you can minimize your hit rate.
 
 When the enemy's energy drops by 0.1 to 3.0, they've fired a bullet:
 
-```pseudocode
+```txt
 energyDrop = previousEnergy - currentEnergy
 if 0.1 <= energyDrop <= 3.0:
   bulletPower = energyDrop
@@ -56,7 +56,7 @@ if 0.1 <= energyDrop <= 3.0:
 
 Model the bullet as an expanding circle (wave) centered at the enemy's fire position:
 
-```pseudocode
+```txt
 wave.origin = enemyLocation
 wave.fireTime = currentTime
 wave.bulletSpeed = 20 - 3 * bulletPower
@@ -70,7 +70,7 @@ wave.direction = angleFromEnemyToMe
 
 When a wave hits you (or passes by), record which GuessFactor you were at when the wave was fired:
 
-```pseudocode
+```txt
 lateralDirection = sign(lateralVelocity)
 maxEscapeAngle = asin(8 / bulletSpeed)
 myAngleOffset = angleTo(myPosition) - wave.direction
@@ -85,7 +85,7 @@ Over many battles, you build a danger profile showing which GuessFactors the ene
 
 As the wave approaches, calculate where it will intersect your bot:
 
-```pseudocode
+```txt
 distanceFromWaveOrigin = distance(myPosition, wave.origin)
 waveFront = (currentTime - wave.fireTime) * wave.bulletSpeed
 if waveFront >= distanceFromWaveOrigin - 18:
@@ -97,7 +97,7 @@ if waveFront >= distanceFromWaveOrigin - 18:
 
 Before the wave hits, move perpendicular to the enemy to change your GuessFactor to the safest available location:
 
-```pseudocode
+```txt
 safeGF = findSafestReachableGuessFactor(wave, myPosition, myVelocity)
 destination = calculatePositionAtGuessFactor(wave, safeGF)
 setMovement(destination)
@@ -136,7 +136,7 @@ Most competitive bots use True Surfing for optimal performance.
 
 The core of Wave Surfing is accurately modeling enemy danger. The simplest approach:
 
-```pseudocode
+```txt
 for each wave:
   for each pastWave where enemy fired:
     pastGF = calculateGuessFactor(pastWave, myPastPosition)
@@ -168,7 +168,7 @@ preference for targeting clockwise movement more than counter-clockwise.
 
 You'll typically track 2–4 waves simultaneously:
 
-```pseudocode
+```txt
 waves = []
 
 on enemy energy drop:
@@ -180,7 +180,7 @@ on tick:
       waves.remove(wave)
 ```
 
-Prioritize the closest wave—it will hit first.
+Prioritize the closest wave, it will hit first.
 
 ## Wall Smoothing Integration
 
@@ -199,7 +199,7 @@ Wave Surfing works identically in classic Robocode and Tank Royale. The only dif
 - **Classic Robocode:** heading 0° = north, angles increase clockwise
 - **Tank Royale:** heading 0° = east, angles increase counter-clockwise
 
-The underlying math and wave geometry remain the same—adjust your angle conversions accordingly.
+The underlying math and wave geometry remain the same, adjust your angle conversions accordingly.
 
 ## Learning Process
 
@@ -241,22 +241,22 @@ Wave Surfing struggles against:
 - **Pattern matchers:** They predict future movement, not past behavior.
 - **Anti-surfer guns:** Specifically designed to exploit Wave Surfing assumptions.
 
-Even against these, Wave Surfing is rarely *worse* than traditional movement—it just doesn't dominate.
+Even against these, Wave Surfing is rarely *worse* than traditional movement, it just doesn't dominate.
 
 ## Next Steps
 
 Once you have basic Wave Surfing working:
 
-- **[Wave Surfing Implementations](./wave-surfing-implementations.md)** — Compare GoTo vs. True Surfing approaches
-- **[Flattener](./flattener.md)** — Counter enemies who learn your surfing patterns
-- **[Segmentation & Visit Count Stats](../../targeting/statistical-targeting/segmentation-visit-count-stats.md)** —
-  Apply segmentation to danger calculation
+- **[Wave Surfing Implementations](./wave-surfing-implementations.md)**: Compare GoTo vs. True Surfing approaches
+- **[Flattener](./flattener.md)**: Counter enemies who learn your surfing patterns
+- **[Segmentation & Visit Count Stats](../../targeting/statistical-targeting/segmentation-visit-count-stats.md)**: Apply segmentation to danger calculation
   Apply segmentation to danger calculation
 
 ## Further Reading
 
-- [Wave Surfing](https://robowiki.net/wiki/Wave_Surfing) — RoboWiki (classic Robocode)
-- [Wave Surfing/GoTo Surfing](https://robowiki.net/wiki/Wave_Surfing/GoTo_Surfing) — RoboWiki (classic Robocode)
-- [Wave Surfing/True Surfing](https://robowiki.net/wiki/Wave_Surfing/True_Surfing) — RoboWiki (classic Robocode)
-- [Waves](https://robowiki.net/wiki/Waves) — RoboWiki (classic Robocode)
-- [GuessFactor Targeting](../../targeting/statistical-targeting/guessfactor-targeting.md) — The offensive counterpart
+- [Wave Surfing](https://robowiki.net/wiki/Wave_Surfing) - RoboWiki (classic Robocode)
+- [Wave Surfing/GoTo Surfing](https://robowiki.net/wiki/Wave_Surfing/GoTo_Surfing) - RoboWiki (classic Robocode)
+- [Wave Surfing/True Surfing](https://robowiki.net/wiki/Wave_Surfing/True_Surfing) - RoboWiki (classic Robocode)
+- [Waves](https://robowiki.net/wiki/Waves) - RoboWiki (classic Robocode)
+- [GuessFactor Targeting](../../targeting/statistical-targeting/guessfactor-targeting.md) - The offensive counterpart
+

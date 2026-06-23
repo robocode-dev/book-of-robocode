@@ -9,13 +9,17 @@ source: [
 ]
 ---
 
-# Bot Anatomy (Beginner Level)
+# Bot Anatomy
+
+> [!TIP] Origins
+> **Bot anatomy** was documented by the RoboWiki community for classic Robocode and by the official Tank Royale
+> documentation for Robocode Tank Royale.
 
 Understanding how a bot is built is the first big step toward writing your own competitive bots. This page walks through
 how bots are represented on the battlefield and the main parts you can control: **body**, **gun**, **radar**, and
 **energy**.
 
-In this book, **the engine** means the Robocode or Tank Royale **game engine** — the simulation that advances turns,
+In this book, **the engine** means the Robocode or Tank Royale **game engine**, the simulation that advances turns,
 moves bots and bullets, and delivers events to your bot.
 
 > [!NOTE] Note
@@ -69,12 +73,13 @@ The **bot center** (its x/y position) and the hitbox around it are used for:
 
 Every Robocode-style bot is made of three main moving parts plus an energy pool:
 
-- **Body** – the chassis that moves around.
-- **Gun / turret** – the rotating part that fires bullets.
-- **Radar** – the rotating scanner that detects enemies.
-- **Energy** – a number that acts as both health and ammunition.
+- **Body:** the chassis that moves around.
+- **Gun / turret:** the rotating part that fires bullets.
+- **Radar:** the rotating scanner that detects enemies.
+- **Energy:** a number that acts as both health and ammunition.
 
-<img src="../images/bot-parts.svg" alt="Bot parts labeled: Body, Gun, Radar, Energy" style="max-width:100%;height:auto;"/><br>
+<img src="../images/bot-parts.svg" alt="Bot parts labeled: body, gun, radar, energy"
+style="max-width:100%;height:auto;"/><br>
 *Main parts of a bot: body, gun, radar, and energy pool.*
 
 Each moving part has their own **headings** (angles) and sometimes their own turn rate limits.
@@ -121,7 +126,7 @@ Because the gun can be rotated independently of the body, you can:
 - Aim somewhere else with the gun.
 - Keep shooting at a target while dodging in another direction.
 
-![Bot with body heading (north) and gun heading (east), showing the separation between body and gun orientation.](../images/body-vs-gun-heading.svg)<br>
+![Body heading and gun heading can point in different directions.](../images/body-vs-gun-heading.svg)<br>
 *Body and gun can have different headings; bullets fire in the gun direction.*
 
 ### 2.3 Radar
@@ -130,7 +135,7 @@ The **radar** is a separate rotating part used only for sensing:
 
 - It has its own **heading**.
 - It has its own **maximum turn angle per turn**, often the fastest of all parts.
-- It does **not** collide with anything – it is purely virtual.
+- It does **not** collide with anything. It is purely virtual.
 
 ### 2.4 Energy
 
@@ -215,6 +220,11 @@ On this page you learned:
 
 Next, continue with:
 
-- **The Bot API** — how the engine delivers scan/collision/bullet events and how you send commands back.
-- **Blocking vs Non-Blocking Movement (Setters)** — why `forward()/ahead()` behaves differently from
-  `setForward()/setAhead()`.
+- [The Bot API](./the-bot-api.md): how the engine delivers scan/collision/bullet events and how you send commands back.
+- [Blocking vs Non-Blocking Movement (Setters)](./blocking-vs-non-blocking-movement-setters.md): why
+  `forward()/ahead()` behaves differently from `setForward()/setAhead()`.
+
+## Further Reading
+
+- [Bot Anatomy](https://robowiki.net/wiki/Bot_Anatomy) - RoboWiki (classic Robocode)
+- [Bot Anatomy](https://robocode.dev/articles/anatomy.html) - Tank Royale documentation

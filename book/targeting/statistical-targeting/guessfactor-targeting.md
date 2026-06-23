@@ -19,7 +19,7 @@ source: [
 > competitive Robocode. Paul Evans discovered the concept of "bins" (statistical buckets), while David Alves formalized
 > the math of "Waves" to track when those bins should be updated. Because Paul Evans' bots were often closed-source,
 > **Kyle Huntington (Kawigi)** played a crucial role in popularizing the technique through his definitive tutorial and
-> open-source **FloodMini** bot—ensuring it wasn't just a "secret weapon" of the top bots.
+> open-source **FloodMini** bot, ensuring it wasn't just a "secret weapon" of the top bots.
 
 GuessFactor Targeting (GFT) is a statistical targeting system that learns from experience. Instead of predicting enemy
 movement with mathematical formulas, it records where enemies are when bullets arrive and fires at the positions they
@@ -80,7 +80,7 @@ Let's build a basic GuessFactor Targeting system. This tutorial uses pseudocode 
 
 ### Step 1: Define the wave data structure
 
-```pseudocode
+```txt
 class Wave:
     originX: float          // X position where fired from
     originY: float          // Y position where fired from
@@ -93,7 +93,7 @@ class Wave:
 
 We'll use a simple array (bins) to count hits at different GuessFactors:
 
-```pseudocode
+```txt
 const NUM_BINS = 31  // -15 to +15 representing GF -1.0 to +1.0
 guessFactorBins = array of size NUM_BINS, initialized to 0
 
@@ -111,7 +111,7 @@ Using 31 bins gives good granularity without excessive memory use. Each bin repr
 
 ### Step 3: Track active waves
 
-```pseudocode
+```txt
 waves = empty list
 
 function onFire(power):
@@ -129,7 +129,7 @@ function onFire(power):
 
 Every turn, check if waves have reached the enemy:
 
-```pseudocode
+```txt
 function onTick():
     for each wave in waves:
         waveRadius = wave.bulletSpeed × (currentTurn - wave.fireTime)
@@ -163,7 +163,7 @@ Use your platform's angle normalization function.
 
 When it's time to fire, find the bin with the most hits:
 
-```pseudocode
+```txt
 function getBestGuessFactor():
     maxHits = 0
     bestBin = NUM_BINS / 2  // Default to center (GF 0)
@@ -196,7 +196,7 @@ function aimGun():
 
 Here's the complete system in a simplified bot structure:
 
-```pseudocode
+```txt
 // === Initialization ===
 waves = empty list
 guessFactorBins = array[31] filled with 0
@@ -275,7 +275,7 @@ Once you have basic GuessFactor Targeting working, consider these enhancements:
 
 Instead of accumulating all data forever, weight recent data more heavily:
 
-```pseudocode
+```txt
 function recordWaveHit(wave):
     // ... calculate guessFactor ...
     binIndex = gfToBin(guessFactor)
@@ -294,7 +294,7 @@ This helps adapt to enemies that change their movement strategy mid-battle.
 
 Instead of picking the single highest bin, use a **rolling average** across nearby bins:
 
-```pseudocode
+```txt
 function getBestGuessFactor():
     bestSum = 0
     bestBin = 15
@@ -316,7 +316,7 @@ This reduces noise from statistical flukes and creates smoother targeting.
 
 Track separate GuessFactor data for each opponent:
 
-```pseudocode
+```txt
 enemyStats = map from enemyName to guessFactorBins
 
 function recordWaveHit(wave, enemyName):
@@ -339,7 +339,7 @@ This is essential for melee battles and improves learning in team matches.
 
 **Solution:** Always normalize bearing offsets to the range -180° to +180° (or -π to +π):
 
-```pseudocode
+```txt
 function normalizeAngle(angle):
     while (angle > 180):
         angle -= 360
@@ -361,7 +361,7 @@ learns from all shots, hits and misses.
 
 **Solution:** When all bins are zero, default to head-on targeting (GF 0.0):
 
-```pseudocode
+```txt
 function getBestGuessFactor():
     maxHits = 0
     bestBin = 15  // Default to center
@@ -398,10 +398,10 @@ This gives bullet speeds ranging from:
 
 Once your GuessFactor gun is working, explore:
 
-- **[Segmentation & Visit Count Stats](segmentation-visit-count-stats.md)** — Split statistics by enemy behavior
+- **[Segmentation & Visit Count Stats](segmentation-visit-count-stats.md)**: Split statistics by enemy behavior
   (distance, velocity, etc.) for more precise targeting
-- **[Dynamic Clustering](https://robowiki.net/wiki/Dynamic_Clustering)** — Advanced multi-dimensional segmentation
-- **[Virtual Guns](../simple-targeting/virtual-guns-mean-targeting.md)** — Run multiple targeting systems and pick the
+- **[Dynamic Clustering](https://robowiki.net/wiki/Dynamic_Clustering)**: Advanced multi-dimensional segmentation
+- **[Virtual Guns](../simple-targeting/virtual-guns-mean-targeting.md)**: Run multiple targeting systems and pick the
   best one
 
 GuessFactor Targeting is the foundation for advanced statistical targeting. Mastering it opens the door to competitive
@@ -409,8 +409,9 @@ bot development.
 
 ## Further Reading
 
-- [GuessFactor Targeting (traditional)](https://robowiki.net/wiki/GuessFactor_Targeting_(traditional)) — RoboWiki
+- [GuessFactor Targeting (traditional)](https://robowiki.net/wiki/GuessFactor_Targeting_(traditional)): RoboWiki
   (classic Robocode)
-- [Waves](https://robowiki.net/wiki/Waves) — RoboWiki (classic Robocode)
-- [Visit Count Stats](https://robowiki.net/wiki/Visit_Count_Stats) — RoboWiki (classic Robocode)
-- [Bullet Physics](https://robocode.dev/articles/physics.html) — Tank Royale documentation
+- [Waves](https://robowiki.net/wiki/Waves) - RoboWiki (classic Robocode)
+- [Visit Count Stats](https://robowiki.net/wiki/Visit_Count_Stats) - RoboWiki (classic Robocode)
+- [Bullet Physics](https://robocode.dev/articles/physics.html) - Tank Royale documentation
+

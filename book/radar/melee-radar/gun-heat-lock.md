@@ -15,11 +15,11 @@ source: [
 > **Gun Heat Lock** was developed and documented by the RoboWiki community as an optimization strategy that coordinates
 > radar and gun systems in melee battles.
 
-In melee combat, radar time is precious—you need to track multiple opponents while your targeting system requires fresh
+In melee combat, radar time is precious, you need to track multiple opponents while your targeting system requires fresh
 data to aim accurately. **Gun heat lock** solves this coordination problem by using **gun heat** as a timing signal to
 focus the radar on whichever enemy the gun is about to fire at.
 
-This technique ensures that the most critical scan—the one your targeting system needs right before firing—happens at
+This technique ensures that the most critical scan, the one your targeting system needs right before firing, happens at
 exactly the right moment, maximizing the accuracy of each shot.
 
 ## The Coordination Problem
@@ -185,10 +185,10 @@ by locking become more dangerous. In late-game 1v1 scenarios, it converges towar
 - Ensure target selection happens before radar decision each turn.
 
 **Don't:**
-- Lock on stale enemies—verify the target was scanned recently before firing.
-- Use gun heat lock in 1v1 battles—standard 1v1 radar locks are simpler and more effective.
+- Lock on stale enemies, verify the target was scanned recently before firing.
+- Use gun heat lock in 1v1 battles, standard 1v1 radar locks are simpler and more effective.
 - Forget to handle the case where `currentTarget` is null (all enemies destroyed or none selected).
-- Lock too early (high threshold) in crowded melees—situational awareness suffers.
+- Lock too early (high threshold) in crowded melees, situational awareness suffers.
 
 > [!WARNING] Death Event Handling
 > Always remove destroyed enemies from target selection immediately. A gun heat lock on a dead enemy wastes precious
@@ -211,7 +211,7 @@ accuracy out of every shot by ensuring the targeting system always has the fresh
 
 ## Further Reading
 
-- **[Radar Basics](../radar-basics.md)** — Fundamental radar mechanics and scanning patterns.
-- **[Oldest Scanned](./oldest-scanned.md)** — Alternative melee radar strategy without gun coordination.
-- **[Spinning & Corner Arc](./spinning-and-corner-arc.md)** — Simpler melee radar patterns.
-- **[Gun Heat and Cooling](../../physics/gun-heat-and-cooling.md)** — Understanding gun heat mechanics and timing.
+- **[Radar Basics](../radar-basics.md)**: Fundamental radar mechanics and scanning patterns.
+- **[Oldest Scanned](./oldest-scanned.md)**: Alternative melee radar strategy without gun coordination.
+- **[Spinning & Corner Arc](./spinning-and-corner-arc.md)**: Simpler melee radar patterns.
+- **[Gun Heat and Cooling](../../physics/gun-heat-and-cooling.md)**: Understanding gun heat mechanics and timing.

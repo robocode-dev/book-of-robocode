@@ -72,7 +72,7 @@ Scan events typically provide a **relative bearing** (angle offset from the bot�
 
 - **Classic Robocode:** You must compute the enemy's coordinates from your position, heading, the relative bearing, and
   distance.
-- **Robocode Tank Royale:** The scan event provides the enemy's coordinates (`x`, `y`) directly—no calculation needed.
+- **Robocode Tank Royale:** The scan event provides the enemy's coordinates (`x`, `y`) directly, no calculation needed.
 
 **Classic Robocode calculation:**
 
@@ -146,7 +146,7 @@ When there are many enemies, it is often better to keep good data on a few impor
 - **Oversweeping**: rotating far past the target wastes turns that could have produced more scans.
 - **No reacquire plan**: always have a fallback sweep when the lock breaks (no new scan events occur).
 - **Scanning everything equally in melee**: it often produces uniformly stale data.
-- **Wasting radar sweeps outside the battlefield**: A good radar strategy takes borders into account—there’s no reason
+- **Wasting radar sweeps outside the battlefield**: A good radar strategy takes borders into account, there’s no reason
   to scan behind the borders where no bot can go. Near a corner, you only need to scan about a quarter to third of the
   arena, thanks to the two nearby borders.
 
@@ -157,5 +157,5 @@ When there are many enemies, it is often better to keep good data on a few impor
 
 ## Further Reading
 
-- [Radar](https://robowiki.net/wiki/Radar) — RoboWiki (classic Robocode)
-- [Robocode Tank Royale - Anatomy](https://robocode.dev/articles/anatomy.html) — Tank Royale documentation
+- [Radar](https://robowiki.net/wiki/Radar) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Anatomy](https://robocode.dev/articles/anatomy.html) - Tank Royale documentation

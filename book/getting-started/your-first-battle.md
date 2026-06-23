@@ -12,15 +12,19 @@ source: [
 
 # Your First Battle
 
-You’ve met the basic ideas, maybe even built a tiny bot. Now it’s time for the fun part: watching bots fight.
+> [!TIP] Origins
+> **Getting started battles** were documented by the RoboWiki community for classic Robocode and by the official Tank
+> Royale project for Robocode Tank Royale.
+
+You've met the basic ideas, maybe even built a tiny bot. Now it's time for the fun part: watching bots fight.
 
 This page walks you through starting your very first battle in:
 
 - Classic Robocode
 - Robocode Tank Royale
 
-You don’t need a fancy bot yet. Any simple or sample bot is enough. The only hard rule: you must have **at least two
-bots** in a battle, otherwise the game ends immediately because there’s only one bot “left”.
+You don't need a fancy bot yet. Any simple or sample bot is enough. The only hard rule is that a battle needs **at
+least two bots**, or it ends immediately because there is only one bot left.
 
 ---
 
@@ -50,7 +54,7 @@ Before you start a battle, make sure you have:
     - You can use those, plus any bot you’ve created yourself.
 
 > [!TIP] Tip
-> Don’t overthink your first opponent. A simple “dummy” bot is fine; the goal is to see a battle run from start to
+> Don't overthink your first opponent. A simple "dummy" bot is fine. The goal is to see a battle run from start to
 > finish.
 
 ---
@@ -206,7 +210,7 @@ Once your bots are connected:
 
 > [!NOTE] Note
 > In Tank Royale, the **Start Battle** button will be inactive (grayed out) if too few or too many bots are selected for
-> the chosen game type. If the button seems inactive for no clear reason, check which game type is selected—each game
+> the chosen game type. If the button seems inactive for no clear reason, check which game type is selected. Each game
 > type has specific rules for the minimum and maximum number of bots allowed in a battle. Adjust your selection or game
 > type to meet these requirements.
 
@@ -235,7 +239,7 @@ physics on the battlefield.
   in on targets.
 - **Bullets do not inherit your movement.** Only the gun direction and bullet power matter for the bullet path and
   speed.
-- **Power vs speed tradeoff:** low‑power shots are cheaper and fly faster; high‑power shots are stronger but slower.
+- **Power vs speed tradeoff:** low-power shots are cheaper and fly faster. High-power shots are stronger but slower.
 - **Friendly fire exists** in team battles: a bullet will hit the first bot in its path, ally or enemy.
 
 For a full explanation of bullet power, speed, damage, and cooldown (including formulas and charts), see
@@ -245,7 +249,7 @@ For a full explanation of bullet power, speed, damage, and cooldown (including f
 
 ## Classic vs Tank Royale: How Battles Differ
 
-The high‑level goal is the same—bots fight until only one is left—but the way you run a battle differs:
+The high-level goal is the same. Bots fight until only one is left. The way you run a battle differs:
 
 - **Classic Robocode**
     - Everything runs **inside one GUI**.
@@ -285,7 +289,7 @@ Despite these differences, many **game concepts** are shared:
 
 > [!TIP] Bot configuration files
 > The platforms also differ in how bots are configured: Classic uses `.properties` files, while Tank Royale uses JSON.
-> See [Your First Bot](your-first-bot.md#example-classic-robocode-properties-file) for concrete examples of both formats.
+> See [Your First Bot](your-first-bot.md#example-classic-robocode-properties-file) for examples of both formats.
 
 ---
 
@@ -307,10 +311,15 @@ Then, move on to deeper topics in the book:
 - **Targeting and movement** strategies to win more battles.
 - **Energy and scoring** to understand why some bots "win" even without many kills.
 
-For more detailed, up‑to‑date instructions and screenshots, you can always refer to:
+For more detailed, up-to-date instructions and screenshots, you can always refer to:
 
 - Classic Robocode basics and first bot tutorials on the RoboWiki.
 - Robocode Tank Royale getting‑started guides and examples on robocode.dev and GitHub.
 
 Your first battle is just the beginning. The real fun comes from iterating: tweak your bot, run a few battles, observe,
 and improve.
+
+## Further Reading
+
+- [Getting Started with Robocode](https://robowiki.net/wiki/Getting_Started_with_Robocode) - RoboWiki (classic Robocode)
+- [My First Bot](https://robocode.dev/tutorial/my-first-bot.html) - Tank Royale documentation

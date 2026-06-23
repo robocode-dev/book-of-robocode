@@ -1,7 +1,10 @@
 ---
 title: "Energy Management in 1v1 and Melee"
 category: "Energy & Scoring"
-summary: "Advanced strategies for managing energy across different battle formats — prioritizing survival in 1v1 duels, adapting to chaos in melee, and timing aggressive and defensive phases based on energy advantages."
+summary: >-
+  Advanced strategies for managing energy across different battle formats,
+  prioritizing survival in 1v1 duels, adapting to chaos in melee, and timing
+  aggressive and defensive phases based on energy advantages.
 tags: [ "energy", "energy-management", "strategy", "1v1", "melee", "advanced", "robocode", "tank-royale" ]
 difficulty: "advanced"
 source: [
@@ -18,7 +21,7 @@ source: [
 > Energy management strategies across battle formats were developed and refined by the RoboWiki community,
 > with contributions from competitive bot developers including **Voidious**, **Skilgannon**, and **Chase**.
 
-Energy management looks different depending on the battle format. A 1v1 duel is a focused contest between two bots where 
+Energy management looks different depending on the battle format. A 1v1 duel is a focused contest between two bots where
 energy decisions are locked into a predictable opponent's cycle. Melee is a chaotic multi-bot environment where energy 
 must be budgeted across unknown threats and rapidly shifting alliances. Understanding these distinctions transforms 
 energy management from a general principle into a battle-specific weapon.
@@ -26,7 +29,7 @@ energy management from a general principle into a battle-specific weapon.
 ## 1v1 Energy Strategy
 
 In 1v1, energy management is a **head-to-head resource race**. Both bots begin with equal energy; the bot that converts 
-energy into damage more efficiently wins. The key strategic insight is that energy flow is **visible and predictable** — 
+energy into damage more efficiently wins. The key strategic insight is that energy flow is **visible and predictable**. 
 you know exactly how much energy your opponent has, when they fire, and how much damage they deal.
 
 ### The Energy Cycle in 1v1
@@ -60,7 +63,7 @@ Energy level determines your positioning strategy:
 - Take calculated risks on movement to secure positioning advantage.
 
 **Moderate Energy (35–70):**
-- Maintain balanced positioning — not too close, not too far.
+- Maintain balanced positioning: not too close, not too far.
 - Fire moderate power (1.5–2.5) and vary distance to avoid predictable patterns.
 - Respond defensively to opponent aggression.
 
@@ -86,7 +89,8 @@ When behind in energy:
 
 ### Timing Aggressive Phases
 
-A common 1v1 pattern is the **energy-dip counter-attack**: when your opponent fires a heavy bullet, their energy temporarily 
+A common 1v1 pattern is the **energy-dip counter-attack**: when your opponent fires a heavy bullet, their energy
+temporarily
 dips below yours. Experienced players respond by:
 
 1. Detecting opponent energy drop via damage intake timing.
@@ -99,7 +103,8 @@ This requires real-time energy tracking and fast decision-making, but it separat
 
 ## Melee Energy Strategy
 
-Melee adds complexity: **multiple opponents, unpredictable alliances, and rapid environmental changes**. Energy management 
+Melee adds complexity: **multiple opponents, unpredictable alliances, and rapid environmental changes**. Energy
+management
 must account for:
 
 - Threats from multiple directions.
@@ -161,7 +166,7 @@ these **recovery windows** to:
 2. Move defensively to maximize distance from remaining threats.
 3. Allow energy to rebuild toward 70–100, re-establishing offensive capability.
 
-A bot that recognizes recovery windows and exploits them effectively can shift from survival mode (low energy, low fire) 
+A bot that recognizes recovery windows and exploits them effectively can shift from survival mode (low energy, low fire)
 to dominance mode (high energy, heavy fire) multiple times in a single melee round.
 
 ---
@@ -197,4 +202,11 @@ The table below summarizes energy management differences between formats:
 - In melee, fire constantly without a target; wasted bullets drain energy without a reward.
 - Drop below survival buffer in melee without an immediate, high-confidence threat nearby.
 - Fire the maximum power at long distances where bullets move slowly and miss frequently.
-- Forget that every bullet you fire returns **3× the power as energy** when it hits — this is your primary income.
+- Forget that every bullet you fire returns **3× the power as energy** when it hits: this is your primary income.
+
+## Further Reading
+
+- [Energy](https://robowiki.net/wiki/Energy) - RoboWiki (classic Robocode)
+- [One on One](https://robowiki.net/wiki/One_on_One) - RoboWiki (classic Robocode)
+- [Melee](https://robowiki.net/wiki/Melee) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html) - Tank Royale documentation

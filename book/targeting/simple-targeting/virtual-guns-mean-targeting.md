@@ -87,9 +87,9 @@ Many implementations use a **decay factor** or a **rolling window** to forget ol
 
 Mean targeting is a classic early implementation of virtual guns. It typically runs three simple strategies:
 
-1. **Head-on** — aim at the enemy's current position.
-2. **Linear** — predict straight-line movement.
-3. **Circular** — predict constant turn rate.
+1. **Head-on**: aim at the enemy's current position.
+2. **Linear**: predict straight-line movement.
+3. **Circular**: predict constant turn rate.
 
 The bot picks whichever has the best success rate so far.
 Despite being "simple targeting," mean targeting can be surprisingly effective because it adapts to the opponent's
@@ -97,7 +97,7 @@ movement style without manual tuning.
 
 ## Pseudocode (platform-agnostic)
 
-```pseudocode
+```txt
 # Each gun stores its own hit/miss stats per enemy
 struct VirtualGun {
     name: string
@@ -201,6 +201,7 @@ But the core principle remains: measure performance, then adapt.
 
 ## Further Reading
 
-- [Virtual Guns](https://robowiki.net/wiki/Virtual_Guns) — RoboWiki (classic Robocode)
-- [Mean Targeting](https://robowiki.net/wiki/Mean_Targeting) — RoboWiki (classic Robocode)
+- [Virtual Guns](https://robowiki.net/wiki/Virtual_Guns) - RoboWiki (classic Robocode)
+- [Mean Targeting](https://robowiki.net/wiki/Mean_Targeting) - RoboWiki (classic Robocode)
+
 

@@ -10,10 +10,14 @@ source: [
 ]
 ---
 
-# Your First Bot (Guided Tutorial)
+# Your First Bot
+
+> [!TIP] Origins
+> **My First Robot** in classic Robocode was created by **Mathew A. Nelson**, and Tank Royale's beginner tutorial was
+> developed by **Flemming N. Larsen** and the Tank Royale project.
 
 New to Robocode or Robocode Tank Royale? This overview gives you the mental model for getting a simple, working bot into
-the arena. It’s platform- and language-neutral. For concrete, step-by-step instructions and code, use the official
+the arena. It's platform- and language-neutral. For concrete, step-by-step instructions and code, use the official
 tutorials below.
 
 ## Start here: the original tutorials
@@ -38,8 +42,8 @@ init --> scan
 scan --> move --> aim --> fire -->|"🔁 Repeat"| scan
 ```
 
-Think of your bot as a real-time agent. Each turn it senses the world, decides what to do, and acts. The exact API calls
-differ between Classic and Tank Royale, but the rhythm—sense → plan → act → repeat—stays the same.
+Think of your bot as a real-time agent. Each turn it senses the world, decides what to do, and acts. The exact API
+calls differ between Classic and Tank Royale, but the rhythm stays the same: sense, plan, act, repeat.
 
 ## Initialization: one-time setup
 
@@ -64,20 +68,21 @@ Events that occur during the turn (e.g., you were scanned or hit) can adjust you
 responses.
 
 > [!INFO] Energy and bullets in one sentence
-> Firing always spends some of your bot’s energy to create a bullet; too many big shots can leave your bot weak or even
+> Firing always spends some of your bot's energy to create a bullet. Too many big shots can leave your bot weak or even
 > disabled, so smart bots balance when and how hard they fire.
 
 ## Per-turn actions (the heartbeat)
 
 Each turn follows the same rhythm:
 
-1. **Scan** — Keep the radar moving to maintain awareness. Choose between sweeping (discovery) or locking (1v1 tracking).
-2. **Move** — Start with simple patterns. Later, add wall avoidance and evasive maneuvers.
-3. **Aim** — Point the gun at the detected enemy. Advanced bots predict future positions.
-4. **Fire** — Only when the gun is ready. Use modest, consistent firepower at first.
-5. **Repeat** — Issue commands, then proceed to the next turn.
+1. **Scan:** Keep the radar moving to maintain awareness. Choose between sweeping and locking.
+2. **Move:** Start with simple patterns. Later, add wall avoidance and evasive maneuvers.
+3. **Aim:** Point the gun at the detected enemy. Advanced bots predict future positions.
+4. **Fire:** Only when the gun is ready. Use modest, consistent firepower at first.
+5. **Repeat:** Issue commands, then proceed to the next turn.
 
-<img src="../images/heartbeat-cycle.svg" alt="The bot heartbeat cycle: Scan, Move, Aim, Fire, Repeat" style="max-width:100%;height:auto;" />
+<img src="../images/heartbeat-cycle.svg" alt="The bot heartbeat cycle: scan, move, aim, fire, repeat"
+style="max-width:100%;height:auto;" />
 
 ## Event-driven reactions
 
@@ -98,7 +103,7 @@ the next turn (e.g., last known enemy position).
 - Robocode Tank Royale uses a JSON configuration file for bot metadata/settings. See the Tank Royale tutorial for the
   current schema and placement: https://robocode.dev/tutorial/my-first-bot.html
 
-If you're unsure whether something belongs in config or code, rely on the tutorial for your platform—the formats and
+If you're unsure whether something belongs in config or code, rely on the tutorial for your platform. The formats and
 best practices can evolve.
 
 > [!TIP] How battles differ between platforms
@@ -165,3 +170,8 @@ When you're ready for platform-specific details and code, return to:
 
 - Classic Robocode: https://robowiki.net/wiki/Robocode/My_First_Robot
 - Robocode Tank Royale: https://robocode.dev/tutorial/my-first-bot.html
+
+## Further Reading
+
+- [Robocode/My First Robot](https://robowiki.net/wiki/Robocode/My_First_Robot) - RoboWiki (classic Robocode)
+- [My First Bot](https://robocode.dev/tutorial/my-first-bot.html) - Tank Royale documentation

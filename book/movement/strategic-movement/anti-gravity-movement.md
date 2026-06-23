@@ -14,7 +14,7 @@ source: [
 
 > [!TIP] Origins
 > **Anti-Gravity Movement** was one of the primary movement strategies before **Wave Surfing** was invented. Along
-> with Random movement, Anti-Gravity was how bots evaded bullets—by maintaining distance and avoiding predictable
+> with Random movement, Anti-Gravity was how bots evaded bullets, by maintaining distance and avoiding predictable
 > patterns. **Minimum Risk Movement** (a related technique for melee combat) was pioneered by **Aelryen** and
 **Alexandros (ABC)**.
 
@@ -24,7 +24,7 @@ source: [
 > it directly counters statistical targeting systems. If your goal is competitive 1v1 performance, study
 > [Wave Surfing Introduction](../advanced-evasion/wave-surfing-introduction.md) instead.
 
-Antigravity movement treats battlefield entities—enemies, walls, bullets, and even teammates—as gravitational sources
+Antigravity movement treats battlefield entities, enemies, walls, bullets, and even teammates, as gravitational sources
 that exert repulsive (or attractive) forces on the bot. By calculating the combined effect of all forces and moving in
 the resultant direction, the bot achieves smooth, adaptive positioning that responds naturally to changing battlefield
 conditions.
@@ -73,7 +73,7 @@ smooth, adaptive nature makes patterns harder to predict than fixed orbits or os
 
 The fundamental calculation for each entity:
 
-```pseudocode
+```txt
 function calculateForce(entity):
   dx = myX - entity.x
   dy = myY - entity.y
@@ -96,7 +96,7 @@ Where `strength` is a tunable constant that determines how strongly the entity r
 
 ### Summing All Forces
 
-```pseudocode
+```txt
 function calculateTotalForce():
   totalForceX = 0
   totalForceY = 0
@@ -116,7 +116,7 @@ function calculateTotalForce():
 
 ### Converting Force to Movement
 
-```pseudocode
+```txt
 on turn:
   (forceX, forceY) = calculateTotalForce()
   
@@ -139,7 +139,7 @@ Let's build a simple antigravity movement system step by step.
 
 Start with basic enemy repulsion:
 
-```pseudocode
+```txt
 class AntiGravityBot:
   enemyStrength = 50000  // Tune this value
   
@@ -164,7 +164,7 @@ class AntiGravityBot:
 
 Add wall repulsion to keep the bot from corners:
 
-```pseudocode
+```txt
   wallStrength = 20000
   
   function getWallForce():
@@ -190,7 +190,7 @@ Add wall repulsion to keep the bot from corners:
 
 Combine forces and move:
 
-```pseudocode
+```txt
   on turn:
     (enemyFX, enemyFY) = getEnemyForce()
     (wallFX, wallFY) = getWallForce()
@@ -226,7 +226,7 @@ combat style.
 
 Instead of pure inverse square, use different force laws for different ranges:
 
-```pseudocode
+```txt
 function calculateForce(entity, distance):
   if distance < closeRange:
     // Very strong repulsion when too close
@@ -243,7 +243,7 @@ function calculateForce(entity, distance):
 
 Adjust forces based on enemy threat level:
 
-```pseudocode
+```txt
 function getEnemyForce():
   for each enemy:
     // More dangerous enemies exert stronger forces
@@ -257,7 +257,7 @@ function getEnemyForce():
 
 Corner movement can be implemented by making corners attractive:
 
-```pseudocode
+```txt
 function getCornerAttraction():
   corners = [(0, 0), (battleWidth, 0), (0, battleHeight), (battleWidth, battleHeight)]
   
@@ -277,7 +277,7 @@ function getCornerAttraction():
 
 Create repulsion from predicted bullet positions:
 
-```pseudocode
+```txt
 function getBulletForce():
   for each trackedBullet:
     // Project bullet forward
@@ -347,7 +347,7 @@ predictable patterns.
 
 **Ideal for:**
 
-- **Melee combat**: Natural multi-target awareness and spacing — this is where Anti-Gravity still shines
+- **Melee combat**: Natural multi-target awareness and spacing: this is where Anti-Gravity still shines
 - **Dynamic positioning**: Situations requiring smooth adaptation to changing conditions
 - **Learning platforms**: Simple to implement, easy to visualize and tune
 - **Hybrid systems**: As a base layer combined with wave surfing or statistical analysis
@@ -363,7 +363,8 @@ competitive play, it has been obsolete since approximately 2003 when Alexandros 
 
 ## Further Reading
 
-- [Anti-Gravity Movement](https://robowiki.net/wiki/Anti-Gravity_Movement) — RoboWiki (classic Robocode)
-- [Minimum Risk Movement](https://robowiki.net/wiki/Minimum_Risk_Movement) — RoboWiki (classic Robocode)
-- [Movement](https://robowiki.net/wiki/Movement) — RoboWiki (classic Robocode)
-- [Tank Royale API - Bot Interface](https://robocode.dev/api/) — Tank Royale documentation
+- [Anti-Gravity Movement](https://robowiki.net/wiki/Anti-Gravity_Movement) - RoboWiki (classic Robocode)
+- [Minimum Risk Movement](https://robowiki.net/wiki/Minimum_Risk_Movement) - RoboWiki (classic Robocode)
+- [Movement](https://robowiki.net/wiki/Movement) - RoboWiki (classic Robocode)
+- [Tank Royale API - Bot Interface](https://robocode.dev/api/) - Tank Royale documentation
+

@@ -167,8 +167,8 @@ The main differences are implementation details:
 
 ## Further Reading
 
-- [Wall Avoidance](https://robowiki.net/wiki/Wall_Avoidance) — RoboWiki (classic Robocode)
-- [Wall Smoothing](https://robowiki.net/wiki/Wall_Smoothing) — RoboWiki (classic Robocode)
-- [Wall Smoothing/Implementations](https://robowiki.net/wiki/Wall_Smoothing/Implementations) — RoboWiki (classic
+- [Wall Avoidance](https://robowiki.net/wiki/Wall_Avoidance) - RoboWiki (classic Robocode)
+- [Wall Smoothing](https://robowiki.net/wiki/Wall_Smoothing) - RoboWiki (classic Robocode)
+- [Wall Smoothing/Implementations](https://robowiki.net/wiki/Wall_Smoothing/Implementations) - RoboWiki (classic
   Robocode)
 

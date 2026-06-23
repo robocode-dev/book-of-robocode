@@ -47,7 +47,7 @@ basic approach.
 
 The basic algorithm is straightforward:
 
-```pseudocode
+```txt
 movingForward = true
 stopTimer = 0
 stopDuration = 0
@@ -295,7 +295,7 @@ public void onHitWall(HitWallEvent event) {
 
 Adjust stop timing based on enemy distance:
 
-```pseudocode
+```txt
 stopThreshold = enemyDistance / 20
 // Closer enemies = more frequent stops
 ```
@@ -307,7 +307,7 @@ offensive positioning while still providing evasion.
 
 Coordinate stops with enemy gun heat:
 
-```pseudocode
+```txt
 if enemy.gunHeat > 0.5:
     allowStop = true  // Enemy can't fire yet
 else:
@@ -320,7 +320,7 @@ This ensures the bot isn't stopped when the enemy's gun is ready to fire, reduci
 
 Stop when you predict the enemy will fire:
 
-```pseudocode
+```txt
 if enemy.gunHeat < 0.1 and isFacingUs:
     forceStop = true
 ```
@@ -393,6 +393,7 @@ system.
 
 ## Further Reading
 
-- [Stop And Go](https://robowiki.net/wiki/Stop_And_Go) — RoboWiki (classic Robocode)
-- [Stop And Go Tutorial](https://robowiki.net/wiki/Stop_And_Go_Tutorial) — RoboWiki (classic Robocode)
+- [Stop And Go](https://robowiki.net/wiki/Stop_And_Go) - RoboWiki (classic Robocode)
+- [Stop And Go Tutorial](https://robowiki.net/wiki/Stop_And_Go_Tutorial) - RoboWiki (classic Robocode)
+
 

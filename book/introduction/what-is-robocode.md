@@ -1,7 +1,9 @@
 ---
 title: "What is Robocode & How to Use This Book"
 category: "Introduction"
-summary: "Learn what Robocode is, how the two platforms relate, and how to use this book to become a better bot programmer."
+summary: >-
+  Learn what Robocode is, how the two platforms relate, and how to use this
+  book to become a better bot programmer.
 tags: [ "introduction", "robocode", "tank-royale", "beginner" ]
 difficulty: "beginner"
 source: [
@@ -12,6 +14,10 @@ source: [
 
 # What is Robocode & How to Use This Book
 
+> [!TIP] Origins
+> **Robocode** was created by **Mathew A. Nelson**, and **Robocode Tank Royale** was later created by
+> **Flemming N. Larsen**.
+
 Robocode is a programming game where your code drives a battle bot. Instead of using a controller, you write the brain
 of the bot and let it fight on a 2D battlefield. This book explains the ideas behind winning bots with short,
 teen-friendly pages, light math, and practical intuition.
@@ -20,10 +26,10 @@ teen-friendly pages, light math, and practical intuition.
 
 In this book, the word Robocode is used in two closely related ways:
 
-1. [Robocode (classic)](https://robocode.sourceforge.io/) — the original Java-based programming game created by Mathew
+1. [Robocode (classic)](https://robocode.sourceforge.io/): the original Java-based programming game created by Mathew
    A. Nelson and later maintained by Flemming N. Larsen. Battles run on a 2D battlefield where bot tanks fight using
    Java code.
-2. [Robocode Tank Royale](https://robocode.dev/) — a newer, modern Robocode platform created by Flemming N. Larsen. It
+2. [Robocode Tank Royale](https://robocode.dev/): a newer, modern Robocode platform created by Flemming N. Larsen. It
    keeps the same core idea (code a battling bot) but supports multiple programming languages and a more flexible
    architecture.
 
@@ -49,11 +55,11 @@ reduce an opponent's energy when they hit.
 
 Robocode supports three main battle formats. Each rewards different strategies:
 
-- **1v1 (Duel)** — Two bots face off in direct combat. The most popular competitive format. Success depends on targeting
+- **1v1 (Duel)**: Two bots face off in direct combat. The most popular competitive format. Success depends on targeting
   accuracy and energy management.
-- **Melee** — Three or more bots battle simultaneously until one remains. Survival often matters more than raw damage
+- **Melee**: Three or more bots battle simultaneously until one remains. Survival often matters more than raw damage
   output. *(Fun fact: The name "Tank Royale" is inspired by melee battles resembling the "Battle Royale" game genre!)*
-- **Team** — Multiple bots per side share a collective score. Enables role specialization and coordinated tactics.
+- **Team**: Multiple bots per side share a collective score. Enables role specialization and coordinated tactics.
 
 For detailed scoring rules, see [Scoring Systems & Battle Types](../energy-and-scoring/scoring-systems-battle-types.md).
 For competition standards used in community rankings,
@@ -88,3 +94,8 @@ see [Competition Formats & Rankings](../energy-and-scoring/competition-formats-r
 - The word **"intent"** refers to the set of commands (move, turn, fire, etc.) your bot issues for the current turn.
   When you commit the turn (using `execute()` or `go()`), your bot sends this intent to the game engine or server to be
   carried out.
+
+## Further Reading
+
+- [Robocode](https://robowiki.net/wiki/Robocode) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale](https://robocode.dev/) - Tank Royale documentation

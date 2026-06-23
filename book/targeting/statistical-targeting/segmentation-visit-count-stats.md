@@ -48,7 +48,7 @@ oscillation pattern. At close range, you see the randomness and aim accordingly.
 
 > [!IMPORTANT] Track Per Enemy
 > **Always maintain separate statistics for each enemy.** Store segmented data in a map keyed by enemy name:
-> ```pseudocode
+> ```txt
 > enemyStats[enemyName][segment][guessfactor] += 1
 > ```
 > Mixing data from different enemies will severely degrade targeting accuracy. Each bot has unique movement patterns
@@ -56,20 +56,20 @@ oscillation pattern. At close range, you see the randomness and aim accordingly.
 
 Instead of:
 
-```pseudocode
+```txt
 allShots[guessfactor] += 1
 ```
 
 You do:
 
-```pseudocode
+```txt
 segment = calculateSegment(distance, lateralVelocity, advancingVelocity, bulletPower, ...)
 segmentedStats[enemyName][segment][guessfactor] += 1
 ```
 
 When firing, you query the specific segment for that enemy:
 
-```pseudocode
+```txt
 currentSegment = calculateSegment(currentConditions)
 bestGuessFactor = findPeak(segmentedStats[enemyName][currentSegment])
 ```
@@ -84,7 +84,7 @@ The single most impactful segmentation. Many bots behave differently at various 
 
 **Implementation:**
 
-```pseudocode
+```txt
 distanceSegment = floor(distance / 200)  // Segments: 0-200, 200-400, 400-600, etc.
 ```
 
@@ -96,7 +96,7 @@ How fast the enemy moves perpendicular to your line of fire.
 
 **Implementation:**
 
-```pseudocode
+```txt
 lateralVelocity = enemyVelocity * sin(enemyHeading - absoluteBearing)
 lateralSegment = floor((lateralVelocity + 8) / 2)  // Maps -8 to +8 into segments
 ```
@@ -109,7 +109,7 @@ How fast the enemy moves toward or away from you.
 
 **Implementation:**
 
-```pseudocode
+```txt
 advancingVelocity = enemyVelocity * cos(enemyHeading - absoluteBearing)
 advancingSegment = floor((advancingVelocity + 8) / 2)
 ```
@@ -122,7 +122,7 @@ Some enemies dodge differently against heavy bullets vs. light bullets.
 
 **Implementation:**
 
-```pseudocode
+```txt
 bulletFlightTime = distance / bulletSpeed
 timeSegment = floor(bulletFlightTime / 10)  // Segments by 10-turn intervals
 ```
@@ -135,7 +135,7 @@ Enemies near walls can't dodge as freely.
 
 **Implementation:**
 
-```pseudocode
+```txt
 wallDistance = min(
   enemy.x, 
   enemy.y, 
@@ -153,7 +153,7 @@ Tracks enemy acceleration patterns.
 
 **Implementation:**
 
-```pseudocode
+```txt
 timeSinceDirectionChange = currentTime - lastDirectionChangeTime
 accelSegment = min(floor(timeSinceDirectionChange / 5), 4)
 ```
@@ -164,7 +164,7 @@ Typical range: 3–5 segments.
 
 The real power comes from **combining** multiple axes:
 
-```pseudocode
+```txt
 segmentIndex = 
   (distanceSegment * LATERAL_BINS * ADVANCING_BINS) +
   (lateralSegment * ADVANCING_BINS) +
@@ -185,7 +185,7 @@ With 100+ segments, some will rarely be visited. Solutions:
 
 Weight recent shots more heavily by decaying **all** data before recording the new hit:
 
-```pseudocode
+```txt
 // Decay all bins for this enemy across all segments
 for each seg in allSegments:
   for each gf in allGuessFactors:
@@ -206,7 +206,7 @@ values (0.98–0.995) retain historical data longer.
 
 If the current segment has < N samples, fall back to a less-specific segmentation:
 
-```pseudocode
+```txt
 if samples[enemyName][currentSegment] < 10:
   use onlyDistanceSegment  // Ignore lateral/advancing
 if samples[enemyName][onlyDistanceSegment] < 5:
@@ -217,7 +217,7 @@ if samples[enemyName][onlyDistanceSegment] < 5:
 
 Spread each hit across nearby GuessFactors (smoothing):
 
-```pseudocode
+```txt
 for offset in [-2, -1, 0, 1, 2]:
   if inBounds(gf + offset):
     stats[enemyName][segment][gf + offset] += kernel[offset]  // e.g., [0.1, 0.2, 0.4, 0.2, 0.1]
@@ -227,7 +227,7 @@ for offset in [-2, -1, 0, 1, 2]:
 
 Once you have segmented stats, find the most-visited GuessFactor:
 
-```pseudocode
+```txt
 bestGF = 0
 maxVisits = 0
 for gf in range(-bins, +bins):
@@ -241,7 +241,7 @@ return bestGF
 
 For smoother targeting, instead of aiming at the single highest bin, **sum nearby bins** to reduce noise:
 
-```pseudocode
+```txt
 bestGF = 0
 bestSum = 0
 for gf in range(-bins + 1, +bins - 1):  // Skip edges
@@ -257,7 +257,7 @@ for gf in range(-bins + 1, +bins - 1):  // Skip edges
 return bestGF
 ```
 
-This helps when data is sparse—a single bin with 1 lucky hit won't outweigh a cluster of bins with consistent hits.
+This helps when data is sparse, a single bin with 1 lucky hit won't outweigh a cluster of bins with consistent hits.
 The rolling average finds the **center of mass** of your data rather than a single outlier peak.
 
 ## Practical Tips
@@ -282,16 +282,17 @@ the same bot all the time, you won't achieve the benefits.
 
 Once you have effective segmentation:
 
-- **[Dynamic Clustering](../statistical-targeting/dynamic-clustering.md)** — Replace fixed segments with adaptive
+- **[Dynamic Clustering](../statistical-targeting/dynamic-clustering.md)**: Replace fixed segments with adaptive
   similarity matching (pioneered by Alexandros (ABC), perfected by Julian Kent (Skilgannon)). See
   also: [RoboWiki - Dynamic Clustering](https://robowiki.net/wiki/Dynamic_Clustering)
-- **[Anti-Surfer Targeting](../targeting-tactics/anti-surfer-targeting.md)** — Counter enemies who use Wave Surfing. See
+- **[Anti-Surfer Targeting](../targeting-tactics/anti-surfer-targeting.md)**: Counter enemies who use Wave Surfing. See
   also: [RoboWiki - Anti-Surfer Targeting](https://robowiki.net/wiki/Anti-Surfer_Targeting)
 
 ## Further Reading
 
-- [Visit Count Stats](https://robowiki.net/wiki/Visit_Count_Stats) — RoboWiki (classic Robocode)
-- [GuessFactor Targeting (traditional)](https://robowiki.net/wiki/GuessFactor_Targeting_(traditional)) — RoboWiki (
+- [Visit Count Stats](https://robowiki.net/wiki/Visit_Count_Stats) - RoboWiki (classic Robocode)
+- [GuessFactor Targeting (traditional)](https://robowiki.net/wiki/GuessFactor_Targeting_(traditional)): RoboWiki (
   classic Robocode)
-- [Dynamic Clustering](https://robowiki.net/wiki/Dynamic_Clustering) — RoboWiki (classic Robocode)
-- [Symbolic Dynamic Segmentation](https://robowiki.net/wiki/Symbolic_Dynamic_Segmentation) — RoboWiki (classic Robocode)
+- [Dynamic Clustering](https://robowiki.net/wiki/Dynamic_Clustering) - RoboWiki (classic Robocode)
+- [Symbolic Dynamic Segmentation](https://robowiki.net/wiki/Symbolic_Dynamic_Segmentation) - RoboWiki (classic Robocode)
+

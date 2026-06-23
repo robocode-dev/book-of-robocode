@@ -20,8 +20,11 @@ export default withMermaid(defineConfig({
   ],
 
   markdown: {
+    languageAlias: {
+      pseudocode: 'txt'
+    },
     config(md) {
-      md.use(katex);
+      md.use(katex)
     }
   },
 
@@ -226,6 +229,10 @@ export default withMermaid(defineConfig({
     }
   },
   vite: {
+    build: {
+      // Large lazy-loaded Mermaid and local-search chunks are expected here.
+      chunkSizeWarningLimit: 1600
+    },
     server: {
       fs: {
         allow: ['..']

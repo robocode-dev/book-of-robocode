@@ -13,6 +13,10 @@ source: [
 
 # Wall Collisions
 
+> [!TIP] Origins
+> **Wall avoidance** was documented early by the RoboWiki community and remains a foundational movement concept in both
+> classic Robocode and Robocode Tank Royale.
+
 The battlefield has hard boundaries called walls. When your bot collides with a wall, it takes damage and stops moving.
 Understanding walls and learning to avoid them is one of the first skills every competitive bot must master.
 
@@ -43,7 +47,7 @@ are:
 - **Melee (Free-for-all):** 1000 × 1000 units
 
 Larger battlefields give bots more space to maneuver and evade, while smaller battlefields force closer combat. The
-dimensions affect movement strategy significantly—on a 400 × 400 battlefield, escape routes are limited, while a 5000 ×
+dimensions affect movement strategy significantly. On a 400 × 400 battlefield, escape routes are limited, while a 5000 ×
 5000
 battlefield allows for extended long-range engagements.
 
@@ -66,7 +70,7 @@ Avoiding walls is critical for several reasons:
 
 1. **Survival:** Every collision drains your energy. Repeated hits can cost you the match.
 2. **Mobility:** Being stuck on a wall means you can't dodge enemy bullets effectively.
-3. **Predictability:** Bots that hug walls are easy to target — experienced opponents know where you'll be.
+3. **Predictability:** Bots that hug walls are easy to target: experienced opponents know where you'll be.
 
 Elite bots rarely touch walls except in very specific tactical situations. Learning to maintain safe distances from
 boundaries is a foundational skill.
@@ -76,7 +80,7 @@ boundaries is a foundational skill.
 The most basic wall avoidance strategy is to check your distance from each wall and reverse or turn before you get too
 close:
 
-```pseudocode
+```txt
 if distance to nearest wall < safeDistance:
     reverse direction
     or turn away from wall
@@ -98,7 +102,7 @@ As you improve, you'll refine your wall avoidance:
 - **Wall smoothing:** Move parallel to walls at a safe distance, rather than bouncing away abruptly. This keeps your
   movement fluid and less predictable.
 - **Tactical positioning:** Sometimes staying near (but not touching) a wall can limit the angles an enemy can attack
-  you from — but only if you're confident you can dodge effectively.
+  you from, but only if you're confident you can dodge effectively.
 
 These techniques are explored in depth in the *Movement & Evasion* section of this book.
 
@@ -111,16 +115,16 @@ is the same on both platforms:
 - Hitting them costs energy and stops movement.
 - Avoidance is essential for competitive play.
 
-## Further Reading & References
+## Further Reading
 
-- [RoboWiki - Wall Avoidance](https://www.cse.chalmers.se/~bergert/robowiki-mirror/RoboWiki/robowiki.net/wiki/Wall_Avoidance.html)
-- [IBM DeveloperWorks - Fighting with Algorithms](https://web.archive.org/web/20121113061509/http://www.ibm.com/developerworks/library/j-fwa/index.html)
-- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html)
-- [Movement Constraints & Bot Physics](./movement-constraints.md) — for velocity and deceleration formulas
-- [Coordinate Systems & Angles](./coordinates-and-angles.md) — for battlefield dimensions and position tracking
+- [Wall Avoidance](https://robowiki.net/wiki/Wall_Avoidance) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html) - Tank Royale documentation
+- [Movement Constraints & Bot Physics](./movement-constraints.md) - Velocity and deceleration formulas
+- [Coordinate Systems & Angles](./coordinates-and-angles.md) - Battlefield dimensions and position tracking
 
 ## Linking Forward
 
 Once you understand wall collisions, you're ready to explore more sophisticated movement strategies. See the
 *Movement & Evasion* section for advanced wall smoothing, orbital movement, and wave surfing techniques that help you
 stay mobile and unpredictable.
+

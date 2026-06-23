@@ -1,7 +1,7 @@
 ---
 title: "Robot Properties File (Classic Robocode)"
 category: "Getting Started"
-summary: "Learn what a robot properties file is, what it contains, and how to name it correctly for classic Robocode bots."
+summary: "Learn what a classic Robocode properties file does, what it contains, and how to name it correctly."
 tags: [ "classic robocode", "bot properties", "configuration", "beginner" ]
 difficulty: "beginner"
 source: [
@@ -11,8 +11,11 @@ source: [
 
 # Robot Properties File (Classic Robocode)
 
-For Robocode Tank Royale, you can skip this section which is specific to classic Robocode. Tank Royale is using a JSON
-file instead, which is not Java-specific.
+> [!TIP] Origins
+> **Properties files** were part of the original classic Robocode bot packaging created by **Mathew A. Nelson**.
+
+For Robocode Tank Royale, this page is only background. Tank Royale uses a JSON file instead of a Java `.properties`
+file.
 
 In classic Robocode, every bot needs a properties file to define its metadata and configuration. This file tells
 Robocode important details about your bot, such as its name, author, description, and more. The properties file is a
@@ -20,14 +23,14 @@ simple text file with key-value pairs.
 
 ## What is a robot properties file?
 
-A robot properties file is a plain text file (with the `.properties` extension) that describes your bot for the Robocode
-engine. It includes information like the bot's name, author, description, and technical details. Robocode uses this file
-to display information in the bot selection menu and to load your bot correctly.
+A robot properties file is a plain text file with the `.properties` extension. It describes your bot for the Robocode
+engine and includes the bot's name, author, description, and technical details. Robocode uses this file to show the bot
+in the selection menu and load it correctly.
 
 ```mermaid
 flowchart LR
     Bot["🤖 MyFirstRobot<br/>(bot)"]
-    Props["🔧 MyFirstRobot.properties<br><br>robot.name: MyFirstRobot<br>robot.classname:&nbsp;sample.MyFirstRobot<br>robot.author.name: Mathew Nelson"]
+    Props["🔧 MyFirstRobot.properties<br><br>robot.name: MyFirstRobot<br>robot.classname:&nbsp;sample.MyFirstRobot"]
     Engine["⚙️ Robocode<br/>(engine)"]
     Rule["⚠️ Filename must match<br>class name<br>(case-sensitive)"]
     Bot -->|metadata| Props
@@ -43,7 +46,10 @@ Here is an example properties file for the classic "MyFirstRobot":
 
 ```
 #Robot Properties
-robot.description=A sample bot\nMoves in a seesaw motion, and spins the gun around at each end\nTurns perpendicular to the direction of a bullet that hits it
+robot.description=\
+  A sample bot\n\
+  Moves in a seesaw motion, and spins the gun around at each end\n\
+  Turns perpendicular to the direction of a bullet that hits it
 robot.webpage=https://robowiki.net/w/index.php?title=Robocode/My_First_Robot
 robocode.version=1.0
 robot.java.source.included=true
@@ -79,7 +85,7 @@ required for Robocode to recognize and load your bot correctly.
 
 ```mermaid
 flowchart LR
-    subgraph Good["Correct&nbsp;—&nbsp;filename&nbsp;matches&nbsp;class&nbsp;name"]
+    subgraph Good["Correct&nbsp;:&nbsp;filename&nbsp;matches&nbsp;class&nbsp;name"]
         direction TB
         A[/"Class name:<br/>MyFirstRobot"/]
         B[/"File name:<br/>MyFirstRobot.properties"/]
@@ -88,7 +94,7 @@ flowchart LR
         B --> C
     end
 
-    subgraph Bad["Incorrect&nbsp;—&nbsp;filename&nbsp;does&nbsp;not&nbsp;match&nbsp;class&nbsp;name"]
+    subgraph Bad["Incorrect&nbsp;:&nbsp;filename&nbsp;does&nbsp;not&nbsp;match&nbsp;class&nbsp;name"]
         direction TB
         D[/"Class name:<br/>MyFirstRobot"/]
         E[/"File name:<br/>myfirstrobot.properties"/]
@@ -108,7 +114,7 @@ flowchart LR
     class W warning
 ```
 
-## What does a properties-file contain?
+## What do a properties file contain?
 
 Typical fields include:
 
@@ -120,9 +126,9 @@ Typical fields include:
 - `robocode.version`: The Robocode version your bot was built for
 - `robot.java.source.included`: Whether the Java source code is included
 
-Other fields may be present for advanced bots, but these are the most common for beginners.
+Other fields may be present for advanced bots, but these are the most common fields for beginners.
 
-Note that the `robot.description` can be multi-line by using `\n` to indicate line breaks, and contain up to 3 lines.
+The `robot.description` value can span up to three lines by using `\n` to mark line breaks.
 
 ## Where to find examples
 
@@ -131,5 +137,10 @@ own properties file, which you can use as a reference when creating your own.
 
 ---
 
-**Tip:** Always double-check that your properties filename matches your bot's class name exactly (including
-capitalization). This avoids loading errors in Robocode.
+> [!TIP] Naming check
+> Always double-check that the properties filename matches the bot's class name exactly, including capitalization.
+
+## Further Reading
+
+- [Robocode/My First Robot](https://robowiki.net/wiki/Robocode/My_First_Robot) - RoboWiki (classic Robocode)
+- [My First Bot](https://robocode.dev/tutorial/my-first-bot.html) - Tank Royale documentation

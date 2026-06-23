@@ -171,6 +171,6 @@ The movement ideas are the same on both platforms, but a few details differ:
 
 ## Further Reading
 
-- [GoTo](https://robowiki.net/wiki/GoTo) — RoboWiki (classic Robocode)
-- [Movement](https://robowiki.net/wiki/Movement) — RoboWiki (classic Robocode)
-- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html) — Tank Royale documentation
+- [GoTo](https://robowiki.net/wiki/GoTo) - RoboWiki (classic Robocode)
+- [Movement](https://robowiki.net/wiki/Movement) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html) - Tank Royale documentation

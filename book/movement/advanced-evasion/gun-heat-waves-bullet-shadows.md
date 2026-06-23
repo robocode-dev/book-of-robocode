@@ -49,7 +49,7 @@ cools down, you can confirm whether an energy drop corresponds to an actual shot
 
 The first step is observing the enemy's energy level each turn and detecting changes:
 
-```pseudocode
+```txt
 previousEnergy = 100.0  // Track enemy energy
 
 on enemy scan:
@@ -89,7 +89,7 @@ xychart-beta
 | 54 | 1.0 | 🔫 **Fired bullet** | Drop in [0.1, 3.0] + gun heat check |
 
 > [!NOTE] Your bot tracks Gun heat
-> You cannot read the enemy's gun heat directly—you must model it based on when they fire. 
+> You cannot read the enemy's gun heat directly, you must model it based on when they fire. 
 > See [Validating with Gun Heat](#validating-with-gun-heat) below for the implementation.
 
 ### Energy Drop Signatures
@@ -108,7 +108,7 @@ Use these patterns to classify energy drops:
 
 The energy drop range [0.1, 3.0] overlaps with other damage sources. To confirm a real bullet, track the enemy's **gun heat**. A bot can only fire when gun heat = 0.
 
-```pseudocode
+```txt
 enemyGunHeat = 3.0  // Bots start with gun heat = 3.0
 
 on enemy scan:
@@ -192,9 +192,9 @@ Here's a full battle sequence showing how the detection → classification → v
 
 | Turn | Enemy Energy | Drop | Classification | Gun Heat | Action |
 |------|--------------|------|----------------|----------|--------|
-| 0 | 100.0 | — | — | 3.0 | Round start |
+| 0 | 100.0 | none |. | 3.0 | Round start |
 | 30 | 99.0 | 1.0 | In [0.1, 3.0] → check heat | 0.0 ✅ | ✅ Create wave (power 1.0) |
-| 31 | 99.0 | 0 | No drop | 1.2 | — |
+| 31 | 99.0 | 0 | No drop | 1.2 | none |
 | 42 | 98.0 | 1.0 | In [0.1, 3.0] → check heat | 0.0 ✅ | ✅ Create wave (power 1.0) |
 | 46 | 97.4 | 0.6 | = 0.6 → ram damage | 0.8 | ❌ Ignore |
 | 50 | 94.6 | 2.8 | > 3.0 → hit by bullet | 0.4 | ❌ Ignore |
@@ -215,7 +215,7 @@ Once you detect a bullet's position (either by being hit or by seeing it pass), 
 
 1. The bullet's current location
 2. The bullet's trajectory (straight line from enemy to initial bearing)
-3. All points *behind* the bullet (closer to the enemy) are **safe zones**—no bullet can exist there
+3. All points *behind* the bullet (closer to the enemy) are **safe zones**, no bullet can exist there
 
 This creates a "shadow" region where you're guaranteed not to encounter that specific bullet.
 
@@ -243,7 +243,7 @@ This creates a "shadow" region where you're guaranteed not to encounter that spe
 
 ### Implementation
 
-```pseudocode
+```txt
 bulletShadows = []
 
 on bullet detected:
@@ -272,7 +272,7 @@ function isInShadow(position):
 
 Move toward the enemy immediately after their bullet passes:
 
-```pseudocode
+```txt
 if mostDangerousWave.hasPassedMe() or isInShadow(myPosition):
   moveTowardEnemy()
 else:
@@ -283,7 +283,7 @@ else:
 
 Exclude shadow regions from danger calculations:
 
-```pseudocode
+```txt
 for guessFactor in reachableGFs:
   position = positionAtGF(guessFactor)
   if isInShadow(position):
@@ -296,7 +296,7 @@ for guessFactor in reachableGFs:
 
 In melee, bullets come from all directions. Bullet Shadows help identify temporary safe zones:
 
-```pseudocode
+```txt
 destinations = generatePossibleMoves()
 safeDestinations = [d for d in destinations if isInShadow(d)]
 if safeDestinations:
@@ -309,7 +309,7 @@ Advanced bots use both techniques together:
 
 ### Wave Detection
 
-```pseudocode
+```txt
 on enemy energy drop:
   if gunHeatAllowsFire():
     wave = createWave()
@@ -318,7 +318,7 @@ on enemy energy drop:
 
 ### Wave Validation
 
-```pseudocode
+```txt
 on tick:
   for wave in trackedWaves:
     if wave.shouldHaveHitMe():
@@ -331,7 +331,7 @@ on tick:
 
 ### Movement Decision
 
-```pseudocode
+```txt
 safestGF = findSafestGuessFactor(dangerProfile, bulletShadows)
 destination = positionAtGF(safestGF)
 if isInShadow(destination):
@@ -354,7 +354,7 @@ else:
 
 **Performance:**
 - Gun heat tracking adds minimal overhead (one floating-point variable per enemy).
-- Bullet shadow calculations can be expensive—limit to 5-10 active shadows maximum.
+- Bullet shadow calculations can be expensive, limit to 5-10 active shadows maximum.
 
 ## Common Mistakes
 
@@ -377,13 +377,14 @@ else:
 
 ## Next Steps
 
-- **[Wave Surfing Introduction](./wave-surfing-introduction.md)** — Use Gun Heat Waves to improve wave detection
-- **[Dodging Bullets](./dodging-bullets.md)** — Reactive bullet avoidance using Bullet Shadows
-- **[Melee Movement Tactics](../../melee-combat/melee-movement.md)** — Apply these techniques to multi-opponent battles
+- **[Wave Surfing Introduction](./wave-surfing-introduction.md)**: Use Gun Heat Waves to improve wave detection
+- **[Dodging Bullets](./dodging-bullets.md)**: Reactive bullet avoidance using Bullet Shadows
+- **[Melee Movement Tactics](../../melee-combat/melee-movement.md)**: Apply these techniques to multi-opponent battles
 -->
 
 ## Further Reading
 
-- [Bullet Shadow](https://robowiki.net/wiki/Bullet_Shadow) — RoboWiki (classic Robocode)
-- [Wave Surfing](https://robowiki.net/wiki/Wave_Surfing) — RoboWiki (classic Robocode)
-- [Waves](https://robowiki.net/wiki/Waves) — RoboWiki (classic Robocode)
+- [Bullet Shadow](https://robowiki.net/wiki/Bullet_Shadow) - RoboWiki (classic Robocode)
+- [Wave Surfing](https://robowiki.net/wiki/Wave_Surfing) - RoboWiki (classic Robocode)
+- [Waves](https://robowiki.net/wiki/Waves) - RoboWiki (classic Robocode)
+

@@ -1,8 +1,11 @@
 ---
 title: "Scoring Systems & Battle Types"
 category: "Energy & Scoring"
-summary: "Understanding how Robocode's scoring system works across different battle types (1v1, melee, teams) and how to optimize your bot strategy for each format."
-tags: [ "scoring-systems", "battle-types", "1v1", "melee", "teams", "intermediate", "robocode", "tank-royale" ]
+summary: >-
+  Understanding how Robocode's scoring system works across different battle
+  types (1v1, melee, teams) and how to optimize bot strategy for each format.
+tags:
+  ["scoring-systems", "battle-types", "1v1", "melee", "teams", "intermediate", "robocode", "tank-royale"]
 difficulty: "intermediate"
 source: [
   "RoboWiki - Robocode/Scoring (classic Robocode) https://robowiki.net/wiki/Robocode/Scoring",
@@ -20,13 +23,13 @@ source: [
 Robocode battles come in three main formats: **[1v1 duels](#1v1-strategy-maximize-damage-efficiency)**,
 **[melee battles](#melee-strategy-survive-and-opportunize)**, and
 **[team battles](#team-strategy-coordinate-for-collective-score)**. Each format uses the same basic scoring system but
-emphasizes different strategies. Understanding how points are awarded — and which actions matter most in each format —
+emphasizes different strategies. Understanding how points are awarded and which actions matter most in each format
 is essential for building competitive bots.
 
 > [!NOTE] Competition standards
 > This page covers scoring mechanics across battle types. For standardized competition formats (battlefield sizes, round
 > counts, number of bots) used in community rankings, see
-**[Competition Formats & Rankings](./competition-formats-rankings.md)**.
+> **[Competition Formats & Rankings](./competition-formats-rankings.md)**.
 
 ## Battle types overview
 
@@ -35,11 +38,11 @@ rewards different strategies and behaviors. For details on standard battlefield 
 competitions, see
 **[Competition Formats & Rankings](./competition-formats-rankings.md#community-competition-categories)**.
 
-| Battle Type    | Participants        | Win Condition                      | Key Strategy                                        |
-|----------------|---------------------|------------------------------------|-----------------------------------------------------|
-| **1v1 (Duel)** | 2 bots              | Highest score after rounds         | Maximize damage output and accuracy                 |
-| **Melee**      | 3+ bots             | Last bot standing or highest score | Survival, target selection, opportunistic damage    |
-| **Team**       | 2+ teams of 1+ bots | Highest team score                 | Coordination, shared targeting, role specialization |
+| Battle Type | Participants | Win Condition | Key Strategy |
+|---|---|---|---|
+| **1v1 (Duel)** | 2 bots | Highest score after rounds | Maximize damage output and accuracy |
+| **Melee** | 3+ bots | Last bot standing or highest score | Survival, target selection, opportunistic damage |
+| **Team** | 2+ teams of 1+ bots | Highest team score | Coordination, shared targeting, role specialization |
 
 Each format uses the same scoring categories but rewards different behaviors. A bot optimized for 1v1 might struggle in
 melee, and vice versa.
@@ -61,7 +64,7 @@ $\text{bulletDamageScore} = \text{damage}$
 
 Damage is calculated using the bullet damage formula:
 
-$\text{damage} = 4 \times \text{bulletPower} + \max(0, 2 \times (\text{bulletPower} – 1))$
+$\text{damage} = 4 \times \text{bulletPower} + \max(0, 2 \times (\text{bulletPower} - 1))$
 
 **Examples:**
 
@@ -70,7 +73,7 @@ $\text{damage} = 4 \times \text{bulletPower} + \max(0, 2 \times (\text{bulletPow
 - 3.0 power bullet hits → 14 damage → **14 points**
 
 In most battles, bullet damage accounts for 60-80% of the final score. The remaining 20-40% comes from kill bonuses
-(bullet and ram damage bonuses), survival points, and last survivor bonuses—with the exact breakdown varying by battle
+(bullet and ram damage bonuses), survival points, and last survivor bonuses, with the exact breakdown varying by battle
 type and bot strategy.
 
 ### 2. Ram damage points
@@ -169,10 +172,10 @@ In duels, there are no third-party interruptions. The bot that lands more high-v
 
 **Key priorities:**
 
-1. **Accuracy over volume** — Missing shots wastes energy and gun heat. High hit rates (>30%) are essential.
-2. **Energy management** — Maintain energy advantage to outlast the opponent.
-3. **Kill bonus capture** — Delivering the final blow adds 20% of all damage dealt as a bonus.
-4. **Positioning** — Control distance and angles to maximize hit probability.
+1. **Accuracy over volume**: Missing shots wastes energy and gun heat. High hit rates (>30%) are essential.
+2. **Energy management**: Maintain energy advantage to outlast the opponent.
+3. **Kill bonus capture**: Delivering the final blow adds 20% of all damage dealt as a bonus.
+4. **Positioning**: Control distance and angles to maximize hit probability.
 
 **Scoring breakdown (typical 1v1):**
 
@@ -188,12 +191,12 @@ With 3+ bots, chaos reigns. Bots can steal kills, hit each other simultaneously,
 
 **Key priorities:**
 
-1. **Survival first** — Placement points dominate scoring. Staying alive longer than half the field guarantees
+1. **Survival first**: Placement points dominate scoring. Staying alive longer than half the field guarantees
    significant points (like royale games).
-2. **Target selection** — Attack the weakest or most vulnerable bots. Avoid prolonged duels with strong opponents.
-3. **Kill stealing** — Watch for bots near death and deliver finishing blows to collect bonuses.
-4. **Avoid attention** — Being targeted by multiple bots simultaneously is fatal. Stay mobile and unpredictable.
-5. **Position intelligently** — Use corners and walls to limit exposure. Avoid the center of the battlefield.
+2. **Target selection**: Attack the weakest or most vulnerable bots. Avoid prolonged duels with strong opponents.
+3. **Kill stealing**: Watch for bots near death and deliver finishing blows to collect bonuses.
+4. **Avoid attention**: Being targeted by multiple bots simultaneously is fatal. Stay mobile and unpredictable.
+5. **Position intelligently**: Use corners and walls to limit exposure. Avoid the center of the battlefield.
 
 **Scoring breakdown (typical melee):**
 
@@ -215,10 +218,10 @@ In team battles, all team members' points combine into a single team score. This
 
 **Key priorities:**
 
-1. **Communication** — Share enemy positions, energy levels, and targeting data.
-2. **Role assignment** — Designate attackers, scouts, and support bots based on strengths.
-3. **Focus fire** — Concentrate attacks on single targets to secure kills quickly.
-4. **Sacrifice plays** — A bot can sacrifice itself if it secures a high-value kill for the team.
+1. **Communication**: Share enemy positions, energy levels, and targeting data.
+2. **Role assignment**: Designate attackers, scouts, and support bots based on strengths.
+3. **Focus fire**: Concentrate attacks on single targets to secure kills quickly.
+4. **Sacrifice plays**: A bot can sacrifice itself if it secures a high-value kill for the team.
 
 **Common team roles:**
 
@@ -255,17 +258,17 @@ Consistency matters. A bot that performs well in most rounds beats a bot that do
 
 **✅ Do:**
 
-- **Optimize for your format** — A 1v1 bot needs different priorities than a melee bot.
-- **Track cumulative score** — Winning one round decisively doesn't guarantee match victory.
-- **Value kill bonuses** — Finishing weak opponents adds significant points.
-- **Prioritize high-probability shots** — Accuracy beats volume in almost every format.
+- **Optimize for your format**: A 1v1 bot needs different priorities than a melee bot.
+- **Track cumulative score**: Winning one round decisively doesn't guarantee match victory.
+- **Value kill bonuses**: Finishing weak opponents adds significant points.
+- **Prioritize high-probability shots**: Accuracy beats volume in almost every format.
 
 **❌ Don't:**
 
-- **Ignore survival in melee** — Even dominant damage output loses to early elimination.
-- **Fire indiscriminately** — Wasted shots reduce energy and scoring potential.
-- **Assume survival = winning** — In 1v1, damage points usually exceed survival bonuses.
-- **Neglect energy management** — Running out of energy forfeits all future scoring opportunities.
+- **Ignore survival in melee**: Even dominant damage output loses to early elimination.
+- **Fire indiscriminately**: Wasted shots reduce energy and scoring potential.
+- **Assume survival = winning**: In 1v1, damage points usually exceed survival bonuses.
+- **Neglect energy management**: Running out of energy forfeits all future scoring opportunities.
 
 > [!WARNING] Time limits matter
 > Rounds have a turn limit (1000 turns in standard competition format). If the limit is reached with multiple bots
@@ -277,18 +280,18 @@ Consistency matters. A bot that performs well in most rounds beats a bot that do
 
 Now that you understand how scoring works across battle types, explore format-specific strategies:
 
-- **Competition Formats & Rankings** — Learn about standardized battlefield dimensions and community competition
+- **Competition Formats & Rankings**: Learn about standardized battlefield dimensions and community competition
   standards.
-- **Energy Management in 1v1 and Melee** — Optimize energy spending for your chosen format.
-- **Targeting Tactics** — Learn when to fire and which bullet power to use.
-- **Team Strategies** — Coordinate with teammates for maximum team score.
-- **Melee Combat** — Master survival tactics and target selection in chaotic battles.
+- **Energy Management in 1v1 and Melee**: Optimize energy spending for your chosen format.
+- **Targeting Tactics**: Learn when to fire and which bullet power to use.
+- **Team Strategies**: Coordinate with teammates for maximum team score.
+- **Melee Combat**: Master survival tactics and target selection in chaotic battles.
 
 Understanding scoring is the foundation. Winning requires applying that knowledge to strategic decision-making in
 real-time combat.
 
 ## Further Reading
 
-- [Robocode/Scoring](https://robowiki.net/wiki/Robocode/Scoring) — RoboWiki (classic Robocode)
-- [Melee](https://robowiki.net/wiki/Melee) — RoboWiki (classic Robocode)
-- [Robocode Tank Royale - Scoring](https://robocode.dev/articles/scoring.html) — Tank Royale documentation
+- [Robocode/Scoring](https://robowiki.net/wiki/Robocode/Scoring) - RoboWiki (classic Robocode)
+- [Melee](https://robowiki.net/wiki/Melee) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Scoring](https://robocode.dev/articles/scoring.html) - Tank Royale documentation

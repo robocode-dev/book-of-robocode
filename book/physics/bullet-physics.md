@@ -14,6 +14,10 @@ source: [
 
 # Bullet Travel & Bullet Physics
 
+> [!TIP] Origins
+> **Bullet physics** was documented by the RoboWiki community for classic Robocode and by the official Tank Royale
+> documentation for Robocode Tank Royale.
+
 Bullets are pure energy projectiles fired by your bot's gun. Firing costs energy, your gun must cool down between shots,
 and the bullet travels across the battlefield until it hits a bot or a wall (or leaves the arena). Mastering these
 basics helps you choose when and how hard to fire.
@@ -59,8 +63,7 @@ clear why energy management and bullet power choices matter.
 - Typical valid range: 0.1 to 3.0 power.
 - You need at least 0.1 energy to fire the gun. If you request more power than your remaining energy, the game clamps to
   your current energy (but never below 0.1 to create a shot).
-- Higher power does not make the bullet faster—it makes it slower but potentially more damaging (see bullet damage
-  below).
+- Higher power does not make the bullet faster. It makes the bullet slower but potentially more damaging.
 
 ## How bullets are fired
 
@@ -113,8 +116,8 @@ timeline
 ### Bullet speed formula
 
 <img src="../images/light-vs-heavy-bullet.svg" alt="Bullet Trajectory & Speed Comparison" style="max-width:100%;height:auto;"/><br>
-*Illustration: Two bullets fired by a bot — a high-power bullet (slower, shown in red/orange) and a low-power bullet
-(faster, shown in green/orange) — demonstrating their different trajectories and speeds.*
+*Illustration: Two bullets fired by a bot. A high-power bullet is slower and shown in red/orange. A low-power bullet is
+faster and shown in green/orange.*
 
 Classic Robocode bullet speed:
 
@@ -246,14 +249,14 @@ if (gunIsCool() and myEnergy > 0.1) {
 - Bullet power determines energy cost, speed, and damage.
 - You can only fire when your gun is cool, and you have enough energy.
 - Higher bullet power means slower bullets but more damage; lower power is faster but less damaging.
-- Gun cooldown depends on bullet power—bigger shots require longer waits.
+- Gun cooldown depends on bullet power. Bigger shots require longer waits.
 - Bullets travel in straight lines at constant speed, unaffected by your bot's movement after firing.
 - Hitting an enemy with a bullet rewards you with energy; hitting a wall does not.
-- Friendly fire is possible in team battles—always check your line of fire.
+- Friendly fire is possible in team battles. Always check your line of fire.
 - Radar does not detect bullets, but you can infer shots by watching energy drops.
 - Energy management is crucial: avoid disabling yourself by firing recklessly.
 
 ## Further Reading
 
-- [Bullet](https://robowiki.net/wiki/Bullet) — RoboWiki (classic Robocode)
-- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html#bullets) — Tank Royale documentation
+- [Bullet](https://robowiki.net/wiki/Bullet) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html#bullets) - Tank Royale documentation

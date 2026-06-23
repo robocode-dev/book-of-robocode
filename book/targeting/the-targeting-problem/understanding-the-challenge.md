@@ -18,7 +18,7 @@ source: [
 > invented the Wave concept). **Wave Surfing** was invented by **Alexandros (ABC)** in his bot **Shadow**. These
 > techniques revolutionized competitive Robocode.
 
-The simple targeting methods—head-on, linear, and circular—work great against predictable bots.
+The simple targeting methods, head-on, linear, and circular, work great against predictable bots.
 But as soon as enemies start changing their direction, speeding up unpredictably, or deliberately dodging, hit rates
 drop.
 The core problem is that **the enemy has time to react** before the bullet arrives.
@@ -28,7 +28,7 @@ targeting strategies.
 
 ## The fundamental problem: travel time
 
-When a bot fires a bullet, the bullet takes time to reach its target. During that time, the enemy keeps moving—and can
+When a bot fires a bullet, the bullet takes time to reach its target. During that time, the enemy keeps moving, and can
 even **observe and react** to the shot.
 
 Consider a typical scenario:
@@ -61,7 +61,7 @@ The enemy's actual movement depends on:
 - What the enemy *can* do (physics constraints).
 - Whether the enemy is reacting to bullets.
 
-Simple targeting tries to **predict one future position**. But there's often no single "correct" answer—the enemy has
+Simple targeting tries to **predict one future position**. But there's often no single "correct" answer, the enemy has
 a whole range of possible positions.
 
 Advanced targeting shifts to a different question: **"Which direction has the highest probability of hitting?"**
@@ -91,7 +91,7 @@ Methods like **GuessFactor Targeting** and **Dynamic Clustering** implement this
 To implement statistical targeting, bots need a way to measure "where the enemy was when my bullet could have hit."
 
 **Waves** are the tool for this. A wave is an imaginary circle that expands from the firing position at bullet speed.
-When the wave reaches the enemy, that's the moment the bullet would have arrived—so the bot records the enemy's
+When the wave reaches the enemy, that's the moment the bullet would have arrived, so the bot records the enemy's
 *angle relative to the firing direction* at that moment.
 
 Over many rounds, these recorded angles form a probability distribution. The bot aims at the angle with the highest
@@ -138,7 +138,7 @@ and enemies can move during that time.
 
 > Note: The bullet speed formula is the same on both platforms (`20 - 3 × firepower`)
 
-The core strategies—waves, GuessFactor, statistical targeting—translate directly between platforms, but coordinate
+The core strategies, waves, GuessFactor, statistical targeting, translate directly between platforms, but coordinate
 conversions and scan timing need careful handling.
 
 ## Next steps
@@ -167,5 +167,5 @@ After understanding waves, explore the major targeting approaches:
 
 ## Further Reading
 
-- [The Targeting Problem](https://robowiki.net/wiki/The_Targeting_Problem) — RoboWiki (classic Robocode)
-- [Waves](https://robowiki.net/wiki/Waves) — RoboWiki (classic Robocode)
+- [The Targeting Problem](https://robowiki.net/wiki/The_Targeting_Problem) - RoboWiki (classic Robocode)
+- [Waves](https://robowiki.net/wiki/Waves) - RoboWiki (classic Robocode)

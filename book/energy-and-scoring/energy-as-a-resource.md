@@ -1,8 +1,11 @@
 ---
 title: "Energy as a Resource"
 category: "Energy & Scoring"
-summary: "Understanding energy as a strategic resource in Robocode — managing life, firepower, and tactical positioning through careful energy decisions."
-tags: [ "energy", "energy-management", "strategy", "intermediate", "robocode", "tank-royale" ]
+summary: >-
+  Understanding energy as a strategic resource in Robocode, managing life,
+  firepower, and tactical positioning through careful energy decisions.
+tags:
+  ["energy", "energy-management", "strategy", "intermediate", "robocode", "tank-royale"]
 difficulty: "intermediate"
 source: [
   "RoboWiki - Energy (classic Robocode) https://robowiki.net/wiki/Energy",
@@ -16,21 +19,25 @@ source: [
 > Energy management strategies were developed and documented by the RoboWiki community, with significant contributions
 > from **Patrick Cupka ("Voidious")** and other competitive bot developers.
 
-In Robocode, energy is more than a health bar — it's the currency of battle. Every shot fired, every hit taken, and
+In Robocode, energy is more than a health bar. It's the currency of battle. Every shot fired, every hit taken, and
 every hit landed creates an energy transaction that can swing the battle. Understanding how to manage, conserve, and
 exploit energy gives bots a critical strategic edge.
 
-<img src="/images/energy-flow-diagram.svg" alt="Energy flows between bots through bullets — draining the attacker, damaging the defender, and rewarding successful hits" style="max-width:100%;height:auto;"><br>
-*Energy flows between bots through bullets — draining the attacker, damaging the defender, and rewarding successful
+<img
+  src="/images/energy-flow-diagram.svg"
+  alt="Energy flows between bots through bullets, draining the attacker, damaging the defender, and rewarding successful hits"
+  style="max-width:100%;height:auto;"
+><br>
+*Energy flows between bots through bullets, draining the attacker, damaging the defender, and rewarding successful
 hits*
 
 ## Why energy matters
 
 Energy serves three critical roles in combat:
 
-1. **Life total** — When energy reaches 0, the bot is disabled. Below 0, the bot is destroyed.
-2. **Firing cost** — Every bullet fired costs energy equal to its power (0.1 to 3.0).
-3. **Hit reward** — Landing a hit returns 3× the bullet power as energy.
+1. **Life total**: When energy reaches 0, the bot is disabled. Below 0, the bot is destroyed.
+2. **Firing cost**: Every bullet fired costs energy equal to its power (0.1 to 3.0).
+3. **Hit reward**: Landing a hit returns 3× the bullet power as energy.
 
 This creates a fundamental strategic loop: successful offense generates energy, while poor offense drains it. A bot
 that hits consistently gains an energy advantage, while a bot that misses falls behind.
@@ -117,9 +124,9 @@ battles. Your strategy should adapt based on whether you have more, less, or sim
 When you have significantly more energy than your opponent (e.g., 80 vs. 30):
 
 - **Fire heavier bullets** (2.5–3.0 power) to pressure and finish them quickly.<
-- **Accept hits for positioning** — you can afford the energy loss to secure a corner or better angle.
-- **Move aggressively** — close distance or push them into corners.
-- **Force trades** — even if you both land hits, you win the exchange because you can sustain more damage.
+- **Accept hits for positioning**: you can afford the energy loss to secure a corner or better angle.
+- **Move aggressively**: close distance or push them into corners.
+- **Force trades**: even if you both land hits, you win the exchange because you can sustain more damage.
 
 **Rationale:** Your energy buffer lets you survive multiple hits while maintaining offensive pressure. The opponent
 cannot afford to trade shots and must play defensively, giving you control of the battle.
@@ -129,9 +136,9 @@ cannot afford to trade shots and must play defensively, giving you control of th
 When your energy is critically low (< 15):
 
 - **Fire lighter bullets** (0.5–1.5 power) to conserve energy and stay in the fight longer.
-- **Avoid risky shots** — missing a 3.0 power bullet when you have 10 energy could disable you.
-- **Focus on evasion** — survival becomes more important than offense.
-- **Play for accuracy** — one or two good hits can swing momentum back in your favor.
+- **Avoid risky shots**: missing a 3.0 power bullet when you have 10 energy could disable you.
+- **Focus on evasion**: survival becomes more important than offense.
+- **Play for accuracy**: one or two good hits can swing momentum back in your favor.
 
 **Rationale:** A single hit could disable or destroy you. Every point of energy matters, so prioritize staying alive and
 landing efficient shots over dealing maximum damage.
@@ -140,10 +147,10 @@ landing efficient shots over dealing maximum damage.
 
 When both bots have similar energy (e.g., 60 vs. 55):
 
-- **Accuracy matters most** — the bot that lands more hits gains the energy advantage.
+- **Accuracy matters most**: the bot that lands more hits gains the energy advantage.
 - **Use moderate power** (1.8–2.2) to balance damage and bullet speed.
-- **Positioning is critical** — better angles and distances improve hit rates.
-- **Track momentum** — small energy swings accumulate and shift the balance over time.
+- **Positioning is critical**: better angles and distances improve hit rates.
+- **Track momentum**: small energy swings accumulate and shift the balance over time.
 
 **Rationale:** Efficiency decides the battle. Consistent hits build momentum and create an energy advantage, while
 missed shots drain your position. Neither bot can afford to be wasteful.
@@ -157,11 +164,11 @@ changes everything.
 
 When you have high energy relative to other bots:
 
-- **Stay defensive** — avoid drawing attention from multiple opponents.
-- **Pick shots carefully** — fire at opportune moments, not continuously.
-- **Avoid the center** — move along walls and edges to limit exposure.
-- **Let others fight** — allow weaker bots to weaken each other while you conserve energy.
-- **Don't accept hits** — even with high energy, taking fire from multiple bots drains you quickly.
+- **Stay defensive**: avoid drawing attention from multiple opponents.
+- **Pick shots carefully**: fire at opportune moments, not continuously.
+- **Avoid the center**: move along walls and edges to limit exposure.
+- **Let others fight**: allow weaker bots to weaken each other while you conserve energy.
+- **Don't accept hits**: even with high energy, taking fire from multiple bots drains you quickly.
 
 **Rationale:** Aggressive movement makes you a priority target. Multiple opponents can focus fire and even overwhelm a
 high-energy bot. Patience and positioning matter more than raw aggression.
@@ -170,10 +177,10 @@ high-energy bot. Patience and positioning matter more than raw aggression.
 
 When your energy is low in a melee battle:
 
-- **Become opportunistic** — fire only when you have high-probability shots.
-- **Stay on the periphery** — avoid being caught between multiple opponents.
+- **Become opportunistic**: fire only when you have high-probability shots.
+- **Stay on the periphery**: avoid being caught between multiple opponents.
 - **Fire light bullets** (0.5–1.5 power) to maximize shots before being eliminated.
-- **Pick your target** — focus on other low-energy bots you can eliminate for survival points.
+- **Pick your target**: focus on other low-energy bots you can eliminate for survival points.
 
 **Rationale:** You're unlikely to win through aggression. Your goal is to survive as long as possible, score
 opportunistic hits, and outlast at least one other bot.
@@ -182,10 +189,10 @@ opportunistic hits, and outlast at least one other bot.
 
 Energy levels influence who you should target:
 
-- **Target low-energy bots** — easier to eliminate, reducing the number of threats.
-- **Avoid high-energy bots** — engaging them invites retaliation you can't afford.
-- **Watch for 1v1 duels** — let two bots fight each other, then engage the weakened survivor.
-- **Position defensively** — maintain distance from multiple threats.
+- **Target low-energy bots**: easier to eliminate, reducing the number of threats.
+- **Avoid high-energy bots**: engaging them invites retaliation you can't afford.
+- **Watch for 1v1 duels**: let two bots fight each other, then engage the weakened survivor.
+- **Position defensively**: maintain distance from multiple threats.
 
 **Rationale:** In melee, killing a bot is worth survival points and reduces incoming fire. Energy management is about
 patience, positioning, and picking the right moments to engage.
@@ -196,7 +203,7 @@ patience, positioning, and picking the right moments to engage.
 
 When energy is low or the target is challenging to hit, reduce bullet power:
 
-```pseudocode
+```txt
 myEnergy = getEnergy()
 
 if myEnergy < 15:
@@ -213,7 +220,7 @@ else:
 
 When you have a large energy lead, capitalize with heavier bullets:
 
-```pseudocode
+```txt
 myEnergy = getEnergy()
 enemyEnergy = getEnemyEnergy()
 
@@ -232,7 +239,7 @@ out the round.
 
 Advanced bots monitor enemy energy to detect bullet fires and predict behavior:
 
-```pseudocode
+```txt
 previousEnemyEnergy = 100
 currentEnemyEnergy = getEnemyEnergy()
 
@@ -254,7 +261,7 @@ if energyDrop >= 0.1 and energyDrop <= 3.0:
 
 When the enemy is nearly out of energy (< 10), even a weak bullet can finish them:
 
-```pseudocode
+```txt
 enemyEnergy = getEnemyEnergy()
 
 if enemyEnergy < 4:
@@ -278,7 +285,7 @@ When a bot's energy reaches exactly 0, it becomes **disabled**:
 
 **Tactical priority:** A disabled bot should be your **highest priority target**. Finish them off immediately with light
 bullets before your remaining opponents do. Missing the opportunity to destroy a disabled bot means giving those
-survival points to someone else — points you could have claimed.
+survival points to someone else. points you could have claimed.
 
 **In 1v1:** If you disabled the opponent, finish them quickly. The round is yours to win.
 
@@ -289,19 +296,19 @@ current engagement, and a disabled bot is guaranteed damage with zero risk.
 
 ### ✅ Good practices
 
-- **Track your energy and the enemy's energy** — use it to inform firing decisions and to detect when the enemy fires a
+- **Track your energy and the enemy's energy**: use it to inform firing decisions and to detect when the enemy fires a
   bullet at you.
-- **Conserve energy when low** — firing heavy bullets when you have low energy is often fatal.
-- **Capitalize on energy advantages** — press harder when you're ahead.
-- **Aim for net-positive energy trades** — every hit should gain you more than you spent.
+- **Conserve energy when low**: firing heavy bullets when you have low energy is often fatal.
+- **Capitalize on energy advantages**: press harder when you're ahead.
+- **Aim for net-positive energy trades**: every hit should gain you more than you spent.
 
 ### ❌ Common mistakes
 
-- **Ignoring energy levels** — firing max power bullets when critically low on energy.
-- **Missing frequently** — every miss is a pure energy loss with no reward.
-- **Not tracking enemy energy** — missing opportunities to dodge, predict behavior, or finishing off a disabled
+- **Ignoring energy levels**: firing max power bullets when critically low on energy.
+- **Missing frequently**: every miss is a pure energy loss with no reward.
+- **Not tracking enemy energy**: missing opportunities to dodge, predict behavior, or finishing off a disabled
   opponent.
-- **Overfiring when ahead** — wasting energy on overkill shots when lighter bullets would suffice.
+- **Overfiring when ahead**: wasting energy on overkill shots when lighter bullets would suffice.
 
 ## Summary
 
@@ -309,13 +316,14 @@ Energy is the lifeblood of every Robocode battle. It determines how much damage 
 absorb, and how long you can stay in the fight. Managing energy means balancing offense and defense: firing accurately
 to gain energy through hits, conserving energy when low, and exploiting energy advantages when ahead.
 
-The best bots treat energy as a tactical resource, not just a health bar — making every shot count, tracking the
+The best bots treat energy as a tactical resource, not just a health bar. making every shot count, tracking the
 enemy's energy, and adjusting their strategy based on the energy differential.
 
-> "In Robocode, the bot with the most energy isn't necessarily winning — but the bot that manages energy best usually
+> "In Robocode, the bot with the most energy isn't necessarily winning. but the bot that manages energy best usually
 > is."
 
 ## Further Reading
 
-- [Energy](https://robowiki.net/wiki/Energy) — RoboWiki (classic Robocode)
-- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html) — Tank Royale documentation
+- [Energy](https://robowiki.net/wiki/Energy) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html) - Tank Royale documentation
+

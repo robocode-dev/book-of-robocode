@@ -30,7 +30,7 @@ In the [Understanding the Challenge](understanding-the-challenge.md), we saw tha
 possible.
 
 A wave is an imaginary circle that expands outward from the firing position at bullet speed. When the wave reaches the
-enemy, that's the exact moment a bullet would have hit them—allowing the bot to record their angle relative to the
+enemy, that's the exact moment a bullet would have hit them, allowing the bot to record their angle relative to the
 firing direction.
 
 Over many battles, these recorded angles form a statistical profile of enemy movement, enabling probabilistic targeting
@@ -45,7 +45,7 @@ water when a stone is dropped:
 - **Expansion:** The wave grows outward at bullet speed: `20 - 3 × firepower` units per turn.
 - **Purpose:** When the wave reaches the enemy's position, record their angle relative to the firing direction.
 
-Waves are **imaginary**—they don't exist in the game engine. The bot calculates and tracks them to measure timing and
+Waves are **imaginary**, they don't exist in the game engine. The bot calculates and tracks them to measure timing and
 angles accurately.
 
 <img src="../../images/wave-concept-basic.svg" alt="A wave expands from the firing position at bullet speed, tracking when a bullet would reach each point" style="max-width:100%;height:auto;"><br>
@@ -240,7 +240,7 @@ There are two ways to use waves, and they serve different purposes because enemi
 ### Why use both?
 
 **Virtual waves** provide the bulk of statistical data: they capture enemy movement patterns over many turns without
-interference. However, these patterns are measured under "peaceful" conditions—when the enemy has no reason to dodge.
+interference. However, these patterns are measured under "peaceful" conditions, when the enemy has no reason to dodge.
 
 **Real bullet waves** capture the truth of actual combat: how enemies really move when threatened. An enemy's dodging
 behavior under fire may differ significantly from their casual movement pattern.
@@ -256,7 +256,7 @@ accuracy** (better predictions when it actually matters). The balance between qu
 
 ## Waves in movement: wave surfing
 
-The wave concept isn't just for targeting—it's also the foundation of advanced movement strategies.
+The wave concept isn't just for targeting, it's also the foundation of advanced movement strategies.
 
 **Wave surfing** reverses the wave concept: the bot tracks *enemy* waves (bullets the enemy has fired or might fire)
 and moves to positions with the lowest danger based on where the enemy's gun has hit before.
@@ -273,9 +273,9 @@ Wave surfing is covered in detail in the *Movement & Evasion* section.
 
 **Starting simple:**
 
-- Begin with real bullet waves only—create a wave when firing, track it until it hits.
+- Begin with real bullet waves only, create a wave when firing, track it until it hits.
 - Use a simple array or histogram to count hits at different GuessFactor values.
-- Don't worry about segmentation initially—just track all data together.
+- Don't worry about segmentation initially, just track all data together.
 
 **Common challenges:**
 
@@ -300,7 +300,7 @@ Wave mechanics work identically in classic Robocode and Tank Royale, but coordin
 | Max bot speed        | 8 units/turn              | Same                         |
 | Timing precision     | Turn-based, deterministic | Turn-based, deterministic    |
 
-The GuessFactor calculation and wave expansion logic are identical—only angle conversions need adjustment.
+The GuessFactor calculation and wave expansion logic are identical, only angle conversions need adjustment.
 
 ## Advantages of wave-based targeting
 
@@ -334,15 +334,15 @@ Advanced bots address these with:
 
 Now that you understand waves, explore how they're used in practice:
 
-- **[GuessFactor Targeting](../statistical-targeting/guessfactor-targeting.md)** — The classic statistical targeting
+- **[GuessFactor Targeting](../statistical-targeting/guessfactor-targeting.md)**: The classic statistical targeting
   method built on waves.
-- **[Segmentation & Visit Count Stats](../statistical-targeting/segmentation-visit-count-stats.md)** — Splitting wave
+- **[Segmentation & Visit Count Stats](../statistical-targeting/segmentation-visit-count-stats.md)**: Splitting wave
   data by situation for more accurate predictions.
-- **[Wave Surfing Introduction](../../movement/advanced-evasion/wave-surfing-introduction.md)** — Using waves for
+- **[Wave Surfing Introduction](../../movement/advanced-evasion/wave-surfing-introduction.md)**: Using waves for
   advanced movement.
-- **[Gun Heat Waves](../../movement/advanced-evasion/gun-heat-waves-bullet-shadows.md)** — Tracking enemy firing
+- **[Gun Heat Waves](../../movement/advanced-evasion/gun-heat-waves-bullet-shadows.md)**: Tracking enemy firing
   patterns for movement decisions.
 
 **Next in this section:**
 
-- **[GuessFactor Targeting](../statistical-targeting/guessfactor-targeting.md)** — Build your first wave-based gun.
+- **[GuessFactor Targeting](../statistical-targeting/guessfactor-targeting.md)**: Build your first wave-based gun.

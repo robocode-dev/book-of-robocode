@@ -26,7 +26,7 @@ effective against many targeting strategies and serves as the foundation for mor
 ## Why Randomness Works
 
 Targeting systems aim to predict where a bot will be when a bullet arrives. Most targeting methods rely on
-patterns—constant velocity, consistent turn rates, or predictable oscillations. Random movement breaks these patterns by
+patterns, constant velocity, consistent turn rates, or predictable oscillations. Random movement breaks these patterns by
 ensuring that future positions cannot be reliably predicted from past behavior.
 
 Against **head-on targeting**, random movement provides minimal benefit since head-on aims at the current position.
@@ -42,7 +42,7 @@ patterns can still be exploited by adaptive targeting systems.
 
 The simplest form of random movement varies the bot's speed unpredictably:
 
-```pseudocode
+```txt
 on turn:
   if random() < 0.1:  // 10% chance each turn
     targetVelocity = random(-8, 8)
@@ -56,7 +56,7 @@ doesn't address directional predictability.
 
 Adding random turns creates more complex movement patterns:
 
-```pseudocode
+```txt
 on turn:
   if random() < 0.15:  // 15% chance each turn
     targetVelocity = random(-8, 8)
@@ -74,7 +74,7 @@ be tuned based on battlefield size and opponent behavior.
 
 Random movement must still avoid walls. A simple approach combines random decisions with boundary checking:
 
-```pseudocode
+```txt
 on turn:
   // Check if approaching walls
   if distanceToNearestWall < 100:
@@ -94,7 +94,7 @@ More sophisticated implementations use wall smoothing to maintain randomness whi
 
 Instead of completely random decisions, use weighted probabilities:
 
-```pseudocode
+```txt
 on turn:
   roll = random(0, 1)
   
@@ -112,7 +112,7 @@ This creates smoother movement while maintaining unpredictability.
 
 Better random movement adapts to the situation:
 
-```pseudocode
+```txt
 on turn:
   if enemyFiring:
     increaseRandomnessLevel()
@@ -130,7 +130,7 @@ resources while maintaining some unpredictability.
 
 Combining random movement with orbiting (moving perpendicular to the enemy) creates effective evasion:
 
-```pseudocode
+```txt
 on turn:
   angleToEnemy = calculateBearingToEnemy()
   orbitAngle = angleToEnemy + 90  // Perpendicular
@@ -163,7 +163,7 @@ scanning and targeting.
 
 ### Too Much Randomness
 
-Completely chaotic movement can work against you—placing you in poor positions, causing unnecessary energy loss, or
+Completely chaotic movement can work against you, placing you in poor positions, causing unnecessary energy loss, or
 moving toward danger. Some structure improves overall performance.
 
 ## Platform Differences
@@ -203,7 +203,7 @@ It's less effective against:
 - **Pattern matchers** designed to handle randomness
 - **Precise prediction** that reads ahead many ticks
 
-Random movement works best as part of a larger strategy—use it as a baseline, combine it with other techniques, or
+Random movement works best as part of a larger strategy, use it as a baseline, combine it with other techniques, or
 switch to it when other movements fail.
 
 ## Tips for Success
@@ -222,10 +222,11 @@ variation.
 **Watch energy:** Random movement can waste energy through unnecessary turns and reversals. Balance unpredictability
 with efficiency.
 
-Random movement proves that sometimes the best defense is simply being impossible to predict—no complex calculations
+Random movement proves that sometimes the best defense is simply being impossible to predict, no complex calculations
 required.
 
 ## Further Reading
 
-- [Random Movement](https://robowiki.net/wiki/Random_Movement) — RoboWiki (classic Robocode)
+- [Random Movement](https://robowiki.net/wiki/Random_Movement) - RoboWiki (classic Robocode)
+
 

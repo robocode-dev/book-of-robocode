@@ -176,7 +176,6 @@ The math above is the same, but *inputs* differ.
 
 ## Further Reading
 
-- [Linear Targeting](https://robowiki.net/wiki/Linear_Targeting) — RoboWiki (classic Robocode)
-- [Linear Targeting/Buggy Implementations](https://robowiki.net/wiki/Linear_Targeting/Buggy_Implementations) —
-  RoboWiki (classic Robocode)
+- [Linear Targeting](https://robowiki.net/wiki/Linear_Targeting) - RoboWiki (classic Robocode)
+- [Linear Targeting/Buggy Implementations](https://robowiki.net/wiki/Linear_Targeting/Buggy_Implementations) - RoboWiki (classic Robocode)
 

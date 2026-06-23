@@ -1,8 +1,11 @@
 ---
 title: "Fire Power & Timing Decisions"
 category: "Targeting Systems"
-summary: "Strategic considerations for choosing bullet power and when to fire — balancing damage, accuracy, energy, and gun heat."
-tags: [ "fire-power", "bullet-power", "timing", "targeting-tactics", "strategy", "robocode", "tank-royale", "intermediate" ]
+summary: >-
+  Strategic considerations for choosing bullet power and when to fire,
+  balancing damage, accuracy, energy, and gun heat.
+tags:
+  ["fire-power", "bullet-power", "timing", "targeting-tactics", "strategy", "robocode", "tank-royale", "intermediate"]
 difficulty: "intermediate"
 source: [
   "RoboWiki - Bullet (classic Robocode) https://robowiki.net/wiki/Bullet",
@@ -20,19 +23,23 @@ Choosing when to fire and how much power to use is a strategic balancing act. Fi
 fire is too strong, and you miss more often while draining your energy. This page explores the factors that influence
 bullet power selection and timing decisions in competitive play.
 
-<img src="../../images/fire-power-tradeoffs.svg" alt="Comparing low-power (fast, weak) vs high-power (slow, strong) bullets traveling toward a moving target" style="max-width:100%;height:auto;"><br>
+<img
+  src="../../images/fire-power-tradeoffs.svg"
+  alt="Comparing low-power (fast, weak) vs high-power (slow, strong) bullets traveling toward a moving target"
+  style="max-width:100%;height:auto;"
+><br>
 *Comparing low-power (fast, weak) vs. high power (slow, strong) bullets traveling toward a moving target*
 
 ## Why bullet power matters
 
 Bullet power affects three critical aspects of combat:
 
-1. **Damage dealt** — Higher power means more damage per hit (4× power, plus bonus above 1.0).
-2. **Bullet speed** — Lower power bullets travel faster (20 - 3× power units/turn), reaching the target sooner.
-3. **Gun heat generated** — Higher power adds more heat (1 + power/5), delaying your next shot.
-4. **Energy cost** — Firing consumes energy equal to the bullet power, risking disablement if you run low.
+1. **Damage dealt**: Higher power means more damage per hit (4× power, plus bonus above 1.0).
+2. **Bullet speed**: Lower power bullets travel faster (20 - 3× power units/turn), reaching the target sooner.
+3. **Gun heat generated**: Higher power adds more heat (1 + power/5), delaying your next shot.
+4. **Energy cost**: Firing consumes energy equal to the bullet power, risking disablement if you run low.
 
-These tradeoffs mean there's rarely a "best" power for all situations — the right choice depends on range, enemy
+These tradeoffs mean there's rarely a "best" power for all situations. the right choice depends on range, enemy
 behavior, your energy level, and your targeting confidence.
 
 ## The core tradeoffs
@@ -44,8 +51,8 @@ movement, a faster bullet that hits is better than a slow, powerful bullet that 
 
 **Rule of thumb:**
 
-- **Power 0.1 to 1.5** — Fast bullets for distant or erratic targets.
-- **Power 1.5 to 3.0** — Strong bullets for close range or predictable movement.
+- **Power 0.1 to 1.5**: Fast bullets for distant or erratic targets.
+- **Power 1.5 to 3.0**: Strong bullets for close range or predictable movement.
 
 ### Accuracy vs power
 
@@ -57,7 +64,7 @@ shorter travel times reduce the window during which the enemy can deviate from t
 error (and therefore miss chance) typically grows with travel time. Bullet travel time is distance / bullet_speed, where
 bullet_speed = 20 - 3×power. Example: at 400 units, a 0.1-power bullet has speed 19.7 → time ≈ 20.3 turns, while a
 3.0-power bullet has speed 11 → time ≈ 36.4 turns. With the same aiming strategy, the faster (lower-power) bullet
-usually has a higher chance to hit, especially against agile opponents — because there's less time for the opponent to
+usually has a higher chance to hit, especially against agile opponents. because there's less time for the opponent to
 move away from the predicted intercept point.
 
 For statistical or adaptive targeting systems, accuracy often matters more than raw power:
@@ -99,7 +106,7 @@ consistent gun heat cycles and predictable energy drain.
 
 Adjust power based on enemy distance:
 
-```pseudocode
+```txt
 if distance < 150:
     power = 3.0
 else if distance < 400:
@@ -115,7 +122,7 @@ over power.
 
 If your targeting system tracks hit rate or prediction confidence, scale power accordingly:
 
-```pseudocode
+```txt
 hitRate = hits / shots (i.e. hits + misses)
 if hitRate > 0.7:
     power = 3.0  # High confidence
@@ -132,7 +139,7 @@ light when you're struggling.
 
 When your energy is low, reduce power to preserve a survival buffer:
 
-```pseudocode
+```txt
 myEnergy = getEnergy()
 enemyEnergy = getEnemyEnergy()
 
@@ -151,7 +158,7 @@ If you're behind, lighter shots keep you in the fight longer.
 
 Many competitive bots combine multiple factors:
 
-```pseudocode
+```txt
 power = 2.0  # Start with default
 
 # Reduce for distance
@@ -258,16 +265,17 @@ Royale.
 Firepower and timing decisions are strategic choices that balance speed, damage, energy, and gun heat. The best
 approach depends on:
 
-- **Range to target** — Closer = stronger, farther = faster.
-- **Your targeting accuracy** — High confidence = more power, low confidence = lighter shots.
-- **Energy levels** — Yours and the enemy's.
-- **Gun heat cycle** — You can fire when cool, not before.
+- **Range to target**: Closer = stronger, farther = faster.
+- **Your targeting accuracy**: High confidence = more power, low confidence = lighter shots.
+- **Energy levels**: Yours and the enemy's.
+- **Gun heat cycle**: You can fire when cool, not before.
 
 Experiment with different strategies, track your hit rates, and adapt to each opponent's movement style. Mastering
 firepower selection is a key step from intermediate to advanced play.
 
 ## Further Reading
 
-- [Selecting Fire Power](https://robowiki.net/wiki/Selecting_Fire_Power) — RoboWiki (classic Robocode)
-- [When To Fire](https://robowiki.net/wiki/When_To_Fire) — RoboWiki (classic Robocode)
-- [Bullet](https://robowiki.net/wiki/Bullet) — RoboWiki (classic Robocode)
+- [Selecting Fire Power](https://robowiki.net/wiki/Selecting_Fire_Power) - RoboWiki (classic Robocode)
+- [When To Fire](https://robowiki.net/wiki/When_To_Fire) - RoboWiki (classic Robocode)
+- [Bullet](https://robowiki.net/wiki/Bullet) - RoboWiki (classic Robocode)
+

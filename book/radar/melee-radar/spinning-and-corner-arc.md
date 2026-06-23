@@ -146,17 +146,17 @@ Corner arc implementations must account for these when calculating arc boundarie
 
 **Corner arc:**
 - Define corner threshold (e.g., within 100 units of walls).
-- Test corner detection thoroughly—wrong boundaries create blind spots.
+- Test corner detection thoroughly, wrong boundaries create blind spots.
 - Always implement fallback to spinning when not cornered.
 
 **General melee radar:**
 - Track when each enemy was last scanned to identify stale data.
 - Consider **oldest scanned** once spinning radar works reliably.
-- Remember scan data is slightly old—enemies move between scan and reaction.
+- Remember scan data is slightly old, enemies move between scan and reaction.
 
 ## Further Reading
 
-- [Melee Radar](https://robowiki.net/wiki/Melee_Radar) — RoboWiki (classic Robocode)
-- [Radar](https://robowiki.net/wiki/Radar) — RoboWiki (classic Robocode)
-- [Corner Movement](https://robowiki.net/wiki/Corner_Movement) — RoboWiki (classic Robocode)
-- [Robocode Tank Royale - Anatomy](https://robocode.dev/articles/anatomy.html) — Tank Royale documentation
+- [Melee Radar](https://robowiki.net/wiki/Melee_Radar) - RoboWiki (classic Robocode)
+- [Radar](https://robowiki.net/wiki/Radar) - RoboWiki (classic Robocode)
+- [Corner Movement](https://robowiki.net/wiki/Corner_Movement) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Anatomy](https://robocode.dev/articles/anatomy.html) - Tank Royale documentation

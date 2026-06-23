@@ -1,7 +1,10 @@
 ---
 title: "Quick Reference (Formulas)"
 category: "Appendices"
-summary: "Essential formulas, physics constants, and calculations for Robocode and Tank Royale bot development—a quick lookup for angles, velocities, bullet speeds, and targeting math."
+summary: >-
+  Essential formulas, physics constants, and calculations for Robocode and Tank
+  Royale bot development, as a quick lookup for angles, velocities, bullet
+  speeds, and targeting math.
 tags: [ "reference", "formulas", "physics", "math", "quick-reference", "intermediate", "robocode", "tank-royale" ]
 difficulty: "intermediate"
 source: [
@@ -13,6 +16,10 @@ source: [
 ---
 
 # Quick Reference (Formulas)
+
+> [!TIP] Origins
+> This reference gathers formulas and constants documented by classic Robocode, Tank Royale, and the RoboWiki
+> community.
 
 This page provides a quick lookup for essential formulas and constants used throughout bot development. For detailed
 explanations, see the linked pages.
@@ -44,7 +51,7 @@ Both Classic Robocode and Tank Royale use **identical movement physics**:
 | Max turn rate (at max speed)    | 4     | degrees/turn |
 
 > [!NOTE] Linear velocity has acceleration/deceleration limits, but **rotation (body, gun, radar) has no
-> acceleration/deceleration**—turn rate changes instantly up to the maximum limit.
+> acceleration/deceleration**, turn rate changes instantly up to the maximum limit.
 
 **Notation:**
 
@@ -56,9 +63,15 @@ Both Classic Robocode and Tank Royale use **identical movement physics**:
 
 $\text{turnRate} = 10 - \frac{3}{4} \times |v|$
 
-$\text{maxTurnRate}_{\text{max}} = 10 - \frac{3}{4} \times |v_{\text{max}}| = 10 - \frac{3}{4} \times 8 = 10 - 6 = 4^\circ$
+$$
+\text{maxTurnRate}_{\text{max}} = 10 - \frac{3}{4} \times |v_{\text{max}}|
+= 10 - \frac{3}{4} \times 8 = 10 - 6 = 4^\circ
+$$
 
-$\text{maxTurnRate}_{\text{rest}} = 10 - \frac{3}{4} \times |v_{\text{rest}}| = 10 - \frac{3}{4} \times 0 = 10 - 0 = 10^\circ$
+$$
+\text{maxTurnRate}_{\text{rest}} = 10 - \frac{3}{4} \times |v_{\text{rest}}|
+= 10 - \frac{3}{4} \times 0 = 10 - 0 = 10^\circ
+$$
 
 ### Rotation Limits
 
@@ -90,7 +103,14 @@ $\text{bulletSpeed} = 20 - 3 \times \text{bulletPower}$
 
 ### Bullet Damage
 
-$\text{damage} = \begin{cases} 4 \times \text{bulletPower} & \text{if } \text{bulletPower} \leq 1 \\ 4 \times \text{bulletPower} + 2 \times (\text{bulletPower} - 1) & \text{if } \text{bulletPower} > 1 \end{cases}$
+$$
+\text{damage} =
+\begin{cases}
+4 \times \text{bulletPower} & \text{if } \text{bulletPower} \leq 1 \\
+4 \times \text{bulletPower} + 2 \times (\text{bulletPower} - 1) &
+\text{if } \text{bulletPower} > 1
+\end{cases}
+$$
 
 | Power | Damage | Bonus | Total |
 |-------|--------|-------|-------|
@@ -267,7 +287,11 @@ $\text{turnRequired} = \text{normalizeAngle}(\text{desiredHeading} - \text{my.he
 
 Minimum distance to any wall:
 
-$\text{wallDistance} = \min(\text{my.x}, \text{my.y}, \text{fieldWidth} - \text{my.x}, \text{fieldHeight} - \text{my.y})$
+$$
+\text{wallDistance} =
+\min(\text{my.x}, \text{my.y}, \text{fieldWidth} - \text{my.x},
+\text{fieldHeight} - \text{my.y})
+$$
 
 ### Wall Smoothing (Basic)
 
@@ -275,7 +299,13 @@ Adjust heading to avoid hitting walls. For each wall, calculate push force propo
 
 $\text{margin} = 150 \text{ (safety margin in units)}$
 
-$\text{adjustHeading} \mathrel{+}= \begin{cases} ({\text{margin} - \text{my.x}}) \times 0.1 & \text{if } \text{my.x} < \text{margin} \\ 0 & \text{otherwise} \end{cases}$
+$$
+\text{adjustHeading} \mathrel{+}=
+\begin{cases}
+(\text{margin} - \text{my.x}) \times 0.1 & \text{if } \text{my.x} < \text{margin} \\
+0 & \text{otherwise}
+\end{cases}
+$$
 
 Similar calculations apply for the right wall, top wall, and bottom wall.
 
@@ -290,7 +320,9 @@ Similar calculations apply for the right wall, top wall, and bottom wall.
 $\text{energyGained} = 3 \times \text{bulletPower}$
 
 > [!NOTE]
-> Neither Classic Robocode nor Tank Royale awards energy bonuses for killing enemies. Energy is only gained from bullet hits (3× bullet power). Kills award **scoring points** (see Damage Scoring below), not energy.
+> Neither Classic Robocode nor Tank Royale awards energy bonuses for killing
+> enemies. Energy is only gained from bullet hits (3× bullet power). Kills
+> award **scoring points** (see Damage Scoring below), not energy.
 
 ### Damage Scoring
 
@@ -423,8 +455,8 @@ $\tan(\theta) \approx \theta$
 
 ## Further Reading
 
-- [Coordinate Systems & Angles](../physics/coordinates-and-angles.md) — Detailed angle conventions
-- [Movement Constraints & Bot Physics](../physics/movement-constraints.md) — Physics deep dive
-- [Bullet Travel & Bullet Physics](../physics/bullet-physics.md) — Bullet mechanics
-- [GuessFactor Targeting](../targeting/statistical-targeting/guessfactor-targeting.md) — GuessFactor formula explained
-- [Wave Surfing Introduction](../movement/advanced-evasion/wave-surfing-introduction.md) — Wave math in action
+- [Coordinate Systems & Angles](../physics/coordinates-and-angles.md) - Detailed angle conventions
+- [Movement Constraints & Bot Physics](../physics/movement-constraints.md) - Physics deep dive
+- [Bullet Travel & Bullet Physics](../physics/bullet-physics.md) - Bullet mechanics
+- [GuessFactor Targeting](../targeting/statistical-targeting/guessfactor-targeting.md) - GuessFactor formula explained
+- [Wave Surfing Introduction](../movement/advanced-evasion/wave-surfing-introduction.md) - Wave math in action

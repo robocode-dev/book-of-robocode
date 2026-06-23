@@ -19,7 +19,7 @@ source: [
 
 Advanced targeting systems improve by learning from past encounters. Saving gun data between rounds and battles allows
 a bot to remember enemy movement patterns, hit rates, and statistical profiles. This transforms a bot from reactive to
-adaptive — recognizing opponents and applying learned strategies instantly.
+adaptive. recognizing opponents and applying learned strategies instantly.
 
 ## Why save gun data?
 
@@ -90,7 +90,7 @@ security restrictions vary between platforms.
 
 Classic Robocode provides restricted file system access. Bots have access to a dedicated data directory via:
 
-```pseudocode
+```txt
 File dataDir = getDataDirectory()
 ```
 
@@ -136,7 +136,7 @@ especially since containerized environments may have limited disk space allocate
 - Tank Royale uses modern JSON or binary formats depending on the language (Java, .NET, Python).
 - Python bots might use `pickle`, Java bots might use JSON or custom serialization.
 - File paths and storage locations follow the conventions of each language and operating system.
-- No dedicated data directory is provided — bots must manage their own file locations responsibly.
+- No dedicated data directory is provided: bots must manage their own file locations responsibly.
 
 ## When to save and load data
 
@@ -164,9 +164,9 @@ against opponent), initialize empty data structures and start fresh.
 
 Use descriptive, opponent-specific filenames to organize data:
 
-- `enemy_<enemyName>.dat` — Per-enemy profiles (e.g., `enemy_sample.SittingDuck.dat`).
-- `global_stats.json` — Aggregated data across all opponents.
-- `virtualGuns_<enemyName>.csv` — Virtual gun performance per enemy.
+- `enemy_<enemyName>.dat`: Per-enemy profiles (e.g., `enemy_sample.SittingDuck.dat`).
+- `global_stats.json`: Aggregated data across all opponents.
+- `virtualGuns_<enemyName>.csv`: Virtual gun performance per enemy.
 
 **Why per-enemy files?**
 
@@ -180,7 +180,7 @@ Use descriptive, opponent-specific filenames to organize data:
 
 ## Example workflow (pseudocode)
 
-```pseudocode
+```txt
 class MyBot:
     targetingData = {}
     dataFile = "gundata_<enemyName>.json"
@@ -338,5 +338,6 @@ and test both cold and warm start scenarios to ensure robust performance.
 
 ## Further Reading
 
-- [Saving Gun Data](https://robowiki.net/wiki/Saving_Gun_Data) — RoboWiki (classic Robocode)
-- [Data Files](https://robowiki.net/wiki/Data_Files) — RoboWiki (classic Robocode)
+- [Saving Gun Data](https://robowiki.net/wiki/Saving_Gun_Data) - RoboWiki (classic Robocode)
+- [Data Files](https://robowiki.net/wiki/Data_Files) - RoboWiki (classic Robocode)
+

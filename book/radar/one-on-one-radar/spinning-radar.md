@@ -150,10 +150,10 @@ If a bot only calls setters but never commits the turn, it will look stuck becau
 
 ## Related pages
 
-- [Radar Basics](../radar-basics) — scan geometry, events, and lock vs sweep
-- One-on-One Radar — spinning radar, infinity lock, and "perfect lock" patterns (planned)
+- [Radar Basics](../radar-basics) - scan geometry, events, and lock vs sweep
+- One-on-One Radar: spinning radar, infinity lock, and "perfect lock" patterns (planned)
 
 ## Further Reading
 
-- [One on One Radar](https://robowiki.net/wiki/One_on_One_Radar) — RoboWiki (classic Robocode)
-- [Radar](https://robowiki.net/wiki/Radar) — RoboWiki (classic Robocode)
+- [One on One Radar](https://robowiki.net/wiki/One_on_One_Radar) - RoboWiki (classic Robocode)
+- [Radar](https://robowiki.net/wiki/Radar) - RoboWiki (classic Robocode)

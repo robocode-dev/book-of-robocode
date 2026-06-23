@@ -7,7 +7,7 @@ Transform knowledge from [RoboWiki.net](https://robowiki.net/) and
 
 **Platform Support:**
 - Java, .NET, Python 3.10+ (implicitly includes Kotlin/Scala on JVM, F# on .NET)
-- Sample bots exist for C#, Java, Python — prefer these for examples
+- Sample bots exist for C#, Java, Python, prefer these for examples
 - WASM support coming later
 
 **Source Distinction (Critical):**
@@ -30,6 +30,7 @@ Transform knowledge from [RoboWiki.net](https://robowiki.net/) and
 
 - `BOOK_STRATEGY.md` – audience, tone, page structure, math/pseudocode rules
 - `BOOK_STRUCTURE.md` – complete table of contents
+- `VOICE.md` – mandatory voice and craft rules; load before writing or reviewing pages
 - `AGENTS.md` (this file) – writing rules and terminology
 - `/specs` folder – page request interpretation and mapping
 
@@ -39,12 +40,13 @@ Transform knowledge from [RoboWiki.net](https://robowiki.net/) and
 live-programming game fans, hobby programmers, educators.
 
 **Style:**
-- Neutral, friendly, encouraging, clear — no sarcasm, memes, or slang
+- Neutral, friendly, encouraging, clear, no sarcasm, memes, or slang
 - Third person only (no "I" or "we")
 - Start with intuition and simple examples, then add depth
 - Short paragraphs (2–4 sentences max)
 - Positive tone: "A science teacher with a smile, not a stand-up comedian"
-- Occasional light humor (✅ "gravity always wins — unless you code around it!" ❌ pop-culture refs)
+- Follow `VOICE.md` for prose rhythm, openings, and anti-AI craft rules
+- Occasional light humor (✅ "gravity always wins, unless you code around it!" ❌ pop-culture refs)
 
 ### Content Guidelines
 
@@ -81,7 +83,7 @@ source: ["RoboWiki - <Article Name> (classic Robocode)", "Robocode Tank Royale D
 - 3–6 sections with headings like: "Why This Matters", "Core Ideas", "Math/Pseudocode", 
   "Platform Notes", "Tips & Common Mistakes"
 
-> **Note:** Attribution footer handled globally by VitePress — do not add manually.
+> **Note:** Attribution footer handled globally by VitePress, do not add manually.
 
 ### Output Contract
 
@@ -100,7 +102,7 @@ Always use **"units"** for measurements (e.g., 36×36 units, 1200 units, 8 units
 
 **Diagrams & Graphics (Theme Compatibility):**
 All diagrams, SVGs, and Mermaid charts must be readable on **both light and dark themes** (VitePress supports theme
-switching). For SVGs, avoid pure white (`#fff`) or pure black (`#000`) backgrounds—use semi-transparent or neutral 
+switching). For SVGs, avoid pure white (`#fff`) or pure black (`#000`) backgrounds, use semi-transparent or neutral
 colors that work in both modes. For Mermaid charts, use this pattern with chocolate (`#d2691e`) for axes and text:
 
 ```mermaid
@@ -119,4 +121,4 @@ AI contributors are **assistants**, not authors.
 All content should be verified and attributed properly before publishing.  
 Humans make the final call on tone, accuracy, and inclusion.
 
-> “If it’s fun to read and true to the math — it’s Robocoding material.”
+> “If it’s fun to read and true to the math, it’s Robocoding material.”

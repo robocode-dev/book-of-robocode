@@ -12,6 +12,10 @@ source: [
 
 # Wall of Fame
 
+> [!TIP] Origins
+> This page honors the people whose work built the Robocode community, the RoboWiki, and the modern Tank Royale
+> ecosystem.
+
 Robocode's rich strategic depth exists because of dedicated community members who spent years developing, documenting,
 and sharing their discoveries. This page honors those who shaped the game's competitive landscape.
 
@@ -23,7 +27,8 @@ The original creator of Robocode at IBM in 2001. His vision of "learning through
 
 ### Flemming Nørnberg Larsen (fnl)
 
-[GitHub Profile](https://github.com/flemming-n-larsen) | [RoboWiki User Page](https://robowiki.net/wiki/User:FlemmingLarsen)  
+[GitHub Profile](https://github.com/flemming-n-larsen) |
+[RoboWiki User Page](https://robowiki.net/wiki/User:FlemmingLarsen)  
 The long-time maintainer of the classic [Robocode project](https://robocode.sourceforge.io) and the creator of
 **[Robocode Tank Royale](https://robocode.dev/)**. Flemming has kept the game alive and evolving for over two decades.
 
@@ -109,7 +114,8 @@ pushed **Dynamic Clustering** to its limits with **[Diamond](https://robowiki.ne
 ### Rednaxela and Julian Kent (Skilgannon)
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:Rednaxela)  
-Rednaxela, creator of **[RougeDC](https://robowiki.net/wiki/RougeDC)** and **[PolishedRuby](https://robowiki.net/wiki/PolishedRuby)**, 
+Rednaxela, creator of **[RougeDC](https://robowiki.net/wiki/RougeDC)** and
+**[PolishedRuby](https://robowiki.net/wiki/PolishedRuby)**,
 introduced advanced k-D tree pruning strategies that sparked a performance race with Julian Kent. This collaboration 
 and competition resulted in some of the fastest Java and C++ k-D tree implementations in existence, including Julian's
 **[Bucket-PR k-D tree](https://github.com/jkflying/bucket-pr-kdtree/blob/master/C%2B%2B/README.md)** which is now used
@@ -138,5 +144,10 @@ many beginners become experts.
 ---
 
 > [!TIP] Standing on shoulders
-> "If I have seen further, it is by standing on the shoulders of giants." — Isaac Newton  
+> "If I have seen further, it is by standing on the shoulders of giants.", Isaac Newton  
 > Every bot today is built upon the open-source legacy of these individuals.
+
+## Further Reading
+
+- [RoboWiki Contributors](https://robowiki.net/) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale](https://robocode.dev/) - Tank Royale documentation

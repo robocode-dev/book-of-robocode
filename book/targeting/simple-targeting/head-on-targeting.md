@@ -28,7 +28,7 @@ Head-on targeting tends to do okay when:
 - The enemy is **close** (bullets arrive quickly).
 - The enemy is moving **straight toward or away** from the bot.
 - The enemy often pauses (common in sample / beginner bots).
-- There are **multiple enemies close to or behind the target enemy**—the probability of hitting an enemy increases. If
+- There are **multiple enemies close to or behind the target enemy**, the probability of hitting an enemy increases. If
   the bullet misses the target, another enemy behind or near the target might get hit instead.
 
 It tends to miss when:
@@ -161,12 +161,12 @@ setFire(1.5);
 - **Forgetting shortest-turn normalization:** Without it, the gun might rotate almost a full circle instead of a few
   degrees.
 - **Forgetting to convert for trig functions (classic Robocode):** `getHeading()` and `getBearing()` return degrees, but
-  `Math.sin()` and `Math.cos()` need radians—use `Math.toRadians()` to convert.
+  `Math.sin()` and `Math.cos()` need radians, use `Math.toRadians()` to convert.
 - **Assuming head-on will work at long range:** bullets take time to travel; prediction methods exist for a reason.
 - **Not scanning often enough:** head-on targeting gets worse quickly if the last scan is several turns old. Radar
   strategy matters.
 
 ## Further Reading
 
-- [Head-On Targeting](https://robowiki.net/wiki/Head-On_Targeting) — RoboWiki (classic Robocode)
+- [Head-On Targeting](https://robowiki.net/wiki/Head-On_Targeting) - RoboWiki (classic Robocode)
 

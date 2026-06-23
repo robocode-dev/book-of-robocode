@@ -1,7 +1,9 @@
 ---
 title: "Glossary"
 category: "Appendices"
-summary: "Quick reference definitions for common Robocode terms, battle formats, and concepts used throughout this book."
+summary: >-
+  Quick reference definitions for common Robocode terms, battle formats, and
+  concepts used throughout this book.
 tags: [ "glossary", "reference", "terminology", "beginner", "robocode", "tank-royale" ]
 difficulty: "beginner"
 source: [
@@ -11,6 +13,9 @@ source: [
 ---
 
 # Glossary
+
+> [!TIP] Origins
+> This glossary collects terms used across classic Robocode, Robocode Tank Royale, and the RoboWiki community.
 
 This glossary defines common terms used throughout The Book of Robocode. Terms are grouped by category for easy
 reference.
@@ -33,7 +38,8 @@ tracking and defeating a single target.
 - Emphasis on targeting accuracy and movement prediction
 - Damage output matters more than survival
 
-See: [Scoring Systems & Battle Types](../energy-and-scoring/scoring-systems-battle-types.md#1v1-strategy-maximize-damage-efficiency)
+See:
+[Scoring Systems & Battle Types](../energy-and-scoring/scoring-systems-battle-types.md#1v1-strategy-maximize-damage-efficiency)
 
 ### Melee
 
@@ -41,7 +47,7 @@ A battle with **three or more bots** fighting simultaneously until one remains o
 must track multiple enemies, avoid crossfire, and make tactical decisions about target selection.
 
 > [!TIP] Fun fact
-> The name "Tank Royale" is inspired by Melee battles — they resemble the popular "Battle Royale" game genre where
+> The name "Tank Royale" is inspired by Melee battles. They resemble the popular "Battle Royale" game genre where
 > multiple players fight until only one remains standing!
 
 **Key characteristics:**
@@ -51,7 +57,8 @@ must track multiple enemies, avoid crossfire, and make tactical decisions about 
 - Opportunity for kill stealing and opportunistic attacks
 - Positioning and awareness are critical
 
-See: [Scoring Systems & Battle Types](../energy-and-scoring/scoring-systems-battle-types.md#melee-strategy-survive-and-opportunize)
+See:
+[Scoring Systems & Battle Types](../energy-and-scoring/scoring-systems-battle-types.md#melee-strategy-survive-and-opportunize)
 
 ### Team
 
@@ -65,7 +72,8 @@ specialization and coordinated tactics. Communication between teammates can prov
 - Communication and coordination advantages
 - Sacrifice plays can benefit the team
 
-See: [Scoring Systems & Battle Types](../energy-and-scoring/scoring-systems-battle-types.md#team-strategy-coordinate-for-collective-score)
+See:
+[Scoring Systems & Battle Types](../energy-and-scoring/scoring-systems-battle-types.md#team-strategy-coordinate-for-collective-score)
 
 ---
 
@@ -200,3 +208,8 @@ Advanced targeting that records enemy movement history and searches for repeated
 
 A system that runs multiple targeting algorithms simultaneously, tracking which would have hit most often, and uses the
 best performer.
+
+## Further Reading
+
+- [Robocode/Glossary](https://robowiki.net/wiki/Robocode/Glossary) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale](https://robocode.dev/) - Tank Royale documentation

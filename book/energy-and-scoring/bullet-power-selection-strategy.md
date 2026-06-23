@@ -1,8 +1,12 @@
 ---
 title: "Bullet Power Selection Strategy"
 category: "Energy & Scoring"
-summary: "A strategic framework for choosing bullet power based on distance, energy levels, confidence, and battle context — maximizing scoring efficiency across 1v1 and melee scenarios."
-tags: [ "bullet-power", "fire-power", "strategy", "energy-management", "scoring", "intermediate", "robocode", "tank-royale" ]
+summary: >-
+  A strategic framework for choosing bullet power based on distance, energy
+  levels, confidence, and battle context, maximizing scoring efficiency across
+  1v1 and melee scenarios.
+tags:
+  ["bullet-power", "fire-power", "strategy", "energy-management", "scoring", "intermediate", "robocode", "tank-royale"]
 difficulty: "intermediate"
 source: [
   "RoboWiki - Bullet (classic Robocode) https://robowiki.net/wiki/Bullet",
@@ -26,11 +30,11 @@ context.
 The table below provides quick-reference guidelines for choosing bullet power based on four key factors. **Colors
 indicate the recommended power level:**
 
-- 🟢 **Green** = High power (2.5–3.0) — Favorable conditions for heavy bullets
-- 🟡 **Yellow/Orange** = Moderate power (1.0–2.5) — Balanced situations
-- 🔴 **Red** = Low power (0.5–1.5) — Conservative fire required
-- 🔵 **Blue** = Calculated power — Tactical situations requiring precise calculation
-- ⚫ **Gray** = Context-dependent — Adjust based on the situation
+- 🟢 **Green** = High power (2.5–3.0): Favorable conditions for heavy bullets
+- 🟡 **Yellow/Orange** = Moderate power (1.0–2.5): Balanced situations
+- 🔴 **Red** = Low power (0.5–1.5): Conservative fire required
+- 🔵 **Blue** = Calculated power: Tactical situations requiring precise calculation
+- ⚫ **Gray** = Context-dependent: Adjust based on the situation
 
 <style>
 .power-table { border-collapse: collapse; }
@@ -128,11 +132,11 @@ indicate the recommended power level:**
 
 Bullet power selection directly impacts four combat dimensions:
 
-1. **Damage output** — Higher power delivers more
+1. **Damage output**: Higher power delivers more
    damage: $\text{damage} = 4 \times \text{power} + \max(0, 2 \times (\text{power} - 1))$
-2. **Bullet speed** — Lower power travels faster: $\text{speed} = 20 - 3 \times \text{power}$ units/turn
-3. **Energy cost** — Each shot costs energy equal to its power (0.1 to 3.0)
-4. **Gun cooldown** — Higher power adds more heat: $\text{heat} = 1 + \frac{\text{power}}{5}$
+2. **Bullet speed**: Lower power travels faster: $\text{speed} = 20 - 3 \times \text{power}$ units/turn
+3. **Energy cost**: Each shot costs energy equal to its power (0.1 to 3.0)
+4. **Gun cooldown**: Higher power adds more heat: $\text{heat} = 1 + \frac{\text{power}}{5}$
 
 These tradeoffs create a fundamental tension: high damage comes at the cost of speed, energy, and firing rate. The
 optimal choice depends on the tactical situation.
@@ -158,7 +162,7 @@ errors and give opponents more time to evade.
 - **Long range (> 400 units):** Use low power (0.8–1.5). Prioritize speed to minimize prediction error and evasion time.
 
 **Rationale:** At close range, the enemy cannot evade effectively, so slow bullets don't matter. At long range, even a
-perfect prediction can be missed if the bullet is too slow — the target has more time to change course or respond to
+perfect prediction can be missed if the bullet is too slow. the target has more time to change course or respond to
 battlefield events.
 
 ### Energy levels
@@ -190,7 +194,7 @@ power; low confidence demands speed over damage.
 
 **Confidence-based scaling:**
 
-- **High confidence (hit rate > 70%):** Fire 2.5–3.0 power. You're landing shots — maximize damage.
+- **High confidence (hit rate > 70%):** Fire 2.5–3.0 power. You're landing shots: maximize damage.
 - **Moderate confidence (hit rate 40–70%):** Fire 1.8–2.2 power. You're competitive but not dominant.
 - **Low confidence (hit rate < 40%):** Fire 0.8–1.5 power. Prioritize bullet speed to increase hit probability.
 
@@ -226,7 +230,7 @@ $\text{power} \approx \frac{\text{enemyEnergy}}{4}$
 - Fire 2.0 power.
 
 **Key principle:** Always round up and add a small buffer to account for floating-point rounding. Firing 3.0 when 1.5
-will do is wasteful — aim for the minimum that guarantees the kill, no more.
+will do is wasteful. aim for the minimum that guarantees the kill, no more.
 
 ### Melee combat
 
@@ -269,7 +273,7 @@ Some competitive bots use a single fixed power (e.g., 1.95 or 2.0) for simplicit
 
 Many advanced bots combine multiple factors into a single calculation:
 
-```pseudocode
+```txt
 basePower = 2.0
 
 # Adjust for distance
@@ -347,5 +351,6 @@ develop intuition for power selection that matches your bot's strengths and your
 
 ## Further Reading
 
-- [Selecting Fire Power](https://robowiki.net/wiki/Selecting_Fire_Power) — RoboWiki (classic Robocode)
-- [Bullet](https://robowiki.net/wiki/Bullet) — RoboWiki (classic Robocode)
+- [Selecting Fire Power](https://robowiki.net/wiki/Selecting_Fire_Power) - RoboWiki (classic Robocode)
+- [Bullet](https://robowiki.net/wiki/Bullet) - RoboWiki (classic Robocode)
+

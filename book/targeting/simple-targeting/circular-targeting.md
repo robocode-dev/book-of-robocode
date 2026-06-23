@@ -173,7 +173,7 @@ The *idea* is the same across platforms, but be careful with two details:
 
 ## Further Reading
 
-- [Circular Targeting](https://robowiki.net/wiki/Circular_Targeting) — RoboWiki (classic Robocode)
-- [Circular Targeting/Walkthrough](https://robowiki.net/wiki/Circular_Targeting/Walkthrough) — RoboWiki (classic
+- [Circular Targeting](https://robowiki.net/wiki/Circular_Targeting) - RoboWiki (classic Robocode)
+- [Circular Targeting/Walkthrough](https://robowiki.net/wiki/Circular_Targeting/Walkthrough) - RoboWiki (classic
   Robocode)
 

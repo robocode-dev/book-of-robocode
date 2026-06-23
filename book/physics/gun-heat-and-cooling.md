@@ -14,10 +14,14 @@ source: [
 
 # Gun Heat & Cooling
 
+> [!TIP] Origins
+> **Gun heat** is a core firing rule in classic Robocode and Robocode Tank Royale, documented by both the RoboWiki
+> community and the official Tank Royale docs.
+
 Firing is never “free” in Robocode. Each shot heats up the gun, and a hot gun can’t fire again until it cools back
 down.
 
-That means good bots don’t just aim well — they *time* their shots so the gun is ready when it matters.
+That means good bots do not just aim well. They *time* their shots so the gun is ready when it matters.
 
 ## Why gun heat matters
 
@@ -32,7 +36,8 @@ This creates a simple trade-off:
 - **High power**: more damage per hit, but longer downtime between shots.
 - **Low power**: faster rate of fire, but weaker bullets.
 
-A classic “good moment” to have zero gun heat is when an enemy is in trouble — cornered, stuck on a wall, or disabled
+A classic "good moment" to have zero gun heat is when an enemy is in trouble, for example cornered, stuck on a wall, or
+disabled
 (not moving). Being ready then is often worth more than shooting "as soon as possible."
 
 ## Initial gun heat
@@ -157,5 +162,5 @@ Legend:
 
 ## Further Reading
 
-- [Gun Heat](https://robowiki.net/wiki/Gun_Heat) — RoboWiki (classic Robocode)
-- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html) — Tank Royale documentation
+- [Gun Heat](https://robowiki.net/wiki/Gun_Heat) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html) - Tank Royale documentation

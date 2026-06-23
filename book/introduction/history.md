@@ -1,7 +1,9 @@
 ---
 title: "A Short History of Robocode"
 category: "Introduction"
-summary: "Trace how Robocode grew from a Java programming game into a family of platforms, including Robocode Tank Royale."
+summary: >-
+  Trace how Robocode grew from a Java programming game into a family of
+  platforms, including Robocode Tank Royale.
 tags: [ "history", "robocode", "tank-royale", "community" ]
 difficulty: "beginner"
 source: [
@@ -11,6 +13,10 @@ source: [
 ---
 
 # A Short History of Robocode
+
+> [!TIP] Origins
+> **Robocode** was created by **Mathew A. Nelson**, and **Robocode Tank Royale** was later created by
+> **Flemming N. Larsen**.
 
 Robocode began in the early 2000s as a side project by Mathew A. Nelson. The idea was simple: learn programming by
 coding a bot tank that fights in a 2D arena. The mix of learning and competition made it popular with students,
@@ -32,13 +38,17 @@ Highlights:
   tutorials.
 - **Albert Perez** created the **[RoboRumble](https://robowiki.net/wiki/RoboRumble)**, a continuous distributed ranking 
   system that transformed Robocode into a true competitive sport. Without this ranking system, the "evolutionary war" 
-  between strategies like GuessFactor Targeting and Wave Surfing would never have happened—developers wouldn't have 
+  between strategies like GuessFactor Targeting and Wave Surfing would never have happened. Developers would not have
   had a way to prove which bot was actually better.
 
 RoboWiki became the reference for advanced topics such as wave surfing, GuessFactor targeting, detailed battlefield
 physics, and much more.
 
-<img src="../images/community-sharing.png" alt="Community sharing bots and ideas" style="max-width:100%;height:auto;" /><br>
+<img
+  src="../images/community-sharing.png"
+  alt="Community sharing bots and ideas"
+  style="max-width:100%;height:auto;"
+/><br>
 *Community Sharing Bots and Ideas via the RoboWiki*
 
 ## Handover and Community Maintenance
@@ -85,3 +95,8 @@ flowchart LR
     hub --> classic
     hub --> royale
 ```
+
+## Further Reading
+
+- [History of Robocode](https://robowiki.net/wiki/History_of_Robocode) - RoboWiki (classic Robocode)
+- [Robocode Tank Royale](https://robocode.dev/) - Tank Royale documentation

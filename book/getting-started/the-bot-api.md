@@ -9,13 +9,17 @@ source: [
 ]
 ---
 
-# The Bot API (Beginner Level)
+# The Bot API
+
+> [!TIP] Origins
+> **Bot APIs** grew from the original Robocode event model created by **Mathew A. Nelson** and later Tank Royale API
+> designs by **Flemming N. Larsen**.
 
 This page explains how the game engine and your bot communicate:
 
 - The game is a **turn-based simulation**.
 - Each turn your bot reads the current state and **issues commands**.
-- The engine performs the simulation step and then sends your bot **events** (scan, hits, collisions, etc.).
+- The engine performs the simulation step and then sends your bot **events** such as scans, hits, and collisions.
 
 We intentionally stay language-agnostic. Examples talk in terms of "API methods", "events", and "properties", not
 specific classes.
@@ -37,7 +41,7 @@ Only bots that are both:
 
 will be detected during that scan.
 
-![Radar scanning enemies — shaded wedge shows the 1200-unit scan arc; enemies inside the sector are detected](../images/scanning-enemies.svg)<br>
+![Radar scanning enemies, with a shaded 1200-unit scan arc.](../images/scanning-enemies.svg)<br>
 *Radar sweep showing the scan arc (up to 1200 units) and detected enemies within the sector.*
 
 If you don’t turn the radar at all in a turn:
@@ -48,7 +52,7 @@ If you don’t turn the radar at all in a turn:
 ![Bot with a large shaded radar sweep showing the previous and current radar heading](../images/radar-sweep.svg)<br>
 *Wide radar sweep: covers a large arc to detect enemies*
 
-![Bot where the radar sweep is a beam with the previous and current heading lying on top of each other](../images/radar-beam.svg)<br>
+![A zero-width radar sweep behaves like a thin beam.](../images/radar-beam.svg)<br>
 *Narrow radar sweep: a thin beam for precise tracking*
 
 ### 1.1 Scanning each turn
@@ -141,22 +145,24 @@ Exact names differ by API, but conceptually:
 
 ### 4.2 Connecting it all
 
-- The **bot anatomy** (body, gun, radar, energy) defines what you *can* control.
-- The **Bot API** gives you:
-    - Commands to move/turn/fire
-    - Controls for chaining vs independence
-    - Events to react to
+- The **bot anatomy** defines what you *can* control.
+- The **Bot API** gives you commands, events, and control over how those parts work together.
 
 ---
 
 ## 5. Where to go next
 
-If you haven’t yet, read:
+If you haven't yet, read:
 
 - [Bot Anatomy](./bot-anatomy)
 
-Next, learn one of the most important “tick model” details:
+Next, learn one of the most important "tick model" details:
 
-- **Blocking vs Non-Blocking Movement (Setters)** — why blocking movement methods can prevent you from issuing radar/gun
+- **Blocking vs Non-Blocking Movement (Setters):** why blocking movement methods can prevent you from issuing radar/gun
   commands every turn.
+
+## Further Reading
+
+- [Robocode API](https://robowiki.net/wiki/Robocode/RobocodeAPI) - RoboWiki (classic Robocode)
+- [Bot API](https://robocode.dev/articles/bot-api.html) - Tank Royale documentation
 

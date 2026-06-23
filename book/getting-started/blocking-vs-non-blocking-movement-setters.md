@@ -1,7 +1,7 @@
 ---
 title: "Blocking vs Non-Blocking Movement (Setters)"
 category: "Getting Started"
-summary: "Understand why ahead()/forward() can block your bot, and when to use setAhead()/setForward() to queue actions for the next turn."
+summary: "Understand why blocking movement stalls your bot, and when setter calls keep it responsive each turn."
 tags: [ "movement", "setters", "blocking", "api", "robocode", "tank-royale", "beginner" ]
 difficulty: "beginner"
 source: [
@@ -11,6 +11,10 @@ source: [
 ---
 
 # Blocking vs Non-Blocking Movement (Setters)
+
+> [!TIP] Origins
+> **Blocking and non-blocking movement patterns** were worked out by the RoboWiki community and are built into both
+> classic Robocode and Robocode Tank Royale APIs.
 
 One of the first big "aha" moments in Robocode-style bots is understanding that **some API calls block your code** while
 others **just set a desired action** that the engine executes over time.
@@ -48,7 +52,7 @@ A **blocking** movement method means:
 
 Conceptually:
 
-- `forward(100)` (or `ahead(100)`) is like: *"keep moving until you’ve advanced 100 units; don’t run the rest of my
+- `forward(100)` (or `ahead(100)`) is like: *"keep moving until you've advanced 100 units; don't run the rest of my
   loop until then"*.
 
 That’s easy to understand, but it has a downside: while your code is blocked, you’re often **not updating**:
@@ -75,7 +79,7 @@ A **setter-style** movement call means:
 Conceptually:
 
 - `setForward(8)` is like: *"set my desired forward speed; now let me keep thinking"*.
-- `setAhead(100)` is like: *"start moving ahead toward this distance; I’ll keep running every turn and can change my
+- `setAhead(100)` is like: *"start moving ahead toward this distance; I'll keep running every turn and can change my
   mind"*.
 
 ### One crucial detail: setters describe intent, not completion
@@ -168,6 +172,12 @@ Even if you keep moving toward a goal, you can still keep the radar sweeping and
 
 ## Related topics
 
-- [Bot Anatomy](./bot-anatomy) — body/gun/radar independence
-- [The Bot API](./the-bot-api) — events, turns, and timeouts
-- [Movement Fundamentals & GoTo](../movement/basic/movement-fundamentals-goto.md) — building movement that can be updated every tick
+- [Bot Anatomy](./bot-anatomy): body, gun, and radar independence
+- [The Bot API](./the-bot-api): events, turns, and timeouts
+- [Movement Fundamentals & GoTo](../movement/basic/movement-fundamentals-goto.md): movement that can be updated every
+  tick
+
+## Further Reading
+
+- [Robocode/RobocodeAPI](https://robowiki.net/wiki/Robocode/RobocodeAPI) - RoboWiki (classic Robocode)
+- [My First Bot](https://robocode.dev/tutorial/my-first-bot.html) - Tank Royale documentation

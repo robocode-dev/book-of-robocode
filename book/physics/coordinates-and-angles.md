@@ -12,6 +12,10 @@ source: [
 
 # Coordinate Systems & Angles
 
+> [!TIP] Origins
+> **Coordinate conventions** were defined by the classic Robocode engine and later reinterpreted by
+> **Robocode Tank Royale** with math-style angles.
+
 Understanding how coordinates and angles work is essential for programming bots in both classic Robocode and Robocode
 Tank Royale. This page explains the battlefield coordinate system, how angles are measured, and highlights key
 differences between the two platforms.
@@ -20,7 +24,7 @@ differences between the two platforms.
 
 Both classic Robocode and Tank Royale use a Cartesian coordinate system for the battlefield. On both platforms:
 
-- The origin (0, 0) is in the **bottom left corner** of the battlefield—not the top left as in most computer graphics.
+- The origin (0, 0) is in the **bottom left corner** of the battlefield, not the top left as in most computer graphics.
 - All positions and movements are measured in **units** (not pixels).
 - Example: A bot's size is 36×36 units, and the scan length is 1200 units.
 
@@ -39,7 +43,7 @@ Both classic Robocode and Tank Royale use a Cartesian coordinate system for the 
 - This system is similar to a compass.
 
 Mathew A. Nelson, Robocode's original Robocode creator, chose this navigation-style convention to make angles easier to
-understand—North is "up" at 0°, and angles follow the familiar clockwise direction of a compass. However, this can be
+understand. North is "up" at 0°, and angles follow the familiar clockwise direction of a compass. However, this can be
 confusing when using standard trigonometric functions, which expect mathematical angles.
 
 ![Navigation-style angle diagram](../images/navigation-angle-diagram.svg)
@@ -56,7 +60,7 @@ confusing when using standard trigonometric functions, which expect mathematical
 
 Tank Royale adopted the standard mathematical coordinate system to make trigonometry intuitive. With 0° pointing East
 and angles increasing counterclockwise, standard functions like `sin()`, `cos()`, and `atan2()` work directly without
-conversion—the same convention used in mathematics, physics, and most programming libraries.
+conversion. This is the same convention used in mathematics, physics, and most programming libraries.
 
 ![Math-style angle diagram](../images/math-angle-diagram.svg)
 
@@ -76,13 +80,11 @@ Getting coordinates and angles right is crucial for:
 
 Mistakes in understanding the system can lead to bots moving or firing in unexpected directions.
 
-## Further Reading & References
+## Further Reading
 
-- [Robocode Game Physics (RoboWiki)](https://robowiki.net/wiki/Robocode/Game_Physics)
-- [Robocode Robot API](https://robocode.sourceforge.io/docs/robocode/robocode/Robot.html)
-- [Robocode AdvancedRobot API](https://robocode.sourceforge.io/docs/robocode/robocode/AdvancedRobot.html)
-- [IBM DeveloperWorks: Robocode](https://web.archive.org/web/20170217094456/http://www.ibm.com/developerworks/java/library/j-robocode2/)
-- [Tank Royale: Coordinates and Angles](https://robocode.dev/articles/coordinates-and-angles.html)
+- [Robocode Game Physics](https://robowiki.net/wiki/Robocode/Game_Physics) - RoboWiki (classic Robocode)
+- [Tank Royale: Coordinates and Angles](https://robocode.dev/articles/coordinates-and-angles.html) - Tank Royale
+  documentation
 
 ## Linking Forward
 

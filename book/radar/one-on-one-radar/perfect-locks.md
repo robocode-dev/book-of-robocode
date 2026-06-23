@@ -166,11 +166,11 @@ and the scan geometry in [Radar Basics](../radar-basics).
 
 ## Related pages
 
-- [Radar Basics](../radar-basics) — radar geometry, scan events, and the lock vs sweep mindset
-- [Spinning Radar](./spinning-radar) — fast discovery and a simple reacquire fallback
+- [Radar Basics](../radar-basics) - radar geometry, scan events, and the lock vs sweep mindset
+- [Spinning Radar](./spinning-radar) - fast discovery and a simple reacquire fallback
 
 ## Further Reading
 
-- [One on One Radar](https://robowiki.net/wiki/One_on_One_Radar) — RoboWiki (classic Robocode)
-- [Radar](https://robowiki.net/wiki/Radar) — RoboWiki (classic Robocode)
+- [One on One Radar](https://robowiki.net/wiki/One_on_One_Radar) - RoboWiki (classic Robocode)
+- [Radar](https://robowiki.net/wiki/Radar) - RoboWiki (classic Robocode)
 
