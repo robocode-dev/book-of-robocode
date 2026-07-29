@@ -26,8 +26,7 @@ bullet power selection and timing decisions in competitive play.
 <img
   src="../../images/fire-power-tradeoffs.svg"
   alt="Comparing low-power (fast, weak) vs high-power (slow, strong) bullets traveling toward a moving target"
-  style="max-width:100%;height:auto;"
-><br>
+  style="max-width:100%;height:auto;"><br>
 *Comparing low-power (fast, weak) vs. high power (slow, strong) bullets traveling toward a moving target*
 
 ## Why bullet power matters

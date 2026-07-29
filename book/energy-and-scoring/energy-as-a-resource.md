@@ -26,8 +26,7 @@ exploit energy gives bots a critical strategic edge.
 <img
   src="/images/energy-flow-diagram.svg"
   alt="Energy flows between bots through bullets, draining the attacker, damaging the defender, and rewarding successful hits"
-  style="max-width:100%;height:auto;"
-><br>
+  style="max-width:100%;height:auto;"><br>
 *Energy flows between bots through bullets, draining the attacker, damaging the defender, and rewarding successful
 hits*
 
