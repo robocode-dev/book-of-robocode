@@ -1,15 +1,5 @@
 # TODO
 
-## Code Examples
-
-- Audit remaining pseudocode and convert straightforward, verified implementations to one `::: code-group` containing:
-  - `Classic · Java`
-  - `Tank Royale · Python`
-  - `Tank Royale · Java`
-  - `Tank Royale · C#`
-  - `Tank Royale · TypeScript`
-- Keep pseudocode for conceptual explanations or advanced algorithms until equivalent implementations are verified.
-
 ## Missing Pages (Currently Commented Out)
 
 Create these advanced pages and uncomment their links (search for `<!-- TODO: Add link when page is created`):
