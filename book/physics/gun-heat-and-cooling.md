@@ -105,18 +105,148 @@ That’s a big difference in how often the bot can shoot.
 
 ## Minimal shooting logic: always check heat
 
-A common beginner bug is calling `fire()` every turn and assuming it will always shoot.
+A common beginner bug is calling `fire()` every turn and assuming it will always shoot. The examples below use a fixed
+power of `1.0` so the heat check stays easy to see. A more advanced bot can replace that value with a strategy based on
+distance, enemy energy, and hit chance.
 
-A safer pattern is:
+::: code-group
 
-```text
-# Decide whether it is worth firing this turn
-power = chooseFirePower(enemyDistance, enemyEnergy, hitChance)
+```java [Classic · Java]
+import robocode.AdvancedRobot;
+import robocode.ScannedRobotEvent;
 
-# Only shoot if the gun is ready
-if gunHeat == 0 and power > 0:
-    fire(power)
+public class GunHeatBot extends AdvancedRobot {
+    @Override
+    public void run() {
+        setAdjustGunForRobotTurn(true);
+        setAdjustRadarForGunTurn(true);
+
+        while (true) {
+            setTurnGunRight(360);
+            setTurnRadarRight(360);
+            execute();
+        }
+    }
+
+    @Override
+    public void onScannedRobot(ScannedRobotEvent event) {
+        if (getGunHeat() <= 0.0 && getEnergy() > 0.1) {
+            setFire(1.0);
+        }
+    }
+}
 ```
+
+```python [Tank Royale · Python]
+from robocode_tank_royale.bot_api import Bot
+from robocode_tank_royale.bot_api.events import ScannedBotEvent
+
+
+class GunHeatBot(Bot):
+    def run(self) -> None:
+        while self.running:
+            self.set_turn_gun_right(360)
+            self.set_turn_radar_right(360)
+            self.go()
+
+    def on_scanned_bot(self, event: ScannedBotEvent) -> None:
+        if self.gun_heat <= 0.0 and self.energy > 0.1:
+            self.set_fire(1.0)
+
+
+def main() -> None:
+    GunHeatBot().start()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+```java [Tank Royale · Java]
+import dev.robocode.tankroyale.botapi.Bot;
+import dev.robocode.tankroyale.botapi.events.ScannedBotEvent;
+
+public class GunHeatBot extends Bot {
+    public static void main(String[] args) {
+        new GunHeatBot().start();
+    }
+
+    @Override
+    public void run() {
+        while (isRunning()) {
+            setTurnGunRight(360);
+            setTurnRadarRight(360);
+            go();
+        }
+    }
+
+    @Override
+    public void onScannedBot(ScannedBotEvent event) {
+        if (getGunHeat() <= 0.0 && getEnergy() > 0.1) {
+            setFire(1.0);
+        }
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using Robocode.TankRoyale.BotApi;
+using Robocode.TankRoyale.BotApi.Events;
+
+public class GunHeatBot : Bot
+{
+    static void Main(string[] args)
+    {
+        new GunHeatBot().Start();
+    }
+
+    public override void Run()
+    {
+        while (IsRunning)
+        {
+            SetTurnGunRight(360);
+            SetTurnRadarRight(360);
+            Go();
+        }
+    }
+
+    public override void OnScannedBot(ScannedBotEvent evt)
+    {
+        if (GunHeat <= 0.0 && Energy > 0.1)
+        {
+            SetFire(1.0);
+        }
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+import { Bot, ScannedBotEvent } from "@robocode.dev/tank-royale-bot-api";
+
+class GunHeatBot extends Bot {
+    static main() {
+        new GunHeatBot().start();
+    }
+
+    override run() {
+        while (this.isRunning()) {
+            this.setTurnGunRight(360);
+            this.setTurnRadarRight(360);
+            this.go();
+        }
+    }
+
+    override onScannedBot(event: ScannedBotEvent) {
+        if (this.gunHeat <= 0.0 && this.energy > 0.1) {
+            this.setFire(1.0);
+        }
+    }
+}
+
+GunHeatBot.main();
+```
+
+:::
 
 Two practical upgrades:
 

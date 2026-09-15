@@ -271,40 +271,62 @@ Some competitive bots use a single fixed power (e.g., 1.95 or 2.0) for simplicit
 
 ### Hybrid formula
 
-Many advanced bots combine multiple factors into a single calculation:
+Many bots combine multiple factors into a single calculation. The selector below expects `hitRate` as a value from 0 to
+1, where 0.7 means a 70% hit rate.
 
-```txt
-basePower = 2.0
+::: code-group
 
-# Adjust for distance
-if distance < 150:
-    distanceFactor = 1.5
-else if distance < 400:
-    distanceFactor = 1.0
-else:
-    distanceFactor = 0.6
-
-# Adjust for energy
-myEnergy = getEnergy()
-if myEnergy < 15:
-    energyFactor = 0.3
-else if myEnergy < 35:
-    energyFactor = 0.7
-else:
-    energyFactor = 1.0
-
-# Adjust for confidence (if tracked)
-if hitRate > 0.7:
-    confidenceFactor = 1.2
-else if hitRate < 0.4:
-    confidenceFactor = 0.6
-else:
-    confidenceFactor = 1.0
-
-# Calculate final power
-power = basePower * distanceFactor * energyFactor * confidenceFactor
-power = clamp(power, 0.1, 3.0)
+```java [Classic · Java]
+static double selectBulletPower(double distance, double myEnergy, double hitRate) {
+    double distanceFactor = distance < 150 ? 1.5 : distance < 400 ? 1.0 : 0.6;
+    double energyFactor = myEnergy < 15 ? 0.3 : myEnergy < 35 ? 0.7 : 1.0;
+    double confidenceFactor = hitRate > 0.7 ? 1.2 : hitRate < 0.4 ? 0.6 : 1.0;
+    double power = 2.0 * distanceFactor * energyFactor * confidenceFactor;
+    return Math.max(0.1, Math.min(3.0, power));
+}
 ```
+
+```python [Tank Royale · Python]
+def select_bullet_power(distance: float, my_energy: float, hit_rate: float) -> float:
+    distance_factor = 1.5 if distance < 150 else 1.0 if distance < 400 else 0.6
+    energy_factor = 0.3 if my_energy < 15 else 0.7 if my_energy < 35 else 1.0
+    confidence_factor = 1.2 if hit_rate > 0.7 else 0.6 if hit_rate < 0.4 else 1.0
+    power = 2.0 * distance_factor * energy_factor * confidence_factor
+    return max(0.1, min(3.0, power))
+```
+
+```java [Tank Royale · Java]
+static double selectBulletPower(double distance, double myEnergy, double hitRate) {
+    double distanceFactor = distance < 150 ? 1.5 : distance < 400 ? 1.0 : 0.6;
+    double energyFactor = myEnergy < 15 ? 0.3 : myEnergy < 35 ? 0.7 : 1.0;
+    double confidenceFactor = hitRate > 0.7 ? 1.2 : hitRate < 0.4 ? 0.6 : 1.0;
+    double power = 2.0 * distanceFactor * energyFactor * confidenceFactor;
+    return Math.max(0.1, Math.min(3.0, power));
+}
+```
+
+```csharp [Tank Royale · C#]
+static double SelectBulletPower(double distance, double myEnergy, double hitRate)
+{
+    double distanceFactor = distance < 150 ? 1.5 : distance < 400 ? 1.0 : 0.6;
+    double energyFactor = myEnergy < 15 ? 0.3 : myEnergy < 35 ? 0.7 : 1.0;
+    double confidenceFactor = hitRate > 0.7 ? 1.2 : hitRate < 0.4 ? 0.6 : 1.0;
+    double power = 2.0 * distanceFactor * energyFactor * confidenceFactor;
+    return Math.Max(0.1, Math.Min(3.0, power));
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+function selectBulletPower(distance: number, myEnergy: number, hitRate: number): number {
+    const distanceFactor = distance < 150 ? 1.5 : distance < 400 ? 1.0 : 0.6;
+    const energyFactor = myEnergy < 15 ? 0.3 : myEnergy < 35 ? 0.7 : 1.0;
+    const confidenceFactor = hitRate > 0.7 ? 1.2 : hitRate < 0.4 ? 0.6 : 1.0;
+    const power = 2.0 * distanceFactor * energyFactor * confidenceFactor;
+    return Math.max(0.1, Math.min(3.0, power));
+}
+```
+
+:::
 
 This approach dynamically scales power based on real-time conditions, adapting to each shot.
 

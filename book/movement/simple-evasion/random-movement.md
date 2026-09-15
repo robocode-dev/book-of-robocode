@@ -38,37 +38,153 @@ patterns can still be exploited by adaptive targeting systems.
 
 ## Basic Implementation Strategies
 
-### Random Velocity Changes
+### Basic random movement in five languages
 
-The simplest form of random movement varies the bot's speed unpredictably:
+The following bots occasionally choose a new movement distance and turn angle. The commands between random choices keep
+running, while the next choice breaks any easy-to-learn pattern. The 10% choices are deliberately conservative: random
+movement should remain mobile without becoming completely chaotic.
 
-```txt
-on turn:
-  if random() < 0.1:  // 10% chance each turn
-    targetVelocity = random(-8, 8)
-    setAhead(targetVelocity * 100)
+::: code-group
+
+```java [Classic · Java]
+import java.util.Random;
+import robocode.AdvancedRobot;
+
+public class RandomMovementBot extends AdvancedRobot {
+    private final Random random = new Random();
+
+    @Override
+    public void run() {
+        setAdjustGunForRobotTurn(true);
+        setAdjustRadarForGunTurn(true);
+
+        while (true) {
+            if (random.nextDouble() < 0.10) {
+                setAhead((random.nextDouble() * 16 - 8) * 100);
+            }
+            if (random.nextDouble() < 0.10) {
+                setTurnRight(random.nextDouble() * 180 - 90);
+            }
+            setTurnRadarRight(360);
+            execute();
+        }
+    }
+}
 ```
 
-This approach creates irregular acceleration and deceleration, making travel time predictions difficult. However, it
-doesn't address directional predictability.
+```python [Tank Royale · Python]
+from random import random
 
-### Random Direction Changes
+from robocode_tank_royale.bot_api import Bot
 
-Adding random turns creates more complex movement patterns:
 
-```txt
-on turn:
-  if random() < 0.15:  // 15% chance each turn
-    targetVelocity = random(-8, 8)
-    setAhead(targetVelocity * 100)
-    
-  if random() < 0.1:  // 10% chance each turn
-    turnDirection = random(-1, 1)
-    setTurnRight(turnDirection * 90)
+class RandomMovementBot(Bot):
+    def run(self) -> None:
+        while self.running:
+            if random() < 0.10:
+                self.set_forward((random() * 16 - 8) * 100)
+            if random() < 0.10:
+                self.set_turn_right(random() * 180 - 90)
+            self.set_turn_radar_right(360)
+            self.go()
+
+
+def main() -> None:
+    RandomMovementBot().start()
+
+
+if __name__ == "__main__":
+    main()
 ```
 
-Changing both speed and direction simultaneously creates more unpredictability than either alone. The probabilities can
-be tuned based on battlefield size and opponent behavior.
+```java [Tank Royale · Java]
+import java.util.Random;
+import dev.robocode.tankroyale.botapi.Bot;
+
+public class RandomMovementBot extends Bot {
+    private final Random random = new Random();
+
+    public static void main(String[] args) {
+        new RandomMovementBot().start();
+    }
+
+    @Override
+    public void run() {
+        while (isRunning()) {
+            if (random.nextDouble() < 0.10) {
+                setForward((random.nextDouble() * 16 - 8) * 100);
+            }
+            if (random.nextDouble() < 0.10) {
+                setTurnRight(random.nextDouble() * 180 - 90);
+            }
+            setTurnRadarRight(360);
+            go();
+        }
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+using Robocode.TankRoyale.BotApi;
+
+public class RandomMovementBot : Bot
+{
+    private readonly Random random = new();
+
+    static void Main(string[] args)
+    {
+        new RandomMovementBot().Start();
+    }
+
+    public override void Run()
+    {
+        while (IsRunning)
+        {
+            if (random.NextDouble() < 0.10)
+            {
+                SetForward((random.NextDouble() * 16 - 8) * 100);
+            }
+            if (random.NextDouble() < 0.10)
+            {
+                SetTurnRight(random.NextDouble() * 180 - 90);
+            }
+            SetTurnRadarRight(360);
+            Go();
+        }
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+import { Bot } from "@robocode.dev/tank-royale-bot-api";
+
+class RandomMovementBot extends Bot {
+    static main() {
+        new RandomMovementBot().start();
+    }
+
+    override run() {
+        while (this.isRunning()) {
+            if (Math.random() < 0.10) {
+                this.setForward((Math.random() * 16 - 8) * 100);
+            }
+            if (Math.random() < 0.10) {
+                this.setTurnRight(Math.random() * 180 - 90);
+            }
+            this.setTurnRadarRight(360);
+            this.go();
+        }
+    }
+}
+
+RandomMovementBot.main();
+```
+
+:::
+
+The speed and direction changes are intentionally independent. Changing both at once creates more unpredictability than
+either alone, but wall avoidance is still required for a useful bot.
 
 ### Random Wall Avoidance
 

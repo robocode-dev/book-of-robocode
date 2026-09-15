@@ -58,12 +58,7 @@ Getting `(enemyX, enemyY)` differs by platform:
 Classic Robocode scan events provide a **relative bearing**: the angle from the bot’s heading to the enemy.
 Combine that with the bot’s heading to get an **absolute bearing**.
 
-```text
-absoluteBearing = myHeading + relativeBearing
-
-enemyX = myX + sin(toRadians(absoluteBearing)) * distance
-enemyY = myY + cos(toRadians(absoluteBearing)) * distance
-```
+The Classic tab in the example below performs this conversion before calculating the gun heading.
 
 Definitions:
 
@@ -86,65 +81,74 @@ Aiming is basically "what is the angle from `(myX, myY)` to `(enemyX, enemyY)`?"
 - In **classic Robocode**, typical code computes a gun turn angle and uses `setTurnGunRight(...)`.
 - In **Tank Royale**, the API offers helpers like `calcHeadingTo(x, y)` that returns the heading to a point.
 
-<img src="../../images/heads-on-targeting.svg" alt="Heads-on targeting illustration" style="max-width:100%;height:auto;" /><br>
+<img src="../../images/heads-on-targeting.svg" alt="Heads-on targeting illustration"
+  style="max-width:100%;height:auto;" /><br>
 **Illustration:** The bot aims its gun directly at the enemy's last scanned position. However, the enemy bot has already
 moved to a new position*
 
-## Minimal examples
+## Minimal head-on aiming in five languages
 
 > [!NOTE] Keep it small
-> The examples below focus on the “head-on” idea only: compute (or read) the enemy position, turn the gun, and fire.
-> More advanced bots usually also decouple radar from gun/body and choose firepower based on distance and energy.
+> Each helper returns the target heading in degrees. Apply the heading with the platform's gun-turn
+> helper, then fire when the gun is aligned. More advanced bots usually also decouple radar from gun/body and choose
+> firepower based on distance and energy.
 
-### Classic Robocode (Java)
+::: code-group
 
-```java
-// Inside onScannedRobot(ScannedRobotEvent e):
-double absBearing = getHeading() + e.getBearing();
-
-double enemyX = getX() + Math.sin(Math.toRadians(absBearing)) * e.getDistance();
-double enemyY = getY() + Math.cos(Math.toRadians(absBearing)) * e.getDistance();
-
-// Aim gun at the enemy's last scanned position
-// (Use Robocode's normalRelativeAngle to pick the shortest turn direction.)
-double gunAbsHeading = Math.toDegrees(Math.atan2(enemyX - getX(), enemyY - getY()));
-double gunTurn = robocode.util.Utils.normalRelativeAngle(gunAbsHeading - getGunHeading());
-
-setTurnGunRight(gunTurn);
-
-// Fire when roughly aligned
-if(Math.
-
-abs(getGunTurnRemaining()) < 2){
-
-setFire(1.5);
+```java [Classic · Java]
+public final class HeadOnTargeting {
+    public static double targetHeading(
+            double myX, double myY, double myHeadingDegrees,
+            double relativeBearingDegrees, double distance) {
+        double absoluteBearing = Math.toRadians(myHeadingDegrees + relativeBearingDegrees);
+        double enemyX = myX + Math.sin(absoluteBearing) * distance;
+        double enemyY = myY + Math.cos(absoluteBearing) * distance;
+        return Math.toDegrees(Math.atan2(enemyX - myX, enemyY - myY));
+    }
 }
 ```
 
-### Robocode Tank Royale (Java)
+```python [Tank Royale · Python]
+from math import atan2, degrees
 
-In Tank Royale, `ScannedBotEvent` includes the enemy position, so "head-on" targeting is mostly just turning the gun to
-that point.
 
-```java
-// Tank Royale Java (conceptual): inside onScannedBot(ScannedBotEvent e)
-// e.getX() and e.getY() are the enemy's coordinates on the battlefield
+def target_heading(my_x: float, my_y: float, enemy_x: float, enemy_y: float) -> float:
+    return degrees(atan2(enemy_y - my_y, enemy_x - my_x))
+```
 
-double gunHeadingToEnemy = calcHeadingTo(e.getX(), e.getY());
-
-// Turn the gun the shortest way toward the target heading
-// (Method names can vary slightly by base class / language binding.)
-double gunTurn = normalizeRelativeAngle(gunHeadingToEnemy - getGunHeading());
-
-setTurnGunRight(gunTurn);
-
-if(Math.
-
-abs(getGunTurnRemaining()) < 2){
-
-setFire(1.5);
+```java [Tank Royale · Java]
+public final class HeadOnTargeting {
+    public static double targetHeading(
+            double myX, double myY, double enemyX, double enemyY) {
+        return Math.toDegrees(Math.atan2(enemyY - myY, enemyX - myX));
+    }
 }
 ```
+
+```csharp [Tank Royale · C#]
+using System;
+
+public static class HeadOnTargeting
+{
+    public static double TargetHeading(double myX, double myY, double enemyX, double enemyY)
+    {
+        return Math.Atan2(enemyY - myY, enemyX - myX) * 180 / Math.PI;
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+export function targetHeading(
+    myX: number,
+    myY: number,
+    enemyX: number,
+    enemyY: number,
+): number {
+    return (Math.atan2(enemyY - myY, enemyX - myX) * 180) / Math.PI;
+}
+```
+
+:::
 
 ## Platform notes (classic vs. Tank Royale)
 

@@ -1,8 +1,11 @@
 ---
 title: "Distancing"
 category: "Movement & Evasion"
-summary: "Distancing is the movement skill of choosing and maintaining a useful range to opponents so there is more time and space to dodge. Dynamic distancing adapts that range as the fight changes."
-tags: [ "distancing", "movement", "evasion", "melee", "1v1", "classic-robocode", "tank-royale", "intermediate" ]
+summary: >-
+  Distancing is the movement skill of choosing and maintaining a useful range to opponents so there is more time and
+  space to dodge. Dynamic distancing adapts that range as the fight changes.
+tags:
+  [ "distancing", "movement", "evasion", "melee", "1v1", "classic-robocode", "tank-royale", "intermediate" ]
 difficulty: "intermediate"
 source: [
   "RoboWiki - Distancing (classic Robocode) https://robowiki.net/wiki/Distancing",
@@ -84,34 +87,148 @@ Typical inputs for a dynamic distancing rule:
 The key is smoothness: dynamic distancing should gently “steer” range over time, not oscillate wildly between too close
 and too far.
 
-## A simple control model (pseudocode)
+## A small range controller in five languages
 
-One convenient way to implement distancing is to treat it like a feedback controller:
+One convenient way to implement distancing is to treat it like a feedback controller. The code below turns the numeric
+rule into reusable functions. It returns a negative error when the bot is too close and a positive error when it is too
+far.
 
-- `d` is current distance to the main threat.
-- `dTarget` is the desired distance right now.
-- `error = d - dTarget` is positive if the bot is too far, negative if too close.
+The controller does not choose a particular steering style. Its returned error can be passed to circling, waypoint,
+random, or other movement code.
 
-```text
-// Pick a base distance for the current mode.
-dTarget = (mode == MELEE) ? 650 : 450
+::: code-group
 
-// Adjust based on context.
-dTarget += clamp(threatLevel * 120, 0, 200)
-dTarget += clamp(crowding * 80, 0, 200)
-dTarget -= clamp(enemyIsWeak * 100, 0, 150)
+```java [Classic · Java]
+public class DistancingController {
+    public static double targetDistance(
+            boolean melee, double threatLevel, double crowding, boolean enemyIsWeak) {
+        double target = melee ? 650 : 450;
+        target += clamp(threatLevel * 120, 0, 200);
+        target += clamp(crowding * 80, 0, 200);
+        target -= clamp(enemyIsWeak ? 100 : 0, 0, 150);
+        return target;
+    }
 
-error = d - dTarget
+    public static double rangeError(
+            double distance, boolean melee, double threatLevel,
+            double crowding, boolean enemyIsWeak) {
+        return distance - targetDistance(melee, threatLevel, crowding, enemyIsWeak);
+    }
 
-// Use error to bias the next movement choice.
-// Example: pick destinations/headings that decrease |error|
-// while still respecting wall-avoidance and your main evasive movement.
-moveWithRangeBias(error)
+    private static double clamp(double value, double minimum, double maximum) {
+        return Math.max(minimum, Math.min(maximum, value));
+    }
+}
 ```
 
+```python [Tank Royale · Python]
+def target_distance(
+    melee: bool, threat_level: float, crowding: float, enemy_is_weak: bool
+) -> float:
+    target = 650 if melee else 450
+    target += clamp(threat_level * 120, 0, 200)
+    target += clamp(crowding * 80, 0, 200)
+    target -= clamp(100 if enemy_is_weak else 0, 0, 150)
+    return target
+
+
+def range_error(
+    distance: float, melee: bool, threat_level: float,
+    crowding: float, enemy_is_weak: bool
+) -> float:
+    return distance - target_distance(melee, threat_level, crowding, enemy_is_weak)
+
+
+def clamp(value: float, minimum: float, maximum: float) -> float:
+    return max(minimum, min(maximum, value))
+```
+
+```java [Tank Royale · Java]
+public class DistancingController {
+    public static double targetDistance(
+            boolean melee, double threatLevel, double crowding, boolean enemyIsWeak) {
+        double target = melee ? 650 : 450;
+        target += clamp(threatLevel * 120, 0, 200);
+        target += clamp(crowding * 80, 0, 200);
+        target -= clamp(enemyIsWeak ? 100 : 0, 0, 150);
+        return target;
+    }
+
+    public static double rangeError(
+            double distance, boolean melee, double threatLevel,
+            double crowding, boolean enemyIsWeak) {
+        return distance - targetDistance(melee, threatLevel, crowding, enemyIsWeak);
+    }
+
+    private static double clamp(double value, double minimum, double maximum) {
+        return Math.max(minimum, Math.min(maximum, value));
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+public static class DistancingController
+{
+    public static double TargetDistance(
+        bool melee, double threatLevel, double crowding, bool enemyIsWeak)
+    {
+        double target = melee ? 650 : 450;
+        target += Clamp(threatLevel * 120, 0, 200);
+        target += Clamp(crowding * 80, 0, 200);
+        target -= Clamp(enemyIsWeak ? 100 : 0, 0, 150);
+        return target;
+    }
+
+    public static double RangeError(
+        double distance, bool melee, double threatLevel,
+        double crowding, bool enemyIsWeak)
+    {
+        return distance - TargetDistance(melee, threatLevel, crowding, enemyIsWeak);
+    }
+
+    private static double Clamp(double value, double minimum, double maximum)
+    {
+        return Math.Max(minimum, Math.Min(maximum, value));
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+class DistancingController {
+    static targetDistance(
+        melee: boolean,
+        threatLevel: number,
+        crowding: number,
+        enemyIsWeak: boolean,
+    ) {
+        let target = melee ? 650 : 450;
+        target += this.clamp(threatLevel * 120, 0, 200);
+        target += this.clamp(crowding * 80, 0, 200);
+        target -= this.clamp(enemyIsWeak ? 100 : 0, 0, 150);
+        return target;
+    }
+
+    static rangeError(
+        distance: number,
+        melee: boolean,
+        threatLevel: number,
+        crowding: number,
+        enemyIsWeak: boolean,
+    ) {
+        return distance - this.targetDistance(melee, threatLevel, crowding, enemyIsWeak);
+    }
+
+    private static clamp(value: number, minimum: number, maximum: number) {
+        return Math.max(minimum, Math.min(maximum, value));
+    }
+}
+```
+
+:::
+
 > [!NOTE] clamp
-> `clamp(x, min, max)` means: if `x` is less than `min`, use `min`; if `x` is more than `max`, use `max`; otherwise use
-`x`.
+> `clamp(x, min, max)` keeps a value inside a range. Values below `min` become `min`, and values above `max` become
+> `max`.
 
 The function `moveWithRangeBias(error)` is a conceptual placeholder: it means to move in a way that reduces the
 difference between your current distance and your desired distance, while still prioritizing safety and your main
@@ -130,7 +247,8 @@ movement, waypoint navigation, orbiting, or any advanced evasive system.
   retreats).
 - **Remember wall space is part of distance.** “Far away” is not helpful if the bot has no room to turn.
 
-<img src="../../images/dynamic-distancing.svg" alt="Dynamic distancing: preferred distance increases in crowded situations" style="max-width:100%;height:auto;"><br>
+<img src="../../images/dynamic-distancing.svg"
+alt="Dynamic distancing: preferred distance increases in crowded situations" style="max-width:100%;height:auto;"><br>
 *Illustration: Dynamic distancing. The preferred distance is larger when the area is crowded.*
 
 ## Further Reading

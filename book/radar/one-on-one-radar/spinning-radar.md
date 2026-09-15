@@ -1,11 +1,16 @@
 ---
 title: "Spinning Radar"
 category: "Radar & Scanning"
-summary: "A simple radar pattern that keeps turning forever to quickly find enemies; in 1v1, pair it with Infinite Lock for tight tracking."
-tags: [ "spinning-radar", "infinite-lock", "infinite", "radar", "scanning", "setters", "one-on-one", "robocode", "tank-royale", "intermediate" ]
+summary: >-
+  A simple radar pattern that keeps turning forever to quickly find enemies. In 1v1, pair it with Infinite Lock for
+  tight tracking.
+tags:
+  [ "spinning-radar", "infinite-lock", "infinite", "radar", "scanning", "setters", "one-on-one", "robocode",
+    "tank-royale", "intermediate" ]
 difficulty: "intermediate"
 source: [
-  "RoboWiki – One on One Radar (classic Robocode) https://robowiki.net/wiki/One_on_One_Radar"
+  "RoboWiki – One on One Radar (classic Robocode) https://robowiki.net/wiki/One_on_One_Radar",
+  "Robocode Tank Royale Docs - Bot API https://robocode.dev/api/"
 ]
 ---
 
@@ -38,24 +43,114 @@ In 1v1, spinning forever is usually not optimal once the enemy is found; you typ
 <img src="../../images/spinning-radar.svg" alt="Spinning Radar Illustration" style="max-width:100%;height:auto;"><br>
 *Top-down arena view: a bot with a radar beam spinning 360°, sweeping the battlefield and intersecting an enemy.*
 
-## The one-liner: spin forever
+## Basic spinning radar in five languages
 
 Most APIs offer a setter-style radar turn method. The classic spinning radar pattern is set up once, before the main
-loop.
+loop. The examples below cover this basic search mode. The Infinite Lock section later on remains conceptual because it
+needs target tracking and radar-specific overshoot.
 
-Conceptual pseudocode:
+The important detail is the placement of the infinite turn: set it once, then commit a turn every cycle. Repeating the
+infinite command inside the loop would keep replacing the radar's current intent.
 
-```text
-// Before the main loop (e.g., in run()):
-setTurnRadarLeft(INFINITY)
+::: code-group
 
-// Main loop:
-while (true) {
-    // No special logic needed: keep spinning until you get a scan
-    // Commit the turn (Classic: execute(); Tank Royale: go())
-    commitTurn()
+```java [Classic · Java]
+import robocode.AdvancedRobot;
+
+public class SpinningRadarBot extends AdvancedRobot {
+    @Override
+    public void run() {
+        setTurnRadarLeft(Double.POSITIVE_INFINITY);
+
+        while (true) {
+            execute();
+        }
+    }
 }
 ```
+
+```python [Tank Royale · Python]
+from robocode_tank_royale.bot_api import Bot
+
+
+class SpinningRadarBot(Bot):
+    def run(self) -> None:
+        self.set_turn_radar_left(float("inf"))
+
+        while self.running:
+            self.go()
+
+
+def main() -> None:
+    SpinningRadarBot().start()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+```java [Tank Royale · Java]
+import dev.robocode.tankroyale.botapi.Bot;
+
+public class SpinningRadarBot extends Bot {
+    public static void main(String[] args) {
+        new SpinningRadarBot().start();
+    }
+
+    @Override
+    public void run() {
+        setTurnRadarLeft(Double.POSITIVE_INFINITY);
+
+        while (isRunning()) {
+            go();
+        }
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using Robocode.TankRoyale.BotApi;
+
+public class SpinningRadarBot : Bot
+{
+    static void Main(string[] args)
+    {
+        new SpinningRadarBot().Start();
+    }
+
+    public override void Run()
+    {
+        SetTurnRadarLeft(double.PositiveInfinity);
+
+        while (IsRunning)
+        {
+            Go();
+        }
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+import { Bot } from "@robocode.dev/tank-royale-bot-api";
+
+class SpinningRadarBot extends Bot {
+    static main() {
+        new SpinningRadarBot().start();
+    }
+
+    override run() {
+        this.setTurnRadarLeft(Number.POSITIVE_INFINITY);
+
+        while (this.isRunning()) {
+            this.go();
+        }
+    }
+}
+
+SpinningRadarBot.main();
+```
+
+:::
 
 Notes:
 

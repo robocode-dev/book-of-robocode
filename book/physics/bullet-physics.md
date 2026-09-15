@@ -1,13 +1,18 @@
 ---
 title: "Bullet Travel & Bullet Physics"
 category: "Battlefield Physics"
-summary: "How bullets work in Robocode and Tank Royale: firing rules, energy cost, cooldown, speed, travel time, and key safety/strategy tips for new players."
-tags: [ "bullet-physics", "battlefield physics", "beginner", "robocode", "tank-royale", "energy", "cooldown", "bullet speed", "travel time", "friendly fire" ]
+summary: >-
+  How bullets work in Robocode and Tank Royale: firing rules, energy cost, cooldown, speed, travel time, and key safety
+  tips for new players.
+tags:
+  [ "bullet-physics", "battlefield physics", "beginner", "robocode", "tank-royale", "energy", "cooldown",
+    "bullet speed", "travel time", "friendly fire" ]
 difficulty: "beginner"
 source: [
   "https://robowiki.net/wiki/Bullet",
   "https://robocode.sourceforge.io/docs/robocode/robocode/Bullet.html",
   "https://robocode.dev/articles/physics.html#bullets",
+  "https://robocode.dev/api/",
   "https://www.cse.chalmers.se/~bergert/robowiki-mirror/RoboWiki/robowiki.net/wiki/Robocode/FAQ.html"
 ]
 ---
@@ -115,7 +120,8 @@ timeline
 
 ### Bullet speed formula
 
-<img src="../images/light-vs-heavy-bullet.svg" alt="Bullet Trajectory & Speed Comparison" style="max-width:100%;height:auto;"/><br>
+<img src="../images/light-vs-heavy-bullet.svg" alt="Bullet Trajectory & Speed Comparison"
+style="max-width:100%;height:auto;"/><br>
 *Illustration: Two bullets fired by a bot. A high-power bullet is slower and shown in red/orange. A low-power bullet is
 faster and shown in green/orange.*
 
@@ -170,7 +176,24 @@ bullets when you need shorter travel time, and higher power for more damage when
 ## Bullet damage
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'xyChart': { 'backgroundColor': 'transparent', 'plotColorPalette': 'red, green', 'xAxisLabelColor': '#d2691e', 'yAxisLabelColor': '#d2691e', 'xAxisTitleColor': '#d2691e', 'yAxisTitleColor': '#d2691e', 'xAxisTickColor': '#d2691e', 'yAxisTickColor': '#d2691e', 'xAxisLineColor': '#d2691e', 'yAxisLineColor': '#d2691e', 'titleColor': '#d2691e' } }}}%%
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'xyChart': {
+      'backgroundColor': 'transparent',
+      'plotColorPalette': 'red, green',
+      'xAxisLabelColor': '#d2691e',
+      'yAxisLabelColor': '#d2691e',
+      'xAxisTitleColor': '#d2691e',
+      'yAxisTitleColor': '#d2691e',
+      'xAxisTickColor': '#d2691e',
+      'yAxisTickColor': '#d2691e',
+      'xAxisLineColor': '#d2691e',
+      'yAxisLineColor': '#d2691e',
+      'titleColor': '#d2691e'
+    }
+  }
+}}%%
 xychart-beta
     title "Bullet Power vs Damage and Energy Reward"
     x-axis "Bullet Power" ["0.1", "1.0", "2.0", "3.0"]
@@ -232,17 +255,190 @@ The way bullets detect hits on bots differs between platforms:
 - Radar does not detect bullets.
 - You can often infer a shot by observing a scanned enemy's energy dropping by the amount they spent to fire.
 
-## Minimal example (Robocode-style pseudocode)
+## Minimal firing example in five languages
 
-```text
-if (gunIsCool() and myEnergy > 0.1) {
-  distance = distanceTo(target)
-  // Simple distance-based power choice: closer → higher power, farther → lower power
-  power = clamp(map(distance, 0..800, 2.5..0.5), 0.1, 3.0)
-  turnGunTo(bearingTo(target))
-  fire(power)
+The following bots sweep their guns while focusing on two firing rules: the gun must be cool, and the bot must have
+more than 0.1 energy. The power calculation is intentionally simple. It chooses stronger shots at short range and weaker
+shots at long range.
+
+The examples do not implement targeting. They fire along the gun's current heading, leaving accurate aiming for the
+[targeting pages](/targeting/simple-targeting/head-on-targeting).
+
+::: code-group
+
+```java [Classic · Java]
+import robocode.AdvancedRobot;
+import robocode.ScannedRobotEvent;
+
+public class BulletPhysicsBot extends AdvancedRobot {
+    @Override
+    public void run() {
+        setAdjustGunForRobotTurn(true);
+        setAdjustRadarForGunTurn(true);
+
+        while (true) {
+            setTurnGunRight(360);
+            setTurnRadarRight(360);
+            execute();
+        }
+    }
+
+    @Override
+    public void onScannedRobot(ScannedRobotEvent event) {
+        if (getGunHeat() == 0 && getEnergy() > 0.1) {
+            setFire(powerForDistance(event.getDistance()));
+        }
+    }
+
+    private double powerForDistance(double distance) {
+        double power = 2.5 - 2.0 * distance / 800.0;
+        return Math.max(0.1, Math.min(3.0, power));
+    }
 }
 ```
+
+```python [Tank Royale · Python]
+from robocode_tank_royale.bot_api import Bot
+from robocode_tank_royale.bot_api.events import ScannedBotEvent
+
+
+class BulletPhysicsBot(Bot):
+    def run(self) -> None:
+        while self.running:
+            self.set_turn_gun_right(360)
+            self.set_turn_radar_right(360)
+            self.go()
+
+    def on_scanned_bot(self, event: ScannedBotEvent) -> None:
+        if self.gun_heat == 0 and self.energy > 0.1:
+            distance = ((event.x - self.x) ** 2 + (event.y - self.y) ** 2) ** 0.5
+            self.set_fire(self.power_for_distance(distance))
+
+    @staticmethod
+    def power_for_distance(distance: float) -> float:
+        power = 2.5 - 2.0 * distance / 800.0
+        return max(0.1, min(3.0, power))
+
+
+def main() -> None:
+    BulletPhysicsBot().start()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+```java [Tank Royale · Java]
+import dev.robocode.tankroyale.botapi.Bot;
+import dev.robocode.tankroyale.botapi.events.ScannedBotEvent;
+
+public class BulletPhysicsBot extends Bot {
+    public static void main(String[] args) {
+        new BulletPhysicsBot().start();
+    }
+
+    @Override
+    public void run() {
+        while (isRunning()) {
+            setTurnGunRight(360);
+            setTurnRadarRight(360);
+            go();
+        }
+    }
+
+    @Override
+    public void onScannedBot(ScannedBotEvent event) {
+        if (getGunHeat() == 0 && getEnergy() > 0.1) {
+            double dx = event.getX() - getX();
+            double dy = event.getY() - getY();
+            double distance = Math.hypot(dx, dy);
+            setFire(powerForDistance(distance));
+        }
+    }
+
+    private double powerForDistance(double distance) {
+        double power = 2.5 - 2.0 * distance / 800.0;
+        return Math.max(0.1, Math.min(3.0, power));
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+using Robocode.TankRoyale.BotApi;
+using Robocode.TankRoyale.BotApi.Events;
+
+public class BulletPhysicsBot : Bot
+{
+    static void Main(string[] args)
+    {
+        new BulletPhysicsBot().Start();
+    }
+
+    public override void Run()
+    {
+        while (IsRunning)
+        {
+            SetTurnGunRight(360);
+            SetTurnRadarRight(360);
+            Go();
+        }
+    }
+
+    public override void OnScannedBot(ScannedBotEvent evt)
+    {
+        if (GunHeat == 0 && Energy > 0.1)
+        {
+            double dx = evt.X - X;
+            double dy = evt.Y - Y;
+            double distance = Math.Sqrt(dx * dx + dy * dy);
+            SetFire(PowerForDistance(distance));
+        }
+    }
+
+    private static double PowerForDistance(double distance)
+    {
+        double power = 2.5 - 2.0 * distance / 800.0;
+        return Math.Max(0.1, Math.Min(3.0, power));
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+import { Bot, ScannedBotEvent } from "@robocode.dev/tank-royale-bot-api";
+
+class BulletPhysicsBot extends Bot {
+    static main() {
+        new BulletPhysicsBot().start();
+    }
+
+    override run() {
+        while (this.isRunning()) {
+            this.setTurnGunRight(360);
+            this.setTurnRadarRight(360);
+            this.go();
+        }
+    }
+
+    override onScannedBot(event: ScannedBotEvent) {
+        if (this.gunHeat === 0 && this.energy > 0.1) {
+            const dx = event.x - this.x;
+            const dy = event.y - this.y;
+            const distance = Math.hypot(dx, dy);
+            this.setFire(BulletPhysicsBot.powerForDistance(distance));
+        }
+    }
+
+    private static powerForDistance(distance: number) {
+        const power = 2.5 - 2.0 * distance / 800.0;
+        return Math.max(0.1, Math.min(3.0, power));
+    }
+}
+
+BulletPhysicsBot.main();
+```
+
+:::
 
 ## Key Takeaways
 

@@ -198,78 +198,174 @@ patience, positioning, and picking the right moments to engage.
 
 ## Energy management strategies
 
-### Conservative firing
+### Energy-aware firing in five languages
 
-When energy is low or the target is challenging to hit, reduce bullet power:
+This selector combines a survival buffer, an energy lead, and a finishing-shot rule. The second helper treats an enemy
+energy drop between scans as a possible bullet power. It is a clue, not proof, because other events can also change the
+observed energy.
 
-```txt
-myEnergy = getEnergy()
+::: code-group
 
-if myEnergy < 15:
-    power = 0.5  # Survival mode
-else if myEnergy < 30:
-    power = 1.2  # Cautious
-else:
-    power = 2.0  # Normal
+```java [Classic · Java]
+static double chooseBulletPower(double myEnergy, double enemyEnergy) {
+    double power;
+    if (enemyEnergy < 4) {
+        power = 0.1;
+    } else if (enemyEnergy < 10) {
+        power = 1.0;
+    } else if (myEnergy < 15) {
+        power = 0.5;
+    } else if (myEnergy > enemyEnergy + 30) {
+        power = 3.0;
+    } else if (myEnergy > enemyEnergy + 15) {
+        power = 2.5;
+    } else if (myEnergy < 30) {
+        power = 1.2;
+    } else {
+        power = 2.0;
+    }
+    return Math.max(0.1, Math.min(3.0, power));
+}
+
+static double possibleEnemyBulletPower(double previousEnergy, double currentEnergy) {
+    double drop = previousEnergy - currentEnergy;
+    return drop >= 0.1 && drop <= 3.0 ? drop : 0.0;
+}
 ```
 
-**Rationale:** Firing a heavy bullet and missing can leave you vulnerable. Light bullets keep you in the fight longer.
+```python [Tank Royale · Python]
+def choose_bullet_power(my_energy: float, enemy_energy: float) -> float:
+    if enemy_energy < 4:
+        power = 0.1
+    elif enemy_energy < 10:
+        power = 1.0
+    elif my_energy < 15:
+        power = 0.5
+    elif my_energy > enemy_energy + 30:
+        power = 3.0
+    elif my_energy > enemy_energy + 15:
+        power = 2.5
+    elif my_energy < 30:
+        power = 1.2
+    else:
+        power = 2.0
+    return max(0.1, min(3.0, power))
 
-### Aggressive firing
 
-When you have a large energy lead, capitalize with heavier bullets:
-
-```txt
-myEnergy = getEnergy()
-enemyEnergy = getEnemyEnergy()
-
-if myEnergy > enemyEnergy + 30:
-    power = 3.0  # Finish them
-else if myEnergy > enemyEnergy + 15:
-    power = 2.5  # Press the advantage
-else:
-    power = 2.0  # Balanced
+def possible_enemy_bullet_power(previous_energy: float, current_energy: float) -> float:
+    drop = previous_energy - current_energy
+    return drop if 0.1 <= drop <= 3.0 else 0.0
 ```
 
-**Rationale:** Heavy bullets deal more damage and score more points. When you can afford the cost, use them to close
-out the round.
+```java [Tank Royale · Java]
+static double chooseBulletPower(double myEnergy, double enemyEnergy) {
+    double power;
+    if (enemyEnergy < 4) {
+        power = 0.1;
+    } else if (enemyEnergy < 10) {
+        power = 1.0;
+    } else if (myEnergy < 15) {
+        power = 0.5;
+    } else if (myEnergy > enemyEnergy + 30) {
+        power = 3.0;
+    } else if (myEnergy > enemyEnergy + 15) {
+        power = 2.5;
+    } else if (myEnergy < 30) {
+        power = 1.2;
+    } else {
+        power = 2.0;
+    }
+    return Math.max(0.1, Math.min(3.0, power));
+}
 
-### Energy tracking
-
-Advanced bots monitor enemy energy to detect bullet fires and predict behavior:
-
-```txt
-previousEnemyEnergy = 100
-currentEnemyEnergy = getEnemyEnergy()
-
-energyDrop = previousEnemyEnergy - currentEnemyEnergy
-
-if energyDrop >= 0.1 and energyDrop <= 3.0:
-    # The enemy likely fired a bullet (not taking damage from us).
-    # If the drop matches a bullet power (0.1-3.0), assume they fired.
-    bulletPower = energyDrop
-    bulletSpeed = 20 - 3 * bulletPower
-    # Use this to predict bullet arrival or dodge
+static double possibleEnemyBulletPower(double previousEnergy, double currentEnergy) {
+    double drop = previousEnergy - currentEnergy;
+    return drop >= 0.1 && drop <= 3.0 ? drop : 0.0;
+}
 ```
 
-**Rationale:** Knowing when and how hard the enemy fired helps with dodging, positioning, and timing your own shots.
+```csharp [Tank Royale · C#]
+using System;
+
+static double ChooseBulletPower(double myEnergy, double enemyEnergy)
+{
+    double power;
+    if (enemyEnergy < 4)
+    {
+        power = 0.1;
+    }
+    else if (enemyEnergy < 10)
+    {
+        power = 1.0;
+    }
+    else if (myEnergy < 15)
+    {
+        power = 0.5;
+    }
+    else if (myEnergy > enemyEnergy + 30)
+    {
+        power = 3.0;
+    }
+    else if (myEnergy > enemyEnergy + 15)
+    {
+        power = 2.5;
+    }
+    else if (myEnergy < 30)
+    {
+        power = 1.2;
+    }
+    else
+    {
+        power = 2.0;
+    }
+    return Math.Max(0.1, Math.Min(3.0, power));
+}
+
+static double PossibleEnemyBulletPower(double previousEnergy, double currentEnergy)
+{
+    double drop = previousEnergy - currentEnergy;
+    return drop >= 0.1 && drop <= 3.0 ? drop : 0.0;
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+function chooseBulletPower(myEnergy: number, enemyEnergy: number): number {
+    let power: number;
+    if (enemyEnergy < 4) {
+        power = 0.1;
+    } else if (enemyEnergy < 10) {
+        power = 1.0;
+    } else if (myEnergy < 15) {
+        power = 0.5;
+    } else if (myEnergy > enemyEnergy + 30) {
+        power = 3.0;
+    } else if (myEnergy > enemyEnergy + 15) {
+        power = 2.5;
+    } else if (myEnergy < 30) {
+        power = 1.2;
+    } else {
+        power = 2.0;
+    }
+    return Math.max(0.1, Math.min(3.0, power));
+}
+
+function possibleEnemyBulletPower(previousEnergy: number, currentEnergy: number): number {
+    const drop = previousEnergy - currentEnergy;
+    return drop >= 0.1 && drop <= 3.0 ? drop : 0.0;
+}
+```
+
+:::
+
+The light-bullet branches protect a fragile bot, while the heavier branches spend an energy lead. A targeting system can
+also pass its hit-rate estimate into a separate confidence adjustment, as shown on the [Bullet Power Selection](./bullet-power-selection-strategy.md)
+page.
 
 ## Energy and endgame scenarios
 
 ### Finishing a low-energy opponent
 
 When the enemy is nearly out of energy (< 10), even a weak bullet can finish them:
-
-```txt
-enemyEnergy = getEnemyEnergy()
-
-if enemyEnergy < 4:
-    power = 0.1  # Minimal power to finish
-else if enemyEnergy < 10:
-    power = 1.0  # Moderate power
-else:
-    power = 2.0  # Normal
-```
 
 **Why:** A 0.1-power bullet is fast (speed 19.7), and just a single hit is enough to eliminate a disabled opponent. No
 need to waste energy on overkill shots.
@@ -325,4 +421,3 @@ enemy's energy, and adjusting their strategy based on the energy differential.
 
 - [Energy](https://robowiki.net/wiki/Energy) - RoboWiki (classic Robocode)
 - [Robocode Tank Royale - Physics](https://robocode.dev/articles/physics.html) - Tank Royale documentation
-

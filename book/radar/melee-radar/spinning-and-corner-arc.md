@@ -42,19 +42,108 @@ high-priority targets.
 
 ### Implementation Pattern
 
-The spinning radar pattern uses the same technique as in 1v1:
+The spinning radar pattern uses the same technique as in 1v1. The basic search mode is straightforward to implement in
+each supported API:
 
-```text
-// Before the main loop:
-setTurnRadarRight(INFINITY)
+::: code-group
 
-// Main loop:
-while (true) {
-    // Radar spins continuously
-    // Scans arrive as enemies pass through the beam
-    commitTurn()
+```java [Classic · Java]
+import robocode.AdvancedRobot;
+
+public class MeleeSpinningRadarBot extends AdvancedRobot {
+    @Override
+    public void run() {
+        setTurnRadarLeft(Double.POSITIVE_INFINITY);
+
+        while (true) {
+            execute();
+        }
+    }
 }
 ```
+
+```python [Tank Royale · Python]
+from robocode_tank_royale.bot_api import Bot
+
+
+class MeleeSpinningRadarBot(Bot):
+    def run(self) -> None:
+        self.set_turn_radar_left(float("inf"))
+
+        while self.running:
+            self.go()
+
+
+def main() -> None:
+    MeleeSpinningRadarBot().start()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+```java [Tank Royale · Java]
+import dev.robocode.tankroyale.botapi.Bot;
+
+public class MeleeSpinningRadarBot extends Bot {
+    public static void main(String[] args) {
+        new MeleeSpinningRadarBot().start();
+    }
+
+    @Override
+    public void run() {
+        setTurnRadarLeft(Double.POSITIVE_INFINITY);
+
+        while (isRunning()) {
+            go();
+        }
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using Robocode.TankRoyale.BotApi;
+
+public class MeleeSpinningRadarBot : Bot
+{
+    static void Main(string[] args)
+    {
+        new MeleeSpinningRadarBot().Start();
+    }
+
+    public override void Run()
+    {
+        SetTurnRadarLeft(double.PositiveInfinity);
+
+        while (IsRunning)
+        {
+            Go();
+        }
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+import { Bot } from "@robocode.dev/tank-royale-bot-api";
+
+class MeleeSpinningRadarBot extends Bot {
+    static main() {
+        new MeleeSpinningRadarBot().start();
+    }
+
+    override run() {
+        this.setTurnRadarLeft(Number.POSITIVE_INFINITY);
+
+        while (this.isRunning()) {
+            this.go();
+        }
+    }
+}
+
+MeleeSpinningRadarBot.main();
+```
+
+:::
 
 This pattern works well for beginner and intermediate melee bots. It provides adequate situational awareness without 
 complex logic.
@@ -72,6 +161,9 @@ This geometric constraint allows the radar to scan more efficiently:
 
 Corner arc is most effective when combined with **corner movement** strategies that keep the bot positioned against 
 walls. If the bot moves away from corners frequently, the reduced arc becomes a liability, creating large blind spots.
+
+The corner-specific implementation remains conceptual here: its arc boundaries depend on the bot's current corner and
+the platform's angle convention. Verify those calculations carefully before turning this pattern into reusable code.
 
 <img src="../../images/corner-arc-radar.svg" alt="Corner arc radar" style="max-width:100%;height:auto;"><br>
 *Corner arc radar covers only the 90° quadrant in front of a corner-positioned bot*

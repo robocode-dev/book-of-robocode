@@ -6,7 +6,7 @@ Transform knowledge from [RoboWiki.net](https://robowiki.net/) and
 ## 🎯 Core Principles
 
 **Platform Support:**
-- Java, .NET, Python 3.10+ (implicitly includes Kotlin/Scala on JVM, F# on .NET)
+- Java, .NET, Python 3.10+, and TypeScript (implicitly includes Kotlin/Scala on JVM, F# on .NET)
 - Sample bots exist for C#, Java, Python, prefer these for examples
 - WASM support coming later
 
@@ -28,7 +28,7 @@ Transform knowledge from [RoboWiki.net](https://robowiki.net/) and
 
 ### Reference Documents
 
-- `BOOK_STRATEGY.md` – audience, tone, page structure, math/pseudocode rules
+- `BOOK_STRATEGY.md` – audience, tone, page structure, math and code-example rules
 - `BOOK_STRUCTURE.md` – complete table of contents
 - `VOICE.md` – mandatory voice and craft rules; load before writing or reviewing pages
 - `AGENTS.md` (this file) – writing rules and terminology
@@ -50,8 +50,14 @@ live-programming game fans, hobby programmers, educators.
 
 ### Content Guidelines
 
-- Focus on **concepts and intuition**, not large code dumps
-- Prefer **pseudocode** (short, readable); limit to 1–2 formula/pseudocode blocks per page
+- Focus on **concepts and intuition**, not large code dumps.
+- Prefer short, real code for implementable examples. Use a `::: code-group` with equivalent tabs for all supported
+  platforms when the implementation is central to the explanation.
+- Use pseudocode only for intentionally platform-neutral explanations or algorithms whose implementations are not yet
+  verified. Label it clearly and keep it short.
+- Limit each major concept to 1–2 formula or implementation/algorithm blocks per page.
+- For shared implementations, use these code-group tabs in order: `Classic · Java`, `Tank Royale · Python`,
+  `Tank Royale · Java`, `Tank Royale · C#`, `Tank Royale · TypeScript`.
 - Always define symbols in formulas
 - Use Markdown: headings, lists, callouts (tip/warning), tables
 - Emoji allowed when supportive
@@ -80,8 +86,8 @@ source: ["RoboWiki - <Article Name> (classic Robocode)", "Robocode Tank Royale D
 
 **After frontmatter:**
 - 2–3 line overview matching/expanding the summary
-- 3–6 sections with headings like: "Why This Matters", "Core Ideas", "Math/Pseudocode", 
-  "Platform Notes", "Tips & Common Mistakes"
+- 3–6 sections with headings like: "Why This Matters", "Core Ideas", "Math/Algorithm", "Implementation", "Platform
+  Notes", "Tips & Common Mistakes"
 
 > **Note:** Attribution footer handled globally by VitePress, do not add manually.
 

@@ -1,8 +1,9 @@
 ---
 title: "Linear Targeting"
 category: "Targeting Systems"
-summary: "A simple predictive aiming method: assume the enemy keeps moving in a straight line at constant speed, then aim
-  where it will be when the bullet arrives."
+summary: >-
+  A simple predictive aiming method: assume the enemy keeps moving in a straight line
+  at a constant speed, then aim where it will be when the bullet arrives.
 tags: [ "targeting", "simple-targeting", "linear-targeting", "predictive-aiming", "classic-robocode", "tank-royale",
         "intermediate" ]
 difficulty: "intermediate"
@@ -89,53 +90,269 @@ enemy is effectively moving away too fast in the assumed direction).
 > In classic Robocode, bullet speed is `20 - 3×power`.
 > (See [Bullet Travel & Bullet Physics](../../physics/bullet-physics.md).)
 
-<img src="../../images/linear-targeting.svg" alt="Top-down diagram showing a blue shooter bot firing a yellow bullet at the predicted intercept point on an orange enemy bot's curved trajectory" style="max-width:100%;height:auto;"/><br>
-*Diagram: Circular targeting predicts the enemy's linear path and aims at the intercept point where the bullet meets the
+<img src="../../images/linear-targeting.svg"
+  alt="Top-down diagram showing a blue shooter bot firing a yellow bullet at the predicted intercept point on an orange
+  enemy bot's straight trajectory" style="max-width:100%;height:auto;"/><br>
+*Diagram: Linear targeting predicts the enemy's straight path and aims at the intercept point where the bullet meets the
 enemy.*
 
-## Minimal pseudocode
+## Minimal implementation in five languages
 
-This is platform-agnostic and focuses on the linear targeting idea.
-It assumes the coordinate system is consistent and that a helper exists to compute “heading to point”.
+The solver below returns the predicted intercept point. The caller can use that point with the platform's heading
+helper, turn the gun toward it, and fire. A head-on point is used when the bullet cannot catch the predicted path.
 
-```text
-# Inputs at fire time:
-myX, myY
-enemyX, enemyY
-enemyVx, enemyVy
-bulletSpeed
+::: code-group
 
-# Relative position
-dx = enemyX - myX
-dy = enemyY - myY
+```java [Classic · Java]
+import java.awt.geom.Point2D;
 
-# Quadratic coefficients
-a = enemyVx*enemyVx + enemyVy*enemyVy - bulletSpeed*bulletSpeed
-b = 2 * (dx*enemyVx + dy*enemyVy)
-c = dx*dx + dy*dy
+public final class LinearTargeting {
+    private static final double EPSILON = 1e-9;
 
-# Solve a*t^2 + b*t + c = 0
-if abs(a) < tiny:
-    # Degenerate: treat as linear b*t + c = 0
-    t = -c / b
-else:
-    disc = b*b - 4*a*c
-    if disc < 0:
-        t = null
-    else:
-        t1 = (-b - sqrt(disc)) / (2*a)
-        t2 = (-b + sqrt(disc)) / (2*a)
-        t = smallestPositive(t1, t2)
+    public static Point2D.Double predict(
+            double myX, double myY,
+            double enemyX, double enemyY,
+            double enemyVx, double enemyVy,
+            double bulletSpeed) {
+        double dx = enemyX - myX;
+        double dy = enemyY - myY;
+        double a = enemyVx * enemyVx + enemyVy * enemyVy - bulletSpeed * bulletSpeed;
+        double b = 2 * (dx * enemyVx + dy * enemyVy);
+        double c = dx * dx + dy * dy;
+        double time = interceptTime(a, b, c);
 
-if t is null:
-    aimPoint = (enemyX, enemyY)  # fallback: head-on
-else:
-    aimPoint = (enemyX + enemyVx*t, enemyY + enemyVy*t)
+        if (time < 0) {
+            return new Point2D.Double(enemyX, enemyY);
+        }
+        return new Point2D.Double(enemyX + enemyVx * time, enemyY + enemyVy * time);
+    }
 
-gunHeading = headingTo(myX, myY, aimPoint.x, aimPoint.y)
-turnGunShortest(gunHeading)
-fire()
+    private static double interceptTime(double a, double b, double c) {
+        if (Math.abs(a) < EPSILON) {
+            if (Math.abs(b) < EPSILON) {
+                return -1;
+            }
+            double time = -c / b;
+            return time > 0 ? time : -1;
+        }
+
+        double discriminant = b * b - 4 * a * c;
+        if (discriminant < 0) {
+            return -1;
+        }
+        double t1 = (-b - Math.sqrt(discriminant)) / (2 * a);
+        double t2 = (-b + Math.sqrt(discriminant)) / (2 * a);
+        return smallestPositive(t1, t2);
+    }
+
+    private static double smallestPositive(double first, double second) {
+        if (first > 0 && second > 0) {
+            return Math.min(first, second);
+        }
+        return first > 0 ? first : (second > 0 ? second : -1);
+    }
+}
 ```
+
+```python [Tank Royale · Python]
+from math import inf, sqrt
+
+Point = tuple[float, float]
+EPSILON = 1e-9
+
+
+def predict(
+    my_x: float,
+    my_y: float,
+    enemy_x: float,
+    enemy_y: float,
+    enemy_vx: float,
+    enemy_vy: float,
+    bullet_speed: float,
+) -> Point:
+    dx = enemy_x - my_x
+    dy = enemy_y - my_y
+    a = enemy_vx * enemy_vx + enemy_vy * enemy_vy - bullet_speed * bullet_speed
+    b = 2 * (dx * enemy_vx + dy * enemy_vy)
+    c = dx * dx + dy * dy
+    time = intercept_time(a, b, c)
+
+    if time is None:
+        return enemy_x, enemy_y
+    return enemy_x + enemy_vx * time, enemy_y + enemy_vy * time
+
+
+def intercept_time(a: float, b: float, c: float) -> float | None:
+    if abs(a) < EPSILON:
+        if abs(b) < EPSILON:
+            return None
+        time = -c / b
+        return time if time > 0 else None
+
+    discriminant = b * b - 4 * a * c
+    if discriminant < 0:
+        return None
+    roots = ((-b - sqrt(discriminant)) / (2 * a), (-b + sqrt(discriminant)) / (2 * a))
+    positive = [root for root in roots if root > 0]
+    return min(positive) if positive else None
+```
+
+```java [Tank Royale · Java]
+public final class LinearTargeting {
+    private static final double EPSILON = 1e-9;
+
+    public record Point(double x, double y) {}
+
+    public static Point predict(
+            double myX, double myY,
+            double enemyX, double enemyY,
+            double enemyVx, double enemyVy,
+            double bulletSpeed) {
+        double dx = enemyX - myX;
+        double dy = enemyY - myY;
+        double a = enemyVx * enemyVx + enemyVy * enemyVy - bulletSpeed * bulletSpeed;
+        double b = 2 * (dx * enemyVx + dy * enemyVy);
+        double c = dx * dx + dy * dy;
+        double time = interceptTime(a, b, c);
+
+        if (time < 0) {
+            return new Point(enemyX, enemyY);
+        }
+        return new Point(enemyX + enemyVx * time, enemyY + enemyVy * time);
+    }
+
+    private static double interceptTime(double a, double b, double c) {
+        if (Math.abs(a) < EPSILON) {
+            if (Math.abs(b) < EPSILON) {
+                return -1;
+            }
+            double time = -c / b;
+            return time > 0 ? time : -1;
+        }
+
+        double discriminant = b * b - 4 * a * c;
+        if (discriminant < 0) {
+            return -1;
+        }
+        double t1 = (-b - Math.sqrt(discriminant)) / (2 * a);
+        double t2 = (-b + Math.sqrt(discriminant)) / (2 * a);
+        return smallestPositive(t1, t2);
+    }
+
+    private static double smallestPositive(double first, double second) {
+        if (first > 0 && second > 0) {
+            return Math.min(first, second);
+        }
+        return first > 0 ? first : (second > 0 ? second : -1);
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+public static class LinearTargeting
+{
+    private const double Epsilon = 1e-9;
+
+    public record struct Point(double X, double Y);
+
+    public static Point Predict(
+        double myX, double myY,
+        double enemyX, double enemyY,
+        double enemyVx, double enemyVy,
+        double bulletSpeed)
+    {
+        double dx = enemyX - myX;
+        double dy = enemyY - myY;
+        double a = enemyVx * enemyVx + enemyVy * enemyVy - bulletSpeed * bulletSpeed;
+        double b = 2 * (dx * enemyVx + dy * enemyVy);
+        double c = dx * dx + dy * dy;
+        double time = InterceptTime(a, b, c);
+
+        return time < 0
+            ? new Point(enemyX, enemyY)
+            : new Point(enemyX + enemyVx * time, enemyY + enemyVy * time);
+    }
+
+    private static double InterceptTime(double a, double b, double c)
+    {
+        if (Math.Abs(a) < Epsilon)
+        {
+            if (Math.Abs(b) < Epsilon)
+            {
+                return -1;
+            }
+            double time = -c / b;
+            return time > 0 ? time : -1;
+        }
+
+        double discriminant = b * b - 4 * a * c;
+        if (discriminant < 0)
+        {
+            return -1;
+        }
+        double t1 = (-b - Math.Sqrt(discriminant)) / (2 * a);
+        double t2 = (-b + Math.Sqrt(discriminant)) / (2 * a);
+        return SmallestPositive(t1, t2);
+    }
+
+    private static double SmallestPositive(double first, double second)
+    {
+        if (first > 0 && second > 0)
+        {
+            return Math.Min(first, second);
+        }
+        return first > 0 ? first : (second > 0 ? second : -1);
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+type Point = { x: number; y: number };
+
+const EPSILON = 1e-9;
+
+export function predict(
+    myX: number,
+    myY: number,
+    enemyX: number,
+    enemyY: number,
+    enemyVx: number,
+    enemyVy: number,
+    bulletSpeed: number,
+): Point {
+    const dx = enemyX - myX;
+    const dy = enemyY - myY;
+    const a = enemyVx * enemyVx + enemyVy * enemyVy - bulletSpeed * bulletSpeed;
+    const b = 2 * (dx * enemyVx + dy * enemyVy);
+    const c = dx * dx + dy * dy;
+    const time = interceptTime(a, b, c);
+
+    return time === null
+        ? { x: enemyX, y: enemyY }
+        : { x: enemyX + enemyVx * time, y: enemyY + enemyVy * time };
+}
+
+function interceptTime(a: number, b: number, c: number): number | null {
+    if (Math.abs(a) < EPSILON) {
+        if (Math.abs(b) < EPSILON) {
+            return null;
+        }
+        const time = -c / b;
+        return time > 0 ? time : null;
+    }
+
+    const discriminant = b * b - 4 * a * c;
+    if (discriminant < 0) {
+        return null;
+    }
+    const t1 = (-b - Math.sqrt(discriminant)) / (2 * a);
+    const t2 = (-b + Math.sqrt(discriminant)) / (2 * a);
+    const positive = [t1, t2].filter((time) => time > 0);
+    return positive.length > 0 ? Math.min(...positive) : null;
+}
+```
+
+:::
 
 ## Platform notes (classic vs. Tank Royale)
 
@@ -177,5 +394,5 @@ The math above is the same, but *inputs* differ.
 ## Further Reading
 
 - [Linear Targeting](https://robowiki.net/wiki/Linear_Targeting) - RoboWiki (classic Robocode)
-- [Linear Targeting/Buggy Implementations](https://robowiki.net/wiki/Linear_Targeting/Buggy_Implementations) - RoboWiki (classic Robocode)
-
+- [Linear Targeting/Buggy Implementations](https://robowiki.net/wiki/Linear_Targeting/Buggy_Implementations) -
+  RoboWiki (classic Robocode)

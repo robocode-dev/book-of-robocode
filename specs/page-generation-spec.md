@@ -137,12 +137,13 @@ source: [
 4. **Main Sections** — 3–6 sections with clear headings. Suggested patterns:
     - "Key Idea" or "Core Concept"
     - "How It Works" or "The Math"
-    - "Pseudocode" or "Algorithm"
+    - "Math/Algorithm" or "Implementation"
     - "Platform Notes" (when concepts differ)
     - "Tips & Common Mistakes"
     - "When to Use It"
 
-5. **Pseudocode/Formulas** — 1–2 blocks per major concept. Keep them short and readable.
+5. **Formulas and Implementation** — Include 1–2 short blocks per major concept. Prefer real code for implementable
+   examples; use pseudocode only for deliberately platform-neutral or not-yet-verified algorithms.
 
 6. **Platform Comparison** — Include when behavior differs between classic Robocode and Tank Royale.
 
@@ -362,7 +363,10 @@ documentation.
 Use these VitePress/Markdown features:
 
 - **Callouts:** `> [!TIP]`, `> [!WARNING]`, `> [!NOTE]`
-- **Code blocks:** Use `pseudocode` or language-specific syntax highlighting.
+- **Code blocks:** Use language-specific syntax highlighting. For a shared implementation across platforms, use one
+  `::: code-group` with tabs in this order: `Classic · Java`, `Tank Royale · Python`, `Tank Royale · Java`,
+  `Tank Royale · C#`, `Tank Royale · TypeScript`.
+- **Pseudocode:** Use only for conceptual explanations or algorithms whose real implementations are not yet verified.
 - **Tables:** For comparisons and reference data.
 - **Lists:** For steps, options, or related items.
 - **KaTeX:** For mathematical formulas (e.g., `$a^2 + b^2 = c^2$`).
@@ -499,4 +503,3 @@ Before completing, verify:
 - [ ] `config.js` has valid JavaScript syntax after update.
 - [ ] Sidebar entry is in the correct nested location.
 - [ ] Updated `book/introduction/whats-coming-next.md` to remove the completed page from pending lists.~~
-

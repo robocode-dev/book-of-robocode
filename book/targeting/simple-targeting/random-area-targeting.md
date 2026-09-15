@@ -1,8 +1,12 @@
 ---
 title: "Random & Area Targeting"
 category: "Targeting Systems"
-summary: "Two unpredictable aiming strategies: Random Targeting fires at random angles within a range, while Area Targeting fires at predicted movement zones. Useful when enemies are hard to predict or as baseline defensive tactics."
-tags: [ "targeting", "simple-targeting", "random-targeting", "area-targeting", "unpredictable-aiming", "robocode", "tank-royale", "intermediate" ]
+summary: >-
+  Two unpredictable aiming strategies: Random Targeting fires at random angles within a range,
+  while Area Targeting fires at predicted movement zones. Useful when enemies are hard to predict or as baseline
+  defensive tactics.
+tags: [ "targeting", "simple-targeting", "random-targeting", "area-targeting", "unpredictable-aiming", "robocode",
+        "tank-royale", "intermediate" ]
 difficulty: "intermediate"
 source: [
   "RoboWiki - Area Targeting (classic Robocode) https://robowiki.net/wiki/Area_Targeting",
@@ -50,18 +54,176 @@ It tends to fail when:
 At fire time, pick a random angle offset from a reference direction (e.g., the enemy's last bearing or gun's current
 heading) and fire.
 
-```text
-# Simple Random Targeting
+The examples below return aiming angles in radians. Convert the angles to the platform's heading convention, turn the
+gun, and fire with the platform API.
 
-referenceAngle = absoluteBearingToEnemy()  # or gun's current heading
+::: code-group
 
-# Spread within ±spread degrees
-randomOffset = random(-spread, spread)
-fireAngle = referenceAngle + randomOffset
+```java [Classic · Java]
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
-setGunHeading(fireAngle)
-fire()
+public final class RandomAreaTargeting {
+    public static double randomTargetAngle(double referenceAngle, double spread) {
+        double offset = ThreadLocalRandom.current().nextDouble(-spread, spread);
+        return referenceAngle + offset;
+    }
+
+    public static List<Double> areaTargetAngles(
+            double myX, double myY,
+            double enemyX, double enemyY,
+            double lastKnownEnemySpeed,
+            int turnsSinceLastScan,
+            double safetyBuffer,
+            int shotCount) {
+        double maxMovement = lastKnownEnemySpeed * turnsSinceLastScan + safetyBuffer;
+        List<Double> angles = new ArrayList<>();
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+
+        for (int shot = 0; shot < shotCount; shot++) {
+            double pointX = random.nextDouble(enemyX - maxMovement, enemyX + maxMovement);
+            double pointY = random.nextDouble(enemyY - maxMovement, enemyY + maxMovement);
+            angles.add(Math.atan2(pointY - myY, pointX - myX));
+        }
+        return angles;
+    }
+}
 ```
+
+```python [Tank Royale · Python]
+from math import atan2
+from random import uniform
+
+
+def random_target_angle(reference_angle: float, spread: float) -> float:
+    return reference_angle + uniform(-spread, spread)
+
+
+def area_target_angles(
+    my_x: float,
+    my_y: float,
+    enemy_x: float,
+    enemy_y: float,
+    last_known_enemy_speed: float,
+    turns_since_last_scan: int,
+    safety_buffer: float,
+    shot_count: int,
+) -> list[float]:
+    max_movement = last_known_enemy_speed * turns_since_last_scan + safety_buffer
+    angles = []
+
+    for _ in range(shot_count):
+        point_x = uniform(enemy_x - max_movement, enemy_x + max_movement)
+        point_y = uniform(enemy_y - max_movement, enemy_y + max_movement)
+        angles.append(atan2(point_y - my_y, point_x - my_x))
+    return angles
+```
+
+```java [Tank Royale · Java]
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+
+public final class RandomAreaTargeting {
+    public static double randomTargetAngle(double referenceAngle, double spread) {
+        double offset = ThreadLocalRandom.current().nextDouble(-spread, spread);
+        return referenceAngle + offset;
+    }
+
+    public static List<Double> areaTargetAngles(
+            double myX, double myY,
+            double enemyX, double enemyY,
+            double lastKnownEnemySpeed,
+            int turnsSinceLastScan,
+            double safetyBuffer,
+            int shotCount) {
+        double maxMovement = lastKnownEnemySpeed * turnsSinceLastScan + safetyBuffer;
+        List<Double> angles = new ArrayList<>();
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+
+        for (int shot = 0; shot < shotCount; shot++) {
+            double pointX = random.nextDouble(enemyX - maxMovement, enemyX + maxMovement);
+            double pointY = random.nextDouble(enemyY - maxMovement, enemyY + maxMovement);
+            angles.add(Math.atan2(pointY - myY, pointX - myX));
+        }
+        return angles;
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+using System.Collections.Generic;
+
+public static class RandomAreaTargeting
+{
+    private static readonly Random Random = new();
+
+    public static double RandomTargetAngle(double referenceAngle, double spread)
+    {
+        return referenceAngle + (Random.NextDouble() * 2 - 1) * spread;
+    }
+
+    public static List<double> AreaTargetAngles(
+        double myX, double myY,
+        double enemyX, double enemyY,
+        double lastKnownEnemySpeed,
+        int turnsSinceLastScan,
+        double safetyBuffer,
+        int shotCount)
+    {
+        double maxMovement = lastKnownEnemySpeed * turnsSinceLastScan + safetyBuffer;
+        var angles = new List<double>();
+
+        for (int shot = 0; shot < shotCount; shot++)
+        {
+            double pointX = Range(enemyX - maxMovement, enemyX + maxMovement);
+            double pointY = Range(enemyY - maxMovement, enemyY + maxMovement);
+            angles.Add(Math.Atan2(pointY - myY, pointX - myX));
+        }
+        return angles;
+    }
+
+    private static double Range(double minimum, double maximum)
+    {
+        return minimum + Random.NextDouble() * (maximum - minimum);
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+export function randomTargetAngle(referenceAngle: number, spread: number): number {
+    return referenceAngle + (Math.random() * 2 - 1) * spread;
+}
+
+export function areaTargetAngles(
+    myX: number,
+    myY: number,
+    enemyX: number,
+    enemyY: number,
+    lastKnownEnemySpeed: number,
+    turnsSinceLastScan: number,
+    safetyBuffer: number,
+    shotCount: number,
+): number[] {
+    const maxMovement = lastKnownEnemySpeed * turnsSinceLastScan + safetyBuffer;
+    const angles: number[] = [];
+
+    for (let shot = 0; shot < shotCount; shot += 1) {
+        const pointX = randomBetween(enemyX - maxMovement, enemyX + maxMovement);
+        const pointY = randomBetween(enemyY - maxMovement, enemyY + maxMovement);
+        angles.push(Math.atan2(pointY - myY, pointX - myX));
+    }
+    return angles;
+}
+
+function randomBetween(minimum: number, maximum: number): number {
+    return minimum + Math.random() * (maximum - minimum);
+}
+```
+
+:::
 
 For tighter spreads, confine offsets to a narrow range (e.g., ±10°).
 For wider spreads, allow offsets up to ±30° or more.
@@ -95,25 +257,8 @@ Area targeting helps when:
 Define a bounding box or circular zone around the enemy's predicted position, then fire shots scattered across that
 zone:
 
-```text
-# Area Targeting: Fire a spray pattern
-
-enemyX, enemyY = lastScannedPosition
-maxMovement = maxEnemySpeed * turnsSinceLastScan + bufferZone
-
-# Define a box or circle of likely positions
-zoneX = enemyX ± maxMovement
-zoneY = enemyY ± maxMovement
-
-# Fire multiple shots across the zone
-for shot in 1 to numShots:
-    randomPointX = random(zoneX - maxMovement, zoneX + maxMovement)
-    randomPointY = random(zoneY - maxMovement, zoneY + maxMovement)
-    
-    fireAngle = headingTo(myX, myY, randomPointX, randomPointY)
-    setGunHeading(fireAngle)
-    fire()
-```
+Each returned angle represents one point in a square centered on the enemy's last known position. The square grows with
+the scan age and the assumed enemy speed, while `shotCount` controls the energy cost of the spray.
 
 ### Parameters: zone size and shot count
 
@@ -172,7 +317,9 @@ See [Coordinates and Angles](../../physics/coordinates-and-angles.md) for platfo
 
 ## Illustration placeholder
 
-<img src="../../images/random-area-targeting-patterns.svg" alt="Random and Area Targeting patterns compared: Random fires scattered shots around a reference direction, while Area Targeting fires a spray across a predicted movement zone." style="max-width:100%;height:auto;"><br>
+<img src="../../images/random-area-targeting-patterns.svg"
+  alt="Random and Area Targeting patterns compared: Random fires scattered shots around a reference direction, while
+  Area Targeting fires a spray across a predicted movement zone." style="max-width:100%;height:auto;"><br>
 *Random and Area Targeting patterns compared: Random fires scattered shots around a reference direction, while Area
 Targeting fires a spray across a predicted movement zone.*
 

@@ -6,8 +6,8 @@ The Book of Robocode is a modern, structured, and educational documentation proj
 
 - Preserve and modernize the knowledge from RoboWiki.net.
 - Teach bot AI programming, physics, and strategy clearly and visually.
-- Serve as the official learning hub for both Robocode (Java) and Robocode Tank Royale (TypeScript).
-- Present concepts, formulas, and reasoning clearly — not raw implementation.
+- Serve as the official learning hub for Classic Robocode and Robocode Tank Royale, with examples in Java, Python, C#, and TypeScript.
+- Present concepts, formulas, and reasoning clearly, adding concise real code when implementation clarifies the idea.
 
 It aims to make Robocode approachable to students, educators, hobbyists, and AI learners.
 
@@ -28,8 +28,11 @@ Core principles:
   sections.
 - Visual and mathematical reasoning preferred over code dumps.
 - Neutral tone, summarizing community consensus.
-- Pseudocode over real code for conceptual teaching.
+- Short, real code for implementation examples; pseudocode for conceptual teaching or algorithms whose implementations are
+  not yet verified.
 - Parallel support for both Robocode and Tank Royale.
+- For shared implementations, use one `::: code-group` with tabs in this order: `Classic · Java`, `Tank Royale · Python`,
+  `Tank Royale · Java`, `Tank Royale · C#`, `Tank Royale · TypeScript`.
 - Attribution to RoboWiki authors and contributors.
 - Educational reuse under CC BY-SA 4.0.
 - Clear separation of sources: RoboWiki for classic Robocode, robocode.dev, and its GitHub pages for Robocode Tank
@@ -83,11 +86,11 @@ Tone & Style:
 - Short paragraphs (3–4 sentences max).
 - Use Markdown lists, callouts, and tables.
 - Math via KaTeX or MathJax.
-- Pseudocode syntax for code logic.
+- Use language-specific syntax for code examples. Use pseudocode only for deliberately platform-neutral or not-yet-verified algorithms.
 - Use **UTF-8** encoding; emoji characters are allowed when they add clarity or motivation.
 - Keep each line at **120 characters or fewer** for readability and clean diffs.
 
-Example pseudocode:
+Example algorithm sketch:
 
 # Predict future position
 
@@ -125,7 +128,7 @@ Rewritten and structured for The Book of Robocode.*
 - Framework: VitePress
 - Build system: reuse robocode-dev/tank-royale/docs-build
 - Output: GitHub Pages
-- Features: sidebar, search, dark mode, KaTeX, pseudocode highlighting, SVG/Mermaid diagrams.
+- Features: sidebar, search, dark mode, KaTeX, code syntax highlighting, SVG/Mermaid diagrams.
 - Prefer SVG or Mermaid (including emojis) for new diagrams when practical; PNG or JPEG is acceptable for screenshots,
   historical photos, and legacy or illustrative artwork.
 
@@ -152,7 +155,7 @@ When using an LLM or code assistant:
 3. When generating new pages:
     - Use the frontmatter structure.
     - 300–800 words max.
-    - Include 1–2 formulas or pseudocode snippets.
+    - Include 1–2 formulas or implementation/algorithm blocks.
     - Add a short summary.
 4. When adapting RoboWiki content:
     - Rewrite for clarity and neutrality.
@@ -166,8 +169,8 @@ When using an LLM or code assistant:
 ## 🧭 Example Prompt for LLM Agent
 
 "Using the Book of Robocode strategy, generate a beginner-friendly Markdown page explaining GuessFactor Targeting for
-both Robocode and Tank Royale. Include formulas for bearing offset and sample pseudocode for guess factor calculation.
-Maintain educational tone, short paragraphs, and proper attribution format."
+both Robocode and Tank Royale. Include formulas for bearing offset and a short implementation or algorithm sketch for
+GuessFactor calculation. Use a five-language code group when implementation is central. Maintain educational tone, short paragraphs, and proper attribution format."
 
 ## 🧱 Deliverables
 

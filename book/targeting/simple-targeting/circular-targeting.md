@@ -2,11 +2,13 @@
 title: "Circular Targeting (with Walkthrough)"
 category: "Targeting Systems"
 summary: "A predictive aiming method that assumes the enemy keeps turning at a constant rate, so its path curves."
-tags: [ "targeting", "simple-targeting", "circular-targeting", "predictive-aiming", "classic-robocode", "tank-royale", "intermediate" ]
+tags: [ "targeting", "simple-targeting", "circular-targeting", "predictive-aiming", "classic-robocode", "tank-royale",
+        "intermediate" ]
 difficulty: "intermediate"
 source: [
   "RoboWiki - Circular Targeting (classic Robocode) https://robowiki.net/wiki/Circular_Targeting",
-  "RoboWiki - Circular Targeting/Walkthrough (classic Robocode) https://robowiki.net/wiki/Circular_Targeting/Walkthrough"
+  "RoboWiki - Circular Targeting/Walkthrough (classic Robocode)
+  https://robowiki.net/wiki/Circular_Targeting/Walkthrough"
 ]
 ---
 
@@ -59,11 +61,13 @@ Then it simulates forward, one tick at a time:
 
 This "play it forward" loop avoids hard math and stays readable.
 
-<img src="../../images/circular-targeting.svg" alt="Top-down diagram showing a blue shooter bot firing a yellow bullet at the predicted intercept point on an orange enemy bot's curved trajectory" style="max-width:100%;height:auto;"/><br>
+<img src="../../images/circular-targeting.svg"
+  alt="Top-down diagram showing a blue shooter bot firing a yellow bullet at the predicted intercept point on an orange
+  enemy bot's curved trajectory" style="max-width:100%;height:auto;"/><br>
 *Diagram: Circular targeting predicts the enemy's curved path and aims at the intercept point where the bullet meets the
 enemy.*
 
-## Minimal pseudocode (platform-agnostic)
+## Minimal implementation in five languages
 
 Definitions:
 
@@ -72,30 +76,168 @@ Definitions:
 - `stepForward(x, y, heading, speed)`: moves one turn forward.
 - `headingTo(myX, myY, x, y)`: angle from shooter to point.
 
-```text
-# State from latest scan:
-myX, myY
-enemyX, enemyY
-enemyHeading
-enemySpeed
-enemyTurnRate
-bulletSpeed
+The helpers below use radians and a mathematical coordinate frame where `0` radians points along positive X. Convert the
+platform's heading once before calling `predict`, then use the returned point with its heading and fire helpers.
 
-# Predict forward until bullet can reach the predicted point
-predX = enemyX
-predY = enemyY
-predHeading = enemyHeading
+::: code-group
 
-turnsAhead = 0
-while bulletSpeed * turnsAhead < distance((myX,myY), (predX,predY)):
-    predHeading = predHeading + enemyTurnRate
-    (predX, predY) = stepForward(predX, predY, predHeading, enemySpeed)
-    turnsAhead = turnsAhead + 1
+```java [Classic · Java]
+import java.awt.geom.Point2D;
 
-aimHeading = headingTo(myX, myY, predX, predY)
-turnGunShortest(aimHeading)
-fire()
+public final class CircularTargeting {
+    public static Point2D.Double predict(
+            double myX, double myY,
+            double enemyX, double enemyY,
+            double enemyHeadingRadians,
+            double enemySpeed,
+            double enemyTurnRateRadians,
+            double bulletSpeed) {
+        double predictedX = enemyX;
+        double predictedY = enemyY;
+        double predictedHeading = enemyHeadingRadians;
+        int turnsAhead = 0;
+
+        while (bulletSpeed * turnsAhead < distance(myX, myY, predictedX, predictedY)) {
+            predictedHeading += enemyTurnRateRadians;
+            predictedX += Math.cos(predictedHeading) * enemySpeed;
+            predictedY += Math.sin(predictedHeading) * enemySpeed;
+            turnsAhead++;
+        }
+        return new Point2D.Double(predictedX, predictedY);
+    }
+
+    private static double distance(double x1, double y1, double x2, double y2) {
+        return Math.hypot(x2 - x1, y2 - y1);
+    }
+}
 ```
+
+```python [Tank Royale · Python]
+from math import cos, hypot, sin
+
+
+def predict(
+    my_x: float,
+    my_y: float,
+    enemy_x: float,
+    enemy_y: float,
+    enemy_heading_radians: float,
+    enemy_speed: float,
+    enemy_turn_rate_radians: float,
+    bullet_speed: float,
+) -> tuple[float, float]:
+    predicted_x = enemy_x
+    predicted_y = enemy_y
+    predicted_heading = enemy_heading_radians
+    turns_ahead = 0
+
+    while bullet_speed * turns_ahead < hypot(predicted_x - my_x, predicted_y - my_y):
+        predicted_heading += enemy_turn_rate_radians
+        predicted_x += cos(predicted_heading) * enemy_speed
+        predicted_y += sin(predicted_heading) * enemy_speed
+        turns_ahead += 1
+    return predicted_x, predicted_y
+```
+
+```java [Tank Royale · Java]
+public final class CircularTargeting {
+    public record Point(double x, double y) {}
+
+    public static Point predict(
+            double myX, double myY,
+            double enemyX, double enemyY,
+            double enemyHeadingRadians,
+            double enemySpeed,
+            double enemyTurnRateRadians,
+            double bulletSpeed) {
+        double predictedX = enemyX;
+        double predictedY = enemyY;
+        double predictedHeading = enemyHeadingRadians;
+        int turnsAhead = 0;
+
+        while (bulletSpeed * turnsAhead < distance(myX, myY, predictedX, predictedY)) {
+            predictedHeading += enemyTurnRateRadians;
+            predictedX += Math.cos(predictedHeading) * enemySpeed;
+            predictedY += Math.sin(predictedHeading) * enemySpeed;
+            turnsAhead++;
+        }
+        return new Point(predictedX, predictedY);
+    }
+
+    private static double distance(double x1, double y1, double x2, double y2) {
+        return Math.hypot(x2 - x1, y2 - y1);
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+
+public static class CircularTargeting
+{
+    public static (double X, double Y) Predict(
+        double myX, double myY,
+        double enemyX, double enemyY,
+        double enemyHeadingRadians,
+        double enemySpeed,
+        double enemyTurnRateRadians,
+        double bulletSpeed)
+    {
+        double predictedX = enemyX;
+        double predictedY = enemyY;
+        double predictedHeading = enemyHeadingRadians;
+        int turnsAhead = 0;
+
+        while (bulletSpeed * turnsAhead < Distance(myX, myY, predictedX, predictedY))
+        {
+            predictedHeading += enemyTurnRateRadians;
+            predictedX += Math.Cos(predictedHeading) * enemySpeed;
+            predictedY += Math.Sin(predictedHeading) * enemySpeed;
+            turnsAhead++;
+        }
+        return (predictedX, predictedY);
+    }
+
+    private static double Distance(double x1, double y1, double x2, double y2)
+    {
+        return Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+type Point = { x: number; y: number };
+
+export function predict(
+    myX: number,
+    myY: number,
+    enemyX: number,
+    enemyY: number,
+    enemyHeadingRadians: number,
+    enemySpeed: number,
+    enemyTurnRateRadians: number,
+    bulletSpeed: number,
+): Point {
+    let predictedX = enemyX;
+    let predictedY = enemyY;
+    let predictedHeading = enemyHeadingRadians;
+    let turnsAhead = 0;
+
+    while (bulletSpeed * turnsAhead < distance(myX, myY, predictedX, predictedY)) {
+        predictedHeading += enemyTurnRateRadians;
+        predictedX += Math.cos(predictedHeading) * enemySpeed;
+        predictedY += Math.sin(predictedHeading) * enemySpeed;
+        turnsAhead += 1;
+    }
+    return { x: predictedX, y: predictedY };
+}
+
+function distance(x1: number, y1: number, x2: number, y2: number): number {
+    return Math.hypot(x2 - x1, y2 - y1);
+}
+```
+
+:::
 
 This is intentionally the **simple** version.
 More robust circular guns clamp the predicted point inside a safe rectangle or stop if the point exits the battlefield.
@@ -176,4 +318,3 @@ The *idea* is the same across platforms, but be careful with two details:
 - [Circular Targeting](https://robowiki.net/wiki/Circular_Targeting) - RoboWiki (classic Robocode)
 - [Circular Targeting/Walkthrough](https://robowiki.net/wiki/Circular_Targeting/Walkthrough) - RoboWiki (classic
   Robocode)
-

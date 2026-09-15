@@ -1,8 +1,10 @@
 ---
 title: "Virtual Guns & Mean Targeting"
 category: "Targeting Systems"
-summary: "Run multiple targeting algorithms simultaneously and pick the one with the best performance against each enemy."
-tags: [ "targeting", "simple-targeting", "virtual-guns", "mean-targeting", "adaptive-targeting", "robocode", "tank-royale", "advanced" ]
+summary: >-
+  Run multiple targeting algorithms simultaneously and pick the one with the best performance against each enemy.
+tags: [ "targeting", "simple-targeting", "virtual-guns", "mean-targeting", "adaptive-targeting", "robocode",
+        "tank-royale", "advanced" ]
 difficulty: "advanced"
 source: [
   "RoboWiki - Virtual Guns (classic Robocode) https://robowiki.net/wiki/Virtual_Guns",
@@ -40,7 +42,10 @@ At fire time:
 
 Over time, the system learns which strategy works best against each opponent's movement style.
 
-<img src="../../images/virtual-guns-concept.svg" alt="Multiple virtual guns aim at different predicted positions; the bot fires using the one with the best track record" style="max-width:100%;height:auto;"><br>
+<img src="../../images/virtual-guns-concept.svg"
+  alt="Multiple virtual guns aim at different predicted positions; the bot fires using the one with the best
+  track record"
+  style="max-width:100%;height:auto;"><br>
 *Multiple virtual guns aim at different predicted positions; the bot fires using the one with the best track record*
 
 ## How virtual guns work
@@ -95,49 +100,268 @@ The bot picks whichever has the best success rate so far.
 Despite being "simple targeting," mean targeting can be surprisingly effective because it adapts to the opponent's
 movement style without manual tuning.
 
-## Pseudocode (platform-agnostic)
+## Minimal virtual-gun core in five languages
 
-```txt
-# Each gun stores its own hit/miss stats per enemy
-struct VirtualGun {
-    name: string
-    hits: int
-    misses: int
-    aimFunction: (scanData) -> angle
+The code below keeps the statistics and the scoring rule together. Each platform's existing head-on, linear, or circular
+targeting function can be supplied as an `aim` callback that returns a predicted point.
+
+::: code-group
+
+```java [Classic · Java]
+import java.util.List;
+import java.util.function.Function;
+
+public final class VirtualGunSelector {
+    public record Point(double x, double y) {}
+    public record ScanData(double x, double y, double heading, double speed) {}
+    public record VirtualBullet(VirtualGun gun, Point predictedPosition) {}
+
+    @FunctionalInterface
+    public interface AimFunction extends Function<ScanData, Point> {}
+
+    public static final class VirtualGun {
+        public final String name;
+        public final AimFunction aim;
+        public int hits;
+        public int misses;
+
+        public VirtualGun(String name, AimFunction aim) {
+            this.name = name;
+            this.aim = aim;
+        }
+
+        public double successRate() {
+            return hits / (double) (hits + misses + 1);
+        }
+    }
+
+    public static VirtualGun selectBest(List<VirtualGun> guns) {
+        VirtualGun best = guns.get(0);
+        for (VirtualGun gun : guns) {
+            if (gun.successRate() > best.successRate()) {
+                best = gun;
+            }
+        }
+        return best;
+    }
+
+    public static void score(VirtualBullet bullet, Point actualPosition, double hitboxRadius) {
+        double dx = bullet.predictedPosition.x() - actualPosition.x();
+        double dy = bullet.predictedPosition.y() - actualPosition.y();
+        boolean hit = Math.hypot(dx, dy) < hitboxRadius;
+        if (hit) {
+            bullet.gun.hits++;
+        } else {
+            bullet.gun.misses++;
+        }
+    }
+}
+```
+
+```python [Tank Royale · Python]
+from dataclasses import dataclass
+from math import hypot
+from typing import Callable
+
+
+@dataclass(frozen=True)
+class Point:
+    x: float
+    y: float
+
+
+@dataclass(frozen=True)
+class ScanData:
+    x: float
+    y: float
+    heading: float
+    speed: float
+
+
+AimFunction = Callable[[ScanData], Point]
+
+
+@dataclass
+class VirtualGun:
+    name: str
+    aim: AimFunction
+    hits: int = 0
+    misses: int = 0
+
+    @property
+    def success_rate(self) -> float:
+        return self.hits / (self.hits + self.misses + 1)
+
+
+@dataclass(frozen=True)
+class VirtualBullet:
+    gun: VirtualGun
+    predicted_position: Point
+
+
+def select_best(guns: list[VirtualGun]) -> VirtualGun:
+    return max(guns, key=lambda gun: gun.success_rate)
+
+
+def score(bullet: VirtualBullet, actual_position: Point, hitbox_radius: float) -> None:
+    distance = hypot(
+        bullet.predicted_position.x - actual_position.x,
+        bullet.predicted_position.y - actual_position.y,
+    )
+    if distance < hitbox_radius:
+        bullet.gun.hits += 1
+    else:
+        bullet.gun.misses += 1
+```
+
+```java [Tank Royale · Java]
+import java.util.List;
+import java.util.function.Function;
+
+public final class VirtualGunSelector {
+    public record Point(double x, double y) {}
+    public record ScanData(double x, double y, double heading, double speed) {}
+    public record VirtualBullet(VirtualGun gun, Point predictedPosition) {}
+
+    @FunctionalInterface
+    public interface AimFunction extends Function<ScanData, Point> {}
+
+    public static final class VirtualGun {
+        public final String name;
+        public final AimFunction aim;
+        public int hits;
+        public int misses;
+
+        public VirtualGun(String name, AimFunction aim) {
+            this.name = name;
+            this.aim = aim;
+        }
+
+        public double successRate() {
+            return hits / (double) (hits + misses + 1);
+        }
+    }
+
+    public static VirtualGun selectBest(List<VirtualGun> guns) {
+        VirtualGun best = guns.get(0);
+        for (VirtualGun gun : guns) {
+            if (gun.successRate() > best.successRate()) {
+                best = gun;
+            }
+        }
+        return best;
+    }
+
+    public static void score(VirtualBullet bullet, Point actualPosition, double hitboxRadius) {
+        double dx = bullet.predictedPosition.x() - actualPosition.x();
+        double dy = bullet.predictedPosition.y() - actualPosition.y();
+        boolean hit = Math.hypot(dx, dy) < hitboxRadius;
+        if (hit) {
+            bullet.gun.hits++;
+        } else {
+            bullet.gun.misses++;
+        }
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+using System.Collections.Generic;
+
+public static class VirtualGunSelector
+{
+    public record Point(double X, double Y);
+    public record ScanData(double X, double Y, double Heading, double Speed);
+    public delegate Point AimFunction(ScanData scan);
+    public record VirtualBullet(VirtualGun Gun, Point PredictedPosition);
+
+    public sealed class VirtualGun
+    {
+        public string Name { get; }
+        public AimFunction Aim { get; }
+        public int Hits { get; set; }
+        public int Misses { get; set; }
+        public double SuccessRate => Hits / (double)(Hits + Misses + 1);
+
+        public VirtualGun(string name, AimFunction aim)
+        {
+            Name = name;
+            Aim = aim;
+        }
+    }
+
+    public static VirtualGun SelectBest(IReadOnlyList<VirtualGun> guns)
+    {
+        VirtualGun best = guns[0];
+        foreach (VirtualGun gun in guns)
+        {
+            if (gun.SuccessRate > best.SuccessRate)
+            {
+                best = gun;
+            }
+        }
+        return best;
+    }
+
+    public static void Score(VirtualBullet bullet, Point actualPosition, double hitboxRadius)
+    {
+        double dx = bullet.PredictedPosition.X - actualPosition.X;
+        double dy = bullet.PredictedPosition.Y - actualPosition.Y;
+        bool hit = Math.Sqrt(dx * dx + dy * dy) < hitboxRadius;
+        if (hit)
+        {
+            bullet.Gun.Hits++;
+        }
+        else
+        {
+            bullet.Gun.Misses++;
+        }
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+export type Point = { x: number; y: number };
+export type ScanData = { x: number; y: number; heading: number; speed: number };
+export type AimFunction = (scan: ScanData) => Point;
+
+export class VirtualGun {
+    hits = 0;
+    misses = 0;
+
+    constructor(
+        readonly name: string,
+        readonly aim: AimFunction,
+    ) {}
+
+    get successRate(): number {
+        return this.hits / (this.hits + this.misses + 1);
+    }
 }
 
-guns = [headOnGun, linearGun, circularGun, ...]
+export type VirtualBullet = {
+    gun: VirtualGun;
+    predictedPosition: Point;
+};
 
-# On scan:
-scanData = currentEnemyState
+export function selectBest(guns: VirtualGun[]): VirtualGun {
+    return guns.reduce((best, gun) => (gun.successRate > best.successRate ? gun : best));
+}
 
-# On fire:
-bestGun = null
-bestRate = -1
-for gun in guns:
-    rate = gun.hits / (gun.hits + gun.misses + 1)  # +1 to avoid divide-by-zero
-    if rate > bestRate:
-        bestRate = rate
-        bestGun = gun
-
-aimAngle = bestGun.aimFunction(scanData)
-turnGunTo(aimAngle)
-fire(power)
-
-# Record virtual bullets for all guns
-for gun in guns:
-    virtualAim = gun.aimFunction(scanData)
-    gun.recordVirtualBullet(virtualAim, power, myPosition)
-
-# Each turn, update virtual bullets and score them
-for gun in guns:
-    gun.updateVirtualBullets()
-    for bullet in gun.expiredBullets:
-        if distance(bullet.predictedPosition, enemy.actualPosition) < hitboxRadius:
-            gun.hits += 1
-        else:
-            gun.misses += 1
+export function score(bullet: VirtualBullet, actualPosition: Point, hitboxRadius: number): void {
+    const dx = bullet.predictedPosition.x - actualPosition.x;
+    const dy = bullet.predictedPosition.y - actualPosition.y;
+    const hit = Math.hypot(dx, dy) < hitboxRadius;
+    if (hit) {
+        bullet.gun.hits += 1;
+    } else {
+        bullet.gun.misses += 1;
+    }
+}
 ```
+
+:::
 
 ## Platform notes (classic vs. Tank Royale)
 

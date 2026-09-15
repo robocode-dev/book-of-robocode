@@ -74,14 +74,8 @@ Scan events typically provide a **relative bearing** (angle offset from the bot�
   distance.
 - **Robocode Tank Royale:** The scan event provides the enemy's coordinates (`x`, `y`) directly, no calculation needed.
 
-**Classic Robocode calculation:**
-
-```text
-absoluteBearing = myHeading + relativeBearing
-
-enemyX = myX + sin(absoluteBearing) * distance
-enemyY = myY + cos(absoluteBearing) * distance
-```
+The same small calculation looks different across the APIs. Classic Robocode reports a relative bearing, so the bot
+derives the enemy's coordinates. Tank Royale reports the scanned bot's world coordinates directly.
 
 Definitions:
 
@@ -90,22 +84,52 @@ Definitions:
 - `relativeBearing`: the bearing from the scan event.
 - `distance`: the distance from the scan event.
 
-*In classic Robocode, you can use real Java code and the `ScannedRobotEvent` to compute the enemy's coordinates. For
-example:*
+::: code-group
 
-```java
-// Inside onScannedRobot(ScannedRobotEvent event):
-double absoluteBearing = getHeadingRadians() + event.getBearingRadians();
-double enemyX = getX() + Math.sin(absoluteBearing) * event.getDistance();
-double enemyY = getY() + Math.cos(absoluteBearing) * event.getDistance();
+```java [Classic · Java]
+@Override
+public void onScannedRobot(ScannedRobotEvent event) {
+    double absoluteBearing = getHeadingRadians() + event.getBearingRadians();
+    double enemyX = getX() + Math.sin(absoluteBearing) * event.getDistance();
+    double enemyY = getY() + Math.cos(absoluteBearing) * event.getDistance();
+}
 ```
+
+```python [Tank Royale · Python]
+def on_scanned_bot(self, event: ScannedBotEvent) -> None:
+    enemy_x = event.x
+    enemy_y = event.y
+```
+
+```java [Tank Royale · Java]
+@Override
+public void onScannedBot(ScannedBotEvent event) {
+    double enemyX = event.getX();
+    double enemyY = event.getY();
+}
+```
+
+```csharp [Tank Royale · C#]
+public override void OnScannedBot(ScannedBotEvent evt)
+{
+    double enemyX = evt.X;
+    double enemyY = evt.Y;
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+override onScannedBot(event: ScannedBotEvent) {
+    const enemyX = event.x;
+    const enemyY = event.y;
+}
+```
+
+:::
 
 > [!NOTE] Note
 > In classic Robocode, `sin` is used for X and `cos` for Y because the coordinate system has (0,0) at the bottom left,
 > 0° points up (North), and angles increase clockwise. This is the opposite of the standard math convention.
 > See [Coordinate Systems & Angles](../physics/coordinates-and-angles.md) for details.
-
-**Tank Royale:** Use the provided `x` and `y` fields from the scan event (`ScannedBotEvent`) for the enemy's position.
 
 Angle conventions differ between classic Robocode and Robocode Tank Royale. Use the rules from
 [Coordinate Systems & Angles](../physics/coordinates-and-angles.md) when converting between headings and bearings.
