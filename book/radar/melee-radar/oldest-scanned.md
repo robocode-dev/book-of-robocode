@@ -5,7 +5,8 @@ summary: "An intelligent melee radar strategy that tracks scan times and priorit
 tags: [ "oldest-scanned", "melee-radar", "radar", "scanning", "melee", "robocode", "tank-royale", "advanced" ]
 difficulty: "advanced"
 source: [
-  "RoboWiki - Melee Radar (classic Robocode) https://robowiki.net/wiki/Melee_Radar"
+  "RoboWiki - Melee Radar (classic Robocode) https://robowiki.net/wiki/Melee_Radar",
+  "Robocode Tank Royale API - ScannedBotEvent and BotDeathEvent https://robocode.dev/api/apis.html"
 ]
 ---
 
@@ -50,101 +51,422 @@ The algorithm follows this pattern:
 This creates an adaptive scanning pattern that focuses attention where information is most stale, naturally balancing
 coverage across all active threats.
 
-<img src="../../images/oldest-scanned-radar-pattern.svg" alt="Oldest scanned radar prioritizes the enemy with the most stale scan data" style="max-width:100%;height:auto;">
+<img src="../../images/oldest-scanned-radar-pattern.svg"
+alt="Oldest scanned radar prioritizes the enemy with the most stale scan data"
+style="max-width:100%;height:auto;">
 <br>
 *Oldest scanned radar prioritizes the enemy with the most stale scan data*
 
 ## Implementation Strategy
 
-The implementation requires maintaining enemy tracking data across turns:
+The implementation stores the last known position and scan turn for each enemy. The radar then turns toward the
+oldest entry, with a small buffer to account for movement between scans. The examples use a 15-degree buffer, which is
+a starting point rather than a universal best value.
 
-```text
-// Data structure for each enemy:
-enemyData = {
-    name: string,
-    bearing: angle,
-    distance: number,
-    lastScanTime: turnNumber
-}
+::: code-group
 
-// On scan event:
-function onScannedRobot(event) {
-    enemyData[event.name] = {
-        name: event.name,
-        bearing: event.bearing,
-        distance: event.distance,
-        lastScanTime: currentTurn
-    }
-}
+```java [Classic · Java]
+import java.util.HashMap;
+import java.util.Map;
 
-// Main loop radar logic:
-function chooseRadarTarget() {
-    oldestEnemy = null
-    oldestTime = currentTurn
-    
-    // Find enemy with oldest timestamp
-    for each enemy in enemyData {
-        if (enemy.lastScanTime < oldestTime) {
-            oldestTime = enemy.lastScanTime
-            oldestEnemy = enemy
+import robocode.AdvancedRobot;
+import robocode.RobotDeathEvent;
+import robocode.ScannedRobotEvent;
+import robocode.util.Utils;
+
+public class OldestScannedBot extends AdvancedRobot {
+    private static final double SCAN_BUFFER = 15;
+    private final Map<String, EnemyState> enemies = new HashMap<>();
+
+    @Override
+    public void run() {
+        while (true) {
+            EnemyState target = oldestEnemy();
+            if (target == null) {
+                setTurnRadarRight(Double.POSITIVE_INFINITY);
+            } else {
+                double dx = target.x - getX();
+                double dy = target.y - getY();
+                double targetHeading = Math.toDegrees(Math.atan2(dx, dy));
+                double turn = Utils.normalRelativeAngleDegrees(
+                        targetHeading - getRadarHeading());
+                setTurnRadarRight(bufferedTurn(turn));
+            }
+            execute();
         }
     }
-    
-    if (oldestEnemy != null) {
-        // Calculate absolute bearing to oldest enemy
-        targetBearing = heading + oldestEnemy.bearing
-        
-        // Calculate required radar turn
-        radarTurn = normalizeAngle(targetBearing - radarHeading)
-        
-        // Add buffer for enemy movement (wider beam)
-        radarTurn += sign(radarTurn) * scanBuffer
-        
-        setTurnRadarRight(radarTurn)
-    } else {
-        // No enemies: spin to discover new threats
-        setTurnRadarRight(360)
+
+    @Override
+    public void onScannedRobot(ScannedRobotEvent event) {
+        double absoluteBearing = Math.toRadians(getHeading() + event.getBearing());
+        double x = getX() + Math.sin(absoluteBearing) * event.getDistance();
+        double y = getY() + Math.cos(absoluteBearing) * event.getDistance();
+        enemies.put(event.getName(), new EnemyState(x, y, getTime()));
+    }
+
+    @Override
+    public void onRobotDeath(RobotDeathEvent event) {
+        enemies.remove(event.getName());
+    }
+
+    private EnemyState oldestEnemy() {
+        EnemyState oldest = null;
+        for (EnemyState enemy : enemies.values()) {
+            if (oldest == null || enemy.lastScanTurn < oldest.lastScanTurn) {
+                oldest = enemy;
+            }
+        }
+        return oldest;
+    }
+
+    private static double bufferedTurn(double turn) {
+        return turn == 0 ? SCAN_BUFFER : turn + Math.copySign(SCAN_BUFFER, turn);
+    }
+
+    private static class EnemyState {
+        final double x;
+        final double y;
+        final long lastScanTurn;
+
+        EnemyState(double x, double y, long lastScanTurn) {
+            this.x = x;
+            this.y = y;
+            this.lastScanTurn = lastScanTurn;
+        }
     }
 }
 ```
 
-The `scanBuffer` value (typically 10-30 degrees) compensates for enemy movement and radar beam width, increasing the
-chance of a successful scan.
+```python [Tank Royale · Python]
+import math
+from dataclasses import dataclass
+
+from robocode_tank_royale.bot_api import Bot
+from robocode_tank_royale.bot_api.events import BotDeathEvent, ScannedBotEvent
+
+
+@dataclass
+class EnemyState:
+    x: float
+    y: float
+    last_scan_turn: int
+
+
+class OldestScannedBot(Bot):
+    SCAN_BUFFER = 15.0
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.enemies: dict[int, EnemyState] = {}
+
+    def run(self) -> None:
+        while self.running:
+            target = self.oldest_enemy()
+            if target is None:
+                self.set_turn_radar_right(float("inf"))
+            else:
+                target_direction = math.degrees(math.atan2(
+                    target.y - self.y, target.x - self.x))
+                turn = normalize_relative_angle(target_direction - self.radar_direction)
+                self.set_turn_radar_right(self.buffered_turn(turn))
+            self.go()
+
+    def on_scanned_bot(self, event: ScannedBotEvent) -> None:
+        self.enemies[event.scanned_bot_id] = EnemyState(
+            event.x, event.y, event.turn_number)
+
+    def on_bot_death(self, event: BotDeathEvent) -> None:
+        self.enemies.pop(event.victim_id, None)
+
+    def oldest_enemy(self) -> EnemyState | None:
+        return min(
+            self.enemies.values(),
+            key=lambda enemy: enemy.last_scan_turn,
+            default=None,
+        )
+
+    @classmethod
+    def buffered_turn(cls, turn: float) -> float:
+        return turn + (cls.SCAN_BUFFER if turn >= 0 else -cls.SCAN_BUFFER)
+
+
+def normalize_relative_angle(angle: float) -> float:
+    while angle <= -180:
+        angle += 360
+    while angle > 180:
+        angle -= 360
+    return angle
+
+
+def main() -> None:
+    OldestScannedBot().start()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+```java [Tank Royale · Java]
+import java.util.HashMap;
+import java.util.Map;
+
+import dev.robocode.tankroyale.botapi.Bot;
+import dev.robocode.tankroyale.botapi.events.BotDeathEvent;
+import dev.robocode.tankroyale.botapi.events.ScannedBotEvent;
+
+public class OldestScannedBot extends Bot {
+    private static final double SCAN_BUFFER = 15;
+    private final Map<Integer, EnemyState> enemies = new HashMap<>();
+
+    public static void main(String[] args) {
+        new OldestScannedBot().start();
+    }
+
+    @Override
+    public void run() {
+        while (isRunning()) {
+            EnemyState target = oldestEnemy();
+            if (target == null) {
+                setTurnRadarRight(Double.POSITIVE_INFINITY);
+            } else {
+                double targetDirection = Math.toDegrees(Math.atan2(
+                        target.y - getY(), target.x - getX()));
+                double turn = normalizeRelativeAngle(
+                        targetDirection - getRadarDirection());
+                setTurnRadarRight(bufferedTurn(turn));
+            }
+            go();
+        }
+    }
+
+    @Override
+    public void onScannedBot(ScannedBotEvent event) {
+        enemies.put(event.getScannedBotId(), new EnemyState(
+                event.getX(), event.getY(), event.getTurnNumber()));
+    }
+
+    @Override
+    public void onBotDeath(BotDeathEvent event) {
+        enemies.remove(event.getVictimId());
+    }
+
+    private EnemyState oldestEnemy() {
+        EnemyState oldest = null;
+        for (EnemyState enemy : enemies.values()) {
+            if (oldest == null || enemy.lastScanTurn < oldest.lastScanTurn) {
+                oldest = enemy;
+            }
+        }
+        return oldest;
+    }
+
+    private static double bufferedTurn(double turn) {
+        return turn + (turn >= 0 ? SCAN_BUFFER : -SCAN_BUFFER);
+    }
+
+    private static double normalizeRelativeAngle(double angle) {
+        while (angle <= -180) {
+            angle += 360;
+        }
+        while (angle > 180) {
+            angle -= 360;
+        }
+        return angle;
+    }
+
+    private static class EnemyState {
+        final double x;
+        final double y;
+        final int lastScanTurn;
+
+        EnemyState(double x, double y, int lastScanTurn) {
+            this.x = x;
+            this.y = y;
+            this.lastScanTurn = lastScanTurn;
+        }
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+using System.Collections.Generic;
+using Robocode.TankRoyale.BotApi;
+using Robocode.TankRoyale.BotApi.Events;
+
+public class OldestScannedBot : Bot
+{
+    private const double ScanBuffer = 15;
+    private readonly Dictionary<int, EnemyState> enemies = new();
+
+    static void Main(string[] args)
+    {
+        new OldestScannedBot().Start();
+    }
+
+    public override void Run()
+    {
+        while (IsRunning)
+        {
+            EnemyState target = OldestEnemy();
+            if (target == null)
+            {
+                SetTurnRadarRight(double.PositiveInfinity);
+            }
+            else
+            {
+                double targetDirection = Math.Atan2(target.Y - Y, target.X - X) * 180 / Math.PI;
+                double turn = NormalizeRelativeAngle(targetDirection - RadarDirection);
+                SetTurnRadarRight(BufferedTurn(turn));
+            }
+            Go();
+        }
+    }
+
+    public override void OnScannedBot(ScannedBotEvent evt)
+    {
+        enemies[evt.ScannedBotId] = new EnemyState(evt.X, evt.Y, evt.TurnNumber);
+    }
+
+    public override void OnBotDeath(BotDeathEvent evt)
+    {
+        enemies.Remove(evt.VictimId);
+    }
+
+    private EnemyState OldestEnemy()
+    {
+        EnemyState oldest = null;
+        foreach (EnemyState enemy in enemies.Values)
+        {
+            if (oldest == null || enemy.LastScanTurn < oldest.LastScanTurn)
+            {
+                oldest = enemy;
+            }
+        }
+        return oldest;
+    }
+
+    private static double BufferedTurn(double turn)
+    {
+        return turn + (turn >= 0 ? ScanBuffer : -ScanBuffer);
+    }
+
+    private static double NormalizeRelativeAngle(double angle)
+    {
+        while (angle <= -180)
+        {
+            angle += 360;
+        }
+        while (angle > 180)
+        {
+            angle -= 360;
+        }
+        return angle;
+    }
+
+    private sealed class EnemyState
+    {
+        public EnemyState(double x, double y, int lastScanTurn)
+        {
+            X = x;
+            Y = y;
+            LastScanTurn = lastScanTurn;
+        }
+
+        public double X { get; }
+        public double Y { get; }
+        public int LastScanTurn { get; }
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+import { Bot, BotDeathEvent, ScannedBotEvent } from "@robocode.dev/tank-royale-bot-api";
+
+type EnemyState = {
+    x: number;
+    y: number;
+    lastScanTurn: number;
+};
+
+class OldestScannedBot extends Bot {
+    private static readonly scanBuffer = 15;
+    private readonly enemies = new Map<number, EnemyState>();
+
+    static main() {
+        new OldestScannedBot().start();
+    }
+
+    override run() {
+        while (this.isRunning()) {
+            const target = this.oldestEnemy();
+            if (target === undefined) {
+                this.setTurnRadarRight(Number.POSITIVE_INFINITY);
+            } else {
+                const targetDirection = Math.atan2(target.y - this.y, target.x - this.x) * 180 / Math.PI;
+                const turn = OldestScannedBot.normalizeRelativeAngle(
+                    targetDirection - this.radarDirection);
+                this.setTurnRadarRight(OldestScannedBot.bufferedTurn(turn));
+            }
+            this.go();
+        }
+    }
+
+    override onScannedBot(event: ScannedBotEvent) {
+        this.enemies.set(event.scannedBotId, {
+            x: event.x,
+            y: event.y,
+            lastScanTurn: event.turnNumber,
+        });
+    }
+
+    override onBotDeath(event: BotDeathEvent) {
+        this.enemies.delete(event.victimId);
+    }
+
+    private oldestEnemy(): EnemyState | undefined {
+        let oldest: EnemyState | undefined;
+        for (const enemy of this.enemies.values()) {
+            if (oldest === undefined || enemy.lastScanTurn < oldest.lastScanTurn) {
+                oldest = enemy;
+            }
+        }
+        return oldest;
+    }
+
+    private static bufferedTurn(turn: number) {
+        return turn + (turn >= 0 ? this.scanBuffer : -this.scanBuffer);
+    }
+
+    private static normalizeRelativeAngle(angle: number) {
+        while (angle <= -180) {
+            angle += 360;
+        }
+        while (angle > 180) {
+            angle -= 360;
+        }
+        return angle;
+    }
+}
+
+OldestScannedBot.main();
+```
+
+:::
 
 ## Cleaning Up Dead Enemies
 
 A critical implementation detail is removing destroyed enemies from the tracking data. If dead bots remain in the
-`enemyData` structure, they will have progressively older timestamps and monopolize radar attention, causing the radar
+tracking map, they will have progressively older timestamps and monopolize radar attention, causing the radar
 to waste time trying to scan ghosts.
 
 **Use death event cleanup** as the primary approach:
 
-```text
-function onRobotDeath(event) {
-    delete enemyData[event.name]
-}
-```
-
 This immediately removes destroyed enemies from tracking, preventing the radar from targeting them. Both classic
 Robocode and Tank Royale provide death event notifications, making this the reliable and recommended solution.
 
-**Optional: Timeout-based backup cleanup**
-
-As a safety measure, implement timeout cleanup to handle edge cases where death events might be missed:
-
-```text
-// In chooseRadarTarget(), before the loop:
-maxStaleTime = 50  // Assume dead after 50 turns without scan
-
-for each enemy in enemyData {
-    if (currentTurn - enemy.lastScanTime > maxStaleTime) {
-        delete enemyData[enemy.name]
-    }
-}
-```
-
-This backup ensures that if an enemy somehow remains in the tracking data despite being destroyed, it will eventually
-be removed. However, death event cleanup should be the primary mechanism.
+An optional timeout can be added as a defensive measure when a bot’s event handling is more complex, but it should not
+replace death-event cleanup. A living enemy can legitimately remain unscanned for many turns in a crowded battle.
 
 ## Advantages Over Spinning Radar
 
@@ -209,7 +531,7 @@ The core algorithm, tracking timestamps and calculating radar turns, is identica
 
 - On the first turn, no enemies have been scanned yet.
 - Start with a full spin until at least one enemy is detected.
-- Handle the case where `enemyData` is empty gracefully.
+- Handle the case where the tracking map is empty gracefully.
 
 **Integration with targeting:**
 

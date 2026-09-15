@@ -173,35 +173,252 @@ The classic pattern from RoboWiki is called **Infinite Lock**:
   ticks.
 - If scans stop arriving (lost contact), fall back to a wide spin to reacquire.
 
-Conceptual pseudocode:
+The following implementations keep a small scan-age counter. A scan aims the radar toward the enemy with a five-degree
+overshoot; after three missed turns, the radar returns to a wide sweep.
 
-```text
-// State:
-turnsSinceLastScan = BIG_NUMBER
+::: code-group
 
-// Before the main loop:
-setTurnRadarLeft(INFINITY)  // start in search mode
+```java [Classic · Java]
+import robocode.AdvancedRobot;
+import robocode.ScannedRobotEvent;
+import robocode.util.Utils;
 
-// onScannedBot/onScannedRobot:
-turnsSinceLastScan = 0
+public class InfiniteLockBot extends AdvancedRobot {
+    private static final int LOST_CONTACT_TURNS = 3;
+    private static final double OVERSHOOT = Math.toRadians(5);
+    private int turnsSinceLastScan = LOST_CONTACT_TURNS + 1;
 
-// Each turn (main loop):
-while (true) {
-    turnsSinceLastScan++
-
-    if (turnsSinceLastScan == 0) {
-        // We scanned the enemy this tick:
-        // Turn radar toward the enemy bearing, plus a small overshoot.
-        // (This is where you use setTurnRadarRight/Left based on your relative angles.)
-        setTurnRadarRight(enemyBearingFromRadar + overshoot)
-    } else if (turnsSinceLastScan > LOST_CONTACT_TURNS) {
-        // Lost contact: spin again to find the enemy
-        setTurnRadarLeft(INFINITY)
+    @Override
+    public void run() {
+        while (true) {
+            if (turnsSinceLastScan > LOST_CONTACT_TURNS) {
+                setTurnRadarRightRadians(Double.POSITIVE_INFINITY);
+            }
+            turnsSinceLastScan++;
+            execute();
+        }
     }
 
-    commitTurn()
+    @Override
+    public void onScannedRobot(ScannedRobotEvent event) {
+        turnsSinceLastScan = 0;
+        double absoluteBearing = getHeadingRadians() + event.getBearingRadians();
+        double neededTurn = Utils.normalRelativeAngle(
+                absoluteBearing - getRadarHeadingRadians());
+        double overshoot = Math.copySign(OVERSHOOT, neededTurn);
+        setTurnRadarRightRadians(neededTurn + overshoot);
+    }
 }
 ```
+
+```python [Tank Royale · Python]
+import math
+
+from robocode_tank_royale.bot_api import Bot
+from robocode_tank_royale.bot_api.events import ScannedBotEvent
+
+
+class InfiniteLockBot(Bot):
+    LOST_CONTACT_TURNS = 3
+    OVERSHOOT = 5.0
+
+    def run(self) -> None:
+        self.turns_since_last_scan = self.LOST_CONTACT_TURNS + 1
+        while self.running:
+            if self.turns_since_last_scan > self.LOST_CONTACT_TURNS:
+                self.set_turn_radar_right(float("inf"))
+            self.turns_since_last_scan += 1
+            self.go()
+
+    def on_scanned_bot(self, event: ScannedBotEvent) -> None:
+        self.turns_since_last_scan = 0
+        target_direction = math.degrees(math.atan2(event.y - self.y, event.x - self.x))
+        needed_turn = normalize_relative_angle(target_direction - self.radar_direction)
+        overshoot = math.copysign(self.OVERSHOOT, needed_turn)
+        self.set_radar_turn(needed_turn + overshoot)
+
+    def set_radar_turn(self, turn: float) -> None:
+        if turn >= 0:
+            self.set_turn_radar_left(turn)
+        else:
+            self.set_turn_radar_right(-turn)
+
+
+def normalize_relative_angle(angle: float) -> float:
+    while angle <= -180:
+        angle += 360
+    while angle > 180:
+        angle -= 360
+    return angle
+
+
+def main() -> None:
+    InfiniteLockBot().start()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+```java [Tank Royale · Java]
+import dev.robocode.tankroyale.botapi.Bot;
+import dev.robocode.tankroyale.botapi.events.ScannedBotEvent;
+
+public class InfiniteLockBot extends Bot {
+    private static final int LOST_CONTACT_TURNS = 3;
+    private static final double OVERSHOOT = 5.0;
+    private int turnsSinceLastScan = LOST_CONTACT_TURNS + 1;
+
+    public static void main(String[] args) {
+        new InfiniteLockBot().start();
+    }
+
+    @Override
+    public void run() {
+        while (isRunning()) {
+            if (turnsSinceLastScan > LOST_CONTACT_TURNS) {
+                setTurnRadarRight(Double.POSITIVE_INFINITY);
+            }
+            turnsSinceLastScan++;
+            go();
+        }
+    }
+
+    @Override
+    public void onScannedBot(ScannedBotEvent event) {
+        turnsSinceLastScan = 0;
+        double targetDirection = Math.toDegrees(Math.atan2(event.getY() - getY(), event.getX() - getX()));
+        double neededTurn = normalizeRelativeAngle(targetDirection - getRadarDirection());
+        double overshoot = neededTurn >= 0 ? OVERSHOOT : -OVERSHOOT;
+        setRadarTurn(neededTurn + overshoot);
+    }
+
+    private void setRadarTurn(double turn) {
+        if (turn >= 0) {
+            setTurnRadarLeft(turn);
+        } else {
+            setTurnRadarRight(-turn);
+        }
+    }
+
+    private static double normalizeRelativeAngle(double angle) {
+        while (angle <= -180) angle += 360;
+        while (angle > 180) angle -= 360;
+        return angle;
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+using Robocode.TankRoyale.BotApi;
+using Robocode.TankRoyale.BotApi.Events;
+
+public class InfiniteLockBot : Bot
+{
+    private const int LostContactTurns = 3;
+    private const double Overshoot = 5.0;
+    private int turnsSinceLastScan = LostContactTurns + 1;
+
+    static void Main(string[] args)
+    {
+        new InfiniteLockBot().Start();
+    }
+
+    public override void Run()
+    {
+        while (IsRunning)
+        {
+            if (turnsSinceLastScan > LostContactTurns)
+            {
+                SetTurnRadarRight(double.PositiveInfinity);
+            }
+            turnsSinceLastScan++;
+            Go();
+        }
+    }
+
+    public override void OnScannedBot(ScannedBotEvent evt)
+    {
+        turnsSinceLastScan = 0;
+        double targetDirection = Math.Atan2(evt.Y - Y, evt.X - X) * 180 / Math.PI;
+        double neededTurn = NormalizeRelativeAngle(targetDirection - RadarDirection);
+        double overshoot = neededTurn >= 0 ? Overshoot : -Overshoot;
+        SetRadarTurn(neededTurn + overshoot);
+    }
+
+    private void SetRadarTurn(double turn)
+    {
+        if (turn >= 0)
+        {
+            SetTurnRadarLeft(turn);
+        }
+        else
+        {
+            SetTurnRadarRight(-turn);
+        }
+    }
+
+    private static double NormalizeRelativeAngle(double angle)
+    {
+        while (angle <= -180) angle += 360;
+        while (angle > 180) angle -= 360;
+        return angle;
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+import { Bot, ScannedBotEvent } from "@robocode.dev/tank-royale-bot-api";
+
+class InfiniteLockBot extends Bot {
+    private static readonly lostContactTurns = 3;
+    private static readonly overshoot = 5;
+    private turnsSinceLastScan = InfiniteLockBot.lostContactTurns + 1;
+
+    static main() {
+        new InfiniteLockBot().start();
+    }
+
+    override run() {
+        while (this.isRunning()) {
+            if (this.turnsSinceLastScan > InfiniteLockBot.lostContactTurns) {
+                this.setTurnRadarRight(Number.POSITIVE_INFINITY);
+            }
+            this.turnsSinceLastScan += 1;
+            this.go();
+        }
+    }
+
+    override onScannedBot(event: ScannedBotEvent) {
+        this.turnsSinceLastScan = 0;
+        const targetDirection = Math.atan2(event.y - this.y, event.x - this.x) * 180 / Math.PI;
+        const neededTurn = InfiniteLockBot.normalizeRelativeAngle(
+            targetDirection - this.radarDirection,
+        );
+        const overshoot = Math.sign(neededTurn) * InfiniteLockBot.overshoot;
+        this.setRadarTurn(neededTurn + overshoot);
+    }
+
+    private setRadarTurn(turn: number) {
+        if (turn >= 0) {
+            this.setTurnRadarLeft(turn);
+        } else {
+            this.setTurnRadarRight(-turn);
+        }
+    }
+
+    private static normalizeRelativeAngle(angle: number) {
+        while (angle <= -180) angle += 360;
+        while (angle > 180) angle -= 360;
+        return angle;
+    }
+}
+
+InfiniteLockBot.main();
+```
+
+:::
 
 Notes:
 

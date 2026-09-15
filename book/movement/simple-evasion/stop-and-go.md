@@ -1,7 +1,9 @@
 ---
 title: "Stop and Go"
 category: "Movement & Evasion"
-summary: "Stop and Go movement alternates between full speed and complete stops to dodge linear and statistical targeting by varying bullet travel time. This tutorial shows how to implement this effecta a ive intermediate evasion strategy."
+summary: >-
+  Stop and Go alternates between full speed and complete stops to vary bullet travel time and confuse linear and
+  statistical targeting.
 tags: [ "stop-and-go", "movement", "simple-evasion", "intermediate", "robocode", "tank-royale" ]
 difficulty: "intermediate"
 source: [
@@ -54,7 +56,9 @@ The key variables are:
 - **Stop duration:** How many turns to remain stopped
 - **Direction:** Whether moving forward or backward (can vary)
 
-<img src="../../images/stop-and-go-movement.svg" alt="Stop and Go creates velocity spikes that confuse targeting predictions" style="max-width:100%;height:auto;"><br>
+<img src="../../images/stop-and-go-movement.svg"
+alt="Stop and Go creates velocity spikes that confuse targeting predictions"
+style="max-width:100%;height:auto;"><br>
 *Stop and Go creates velocity spikes that confuse targeting predictions*
 
 ## Tutorial: Building Your First Stop and Go Bot
@@ -441,10 +445,8 @@ targeting systems. The core implementation above is the practical starting point
 
 Adjust stop timing based on enemy distance:
 
-```txt
-stopThreshold = enemyDistance / 20
-// Closer enemies = more frequent stops
-```
+Use a shorter stop interval at close range and a longer interval at distance. For example, clamp `enemyDistance / 20`
+to a practical range such as 5–30 turns.
 
 When the enemy is close, more frequent stops make targeting harder. At longer distances, less frequent stops maintain
 offensive positioning while still providing evasion.
@@ -453,12 +455,8 @@ offensive positioning while still providing evasion.
 
 Coordinate stops with enemy gun heat:
 
-```txt
-if enemy.gunHeat > 0.5:
-    allowStop = true  // Enemy can't fire yet
-else:
-    allowStop = false // Enemy can fire - keep moving
-```
+Allow a planned stop only while the enemy's estimated gun heat is above `0.5`; keep moving when the enemy is nearly
+ready to fire.
 
 This ensures the bot isn't stopped when the enemy's gun is ready to fire, reducing vulnerability.
 
@@ -466,10 +464,100 @@ This ensures the bot isn't stopped when the enemy's gun is ready to fire, reduci
 
 Stop when you predict the enemy will fire:
 
-```txt
-if enemy.gunHeat < 0.1 and isFacingUs:
-    forceStop = true
+Force the moving state when the enemy's estimated gun heat is below `0.1` and the enemy is facing the bot. These values
+are tuning controls rather than universal rules.
+
+The following small helper keeps the three adaptations together:
+
+::: code-group
+
+```java [Classic · Java]
+public final class StopAndGoTuning {
+    public static int stopDuration(double enemyDistance) {
+        return clamp((int) Math.round(enemyDistance / 20), 5, 30);
+    }
+
+    public static boolean allowStop(double enemyGunHeat) {
+        return enemyGunHeat > 0.5;
+    }
+
+    public static boolean forceStop(double enemyGunHeat, boolean enemyFacingUs) {
+        return enemyGunHeat < 0.1 && enemyFacingUs;
+    }
+
+    private static int clamp(int value, int minimum, int maximum) {
+        return Math.max(minimum, Math.min(maximum, value));
+    }
+}
 ```
+
+```python [Tank Royale · Python]
+def stop_duration(enemy_distance: float) -> int:
+    return max(5, min(30, round(enemy_distance / 20)))
+
+
+def allow_stop(enemy_gun_heat: float) -> bool:
+    return enemy_gun_heat > 0.5
+
+
+def force_stop(enemy_gun_heat: float, enemy_facing_us: bool) -> bool:
+    return enemy_gun_heat < 0.1 and enemy_facing_us
+```
+
+```java [Tank Royale · Java]
+public final class StopAndGoTuning {
+    public static int stopDuration(double enemyDistance) {
+        return clamp((int) Math.round(enemyDistance / 20), 5, 30);
+    }
+
+    public static boolean allowStop(double enemyGunHeat) {
+        return enemyGunHeat > 0.5;
+    }
+
+    public static boolean forceStop(double enemyGunHeat, boolean enemyFacingUs) {
+        return enemyGunHeat < 0.1 && enemyFacingUs;
+    }
+
+    private static int clamp(int value, int minimum, int maximum) {
+        return Math.max(minimum, Math.min(maximum, value));
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+
+public static class StopAndGoTuning
+{
+    public static int StopDuration(double enemyDistance) =>
+        Math.Clamp((int)Math.Round(enemyDistance / 20), 5, 30);
+
+    public static bool AllowStop(double enemyGunHeat) => enemyGunHeat > 0.5;
+
+    public static bool ForceStop(double enemyGunHeat, bool enemyFacingUs) =>
+        enemyGunHeat < 0.1 && enemyFacingUs;
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+function stopDuration(enemyDistance: number) {
+    return clampInt(Math.round(enemyDistance / 20), 5, 30);
+}
+
+function allowStop(enemyGunHeat: number) {
+    return enemyGunHeat > 0.5;
+}
+
+function forceStop(enemyGunHeat: number, enemyFacingUs: boolean) {
+    return enemyGunHeat < 0.1 && enemyFacingUs;
+}
+
+function clampInt(value: number, minimum: number, maximum: number) {
+    return Math.max(minimum, Math.min(maximum, value));
+}
+```
+
+:::
 
 ## Platform Differences
 

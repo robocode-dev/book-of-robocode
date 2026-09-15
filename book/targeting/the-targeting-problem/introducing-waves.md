@@ -1,7 +1,9 @@
 ---
 title: "Introducing Waves"
 category: "Targeting Systems"
-summary: "The foundational concept behind advanced targeting: tracking bullet travel as expanding circles to measure where enemies are when bullets arrive."
+summary: >-
+  The foundational concept behind advanced targeting: tracking bullet travel as expanding circles to measure where
+  enemies are when bullets arrive.
 tags: [ "waves", "targeting", "the-targeting-problem", "guessfactor", "advanced", "robocode", "tank-royale" ]
 difficulty: "advanced"
 source: [
@@ -48,7 +50,9 @@ water when a stone is dropped:
 Waves are **imaginary**, they don't exist in the game engine. The bot calculates and tracks them to measure timing and
 angles accurately.
 
-<img src="../../images/wave-concept-basic.svg" alt="A wave expands from the firing position at bullet speed, tracking when a bullet would reach each point" style="max-width:100%;height:auto;"><br>
+<img src="../../images/wave-concept-basic.svg"
+alt="A wave expands from the firing position at bullet speed, tracking when a bullet would reach each point"
+style="max-width:100%;height:auto;"><br>
 *A wave expands from the firing position at bullet speed, tracking when a bullet would reach each point*
 
 ## Why waves matter for targeting
@@ -74,23 +78,14 @@ Each wave needs three pieces of information:
 | **Fire time**    | The turn number when the wave was created       | `Turn 50`                 |
 | **Bullet speed** | Speed the wave expands at: `20 - 3 × firepower` | `14 units/turn` (power 2) |
 
-On each turn, the wave's radius grows:
-
-```text
-waveRadius = bulletSpeed × (currentTurn - fireTime)
-```
+On each turn, the wave's radius is `bulletSpeed × (currentTurn − fireTime)`, where `fireTime` is the turn on which
+the wave was created.
 
 **When the wave reaches the enemy:**
 
-```text
-distanceToEnemy = distance((waveOrigin.x, waveOrigin.y), (enemy.x, enemy.y))
-
-if (distanceToEnemy ≤ waveRadius) {
-    // Wave has reached or passed the enemy
-    // Record the enemy's angle relative to firing direction
-    recordHit()
-}
-```
+Compare the distance from the wave origin to the enemy with the current radius. When
+`distance(waveOrigin, enemy) ≤ waveRadius`, the wave has reached or passed the enemy and the bot can record the
+enemy's angle relative to the firing direction.
 
 ## Measuring angles: GuessFactor
 
@@ -103,69 +98,443 @@ is often normalized to a value called a **GuessFactor** (GF):
 
 The GuessFactor normalizes different bullet speeds and distances into a consistent scale from -1 to +1.
 
-**Basic calculation:**
-
-```text
-// Angle from firing direction to enemy when wave hits
-bearingOffset = enemyBearing - firingAngle
-
-// Maximum angle the enemy could have reached (escape angle)
-maxEscapeAngle = asin(8 / bulletSpeed)  // 8 = max bot speed
-
-// Normalize to -1.0 to +1.0 range
-guessFactor = bearingOffset / maxEscapeAngle
-```
+**Basic calculation:** `bearingOffset` is the normalized angle from the firing direction to the enemy when the wave
+arrives. The maximum escape angle is `asin(8 / bulletSpeed)`, because 8 units/turn is the maximum bot speed. The
+GuessFactor is `clamp(bearingOffset / maxEscapeAngle, −1, +1)`.
 
 Over many shots, the bot accumulates GuessFactor data and aims at the GF with the highest hit count.
 
-<img src="../../images/wave-guessfactor-concept.svg" alt="GuessFactor measures where the enemy is within the maximum escape angle range" style="max-width:100%;height:auto;"><br>
+<img src="../../images/wave-guessfactor-concept.svg"
+alt="GuessFactor measures where the enemy is within the maximum escape angle range"
+style="max-width:100%;height:auto;"><br>
 *GuessFactor measures where the enemy is within the maximum escape angle range*
 
 ## Wave creation and tracking
 
-In a typical wave-based targeting system, the bot:
+Create a wave immediately after firing, then update active waves once per turn with the enemy's latest position. The
+compact tracker below uses a 31-bin histogram, records a GuessFactor when a wave reaches the enemy, and exposes the
+most frequent bin for the next aiming decision. Angles are radians inside the helper, with the platform-specific angle
+calculation shown in each tab.
 
-1. **Creates a wave when firing** (or considering firing):
-   ```text
-   wave = {
-       origin: (myX, myY),
-       fireTime: currentTurn,
-       bulletSpeed: 20 - 3 × firepower,
-       firingAngle: gunHeading
-   }
-   waves.add(wave)
-   ```
+::: code-group
 
-2. **Updates all waves each turn:**
-   ```text
-   for each wave in waves {
-       waveRadius = wave.bulletSpeed × (currentTurn - wave.fireTime)
-       
-       if (waveRadius >= distanceToEnemy(wave.origin, enemy)) {
-           // Wave hit: record enemy's GuessFactor
-           recordGuessFactor(wave, enemy)
-           waves.remove(wave)
-       }
-   }
-   ```
+```java [Classic · Java]
+import java.util.ArrayList;
+import java.util.List;
 
-3. **Records GuessFactor data** when waves reach enemies:
-   ```text
-   function recordGuessFactor(wave, enemy) {
-       bearingOffset = enemy.bearing - wave.firingAngle
-       maxEscapeAngle = asin(8 / wave.bulletSpeed)
-       guessFactor = bearingOffset / maxEscapeAngle
-       
-       // Store in histogram or statistics
-       guessFactorData[guessFactor] += 1
-   }
-   ```
+public class WaveTracker {
+    private static final int BIN_COUNT = 31;
+    private final List<Wave> waves = new ArrayList<>();
+    private final int[] guessFactorHits = new int[BIN_COUNT];
 
-4. **Aims at the best GuessFactor** when firing next time:
-   ```text
-   bestGF = findHighestProbabilityGuessFactor(guessFactorData)
-   aimAngle = headOnAngle + (bestGF × maxEscapeAngle)
-   ```
+    public void addWave(
+            double originX, double originY, long fireTurn,
+            double firepower, double firingAngle) {
+        waves.add(new Wave(
+                originX, originY, fireTurn,
+                20 - 3 * firepower, firingAngle));
+    }
+
+    public void update(long currentTurn, double enemyX, double enemyY) {
+        for (int i = waves.size() - 1; i >= 0; i--) {
+            Wave wave = waves.get(i);
+            double radius = wave.bulletSpeed * (currentTurn - wave.fireTurn);
+            double distance = Math.hypot(enemyX - wave.originX, enemyY - wave.originY);
+            if (radius >= distance) {
+                recordGuessFactor(wave, enemyX, enemyY);
+                waves.remove(i);
+            }
+        }
+    }
+
+    public double bestGuessFactor() {
+        int bestBin = BIN_COUNT / 2;
+        for (int i = 1; i < guessFactorHits.length; i++) {
+            if (guessFactorHits[i] > guessFactorHits[bestBin]) {
+                bestBin = i;
+            }
+        }
+        return bestBin * 2.0 / (BIN_COUNT - 1) - 1.0;
+    }
+
+    private void recordGuessFactor(Wave wave, double enemyX, double enemyY) {
+        double enemyAngle = Math.atan2(enemyX - wave.originX, enemyY - wave.originY);
+        double bearingOffset = normalizeRelativeAngle(enemyAngle - wave.firingAngle);
+        double escapeAngle = Math.asin(8.0 / wave.bulletSpeed);
+        double guessFactor = clamp(bearingOffset / escapeAngle, -1.0, 1.0);
+        int bin = (int) Math.round((guessFactor + 1.0) * 0.5 * (BIN_COUNT - 1));
+        guessFactorHits[bin]++;
+    }
+
+    private static double normalizeRelativeAngle(double angle) {
+        while (angle <= -Math.PI) {
+            angle += 2 * Math.PI;
+        }
+        while (angle > Math.PI) {
+            angle -= 2 * Math.PI;
+        }
+        return angle;
+    }
+
+    private static double clamp(double value, double minimum, double maximum) {
+        return Math.max(minimum, Math.min(maximum, value));
+    }
+
+    private static class Wave {
+        final double originX;
+        final double originY;
+        final long fireTurn;
+        final double bulletSpeed;
+        final double firingAngle;
+
+        Wave(double originX, double originY, long fireTurn,
+                double bulletSpeed, double firingAngle) {
+            this.originX = originX;
+            this.originY = originY;
+            this.fireTurn = fireTurn;
+            this.bulletSpeed = bulletSpeed;
+            this.firingAngle = firingAngle;
+        }
+    }
+}
+```
+
+```python [Tank Royale · Python]
+import math
+from dataclasses import dataclass
+
+
+@dataclass
+class Wave:
+    origin_x: float
+    origin_y: float
+    fire_turn: int
+    bullet_speed: float
+    firing_angle: float
+
+
+class WaveTracker:
+    BIN_COUNT = 31
+
+    def __init__(self) -> None:
+        self.waves: list[Wave] = []
+        self.guess_factor_hits = [0] * self.BIN_COUNT
+
+    def add_wave(
+        self,
+        origin_x: float,
+        origin_y: float,
+        fire_turn: int,
+        firepower: float,
+        firing_angle: float,
+    ) -> None:
+        self.waves.append(Wave(
+            origin_x,
+            origin_y,
+            fire_turn,
+            20 - 3 * firepower,
+            firing_angle,
+        ))
+
+    def update(self, current_turn: int, enemy_x: float, enemy_y: float) -> None:
+        remaining: list[Wave] = []
+        for wave in self.waves:
+            radius = wave.bullet_speed * (current_turn - wave.fire_turn)
+            distance = math.hypot(enemy_x - wave.origin_x, enemy_y - wave.origin_y)
+            if radius >= distance:
+                self._record_guess_factor(wave, enemy_x, enemy_y)
+            else:
+                remaining.append(wave)
+        self.waves = remaining
+
+    def best_guess_factor(self) -> float:
+        best_bin = self.BIN_COUNT // 2
+        for index, hits in enumerate(self.guess_factor_hits):
+            if hits > self.guess_factor_hits[best_bin]:
+                best_bin = index
+        return best_bin * 2 / (self.BIN_COUNT - 1) - 1
+
+    def _record_guess_factor(self, wave: Wave, enemy_x: float, enemy_y: float) -> None:
+        enemy_angle = math.atan2(enemy_x - wave.origin_x, enemy_y - wave.origin_y)
+        bearing_offset = normalize_relative_angle(enemy_angle - wave.firing_angle)
+        escape_angle = math.asin(8 / wave.bullet_speed)
+        guess_factor = clamp(bearing_offset / escape_angle, -1, 1)
+        bin_index = round((guess_factor + 1) * 0.5 * (self.BIN_COUNT - 1))
+        self.guess_factor_hits[bin_index] += 1
+
+
+def normalize_relative_angle(angle: float) -> float:
+    while angle <= -math.pi:
+        angle += 2 * math.pi
+    while angle > math.pi:
+        angle -= 2 * math.pi
+    return angle
+
+
+def clamp(value: float, minimum: float, maximum: float) -> float:
+    return max(minimum, min(maximum, value))
+```
+
+```java [Tank Royale · Java]
+import java.util.ArrayList;
+import java.util.List;
+
+public class WaveTracker {
+    private static final int BIN_COUNT = 31;
+    private final List<Wave> waves = new ArrayList<>();
+    private final int[] guessFactorHits = new int[BIN_COUNT];
+
+    public void addWave(
+            double originX, double originY, long fireTurn,
+            double firepower, double firingAngle) {
+        waves.add(new Wave(
+                originX, originY, fireTurn,
+                20 - 3 * firepower, firingAngle));
+    }
+
+    public void update(long currentTurn, double enemyX, double enemyY) {
+        for (int i = waves.size() - 1; i >= 0; i--) {
+            Wave wave = waves.get(i);
+            double radius = wave.bulletSpeed * (currentTurn - wave.fireTurn);
+            double distance = Math.hypot(enemyX - wave.originX, enemyY - wave.originY);
+            if (radius >= distance) {
+                recordGuessFactor(wave, enemyX, enemyY);
+                waves.remove(i);
+            }
+        }
+    }
+
+    public double bestGuessFactor() {
+        int bestBin = BIN_COUNT / 2;
+        for (int i = 1; i < guessFactorHits.length; i++) {
+            if (guessFactorHits[i] > guessFactorHits[bestBin]) {
+                bestBin = i;
+            }
+        }
+        return bestBin * 2.0 / (BIN_COUNT - 1) - 1.0;
+    }
+
+    private void recordGuessFactor(Wave wave, double enemyX, double enemyY) {
+        double enemyAngle = Math.atan2(enemyY - wave.originY, enemyX - wave.originX);
+        double bearingOffset = normalizeRelativeAngle(enemyAngle - wave.firingAngle);
+        double escapeAngle = Math.asin(8.0 / wave.bulletSpeed);
+        double guessFactor = clamp(bearingOffset / escapeAngle, -1.0, 1.0);
+        int bin = (int) Math.round((guessFactor + 1.0) * 0.5 * (BIN_COUNT - 1));
+        guessFactorHits[bin]++;
+    }
+
+    private static double normalizeRelativeAngle(double angle) {
+        while (angle <= -Math.PI) {
+            angle += 2 * Math.PI;
+        }
+        while (angle > Math.PI) {
+            angle -= 2 * Math.PI;
+        }
+        return angle;
+    }
+
+    private static double clamp(double value, double minimum, double maximum) {
+        return Math.max(minimum, Math.min(maximum, value));
+    }
+
+    private static class Wave {
+        final double originX;
+        final double originY;
+        final long fireTurn;
+        final double bulletSpeed;
+        final double firingAngle;
+
+        Wave(double originX, double originY, long fireTurn,
+                double bulletSpeed, double firingAngle) {
+            this.originX = originX;
+            this.originY = originY;
+            this.fireTurn = fireTurn;
+            this.bulletSpeed = bulletSpeed;
+            this.firingAngle = firingAngle;
+        }
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+using System.Collections.Generic;
+
+public class WaveTracker
+{
+    private const int BinCount = 31;
+    private readonly List<Wave> waves = new();
+    private readonly int[] guessFactorHits = new int[BinCount];
+
+    public void AddWave(
+        double originX, double originY, long fireTurn,
+        double firePower, double firingAngle)
+    {
+        waves.Add(new Wave(
+            originX, originY, fireTurn,
+            20 - 3 * firePower, firingAngle));
+    }
+
+    public void Update(long currentTurn, double enemyX, double enemyY)
+    {
+        for (int i = waves.Count - 1; i >= 0; i--)
+        {
+            Wave wave = waves[i];
+            double radius = wave.BulletSpeed * (currentTurn - wave.FireTurn);
+            double distance = Math.Sqrt(
+                Math.Pow(enemyX - wave.OriginX, 2) + Math.Pow(enemyY - wave.OriginY, 2));
+            if (radius >= distance)
+            {
+                RecordGuessFactor(wave, enemyX, enemyY);
+                waves.RemoveAt(i);
+            }
+        }
+    }
+
+    public double BestGuessFactor()
+    {
+        int bestBin = BinCount / 2;
+        for (int i = 1; i < guessFactorHits.Length; i++)
+        {
+            if (guessFactorHits[i] > guessFactorHits[bestBin])
+            {
+                bestBin = i;
+            }
+        }
+        return bestBin * 2.0 / (BinCount - 1) - 1.0;
+    }
+
+    private void RecordGuessFactor(Wave wave, double enemyX, double enemyY)
+    {
+        double enemyAngle = Math.Atan2(enemyY - wave.OriginY, enemyX - wave.OriginX);
+        double bearingOffset = NormalizeRelativeAngle(enemyAngle - wave.FiringAngle);
+        double escapeAngle = Math.Asin(8.0 / wave.BulletSpeed);
+        double guessFactor = Clamp(bearingOffset / escapeAngle, -1.0, 1.0);
+        int bin = (int)Math.Round((guessFactor + 1.0) * 0.5 * (BinCount - 1));
+        guessFactorHits[bin]++;
+    }
+
+    private static double NormalizeRelativeAngle(double angle)
+    {
+        while (angle <= -Math.PI)
+        {
+            angle += 2 * Math.PI;
+        }
+        while (angle > Math.PI)
+        {
+            angle -= 2 * Math.PI;
+        }
+        return angle;
+    }
+
+    private static double Clamp(double value, double minimum, double maximum)
+    {
+        return Math.Max(minimum, Math.Min(maximum, value));
+    }
+
+    private sealed class Wave
+    {
+        public Wave(double originX, double originY, long fireTurn,
+            double bulletSpeed, double firingAngle)
+        {
+            OriginX = originX;
+            OriginY = originY;
+            FireTurn = fireTurn;
+            BulletSpeed = bulletSpeed;
+            FiringAngle = firingAngle;
+        }
+
+        public double OriginX { get; }
+        public double OriginY { get; }
+        public long FireTurn { get; }
+        public double BulletSpeed { get; }
+        public double FiringAngle { get; }
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+type Wave = {
+    originX: number;
+    originY: number;
+    fireTurn: number;
+    bulletSpeed: number;
+    firingAngle: number;
+};
+
+class WaveTracker {
+    private static readonly binCount = 31;
+    private readonly waves: Wave[] = [];
+    private readonly guessFactorHits = new Array<number>(WaveTracker.binCount).fill(0);
+
+    addWave(
+        originX: number,
+        originY: number,
+        fireTurn: number,
+        firePower: number,
+        firingAngle: number,
+    ) {
+        this.waves.push({
+            originX,
+            originY,
+            fireTurn,
+            bulletSpeed: 20 - 3 * firePower,
+            firingAngle,
+        });
+    }
+
+    update(currentTurn: number, enemyX: number, enemyY: number) {
+        for (let i = this.waves.length - 1; i >= 0; i -= 1) {
+            const wave = this.waves[i];
+            const radius = wave.bulletSpeed * (currentTurn - wave.fireTurn);
+            const distance = Math.hypot(enemyX - wave.originX, enemyY - wave.originY);
+            if (radius >= distance) {
+                this.recordGuessFactor(wave, enemyX, enemyY);
+                this.waves.splice(i, 1);
+            }
+        }
+    }
+
+    bestGuessFactor() {
+        let bestBin = Math.floor(WaveTracker.binCount / 2);
+        for (let i = 1; i < WaveTracker.binCount; i += 1) {
+            if (this.guessFactorHits[i] > this.guessFactorHits[bestBin]) {
+                bestBin = i;
+            }
+        }
+        return bestBin * 2 / (WaveTracker.binCount - 1) - 1;
+    }
+
+    private recordGuessFactor(wave: Wave, enemyX: number, enemyY: number) {
+        const enemyAngle = Math.atan2(enemyY - wave.originY, enemyX - wave.originX);
+        const bearingOffset = normalizeRelativeAngle(enemyAngle - wave.firingAngle);
+        const escapeAngle = Math.asin(8 / wave.bulletSpeed);
+        const guessFactor = clamp(bearingOffset / escapeAngle, -1, 1);
+        const bin = Math.round((guessFactor + 1) * 0.5 * (WaveTracker.binCount - 1));
+        this.guessFactorHits[bin] += 1;
+    }
+}
+
+function normalizeRelativeAngle(angle: number) {
+    while (angle <= -Math.PI) {
+        angle += 2 * Math.PI;
+    }
+    while (angle > Math.PI) {
+        angle -= 2 * Math.PI;
+    }
+    return angle;
+}
+
+function clamp(value: number, minimum: number, maximum: number) {
+    return Math.max(minimum, Math.min(maximum, value));
+}
+```
+
+:::
+
+Call `addWave(...)` immediately after firing, passing the firing position, current turn, firepower, and gun angle. Call
+`update(...)` once per turn with the newest enemy position. The classic tab uses compass-style angles, while the Tank
+Royale tabs use ordinary mathematical angles.
 
 ### Example: Accumulating GuessFactor hits
 
@@ -186,17 +555,16 @@ After 8 waves hit an enemy, the bot records these GuessFactor values:
 
 The accumulated histogram looks like:
 
-```text
-Frequency distribution of GuessFactor hits:
-GF -0.34: ■ (1 hit)
-GF -0.12: ■ (1 hit)
-GF +0.02: ■ (1 hit)
-GF +0.45: ███ (3 hits) ← Most common!
-GF +0.78: ■ (1 hit)
-GF +0.89: ■ (1 hit)
+| GuessFactor | Hits |
+|-------------|------|
+| −0.34       | 1    |
+| −0.12       | 1    |
+| +0.02       | 1    |
+| +0.45       | 3 (most common) |
+| +0.78       | 1    |
+| +0.89       | 1    |
 
-Best GuessFactor: +0.45 (3 hits)
-```
+The best GuessFactor is **+0.45**, the bin with three hits.
 
 The pattern shows this enemy **favors moving right**. When the bot fires next time, it will aim at GF +0.45 because
 that's
@@ -204,15 +572,14 @@ where the enemy has been most likely to be. This is much smarter than aiming hea
 
 Over more battles, the histogram becomes richer:
 
-```text
-// After 50 more shots:
-GF -0.8 to -0.6: ███ (3 hits)
-GF -0.4 to -0.2: ████████ (8 hits)
-GF +0.0 to +0.2: ██████ (6 hits)
-GF +0.4 to +0.6: ████████████ (12 hits) ← Peak behavior
-GF +0.6 to +0.8: ██████ (6 hits)
-GF +0.8 to +1.0: ████ (4 hits)
-```
+| GuessFactor range | Hits |
+|-------------------|------|
+| −0.8 to −0.6     | 3    |
+| −0.4 to −0.2     | 8    |
+| +0.0 to +0.2     | 6    |
+| +0.4 to +0.6     | 12 (peak) |
+| +0.6 to +0.8     | 6    |
+| +0.8 to +1.0     | 4    |
 
 This fuller profile reveals the enemy's true movement tendencies, allowing for increasingly accurate predictions.
 

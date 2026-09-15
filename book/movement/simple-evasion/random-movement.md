@@ -1,7 +1,9 @@
 ---
 title: "Random Movement"
 category: "Movement & Evasion"
-summary: "Random movement uses unpredictable changes in speed and direction to make targeting difficult. While simple to implement, it forms the foundation of many advanced evasion strategies."
+summary: >-
+  Random movement uses unpredictable changes in speed and direction to make targeting difficult. While simple to
+  implement, it forms the foundation of many advanced evasion strategies.
 tags: [ "random-movement", "movement", "simple-evasion", "evasion", "intermediate", "robocode", "tank-royale" ]
 difficulty: "intermediate"
 source: [
@@ -26,7 +28,8 @@ effective against many targeting strategies and serves as the foundation for mor
 ## Why Randomness Works
 
 Targeting systems aim to predict where a bot will be when a bullet arrives. Most targeting methods rely on
-patterns, constant velocity, consistent turn rates, or predictable oscillations. Random movement breaks these patterns by
+patterns, constant velocity, consistent turn rates, or predictable oscillations. Random movement breaks these patterns
+by
 ensuring that future positions cannot be reliably predicted from past behavior.
 
 Against **head-on targeting**, random movement provides minimal benefit since head-on aims at the current position.
@@ -190,18 +193,14 @@ either alone, but wall avoidance is still required for a useful bot.
 
 Random movement must still avoid walls. A simple approach combines random decisions with boundary checking:
 
-```txt
-on turn:
-  // Check if approaching walls
-  if distanceToNearestWall < 100:
-    turnAwayFromWall()
-  else:
-    performRandomMovement()
-```
+Before applying a random command, compare the nearest-wall distance with a threshold such as 100 units. If the bot is
+too close, apply a turn that points away from the wall and postpone the random choice for that turn.
 
 More sophisticated implementations use wall smoothing to maintain randomness while preventing collisions.
 
-<img src="../../images/random-movement-pattern.svg" alt="A bot using random movement creates an unpredictable zigzag pattern compared to linear movement" style="max-width:100%;height:auto;"><br>
+<img src="../../images/random-movement-pattern.svg"
+alt="A bot using random movement creates an unpredictable zigzag pattern compared to linear movement"
+style="max-width:100%;height:auto;"><br>
 *A bot using random movement creates an unpredictable zigzag pattern compared to linear movement*
 
 ## Variations and Enhancements
@@ -210,17 +209,8 @@ More sophisticated implementations use wall smoothing to maintain randomness whi
 
 Instead of completely random decisions, use weighted probabilities:
 
-```txt
-on turn:
-  roll = random(0, 1)
-  
-  if roll < 0.5:
-    maintainSpeed()       // 50% stay same
-  elif roll < 0.8:
-    changeSpeedSlightly() // 30% minor change
-  else:
-    reverseDirection()    // 20% major change
-```
+For example, a roll below `0.5` can maintain speed, a roll below `0.8` can make a small speed change, and the remaining
+20% can reverse direction. This produces variation without making every turn an abrupt change.
 
 This creates smoother movement while maintaining unpredictability.
 
@@ -228,16 +218,8 @@ This creates smoother movement while maintaining unpredictability.
 
 Better random movement adapts to the situation:
 
-```txt
-on turn:
-  if enemyFiring:
-    increaseRandomnessLevel()
-  
-  if lowEnergy:
-    favorDefensivePositions()
-  
-  performRandomMovement(randomnessLevel)
-```
+When an enemy has probably fired, increase the size of the random turn range. When energy is low, cap the movement
+speed or bias the chosen command toward safer positions.
 
 Increasing randomness when the enemy fires helps dodge bullets. Reducing randomness when energy is low conserves
 resources while maintaining some unpredictability.
@@ -246,19 +228,293 @@ resources while maintaining some unpredictability.
 
 Combining random movement with orbiting (moving perpendicular to the enemy) creates effective evasion:
 
-```txt
-on turn:
-  angleToEnemy = calculateBearingToEnemy()
-  orbitAngle = angleToEnemy + 90  // Perpendicular
-  
-  // Add random variation
-  orbitAngle += random(-30, 30)
-  
-  setTurnRight(normalizeAngle(orbitAngle - heading))
-  setAhead(8)
-```
+An orbiting command can turn toward `enemyBearing + 90°`, add a random variation of up to 30°, and move at a moderate
+speed. The following policy combines these variations in one reusable decision function.
 
 This maintains strategic positioning while being unpredictable.
+
+### One policy for the variations
+
+The helper accepts the nearest-wall distance and a precomputed turn away from that wall. The surrounding bot supplies
+those values from its scan and battlefield geometry.
+
+::: code-group
+
+```java [Classic · Java]
+import java.util.Random;
+
+public final class RandomMovementPolicy {
+    private static final double WALL_THRESHOLD = 100;
+    private final Random random = new Random();
+    private int direction = 1;
+    private double speed = 8;
+
+    public Command choose(
+            double distanceToWall, double turnAwayFromWall,
+            boolean enemyFiring, boolean lowEnergy,
+            double enemyBearing, double heading) {
+        if (distanceToWall < WALL_THRESHOLD) {
+            return new Command(turnAwayFromWall, 100 * direction);
+        }
+
+        double roll = random.nextDouble();
+        if (roll >= 0.5 && roll < 0.8) {
+            speed = clamp(speed + random.nextDouble() * 4 - 2, 2, 8);
+        } else if (roll >= 0.8) {
+            direction = -direction;
+        }
+
+        double variation = enemyFiring ? 30 : 15;
+        double orbitAngle = enemyBearing + 90 + random.nextDouble() * 2 * variation - variation;
+        double turn = normalizeRelativeAngle(orbitAngle - heading);
+        if (lowEnergy) {
+            speed = Math.min(speed, 6);
+        }
+        return new Command(turn, direction * speed);
+    }
+
+    private static double normalizeRelativeAngle(double angle) {
+        while (angle <= -180) angle += 360;
+        while (angle > 180) angle -= 360;
+        return angle;
+    }
+
+    private static double clamp(double value, double minimum, double maximum) {
+        return Math.max(minimum, Math.min(maximum, value));
+    }
+
+    public static final class Command {
+        public final double turn;
+        public final double distance;
+
+        public Command(double turn, double distance) {
+            this.turn = turn;
+            this.distance = distance;
+        }
+    }
+}
+```
+
+```python [Tank Royale · Python]
+import random
+from dataclasses import dataclass
+
+
+@dataclass
+class Command:
+    turn: float
+    distance: float
+
+
+class RandomMovementPolicy:
+    WALL_THRESHOLD = 100.0
+
+    def __init__(self) -> None:
+        self.direction = 1
+        self.speed = 8.0
+
+    def choose(
+        self,
+        distance_to_wall: float,
+        turn_away_from_wall: float,
+        enemy_firing: bool,
+        low_energy: bool,
+        enemy_bearing: float,
+        heading: float,
+    ) -> Command:
+        if distance_to_wall < self.WALL_THRESHOLD:
+            return Command(turn_away_from_wall, 100 * self.direction)
+
+        roll = random.random()
+        if 0.5 <= roll < 0.8:
+            self.speed = max(2, min(8, self.speed + random.uniform(-2, 2)))
+        elif roll >= 0.8:
+            self.direction *= -1
+
+        variation = 30 if enemy_firing else 15
+        orbit_angle = enemy_bearing + 90 + random.uniform(-variation, variation)
+        turn = normalize_relative_angle(orbit_angle - heading)
+        if low_energy:
+            self.speed = min(self.speed, 6)
+        return Command(turn, self.direction * self.speed)
+
+
+def normalize_relative_angle(angle: float) -> float:
+    while angle <= -180:
+        angle += 360
+    while angle > 180:
+        angle -= 360
+    return angle
+```
+
+```java [Tank Royale · Java]
+import java.util.Random;
+
+public final class RandomMovementPolicy {
+    private static final double WALL_THRESHOLD = 100;
+    private final Random random = new Random();
+    private int direction = 1;
+    private double speed = 8;
+
+    public Command choose(
+            double distanceToWall, double turnAwayFromWall,
+            boolean enemyFiring, boolean lowEnergy,
+            double enemyBearing, double heading) {
+        if (distanceToWall < WALL_THRESHOLD) {
+            return new Command(turnAwayFromWall, 100 * direction);
+        }
+
+        double roll = random.nextDouble();
+        if (roll >= 0.5 && roll < 0.8) {
+            speed = clamp(speed + random.nextDouble() * 4 - 2, 2, 8);
+        } else if (roll >= 0.8) {
+            direction = -direction;
+        }
+
+        double variation = enemyFiring ? 30 : 15;
+        double orbitAngle = enemyBearing + 90 + random.nextDouble() * 2 * variation - variation;
+        double turn = normalizeRelativeAngle(orbitAngle - heading);
+        if (lowEnergy) {
+            speed = Math.min(speed, 6);
+        }
+        return new Command(turn, direction * speed);
+    }
+
+    private static double normalizeRelativeAngle(double angle) {
+        while (angle <= -180) angle += 360;
+        while (angle > 180) angle -= 360;
+        return angle;
+    }
+
+    private static double clamp(double value, double minimum, double maximum) {
+        return Math.max(minimum, Math.min(maximum, value));
+    }
+
+    public static final class Command {
+        public final double turn;
+        public final double distance;
+
+        public Command(double turn, double distance) {
+            this.turn = turn;
+            this.distance = distance;
+        }
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+
+public sealed class RandomMovementPolicy
+{
+    private const double WallThreshold = 100;
+    private readonly Random random = new();
+    private int direction = 1;
+    private double speed = 8;
+
+    public Command Choose(
+        double distanceToWall, double turnAwayFromWall,
+        bool enemyFiring, bool lowEnergy,
+        double enemyBearing, double heading)
+    {
+        if (distanceToWall < WallThreshold)
+        {
+            return new Command(turnAwayFromWall, 100 * direction);
+        }
+
+        double roll = random.NextDouble();
+        if (roll >= 0.5 && roll < 0.8)
+        {
+            speed = Math.Clamp(speed + random.NextDouble() * 4 - 2, 2, 8);
+        }
+        else if (roll >= 0.8)
+        {
+            direction = -direction;
+        }
+
+        double variation = enemyFiring ? 30 : 15;
+        double orbitAngle = enemyBearing + 90 + random.NextDouble() * 2 * variation - variation;
+        double turn = NormalizeRelativeAngle(orbitAngle - heading);
+        if (lowEnergy)
+        {
+            speed = Math.Min(speed, 6);
+        }
+        return new Command(turn, direction * speed);
+    }
+
+    private static double NormalizeRelativeAngle(double angle)
+    {
+        while (angle <= -180) angle += 360;
+        while (angle > 180) angle -= 360;
+        return angle;
+    }
+
+    public sealed class Command
+    {
+        public Command(double turn, double distance)
+        {
+            Turn = turn;
+            Distance = distance;
+        }
+
+        public double Turn { get; }
+        public double Distance { get; }
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+type MovementCommand = {
+    turn: number;
+    distance: number;
+};
+
+class RandomMovementPolicy {
+    private static readonly wallThreshold = 100;
+    private direction = 1;
+    private speed = 8;
+
+    choose(
+        distanceToWall: number,
+        turnAwayFromWall: number,
+        enemyFiring: boolean,
+        lowEnergy: boolean,
+        enemyBearing: number,
+        heading: number,
+    ): MovementCommand {
+        if (distanceToWall < RandomMovementPolicy.wallThreshold) {
+            return { turn: turnAwayFromWall, distance: 100 * this.direction };
+        }
+
+        const roll = Math.random();
+        if (roll >= 0.5 && roll < 0.8) {
+            this.speed = clamp(this.speed + Math.random() * 4 - 2, 2, 8);
+        } else if (roll >= 0.8) {
+            this.direction *= -1;
+        }
+
+        const variation = enemyFiring ? 30 : 15;
+        const orbitAngle = enemyBearing + 90 + Math.random() * 2 * variation - variation;
+        const turn = normalizeRelativeAngle(orbitAngle - heading);
+        if (lowEnergy) {
+            this.speed = Math.min(this.speed, 6);
+        }
+        return { turn, distance: this.direction * this.speed };
+    }
+}
+
+function normalizeRelativeAngle(angle: number) {
+    while (angle <= -180) angle += 360;
+    while (angle > 180) angle -= 360;
+    return angle;
+}
+
+function clamp(value: number, minimum: number, maximum: number) {
+    return Math.max(minimum, Math.min(maximum, value));
+}
+```
+
+:::
 
 ## Common Pitfalls
 

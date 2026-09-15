@@ -307,23 +307,198 @@ Then overshoot by about half of that:
 
 $\text{overshoot} \approx \frac{\text{enemyAngularWidth}}{2}$
 
-Conceptual pseudocode:
+The following callbacks implement the width-lock calculation. The Classic tab keeps the calculation in radians, while
+the Tank Royale tabs convert the result to degrees because their radar direction and turn setters use degrees.
 
-```text
-// On scan:
-absBearing = angleToEnemyFromArenaAxes()
-radarHeading = currentRadarHeading()
-distance = distanceToEnemy()
+::: code-group
 
-neededTurn = normalizeRelativeAngle(absBearing - radarHeading)
+```java [Classic · Java]
+import robocode.AdvancedRobot;
+import robocode.ScannedRobotEvent;
+import robocode.util.Utils;
 
-enemyWidth = 36.0  // units (approx)
-enemyAngularWidth = 2 * atan((enemyWidth / 2) / distance)
-overshoot = enemyAngularWidth / 2
+public class WidthLockBot extends AdvancedRobot {
+    @Override
+    public void run() {
+        setTurnRadarRightRadians(Double.POSITIVE_INFINITY);
+        while (true) {
+            execute();
+        }
+    }
 
-// Overshoot in the same direction as the needed turn:
-setTurnRadar(neededTurn + sign(neededTurn) * overshoot)
+    @Override
+    public void onScannedRobot(ScannedRobotEvent event) {
+        double absoluteBearing = getHeadingRadians() + event.getBearingRadians();
+        double neededTurn = Utils.normalRelativeAngle(
+                absoluteBearing - getRadarHeadingRadians());
+        double enemyWidth = 36.0;
+        double angularWidth = 2 * Math.atan((enemyWidth / 2) / event.getDistance());
+        double overshoot = Math.copySign(angularWidth / 2, neededTurn);
+        setTurnRadarRightRadians(neededTurn + overshoot);
+    }
+}
 ```
+
+```python [Tank Royale · Python]
+import math
+
+from robocode_tank_royale.bot_api import Bot
+from robocode_tank_royale.bot_api.events import ScannedBotEvent
+
+
+class WidthLockBot(Bot):
+    def run(self) -> None:
+        self.set_turn_radar_left(float("inf"))
+        while self.running:
+            self.go()
+
+    def on_scanned_bot(self, event: ScannedBotEvent) -> None:
+        target_direction = math.degrees(math.atan2(event.y - self.y, event.x - self.x))
+        needed_turn = normalize_relative_angle(target_direction - self.radar_direction)
+        angular_width = math.degrees(2 * math.atan(36.0 / (2 * event.distance)))
+        overshoot = math.copysign(angular_width / 2, needed_turn)
+        self.set_turn_radar_left(needed_turn + overshoot)
+
+
+def normalize_relative_angle(angle: float) -> float:
+    while angle <= -180:
+        angle += 360
+    while angle > 180:
+        angle -= 360
+    return angle
+
+
+def main() -> None:
+    WidthLockBot().start()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+```java [Tank Royale · Java]
+import dev.robocode.tankroyale.botapi.Bot;
+import dev.robocode.tankroyale.botapi.events.ScannedBotEvent;
+
+public class WidthLockBot extends Bot {
+    public static void main(String[] args) {
+        new WidthLockBot().start();
+    }
+
+    @Override
+    public void run() {
+        setTurnRadarLeft(Double.POSITIVE_INFINITY);
+        while (isRunning()) {
+            go();
+        }
+    }
+
+    @Override
+    public void onScannedBot(ScannedBotEvent event) {
+        double targetDirection = Math.toDegrees(Math.atan2(event.getY() - getY(), event.getX() - getX()));
+        double neededTurn = normalizeRelativeAngle(targetDirection - getRadarDirection());
+        double angularWidth = Math.toDegrees(2 * Math.atan(36.0 / (2 * event.getDistance())));
+        double overshoot = Math.copySign(angularWidth / 2, neededTurn);
+        setTurnRadarLeft(neededTurn + overshoot);
+    }
+
+    private static double normalizeRelativeAngle(double angle) {
+        while (angle <= -180) {
+            angle += 360;
+        }
+        while (angle > 180) {
+            angle -= 360;
+        }
+        return angle;
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+using Robocode.TankRoyale.BotApi;
+using Robocode.TankRoyale.BotApi.Events;
+
+public class WidthLockBot : Bot
+{
+    static void Main(string[] args)
+    {
+        new WidthLockBot().Start();
+    }
+
+    public override void Run()
+    {
+        SetTurnRadarLeft(double.PositiveInfinity);
+        while (IsRunning)
+        {
+            Go();
+        }
+    }
+
+    public override void OnScannedBot(ScannedBotEvent evt)
+    {
+        double targetDirection = Math.Atan2(evt.Y - Y, evt.X - X) * 180 / Math.PI;
+        double neededTurn = NormalizeRelativeAngle(targetDirection - RadarDirection);
+        double angularWidth = 2 * Math.Atan(36.0 / (2 * evt.Distance)) * 180 / Math.PI;
+        double overshoot = Math.CopySign(angularWidth / 2, neededTurn);
+        SetTurnRadarLeft(neededTurn + overshoot);
+    }
+
+    private static double NormalizeRelativeAngle(double angle)
+    {
+        while (angle <= -180)
+        {
+            angle += 360;
+        }
+        while (angle > 180)
+        {
+            angle -= 360;
+        }
+        return angle;
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+import { Bot, ScannedBotEvent } from "@robocode.dev/tank-royale-bot-api";
+
+class WidthLockBot extends Bot {
+    static main() {
+        new WidthLockBot().start();
+    }
+
+    override run() {
+        this.setTurnRadarLeft(Number.POSITIVE_INFINITY);
+        while (this.isRunning()) {
+            this.go();
+        }
+    }
+
+    override onScannedBot(event: ScannedBotEvent) {
+        const targetDirection = Math.atan2(event.y - this.y, event.x - this.x) * 180 / Math.PI;
+        const neededTurn = WidthLockBot.normalizeRelativeAngle(
+            targetDirection - this.radarDirection,
+        );
+        const angularWidth = 2 * Math.atan(36 / (2 * event.distance)) * 180 / Math.PI;
+        const overshoot = Math.sign(neededTurn) * angularWidth / 2;
+        this.setTurnRadarLeft(neededTurn + overshoot);
+    }
+
+    private static normalizeRelativeAngle(angle: number) {
+        while (angle <= -180) {
+            angle += 360;
+        }
+        while (angle > 180) {
+            angle -= 360;
+        }
+        return angle;
+    }
+}
+
+WidthLockBot.main();
+```
+
+:::
 
 Notes:
 
