@@ -101,77 +101,124 @@ consistent gun heat cycles and predictable energy drain.
 
 - Ignores situational advantages (close range, high confidence, energy imbalances).
 
-### Distance-based power
+### A hybrid selector in five languages
 
-Adjust power based on enemy distance:
+The selector below combines distance, targeting confidence, and the energy balance. It expects `hitRate` as a value
+between 0 and 1. If no history exists yet, a neutral value such as `0.5` avoids pretending that the gun is accurate.
 
-```txt
-if distance < 150:
-    power = 3.0
-else if distance < 400:
+::: code-group
+
+```java [Classic · Java]
+static double chooseFirePower(
+        double distance, double myEnergy, double enemyEnergy, double hitRate) {
+    double power = 2.0;
+    if (myEnergy > enemyEnergy + 20) {
+        power = 3.0;
+    }
+    if (distance > 400) {
+        power = Math.min(power, 1.5);
+    }
+    if (myEnergy < 15) {
+        power = Math.min(power, 1.0);
+    }
+    if (distance < 150 && hitRate > 0.6 && myEnergy >= 15) {
+        power = 3.0;
+    }
+    return Math.max(0.1, Math.min(3.0, power));
+}
+```
+
+```python [Tank Royale · Python]
+def choose_fire_power(
+    distance: float, my_energy: float, enemy_energy: float, hit_rate: float
+) -> float:
     power = 2.0
-else:
-    power = 1.2
+    if my_energy > enemy_energy + 20:
+        power = 3.0
+    if distance > 400:
+        power = min(power, 1.5)
+    if my_energy < 15:
+        power = min(power, 1.0)
+    if distance < 150 and hit_rate > 0.6 and my_energy >= 15:
+        power = 3.0
+    return max(0.1, min(3.0, power))
 ```
 
-**Rationale:** Close targets are easier to hit and slower bullets don't matter as much. Distant targets require speed
-over power.
-
-### Confidence-based power
-
-If your targeting system tracks hit rate or prediction confidence, scale power accordingly:
-
-```txt
-hitRate = hits / shots (i.e. hits + misses)
-if hitRate > 0.7:
-    power = 3.0  # High confidence
-else if hitRate > 0.4:
-    power = 2.0
-else:
-    power = 1.0  # Low confidence, prefer speed
+```java [Tank Royale · Java]
+static double chooseFirePower(
+        double distance, double myEnergy, double enemyEnergy, double hitRate) {
+    double power = 2.0;
+    if (myEnergy > enemyEnergy + 20) {
+        power = 3.0;
+    }
+    if (distance > 400) {
+        power = Math.min(power, 1.5);
+    }
+    if (myEnergy < 15) {
+        power = Math.min(power, 1.0);
+    }
+    if (distance < 150 && hitRate > 0.6 && myEnergy >= 15) {
+        power = 3.0;
+    }
+    return Math.max(0.1, Math.min(3.0, power));
+}
 ```
 
-This approach is common with virtual guns or statistical targeting: fire strong when you're landing shots, and fire
-light when you're struggling.
+```csharp [Tank Royale · C#]
+using System;
 
-### Energy-based power
-
-When your energy is low, reduce power to preserve a survival buffer:
-
-```txt
-myEnergy = getEnergy()
-enemyEnergy = getEnemyEnergy()
-
-if myEnergy < 10:
-    power = 0.5  # Conserve energy
-else if myEnergy > enemyEnergy + 20:
-    power = 3.0  # Dominate with firepower
-else:
-    power = 2.0  # Balanced
+static double ChooseFirePower(
+    double distance, double myEnergy, double enemyEnergy, double hitRate)
+{
+    double power = 2.0;
+    if (myEnergy > enemyEnergy + 20)
+    {
+        power = 3.0;
+    }
+    if (distance > 400)
+    {
+        power = Math.Min(power, 1.5);
+    }
+    if (myEnergy < 15)
+    {
+        power = Math.Min(power, 1.0);
+    }
+    if (distance < 150 && hitRate > 0.6 && myEnergy >= 15)
+    {
+        power = 3.0;
+    }
+    return Math.Max(0.1, Math.Min(3.0, power));
+}
 ```
 
-**Insight:** If you have a large energy advantage, you can afford to fire heavy bullets and pressure the enemy.
-If you're behind, lighter shots keep you in the fight longer.
-
-### Hybrid strategies
-
-Many competitive bots combine multiple factors:
-
-```txt
-power = 2.0  # Start with default
-
-# Reduce for distance
-if distance > 400:
-    power = min(power, 1.5)
-
-# Reduce for low energy
-if myEnergy < 15:
-    power = min(power, 1.0)
-
-# Increase for close range and high confidence
-if distance < 150 and hitRate > 0.6:
-    power = 3.0
+```typescript [Tank Royale · TypeScript]
+function chooseFirePower(
+    distance: number,
+    myEnergy: number,
+    enemyEnergy: number,
+    hitRate: number,
+): number {
+    let power = 2.0;
+    if (myEnergy > enemyEnergy + 20) {
+        power = 3.0;
+    }
+    if (distance > 400) {
+        power = Math.min(power, 1.5);
+    }
+    if (myEnergy < 15) {
+        power = Math.min(power, 1.0);
+    }
+    if (distance < 150 && hitRate > 0.6 && myEnergy >= 15) {
+        power = 3.0;
+    }
+    return Math.max(0.1, Math.min(3.0, power));
+}
 ```
+
+:::
+
+Close, confident shots can justify heavy bullets. Distance caps power when travel time is long, and low energy caps it
+again so the bot does not risk disablement for a speculative hit.
 
 ## Timing decisions: when to fire
 
@@ -277,4 +324,3 @@ firepower selection is a key step from intermediate to advanced play.
 - [Selecting Fire Power](https://robowiki.net/wiki/Selecting_Fire_Power) - RoboWiki (classic Robocode)
 - [When To Fire](https://robowiki.net/wiki/When_To_Fire) - RoboWiki (classic Robocode)
 - [Bullet](https://robowiki.net/wiki/Bullet) - RoboWiki (classic Robocode)
-

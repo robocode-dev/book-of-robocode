@@ -95,6 +95,146 @@ Most APIs surface events like:
 Keep reactions small and focused. They should either trigger an immediate response (e.g., dodge) or update the state for
 the next turn (e.g., last known enemy position).
 
+## A minimal bot in five languages
+
+The following examples implement the same small bot on each platform. The bot moves back and forth, rotates its gun,
+and fires when it scans an opponent. The gun and radar use their default chained behavior, so rotating the gun also
+keeps the radar sweeping.
+
+The examples contain source code only. Use the platform tutorials in [Further Reading](#further-reading) for project
+files, dependencies, bot configuration, and instructions for starting a battle.
+
+::: code-group
+
+```java [Classic Robocode · Java]
+import robocode.Robot;
+import robocode.ScannedRobotEvent;
+
+public class MyFirstRobot extends Robot {
+    @Override
+    public void run() {
+        while (true) {
+            ahead(100);
+            turnGunRight(360);
+            back(100);
+            turnGunRight(360);
+        }
+    }
+
+    @Override
+    public void onScannedRobot(ScannedRobotEvent event) {
+        fire(1);
+    }
+}
+```
+
+```python [Tank Royale · Python]
+from robocode_tank_royale.bot_api import Bot
+from robocode_tank_royale.bot_api.events import ScannedBotEvent
+
+
+class MyFirstBot(Bot):
+    def run(self) -> None:
+        while self.running:
+            self.forward(100)
+            self.turn_gun_right(360)
+            self.back(100)
+            self.turn_gun_right(360)
+
+    def on_scanned_bot(self, event: ScannedBotEvent) -> None:
+        self.fire(1)
+
+
+def main() -> None:
+    MyFirstBot().start()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+```java [Tank Royale · Java]
+import dev.robocode.tankroyale.botapi.Bot;
+import dev.robocode.tankroyale.botapi.events.ScannedBotEvent;
+
+public class MyFirstBot extends Bot {
+    public static void main(String[] args) {
+        new MyFirstBot().start();
+    }
+
+    @Override
+    public void run() {
+        while (isRunning()) {
+            forward(100);
+            turnGunRight(360);
+            back(100);
+            turnGunRight(360);
+        }
+    }
+
+    @Override
+    public void onScannedBot(ScannedBotEvent event) {
+        fire(1);
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using Robocode.TankRoyale.BotApi;
+using Robocode.TankRoyale.BotApi.Events;
+
+public class MyFirstBot : Bot
+{
+    static void Main(string[] args)
+    {
+        new MyFirstBot().Start();
+    }
+
+    public override void Run()
+    {
+        while (IsRunning)
+        {
+            Forward(100);
+            TurnGunRight(360);
+            Back(100);
+            TurnGunRight(360);
+        }
+    }
+
+    public override void OnScannedBot(ScannedBotEvent evt)
+    {
+        Fire(1);
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+import { Bot, ScannedBotEvent } from "@robocode.dev/tank-royale-bot-api";
+
+class MyFirstBot extends Bot {
+    static main() {
+        new MyFirstBot().start();
+    }
+
+    override run() {
+        while (this.isRunning()) {
+            this.forward(100);
+            this.turnGunLeft(360);
+            this.back(100);
+            this.turnGunLeft(360);
+        }
+    }
+
+    override onScannedBot(event: ScannedBotEvent) {
+        this.fire(1);
+    }
+}
+
+MyFirstBot.main();
+```
+
+:::
+
 ## Minimal platform notes
 
 - Classic Robocode typically uses a properties (`.properties`) file to define the bot. The filename usually must match

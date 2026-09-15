@@ -24,8 +24,9 @@ publication.
 
 **The Book of Robocode** (authored by **Flemming Nørnberg Larsen**) unifies knowledge previously scattered across
 RoboWiki.net, forums, and historical sources. It focuses on concepts, strategy patterns, math, and reasoning. Code
-examples appear when they clarify principles; otherwise, pseudocode is preferred. The goal is to teach ideas that
-transfer between classic Java-based Robocode and Robocode Tank Royale.
+Short code examples appear when they clarify an implementation; deliberately platform-neutral or not-yet-verified
+algorithms may use pseudocode. Shared implementations use five-language code tabs so the ideas transfer between classic
+Java-based Robocode and Robocode Tank Royale.
 
 ---
 
@@ -164,7 +165,7 @@ book-of-robocode/
 
 - Reading-oriented dark theme
 - Math formulas via KaTeX (`E = m c^2` etc.)
-- Multi-language & pseudocode examples
+- Multi-language code groups & algorithm sketches
 - Mobile-friendly responsive layout
 - Built-in search & structured sidebar navigation
 

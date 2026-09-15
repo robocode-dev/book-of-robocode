@@ -1,7 +1,9 @@
 ---
 title: "Anti-Gravity Movement"
 category: "Movement & Evasion"
-summary: "Anti-gravity movement uses repulsive force fields to maintain optimal positioning relative to enemies, walls, and battlefield features. This strategic movement approach excels in melee combat, though it has been superseded by Wave Surfing for competitive 1v1 play."
+summary: >-
+  Anti-gravity movement uses repulsive force fields to position a bot relative to enemies, walls, and battlefield
+  features. It excels in melee combat, though Wave Surfing has superseded it for competitive 1v1 play.
 tags: [ "anti-gravity-movement", "movement", "strategic-movement", "melee", "advanced", "robocode", "tank-royale" ]
 difficulty: "advanced"
 source: [
@@ -44,7 +46,9 @@ depends on:
 The bot sums all force vectors to get a resultant force, then moves in the direction that minimizes or maximizes this
 force (depending on whether forces are repulsive or attractive).
 
-<img src="../../images/anti-gravity-force-vectors.svg" alt="Multiple enemies exert repulsive forces on the bot, creating a resultant force vector away from crowded areas" style="max-width:100%;height:auto;"><br>
+<img src="../../images/anti-gravity-force-vectors.svg"
+alt="Multiple enemies exert repulsive forces on the bot, creating a resultant force vector away from crowded areas"
+style="max-width:100%;height:auto;"><br>
 *Multiple enemies exert repulsive forces on the bot, creating a resultant force vector away from crowded areas*
 
 ## Why Anti-Gravity Works
@@ -73,138 +77,363 @@ smooth, adaptive nature makes patterns harder to predict than fixed orbits or os
 
 The fundamental calculation for each entity:
 
-```txt
-function calculateForce(entity):
-  dx = myX - entity.x
-  dy = myY - entity.y
-  distance = sqrt(dx² + dy²)
-  
-  if distance < minDistance:
-    distance = minDistance  // Prevent division by zero
-  
-  // Inverse square law: force decreases with distance
-  forceMagnitude = strength / distance²
-  
-  // Force components along x and y axes
-  forceX = forceMagnitude * (dx / distance)
-  forceY = forceMagnitude * (dy / distance)
-  
-  return (forceX, forceY)
-```
+For an entity at `(entity.x, entity.y)`, calculate `dx = myX - entity.x` and `dy = myY - entity.y`. Let
+`distance = max(sqrt(dx² + dy²), minDistance)`, then calculate `force = strength / distance²`. The repulsive vector is
+`(force × dx / distance, force × dy / distance)`. A negative `strength` makes the same function attractive.
 
 Where `strength` is a tunable constant that determines how strongly the entity repels (positive) or attracts (negative).
 
 ### Summing All Forces
 
-```txt
-function calculateTotalForce():
-  totalForceX = 0
-  totalForceY = 0
-  
-  // Add enemy repulsions
-  for each enemy:
-    (fx, fy) = calculateForce(enemy)
-    totalForceX += fx * enemyStrength
-    totalForceY += fy * enemyStrength
-  
-  // Add wall repulsions
-  totalForceX += calculateWallForce(x direction)
-  totalForceY += calculateWallForce(y direction)
-  
-  return (totalForceX, totalForceY)
-```
+Start the total at `(0, 0)`, add one force vector for every enemy, then add wall forces. Near the left wall, the wall
+force points right; near the right wall, it points left. The same relationship applies to the bottom and top walls.
 
 ### Converting Force to Movement
 
-```txt
-on turn:
-  (forceX, forceY) = calculateTotalForce()
-  
-  // Calculate angle to move (angle away from combined forces)
-  targetAngle = atan2(forceY, forceX)
-  
-  // Convert to heading
-  angleToTurn = normalizeAngle(targetAngle - myHeading)
-  
-  // Move in that direction
-  setTurnRight(angleToTurn)
-  setAhead(100)  // Full speed
-```
+The resultant vector points toward the next destination. A bot can add that vector to its current position and pass the
+result to a GoTo or heading controller. The adapter must use the platform's angle convention when turning toward it.
 
 ## Tutorial: Building a Basic Anti-Gravity Bot
 
-Let's build a simple antigravity movement system step by step.
+The helper below calculates enemy and wall forces and returns a destination point. It is API-neutral so the surrounding
+bot can apply its own GoTo or turn-and-ahead routine.
+
+::: code-group
+
+```java [Classic · Java]
+import java.util.List;
+
+public final class AntiGravityController {
+    private static final double MIN_DISTANCE = 1;
+    private final double enemyStrength;
+    private final double wallStrength;
+
+    public AntiGravityController(double enemyStrength, double wallStrength) {
+        this.enemyStrength = enemyStrength;
+        this.wallStrength = wallStrength;
+    }
+
+    public Point nextDestination(
+            double myX, double myY, double fieldWidth, double fieldHeight,
+            List<Entity> enemies) {
+        double forceX = 0;
+        double forceY = 0;
+        for (Entity enemy : enemies) {
+            Point force = forceFrom(myX, myY, enemy.x, enemy.y, enemyStrength * enemy.strength);
+            forceX += force.x;
+            forceY += force.y;
+        }
+
+        double left = Math.max(myX, MIN_DISTANCE);
+        double right = Math.max(fieldWidth - myX, MIN_DISTANCE);
+        double bottom = Math.max(myY, MIN_DISTANCE);
+        double top = Math.max(fieldHeight - myY, MIN_DISTANCE);
+        forceX += wallStrength / (left * left) - wallStrength / (right * right);
+        forceY += wallStrength / (bottom * bottom) - wallStrength / (top * top);
+        return new Point(myX + forceX, myY + forceY);
+    }
+
+    private static Point forceFrom(
+            double myX, double myY, double entityX, double entityY, double strength) {
+        double dx = myX - entityX;
+        double dy = myY - entityY;
+        double distance = Math.max(Math.hypot(dx, dy), MIN_DISTANCE);
+        double magnitude = strength / (distance * distance);
+        return new Point(magnitude * dx / distance, magnitude * dy / distance);
+    }
+
+    public static final class Entity {
+        public final double x;
+        public final double y;
+        public final double strength;
+
+        public Entity(double x, double y, double strength) {
+            this.x = x;
+            this.y = y;
+            this.strength = strength;
+        }
+    }
+
+    public static final class Point {
+        public final double x;
+        public final double y;
+
+        public Point(double x, double y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+}
+```
+
+```python [Tank Royale · Python]
+from dataclasses import dataclass
+
+
+MIN_DISTANCE = 1.0
+
+
+@dataclass
+class Entity:
+    x: float
+    y: float
+    strength: float
+
+
+@dataclass
+class Point:
+    x: float
+    y: float
+
+
+class AntiGravityController:
+    def __init__(self, enemy_strength: float, wall_strength: float) -> None:
+        self.enemy_strength = enemy_strength
+        self.wall_strength = wall_strength
+
+    def next_destination(
+        self,
+        my_x: float,
+        my_y: float,
+        arena_width: float,
+        arena_height: float,
+        enemies: list[Entity],
+    ) -> Point:
+        force_x = 0.0
+        force_y = 0.0
+        for enemy in enemies:
+            force = self._force_from(my_x, my_y, enemy.x, enemy.y, self.enemy_strength * enemy.strength)
+            force_x += force.x
+            force_y += force.y
+
+        left = max(my_x, MIN_DISTANCE)
+        right = max(arena_width - my_x, MIN_DISTANCE)
+        bottom = max(my_y, MIN_DISTANCE)
+        top = max(arena_height - my_y, MIN_DISTANCE)
+        force_x += self.wall_strength / left**2 - self.wall_strength / right**2
+        force_y += self.wall_strength / bottom**2 - self.wall_strength / top**2
+        return Point(my_x + force_x, my_y + force_y)
+
+    @staticmethod
+    def _force_from(my_x: float, my_y: float, entity_x: float, entity_y: float, strength: float) -> Point:
+        dx = my_x - entity_x
+        dy = my_y - entity_y
+        distance = max((dx * dx + dy * dy) ** 0.5, MIN_DISTANCE)
+        magnitude = strength / distance**2
+        return Point(magnitude * dx / distance, magnitude * dy / distance)
+```
+
+```java [Tank Royale · Java]
+import java.util.List;
+
+public final class AntiGravityController {
+    private static final double MIN_DISTANCE = 1;
+    private final double enemyStrength;
+    private final double wallStrength;
+
+    public AntiGravityController(double enemyStrength, double wallStrength) {
+        this.enemyStrength = enemyStrength;
+        this.wallStrength = wallStrength;
+    }
+
+    public Point nextDestination(
+            double myX, double myY, double arenaWidth, double arenaHeight,
+            List<Entity> enemies) {
+        double forceX = 0;
+        double forceY = 0;
+        for (Entity enemy : enemies) {
+            Point force = forceFrom(myX, myY, enemy.x, enemy.y, enemyStrength * enemy.strength);
+            forceX += force.x;
+            forceY += force.y;
+        }
+
+        double left = Math.max(myX, MIN_DISTANCE);
+        double right = Math.max(arenaWidth - myX, MIN_DISTANCE);
+        double bottom = Math.max(myY, MIN_DISTANCE);
+        double top = Math.max(arenaHeight - myY, MIN_DISTANCE);
+        forceX += wallStrength / (left * left) - wallStrength / (right * right);
+        forceY += wallStrength / (bottom * bottom) - wallStrength / (top * top);
+        return new Point(myX + forceX, myY + forceY);
+    }
+
+    private static Point forceFrom(
+            double myX, double myY, double entityX, double entityY, double strength) {
+        double dx = myX - entityX;
+        double dy = myY - entityY;
+        double distance = Math.max(Math.hypot(dx, dy), MIN_DISTANCE);
+        double magnitude = strength / (distance * distance);
+        return new Point(magnitude * dx / distance, magnitude * dy / distance);
+    }
+
+    public static final class Entity {
+        public final double x;
+        public final double y;
+        public final double strength;
+
+        public Entity(double x, double y, double strength) {
+            this.x = x;
+            this.y = y;
+            this.strength = strength;
+        }
+    }
+
+    public static final class Point {
+        public final double x;
+        public final double y;
+
+        public Point(double x, double y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+using System.Collections.Generic;
+
+public sealed class AntiGravityController
+{
+    private const double MinDistance = 1;
+    private readonly double enemyStrength;
+    private readonly double wallStrength;
+
+    public AntiGravityController(double enemyStrength, double wallStrength)
+    {
+        this.enemyStrength = enemyStrength;
+        this.wallStrength = wallStrength;
+    }
+
+    public Point NextDestination(
+        double myX, double myY, double arenaWidth, double arenaHeight,
+        IReadOnlyList<Entity> enemies)
+    {
+        double forceX = 0;
+        double forceY = 0;
+        foreach (Entity enemy in enemies)
+        {
+            Point force = ForceFrom(myX, myY, enemy.X, enemy.Y, enemyStrength * enemy.Strength);
+            forceX += force.X;
+            forceY += force.Y;
+        }
+
+        double left = Math.Max(myX, MinDistance);
+        double right = Math.Max(arenaWidth - myX, MinDistance);
+        double bottom = Math.Max(myY, MinDistance);
+        double top = Math.Max(arenaHeight - myY, MinDistance);
+        forceX += wallStrength / (left * left) - wallStrength / (right * right);
+        forceY += wallStrength / (bottom * bottom) - wallStrength / (top * top);
+        return new Point(myX + forceX, myY + forceY);
+    }
+
+    private static Point ForceFrom(double myX, double myY, double entityX, double entityY, double strength)
+    {
+        double dx = myX - entityX;
+        double dy = myY - entityY;
+        double distance = Math.Max(Math.Sqrt(dx * dx + dy * dy), MinDistance);
+        double magnitude = strength / (distance * distance);
+        return new Point(magnitude * dx / distance, magnitude * dy / distance);
+    }
+
+    public sealed class Entity
+    {
+        public Entity(double x, double y, double strength)
+        {
+            X = x;
+            Y = y;
+            Strength = strength;
+        }
+
+        public double X { get; }
+        public double Y { get; }
+        public double Strength { get; }
+    }
+
+    public sealed class Point
+    {
+        public Point(double x, double y)
+        {
+            X = x;
+            Y = y;
+        }
+
+        public double X { get; }
+        public double Y { get; }
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+type Entity = {
+    x: number;
+    y: number;
+    strength: number;
+};
+
+type Point = {
+    x: number;
+    y: number;
+};
+
+class AntiGravityController {
+    private static readonly minDistance = 1;
+
+    constructor(
+        private readonly enemyStrength: number,
+        private readonly wallStrength: number,
+    ) {}
+
+    nextDestination(
+        myX: number,
+        myY: number,
+        arenaWidth: number,
+        arenaHeight: number,
+        enemies: Entity[],
+    ): Point {
+        let forceX = 0;
+        let forceY = 0;
+        for (const enemy of enemies) {
+            const force = this.forceFrom(myX, myY, enemy);
+            forceX += force.x;
+            forceY += force.y;
+        }
+
+        const left = Math.max(myX, AntiGravityController.minDistance);
+        const right = Math.max(arenaWidth - myX, AntiGravityController.minDistance);
+        const bottom = Math.max(myY, AntiGravityController.minDistance);
+        const top = Math.max(arenaHeight - myY, AntiGravityController.minDistance);
+        forceX += this.wallStrength / left ** 2 - this.wallStrength / right ** 2;
+        forceY += this.wallStrength / bottom ** 2 - this.wallStrength / top ** 2;
+        return { x: myX + forceX, y: myY + forceY };
+    }
+
+    private forceFrom(myX: number, myY: number, entity: Entity): Point {
+        const dx = myX - entity.x;
+        const dy = myY - entity.y;
+        const distance = Math.max(Math.hypot(dx, dy), AntiGravityController.minDistance);
+        const magnitude = this.enemyStrength * entity.strength / distance ** 2;
+        return { x: magnitude * dx / distance, y: magnitude * dy / distance };
+    }
+}
+```
+
+:::
 
 ### Step 1: Enemy Force Calculation
 
-Start with basic enemy repulsion:
-
-```txt
-class AntiGravityBot:
-  enemyStrength = 50000  // Tune this value
-  
-  function getEnemyForce():
-    forceX = 0
-    forceY = 0
-    
-    for each scannedEnemy:
-      dx = myX - enemy.x
-      dy = myY - enemy.y
-      distance = max(1, sqrt(dx² + dy²))  // Avoid zero division
-      
-      force = enemyStrength / distance²
-      
-      forceX += force * (dx / distance)
-      forceY += force * (dy / distance)
-    
-    return (forceX, forceY)
-```
+Start with enemy repulsion by passing each scanned enemy as an `Entity` with a positive strength. The helper sums those
+vectors before wall forces are added.
 
 ### Step 2: Wall Avoidance
 
-Add wall repulsion to keep the bot from corners:
-
-```txt
-  wallStrength = 20000
-  
-  function getWallForce():
-    forceX = 0
-    forceY = 0
-    
-    // Distance to each wall
-    distanceToLeft = myX
-    distanceToRight = battlefieldWidth - myX
-    distanceToBottom = myY
-    distanceToTop = battlefieldHeight - myY
-    
-    // Repel from each wall
-    forceX += wallStrength / distanceToLeft²
-    forceX -= wallStrength / distanceToRight²
-    forceY += wallStrength / distanceToBottom²
-    forceY -= wallStrength / distanceToTop²
-    
-    return (forceX, forceY)
-```
+Add a wall strength such as 20,000. Each wall contributes an inverse-square force away from itself; the helper clamps
+each wall distance to one unit so a nearly touching bot does not divide by zero.
 
 ### Step 3: Movement Execution
 
-Combine forces and move:
-
-```txt
-  on turn:
-    (enemyFX, enemyFY) = getEnemyForce()
-    (wallFX, wallFY) = getWallForce()
-    
-    totalForceX = enemyFX + wallFX
-    totalForceY = enemyFY + wallFY
-    
-    // Calculate movement angle
-    targetAngle = atan2(totalForceY, totalForceX)
-    angleToTurn = normalizeAngle(targetAngle - myHeading)
-    
-    setTurnRight(angleToTurn)
-    setAhead(100)
-```
+Pass the returned point to the movement routine. In a real bot, limit the destination to the safe battlefield rectangle
+and translate the point into the platform's heading convention before issuing movement commands.
 
 ### Step 4: Tuning Force Strengths
 
@@ -217,7 +446,9 @@ The effectiveness depends heavily on tuning:
 Start with enemy strength around 50,000 and wall strength around 20,000, then adjust based on battlefield size and
 combat style.
 
-<img src="../../images/anti-gravity-movement-pattern.svg" alt="Antigravity movement creates smooth, adaptive paths that maintain distance from multiple threats" style="max-width:100%;height:auto;"><br>
+<img src="../../images/anti-gravity-movement-pattern.svg"
+alt="Antigravity movement creates smooth, adaptive paths that maintain distance from multiple threats"
+style="max-width:100%;height:auto;"><br>
 *Antigravity movement creates smooth, adaptive paths that maintain distance from multiple threats*
 
 ## Advanced Variations
@@ -226,68 +457,30 @@ combat style.
 
 Instead of pure inverse square, use different force laws for different ranges:
 
-```txt
-function calculateForce(entity, distance):
-  if distance < closeRange:
-    // Very strong repulsion when too close
-    return strongStrength / distance²
-  else if distance > farRange:
-    // Weak or no force when far away
-    return 0
-  else:
-    // Normal inverse square in medium range
-    return normalStrength / distance²
-```
+Use a stronger strength below `closeRange`, return zero beyond `farRange`, and keep the normal inverse-square strength
+between those limits. This prevents distant entities from dominating the result while preserving an emergency push at
+close range.
 
 ### Enemy Energy Weighting
 
 Adjust forces based on enemy threat level:
 
-```txt
-function getEnemyForce():
-  for each enemy:
-    // More dangerous enemies exert stronger forces
-    threatMultiplier = enemy.energy / 100.0
-    
-    force = (enemyStrength * threatMultiplier) / distance²
-    // ... calculate force components
-```
+Multiply an enemy's base strength by `enemy.energy / 100.0` before calculating its vector. This makes a high-energy
+opponent a stronger source while a damaged opponent has less influence.
 
 ### Attractive Forces
 
 Corner movement can be implemented by making corners attractive:
 
-```txt
-function getCornerAttraction():
-  corners = [(0, 0), (battleWidth, 0), (0, battleHeight), (battleWidth, battleHeight)]
-  
-  bestCorner = findNearestSafeCorner(corners)
-  
-  dx = bestCorner.x - myX
-  dy = bestCorner.y - myY
-  distance = sqrt(dx² + dy²)
-  
-  // Negative force = attraction
-  force = -cornerStrength / distance²
-  
-  return (force * dx/distance, force * dy/distance)
-```
+Choose a safe corner, calculate the vector from the bot toward it, and pass a negative strength to the same force
+function. The negative sign changes repulsion into attraction.
 
 ### Bullet Shadows
 
 Create repulsion from predicted bullet positions:
 
-```txt
-function getBulletForce():
-  for each trackedBullet:
-    // Project bullet forward
-    predictedX = bullet.x + bullet.velocityX * 5
-    predictedY = bullet.y + bullet.velocityY * 5
-    
-    // Treat as temporary repulsive source
-    (fx, fy) = calculateForce(predicted position)
-    // ... add to total force
-```
+For each tracked bullet, project its position several turns forward using its velocity, then add a temporary repulsive
+force from that projected point. This is a useful hybrid, but wave-based danger calculations are usually more precise.
 
 ## Tuning and Optimization
 

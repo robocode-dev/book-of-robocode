@@ -1,7 +1,9 @@
 ---
 title: "Stop and Go"
 category: "Movement & Evasion"
-summary: "Stop and Go movement alternates between full speed and complete stops to dodge linear and statistical targeting by varying bullet travel time. This tutorial shows how to implement this effecta a ive intermediate evasion strategy."
+summary: >-
+  Stop and Go alternates between full speed and complete stops to vary bullet travel time and confuse linear and
+  statistical targeting.
 tags: [ "stop-and-go", "movement", "simple-evasion", "intermediate", "robocode", "tank-royale" ]
 difficulty: "intermediate"
 source: [
@@ -45,30 +47,8 @@ basic approach.
 
 ## Core Concept
 
-The basic algorithm is straightforward:
-
-```txt
-movingForward = true
-stopTimer = 0
-stopDuration = 0
-
-every turn:
-    if movingForward:
-        setAhead(100)
-        stopTimer++
-        
-        if stopTimer >= randomStopThreshold():
-            movingForward = false
-            stopTimer = 0
-            stopDuration = randomStopDuration()
-    else:
-        setAhead(0)
-        stopTimer++
-        
-        if stopTimer >= stopDuration:
-            movingForward = true
-            stopTimer = 0
-```
+The basic algorithm keeps two states, `moving` and `stopped`. A timer controls each state, and a new random duration is
+chosen whenever the state changes. The complete implementation appears below.
 
 The key variables are:
 
@@ -76,7 +56,9 @@ The key variables are:
 - **Stop duration:** How many turns to remain stopped
 - **Direction:** Whether moving forward or backward (can vary)
 
-<img src="../../images/stop-and-go-movement.svg" alt="Stop and Go creates velocity spikes that confuse targeting predictions" style="max-width:100%;height:auto;"><br>
+<img src="../../images/stop-and-go-movement.svg"
+alt="Stop and Go creates velocity spikes that confuse targeting predictions"
+style="max-width:100%;height:auto;"><br>
 *Stop and Go creates velocity spikes that confuse targeting predictions*
 
 ## Tutorial: Building Your First Stop and Go Bot
@@ -84,221 +66,387 @@ The key variables are:
 Let's build a complete Stop and Go bot step by step. This tutorial works for both classic Robocode and Tank Royale with
 minor API adjustments.
 
-### Step 1: Basic Structure
+### Complete implementation in five languages
 
-Start with a simple bot structure that tracks movement state:
+The example starts with 15–30 turns of movement, then pauses for 5–15 turns. It occasionally reverses direction when
+movement resumes. The event handlers make a hit or wall collision restart the moving state immediately.
 
-```java
+::: code-group
+
+```java [Classic · Java]
+import java.util.Random;
+import robocode.AdvancedRobot;
+import robocode.HitByBulletEvent;
+import robocode.HitWallEvent;
+
 public class StopAndGoBot extends AdvancedRobot {
+    private final Random random = new Random();
     private boolean moving = true;
-    private int moveTimer = 0;
-    private int stopDuration = 0;
+    private int moveTimer;
+    private int moveDuration;
+    private int stopDuration;
+    private int direction = 1;
 
+    @Override
     public void run() {
         setAdjustGunForRobotTurn(true);
         setAdjustRadarForGunTurn(true);
+        moveDuration = nextMoveDuration();
 
         while (true) {
             performMovement();
             execute();
         }
     }
-}
-```
 
-### Step 2: Implement the Movement Logic
-
-Add the core Stop and Go algorithm. The key is maintaining two states: moving and stopped. Each state tracks how long
-it has been active using `moveTimer`. When moving, we continue for a random duration (15-30 turns), then switch to
-stopped for another random duration (5-15 turns). The randomization prevents enemies from learning our pattern.
-
-```java
-private void performMovement() {
-    if (moving) {
-        // Continue moving forward
-        setAhead(100);
-        moveTimer++;
-
-        // Stop after 15-30 turns of movement (randomized to prevent pattern matching)
-        if (moveTimer >= 15 + Math.random() * 15) {
-            moving = false;              // Switch to stopped state
-            moveTimer = 0;               // Reset timer to count stop duration
-            // Stop for 5-15 turns (shorter stops keep us more mobile)
-            stopDuration = (int) (5 + Math.random() * 10);
-        }
-    } else {
-        // Currently stopped - apply brakes
-        setAhead(0);
-        moveTimer++;
-
-        // Resume movement after stop duration completes
-        if (moveTimer >= stopDuration) {
-            moving = true;              // Switch back to moving state
-            moveTimer = 0;              // Reset timer to count movement duration
-        }
-    }
-}
-```
-
-### Step 3: Add Direction Variation
-
-Improve unpredictability by occasionally changing a direction. Moving only forward is predictable - the enemy knows
-you'll always travel in your current heading. By randomly reversing the direction (backward movement) when we transition
-to a stop, we add another layer of unpredictability. The 30% probability keeps reversals frequent enough to confuse
-targeting but rare enough to maintain forward offensive positioning.
-
-```java
-private boolean moving = true;
-private int moveTimer = 0;
-private int stopDuration = 0;
-private int direction = 1;  // 1 = forward, -1 = backward
-
-private void performMovement() {
-    if (moving) {
-        // Move in the current direction (forward or backward)
-        setAhead(100 * direction);
-        moveTimer++;
-
-        // Check if it's time to stop
-        if (moveTimer >= 15 + Math.random() * 15) {
-            moving = false;
-            moveTimer = 0;
-            stopDuration = (int) (5 + Math.random() * 10);
-
-            // 30% chance to reverse a direction when stopping
-            // This makes our next movement unpredictable
-            if (Math.random() < 0.3) {
-                direction = -direction;
+    private void performMovement() {
+        if (moving) {
+            setAhead(100 * direction);
+            moveTimer++;
+            if (moveTimer >= moveDuration) {
+                moving = false;
+                moveTimer = 0;
+                stopDuration = 5 + random.nextInt(11);
+            }
+        } else {
+            setAhead(0);
+            moveTimer++;
+            if (moveTimer >= stopDuration) {
+                if (random.nextDouble() < 0.3) {
+                    direction = -direction;
+                }
+                startMoving();
             }
         }
-    } else {
-        // Currently stopped
-        setAhead(0);
-        moveTimer++;
-
-        // Resume movement after stop completes
-        if (moveTimer >= stopDuration) {
-            moving = true;
-            moveTimer = 0;
-        }
-    }
-}
-```
-
-### Step 4: Add Wall Avoidance
-
-Prevent getting stuck against walls. When a bot stops near a wall, it becomes extremely vulnerable – it has limited
-escape routes, and the enemy knows it can't move through the wall. The wall avoidance logic ensures the bot never stops
-in this dangerous position.
-
-The algorithm calculates the minimum distance to any wall edge, then forces continued movement if too close. This
-guarantees the bot moves away from the wall before considering another stop. By resetting `moveTimer = 0`, we ensure
-at least 15 more turns of movement (the minimum threshold), giving the bot time to reach a safer position.
-
-```java
-private void performMovement() {
-    // Calculate the closest distance to any wall edge
-    // Compare: left edge (X), right edge (width-X), bottom (Y), top (height-Y)
-    double distanceToWall = Math.min(
-            Math.min(getX(), getBattleFieldWidth() - getX()),
-            Math.min(getY(), getBattleFieldHeight() - getY())
-    );
-
-    // If within 100 pixels of any wall, override stop behavior
-    if (distanceToWall < 100) {
-        moving = true;           // Force movement state
-        moveTimer = 0;           // Reset timer to guarantee at least ~15 more turns of movement
-        // This prevents immediately stopping again next turn
-
-        // Turn perpendicular to escape the wall quickly
-        if (getX() < 100 || getX() > getBattleFieldWidth() - 100) {
-            setTurnRight(90);    // Turn away from left/right walls
-        }
-        if (getY() < 100 || getY() > getBattleFieldHeight() - 100) {
-            setTurnRight(90);    // Turn away from top/bottom walls
-        }
     }
 
-    // Normal stop and go logic (only runs if not overridden by wall avoidance)
-    if (moving) {
-        // Continue moving in the current direction
-        setAhead(100 * direction);
-        moveTimer++;
-
-        // Check if it's time to stop (random threshold: 15-30 turns)
-        if (moveTimer >= 15 + Math.random() * 15) {
-            moving = false;              // Switch to stopped state
-            moveTimer = 0;               // Reset timer to count stop duration
-            stopDuration = (int) (5 + Math.random() * 10);  // Stop for 5-15 turns
-
-            // 30% chance to change a direction when stopping
-            // This adds unpredictability to our movement pattern
-            if (Math.random() < 0.3) {
-                direction = -direction;
-            }
-        }
-    } else {
-        // Currently stopped - apply brakes
-        setAhead(0);
-        moveTimer++;
-
-        // Check if the stop duration is complete
-        if (moveTimer >= stopDuration) {
-            moving = true;              // Resume movement
-            moveTimer = 0;              // Reset timer to count movement duration
-        }
-    }
-}
-```
-
-### Step 5: Respond to Events
-
-Make the movement reactive to combat events. Getting hit by a bullet or colliding with a wall means our current
-movement pattern failed or was interrupted. By immediately changing states and direction when these events occur, we
-create an adaptive response that breaks predictable patterns and recovers from mistakes.
-
-```java
-public void onBulletHit(BulletHitEvent event) {
-    // Enemy got hit - movement is working, stay course
-    // No action needed, current strategy is effective
-}
-
-public void onHitByBullet(HitByBulletEvent event) {
-    // Got hit - immediately change state to break enemy's targeting pattern
-    if (moving) {
-        // Was moving - stop immediately (unexpected state change)
-        moving = false;
-        moveTimer = 0;
-        stopDuration = (int) (5 + Math.random() * 10);
-    } else {
-        // Was stopped - start moving immediately (get out of predicted position)
+    private void startMoving() {
         moving = true;
         moveTimer = 0;
+        moveDuration = nextMoveDuration();
     }
 
-    // Also reverse a direction to move away from the current trajectory 
-    // Enemy has successfully predicted our path, so change it
-    direction = -direction;
-}
+    private int nextMoveDuration() {
+        return 15 + random.nextInt(16);
+    }
 
-public void onHitWall(HitWallEvent event) {
-    // Hit the wall-reverse the direction to move away from the obstacle 
-    // Continuing forward would keep us stuck or predictable
-    direction = -direction;
-    moving = true;  // Ensure we're moving away from the wall
+    @Override
+    public void onHitByBullet(HitByBulletEvent event) {
+        direction = -direction;
+        startMoving();
+    }
+
+    @Override
+    public void onHitWall(HitWallEvent event) {
+        direction = -direction;
+        startMoving();
+    }
 }
 ```
 
+```python [Tank Royale · Python]
+from random import random, randrange
+
+from robocode_tank_royale.bot_api import Bot
+from robocode_tank_royale.bot_api.events import HitByBulletEvent, HitWallEvent
+
+
+class StopAndGoBot(Bot):
+    def run(self) -> None:
+        self.moving = True
+        self.move_timer = 0
+        self.move_duration = self.next_move_duration()
+        self.stop_duration = 0
+        self.direction = 1
+
+        while self.running:
+            self.perform_movement()
+            self.go()
+
+    def perform_movement(self) -> None:
+        if self.moving:
+            self.set_forward(100 * self.direction)
+            self.move_timer += 1
+            if self.move_timer >= self.move_duration:
+                self.moving = False
+                self.move_timer = 0
+                self.stop_duration = 5 + randrange(11)
+        else:
+            self.set_forward(0)
+            self.move_timer += 1
+            if self.move_timer >= self.stop_duration:
+                if random() < 0.3:
+                    self.direction = -self.direction
+                self.start_moving()
+
+    def start_moving(self) -> None:
+        self.moving = True
+        self.move_timer = 0
+        self.move_duration = self.next_move_duration()
+
+    @staticmethod
+    def next_move_duration() -> int:
+        return 15 + randrange(16)
+
+    def on_hit_by_bullet(self, event: HitByBulletEvent) -> None:
+        self.direction = -self.direction
+        self.start_moving()
+
+    def on_hit_wall(self, event: HitWallEvent) -> None:
+        self.direction = -self.direction
+        self.start_moving()
+
+
+def main() -> None:
+    StopAndGoBot().start()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+```java [Tank Royale · Java]
+import java.util.Random;
+import dev.robocode.tankroyale.botapi.Bot;
+import dev.robocode.tankroyale.botapi.events.HitByBulletEvent;
+import dev.robocode.tankroyale.botapi.events.HitWallEvent;
+
+public class StopAndGoBot extends Bot {
+    private final Random random = new Random();
+    private boolean moving = true;
+    private int moveTimer;
+    private int moveDuration;
+    private int stopDuration;
+    private int direction = 1;
+
+    public static void main(String[] args) {
+        new StopAndGoBot().start();
+    }
+
+    @Override
+    public void run() {
+        moveDuration = nextMoveDuration();
+
+        while (isRunning()) {
+            performMovement();
+            go();
+        }
+    }
+
+    private void performMovement() {
+        if (moving) {
+            setForward(100 * direction);
+            moveTimer++;
+            if (moveTimer >= moveDuration) {
+                moving = false;
+                moveTimer = 0;
+                stopDuration = 5 + random.nextInt(11);
+            }
+        } else {
+            setForward(0);
+            moveTimer++;
+            if (moveTimer >= stopDuration) {
+                if (random.nextDouble() < 0.3) {
+                    direction = -direction;
+                }
+                startMoving();
+            }
+        }
+    }
+
+    private void startMoving() {
+        moving = true;
+        moveTimer = 0;
+        moveDuration = nextMoveDuration();
+    }
+
+    private int nextMoveDuration() {
+        return 15 + random.nextInt(16);
+    }
+
+    @Override
+    public void onHitByBullet(HitByBulletEvent event) {
+        direction = -direction;
+        startMoving();
+    }
+
+    @Override
+    public void onHitWall(HitWallEvent event) {
+        direction = -direction;
+        startMoving();
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+using Robocode.TankRoyale.BotApi;
+using Robocode.TankRoyale.BotApi.Events;
+
+public class StopAndGoBot : Bot
+{
+    private readonly Random random = new();
+    private bool moving = true;
+    private int moveTimer;
+    private int moveDuration;
+    private int stopDuration;
+    private int direction = 1;
+
+    static void Main(string[] args)
+    {
+        new StopAndGoBot().Start();
+    }
+
+    public override void Run()
+    {
+        moveDuration = NextMoveDuration();
+
+        while (IsRunning)
+        {
+            PerformMovement();
+            Go();
+        }
+    }
+
+    private void PerformMovement()
+    {
+        if (moving)
+        {
+            SetForward(100 * direction);
+            moveTimer++;
+            if (moveTimer >= moveDuration)
+            {
+                moving = false;
+                moveTimer = 0;
+                stopDuration = 5 + random.Next(11);
+            }
+        }
+        else
+        {
+            SetForward(0);
+            moveTimer++;
+            if (moveTimer >= stopDuration)
+            {
+                if (random.NextDouble() < 0.3)
+                {
+                    direction = -direction;
+                }
+                StartMoving();
+            }
+        }
+    }
+
+    private void StartMoving()
+    {
+        moving = true;
+        moveTimer = 0;
+        moveDuration = NextMoveDuration();
+    }
+
+    private int NextMoveDuration()
+    {
+        return 15 + random.Next(16);
+    }
+
+    public override void OnHitByBullet(HitByBulletEvent evt)
+    {
+        direction = -direction;
+        StartMoving();
+    }
+
+    public override void OnHitWall(HitWallEvent evt)
+    {
+        direction = -direction;
+        StartMoving();
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+import { Bot, HitByBulletEvent, HitWallEvent } from "@robocode.dev/tank-royale-bot-api";
+
+class StopAndGoBot extends Bot {
+    private moving = true;
+    private moveTimer = 0;
+    private moveDuration = 0;
+    private stopDuration = 0;
+    private direction = 1;
+
+    static main() {
+        new StopAndGoBot().start();
+    }
+
+    override run() {
+        this.moveDuration = this.nextMoveDuration();
+
+        while (this.isRunning()) {
+            this.performMovement();
+            this.go();
+        }
+    }
+
+    private performMovement() {
+        if (this.moving) {
+            this.setForward(100 * this.direction);
+            this.moveTimer += 1;
+            if (this.moveTimer >= this.moveDuration) {
+                this.moving = false;
+                this.moveTimer = 0;
+                this.stopDuration = 5 + Math.floor(Math.random() * 11);
+            }
+        } else {
+            this.setForward(0);
+            this.moveTimer += 1;
+            if (this.moveTimer >= this.stopDuration) {
+                if (Math.random() < 0.3) {
+                    this.direction = -this.direction;
+                }
+                this.startMoving();
+            }
+        }
+    }
+
+    private startMoving() {
+        this.moving = true;
+        this.moveTimer = 0;
+        this.moveDuration = this.nextMoveDuration();
+    }
+
+    private nextMoveDuration() {
+        return 15 + Math.floor(Math.random() * 16);
+    }
+
+    override onHitByBullet(event: HitByBulletEvent) {
+        this.direction = -this.direction;
+        this.startMoving();
+    }
+
+    override onHitWall(event: HitWallEvent) {
+        this.direction = -this.direction;
+        this.startMoving();
+    }
+}
+
+StopAndGoBot.main();
+```
+
+:::
+
+### Reading the implementation
+
+The complete implementation above contains the two-state loop, randomized durations, direction changes, and event
+responses. The next sections describe optional adaptations that can be added after the basic movement has been tested.
 ## Advanced Variations
+
+The following variations remain conceptual because they require reliable enemy telemetry and tuning against different
+targeting systems. The core implementation above is the practical starting point.
 
 ### Enemy Distance-Based Stops
 
 Adjust stop timing based on enemy distance:
 
-```txt
-stopThreshold = enemyDistance / 20
-// Closer enemies = more frequent stops
-```
+Use a shorter stop interval at close range and a longer interval at distance. For example, clamp `enemyDistance / 20`
+to a practical range such as 5–30 turns.
 
 When the enemy is close, more frequent stops make targeting harder. At longer distances, less frequent stops maintain
 offensive positioning while still providing evasion.
@@ -307,12 +455,8 @@ offensive positioning while still providing evasion.
 
 Coordinate stops with enemy gun heat:
 
-```txt
-if enemy.gunHeat > 0.5:
-    allowStop = true  // Enemy can't fire yet
-else:
-    allowStop = false // Enemy can fire - keep moving
-```
+Allow a planned stop only while the enemy's estimated gun heat is above `0.5`; keep moving when the enemy is nearly
+ready to fire.
 
 This ensures the bot isn't stopped when the enemy's gun is ready to fire, reducing vulnerability.
 
@@ -320,10 +464,100 @@ This ensures the bot isn't stopped when the enemy's gun is ready to fire, reduci
 
 Stop when you predict the enemy will fire:
 
-```txt
-if enemy.gunHeat < 0.1 and isFacingUs:
-    forceStop = true
+Force the moving state when the enemy's estimated gun heat is below `0.1` and the enemy is facing the bot. These values
+are tuning controls rather than universal rules.
+
+The following small helper keeps the three adaptations together:
+
+::: code-group
+
+```java [Classic · Java]
+public final class StopAndGoTuning {
+    public static int stopDuration(double enemyDistance) {
+        return clamp((int) Math.round(enemyDistance / 20), 5, 30);
+    }
+
+    public static boolean allowStop(double enemyGunHeat) {
+        return enemyGunHeat > 0.5;
+    }
+
+    public static boolean forceStop(double enemyGunHeat, boolean enemyFacingUs) {
+        return enemyGunHeat < 0.1 && enemyFacingUs;
+    }
+
+    private static int clamp(int value, int minimum, int maximum) {
+        return Math.max(minimum, Math.min(maximum, value));
+    }
+}
 ```
+
+```python [Tank Royale · Python]
+def stop_duration(enemy_distance: float) -> int:
+    return max(5, min(30, round(enemy_distance / 20)))
+
+
+def allow_stop(enemy_gun_heat: float) -> bool:
+    return enemy_gun_heat > 0.5
+
+
+def force_stop(enemy_gun_heat: float, enemy_facing_us: bool) -> bool:
+    return enemy_gun_heat < 0.1 and enemy_facing_us
+```
+
+```java [Tank Royale · Java]
+public final class StopAndGoTuning {
+    public static int stopDuration(double enemyDistance) {
+        return clamp((int) Math.round(enemyDistance / 20), 5, 30);
+    }
+
+    public static boolean allowStop(double enemyGunHeat) {
+        return enemyGunHeat > 0.5;
+    }
+
+    public static boolean forceStop(double enemyGunHeat, boolean enemyFacingUs) {
+        return enemyGunHeat < 0.1 && enemyFacingUs;
+    }
+
+    private static int clamp(int value, int minimum, int maximum) {
+        return Math.max(minimum, Math.min(maximum, value));
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+
+public static class StopAndGoTuning
+{
+    public static int StopDuration(double enemyDistance) =>
+        Math.Clamp((int)Math.Round(enemyDistance / 20), 5, 30);
+
+    public static bool AllowStop(double enemyGunHeat) => enemyGunHeat > 0.5;
+
+    public static bool ForceStop(double enemyGunHeat, bool enemyFacingUs) =>
+        enemyGunHeat < 0.1 && enemyFacingUs;
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+function stopDuration(enemyDistance: number) {
+    return clampInt(Math.round(enemyDistance / 20), 5, 30);
+}
+
+function allowStop(enemyGunHeat: number) {
+    return enemyGunHeat > 0.5;
+}
+
+function forceStop(enemyGunHeat: number, enemyFacingUs: boolean) {
+    return enemyGunHeat < 0.1 && enemyFacingUs;
+}
+
+function clampInt(value: number, minimum: number, maximum: number) {
+    return Math.max(minimum, Math.min(maximum, value));
+}
+```
+
+:::
 
 ## Platform Differences
 

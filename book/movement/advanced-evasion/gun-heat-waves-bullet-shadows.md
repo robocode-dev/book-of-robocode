@@ -1,8 +1,18 @@
 ---
 title: "Gun Heat Waves & Bullet Shadows"
 category: "Movement & Evasion"
-summary: "Gun Heat Waves track when enemies can fire to predict bullet timing, while Bullet Shadows identify safe zones behind detected bullets where no additional projectiles can exist."
-tags: ["gun-heat-waves", "bullet-shadows", "advanced-evasion", "waves", "movement", "advanced", "robocode", "tank-royale"]
+summary: >-
+  Gun Heat Waves track when enemies can fire to predict bullet timing, while Bullet Shadows identify safe zones behind
+  detected bullets where no additional projectiles can exist.
+tags:
+  - gun-heat-waves
+  - bullet-shadows
+  - advanced-evasion
+  - waves
+  - movement
+  - advanced
+  - robocode
+  - tank-royale
 difficulty: "advanced"
 source: [
   "RoboWiki - Gun Heat Waves (classic Robocode) https://robowiki.net/wiki/Gun_Heat_Waves",
@@ -49,17 +59,8 @@ cools down, you can confirm whether an energy drop corresponds to an actual shot
 
 The first step is observing the enemy's energy level each turn and detecting changes:
 
-```txt
-previousEnergy = 100.0  // Track enemy energy
-
-on enemy scan:
-  energyDrop = previousEnergy - currentEnergy
-  
-  if energyDrop > 0:
-    classifyEnergyDrop(energyDrop)
-  
-  previousEnergy = currentEnergy
-```
+Keep the previous energy value for each enemy. On a new scan, calculate `energyDrop = previousEnergy - currentEnergy`,
+classify the drop, and then store the current energy for the next scan.
 
 ### Classifying Energy Drops
 
@@ -78,13 +79,13 @@ xychart-beta
   bar [0.001, 0.001, 0.001, 0.001, 1.0]
 ```
 
-*Color coding: <span style="color: #10b981;">■</span> 🔫 Green = Real bullet (valid), <span style="color: #ef4444;">■</span> 💥 Red = Ram damage (ignore), <span style="color: #f59e0b;">■</span> 🎯 Orange = Hit by bullet (ignore)*
+*Color coding: green = real bullet, red = ram damage, orange = hit by bullet.*
 
 | Turn | Energy Drop | Cause | How to identify |
 |------|-------------|-------|-----------------|
 | 30 | 1.0 | 🔫 **Fired bullet** | Drop in [0.1, 3.0] + gun heat check |
 | 42 | 1.0 | 🔫 **Fired bullet** | Drop in [0.1, 3.0] + gun heat check |
-| 46 | 0.6 | 💥 **Ram damage** | Drop = 0.6 exactly |
+| 46 | 0.6 | 💥 **Possible ram damage** | Confirm with a collision event |
 | 50 | 2.8 | 🎯 **Hit by bullet** | Drop > 3.0 |
 | 54 | 1.0 | 🔫 **Fired bullet** | Drop in [0.1, 3.0] + gun heat check |
 
@@ -99,42 +100,17 @@ Use these patterns to classify energy drops:
 | Cause | Energy Drop Range | Notes |
 |-------|-------------------|-------|
 | 🔫 **Fired bullet** | 0.1 – 3.0 | Must also check gun heat = 0 |
-| 💥 **Ram damage** | exactly 0.6 | Fixed value; easy to filter |
+| 💥 **Ram collision** | often 0.6 | Confirm with a collision event; a power-0.6 shot is also possible |
 | 🎯 **Hit by bullet** | 0.4 – 16.0 | Damage = 4p + 2(p-1) if p>1 |
 | 🧱 **Wall collision** | 0 – ~3.5 | = max(0, abs(velocity) × 0.5 - 1) |
 | ☠️ **Inactivity penalty** | 0.1/turn | Rare; only if bot is idle |
 
 ### Validating with Gun Heat
 
-The energy drop range [0.1, 3.0] overlaps with other damage sources. To confirm a real bullet, track the enemy's **gun heat**. A bot can only fire when gun heat = 0.
-
-```txt
-enemyGunHeat = 3.0  // Bots start with gun heat = 3.0
-
-on enemy scan:
-  // Gun heat cools every turn
-  coolingRate = 0.1  // Default cooling rate
-  enemyGunHeat = max(0, enemyGunHeat - coolingRate)
-  
-  // Detect and classify energy drop
-  energyDrop = previousEnergy - currentEnergy
-  
-  if energyDrop == 0.6:
-    // Ram damage - ignore
-    logFalseDetection("ram")
-  else if energyDrop > 3.0:
-    // Hit by bullet - ignore  
-    logFalseDetection("bullet hit")
-  else if 0.1 <= energyDrop <= 3.0:
-    // Possible bullet - validate with gun heat
-    if enemyGunHeat <= 0.001:
-      bulletPower = energyDrop
-      heatGenerated = 1 + bulletPower / 5
-      createWave(bulletPower)
-      enemyGunHeat = heatGenerated
-    else:
-      logFalseDetection("gun not ready")
-```
+The energy-drop range `[0.1, 3.0]` overlaps with other damage sources. The tracker below cools a separate heat estimate
+for each enemy, accepts a possible shot only when that estimate is near zero, and starts a new heat spike after a valid
+shot. A collision event should be used to identify ramming; an exact `0.6` drop can also be a legitimate power-`0.6`
+bullet.
 
 This eliminates most false waves, particularly in melee where multiple bots are shooting and ramming.
 
@@ -239,32 +215,480 @@ This creates a "shadow" region where you're guaranteed not to encounter that spe
   - text: "Danger: bullet ahead", position: (6000, 2200), color: #EF4444
 -->
 
-<img src="../../images/bullet-shadow-safe-zone.svg" alt="Once a bullet is detected, the region behind it forms a safe shadow" style="max-width:100%;height:auto;"/>
+<img src="../../images/bullet-shadow-safe-zone.svg"
+alt="Once a bullet is detected, the region behind it forms a safe shadow"
+style="max-width:100%;height:auto;"/>
 
 ### Implementation
 
-```txt
-bulletShadows = []
+When a bullet is detected, store its origin and current position. A candidate position is in its shadow when it lies
+along the same path, closer to the origin than the detected bullet, and within the bullet's approximate width.
 
-on bullet detected:
-  shadow = {
-    origin: enemyFirePosition,
-    bulletPosition: currentBulletPosition,
-    trajectory: angle(origin -> bulletPosition),
-    speed: bulletSpeed
-  }
-  bulletShadows.append(shadow)
+The following API-neutral tracker implements both gun-heat validation and this shadow test. The surrounding bot supplies
+scan, collision, and bullet-detection events.
 
-function isInShadow(position):
-  for shadow in bulletShadows:
-    vectorToPosition = position - shadow.origin
-    vectorToBullet = shadow.bulletPosition - shadow.origin
-    
-    if length(vectorToPosition) < length(vectorToBullet):
-      if angle(vectorToPosition) ≈ shadow.trajectory:
-        return true  // Position is behind the bullet
-  return false
+::: code-group
+
+```java [Classic · Java]
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public final class GunHeatWaveTracker {
+    private static final double COOLING_RATE = 0.1;
+    private static final double MIN_POWER = 0.1;
+    private static final double MAX_POWER = 3.0;
+    private static final double EPSILON = 0.001;
+    private static final double SHADOW_HALF_WIDTH = 18.0;
+    private final Map<String, EnemyState> enemies = new HashMap<>();
+    private final List<Shadow> shadows = new ArrayList<>();
+
+    public Wave observeEnemy(
+            String enemyId, double energy, double x, double y,
+            long turn, boolean collisionThisTurn) {
+        EnemyState state = enemies.computeIfAbsent(enemyId, ignored -> new EnemyState());
+        if (state.lastTurn < 0) {
+            state.energy = energy;
+            state.lastTurn = turn;
+            return null;
+        }
+
+        long elapsed = Math.max(0, turn - state.lastTurn);
+        state.gunHeat = Math.max(0, state.gunHeat - elapsed * COOLING_RATE);
+        double energyDrop = state.energy - energy;
+        state.energy = energy;
+        state.lastTurn = turn;
+        if (collisionThisTurn || energyDrop < MIN_POWER || energyDrop > MAX_POWER
+                || state.gunHeat > EPSILON) {
+            return null;
+        }
+
+        state.gunHeat = 1 + energyDrop / 5;
+        Wave wave = new Wave(x, y, 20 - 3 * energyDrop, turn);
+        state.waves.add(wave);
+        return wave;
+    }
+
+    public void addBulletShadow(double originX, double originY, double bulletX, double bulletY) {
+        shadows.add(new Shadow(originX, originY, bulletX, bulletY));
+    }
+
+    public boolean isInShadow(double x, double y) {
+        for (Shadow shadow : shadows) {
+            double pathX = shadow.bulletX - shadow.originX;
+            double pathY = shadow.bulletY - shadow.originY;
+            double pathLength = Math.hypot(pathX, pathY);
+            if (pathLength == 0) {
+                continue;
+            }
+            double pointX = x - shadow.originX;
+            double pointY = y - shadow.originY;
+            double along = (pointX * pathX + pointY * pathY) / (pathLength * pathLength);
+            double perpendicular = Math.abs(pointX * pathY - pointY * pathX) / pathLength;
+            if (along >= 0 && along <= 1 && perpendicular <= SHADOW_HALF_WIDTH) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static final class EnemyState {
+        double energy = 100;
+        double gunHeat = 3;
+        long lastTurn = -1;
+        final List<Wave> waves = new ArrayList<>();
+    }
+
+    public static final class Wave {
+        public final double originX;
+        public final double originY;
+        public final double bulletSpeed;
+        public final long fireTurn;
+
+        Wave(double originX, double originY, double bulletSpeed, long fireTurn) {
+            this.originX = originX;
+            this.originY = originY;
+            this.bulletSpeed = bulletSpeed;
+            this.fireTurn = fireTurn;
+        }
+    }
+
+    private static final class Shadow {
+        final double originX;
+        final double originY;
+        final double bulletX;
+        final double bulletY;
+
+        Shadow(double originX, double originY, double bulletX, double bulletY) {
+            this.originX = originX;
+            this.originY = originY;
+            this.bulletX = bulletX;
+            this.bulletY = bulletY;
+        }
+    }
+}
 ```
+
+```python [Tank Royale · Python]
+from dataclasses import dataclass, field
+from math import hypot
+
+
+COOLING_RATE = 0.1
+SHADOW_HALF_WIDTH = 18.0
+
+
+@dataclass
+class Wave:
+    origin_x: float
+    origin_y: float
+    bullet_speed: float
+    fire_turn: int
+
+
+@dataclass
+class Shadow:
+    origin_x: float
+    origin_y: float
+    bullet_x: float
+    bullet_y: float
+
+
+@dataclass
+class EnemyState:
+    energy: float = 100.0
+    gun_heat: float = 3.0
+    last_turn: int = -1
+    waves: list[Wave] = field(default_factory=list)
+
+
+class GunHeatWaveTracker:
+    def __init__(self) -> None:
+        self.enemies: dict[str, EnemyState] = {}
+        self.shadows: list[Shadow] = []
+
+    def observe_enemy(
+        self,
+        enemy_id: str,
+        energy: float,
+        x: float,
+        y: float,
+        turn: int,
+        collision_this_turn: bool = False,
+    ) -> Wave | None:
+        state = self.enemies.setdefault(enemy_id, EnemyState())
+        if state.last_turn < 0:
+            state.energy = energy
+            state.last_turn = turn
+            return None
+
+        elapsed = max(0, turn - state.last_turn)
+        state.gun_heat = max(0.0, state.gun_heat - elapsed * COOLING_RATE)
+        energy_drop = state.energy - energy
+        state.energy = energy
+        state.last_turn = turn
+        if collision_this_turn or not 0.1 <= energy_drop <= 3.0 or state.gun_heat > 0.001:
+            return None
+
+        state.gun_heat = 1 + energy_drop / 5
+        wave = Wave(x, y, 20 - 3 * energy_drop, turn)
+        state.waves.append(wave)
+        return wave
+
+    def add_bullet_shadow(self, origin_x: float, origin_y: float, bullet_x: float, bullet_y: float) -> None:
+        self.shadows.append(Shadow(origin_x, origin_y, bullet_x, bullet_y))
+
+    def is_in_shadow(self, x: float, y: float) -> bool:
+        for shadow in self.shadows:
+            path_x = shadow.bullet_x - shadow.origin_x
+            path_y = shadow.bullet_y - shadow.origin_y
+            path_length = hypot(path_x, path_y)
+            if path_length == 0:
+                continue
+            point_x = x - shadow.origin_x
+            point_y = y - shadow.origin_y
+            along = (point_x * path_x + point_y * path_y) / path_length**2
+            perpendicular = abs(point_x * path_y - point_y * path_x) / path_length
+            if 0 <= along <= 1 and perpendicular <= SHADOW_HALF_WIDTH:
+                return True
+        return False
+```
+
+```java [Tank Royale · Java]
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public final class GunHeatWaveTracker {
+    private static final double COOLING_RATE = 0.1;
+    private static final double MIN_POWER = 0.1;
+    private static final double MAX_POWER = 3.0;
+    private static final double EPSILON = 0.001;
+    private static final double SHADOW_HALF_WIDTH = 18.0;
+    private final Map<String, EnemyState> enemies = new HashMap<>();
+    private final List<Shadow> shadows = new ArrayList<>();
+
+    public Wave observeEnemy(
+            String enemyId, double energy, double x, double y,
+            long turn, boolean collisionThisTurn) {
+        EnemyState state = enemies.computeIfAbsent(enemyId, ignored -> new EnemyState());
+        if (state.lastTurn < 0) {
+            state.energy = energy;
+            state.lastTurn = turn;
+            return null;
+        }
+
+        long elapsed = Math.max(0, turn - state.lastTurn);
+        state.gunHeat = Math.max(0, state.gunHeat - elapsed * COOLING_RATE);
+        double energyDrop = state.energy - energy;
+        state.energy = energy;
+        state.lastTurn = turn;
+        if (collisionThisTurn || energyDrop < MIN_POWER || energyDrop > MAX_POWER
+                || state.gunHeat > EPSILON) {
+            return null;
+        }
+
+        state.gunHeat = 1 + energyDrop / 5;
+        Wave wave = new Wave(x, y, 20 - 3 * energyDrop, turn);
+        state.waves.add(wave);
+        return wave;
+    }
+
+    public void addBulletShadow(double originX, double originY, double bulletX, double bulletY) {
+        shadows.add(new Shadow(originX, originY, bulletX, bulletY));
+    }
+
+    public boolean isInShadow(double x, double y) {
+        for (Shadow shadow : shadows) {
+            double pathX = shadow.bulletX - shadow.originX;
+            double pathY = shadow.bulletY - shadow.originY;
+            double pathLength = Math.hypot(pathX, pathY);
+            if (pathLength == 0) {
+                continue;
+            }
+            double pointX = x - shadow.originX;
+            double pointY = y - shadow.originY;
+            double along = (pointX * pathX + pointY * pathY) / (pathLength * pathLength);
+            double perpendicular = Math.abs(pointX * pathY - pointY * pathX) / pathLength;
+            if (along >= 0 && along <= 1 && perpendicular <= SHADOW_HALF_WIDTH) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static final class EnemyState {
+        double energy = 100;
+        double gunHeat = 3;
+        long lastTurn = -1;
+        final List<Wave> waves = new ArrayList<>();
+    }
+
+    public static final class Wave {
+        public final double originX;
+        public final double originY;
+        public final double bulletSpeed;
+        public final long fireTurn;
+
+        Wave(double originX, double originY, double bulletSpeed, long fireTurn) {
+            this.originX = originX;
+            this.originY = originY;
+            this.bulletSpeed = bulletSpeed;
+            this.fireTurn = fireTurn;
+        }
+    }
+
+    private static final class Shadow {
+        final double originX;
+        final double originY;
+        final double bulletX;
+        final double bulletY;
+
+        Shadow(double originX, double originY, double bulletX, double bulletY) {
+            this.originX = originX;
+            this.originY = originY;
+            this.bulletX = bulletX;
+            this.bulletY = bulletY;
+        }
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+using System.Collections.Generic;
+
+public sealed class GunHeatWaveTracker
+{
+    private const double CoolingRate = 0.1;
+    private const double ShadowHalfWidth = 18.0;
+    private readonly Dictionary<string, EnemyState> enemies = new();
+    private readonly List<Shadow> shadows = new();
+
+    public Wave? ObserveEnemy(
+        string enemyId, double energy, double x, double y,
+        long turn, bool collisionThisTurn = false)
+    {
+        EnemyState state = GetEnemy(enemyId);
+        if (state.LastTurn < 0)
+        {
+            state.Energy = energy;
+            state.LastTurn = turn;
+            return null;
+        }
+
+        long elapsed = Math.Max(0, turn - state.LastTurn);
+        state.GunHeat = Math.Max(0, state.GunHeat - elapsed * CoolingRate);
+        double energyDrop = state.Energy - energy;
+        state.Energy = energy;
+        state.LastTurn = turn;
+        if (collisionThisTurn || energyDrop < 0.1 || energyDrop > 3.0 || state.GunHeat > 0.001)
+        {
+            return null;
+        }
+
+        state.GunHeat = 1 + energyDrop / 5;
+        Wave wave = new(x, y, 20 - 3 * energyDrop, turn);
+        state.Waves.Add(wave);
+        return wave;
+    }
+
+    public void AddBulletShadow(double originX, double originY, double bulletX, double bulletY)
+    {
+        shadows.Add(new Shadow(originX, originY, bulletX, bulletY));
+    }
+
+    public bool IsInShadow(double x, double y)
+    {
+        foreach (Shadow shadow in shadows)
+        {
+            double pathX = shadow.BulletX - shadow.OriginX;
+            double pathY = shadow.BulletY - shadow.OriginY;
+            double pathLength = Math.Sqrt(pathX * pathX + pathY * pathY);
+            if (pathLength == 0) continue;
+            double pointX = x - shadow.OriginX;
+            double pointY = y - shadow.OriginY;
+            double along = (pointX * pathX + pointY * pathY) / (pathLength * pathLength);
+            double perpendicular = Math.Abs(pointX * pathY - pointY * pathX) / pathLength;
+            if (along >= 0 && along <= 1 && perpendicular <= ShadowHalfWidth) return true;
+        }
+        return false;
+    }
+
+    private EnemyState GetEnemy(string enemyId)
+    {
+        if (!enemies.TryGetValue(enemyId, out EnemyState? state))
+        {
+            state = new EnemyState();
+            enemies[enemyId] = state;
+        }
+        return state;
+    }
+
+    private sealed class EnemyState
+    {
+        public double Energy { get; set; } = 100;
+        public double GunHeat { get; set; } = 3;
+        public long LastTurn { get; set; } = -1;
+        public List<Wave> Waves { get; } = new();
+    }
+
+    public sealed record Wave(double OriginX, double OriginY, double BulletSpeed, long FireTurn);
+
+    private sealed record Shadow(double OriginX, double OriginY, double BulletX, double BulletY);
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+type Wave = {
+    originX: number;
+    originY: number;
+    bulletSpeed: number;
+    fireTurn: number;
+};
+
+type Shadow = {
+    originX: number;
+    originY: number;
+    bulletX: number;
+    bulletY: number;
+};
+
+type EnemyState = {
+    energy: number;
+    gunHeat: number;
+    lastTurn: number;
+    waves: Wave[];
+};
+
+class GunHeatWaveTracker {
+    private static readonly shadowHalfWidth = 18;
+    private readonly enemies = new Map<string, EnemyState>();
+    private readonly shadows: Shadow[] = [];
+
+    observeEnemy(
+        enemyId: string,
+        energy: number,
+        x: number,
+        y: number,
+        turn: number,
+        collisionThisTurn = false,
+    ): Wave | null {
+        const state = this.getEnemy(enemyId);
+        if (state.lastTurn < 0) {
+            state.energy = energy;
+            state.lastTurn = turn;
+            return null;
+        }
+
+        const elapsed = Math.max(0, turn - state.lastTurn);
+        state.gunHeat = Math.max(0, state.gunHeat - elapsed * 0.1);
+        const energyDrop = state.energy - energy;
+        state.energy = energy;
+        state.lastTurn = turn;
+        if (collisionThisTurn || energyDrop < 0.1 || energyDrop > 3 || state.gunHeat > 0.001) {
+            return null;
+        }
+
+        state.gunHeat = 1 + energyDrop / 5;
+        const wave = { originX: x, originY: y, bulletSpeed: 20 - 3 * energyDrop, fireTurn: turn };
+        state.waves.push(wave);
+        return wave;
+    }
+
+    addBulletShadow(originX: number, originY: number, bulletX: number, bulletY: number) {
+        this.shadows.push({ originX, originY, bulletX, bulletY });
+    }
+
+    isInShadow(x: number, y: number) {
+        for (const shadow of this.shadows) {
+            const pathX = shadow.bulletX - shadow.originX;
+            const pathY = shadow.bulletY - shadow.originY;
+            const pathLength = Math.hypot(pathX, pathY);
+            if (pathLength === 0) continue;
+            const pointX = x - shadow.originX;
+            const pointY = y - shadow.originY;
+            const along = (pointX * pathX + pointY * pathY) / (pathLength * pathLength);
+            const perpendicular = Math.abs(pointX * pathY - pointY * pathX) / pathLength;
+            if (along >= 0 && along <= 1 && perpendicular <= GunHeatWaveTracker.shadowHalfWidth) return true;
+        }
+        return false;
+    }
+
+    private getEnemy(enemyId: string) {
+        let state = this.enemies.get(enemyId);
+        if (!state) {
+            state = { energy: 100, gunHeat: 3, lastTurn: -1, waves: [] };
+            this.enemies.set(enemyId, state);
+        }
+        return state;
+    }
+}
+```
+
+:::
 
 ### Use Cases
 
@@ -272,36 +696,22 @@ function isInShadow(position):
 
 Move toward the enemy immediately after their bullet passes:
 
-```txt
-if mostDangerousWave.hasPassedMe() or isInShadow(myPosition):
-  moveTowardEnemy()
-else:
-  continueEvading()
-```
+If the most dangerous wave has passed or a candidate destination is in a shadow, the movement controller can choose a
+more aggressive route. Otherwise it should continue its normal evasive plan.
 
 **2. Wave Surfing Refinement**
 
 Exclude shadow regions from danger calculations:
 
-```txt
-for guessFactor in reachableGFs:
-  position = positionAtGF(guessFactor)
-  if isInShadow(position):
-    danger[guessFactor] = 0  // Perfectly safe
-  else:
-    danger[guessFactor] = calculateDanger(position)
-```
+When evaluating reachable GuessFactors, assign zero additional danger to candidate positions for which
+`isInShadow(position)` is true, and calculate normal danger for the others.
 
 **3. Melee Survival**
 
 In melee, bullets come from all directions. Bullet Shadows help identify temporary safe zones:
 
-```txt
-destinations = generatePossibleMoves()
-safeDestinations = [d for d in destinations if isInShadow(d)]
-if safeDestinations:
-  moveTo(bestOf(safeDestinations))
-```
+In melee, filter generated destinations with `isInShadow` and choose the best safe candidate when one exists. A shadow
+is temporary and local to one bullet, so it should supplement rather than replace general danger evaluation.
 
 ## Combining Gun Heat Waves and Bullet Shadows
 
@@ -309,36 +719,17 @@ Advanced bots use both techniques together:
 
 ### Wave Detection
 
-```txt
-on enemy energy drop:
-  if gunHeatAllowsFire():
-    wave = createWave()
-    trackedWaves.append(wave)
-```
+Pass each enemy scan to `observeEnemy(...)`. When it returns a `Wave`, append it to the movement system's tracked waves.
 
 ### Wave Validation
 
-```txt
-on tick:
-  for wave in trackedWaves:
-    if wave.shouldHaveHitMe():
-      if wasHitByBullet():
-        confirmWave(wave)  // Real bullet
-      else:
-        createBulletShadow(wave)  // Bullet missed; shadow region is safe
-      trackedWaves.remove(wave)
-```
+When a tracked wave reaches the bot, confirm it against a bullet-hit event. If the bullet passed without a hit and its
+position was observed, call `addBulletShadow(...)` and remove the expired wave from the active list.
 
 ### Movement Decision
 
-```txt
-safestGF = findSafestGuessFactor(dangerProfile, bulletShadows)
-destination = positionAtGF(safestGF)
-if isInShadow(destination):
-  useAggressiveMovement(destination)
-else:
-  useDefensiveMovement(destination)
-```
+Choose the least dangerous reachable GuessFactor, convert it to a destination, and use `isInShadow` to decide whether an
+aggressive route is safe enough. Keep wall checks and wave danger in that decision as well.
 
 ## Practical Tips
 

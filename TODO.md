@@ -1,11 +1,5 @@
 # TODO
 
-## Code Examples
-
-- Replace pseudocode with `::: code-group` containing:
-  - Classic Robocode (Java)
-  - Tank Royale (Java, C#, Python)
-
 ## Missing Pages (Currently Commented Out)
 
 Create these advanced pages and uncomment their links (search for `<!-- TODO: Add link when page is created`):

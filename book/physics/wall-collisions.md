@@ -77,16 +77,126 @@ boundaries is a foundational skill.
 
 ## Simple Wall Avoidance
 
-The most basic wall avoidance strategy is to check your distance from each wall and reverse or turn before you get too
-close:
+The most basic wall avoidance strategy is to check the distance from each wall and reverse before getting too close. The
+helper below reverses once when the bot enters the safety zone, then keeps that direction until it has moved away.
 
-```txt
-if distance to nearest wall < safeDistance:
-    reverse direction
-    or turn away from wall
+## A minimal wall check in five languages
+
+Call the helper once per turn before `execute()` or `go()`. A safety distance of 120 units leaves room for the bot to
+brake and change direction; more advanced movement can replace the reversal with wall smoothing.
+
+::: code-group
+
+```java [Classic · Java]
+private static final double SAFE_DISTANCE = 120;
+private static final double STEP = 100;
+private int direction = 1;
+private boolean nearWallLastTurn;
+
+private void moveWithWallCheck() {
+    double nearestWall = Math.min(
+            Math.min(getX(), getBattleFieldWidth() - getX()),
+            Math.min(getY(), getBattleFieldHeight() - getY())
+    );
+    boolean nearWall = nearestWall < SAFE_DISTANCE;
+    if (nearWall && !nearWallLastTurn) {
+        direction = -direction;
+    }
+    nearWallLastTurn = nearWall;
+    setAhead(direction * STEP);
+}
 ```
 
-For example, if your bot is moving forward and nears the top wall, you can:
+```python [Tank Royale · Python]
+SAFE_DISTANCE = 120.0
+STEP = 100.0
+
+
+def move_with_wall_check(self) -> None:
+    direction = getattr(self, "direction", 1)
+    near_wall_last_turn = getattr(self, "near_wall_last_turn", False)
+    nearest_wall = min(
+        self.x,
+        self.arena_width - self.x,
+        self.y,
+        self.arena_height - self.y,
+    )
+    near_wall = nearest_wall < SAFE_DISTANCE
+    if near_wall and not near_wall_last_turn:
+        direction *= -1
+    self.direction = direction
+    self.near_wall_last_turn = near_wall
+    self.set_forward(direction * STEP)
+```
+
+```java [Tank Royale · Java]
+private static final double SAFE_DISTANCE = 120;
+private static final double STEP = 100;
+private int direction = 1;
+private boolean nearWallLastTurn;
+
+private void moveWithWallCheck() {
+    double nearestWall = Math.min(
+            Math.min(getX(), getArenaWidth() - getX()),
+            Math.min(getY(), getArenaHeight() - getY())
+    );
+    boolean nearWall = nearestWall < SAFE_DISTANCE;
+    if (nearWall && !nearWallLastTurn) {
+        direction = -direction;
+    }
+    nearWallLastTurn = nearWall;
+    setForward(direction * STEP);
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+
+private const double SafeDistance = 120;
+private const double Step = 100;
+private int direction = 1;
+private bool nearWallLastTurn;
+
+private void MoveWithWallCheck()
+{
+    double nearestWall = Math.Min(
+        Math.Min(X, ArenaWidth - X),
+        Math.Min(Y, ArenaHeight - Y)
+    );
+    bool nearWall = nearestWall < SafeDistance;
+    if (nearWall && !nearWallLastTurn)
+    {
+        direction = -direction;
+    }
+    nearWallLastTurn = nearWall;
+    SetForward(direction * Step);
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+const SAFE_DISTANCE = 120;
+const STEP = 100;
+
+private direction = 1;
+private nearWallLastTurn = false;
+
+private moveWithWallCheck() {
+    const nearestWall = Math.min(
+        Math.min(this.x, this.arenaWidth - this.x),
+        Math.min(this.y, this.arenaHeight - this.y),
+    );
+    const nearWall = nearestWall < SAFE_DISTANCE;
+    if (nearWall && !this.nearWallLastTurn) {
+        this.direction = -this.direction;
+    }
+    this.nearWallLastTurn = nearWall;
+    this.setForward(this.direction * STEP);
+}
+```
+
+:::
+
+For example, if your bot is moving forward and nears the top wall, it can:
 
 - Call `setBack(distance)` to reverse.
 - Call `setTurnRight(angle)` or `setTurnLeft(angle)` to steer away.

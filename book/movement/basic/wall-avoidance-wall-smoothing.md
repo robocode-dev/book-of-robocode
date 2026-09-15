@@ -1,8 +1,11 @@
 ---
 title: "Wall Avoidance & Wall Smoothing"
 category: "Movement & Evasion"
-summary: "Avoid walls without losing speed: pick safer destinations (wall avoidance) and adjust unsafe headings so the bot slides along the border (wall smoothing)."
-tags: [ "movement", "wall-avoidance", "wall-smoothing", "navigation", "classic-robocode", "tank-royale", "intermediate" ]
+summary: >-
+  Avoid walls without losing speed: pick safer destinations (wall avoidance) and adjust unsafe headings so the bot
+  slides along the border (wall smoothing).
+tags: [ "movement", "wall-avoidance", "wall-smoothing", "navigation", "classic-robocode", "tank-royale",
+        "intermediate" ]
 difficulty: "intermediate"
 source: [
   "RoboWiki - Wall Avoidance (classic Robocode) https://robowiki.net/wiki/Wall_Avoidance",
@@ -33,7 +36,8 @@ get moving again. That’s extra time being an easy target.
 Walls also reduce your options. Near the center, a bot can dodge left or right with similar freedom. Near a border,
 half the escape space is gone.
 
-<img src="../../images/wall-avoidance-safe-rectangle.svg" alt="Battlefield with safe rectangle and bot near wall" class="screenshot"><br>
+<img src="../../images/wall-avoidance-safe-rectangle.svg" alt="Battlefield with safe rectangle and bot near wall"
+  class="screenshot"><br>
 *Battlefield with safe rectangle and bot near wall*
 
 Legend:
@@ -78,7 +82,8 @@ The key idea:
 If the bot repeats this at every turn, the result is a smooth, tangential path that naturally follows the wall instead
 of slamming into it.
 
-<img src="../../images/wall-smoothing.svg" alt="Bot with adjusted heading that is tangent to the wall" style="max-width:100%;height:auto;"><br>
+<img src="../../images/wall-smoothing.svg" alt="Bot with adjusted heading that is tangent to the wall"
+  style="max-width:100%;height:auto;"><br>
 *Illustration: Bot with a desired heading (red) that is set to an adjusted heading (green) that is tangent to the wall*
 
 ### A “safe rectangle” test (one-step lookahead)
@@ -94,26 +99,186 @@ Definitions:
 
 If `(x + stepX, y + stepY)` is outside, the direction is unsafe.
 
-## Pseudocode: smoothing a desired heading
+## Smoothing a desired heading in five languages
 
-This is intentionally platform-neutral pseudo-math. Use whatever angle conventions your platform provides but keep them
-consistent.
+The helpers below use radians and a mathematical coordinate frame where `0` radians points along positive X. Convert the
+platform heading once before calling `smoothHeading`, then convert the returned heading back if necessary.
 
-```text
-function smoothHeading(desiredHeading, x, y, W, H, M):
-    L = 30            # lookahead distance (units)
-    S = 5°            # smoothing step (small angle)
+::: code-group
 
-    heading = desiredHeading
+```java [Classic · Java]
+public final class WallSmoothing {
+    private static final double LOOKAHEAD = 30;
+    private static final double STEP = Math.toRadians(5);
+    private static final int MAX_ITERATIONS = 72;
 
-    while not isInsideSafeRect(x + L*cos(heading), y + L*sin(heading), W, H, M):
-        heading = heading + S   # or -S, but be consistent for your bot
+    public static double smoothHeading(
+            double desiredHeading, double x, double y,
+            double battlefieldWidth, double battlefieldHeight, double margin) {
+        double heading = desiredHeading;
+        for (int attempt = 0; attempt < MAX_ITERATIONS; attempt++) {
+            double projectedX = x + LOOKAHEAD * Math.cos(heading);
+            double projectedY = y + LOOKAHEAD * Math.sin(heading);
+            if (isInsideSafeRect(projectedX, projectedY,
+                    battlefieldWidth, battlefieldHeight, margin)) {
+                return heading;
+            }
+            heading += STEP;
+        }
+        return heading;
+    }
 
+    private static boolean isInsideSafeRect(
+            double x, double y, double battlefieldWidth,
+            double battlefieldHeight, double margin) {
+        return x >= margin && x <= battlefieldWidth - margin
+                && y >= margin && y <= battlefieldHeight - margin;
+    }
+}
+```
+
+```python [Tank Royale · Python]
+from math import cos, radians, sin
+
+
+LOOKAHEAD = 30.0
+STEP = radians(5)
+MAX_ITERATIONS = 72
+
+
+def smooth_heading(
+    desired_heading: float,
+    x: float,
+    y: float,
+    battlefield_width: float,
+    battlefield_height: float,
+    margin: float,
+) -> float:
+    heading = desired_heading
+    for _ in range(MAX_ITERATIONS):
+        projected_x = x + LOOKAHEAD * cos(heading)
+        projected_y = y + LOOKAHEAD * sin(heading)
+        if is_inside_safe_rect(
+            projected_x, projected_y, battlefield_width, battlefield_height, margin
+        ):
+            return heading
+        heading += STEP
     return heading
 
-function isInsideSafeRect(px, py, W, H, M):
-    return (M <= px <= W-M) and (M <= py <= H-M)
+
+def is_inside_safe_rect(
+    x: float, y: float, battlefield_width: float, battlefield_height: float, margin: float
+) -> bool:
+    return margin <= x <= battlefield_width - margin and margin <= y <= battlefield_height - margin
 ```
+
+```java [Tank Royale · Java]
+public final class WallSmoothing {
+    private static final double LOOKAHEAD = 30;
+    private static final double STEP = Math.toRadians(5);
+    private static final int MAX_ITERATIONS = 72;
+
+    public static double smoothHeading(
+            double desiredHeading, double x, double y,
+            double battlefieldWidth, double battlefieldHeight, double margin) {
+        double heading = desiredHeading;
+        for (int attempt = 0; attempt < MAX_ITERATIONS; attempt++) {
+            double projectedX = x + LOOKAHEAD * Math.cos(heading);
+            double projectedY = y + LOOKAHEAD * Math.sin(heading);
+            if (isInsideSafeRect(projectedX, projectedY,
+                    battlefieldWidth, battlefieldHeight, margin)) {
+                return heading;
+            }
+            heading += STEP;
+        }
+        return heading;
+    }
+
+    private static boolean isInsideSafeRect(
+            double x, double y, double battlefieldWidth,
+            double battlefieldHeight, double margin) {
+        return x >= margin && x <= battlefieldWidth - margin
+                && y >= margin && y <= battlefieldHeight - margin;
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+
+public static class WallSmoothing
+{
+    private const double Lookahead = 30;
+    private const double Step = Math.PI / 36;
+    private const int MaxIterations = 72;
+
+    public static double SmoothHeading(
+        double desiredHeading, double x, double y,
+        double battlefieldWidth, double battlefieldHeight, double margin)
+    {
+        double heading = desiredHeading;
+        for (int attempt = 0; attempt < MaxIterations; attempt++)
+        {
+            double projectedX = x + Lookahead * Math.Cos(heading);
+            double projectedY = y + Lookahead * Math.Sin(heading);
+            if (IsInsideSafeRect(projectedX, projectedY,
+                    battlefieldWidth, battlefieldHeight, margin))
+            {
+                return heading;
+            }
+            heading += Step;
+        }
+        return heading;
+    }
+
+    private static bool IsInsideSafeRect(
+        double x, double y, double battlefieldWidth,
+        double battlefieldHeight, double margin)
+    {
+        return x >= margin && x <= battlefieldWidth - margin
+            && y >= margin && y <= battlefieldHeight - margin;
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+const LOOKAHEAD = 30;
+const STEP = (5 * Math.PI) / 180;
+const MAX_ITERATIONS = 72;
+
+export function smoothHeading(
+    desiredHeading: number,
+    x: number,
+    y: number,
+    battlefieldWidth: number,
+    battlefieldHeight: number,
+    margin: number,
+): number {
+    let heading = desiredHeading;
+    for (let attempt = 0; attempt < MAX_ITERATIONS; attempt += 1) {
+        const projectedX = x + LOOKAHEAD * Math.cos(heading);
+        const projectedY = y + LOOKAHEAD * Math.sin(heading);
+        if (isInsideSafeRect(projectedX, projectedY, battlefieldWidth, battlefieldHeight, margin)) {
+            return heading;
+        }
+        heading += STEP;
+    }
+    return heading;
+}
+
+function isInsideSafeRect(
+    x: number,
+    y: number,
+    battlefieldWidth: number,
+    battlefieldHeight: number,
+    margin: number,
+): boolean {
+    return x >= margin && x <= battlefieldWidth - margin
+        && y >= margin && y <= battlefieldHeight - margin;
+}
+```
+
+:::
 
 Notes:
 
@@ -136,7 +301,9 @@ A typical flow-through movement loop looks like this:
 
 This keeps the bot in motion even when a target point or enemy pressure pushes it toward the border.
 
-<img src="../../images/wall-smoothing-with-goto.svg" alt="Bot following an arc that stays away from the wall using a GoTo waypoint" style="max-width:100%;height:auto;"><br>
+<img src="../../images/wall-smoothing-with-goto.svg"
+  alt="Bot following an arc that stays away from the wall using a GoTo waypoint"
+  style="max-width:100%;height:auto;"><br>
 *Illustration: Bot following an arc that stays away from the wall using a GoTo waypoint (green) and hence moves in a
 curve away from the wall*
 

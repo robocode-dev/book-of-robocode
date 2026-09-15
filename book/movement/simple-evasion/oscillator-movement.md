@@ -1,12 +1,14 @@
 ---
 title: "Oscillator Movement"
 category: "Movement & Evasion"
-summary: "Oscillator movement creates predictable back-and-forth patterns that can dodge simple targeting while maintaining strategic positioning."
+summary: "Oscillator movement creates predictable back-and-forth patterns that can dodge simple targeting while
+  maintaining strategic positioning."
 tags: [ "oscillator-movement", "movement", "simple-evasion", "intermediate", "robocode", "tank-royale" ]
 difficulty: "intermediate"
 source: [
   "RoboWiki - Oscillator Movement (classic Robocode) https://robowiki.net/wiki/Oscillator_Movement",
-  "RoboWiki - Oscillator Movement/Period (classic Robocode) https://robowiki.net/wiki/Oscillator_Movement/Period"
+  "RoboWiki - Oscillator Movement/Period (classic Robocode) https://robowiki.net/wiki/Oscillator_Movement/Period",
+  "Robocode Tank Royale Docs - Bot API https://robocode.dev/api/"
 ]
 ---
 
@@ -38,22 +40,150 @@ indefinitely. The "period" can be defined by:
 - **Distance-based**: Switch after traveling a certain distance (e.g., 100 units)
 - **Event-based**: Switch on wall collisions or when reaching battlefield boundaries
 
-**Basic pseudocode:**
+**Basic implementation:**
 
-```
-oscillator_timer = 0
-oscillator_period = 20
-direction = 1  // 1 for forward, -1 for backward
+The code uses setter-style movement so the bot can change direction once per turn. Classic Robocode commits each turn
+with `execute()`. Tank Royale commits with `go()`.
 
-every turn:
-    oscillator_timer++
-    
-    if oscillator_timer >= oscillator_period:
-        direction = -direction
-        oscillator_timer = 0
-    
-    set_ahead(direction * 100)
+::: code-group
+
+```java [Classic · Java]
+import robocode.AdvancedRobot;
+
+public class OscillatorBot extends AdvancedRobot {
+    private static final int PERIOD = 20;
+    private int timer;
+    private int direction = 1;
+
+    @Override
+    public void run() {
+        while (true) {
+            timer++;
+            if (timer >= PERIOD) {
+                direction = -direction;
+                timer = 0;
+            }
+            setAhead(direction * 100);
+            execute();
+        }
+    }
+}
 ```
+
+```python [Tank Royale · Python]
+from robocode_tank_royale.bot_api import Bot
+
+
+class OscillatorBot(Bot):
+    PERIOD = 20
+
+    def run(self) -> None:
+        timer = 0
+        direction = 1
+
+        while self.running:
+            timer += 1
+            if timer >= self.PERIOD:
+                direction = -direction
+                timer = 0
+            self.set_forward(direction * 100)
+            self.go()
+
+
+def main() -> None:
+    OscillatorBot().start()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+```java [Tank Royale · Java]
+import dev.robocode.tankroyale.botapi.Bot;
+
+public class OscillatorBot extends Bot {
+    private static final int PERIOD = 20;
+    private int timer;
+    private int direction = 1;
+
+    public static void main(String[] args) {
+        new OscillatorBot().start();
+    }
+
+    @Override
+    public void run() {
+        while (isRunning()) {
+            timer++;
+            if (timer >= PERIOD) {
+                direction = -direction;
+                timer = 0;
+            }
+            setForward(direction * 100);
+            go();
+        }
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using Robocode.TankRoyale.BotApi;
+
+public class OscillatorBot : Bot
+{
+    private const int Period = 20;
+    private int timer;
+    private int direction = 1;
+
+    static void Main(string[] args)
+    {
+        new OscillatorBot().Start();
+    }
+
+    public override void Run()
+    {
+        while (IsRunning)
+        {
+            timer++;
+            if (timer >= Period)
+            {
+                direction = -direction;
+                timer = 0;
+            }
+            SetForward(direction * 100);
+            Go();
+        }
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+import { Bot } from "@robocode.dev/tank-royale-bot-api";
+
+class OscillatorBot extends Bot {
+    static main() {
+        new OscillatorBot().start();
+    }
+
+    override run() {
+        let timer = 0;
+        let direction = 1;
+
+        while (this.isRunning()) {
+            timer++;
+            if (timer >= 20) {
+                direction = -direction;
+                timer = 0;
+            }
+            this.setForward(direction * 100);
+            this.go();
+        }
+    }
+}
+
+OscillatorBot.main();
+```
+
+:::
 
 <!-- TODO: Illustration
 **Filename:** oscillator-movement-pattern.svg
@@ -79,7 +209,8 @@ every turn:
   - text: "Time →", position: (3600, 1600), color: chocolate
 -->
 
-<img src="../../images/oscillator-movement-pattern.svg" alt="Oscillator movement creates a back-and-forth pattern along a line" style="max-width:100%;height:auto;"><br>
+<img src="../../images/oscillator-movement-pattern.svg"
+alt="Oscillator movement creates a back-and-forth pattern along a line" style="max-width:100%;height:auto;"><br>
 *Oscillator movement creates a back-and-forth pattern along a line*
 
 ## Choosing the Period

@@ -1,7 +1,9 @@
 ---
 title: "Movement Constraints & Bot Physics"
 category: "Battlefield Physics"
-summary: "Reference for movement, turning, and radar physics that define how bots move and rotate in classic Robocode and Robocode Tank Royale."
+summary: >-
+  Reference for movement, turning, and radar physics that define how bots move and rotate in classic Robocode and
+  Robocode Tank Royale.
 tags: [ "battlefield-physics", "movement", "turning", "radar", "classic-robocode", "tank-royale", "beginner" ]
 difficulty: "beginner"
 source: [
@@ -64,29 +66,17 @@ You give a distance or velocity target; the engine applies acceleration and dece
 
 - Max forward speed: **+8 units/turn**
 - Max backward speed: **−8 units/turn**
-- Max acceleration (speeding up in the current direction): **+1 unit/turn**
-- Max deceleration (slowing down / reversing): **−2 units/turn**
+- Max acceleration (speeding up in the current direction): **+1 unit/turn²**
+- Max deceleration (slowing down / reversing): **−2 units/turn²**
 
-Velocity update per turn (conceptual):
-
-```text
-let v = current velocity
-let t = desired direction (based on setAhead / setBack)
-if sign(t) == sign(v):
-    # accelerating in same direction
-    v' = clamp(v + 1, -8, 8)
-else:
-    # decelerating / reversing
-    v' = clamp(v - 2 * sign(v), -8, 8)
-```
+If `v` is the current velocity and `t` is the requested target velocity, the engine moves `v` toward `t` by at most
+1 unit/turn while the signs agree. When the bot must brake or reverse, the maximum change is 2 units/turn. The result
+is always clamped to the range −8 to +8 units/turn.
 
 Position is then updated using the bot heading and the chosen coordinate/angle convention from
 `Coordinate Systems & Angles`. For example, in Tank Royale (math-style angles, 0° = East, CCW positive):
 
-```text
-x' = x + v' * cos(heading)
-y' = y + v' * sin(heading)
-```
+The position update is `x' = x + v' × cos(heading)` and `y' = y + v' × sin(heading)`.
 
 Where:
 
@@ -102,15 +92,6 @@ not need to remember them or hard-code numbers in your own bot:
 - Acceleration: `ACCELERATION`
 - Deceleration: `DECELERATION`
 
-From the API (names, not pasted values):
-
-```text
-// dev.robocode.tankroyale.botapi.Constants
-MAX_SPEED       // max magnitude of velocity in units/turn
-ACCELERATION    // max speed increase per turn (same direction)
-DECELERATION    // max speed decrease per turn (slowing / reversing)
-```
-
 Always prefer using these constants from the API over literal numbers in your code; they document the rules and keep
 your bot compatible if the game engine is ever tuned.
 
@@ -122,45 +103,24 @@ increases.
 ### Classic Robocode body turn rate
 
 - Max body turn rate when standing still: **10°/turn**.
-- The faster you move, the less you can turn:
-
-  ```text
-  maxTurnRate(speed) = 10° − 0.75° × |speed|
-  ```
+- The faster you move, the less you can turn: `maxTurnRate(speed) = 10° − 0.75° × |speed|`.
 
     - At speed 0: 10°
     - At speed 4: 10 − 0.75 × 4 = 7°
     - At speed 8: 10 − 0.75 × 8 = 4°
 
-- The actual change in heading per turn is clamped to this limit:
-
-```text
-let wantedTurn = normalizeBearing(requestedTurn)  # in range (−180, +180]
-let limit = 10 − 0.75 × |velocity|
-bodyTurn = clamp(wantedTurn, −limit, +limit)
-heading' = normalizeAngle(heading + bodyTurn)
-```
+- The requested turn is normalized to the shortest direction, then clamped to this limit. If `r` is that normalized
+  request and `v` is the current velocity, the applied body turn is
+  `clamp(r, −maxTurnRate(v), +maxTurnRate(v))`.
 
 This speed–turn tradeoff is a core part of movement design in classic Robocode: going faster makes it harder to turn
 sharply.
 
 ### Tank Royale body turn rate
 
-Tank Royale exposes analogous constants (names only) in its API:
-
-```text
-MAX_TURN_RATE       // base max turn rate at speed 0 (degrees/turn)
-TURN_RATE_DEC       // how much turn rate decreases per unit of speed
-```
-
-The effective maximum per turn is:
-
-```text
-maxTurnRate(speed) = MAX_TURN_RATE − TURN_RATE_DEC × |speed|
-```
-
-Again, the shape of the rule is the same as in classic Robocode. Use the constants from the Tank Royale Bot API rather
-than hard-coding numeric turn rates in your own code.
+Tank Royale exposes `MAX_TURN_RATE` in its API and uses the same speed penalty. The effective maximum per turn is
+`MAX_TURN_RATE − 0.75° × |speed|`, where `MAX_TURN_RATE` is 10°/turn. Use the API’s `calcMaxTurnRate(speed)` helper
+when available instead of duplicating the formula.
 
 ## Gun and radar turning (constraints only)
 
@@ -179,30 +139,15 @@ By default, turning the body also rotates the gun and radar, and turning the gun
 methods in the classic API control whether those automatic rotations are applied. For a full conceptual explanation and
 examples, see `Bot Anatomy`.
 
-From a physics perspective, the engine applies a simple clamp each turn:
-
-```text
-gunTurn = clamp(requestedGunTurn, −20, +20)
-gunHeading' = normalizeAngle(gunHeading + gunTurn [+ bodyTurn if not adjusted])
-
-radarTurn = clamp(requestedRadarTurn, −45, +45)
-radarHeading' = normalizeAngle(radarHeading + radarTurn [+ gunTurn/bodyTurn if not adjusted])
-```
+From a physics perspective, each requested turn is clamped independently: the gun to the range −20° to +20° and the
+radar to −45° to +45°. Chained body, gun, and radar rotations are then added according to the selected `setAdjust*`
+settings.
 
 ### Tank Royale
 
-Tank Royale uses separate headings for the body, gun, and radar. Angular turn limits are exposed as constants in the
-Bot API:
-
-```text
-MAX_TURN_RATE          // for body
-MAX_GUN_TURN_RATE      // for gun
-MAX_RADAR_TURN_RATE    // for radar
-```
-
-You typically send separate turn commands per turn. The game engine clamps heading changes so that no part turns more
-than its maximum per turn. As with speed and acceleration, it is the best practice to use these named constants in your
-bot code instead of hard-coded degree values.
+Tank Royale uses separate headings for the body, gun, and radar. Angular turn limits are exposed as named constants in
+the Bot API. You typically send separate turn commands per turn, and the game engine clamps each heading change to its
+maximum. Prefer the named constants and API properties over hard-coded degree values in bot code.
 
 ![Max turn rates for each bot part](../images/bot-max-rotations.svg)<br>
 *Max turn rates for each bot part.*
@@ -250,18 +195,13 @@ If the radar does not turn, the sector collapses into a thin beam along a single
 ### Robocode Tank Royale
 
 Tank Royale uses the same radar sweep/scan arc logic as classic Robocode. The game engine checks for bots within the
-angular sector swept by the radar each turn, using the same mechanism for both platforms. Only constants, such as maximum
-scan distance (`RADAR_RANGE`), maximum radar turn rate (`MAX_RADAR_TURN_RATE`), and angle conventions, may differ between
-platforms.
+angular sector swept by the radar each turn, using the same mechanism for both platforms. Only constants, such as the
+scan distance (`SCAN_RADIUS`), maximum radar turn rate (`MAX_RADAR_TURN_RATE`), and angle conventions, may differ.
 
 - The radar has a **heading** and an associated **scan arc** around that heading.
 - The game engine uses:
     - A **maximum radar turn rate per turn** (`MAX_RADAR_TURN_RATE`).
-    - A **maximum scan distance** constant, such as:
-
-      ```text
-      RADAR_RANGE   // maximum distance in units that radar can detect bots
-      ```
+    - A **maximum scan distance** constant, `SCAN_RADIUS`, measured in units.
 
     - An angular window around the radar heading to decide which bots are inside the scan arc.
 
@@ -272,7 +212,9 @@ protocol, engine differences) are not relevant to radar sweep logic.
 
 For details, refer to the physics documentation and Bot API reference for each platform.
 
-![Tank Royale radar scan arc with previous and current heading + maximum scan length](../images/radar-sweep-max-length.svg)<br>
+<img src="../images/radar-sweep-max-length.svg"
+alt="Tank Royale radar scan arc with previous and current heading and maximum scan length"
+style="max-width:100%;height:auto;"><br>
 *The illustration is not to scale – the scan arc is actually longer than shown. The illustration shows the radar scan
 arc with previous and current heading and the maximum scan length*
 
@@ -281,8 +223,8 @@ arc with previous and current heading and the maximum scan length*
 Classic Robocode movement and turning constants you will most often use:
 
 - Max velocity: **8 units/turn**
-- Max acceleration: **+1 unit/turn**
-- Max deceleration: **−2 units/turn**
+- Max acceleration: **+1 unit/turn²**
+- Max deceleration: **−2 units/turn²**
 - Max body turn (at speed 0): **10°/turn**
 - Body turn penalty: **0.75° per unit of speed**
 - Max gun turn: **20°/turn**
@@ -294,41 +236,126 @@ those constants over hard-coded literals in your own code.
 
 ## Simple movement loop example
 
-This pseudocode shows a simple movement loop using the classic Robocode-style constraints above. It deliberately relies
-on the coordinate and angle conventions defined in `Coordinate Systems & Angles`.
+The following bots send movement and rotation requests in parallel. The requested body turn is larger than one turn can
+apply, while the gun and radar requests match their documented limits. The engine applies acceleration, braking, and
+turn-rate limits when `execute()` or `go()` commits the turn.
 
-```text
-const MAX_SPEED = 8
-const ACCEL = 1
-const DECEL = 2
-const MAX_TURN_0_SPEED = 10
-const TURN_PENALTY = 0.75
+::: code-group
 
-while (true):
-    # choose a target heading and speed
-    desiredGunHeading = angleTo(targetX, targetY)  # uses your chosen angle convention
-    desiredSpeed = MAX_SPEED
+```java [Classic · Java]
+import robocode.AdvancedRobot;
 
-    # turn body within allowed rate
-    maxTurn = MAX_TURN_0_SPEED - TURN_PENALTY * abs(velocity)
-    wantedTurn = normalizeBearing(desiredHeading - heading)
-    bodyTurn = clamp(wantedTurn, -maxTurn, +maxTurn)
-    heading = heading + bodyTurn
+public class ConstraintsDemoBot extends AdvancedRobot {
+    @Override
+    public void run() {
+        setAdjustGunForRobotTurn(true);
+        setAdjustRadarForGunTurn(true);
 
-    # adjust speed with accel/decel rules
-    if sign(desiredSpeed) == sign(velocity):
-        velocity = clamp(velocity + ACCEL * sign(desiredSpeed), -MAX_SPEED, +MAX_SPEED)
-    else:
-        velocity = clamp(velocity - DECEL * sign(velocity), -MAX_SPEED, +MAX_SPEED)
-
-    # move according to your coordinate system
-    # (example: Tank Royale math-style angles)
-    x = x + velocity * cos(heading)
-    y = y + velocity * sin(heading)
+        while (true) {
+            setTurnRight(90);
+            setTurnGunRight(20);
+            setTurnRadarRight(45);
+            setAhead(400);
+            execute();
+        }
+    }
+}
 ```
 
-This logic mirrors how both engines think about movement internally and is a useful mental model when designing your
-own movement systems.
+```python [Tank Royale · Python]
+from robocode_tank_royale.bot_api import Bot
+
+
+class ConstraintsDemoBot(Bot):
+    def run(self) -> None:
+        while self.running:
+            self.set_turn_right(90)
+            self.set_turn_gun_right(20)
+            self.set_turn_radar_right(45)
+            self.set_forward(400)
+            self.go()
+
+
+def main() -> None:
+    ConstraintsDemoBot().start()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+```java [Tank Royale · Java]
+import dev.robocode.tankroyale.botapi.Bot;
+
+public class ConstraintsDemoBot extends Bot {
+    public static void main(String[] args) {
+        new ConstraintsDemoBot().start();
+    }
+
+    @Override
+    public void run() {
+        while (isRunning()) {
+            setTurnRight(90);
+            setTurnGunRight(20);
+            setTurnRadarRight(45);
+            setForward(400);
+            go();
+        }
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using Robocode.TankRoyale.BotApi;
+
+public class ConstraintsDemoBot : Bot
+{
+    static void Main(string[] args)
+    {
+        new ConstraintsDemoBot().Start();
+    }
+
+    public override void Run()
+    {
+        while (IsRunning)
+        {
+            SetTurnRight(90);
+            SetTurnGunRight(20);
+            SetTurnRadarRight(45);
+            SetForward(400);
+            Go();
+        }
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+import { Bot } from "@robocode.dev/tank-royale-bot-api";
+
+class ConstraintsDemoBot extends Bot {
+    static main() {
+        new ConstraintsDemoBot().start();
+    }
+
+    override run() {
+        while (this.isRunning()) {
+            this.setTurnRight(90);
+            this.setTurnGunRight(20);
+            this.setTurnRadarRight(45);
+            this.setForward(400);
+            this.go();
+        }
+    }
+}
+
+ConstraintsDemoBot.main();
+```
+
+:::
+
+The loop is intentionally simple. It demonstrates that a command expresses a desired movement or turn, not an
+instantaneous teleport. A bot that changes direction should leave room for braking, and a bot that turns at speed
+should expect a wider arc than it would get while stationary.
 
 ---
 

@@ -1,11 +1,14 @@
 ---
 title: "Gun Heat Lock"
 category: "Radar & Scanning"
-summary: "An advanced melee radar technique that focuses on enemies your bot is about to fire at, combining targeting with radar efficiency."
+summary: >-
+  An advanced melee radar technique that focuses on enemies your bot is about to fire at, combining targeting with
+  radar efficiency.
 tags: [ "gun-heat-lock", "melee-radar", "radar", "scanning", "melee", "robocode", "tank-royale", "advanced" ]
 difficulty: "advanced"
 source: [
-  "RoboWiki - Melee Radar (classic Robocode) https://robowiki.net/wiki/Melee_Radar"
+  "RoboWiki - Melee Radar (classic Robocode) https://robowiki.net/wiki/Melee_Radar",
+  "Robocode Tank Royale Docs - Bot API https://robocode.dev/api/apis.html"
 ]
 ---
 
@@ -49,59 +52,485 @@ The strategy uses **gun heat** as a trigger to switch radar behavior:
 This ensures that the targeting system receives the freshest possible data about the enemy's position and velocity at
 the moment of firing, improving hit rates without sacrificing situational awareness.
 
-<img src="../../images/gun-heat-lock-pattern.svg" alt="Gun heat lock focuses radar on the firing target when gun heat is low" style="max-width:100%;height:auto;">
+<img src="../../images/gun-heat-lock-pattern.svg"
+alt="Gun heat lock focuses radar on the firing target when gun heat is low"
+style="max-width:100%;height:auto;">
 <br>
 *Gun heat lock focuses radar on the firing target when gun heat is low*
 
 ## Implementation Strategy
 
-The implementation requires coordination between radar, targeting, and gun systems:
+The example below keeps a small target table, selects the closest high-energy target, and switches from a broad radar
+spin to a target lock when gun heat drops below 1.0. A scan of the selected target triggers a shot only when the gun is
+ready, so stale coordinates are not treated as a firing confirmation.
 
-```text
-// Track gun heat and targeting state
-currentTarget = null
-gunHeatThreshold = 1.0  // Lock when heat drops below this
+::: code-group
 
-function onTurn() {
-    // Targeting system selects next enemy
-    currentTarget = selectBestTarget()
-    
-    if (gunHeat < gunHeatThreshold AND currentTarget != null) {
-        // Gun is ready or nearly ready: lock radar on target
-        lockRadarOnTarget(currentTarget)
-    } else {
-        // Gun cooling: use standard melee radar pattern
-        standardMeleeRadarPattern()
+```java [Classic · Java]
+import java.util.HashMap;
+import java.util.Map;
+
+import robocode.AdvancedRobot;
+import robocode.RobotDeathEvent;
+import robocode.ScannedRobotEvent;
+import robocode.util.Utils;
+
+public class GunHeatLockBot extends AdvancedRobot {
+    private static final double HEAT_THRESHOLD = 1.0;
+    private static final double FIRE_POWER = 1.0;
+    private static final double SCAN_BUFFER = 10;
+    private final Map<String, EnemyState> enemies = new HashMap<>();
+
+    @Override
+    public void run() {
+        setAdjustGunForRobotTurn(true);
+        setAdjustRadarForGunTurn(true);
+
+        while (true) {
+            EnemyState target = selectBestTarget();
+            if (getGunHeat() <= HEAT_THRESHOLD && target != null) {
+                lockRadarOn(target);
+            } else {
+                setTurnRadarRight(Double.POSITIVE_INFINITY);
+            }
+            execute();
+        }
     }
-    
-    // Fire when radar lock confirms target and gun is ready
-    if (gunHeat == 0 AND targetRecentlyScanned(currentTarget)) {
-        fireAtTarget(currentTarget)
+
+    @Override
+    public void onScannedRobot(ScannedRobotEvent event) {
+        double absoluteBearing = Math.toRadians(getHeading() + event.getBearing());
+        double x = getX() + Math.sin(absoluteBearing) * event.getDistance();
+        double y = getY() + Math.cos(absoluteBearing) * event.getDistance();
+        enemies.put(event.getName(), new EnemyState(x, y, event.getDistance(), event.getEnergy()));
+
+        EnemyState target = selectBestTarget();
+        if (target != null && enemies.get(event.getName()) == target
+                && getGunHeat() <= 0.0 && getEnergy() > FIRE_POWER) {
+            setFire(FIRE_POWER);
+        }
     }
-}
 
-function lockRadarOnTarget(enemy) {
-    // Calculate absolute bearing to enemy
-    targetBearing = heading + enemy.bearing
-    
-    // Calculate required radar turn
-    radarTurn = normalizeAngle(targetBearing - radarHeading)
-    
-    // Add buffer to ensure scan
-    radarTurn += sign(radarTurn) * 10
-    
-    setTurnRadarRight(radarTurn)
-}
+    @Override
+    public void onRobotDeath(RobotDeathEvent event) {
+        enemies.remove(event.getName());
+    }
 
-function standardMeleeRadarPattern() {
-    // Use spinning, oldest scanned, or other melee pattern
-    // Examples: continuous spin, oldest scanned prioritization
-    setTurnRadarRight(360)  // or implement oldest scanned
+    private EnemyState selectBestTarget() {
+        EnemyState best = null;
+        double bestScore = Double.NEGATIVE_INFINITY;
+        for (EnemyState enemy : enemies.values()) {
+            double score = 1000.0 / Math.max(enemy.distance, 1.0) + enemy.energy / 10.0;
+            if (score > bestScore) {
+                bestScore = score;
+                best = enemy;
+            }
+        }
+        return best;
+    }
+
+    private void lockRadarOn(EnemyState target) {
+        double dx = target.x - getX();
+        double dy = target.y - getY();
+        double targetHeading = Math.toDegrees(Math.atan2(dx, dy));
+        double turn = Utils.normalRelativeAngleDegrees(targetHeading - getRadarHeading());
+        setTurnRadarRight(turn + (turn >= 0 ? SCAN_BUFFER : -SCAN_BUFFER));
+    }
+
+    private static class EnemyState {
+        final double x;
+        final double y;
+        final double distance;
+        final double energy;
+
+        EnemyState(double x, double y, double distance, double energy) {
+            this.x = x;
+            this.y = y;
+            this.distance = distance;
+            this.energy = energy;
+        }
+    }
 }
 ```
 
-The `gunHeatThreshold` value determines when to switch from general scanning to target lock. Higher values (1.5-2.0)
-give more time to acquire the lock; lower values (0.5-1.0) maintain broader awareness longer.
+```python [Tank Royale · Python]
+import math
+from dataclasses import dataclass
+
+from robocode_tank_royale.bot_api import Bot
+from robocode_tank_royale.bot_api.events import BotDeathEvent, ScannedBotEvent
+
+
+@dataclass
+class EnemyState:
+    bot_id: int
+    x: float
+    y: float
+    distance: float
+    energy: float
+
+
+class GunHeatLockBot(Bot):
+    HEAT_THRESHOLD = 1.0
+    FIRE_POWER = 1.0
+    SCAN_BUFFER = 10.0
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.enemies: dict[int, EnemyState] = {}
+
+    def run(self) -> None:
+        while self.running:
+            target = self.select_best_target()
+            if self.gun_heat <= self.HEAT_THRESHOLD and target is not None:
+                self.lock_radar_on(target)
+            else:
+                self.set_turn_radar_right(float("inf"))
+            self.go()
+
+    def on_scanned_bot(self, event: ScannedBotEvent) -> None:
+        distance = math.hypot(event.x - self.x, event.y - self.y)
+        self.enemies[event.scanned_bot_id] = EnemyState(
+            event.scanned_bot_id, event.x, event.y, distance, event.energy)
+
+        target = self.select_best_target()
+        if (target is not None and target.bot_id == event.scanned_bot_id
+                and self.gun_heat <= 0.0 and self.energy > self.FIRE_POWER):
+            self.set_fire(self.FIRE_POWER)
+
+    def on_bot_death(self, event: BotDeathEvent) -> None:
+        self.enemies.pop(event.victim_id, None)
+
+    def select_best_target(self) -> EnemyState | None:
+        return max(self.enemies.values(), key=self.target_score, default=None)
+
+    @staticmethod
+    def target_score(enemy: EnemyState) -> float:
+        return 1000.0 / max(enemy.distance, 1.0) + enemy.energy / 10.0
+
+    def lock_radar_on(self, target: EnemyState) -> None:
+        target_direction = math.degrees(math.atan2(target.y - self.y, target.x - self.x))
+        turn = normalize_relative_angle(target_direction - self.radar_direction)
+        turn += self.SCAN_BUFFER if turn >= 0 else -self.SCAN_BUFFER
+        self.set_turn_radar_right(turn)
+
+
+def normalize_relative_angle(angle: float) -> float:
+    while angle <= -180:
+        angle += 360
+    while angle > 180:
+        angle -= 360
+    return angle
+
+
+def main() -> None:
+    GunHeatLockBot().start()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+```java [Tank Royale · Java]
+import java.util.HashMap;
+import java.util.Map;
+
+import dev.robocode.tankroyale.botapi.Bot;
+import dev.robocode.tankroyale.botapi.events.BotDeathEvent;
+import dev.robocode.tankroyale.botapi.events.ScannedBotEvent;
+
+public class GunHeatLockBot extends Bot {
+    private static final double HEAT_THRESHOLD = 1.0;
+    private static final double FIRE_POWER = 1.0;
+    private static final double SCAN_BUFFER = 10;
+    private final Map<Integer, EnemyState> enemies = new HashMap<>();
+
+    public static void main(String[] args) {
+        new GunHeatLockBot().start();
+    }
+
+    @Override
+    public void run() {
+        while (isRunning()) {
+            EnemyState target = selectBestTarget();
+            if (getGunHeat() <= HEAT_THRESHOLD && target != null) {
+                lockRadarOn(target);
+            } else {
+                setTurnRadarRight(Double.POSITIVE_INFINITY);
+            }
+            go();
+        }
+    }
+
+    @Override
+    public void onScannedBot(ScannedBotEvent event) {
+        double distance = Math.hypot(event.getX() - getX(), event.getY() - getY());
+        enemies.put(event.getScannedBotId(), new EnemyState(
+                event.getScannedBotId(), event.getX(), event.getY(), distance, event.getEnergy()));
+
+        EnemyState target = selectBestTarget();
+        if (target != null && target.id == event.getScannedBotId()
+                && getGunHeat() <= 0.0 && getEnergy() > FIRE_POWER) {
+            setFire(FIRE_POWER);
+        }
+    }
+
+    @Override
+    public void onBotDeath(BotDeathEvent event) {
+        enemies.remove(event.getVictimId());
+    }
+
+    private EnemyState selectBestTarget() {
+        EnemyState best = null;
+        double bestScore = Double.NEGATIVE_INFINITY;
+        for (EnemyState enemy : enemies.values()) {
+            double score = 1000.0 / Math.max(enemy.distance, 1.0) + enemy.energy / 10.0;
+            if (score > bestScore) {
+                bestScore = score;
+                best = enemy;
+            }
+        }
+        return best;
+    }
+
+    private void lockRadarOn(EnemyState target) {
+        double targetDirection = Math.toDegrees(Math.atan2(
+                target.y - getY(), target.x - getX()));
+        double turn = normalizeRelativeAngle(targetDirection - getRadarDirection());
+        setTurnRadarRight(turn + (turn >= 0 ? SCAN_BUFFER : -SCAN_BUFFER));
+    }
+
+    private static double normalizeRelativeAngle(double angle) {
+        while (angle <= -180) {
+            angle += 360;
+        }
+        while (angle > 180) {
+            angle -= 360;
+        }
+        return angle;
+    }
+
+    private static class EnemyState {
+        final int id;
+        final double x;
+        final double y;
+        final double distance;
+        final double energy;
+
+        EnemyState(int id, double x, double y, double distance, double energy) {
+            this.id = id;
+            this.x = x;
+            this.y = y;
+            this.distance = distance;
+            this.energy = energy;
+        }
+    }
+}
+```
+
+```csharp [Tank Royale · C#]
+using System;
+using System.Collections.Generic;
+using Robocode.TankRoyale.BotApi;
+using Robocode.TankRoyale.BotApi.Events;
+
+public class GunHeatLockBot : Bot
+{
+    private const double HeatThreshold = 1.0;
+    private const double FirePower = 1.0;
+    private const double ScanBuffer = 10;
+    private readonly Dictionary<int, EnemyState> enemies = new();
+
+    static void Main(string[] args)
+    {
+        new GunHeatLockBot().Start();
+    }
+
+    public override void Run()
+    {
+        while (IsRunning)
+        {
+            EnemyState target = SelectBestTarget();
+            if (GunHeat <= HeatThreshold && target != null)
+            {
+                LockRadarOn(target);
+            }
+            else
+            {
+                SetTurnRadarRight(double.PositiveInfinity);
+            }
+            Go();
+        }
+    }
+
+    public override void OnScannedBot(ScannedBotEvent evt)
+    {
+        double distance = Math.Sqrt(Math.Pow(evt.X - X, 2) + Math.Pow(evt.Y - Y, 2));
+        enemies[evt.ScannedBotId] = new EnemyState(
+            evt.ScannedBotId, evt.X, evt.Y, distance, evt.Energy);
+
+        EnemyState target = SelectBestTarget();
+        if (target != null && target.Id == evt.ScannedBotId
+                && GunHeat <= 0.0 && Energy > FirePower)
+        {
+            SetFire(FirePower);
+        }
+    }
+
+    public override void OnBotDeath(BotDeathEvent evt)
+    {
+        enemies.Remove(evt.VictimId);
+    }
+
+    private EnemyState SelectBestTarget()
+    {
+        EnemyState best = null;
+        double bestScore = double.NegativeInfinity;
+        foreach (EnemyState enemy in enemies.Values)
+        {
+            double score = 1000.0 / Math.Max(enemy.Distance, 1.0) + enemy.Energy / 10.0;
+            if (score > bestScore)
+            {
+                bestScore = score;
+                best = enemy;
+            }
+        }
+        return best;
+    }
+
+    private void LockRadarOn(EnemyState target)
+    {
+        double targetDirection = Math.Atan2(target.Y - Y, target.X - X) * 180 / Math.PI;
+        double turn = NormalizeRelativeAngle(targetDirection - RadarDirection);
+        SetTurnRadarRight(turn + (turn >= 0 ? ScanBuffer : -ScanBuffer));
+    }
+
+    private static double NormalizeRelativeAngle(double angle)
+    {
+        while (angle <= -180)
+        {
+            angle += 360;
+        }
+        while (angle > 180)
+        {
+            angle -= 360;
+        }
+        return angle;
+    }
+
+    private sealed class EnemyState
+    {
+        public EnemyState(int id, double x, double y, double distance, double energy)
+        {
+            Id = id;
+            X = x;
+            Y = y;
+            Distance = distance;
+            Energy = energy;
+        }
+
+        public int Id { get; }
+        public double X { get; }
+        public double Y { get; }
+        public double Distance { get; }
+        public double Energy { get; }
+    }
+}
+```
+
+```typescript [Tank Royale · TypeScript]
+import { Bot, BotDeathEvent, ScannedBotEvent } from "@robocode.dev/tank-royale-bot-api";
+
+type EnemyState = {
+    id: number;
+    x: number;
+    y: number;
+    distance: number;
+    energy: number;
+};
+
+class GunHeatLockBot extends Bot {
+    private static readonly heatThreshold = 1.0;
+    private static readonly firePower = 1.0;
+    private static readonly scanBuffer = 10;
+    private readonly enemies = new Map<number, EnemyState>();
+
+    static main() {
+        new GunHeatLockBot().start();
+    }
+
+    override run() {
+        while (this.isRunning()) {
+            const target = this.selectBestTarget();
+            if (this.gunHeat <= GunHeatLockBot.heatThreshold && target !== undefined) {
+                this.lockRadarOn(target);
+            } else {
+                this.setTurnRadarRight(Number.POSITIVE_INFINITY);
+            }
+            this.go();
+        }
+    }
+
+    override onScannedBot(event: ScannedBotEvent) {
+        const distance = Math.hypot(event.x - this.x, event.y - this.y);
+        this.enemies.set(event.scannedBotId, {
+            id: event.scannedBotId,
+            x: event.x,
+            y: event.y,
+            distance,
+            energy: event.energy,
+        });
+
+        const target = this.selectBestTarget();
+        if (target !== undefined && target.id === event.scannedBotId
+                && this.gunHeat <= 0.0 && this.energy > GunHeatLockBot.firePower) {
+            this.setFire(GunHeatLockBot.firePower);
+        }
+    }
+
+    override onBotDeath(event: BotDeathEvent) {
+        this.enemies.delete(event.victimId);
+    }
+
+    private selectBestTarget(): EnemyState | undefined {
+        let best: EnemyState | undefined;
+        let bestScore = Number.NEGATIVE_INFINITY;
+        for (const enemy of this.enemies.values()) {
+            const score = 1000 / Math.max(enemy.distance, 1) + enemy.energy / 10;
+            if (score > bestScore) {
+                bestScore = score;
+                best = enemy;
+            }
+        }
+        return best;
+    }
+
+    private lockRadarOn(target: EnemyState) {
+        const targetDirection = Math.atan2(target.y - this.y, target.x - this.x) * 180 / Math.PI;
+        const turn = GunHeatLockBot.normalizeRelativeAngle(
+            targetDirection - this.radarDirection);
+        this.setTurnRadarRight(GunHeatLockBot.bufferedTurn(turn));
+    }
+
+    private static bufferedTurn(turn: number) {
+        return turn + (turn >= 0 ? this.scanBuffer : -this.scanBuffer);
+    }
+
+    private static normalizeRelativeAngle(angle: number) {
+        while (angle <= -180) {
+            angle += 360;
+        }
+        while (angle > 180) {
+            angle -= 360;
+        }
+        return angle;
+    }
+}
+
+GunHeatLockBot.main();
+```
+
+:::
 
 ## Choosing the Gun Heat Threshold
 
@@ -128,38 +557,9 @@ Gun heat lock works best with targeting systems that:
 2. **Prioritize threats:** Target selection considers distance, energy, and danger level.
 3. **Use fresh scan data:** The targeting algorithm benefits from up-to-date position and velocity.
 
-**Example target selection criteria:**
-```text
-function selectBestTarget() {
-    bestEnemy = null
-    bestScore = -infinity
-    
-    for each enemy in trackedEnemies {
-        // Score based on distance, energy, threat level
-        score = calculateThreatScore(enemy)
-        
-        if (score > bestScore) {
-            bestScore = score
-            bestEnemy = enemy
-        }
-    }
-    
-    return bestEnemy
-}
-
-function calculateThreatScore(enemy) {
-    // Closer enemies = higher priority
-    distanceScore = 1000 / enemy.distance
-    
-    // Higher energy enemies = more dangerous
-    energyScore = enemy.energy / 10
-    
-    // Recent damage dealt = immediate threat
-    aggressionScore = enemy.recentDamageDealt * 2
-    
-    return distanceScore + energyScore + aggressionScore
-}
-```
+**Example target selection criteria:** the code assigns each tracked enemy a score of
+`1000 / max(distance, 1) + energy / 10`. This is only a teaching heuristic. A stronger bot can add recent damage,
+team status, bullet danger, or a targeting model without changing the radar coordination.
 
 ## Advantages and Trade-offs
 
@@ -187,7 +587,7 @@ by locking become more dangerous. In late-game 1v1 scenarios, it converges towar
 **Don't:**
 - Lock on stale enemies, verify the target was scanned recently before firing.
 - Use gun heat lock in 1v1 battles, standard 1v1 radar locks are simpler and more effective.
-- Forget to handle the case where `currentTarget` is null (all enemies destroyed or none selected).
+- Handle the case where no target is available (all enemies destroyed or none selected).
 - Lock too early (high threshold) in crowded melees, situational awareness suffers.
 
 > [!WARNING] Death Event Handling
