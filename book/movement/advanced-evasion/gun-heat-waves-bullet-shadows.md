@@ -769,8 +769,10 @@ aggressive route is safe enough. Keep wall checks and wave danger in that decisi
 ## Next Steps
 
 - **[Wave Surfing Introduction](./wave-surfing-introduction.md)**: Use Gun Heat Waves to improve wave detection
-- **[Dodging Bullets](./dodging-bullets.md)**: Reactive bullet avoidance using Bullet Shadows
-- **[Melee Movement Tactics](../../melee-combat/melee-movement.md)**: Apply these techniques to multi-opponent battles
+- **[Dodging Bullets](./dodging-bullets.md)**: Detect enemy fire from energy drops and choose how to get out of the way
+<!-- TODO: Add link when page is created
+- **[Melee Movement Tactics](../../melee-combat/melee-movement-tactics.md)**: Apply these techniques to multi-opponent
+  battles
 -->
 
 ## Further Reading

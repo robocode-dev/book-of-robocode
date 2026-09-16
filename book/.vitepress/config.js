@@ -198,7 +198,10 @@ export default withMermaid(defineConfig({
             ]},
             { text: 'Advanced Evasion', items: [
               { text: 'Gun Heat Waves & Bullet Shadows', link: '/movement/advanced-evasion/gun-heat-waves-bullet-shadows' },
-              { text: 'Wave Surfing Introduction', link: '/movement/advanced-evasion/wave-surfing-introduction' }
+              { text: 'Dodging Bullets', link: '/movement/advanced-evasion/dodging-bullets' },
+              { text: 'Wave Surfing Introduction', link: '/movement/advanced-evasion/wave-surfing-introduction' },
+              { text: 'Wave Surfing Implementations', link: '/movement/advanced-evasion/wave-surfing-implementations' },
+              { text: 'Flattener', link: '/movement/advanced-evasion/flattener' }
             ]}
           ]
         }

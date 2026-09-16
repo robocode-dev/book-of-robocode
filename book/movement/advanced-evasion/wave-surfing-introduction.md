@@ -753,7 +753,6 @@ Once you have basic Wave Surfing working:
 - **[Flattener](./flattener.md)**: Counter enemies who learn your surfing patterns
 - **[Segmentation & Visit Count Stats](../../targeting/statistical-targeting/segmentation-visit-count-stats.md)**:
   Apply segmentation to danger calculation
-  Apply segmentation to danger calculation
 
 ## Further Reading
 

@@ -169,6 +169,13 @@ A technique to avoid walls by adjusting the movement direction as the bot approa
 An advanced evasion technique where the bot tracks incoming "waves" (potential bullet positions) and moves to minimize
 hit probability.
 
+### Flattener
+
+A wave-surfing add-on that records where the bot itself goes and avoids its most visited GuessFactors, so a gun that
+learns from movement finds no favorite angle.
+
+See: [Flattener](../movement/advanced-evasion/flattener.md)
+
 ### GuessFactor
 
 A normalized value (-1 to 1) representing where a bot could be when a bullet arrives, used in statistical targeting and

@@ -34,11 +34,6 @@ in the book.
 - Minimum Risk Movement
 - Corner Movement
 
-### Advanced Evasion (Advanced)
-- Dodging Bullets
-- Wave Surfing Implementations
-- Flattener
-
 ### Offensive Movement (Advanced)
 - Pattern & Enemy Dodging Movement
 - Ramming & Mirror Movement
