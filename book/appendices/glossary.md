@@ -204,6 +204,25 @@ Targeting that assumes the enemy will continue turning at a constant rate, follo
 
 Advanced targeting that records enemy movement history and searches for repeated patterns to predict future positions.
 
+### Dynamic Clustering
+
+A k-nearest-neighbor targeting or movement method that finds past battle states similar to the current state and uses
+their recorded outcomes to choose an action.
+
+See: [Dynamic Clustering](../targeting/statistical-targeting/dynamic-clustering.md)
+
+### Precise prediction
+
+Turn-by-turn simulation of Robocode movement rules to calculate which future positions a bot can actually reach.
+
+See: [Precise Prediction](../targeting/predictive-targeting/precise-prediction.md)
+
+### Anti-surfer targeting
+
+Targeting tuned for opponents that react to bullet waves, often by emphasizing recent outcomes from waves that fired.
+
+See: [Anti-Surfer Targeting](../targeting/advanced-targeting/anti-surfer-targeting.md)
+
 ### Virtual guns
 
 A system that runs multiple targeting algorithms simultaneously, tracking which would have hit most often, and uses the

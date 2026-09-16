@@ -5,10 +5,6 @@
 Create these advanced pages and uncomment their links (search for `<!-- TODO: Add link when page is created`):
 
 **Targeting Systems:**
-- Dynamic Clustering — Advanced multi-dimensional segmentation
-- Anti-Surfer Targeting — Counter enemies who use Wave Surfing
-- Precise Prediction — Enables accurate future position calculation
-- Pattern Matching — Fundamental log-based targeting
 
 **Movement & Evasion:**
 - Dodging Bullets — Reactive bullet avoidance

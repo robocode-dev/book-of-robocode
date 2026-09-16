@@ -1,0 +1,226 @@
+<svg version="1.1" width="1000" height="625" viewBox="0 0 8000 5000"
+     xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Reachable and unreachable paths before a wave arrives</title>
+  <desc id="desc">A red bot in the upper left has fired a wave, shown as a solid orange circle now and a dashed orange circle at impact time. A blue bot moving at full speed can only reach the shaded green fan before impact, limited by its turn rate. A green curved path with turn markers stays inside the fan. A dashed red path with a sharp corner, marked with an X, is impossible at full speed.</desc>
+
+  <style>
+    .text { font: 150px sans-serif; }
+    .small { font: 120px sans-serif; }
+    .bold { font-weight: bold; }
+  </style>
+
+  <!-- Arrow markers -->
+    <marker id="arrow-green" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+      <polygon points="6 0, 12 3, 6 6" fill="#10B981"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+      <polygon points="6 0, 12 3, 6 6" fill="#EF4444"/>
+    </marker>
+
+  <!-- Battlefield background -->
+  <rect x="0" y="0" width="8000" height="5000" fill="grey"/>
+  <rect x="200" y="200" width="7600" height="4600" fill="#111"/>
+  <clipPath id="field"><rect x="200" y="200" width="7600" height="4600"/></clipPath>
+
+  <g clip-path="url(#field)">
+    <!-- Wave now (solid) and at impact time (dashed) -->
+    <circle cx="1300" cy="1100" r="1500" stroke="#F59E0B" stroke-width="50" fill="none"/>
+    <circle cx="1300" cy="1100" r="3701" stroke="#F59E0B" stroke-width="24" stroke-dasharray="120 80"
+            fill="none" opacity="0.8"/>
+  </g>
+
+  <!-- Reachable region when the wave arrives -->
+  <polygon points="3300,3700 3397,3614 3488,3521 3573,3422 3650,3317 3719,3208 3781,3093 3835,2975 3881,2853 3917,2728 3945,2601 3964,2473 3974,2343 3975,2213 3967,2084 3950,1955 3924,1827 4041,1849 4158,1880 4272,1920 4383,1969 4490,2027 4593,2093 4692,2167 4784,2249 4870,2337 4949,2432 5020,2532 5084,2638 5139,2748 5185,2862 5222,2979 5250,3097 5269,3217 5279,3338 5279,3458 5270,3577 5154,3519 5034,3470 4910,3429 4784,3396 4656,3373 4527,3358 4397,3353 4267,3356 4138,3369 4010,3390 3883,3421 3760,3460 3639,3508 3521,3564 3408,3628 3300,3700" fill="#10B981" fill-opacity="0.18" stroke="#10B981" stroke-width="16"
+           stroke-dasharray="40 30"/>
+
+  <!-- Reachable path, one dot per simulated turn -->
+  <polyline points="3300,3700 3400,3616 3496,3529 3588,3437 3676,3342 3761,3243 3841,3141 3916,3035 3988,2926 4054,2815 4116,2700 4173,2583 4225,2464 4272,2343 4314,2220 4351,2095 4383,1969" stroke="#10B981" stroke-width="36" fill="none" marker-end="url(#arrow-green)"/>
+  <g fill="#10B981">
+    <circle cx="3400" cy="3616" r="40"/>
+    <circle cx="3588" cy="3437" r="40"/>
+    <circle cx="3761" cy="3243" r="40"/>
+    <circle cx="3916" cy="3035" r="40"/>
+    <circle cx="4054" cy="2815" r="40"/>
+    <circle cx="4173" cy="2583" r="40"/>
+    <circle cx="4272" cy="2343" r="40"/>
+    <circle cx="4351" cy="2095" r="40"/>
+  </g>
+
+  <!-- Unreachable path: a sharp corner at full speed -->
+  <polyline points="3300,3700 3855,3273 3812,4272" stroke="#EF4444"
+            stroke-width="36" stroke-dasharray="120 70" fill="none" marker-end="url(#arrow-red)"/>
+  <g stroke="#EF4444" stroke-width="40" stroke-linecap="round">
+    <line x1="3745" y1="3163" x2="3965" y2="3383"/>
+    <line x1="3745" y1="3383" x2="3965" y2="3163"/>
+  </g>
+
+  <!-- Bots -->
+  <!-- Enemy (wave origin) -->
+  <use href="#tank" transform="translate(1000, 800) scale(0.75)"
+       style="--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa; --body-rotation:142deg; --turret-rotation:142deg; --radar-rotation:142deg;"/>
+  <!-- Friendly bot at full speed -->
+  <use href="#tank" transform="translate(3000, 3400) scale(0.75)"
+       style="--body-rotation:52deg; --turret-rotation:52deg; --radar-rotation:52deg;"/>
+
+  <!-- Text labels -->
+  <text class="text bold" x="2904" y="1325" fill="#F59E0B">incoming wave</text>
+  <text class="text bold" x="5085" y="1683" fill="#D2691E">wave impact time</text>
+  <text class="text bold" x="4503" y="1909" fill="#10B981">reachable path</text>
+  <text class="text bold" x="4012" y="4332" fill="#EF4444">unreachable turn</text>
+  <text class="small" x="3655" y="3233" fill="#EF4444" text-anchor="end">too sharp at 8 units/turn</text>
+  <text class="small" x="5390" y="3617" fill="#10B981">reachable at full speed</text>
+  <text class="small" x="2950" y="3780" fill="#60A5FA" text-anchor="end">turn rate: 10 − 0.75·|v|</text>
+  <text class="small" x="2950" y="3940" fill="#10B981" text-anchor="end">one dot = two turns</text>
+
+  <!-- Tank defs block (copied from tank.svg) -->
+    <defs>
+            <style>
+                .tank-body, .tank-turret, .tank-radar {
+                transform-origin: 400px 400px;
+                }
+                .tank-body {
+                transform: rotate(var(--body-rotation, 0deg));
+                }
+                .tank-turret {
+                transform: rotate(var(--turret-rotation, 0deg));
+                }
+                .tank-radar {
+                transform: rotate(var(--radar-rotation, 0deg));
+                }
+                svg {
+                --tank-body-color: #019;
+                --tank-turret-color: #06c;
+                --tank-radar-color: #aaf;
+                --left-belt-track-1: inline;
+                --left-belt-track-2: none;
+                --left-belt-track-3: none;
+                --right-belt-track-1: none;
+                --right-belt-track-2: inline;
+                --right-belt-track-3: none;
+                }
+                .tank-body-fill {
+                fill: var(--tank-body-color, #019);
+                }
+                .tank-turret-fill {
+                fill: var(--tank-turret-color, #06c);
+                }
+                .tank-radar-fill {
+                fill: var(--tank-radar-color, #aaf);
+                }
+                .left-belt, .right-belt {
+                display: none;
+                }
+                .left-belt.track1 {
+                display: var(--left-belt-track-1, none);
+                }
+                .left-belt.track2 {
+                display: var(--left-belt-track-2, none);
+                }
+                .left-belt.track3 {
+                display: var(--left-belt-track-3, none);
+                }
+                .right-belt.track1 {
+                display: var(--right-belt-track-1, none);
+                }
+                .right-belt.track2 {
+                display: var(--right-belt-track-2, none);
+                }
+                .right-belt.track3 {
+                display: var(--right-belt-track-3, none);
+                }
+            </style>
+
+            <linearGradient id="cannon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#333"/>
+                <stop offset="50%" stop-color="#CCC"/>
+                <stop offset="100%" stop-color="#333"/>
+            </linearGradient>
+
+            <symbol id="link0">
+                <rect x="5" y="55" width="125" height="25" fill="#aaaaaa"/>
+                <rect x="10" y="70" width="116" height="35" fill="#666666" rx="10" ry="10"/>
+                <rect x="5" y="55" width="125" height="50" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+            </symbol>
+
+            <symbol id="link30">
+                <rect x="5" y="55" width="125" height="25" fill="#939393"/>
+                <rect x="10" y="70" width="116" height="30" fill="#585858" rx="10" ry="10"/>
+                <rect x="5" y="55" width="125" height="42" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+            </symbol>
+
+            <symbol id="link60">
+                <rect x="5" y="55" width="125" height="20" fill="#555555"/>
+                <rect x="5" y="55" width="125" height="20" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+            </symbol>
+
+            <symbol id="main-track">
+                <rect x="20" y="75" width="95" height="450" fill="#333333" stroke="black" stroke-width="10"/>
+            </symbol>
+
+            <symbol id="track1">
+                <use href="#main-track"/>
+                <use href="#link30"/>
+                <use href="#link0" y="60"/>
+                <use href="#link0" y="140"/>
+                <use href="#link0" y="220"/>
+                <use href="#link0" y="300"/>
+                <use href="#link0" y="380"/>
+                <use href="#link30" y="448"/>
+            </symbol>
+
+            <symbol id="track2">
+                <use href="#main-track"/>
+                <use href="#link60"/>
+                <use href="#link0" y="33"/>
+                <use href="#link0" y="113"/>
+                <use href="#link0" y="193"/>
+                <use href="#link0" y="273"/>
+                <use href="#link0" y="353"/>
+                <use href="#link0" y="433"/>
+            </symbol>
+
+            <symbol id="track3">
+                <use href="#main-track"/>
+                <use href="#link0" y="7"/>
+                <use href="#link0" y="87"/>
+                <use href="#link0" y="167"/>
+                <use href="#link0" y="247"/>
+                <use href="#link0" y="327"/>
+                <use href="#link0" y="407"/>
+                <use href="#link60" y="470"/>
+            </symbol>
+
+            <symbol id="body">
+                <use href="#track1" x="150" y="100" class="left-belt track1"/>
+                <use href="#track2" x="150" y="100" class="left-belt track2"/>
+                <use href="#track3" x="150" y="100" class="left-belt track3"/>
+                <use href="#track1" x="515" y="100" class="right-belt track1"/>
+                <use href="#track2" x="515" y="100" class="right-belt track2"/>
+                <use href="#track3" x="515" y="100" class="right-belt track3"/>
+
+                <rect class="tank-body-fill" x="240" y="190" width="320" height="420" stroke="black" stroke-width="20"
+                      rx="10" ry="10"/>
+                <rect x="250" y="520" width="300" height="80" opacity="0.5"/>
+            </symbol>
+
+            <symbol id="turret">
+                <rect class="tank-turret-fill" x="300" y="320" width="200" height="200" stroke="black" stroke-width="20"
+                      rx="10" ry="10"/>
+                <rect x="310" y="460" width="180" height="50" fill="black" opacity="0.5"/>
+
+                <rect x="360" y="240" width="80" height="80" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+                <rect x="375" y="70" width="50" height="170" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+            </symbol>
+
+            <symbol id="radar">
+                <circle class="tank-radar-fill" cx="400" cy="400" r="30" stroke="black" stroke-width="20"/>
+                <path class="tank-radar-fill" d="M 290 420 q 110 100 220 0 z" stroke="black" stroke-width="20"/>
+            </symbol>
+
+            <symbol id="tank">
+                <use class="tank-body" href="#body"/>
+                <use class="tank-turret" href="#turret"/>
+                <use class="tank-radar" href="#radar"/>
+            </symbol>
+        </defs>
+</svg>

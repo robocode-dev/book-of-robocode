@@ -44,7 +44,7 @@ Royale.
 - **Paul Evans** — Co-pioneer of **GuessFactor Targeting** (statistical bins); popularized **Segmentation**; creator of
   **[SandboxDT](https://robowiki.net/wiki/SandboxDT)**.
     - [RoboWiki User Page](https://robowiki.net/wiki/User:Paul_Evans)
-- **Alexandros (ABC)** — Invented **Wave Surfing**; pioneered **Dynamic Clustering**; creator of
+- **ABC** — Invented **Wave Surfing**; pioneered **Dynamic Clustering**; creator of
   **[Shadow](https://robowiki.net/wiki/Shadow)**.
     - [RoboWiki User Page](https://robowiki.net/wiki/User:Abc)
 - **Kyle Huntington (Kawigi)** — Popularized high-level targeting through tutorials and the

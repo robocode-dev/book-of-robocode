@@ -18,7 +18,7 @@ source: [
 > **Anti-Gravity Movement** was one of the primary movement strategies before **Wave Surfing** was invented. Along
 > with Random movement, Anti-Gravity was how bots evaded bullets, by maintaining distance and avoiding predictable
 > patterns. **Minimum Risk Movement** (a related technique for melee combat) was pioneered by **Aelryen** and
-**Alexandros (ABC)**.
+**ABC**.
 
 > [!WARNING] Historical Context
 > Anti-Gravity Movement was largely **superseded by Wave Surfing for competitive 1v1 play around 2003**. While it
@@ -552,7 +552,7 @@ predictable patterns.
 - **Bullet dodging**: Reacting to actual wave danger calculations beats force-based approximations
 
 Antigravity shines in melee when you need fluid, multifactor positioning without complex decision trees. For 1v1
-competitive play, it has been obsolete since approximately 2003 when Alexandros (ABC) invented Wave Surfing.
+competitive play, it has been obsolete since approximately 2003 when ABC invented Wave Surfing.
 
 ## Further Reading
 
@@ -560,4 +560,3 @@ competitive play, it has been obsolete since approximately 2003 when Alexandros 
 - [Minimum Risk Movement](https://robowiki.net/wiki/Minimum_Risk_Movement) - RoboWiki (classic Robocode)
 - [Movement](https://robowiki.net/wiki/Movement) - RoboWiki (classic Robocode)
 - [Tank Royale API - Bot Interface](https://robocode.dev/api/) - Tank Royale documentation
-

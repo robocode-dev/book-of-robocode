@@ -161,7 +161,15 @@ export default withMermaid(defineConfig({
             ]},
             { text: 'Statistical Targeting', items: [
               { text: 'GuessFactor Targeting', link: '/targeting/statistical-targeting/guessfactor-targeting' },
-              { text: 'Segmentation Visit Count Stats', link: '/targeting/statistical-targeting/segmentation-visit-count-stats' }
+              { text: 'Segmentation Visit Count Stats', link: '/targeting/statistical-targeting/segmentation-visit-count-stats' },
+              { text: 'Dynamic Clustering', link: '/targeting/statistical-targeting/dynamic-clustering' }
+            ]},
+            { text: 'Predictive Targeting', items: [
+              { text: 'Precise Prediction', link: '/targeting/predictive-targeting/precise-prediction' },
+              { text: 'Pattern Matching', link: '/targeting/predictive-targeting/pattern-matching' }
+            ]},
+            { text: 'Advanced Targeting', items: [
+              { text: 'Anti-Surfer Targeting', link: '/targeting/advanced-targeting/anti-surfer-targeting' }
             ]},
             { text: 'Targeting Tactics', items: [
               { text: 'Fire Power & Timing Decisions', link: '/targeting/targeting-tactics/fire-power-timing-decisions' },

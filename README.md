@@ -66,7 +66,9 @@ Java-based Robocode and Robocode Tank Royale.
 
 - Simple Targeting (Head-On, Linear, Circular, Random Area)
 - The Targeting Problem (Understanding the Challenge, Introducing Waves)
-- Statistical Targeting (GuessFactor, Segmentation Visit Count Stats)
+- Statistical Targeting (GuessFactor, Segmentation Visit Count Stats, Dynamic Clustering)
+- Predictive Targeting (Precise Prediction, Pattern Matching)
+- Advanced Targeting (Anti-Surfer Targeting)
 - Targeting Tactics (Fire Power & Timing, Saving Gun Data)
 
 ### Movement & Evasion

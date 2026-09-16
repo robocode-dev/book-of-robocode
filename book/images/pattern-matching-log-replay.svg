@@ -1,0 +1,296 @@
+<svg version="1.1" width="1000" height="625" viewBox="0 0 8000 5000"
+     xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Pattern matching finds and replays a movement sequence</title>
+  <desc id="desc">Top: a movement log drawn as one bar per frame of heading change. The newest frames, in blue at the right, match an earlier blue sequence in the log. The orange frames that followed the earlier match are copied past the now line as a dashed replay. Bottom: on the battlefield, that replay becomes an orange dotted path from the red enemy to a predicted position, where the blue bot aims.</desc>
+
+  <style>
+    .text { font: 150px sans-serif; }
+    .small { font: 120px sans-serif; }
+    .bold { font-weight: bold; }
+  </style>
+
+  <!-- Arrow markers -->
+    <marker id="arrow-choc" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+      <polygon points="6 0, 12 3, 6 6" fill="#D2691E"/>
+    </marker>
+    <marker id="arrow-orange" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+      <polygon points="6 0, 12 3, 6 6" fill="#F59E0B"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+      <polygon points="6 0, 12 3, 6 6" fill="#60A5FA"/>
+    </marker>
+
+  <!-- Background panels -->
+  <rect x="0" y="0" width="8000" height="5000" fill="#1a1a2e"/>
+  <rect x="400" y="150" width="7200" height="2550" rx="60" fill="#2d3748"/>
+  <rect x="400" y="2850" width="7200" height="2050" fill="grey"/>
+  <rect x="500" y="2950" width="7000" height="1850" fill="#111"/>
+
+  <!-- Highlight bands -->
+  <rect x="1906" y="700" width="1072" height="1650" fill="#3B82F6" fill-opacity="0.18" rx="40"/>
+  <rect x="2978" y="700" width="938" height="1650" fill="#F59E0B" fill-opacity="0.16" rx="40"/>
+  <rect x="5390" y="700" width="1072" height="1650" fill="#3B82F6" fill-opacity="0.18" rx="40"/>
+  <rect x="6462" y="700" width="938" height="1650" fill="#F59E0B" fill-opacity="0.1" rx="40"/>
+
+  <!-- Movement log: one bar per frame (heading change) -->
+  <line x1="700" y1="1500" x2="7400" y2="1500" stroke="#718096" stroke-width="10"/>
+  <style>
+    .log { fill: #718096; }
+    .match { fill: #60A5FA; stroke: #1E40AF; stroke-width: 10; }
+    .follow { fill: #F59E0B; stroke: #B45309; stroke-width: 10; }
+    .future { fill: none; stroke: #F59E0B; stroke-width: 16; stroke-dasharray: 30 20; }
+  </style>
+  <g>
+    <rect class="log" x="720" y="1430" width="94" height="70" rx="10"/>
+    <rect class="log" x="854" y="1500" width="94" height="140" rx="10"/>
+    <rect class="log" x="988" y="1486" width="94" height="14" rx="10"/>
+    <rect class="log" x="1122" y="1360" width="94" height="140" rx="10"/>
+    <rect class="log" x="1256" y="1500" width="94" height="70" rx="10"/>
+    <rect class="log" x="1390" y="1290" width="94" height="210" rx="10"/>
+    <rect class="log" x="1524" y="1500" width="94" height="210" rx="10"/>
+    <rect class="log" x="1658" y="1430" width="94" height="70" rx="10"/>
+    <rect class="log" x="1792" y="1486" width="94" height="14" rx="10"/>
+    <rect class="match" x="1926" y="1290" width="94" height="210" rx="10"/>
+    <rect class="match" x="2060" y="1080" width="94" height="420" rx="10"/>
+    <rect class="match" x="2194" y="940" width="94" height="560" rx="10"/>
+    <rect class="match" x="2328" y="940" width="94" height="560" rx="10"/>
+    <rect class="match" x="2462" y="1150" width="94" height="350" rx="10"/>
+    <rect class="match" x="2596" y="1486" width="94" height="14" rx="10"/>
+    <rect class="match" x="2730" y="1500" width="94" height="350" rx="10"/>
+    <rect class="match" x="2864" y="1500" width="94" height="560" rx="10"/>
+    <rect class="follow" x="2998" y="1500" width="94" height="560" rx="10"/>
+    <rect class="follow" x="3132" y="1500" width="94" height="420" rx="10"/>
+    <rect class="follow" x="3266" y="1500" width="94" height="210" rx="10"/>
+    <rect class="follow" x="3400" y="1430" width="94" height="70" rx="10"/>
+    <rect class="follow" x="3534" y="1150" width="94" height="350" rx="10"/>
+    <rect class="follow" x="3668" y="940" width="94" height="560" rx="10"/>
+    <rect class="follow" x="3802" y="940" width="94" height="560" rx="10"/>
+    <rect class="log" x="3936" y="1500" width="94" height="280" rx="10"/>
+    <rect class="log" x="4070" y="1360" width="94" height="140" rx="10"/>
+    <rect class="log" x="4204" y="1500" width="94" height="70" rx="10"/>
+    <rect class="log" x="4338" y="1290" width="94" height="210" rx="10"/>
+    <rect class="log" x="4472" y="1486" width="94" height="14" rx="10"/>
+    <rect class="log" x="4606" y="1500" width="94" height="140" rx="10"/>
+    <rect class="log" x="4740" y="1220" width="94" height="280" rx="10"/>
+    <rect class="log" x="4874" y="1500" width="94" height="350" rx="10"/>
+    <rect class="log" x="5008" y="1360" width="94" height="140" rx="10"/>
+    <rect class="log" x="5142" y="1500" width="94" height="70" rx="10"/>
+    <rect class="log" x="5276" y="1430" width="94" height="70" rx="10"/>
+    <rect class="match" x="5410" y="1290" width="94" height="210" rx="10"/>
+    <rect class="match" x="5544" y="1080" width="94" height="420" rx="10"/>
+    <rect class="match" x="5678" y="940" width="94" height="560" rx="10"/>
+    <rect class="match" x="5812" y="940" width="94" height="560" rx="10"/>
+    <rect class="match" x="5946" y="1150" width="94" height="350" rx="10"/>
+    <rect class="match" x="6080" y="1486" width="94" height="14" rx="10"/>
+    <rect class="match" x="6214" y="1500" width="94" height="350" rx="10"/>
+    <rect class="match" x="6348" y="1500" width="94" height="560" rx="10"/>
+    <rect class="future" x="6482" y="1500" width="94" height="560" rx="10"/>
+    <rect class="future" x="6616" y="1500" width="94" height="420" rx="10"/>
+    <rect class="future" x="6750" y="1500" width="94" height="210" rx="10"/>
+    <rect class="future" x="6884" y="1430" width="94" height="70" rx="10"/>
+    <rect class="future" x="7018" y="1150" width="94" height="350" rx="10"/>
+    <rect class="future" x="7152" y="940" width="94" height="560" rx="10"/>
+    <rect class="future" x="7286" y="940" width="94" height="560" rx="10"/>
+  </g>
+  <line x1="6462" y1="650" x2="6462" y2="2350" stroke="#E2E8F0" stroke-width="16"
+        stroke-dasharray="50 40"/>
+
+  <!-- Search arrow and replay arrow -->
+  <path d="M 5926 680 C 5926 200, 2442 200, 2442 640" stroke="#D2691E" stroke-width="28" fill="none"
+        marker-end="url(#arrow-choc)"/>
+  <path d="M 3447 2360 C 3447 2800, 6931 2800, 6931 2400" stroke="#F59E0B" stroke-width="28"
+        fill="none" marker-end="url(#arrow-orange)"/>
+
+  <!-- Replayed path on the battlefield -->
+  <polyline points="1400,4200 1714,4069 1990,3870 2241,3641 2500,3422 2797,3256 3130,3187 3468,3223" stroke="#F59E0B" stroke-width="30" stroke-dasharray="80 50" fill="none"/>
+  <g fill="#F59E0B">
+    <circle cx="1714" cy="4069" r="45"/>
+    <circle cx="1990" cy="3870" r="45"/>
+    <circle cx="2241" cy="3641" r="45"/>
+    <circle cx="2500" cy="3422" r="45"/>
+    <circle cx="2797" cy="3256" r="45"/>
+    <circle cx="3130" cy="3187" r="45"/>
+  </g>
+  <line x1="6600" y1="4300" x2="3468" y2="3223" stroke="#60A5FA" stroke-width="20" stroke-dasharray="60 40"
+        marker-end="url(#arrow-blue)"/>
+  <g stroke="#F59E0B" stroke-width="30" fill="none">
+    <circle cx="3468" cy="3223" r="170"/>
+    <line x1="3208" y1="3223" x2="3728" y2="3223"/>
+    <line x1="3468" y1="2963" x2="3468" y2="3483"/>
+  </g>
+
+  <!-- Bots -->
+  <use href="#tank" transform="translate(1160, 3960) scale(0.6)"
+       style="--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa; --body-rotation:85deg; --turret-rotation:70deg; --radar-rotation:70deg;"/>
+  <use href="#tank" transform="translate(6360, 4060) scale(0.6)"
+       style="--body-rotation:300deg; --turret-rotation:289deg; --radar-rotation:289deg;"/>
+
+  <!-- Text labels -->
+  <text class="text bold" x="5926" y="2080" fill="#60A5FA" text-anchor="middle">recent</text>
+  <text class="text bold" x="5926" y="2250" fill="#60A5FA" text-anchor="middle">frames</text>
+  <text class="text bold" x="2442" y="2080" fill="#60A5FA" text-anchor="middle">best match</text>
+  <text class="text bold" x="2442" y="2250" fill="#60A5FA" text-anchor="middle">in log</text>
+  <text class="text" x="4184" y="600" fill="#D2691E" text-anchor="middle">search the log</text>
+  <text class="text bold" x="3447" y="2080" fill="#F59E0B" text-anchor="middle">what</text>
+  <text class="text bold" x="3447" y="2250" fill="#F59E0B" text-anchor="middle">followed</text>
+  <text class="text bold" x="6931" y="2250" fill="#F59E0B" text-anchor="middle">replay</text>
+  <text class="small" x="6462" y="600" fill="#E2E8F0" text-anchor="middle">now</text>
+  <text class="small" x="700" y="600" fill="#A0AEC0">older frames</text>
+  <text class="small" x="7400" y="600" fill="#A0AEC0" text-anchor="end">future</text>
+  <text class="text bold" x="2700" y="3950" fill="#F59E0B">replay after match</text>
+  <text class="small" x="1400" y="4700" fill="#FCA5A5" text-anchor="middle">enemy now</text>
+  <text class="small" x="3468" y="3663" fill="#F59E0B" text-anchor="middle">predicted position</text>
+  <text class="small" x="6600" y="4750" fill="#60A5FA" text-anchor="middle">aim here</text>
+
+  <!-- Tank defs block (copied from tank.svg) -->
+    <defs>
+            <style>
+                .tank-body, .tank-turret, .tank-radar {
+                transform-origin: 400px 400px;
+                }
+                .tank-body {
+                transform: rotate(var(--body-rotation, 0deg));
+                }
+                .tank-turret {
+                transform: rotate(var(--turret-rotation, 0deg));
+                }
+                .tank-radar {
+                transform: rotate(var(--radar-rotation, 0deg));
+                }
+                svg {
+                --tank-body-color: #019;
+                --tank-turret-color: #06c;
+                --tank-radar-color: #aaf;
+                --left-belt-track-1: inline;
+                --left-belt-track-2: none;
+                --left-belt-track-3: none;
+                --right-belt-track-1: none;
+                --right-belt-track-2: inline;
+                --right-belt-track-3: none;
+                }
+                .tank-body-fill {
+                fill: var(--tank-body-color, #019);
+                }
+                .tank-turret-fill {
+                fill: var(--tank-turret-color, #06c);
+                }
+                .tank-radar-fill {
+                fill: var(--tank-radar-color, #aaf);
+                }
+                .left-belt, .right-belt {
+                display: none;
+                }
+                .left-belt.track1 {
+                display: var(--left-belt-track-1, none);
+                }
+                .left-belt.track2 {
+                display: var(--left-belt-track-2, none);
+                }
+                .left-belt.track3 {
+                display: var(--left-belt-track-3, none);
+                }
+                .right-belt.track1 {
+                display: var(--right-belt-track-1, none);
+                }
+                .right-belt.track2 {
+                display: var(--right-belt-track-2, none);
+                }
+                .right-belt.track3 {
+                display: var(--right-belt-track-3, none);
+                }
+            </style>
+
+            <linearGradient id="cannon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#333"/>
+                <stop offset="50%" stop-color="#CCC"/>
+                <stop offset="100%" stop-color="#333"/>
+            </linearGradient>
+
+            <symbol id="link0">
+                <rect x="5" y="55" width="125" height="25" fill="#aaaaaa"/>
+                <rect x="10" y="70" width="116" height="35" fill="#666666" rx="10" ry="10"/>
+                <rect x="5" y="55" width="125" height="50" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+            </symbol>
+
+            <symbol id="link30">
+                <rect x="5" y="55" width="125" height="25" fill="#939393"/>
+                <rect x="10" y="70" width="116" height="30" fill="#585858" rx="10" ry="10"/>
+                <rect x="5" y="55" width="125" height="42" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+            </symbol>
+
+            <symbol id="link60">
+                <rect x="5" y="55" width="125" height="20" fill="#555555"/>
+                <rect x="5" y="55" width="125" height="20" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+            </symbol>
+
+            <symbol id="main-track">
+                <rect x="20" y="75" width="95" height="450" fill="#333333" stroke="black" stroke-width="10"/>
+            </symbol>
+
+            <symbol id="track1">
+                <use href="#main-track"/>
+                <use href="#link30"/>
+                <use href="#link0" y="60"/>
+                <use href="#link0" y="140"/>
+                <use href="#link0" y="220"/>
+                <use href="#link0" y="300"/>
+                <use href="#link0" y="380"/>
+                <use href="#link30" y="448"/>
+            </symbol>
+
+            <symbol id="track2">
+                <use href="#main-track"/>
+                <use href="#link60"/>
+                <use href="#link0" y="33"/>
+                <use href="#link0" y="113"/>
+                <use href="#link0" y="193"/>
+                <use href="#link0" y="273"/>
+                <use href="#link0" y="353"/>
+                <use href="#link0" y="433"/>
+            </symbol>
+
+            <symbol id="track3">
+                <use href="#main-track"/>
+                <use href="#link0" y="7"/>
+                <use href="#link0" y="87"/>
+                <use href="#link0" y="167"/>
+                <use href="#link0" y="247"/>
+                <use href="#link0" y="327"/>
+                <use href="#link0" y="407"/>
+                <use href="#link60" y="470"/>
+            </symbol>
+
+            <symbol id="body">
+                <use href="#track1" x="150" y="100" class="left-belt track1"/>
+                <use href="#track2" x="150" y="100" class="left-belt track2"/>
+                <use href="#track3" x="150" y="100" class="left-belt track3"/>
+                <use href="#track1" x="515" y="100" class="right-belt track1"/>
+                <use href="#track2" x="515" y="100" class="right-belt track2"/>
+                <use href="#track3" x="515" y="100" class="right-belt track3"/>
+
+                <rect class="tank-body-fill" x="240" y="190" width="320" height="420" stroke="black" stroke-width="20"
+                      rx="10" ry="10"/>
+                <rect x="250" y="520" width="300" height="80" opacity="0.5"/>
+            </symbol>
+
+            <symbol id="turret">
+                <rect class="tank-turret-fill" x="300" y="320" width="200" height="200" stroke="black" stroke-width="20"
+                      rx="10" ry="10"/>
+                <rect x="310" y="460" width="180" height="50" fill="black" opacity="0.5"/>
+
+                <rect x="360" y="240" width="80" height="80" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+                <rect x="375" y="70" width="50" height="170" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+            </symbol>
+
+            <symbol id="radar">
+                <circle class="tank-radar-fill" cx="400" cy="400" r="30" stroke="black" stroke-width="20"/>
+                <path class="tank-radar-fill" d="M 290 420 q 110 100 220 0 z" stroke="black" stroke-width="20"/>
+            </symbol>
+
+            <symbol id="tank">
+                <use class="tank-body" href="#body"/>
+                <use class="tank-turret" href="#turret"/>
+                <use class="tank-radar" href="#radar"/>
+            </symbol>
+        </defs>
+</svg>

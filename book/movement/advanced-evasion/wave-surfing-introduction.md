@@ -17,9 +17,9 @@ source: [
 # Wave Surfing Introduction
 
 > [!TIP] Origins
-> **Wave Surfing** was invented by **Alexandros (ABC)** (author of **Shadow**) in the early 2000s and represents one of
+> **Wave Surfing** was invented by **ABC** (author of **Shadow**) in the early 2000s and represents one of
 > the most significant innovations in competitive Robocode. Before Wave Surfing, movement strategies were mostly
-> **Random** or **Oscillating**, bots would move erratically hoping to avoid bullets by chance. Alexandros (ABC)'s
+> **Random** or **Oscillating**, bots would move erratically hoping to avoid bullets by chance. ABC's
 > discovery changed the game from a test of luck to a test of statistical prediction, revolutionizing defensive movement
 > by transforming bullet dodging from reactive guesswork into predictive statistical analysis.
 
@@ -762,4 +762,3 @@ Once you have basic Wave Surfing working:
 - [Wave Surfing/True Surfing](https://robowiki.net/wiki/Wave_Surfing/True_Surfing) - RoboWiki (classic Robocode)
 - [Waves](https://robowiki.net/wiki/Waves) - RoboWiki (classic Robocode)
 - [GuessFactor Targeting](../../targeting/statistical-targeting/guessfactor-targeting.md) - The offensive counterpart
-

@@ -177,7 +177,7 @@ who developed the technique or concept.
     - **David Alves** — Invented the Wave concept; co-pioneer of GuessFactor Targeting; pioneered Pattern Matching
       (Phoenix); pioneered Random Orbital Movement
     - **Paul Evans** — Co-pioneer of GuessFactor Targeting (discovered "bins"); popularized Segmentation
-    - **Alexandros (ABC)** — Invented Wave Surfing; pioneered Dynamic Clustering; co-pioneered Minimum Risk Movement
+    - **ABC** — Invented Wave Surfing; pioneered Dynamic Clustering; co-pioneered Minimum Risk Movement
       (with Aelryen)
     - **Patrick Cupka (Voidious)** — Refined Wave Surfing and movement flattening; former RoboWiki manager
     - **Kev (kc)** — Current 1-vs-1 champion; author of GresSuffurd; pushed statistical targeting and movement to

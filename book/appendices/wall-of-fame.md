@@ -78,7 +78,7 @@ Creator of **[SandboxDT](https://robowiki.net/wiki/SandboxDT)**. A co-pioneer of
 discovered the use of "bins" (statistical buckets) to track movement. He also popularized **Segmentation**, proving that
 bot data should be categorized by variables like distance or wall proximity.
 
-### Alexandros (ABC)
+### ABC
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:Abc)  
 **Inventor of Wave Surfing**, the most significant defensive discovery in Robocode history. He also pioneered the

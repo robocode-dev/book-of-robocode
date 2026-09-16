@@ -734,7 +734,7 @@ the same bot all the time, you won't achieve the benefits.
 Once you have effective segmentation:
 
 - **[Dynamic Clustering](../statistical-targeting/dynamic-clustering.md)**: Replace fixed segments with adaptive
-  similarity matching (pioneered by Alexandros (ABC), perfected by Julian Kent (Skilgannon)). See
+  similarity matching (pioneered by ABC, perfected by Julian Kent (Skilgannon)). See
   also: [RoboWiki - Dynamic Clustering](https://robowiki.net/wiki/Dynamic_Clustering)
 - **[Anti-Surfer Targeting](../targeting-tactics/anti-surfer-targeting.md)**: Counter enemies who use Wave Surfing. See
   also: [RoboWiki - Anti-Surfer Targeting](https://robowiki.net/wiki/Anti-Surfer_Targeting)
@@ -746,4 +746,3 @@ Once you have effective segmentation:
   classic Robocode)
 - [Dynamic Clustering](https://robowiki.net/wiki/Dynamic_Clustering) - RoboWiki (classic Robocode)
 - [Symbolic Dynamic Segmentation](https://robowiki.net/wiki/Symbolic_Dynamic_Segmentation) - RoboWiki (classic Robocode)
-

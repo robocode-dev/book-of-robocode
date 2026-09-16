@@ -1,0 +1,297 @@
+<svg version="1.1" width="1000" height="625" viewBox="0 0 8000 5000"
+     xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Dynamic Clustering selects the nearest recorded states</title>
+  <desc id="desc">Left: a scatter plot of recorded battle states, with distance on the horizontal axis and lateral velocity on the vertical axis. A blue star marks the current state. The seven closest records are filled green dots inside a dashed green circle; the rest are hollow red circles and are ignored. Right: the green neighbors' GuessFactors are drawn as ticks under a smooth green density curve, and an orange dot marks the peak used for aiming.</desc>
+
+  <style>
+    .text { font: 150px sans-serif; }
+    .small { font: 120px sans-serif; }
+    .bold { font-weight: bold; }
+  </style>
+
+  <!-- Arrow markers -->
+    <marker id="arrow-choc" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+      <polygon points="6 0, 12 3, 6 6" fill="#D2691E"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+      <polygon points="6 0, 12 3, 6 6" fill="#10B981"/>
+    </marker>
+
+  <!-- Background panels -->
+  <rect x="0" y="0" width="8000" height="5000" fill="#1a1a2e"/>
+  <rect x="1100" y="500" width="3700" height="3700" fill="#2d3748" rx="40"/>
+  <rect x="5450" y="600" width="2400" height="3700" fill="#2d3748" rx="40"/>
+
+  <!-- Axes -->
+  <line x1="1100" y1="4200" x2="4950" y2="4200" stroke="#D2691E" stroke-width="20"
+        marker-end="url(#arrow-choc)"/>
+  <line x1="1100" y1="4200" x2="1100" y2="400" stroke="#D2691E" stroke-width="20"
+        marker-end="url(#arrow-choc)"/>
+
+  <!-- Recorded states that are too different (excluded) -->
+  <g stroke="#EF4444" stroke-width="22" fill="none" opacity="0.75">
+    <circle cx="3463" cy="896" r="60"/>
+    <circle cx="1447" cy="2375" r="60"/>
+    <circle cx="1377" cy="2124" r="60"/>
+    <circle cx="1488" cy="958" r="60"/>
+    <circle cx="2693" cy="3461" r="60"/>
+    <circle cx="1671" cy="1409" r="60"/>
+    <circle cx="3383" cy="3872" r="60"/>
+    <circle cx="4569" cy="808" r="60"/>
+    <circle cx="4169" cy="1635" r="60"/>
+    <circle cx="1740" cy="1050" r="60"/>
+    <circle cx="2299" cy="3425" r="60"/>
+    <circle cx="1864" cy="2627" r="60"/>
+    <circle cx="3112" cy="863" r="60"/>
+    <circle cx="2318" cy="2641" r="60"/>
+    <circle cx="3036" cy="3625" r="60"/>
+    <circle cx="4583" cy="1051" r="60"/>
+    <circle cx="2672" cy="3224" r="60"/>
+    <circle cx="1767" cy="2312" r="60"/>
+    <circle cx="1383" cy="2922" r="60"/>
+    <circle cx="3850" cy="2598" r="60"/>
+    <circle cx="4106" cy="3862" r="60"/>
+    <circle cx="1450" cy="3262" r="60"/>
+    <circle cx="4036" cy="3588" r="60"/>
+    <circle cx="2197" cy="2062" r="60"/>
+    <circle cx="2470" cy="3656" r="60"/>
+    <circle cx="2043" cy="2299" r="60"/>
+    <circle cx="4491" cy="2998" r="60"/>
+    <circle cx="4308" cy="3302" r="60"/>
+    <circle cx="1602" cy="2807" r="60"/>
+    <circle cx="1960" cy="1202" r="60"/>
+    <circle cx="2406" cy="829" r="60"/>
+    <circle cx="1251" cy="1164" r="60"/>
+    <circle cx="1595" cy="1886" r="60"/>
+    <circle cx="1337" cy="3623" r="60"/>
+    <circle cx="2108" cy="1831" r="60"/>
+    <circle cx="2488" cy="1068" r="60"/>
+    <circle cx="4068" cy="1199" r="60"/>
+    <circle cx="3046" cy="3977" r="60"/>
+    <circle cx="1818" cy="3275" r="60"/>
+    <circle cx="3061" cy="3299" r="60"/>
+    <circle cx="4032" cy="3166" r="60"/>
+    <circle cx="1345" cy="1600" r="60"/>
+    <circle cx="4502" cy="2171" r="60"/>
+    <circle cx="4436" cy="4009" r="60"/>
+    <circle cx="4497" cy="1890" r="60"/>
+    <circle cx="4107" cy="2280" r="60"/>
+    <circle cx="3470" cy="3369" r="60"/>
+    <circle cx="1695" cy="698" r="60"/>
+  </g>
+
+  <!-- Neighborhood -->
+  <circle cx="3135" cy="2165" r="620" fill="#10B981" fill-opacity="0.12" stroke="#10B981"
+          stroke-width="20" stroke-dasharray="60 40"/>
+  <g stroke="#10B981" stroke-width="12" opacity="0.7">
+    <line x1="3135" y1="2165" x2="3310" y2="2229"/>
+    <line x1="3135" y1="2165" x2="2891" y2="2300"/>
+    <line x1="3135" y1="2165" x2="3206" y2="1831"/>
+    <line x1="3135" y1="2165" x2="3366" y2="2472"/>
+    <line x1="3135" y1="2165" x2="2702" y2="2135"/>
+    <line x1="3135" y1="2165" x2="3468" y2="1832"/>
+    <line x1="3135" y1="2165" x2="3170" y2="2672"/>
+  </g>
+  <g fill="#10B981" stroke="#065F46" stroke-width="16">
+    <circle cx="3310" cy="2229" r="80"/>
+    <circle cx="2891" cy="2300" r="80"/>
+    <circle cx="3206" cy="1831" r="80"/>
+    <circle cx="3366" cy="2472" r="80"/>
+    <circle cx="2702" cy="2135" r="80"/>
+    <circle cx="3468" cy="1832" r="80"/>
+    <circle cx="3170" cy="2672" r="80"/>
+  </g>
+
+  <!-- Current state -->
+  <polygon points="3135,1975 3182,2100 3316,2106 3211,2190 3247,2319 3135,2245 3023,2319 3059,2190 2954,2106 3088,2100"
+           fill="#60A5FA" stroke="#1E3A8A" stroke-width="20"/>
+
+  <!-- From neighbors to the chart -->
+  <path d="M 5050 2400 C 5150 2400, 5150 2400, 5350 2400" stroke="#10B981"
+        stroke-width="30" fill="none" marker-end="url(#arrow-green)"/>
+
+  <!-- GuessFactor chart -->
+  <line x1="5700" y1="3800" x2="7600" y2="3800" stroke="#D2691E" stroke-width="20"/>
+  <line x1="6650" y1="3800" x2="6650" y2="1300" stroke="#718096" stroke-width="10"
+        stroke-dasharray="40 30"/>
+  <g stroke="#10B981" stroke-width="30">
+    <line x1="6916" y1="3790" x2="6916" y2="3630"/>
+    <line x1="6982" y1="3790" x2="6982" y2="3630"/>
+    <line x1="7040" y1="3790" x2="7040" y2="3630"/>
+    <line x1="6964" y1="3790" x2="6964" y2="3630"/>
+    <line x1="6222" y1="3790" x2="6222" y2="3630"/>
+    <line x1="7011" y1="3790" x2="7011" y2="3630"/>
+    <line x1="6859" y1="3790" x2="6859" y2="3630"/>
+  </g>
+  <polyline points="5700,3650 5719,3650 5738,3650 5757,3650 5776,3650 5795,3650 5814,3649 5833,3649 5852,3648 5871,3647 5890,3644 5909,3641 5928,3636 5947,3629 5966,3618 5985,3605 6004,3587 6023,3564 6042,3536 6061,3504 6080,3468 6099,3428 6118,3388 6137,3349 6156,3314 6175,3285 6194,3264 6213,3253 6232,3253 6251,3264 6270,3285 6289,3314 6308,3349 6327,3388 6346,3428 6365,3468 6384,3504 6403,3536 6422,3564 6441,3586 6460,3603 6479,3616 6498,3625 6517,3630 6536,3632 6555,3629 6574,3622 6593,3611 6612,3593 6631,3567 6650,3531 6669,3483 6688,3420 6707,3342 6726,3245 6745,3130 6764,2996 6783,2844 6802,2677 6821,2500 6840,2319 6859,2139 6878,1970 6897,1820 6916,1696 6935,1606 6954,1556 6973,1550 6992,1588 7011,1669 7030,1788 7049,1938 7068,2112 7087,2299 7106,2491 7125,2679 7144,2855 7163,3015 7182,3155 7201,3274 7220,3371 7239,3448 7258,3507 7277,3552 7296,3584 7315,3607 7334,3623 7353,3633 7372,3640 7391,3644 7410,3647 7429,3648 7448,3649 7467,3649 7486,3650 7505,3650 7524,3650 7543,3650 7562,3650 7581,3650 7600,3650" stroke="#10B981" stroke-width="30" fill="none"/>
+  <line x1="6973" y1="1550" x2="6973" y2="3800" stroke="#F59E0B" stroke-width="20"
+        stroke-dasharray="50 30"/>
+  <circle cx="6973" cy="1550" r="70" fill="#F59E0B" stroke="#B45309" stroke-width="20"/>
+
+  <!-- Text labels -->
+  <text class="text bold" x="2950" y="4500" fill="#D2691E" text-anchor="middle">distance</text>
+  <text class="text bold" x="900" y="2350" fill="#D2691E" text-anchor="middle"
+        transform="rotate(-90, 900, 2350)">lateral velocity</text>
+  <text class="text bold" x="3135" y="1455" fill="#60A5FA" text-anchor="middle">current state</text>
+  <text class="small" x="3135" y="2955" fill="#10B981" text-anchor="middle">k = 7 nearest neighbors</text>
+  <text class="small" x="1250" y="4120" fill="#EF4444">○ too different: ignored</text>
+  <text class="text bold" x="6650" y="850" fill="#E2E8F0" text-anchor="middle">neighbor outcomes</text>
+  <text class="small" x="5700" y="3970" fill="#A0AEC0" text-anchor="middle">−1</text>
+  <text class="small" x="6650" y="3970" fill="#A0AEC0" text-anchor="middle">0</text>
+  <text class="small" x="7600" y="3970" fill="#A0AEC0" text-anchor="middle">+1</text>
+  <text class="text bold" x="6650" y="4180" fill="#D2691E" text-anchor="middle">GuessFactor</text>
+  <text class="text bold" x="6973" y="1420" fill="#F59E0B" text-anchor="middle">aim at peak</text>
+  <text class="small" x="5150" y="2300" fill="#10B981" text-anchor="middle">vote</text>
+
+  <!-- Tank defs block (copied from tank.svg) -->
+    <defs>
+            <style>
+                .tank-body, .tank-turret, .tank-radar {
+                transform-origin: 400px 400px;
+                }
+                .tank-body {
+                transform: rotate(var(--body-rotation, 0deg));
+                }
+                .tank-turret {
+                transform: rotate(var(--turret-rotation, 0deg));
+                }
+                .tank-radar {
+                transform: rotate(var(--radar-rotation, 0deg));
+                }
+                svg {
+                --tank-body-color: #019;
+                --tank-turret-color: #06c;
+                --tank-radar-color: #aaf;
+                --left-belt-track-1: inline;
+                --left-belt-track-2: none;
+                --left-belt-track-3: none;
+                --right-belt-track-1: none;
+                --right-belt-track-2: inline;
+                --right-belt-track-3: none;
+                }
+                .tank-body-fill {
+                fill: var(--tank-body-color, #019);
+                }
+                .tank-turret-fill {
+                fill: var(--tank-turret-color, #06c);
+                }
+                .tank-radar-fill {
+                fill: var(--tank-radar-color, #aaf);
+                }
+                .left-belt, .right-belt {
+                display: none;
+                }
+                .left-belt.track1 {
+                display: var(--left-belt-track-1, none);
+                }
+                .left-belt.track2 {
+                display: var(--left-belt-track-2, none);
+                }
+                .left-belt.track3 {
+                display: var(--left-belt-track-3, none);
+                }
+                .right-belt.track1 {
+                display: var(--right-belt-track-1, none);
+                }
+                .right-belt.track2 {
+                display: var(--right-belt-track-2, none);
+                }
+                .right-belt.track3 {
+                display: var(--right-belt-track-3, none);
+                }
+            </style>
+
+            <linearGradient id="cannon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#333"/>
+                <stop offset="50%" stop-color="#CCC"/>
+                <stop offset="100%" stop-color="#333"/>
+            </linearGradient>
+
+            <symbol id="link0">
+                <rect x="5" y="55" width="125" height="25" fill="#aaaaaa"/>
+                <rect x="10" y="70" width="116" height="35" fill="#666666" rx="10" ry="10"/>
+                <rect x="5" y="55" width="125" height="50" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+            </symbol>
+
+            <symbol id="link30">
+                <rect x="5" y="55" width="125" height="25" fill="#939393"/>
+                <rect x="10" y="70" width="116" height="30" fill="#585858" rx="10" ry="10"/>
+                <rect x="5" y="55" width="125" height="42" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+            </symbol>
+
+            <symbol id="link60">
+                <rect x="5" y="55" width="125" height="20" fill="#555555"/>
+                <rect x="5" y="55" width="125" height="20" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+            </symbol>
+
+            <symbol id="main-track">
+                <rect x="20" y="75" width="95" height="450" fill="#333333" stroke="black" stroke-width="10"/>
+            </symbol>
+
+            <symbol id="track1">
+                <use href="#main-track"/>
+                <use href="#link30"/>
+                <use href="#link0" y="60"/>
+                <use href="#link0" y="140"/>
+                <use href="#link0" y="220"/>
+                <use href="#link0" y="300"/>
+                <use href="#link0" y="380"/>
+                <use href="#link30" y="448"/>
+            </symbol>
+
+            <symbol id="track2">
+                <use href="#main-track"/>
+                <use href="#link60"/>
+                <use href="#link0" y="33"/>
+                <use href="#link0" y="113"/>
+                <use href="#link0" y="193"/>
+                <use href="#link0" y="273"/>
+                <use href="#link0" y="353"/>
+                <use href="#link0" y="433"/>
+            </symbol>
+
+            <symbol id="track3">
+                <use href="#main-track"/>
+                <use href="#link0" y="7"/>
+                <use href="#link0" y="87"/>
+                <use href="#link0" y="167"/>
+                <use href="#link0" y="247"/>
+                <use href="#link0" y="327"/>
+                <use href="#link0" y="407"/>
+                <use href="#link60" y="470"/>
+            </symbol>
+
+            <symbol id="body">
+                <use href="#track1" x="150" y="100" class="left-belt track1"/>
+                <use href="#track2" x="150" y="100" class="left-belt track2"/>
+                <use href="#track3" x="150" y="100" class="left-belt track3"/>
+                <use href="#track1" x="515" y="100" class="right-belt track1"/>
+                <use href="#track2" x="515" y="100" class="right-belt track2"/>
+                <use href="#track3" x="515" y="100" class="right-belt track3"/>
+
+                <rect class="tank-body-fill" x="240" y="190" width="320" height="420" stroke="black" stroke-width="20"
+                      rx="10" ry="10"/>
+                <rect x="250" y="520" width="300" height="80" opacity="0.5"/>
+            </symbol>
+
+            <symbol id="turret">
+                <rect class="tank-turret-fill" x="300" y="320" width="200" height="200" stroke="black" stroke-width="20"
+                      rx="10" ry="10"/>
+                <rect x="310" y="460" width="180" height="50" fill="black" opacity="0.5"/>
+
+                <rect x="360" y="240" width="80" height="80" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+                <rect x="375" y="70" width="50" height="170" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+            </symbol>
+
+            <symbol id="radar">
+                <circle class="tank-radar-fill" cx="400" cy="400" r="30" stroke="black" stroke-width="20"/>
+                <path class="tank-radar-fill" d="M 290 420 q 110 100 220 0 z" stroke="black" stroke-width="20"/>
+            </symbol>
+
+            <symbol id="tank">
+                <use class="tank-body" href="#body"/>
+                <use class="tank-turret" href="#turret"/>
+                <use class="tank-radar" href="#radar"/>
+            </symbol>
+        </defs>
+</svg>

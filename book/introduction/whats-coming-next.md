@@ -20,17 +20,13 @@ in the book.
 ## Targeting Systems
 
 ### Statistical Targeting (Advanced)
-- Dynamic Clustering (with Tutorial)
 - Advanced Statistical Methods
 
 ### Predictive Targeting (Advanced)
-- Precise Prediction
-- Pattern Matching
 - Play It Forward & Sequential Prediction
 
 ### Advanced Targeting (Advanced)
 - Angular Targeting (Factored Variants)
-- Anti-Surfer Targeting
 - Neural & Experimental Targeting
 
 ## Movement & Evasion
