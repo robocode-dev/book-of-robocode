@@ -99,6 +99,6 @@ are mathematical. Put that conversion at the edge of the predictor, then keep it
 
 ## Further Reading
 
-- [Precise Prediction](https://robowiki.net/wiki/Precise_Prediction) (RoboWiki, classic Robocode)
-- [Physics](https://robocode.dev/articles/physics.html) (Tank Royale documentation)
-- [Wave Surfing](https://robowiki.net/wiki/Wave_Surfing) (RoboWiki, classic Robocode)
+- [Precise Prediction](https://robowiki.net/wiki/Precise_Prediction) - RoboWiki (classic Robocode)
+- [Physics](https://robocode.dev/articles/physics.html) - Tank Royale documentation
+- [Wave Surfing](https://robowiki.net/wiki/Wave_Surfing) - RoboWiki (classic Robocode)

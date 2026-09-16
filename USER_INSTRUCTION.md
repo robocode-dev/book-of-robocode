@@ -19,9 +19,11 @@
    - Parse the book structure to determine section, difficulty, and output path.
    - Gather relevant sources from RoboWiki (classic) and robocode.dev (Tank Royale).
    - Generate the complete page with frontmatter and content.
-   - Update `book/.vitepress/config.js` with sidebar and nav entries.
+   - Draw SVG illustrations for the page's illustration markers.
+   - Review the page and fix blocking findings.
+   - Update `book/.vitepress/config.js`, the roadmap, and `BOOK_STRUCTURE.md`, then run the build.
 
-4. Review the generated page and config changes, then commit.
+4. Review the generated page, images, and config changes, then commit.
 
 ## What You Don't Need to Do
 
@@ -41,6 +43,6 @@ The AI will only prompt you if:
 
 ## Reference
 
-- Skill definition: `.github/skills/create-page.md`
-- Page generation rules: `specs/page-generation-spec.md`
-- Writing guidelines: `AGENTS.md`
+- Agent guide and rule map: `AGENTS.md`
+- Skill definitions: `.agents/skills/`
+- Detailed writing instructions: `.agents/instructions/`

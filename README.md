@@ -152,7 +152,8 @@ book-of-robocode/
 │   ├── energy-and-scoring/    # Energy management, Scoring systems
 │   ├── appendices/            # Glossary, Quick Reference, Wall of Fame
 │   └── index.md               # Home page (VitePress landing)
-├── specs/                     # Page generation specs, RoboWiki links
+├── specs/                     # RoboWiki links, research notes
+├── .agents/                   # Agent instructions and skills (start at AGENTS.md)
 ├── package.json
 ├── LICENSE-CODE               # MIT License for code examples/config
 ├── LICENSE-DOCS               # CC BY-SA 4.0 for documentation
@@ -180,7 +181,7 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for:
 - How to report issues and suggest improvements
 - Local development setup
 - Writing guidelines
-- AI-assisted workflow with GitHub Copilot skills
+- AI-assisted workflow with agent skills for writing, illustrating, and reviewing pages
 - Pull request process
 
 Please read our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing.

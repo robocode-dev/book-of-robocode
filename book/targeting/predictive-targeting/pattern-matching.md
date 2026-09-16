@@ -98,6 +98,6 @@ internal representation differs.
 
 ## Further Reading
 
-- [Pattern Matching](https://robowiki.net/wiki/Pattern_Matching) (RoboWiki, classic Robocode)
-- [Symbolic Pattern Matching](https://robowiki.net/wiki/Symbolic_Pattern_Matching) (RoboWiki, classic Robocode)
-- [Physics](https://robocode.dev/articles/physics.html) (Tank Royale documentation)
+- [Pattern Matching](https://robowiki.net/wiki/Pattern_Matching) - RoboWiki (classic Robocode)
+- [Symbolic Pattern Matching](https://robowiki.net/wiki/Symbolic_Pattern_Matching) - RoboWiki (classic Robocode)
+- [Physics](https://robocode.dev/articles/physics.html) - Tank Royale documentation

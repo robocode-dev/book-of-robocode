@@ -102,133 +102,37 @@ uphold a welcoming, inclusive, and harassment-free environment.
 
 ## Writing Guidelines
 
-### Core Principles
+All writing rules are collected in [`AGENTS.md`](AGENTS.md), which applies to human contributors as well. It covers the
+global rules (sources, terminology, voice) and what makes a strong article, and it links to the detailed instructions:
 
-Follow the rules in [`AGENTS.md`](AGENTS.md) and [`BOOK_STRATEGY.md`](BOOK_STRATEGY.md):
-
-- **Audience**: Curious teenagers, students, new programmers, educators
-- **Tone**: Neutral, friendly, encouraging, clear
-- **Style**: Third person only (no "I" or "we")
-- **Length**: 300–800 words per page unless specified
-
-### Terminology
-
-| Use   | Don't Use                   |
-|-------|-----------------------------|
-| bot   | robot (except in API names) |
-| units | pixels                      |
-
-### Formatting
-
-- UTF-8 encoding
-- Line length ≤ 120 characters
-- Short paragraphs (2–4 sentences)
-- Use Markdown headings, lists, callouts
-- Emoji allowed when supportive
-
-### Page Structure
-
-Every page must include:
-
-1. **Frontmatter** with title, category, summary, tags, difficulty, source
-2. **H1 heading** matching the title
-3. **Origins callout** crediting technique originators
-4. **2–3 line overview**
-5. **3–6 content sections**
-6. **Further Reading section** with source links
-
-See [`specs/page-generation-spec.md`](specs/page-generation-spec.md) for complete details.
+| Document                                                           | Covers                                     |
+|--------------------------------------------------------------------|--------------------------------------------|
+| [writing-voice](.agents/instructions/writing-voice.md)             | Prose voice, openings, words to avoid      |
+| [page-format](.agents/instructions/page-format.md)                 | Frontmatter, page structure, sidebar       |
+| [sources-and-credits](.agents/instructions/sources-and-credits.md) | Sources, platform notes, Origins credits   |
+| [illustrations](.agents/instructions/illustrations.md)             | Illustration markers, SVG style, palette   |
+| [`BOOK_STRUCTURE.md`](BOOK_STRUCTURE.md)                           | Table of contents, difficulty, page status |
+| [`BOOK_STRATEGY.md`](BOOK_STRATEGY.md)                             | Mission, audience, licensing               |
 
 ---
 
-## AI-Assisted Workflow with GitHub Copilot
+## AI-Assisted Workflow
 
-This project includes GitHub Copilot skills that automate page and illustration creation. These skills ensure
-consistent formatting, proper attribution, and correct sidebar configuration.
+The repository ships three agent skills in [`.agents/skills/`](.agents/skills/). Claude Code finds them through the
+`.claude/skills` link, and other agents can read them directly.
 
-> **⚠️ AI Model Requirement:** These skills require advanced AI models such as **Claude Sonnet 4.5**, **GPT-5.1**, or
-> better. Lower-tier models may not reliably follow the complex instructions and source attribution requirements.
+> **⚠️ AI Model Requirement:** The skills need a capable model. Lower-tier models may not reliably follow the source
+> and attribution requirements.
 
-### Available Skills
+| Skill                      | What it does                                                 |
+|----------------------------|--------------------------------------------------------------|
+| `/create-page <Page Name>` | Writes and integrates a page, then runs the two skills below |
+| `/create-illustration`     | Draws SVGs for the page's illustration markers               |
+| `/review-page`             | Reviews a page for structure, accuracy, voice, and images    |
 
-#### `/create-page` — Generate New Book Pages
-
-Creates a complete book page from just a page name.
-
-**Prerequisites:**
-
-- The page name **must** exist in `BOOK_STRUCTURE.md` — update this file first to add new pages.
-- The topic **must** have existing documentation on [RoboWiki.net](https://robowiki.net/) (for classic Robocode)
-  or [robocode.dev](https://robocode-dev.github.io/tank-royale/) (for Tank Royale).
-- For topics without existing documentation, manual page creation is required.
-
-**How to use:**
-
-1. Open GitHub Copilot Chat in your editor.
-2. Type: `/create-page <Page Name>` or "Create page: <Page Name>"
-3. The page name must match an entry in `BOOK_STRUCTURE.md`.
-
-**What it does:**
-
-- Parses hierarchy from `BOOK_STRUCTURE.md` (section, difficulty, output path)
-- Gathers sources from `specs/robowiki-links.md` and Tank Royale docs
-- Generates the page following all style guidelines
-- Updates `book/.vitepress/config.js` sidebar
-- Updates glossary if new terms are introduced
-- Updates "What's Coming Next" page
-
-**Example:**
-
-```
-/create-page Circular Targeting
-```
-
-See [`.github/skills/create-page.md`](.github/skills/create-page.md) for complete documentation.
-
-#### `/create-illustration` — Generate SVG Diagrams
-
-Creates SVG illustrations from TODO markers in book pages.
-
-**How to use:**
-
-1. Open a page with `<!-- TODO: Illustration` markers.
-2. Open GitHub Copilot Chat.
-3. Type: `/create-illustration` or "Create illustration"
-
-**What it does:**
-
-- Parses TODO markers for illustration specifications
-- Generates SVG with proper tank rendering and battlefield background
-- Saves to `book/images/`
-- Inserts `<img>` tag in the page
-
-**Example marker:**
-
-```markdown
-<!-- TODO: Illustration
-**Filename:** circular-targeting.svg
-**Caption:** "Circular targeting geometry"
-**Viewport:** 8000x6000
-**Battlefield:** true
-**Bots:**
-  - type: friendly, position: (1000, 4500), body: 20, turret: 60, radar: 90
--->
-```
-
-See [`.github/skills/create-illustration.md`](.github/skills/create-illustration.md) for complete documentation.
-
-### Skill Reference Documents
-
-The skills use these reference documents:
-
-| Document                          | Purpose                                              |
-|-----------------------------------|------------------------------------------------------|
-| `AGENTS.md`                       | Writing rules, terminology, page generation contract |
-| `BOOK_STRUCTURE.md`               | Complete table of contents with hierarchy            |
-| `BOOK_STRATEGY.md`                | Audience, tone, content philosophy                   |
-| `specs/page-generation-spec.md`   | Detailed frontmatter and body structure              |
-| `specs/robowiki-links.md`         | RoboWiki links for classic Robocode sources          |
-| `book/appendices/wall-of-fame.md` | Known originators for attribution                    |
+The page name must already exist in `BOOK_STRUCTURE.md` (add it there first), and the topic needs documentation on
+[RoboWiki](https://robowiki.net/) or [robocode.dev](https://robocode.dev/). Always review the generated page and
+images yourself before opening a pull request.
 
 ---
 
@@ -275,11 +179,13 @@ book-of-robocode/
 │   ├── movement/              # Movement and evasion
 │   ├── energy-and-scoring/    # Energy, Scoring, Competitions
 │   └── appendices/            # Glossary, Quick Reference, Wall of Fame
-├── specs/                     # Generation specs, RoboWiki links
+├── specs/                     # RoboWiki links, research notes
+├── .agents/
+│   ├── instructions/          # Writing instructions (voice, format, sources, illustrations)
+│   └── skills/                # Agent skills (create-page, create-illustration, review-page)
 ├── .github/
-│   ├── skills/                # Copilot skill definitions
 │   └── workflows/             # GitHub Actions (deploy)
-├── AGENTS.md                  # AI collaboration guidelines
+├── AGENTS.md                  # Agent guide: rules, workflow, instruction map
 ├── BOOK_STRATEGY.md           # Content strategy
 ├── BOOK_STRUCTURE.md          # Table of contents
 ├── CONTRIBUTING.md            # This file

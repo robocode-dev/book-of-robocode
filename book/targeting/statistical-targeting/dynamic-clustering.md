@@ -100,7 +100,7 @@ the shared maximum speed of 8 units per turn and bullet-speed rule.
 
 ## Further Reading
 
-- [Dynamic Clustering](https://robowiki.net/wiki/Dynamic_Clustering) (RoboWiki, classic Robocode)
-- [Dynamic Clustering Tutorial](https://robowiki.net/wiki/Dynamic_Clustering_Tutorial) (RoboWiki, classic Robocode)
-- [kd-tree](https://robowiki.net/wiki/Kd-tree) (RoboWiki, classic Robocode)
-- [Physics](https://robocode.dev/articles/physics.html) (Tank Royale documentation)
+- [Dynamic Clustering](https://robowiki.net/wiki/Dynamic_Clustering) - RoboWiki (classic Robocode)
+- [Dynamic Clustering Tutorial](https://robowiki.net/wiki/Dynamic_Clustering_Tutorial) - RoboWiki (classic Robocode)
+- [kd-tree](https://robowiki.net/wiki/Kd-tree) - RoboWiki (classic Robocode)
+- [Physics](https://robocode.dev/articles/physics.html) - Tank Royale documentation

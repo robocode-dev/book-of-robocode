@@ -113,7 +113,7 @@ the API boundary, because their angle conventions differ.
 
 ## Further Reading
 
-- [Anti-Surfer Targeting](https://robowiki.net/wiki/Anti-Surfer_Targeting) (RoboWiki, classic Robocode)
-- [Wave Surfing](https://robowiki.net/wiki/Wave_Surfing) (RoboWiki, classic Robocode)
-- [Pattern Matching](https://robowiki.net/wiki/Pattern_Matching) (RoboWiki, classic Robocode)
-- [Physics](https://robocode.dev/articles/physics.html) (Tank Royale documentation)
+- [Anti-Surfer Targeting](https://robowiki.net/wiki/Anti-Surfer_Targeting) - RoboWiki (classic Robocode)
+- [Wave Surfing](https://robowiki.net/wiki/Wave_Surfing) - RoboWiki (classic Robocode)
+- [Pattern Matching](https://robowiki.net/wiki/Pattern_Matching) - RoboWiki (classic Robocode)
+- [Physics](https://robocode.dev/articles/physics.html) - Tank Royale documentation

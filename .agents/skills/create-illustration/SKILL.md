@@ -5,40 +5,36 @@ description: Generate accessible, theme-safe SVG illustrations from Book of Robo
 
 # Create Illustration
 
-Create or regenerate native SVG illustrations for the structured `<!-- TODO: Illustration ... -->` marker in a Book of
-Robocode page. Use this skill for vector teaching diagrams, not for photographic or painterly artwork.
+Turn each `<!-- TODO: Illustration ... -->` marker on a page into an SVG teaching diagram. Do not use this skill for
+photographic or painterly artwork.
 
-## Read the marker first
+## 1. Prepare
 
-Parse the marker before drawing. Require `Filename`, `Caption`, and `Viewport`; use `Battlefield: false` unless the
-marker calls for a battlefield. Treat `Bots`, `Lines`, `Arcs`, `Circles`, `Bullets`, `Texts`, and `Description` as the
-visual contract. If a required field is missing or contradictory, report it rather than inventing a different diagram.
+Read `AGENTS.md` and `.agents/instructions/illustrations.md`, the page itself, and one or two similar images in
+`book/images/` for style.
 
-Read `AGENTS.md` and `specs/page-generation-spec.md`. Reuse the tank symbol definitions from `book/images/tank.svg`
-when drawing bots. Preserve the TODO marker so the illustration can be regenerated later.
+## 2. Read the marker
 
-## Draw and embed
+- Parse the marker. `Filename`, `Caption`, and `Viewport` are required.
+- Treat the other fields as the visual contract.
+- If a field is missing, or it contradicts the page text or the physics, report it instead of guessing.
 
-Write the asset to `book/images/<Filename>`. Set `viewBox` to the requested viewport and display dimensions to one
-eighth of it. Include an accessible `<title>` and `<desc>`, readable labels, and distinct color and stroke treatments
-so the meaning is not encoded by color alone.
+## 3. Draw
 
-Use the book palette: friendly blue, enemy red, chocolate labels, orange bullets, green safe paths, and red danger.
-For light and dark theme compatibility, avoid pure-white and pure-black backgrounds. Use a neutral or semi-transparent
-background, with sufficient contrast for text and paths. Draw paths before bots so a bot remains visible at a line's
-origin.
+- Write `book/images/<Filename>` following the drawing rules and palette.
+- Copy the tank `<defs>` block into the SVG.
+- Compute coordinates with a small script when the diagram involves arcs, bearings, or simulated paths.
+- Make the picture teach the page's point, not just decorate it.
 
-Immediately after the marker, retain or update this Markdown pattern:
+## 4. Embed
 
-```html
-<img src="/images/<Filename>" alt="<Caption>" style="max-width:100%;height:auto;"><br>
-*<Caption>*
-```
+Keep the marker, and add or update the `<img>` block right after it. Use the caption verbatim as the alt text and as
+the visible caption.
 
-Use the caption verbatim for alt text and the visible caption unless a shorter equivalent improves accessibility without
-losing meaning.
+## 5. Check
 
-## Validate
-
-Confirm the SVG is well-formed XML, the referenced asset exists, the image tag resolves to the same filename, and the
-page builds with VitePress. Inspect a rendered result when a browser or SVG renderer is available.
+- Confirm the SVG is well-formed and the image path resolves.
+- Render it on a light page and a dark page, then look at the result.
+- Fix missing bots, overlaps, and clipping.
+- Update the marker to match the final drawing.
+- Run `npm run build` if the page changed.

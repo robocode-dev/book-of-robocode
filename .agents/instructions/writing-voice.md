@@ -1,8 +1,7 @@
 # Voice and Craft
 
-This file defines how the prose should sound. `AGENTS.md` covers mechanics: audience, structure, terminology,
-frontmatter, and source boundaries. This file covers the craft rules that keep a page from reading like AI-generated
-summary text.
+This file defines how the prose should sound: the craft rules that keep a page from reading like AI-generated
+summary text. Global rules live in `AGENTS.md`, and page mechanics live in `page-format.md`.
 
 ## Core philosophy
 
@@ -24,7 +23,7 @@ Why does the technique help?
 ## Register anchor
 
 The voice is "a science teacher with a smile." Friendly and clear, with real enthusiasm, but no hype. The prose starts
-with intuition, shows the failure mode or constraint, and then explains the fix. Third person only.
+with intuition, shows the failure mode or constraint, and then explains the fix.
 
 ## Writing characteristics
 
@@ -44,7 +43,8 @@ Bad:
 
 Better:
 
-"A bullet fired at the enemy's current position usually misses, because the enemy keeps moving while the bullet travels."
+"A bullet fired at the enemy's current position usually misses, because the enemy keeps moving while the bullet
+travels."
 
 ### Stay on the page's subject
 

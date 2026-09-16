@@ -1,44 +1,45 @@
 ---
 name: create-page
-description: Create a source-grounded Book of Robocode Markdown page and integrate it into the VitePress book.
+description: Create, illustrate, review, and integrate a source-grounded Book of Robocode page.
 ---
 
 # Create Page
 
-Create one page whose title appears in `BOOK_STRUCTURE.md`. Use this skill for new Book of Robocode concept pages,
-not for a small edit to an existing page.
+Create one new page whose title appears in `BOOK_STRUCTURE.md`. Do not use this skill for a small edit to an
+existing page.
 
-## Before writing
+## 1. Prepare
 
-Read `AGENTS.md`, `BOOK_STRATEGY.md`, `VOICE.md`, `BOOK_STRUCTURE.md`, and `specs/page-generation-spec.md`.
-Determine the title, section, subsection, difficulty, slug, and output path from the structure. If the requested title
-does not appear there, ask for confirmation before creating a page.
+Read `AGENTS.md`, `BOOK_STRUCTURE.md`, and these files in `.agents/instructions/`: `page-format.md`,
+`sources-and-credits.md`, and `writing-voice.md`.
 
-Use `specs/robowiki-links.md` to identify classic Robocode sources. Verify any claims that could be uncertain, and keep
-classic RoboWiki material distinct from Tank Royale documentation. Credit a real name only when a reliable public source
-identifies it. Otherwise use the documented handle or credit the RoboWiki community.
+Derive the title, section, sub-section, difficulty, slug, and output path (`page-format.md`, Section 1). If the title is
+not in `BOOK_STRUCTURE.md`, ask before continuing. Check `git status` so existing changes are not overwritten.
 
-## Page requirements
+## 2. Research
 
-Create a UTF-8 Markdown page with lines no longer than 120 characters. It must include:
+- Collect the RoboWiki articles from `specs/robowiki-links.md` and the relevant robocode.dev pages. Read them.
+- Note the facts the page will rely on, including every number, and where each one comes from.
+- Decide who the Origins callout credits (`sources-and-credits.md`).
+- Decide whether the platforms really differ for this topic.
+- Look at the neighboring pages in the same section so the new page builds on them instead of repeating them.
 
-- VitePress frontmatter with title, category, summary, tags, difficulty, and source URLs.
-- An H1 matching the title and an Origins callout immediately after it.
-- A 2–3 line overview, followed by 3–6 focused sections.
-- 300–800 words, short paragraphs, correct bot and units terminology, and the voice defined in `VOICE.md`.
-- One or two concise formulas or implementation/algorithm blocks when they clarify the concept.
-- Platform notes when classic Robocode and Tank Royale differ.
-- One or more structured `<!-- TODO: Illustration ... -->` markers for visual concepts.
-- A final `## Further Reading` section linking to the sources in frontmatter and relevant platform documentation.
+## 3. Write
 
-Use unnumbered headings for a conceptual page and numbered headings only for a procedural tutorial. Do not add an
-attribution footer because VitePress supplies it globally.
+- Write the page in the structure from `page-format.md`, following "What makes a strong article" in `AGENTS.md` and
+  the voice rules.
+- Link to earlier book pages where the reader needs background.
+- Add an illustration marker (`illustrations.md`) for every visual concept.
 
-## Integrate and validate
+## 4. Integrate
 
-Add the page in book-structure order to the appropriate VitePress sidebar. Remove its completed roadmap entry from
-`book/introduction/whats-coming-next.md`. Add a glossary entry only for a term that is central, newly introduced, and
-not already defined.
+Apply `page-format.md`, Section 6: add the sidebar entry, update the roadmap, set the `BOOK_STRUCTURE.md` status, and
+add a glossary entry only if one is warranted.
 
-Check frontmatter, links, line length, terminology, and existing working-tree changes. Run the VitePress build before
-handing off. Keep illustration TODO markers for the `create-illustration` skill.
+## 5. Illustrate, review, and build
+
+1. Run the `create-illustration` skill for every marker on the page.
+2. Run the `review-page` skill on the page, and fix every blocking finding. Repeat until none remain.
+3. Run `npm run build`.
+
+Report the page path, its sources, the images created, and any open questions for the maintainer.
