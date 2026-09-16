@@ -183,10 +183,8 @@ movement systems.
 
 ### Ramming
 
-A combat strategy where a bot deliberately collides with opponents to deal damage. Each collision deals damage based on
-relative velocity ($\text{damage} = 0.6 \times \text{relativeVelocity}$) and awards double the damage as points. Ramming
-is most effective against stationary, disabled, or low-energy bots. When a bot kills an enemy by ramming, it receives a
-30% bonus of all ram damage dealt to that enemy.
+A combat strategy where a bot deliberately collides with opponents to deal damage. Each collision deals a fixed 0.6
+damage to both bots, regardless of speed, and the rammer scores 2 points for each point of ram damage it causes. Ramming is most effective against stationary, disabled, or low-energy bots. When a bot kills an enemy by ramming, it receives a 30% bonus of all ram damage dealt to that enemy.
 
 See: [Scoring Systems & Battle Types](../energy-and-scoring/scoring-systems-battle-types.md#2-ram-damage-points)
 

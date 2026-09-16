@@ -46,27 +46,38 @@ Every page opens with an Origins callout (format: `page-format.md`). Decide who 
    the alias. Respect contributors who prefer an alias.
 3. If nobody specific is known, write "was developed and documented by the RoboWiki community."
 4. If several people contributed, name the pioneer first, then those who refined it.
+5. Before naming a bot's author, check the Author(s) field on the bot's RoboWiki page. Earlier pages credited Diamond
+   and GresSuffurd to the wrong people.
+6. For who-invented-what, also check the old RoboWiki (`https://old.robowiki.net/cgi-bin/robowiki?PageName`, which
+   needs a browser user agent), especially its `History/Concepts` page.
 
 Known originators:
 
 - **Mathew A. Nelson (Mat Nelson)**: original creator of Robocode. Linear and Circular Targeting (original IBM samples).
 - **Flemming Nørnberg Larsen (fnl)**: long-time maintainer of classic Robocode. Creator of Robocode Tank Royale.
   Proposed Retroactive Hit Analysis Targeting (2026, experimental, not battle-tested).
-- **David Alves**: invented the wave concept. Co-pioneered GuessFactor Targeting. Pioneered Pattern Matching (Phoenix)
-  and Random Orbital Movement.
-- **Paul Evans**: co-pioneered GuessFactor Targeting (discovered "bins"). Popularized segmentation.
+- **Paul Evans**: introduced GuessFactor statistical aiming in 2002 (old RoboWiki: "An invention signed Paul
+  Evans"). Author of SandboxDT. Invented virtual bullets independently of Rod Hyde.
+- **Iiley**: introduced the Wave concept with Cigaret in December 2002 (old RoboWiki History/Concepts).
+- **David Alves**: author of Phoenix (GuessFactor Targeting with virtual guns, Wave Surfing) and the Duelist bots.
+  An early GuessFactor gun author, who described his gun as similar to SandboxDT. Do not credit him with inventing
+  waves or GuessFactors, or with Pattern Matching.
 - **ABC**: invented Wave Surfing. Pioneered Dynamic Clustering. Co-pioneered Minimum Risk Movement with Aelryen.
-- **Patrick Cupka (Voidious)**: refined Wave Surfing and movement flattening. Former RoboWiki manager.
-- **Kev (kc)**: current 1-vs-1 champion and author of GresSuffurd. Pushed statistical targeting and movement further.
-- **Albert Perez**: creator of RoboRumble. Pioneered Precise Prediction.
-- **Julian Kent (Skilgannon)**: perfected Dynamic Clustering and built the Bucket PR k-d tree. LiteRumble maintainer
-  and current RoboWiki host.
-- **Kyle Huntington (Kawigi)**: popularized GuessFactor Targeting through tutorials and FloodMini.
+- **Patrick Cupka (Voidious)**: refined Wave Surfing and movement flattening. Former RoboWiki manager. Author of
+  Dookious and Diamond, and of the Wave Surfing Tutorial (BasicSurfer).
+- **Kev (kc)**: author of BeepBoop, the current RoboRumble king. Pushed statistical targeting and movement further.
+  GresSuffurd is by GrubbmGait, not Kev.
+- **Albert Perez**: chief developer of RoboRumble@Home. Created the Face2Face competition. Wrote FuturePosition, an
+  early movement-physics simulator used for precise prediction. Author of Aspid and MicroAspid.
+- **Julian Kent (Skilgannon)**: author of DrussGT and the Bucket-PR k-d tree (Java and C++). Created LiteRumble.
+- **Kyle Huntington (Kawigi)**: wrote the GuessFactor Targeting Tutorial and FloodMini. Drew attention to curve
+  flattening.
 - **Peter Strömberg (PEZ)**: founded RoboWiki (2003). Popularized techniques through CassiusClay.
 - **Crippa**: co-founded RoboWiki (2003).
-- **Corbos**: first to mention k-d trees on RoboWiki.
+- **Corbos**: his comment prompted Simonton and Chase-san to explore k-d trees.
 - **Chase-san**: early explorer of k-d trees in Robocode.
-- **Nathaniel Simonton (Simonton)**: built the first k-d tree in a bot (Diamond). Pushed Dynamic Clustering further.
+- **Nathaniel Simonton (Simonton)**: wrote the first bucket PR k-d tree in the Robocode community. Researched Dynamic
+  Clustering and pattern matching (WeekendObsession). Did not write Diamond, which is by Voidious.
 - **Rednaxela**: optimized Java k-d trees with advanced pruning. Creator of RougeDC and PolishedRuby.
 - **Aelryen**: co-pioneered Minimum Risk Movement with ABC.
 - **MultiplyByZer0**: documented complex wave mechanics with code samples.

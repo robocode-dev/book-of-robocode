@@ -16,11 +16,11 @@ source: [
 # Introducing Waves
 
 > [!TIP] Origins
-> **David Alves** invented the Wave concept. He realized that since bullets travel at a constant speed, you can
-> create an abstract "circle" expanding from the shooter. When that circle hits the target, you know exactly what the
-> GuessFactor was. This is the foundation for almost all modern bot data collection, enabling both
-> **GuessFactor Targeting** (co-pioneered by **Paul Evans** and **David Alves**) and **Wave Surfing** (invented by
-> **ABC**).
+> **Iiley** introduced the Wave concept with his bot Cigaret in December 2002. Since bullets travel at a constant
+> speed, a bot can track an abstract "circle" expanding from the shooter, and when that circle reaches the target, it
+> knows exactly what the GuessFactor was. Several bots used the idea under other names before, and PEZ noted that the
+> descriptive name "Wave" was a real contribution in itself. Waves now underpin both **GuessFactor Targeting**
+> (introduced by **Paul Evans**) and **Wave Surfing** (invented by **ABC**).
 
 > [!NOTE] Implementation Guide
 > This page explains the **concepts** behind waves and GuessFactors. For a **step-by-step tutorial** with complete

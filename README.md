@@ -213,10 +213,9 @@ infrastructure maintainers (RoboRumble / LiteRumble), and documentation contribu
 
 - **Mathew A. Nelson** — Original creator of Robocode (2001–2005)
 - **Flemming Nørnberg Larsen** — Maintainer (2005–present); creator of Robocode Tank Royale; author of this book
-- **Pavel Savara** — Major Robocode contributor (modularization, replay, refactoring)
-- **Albert Perez** — Creator of RoboRumble ([RoboRumble](http://robowiki.net/robowiki/RoboRumble))
-- **Julian Kent (Skilgannon)** — Creator/maintainer of LiteRumble; host of
-  RoboWiki.net ([LiteRumble](http://robowiki.net/robowiki/LiteRumble))
+- **Pavel Savara** — Major Robocode contributor (robot interfaces, .NET robots, battle recording, build system)
+- **Albert Perez** — Chief developer of RoboRumble@Home ([RoboRumble](https://robowiki.net/wiki/RoboRumble))
+- **Julian Kent (Skilgannon)** — Creator/maintainer of LiteRumble ([LiteRumble](https://robowiki.net/wiki/LiteRumble))
 - **RoboWiki contributors** — Foundational research & analysis
 - All bot authors, tournament organizers, and knowledge sharers
 

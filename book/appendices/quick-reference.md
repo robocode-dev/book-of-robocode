@@ -342,7 +342,7 @@ Or equivalently: $\text{bulletDamageBonus} = 0.20 \times \sum \text{bullet damag
 
 **Ram damage:**
 
-$\text{damage} = 0.6 \text{ per turn of contact}$
+$\text{damage} = 0.6 \text{ per collision, taken by both bots}$
 
 $\text{score} \mathrel{+}= 2 \times \text{ram damage}$
 

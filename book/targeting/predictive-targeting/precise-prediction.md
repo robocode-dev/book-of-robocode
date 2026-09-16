@@ -12,8 +12,9 @@ source:
 # Precise Prediction
 
 > [!TIP] Origins
-> **Precise Prediction** was pioneered by **Albert Perez** and developed further through the RoboWiki community's
-> movement simulators.
+> **Albert Perez**'s FuturePosition class was one of the first **Precise Prediction** implementations. The RoboWiki
+> community developed the idea further through movement simulators such as Rozu's Apollon code, which the Wave Surfing
+> Tutorial uses.
 
 At full speed, a bot cannot turn as sharply as a bot that is stopped. It also brakes twice as quickly as it accelerates.
 Any predictor that moves a point in a straight line and fixes it afterward will eventually choose a position the bot

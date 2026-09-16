@@ -14,8 +14,9 @@ source:
 # Pattern Matching
 
 > [!TIP] Origins
-> **Pattern Matching** was pioneered in classic Robocode by early log-based bots, including David Mold's MogBot, and
-> was explored further by **David Alves** and the RoboWiki community.
+> **Pattern Matching** was pioneered in classic Robocode by early log-based bots. Graygoo's Wolverine paired it with
+> bullet dodging in 2001, and **David Mold**'s MogBot published the first widely understood algorithm in 2002. The
+> RoboWiki community refined it further.
 
 An enemy that repeats a turn-and-speed sequence can defeat a linear gun without becoming unpredictable. Pattern
 matching notices the sequence instead of assuming constant velocity. It looks for the enemy's recent movement in its

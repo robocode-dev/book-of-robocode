@@ -14,9 +14,9 @@ source: [
 # Understanding the Challenge
 
 > [!TIP] Origins
-> **GuessFactor Targeting** was co-pioneered by **Paul Evans** (who discovered "bins") and **David Alves** (who 
-> invented the Wave concept). **Wave Surfing** was invented by **ABC** in the bot **Shadow**. These
-> techniques revolutionized competitive Robocode.
+> **GuessFactor Targeting** was introduced by **Paul Evans** in 2002 with his bots SandboxLump and SandboxDT. The
+> **Wave** concept was introduced by **Iiley** in his bot Cigaret later that year. **Wave Surfing** was invented by
+> **ABC** in the bot **Shadow**. These techniques revolutionized competitive Robocode.
 
 The simple targeting methods, head-on, linear, and circular, work great against predictable bots.
 But as soon as enemies start changing their direction, speeding up unpredictably, or deliberately dodging, hit rates

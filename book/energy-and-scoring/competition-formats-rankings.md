@@ -18,8 +18,8 @@ source: [
 # Competition Formats & Rankings
 
 > [!TIP] Origins
-> **RoboRumble** was created by **Albert Perez** as the original continuous ranking system. **LiteRumble** was created
-> by **Julian Kent ("Skilgannon")** as the modern successor, who also hosts [RoboWiki.net](https://robowiki.net/).
+> **RoboRumble@Home**, the original continuous ranking system, was developed with **Albert Perez** as its chief
+> developer. **LiteRumble** was created by **Julian Kent ("Skilgannon")** as the modern successor.
 
 The community behind classic Robocode has developed standardized competition formats to ensure fair comparisons between
 bots. These formats define specific battlefield sizes, round counts, and battle configurations used in official

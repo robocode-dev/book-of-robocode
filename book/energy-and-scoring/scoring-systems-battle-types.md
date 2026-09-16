@@ -82,15 +82,15 @@ When bots collide, both take damage. The bot earns **2 points for each point of 
 
 $\text{ramDamageScore} = 2 \times \text{ramDamage}$
 
-The ram damage itself is:
+The ram damage itself is a fixed amount that both bots take on every collision, regardless of speed:
 
-$\text{ramDamage} = 0.6 \times \text{relativeVelocity}$
+$\text{ramDamage} = 0.6$
 
 **Ram damage bonus:** When a bot kills an enemy by ramming, it scores an additional **30% of all the ram damage** it did
 to that enemy.
 
-**Example calculation:** If a bot dealt 30 points of ram damage to an enemy across multiple collisions before delivering
-a fatal ram:
+**Example calculation:** If a bot dealt 30 points of ram damage to an enemy across 50 collisions before delivering a
+fatal ram:
 
 - **Regular ram scoring:** $2 \times 30 = 60$ points (earned throughout the fight)
 - **Ram kill bonus:** $0.30 \times 30 = 9$ points (earned when the enemy dies)

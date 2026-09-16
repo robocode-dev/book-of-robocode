@@ -66,17 +66,17 @@ opening it to the public to serve as the community's central knowledge hub.
 ### David Alves
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:David_Alves)  
-**Inventor of the Wave concept.** David realized that because bullets travel at constant speeds, shooters can track
-exact "GuessFactors" using an expanding circle. Along with Paul Evans, he co-pioneered **GuessFactor Targeting**. He
-also pioneered **Pattern Matching** with his bot **[Phoenix](https://robowiki.net/wiki/Phoenix)** and **Random Orbital
-Movement**.
+An early author of **GuessFactor Targeting** guns, with a gun he described as similar to Paul Evans's SandboxDT. His
+Duelist series was the first to have strong bots in practically every size category, and Duelist once took the top of
+the rankings from SandboxDT. His bot **[Phoenix](https://robowiki.net/wiki/Phoenix)** combines GuessFactor
+Targeting and virtual guns with Wave Surfing in duels and Minimum Risk Movement in melee.
 
 ### Paul Evans
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:Paul_Evans)  
-Creator of **[SandboxDT](https://robowiki.net/wiki/SandboxDT)**. A co-pioneer of **GuessFactor Targeting**, he
-discovered the use of "bins" (statistical buckets) to track movement. He also popularized **Segmentation**, proving that
-bot data should be categorized by variables like distance or wall proximity.
+Creator of **[SandboxDT](https://robowiki.net/wiki/SandboxDT)**. In 2002 he introduced **GuessFactor Targeting**, the
+first targeting designed to work against random movement, and he invented virtual bullets independently of Rod Hyde.
+SandboxDT held the top of the rankings for a long time and set the bar the rest of the community chased.
 
 ### ABC
 
@@ -88,16 +88,13 @@ combat. His bot **[Shadow](https://robowiki.net/wiki/Shadow)** set the standard 
 ### Patrick Cupka (Voidious)
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:Voidious)  
-Author of **[Dookious](https://robowiki.net/wiki/Dookious)**. Patrick refined **Wave Surfing** and movement flattening
-to a science. He managed the RoboWiki for many years starting in 2007 and wrote many of the community's definitive
-strategy guides.
+Author of **[Dookious](https://robowiki.net/wiki/Dookious)** and **[Diamond](https://robowiki.net/wiki/Diamond)**, which combines Wave Surfing, Minimum Risk Movement, and Dynamic Clustering. Patrick refined **Wave Surfing** and movement flattening to a science. He managed the RoboWiki for many years starting in 2007 and wrote many of the community's definitive strategy guides.
 
 ### Kev (kc)
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:Kev)  
-Author of **[GresSuffurd](https://robowiki.net/wiki/GresSuffurd)**. Kev represents the pinnacle of 1-vs-1 performance,
-holding the current RoboRumble crown by a massive margin. His bots pushed statistical targeting and movement to their
-absolute limits.
+Author of **[BeepBoop](https://robowiki.net/wiki/BeepBoop)**, the current RoboRumble king, along with WaveSerpent and
+other duelists. Kev represents the pinnacle of 1-vs-1 performance, and his bots pushed statistical targeting and movement to their absolute limits.
 
 ---
 
@@ -108,8 +105,8 @@ absolute limits.
 The early pioneers of **k-D Trees** in Robocode. **[Corbos](https://robowiki.net/wiki/User:Corbos)** was the first to
 mention the data structure on the RoboWiki, sparking interest from
 **[Chase-san](https://robowiki.net/wiki/User:Chase-san)** and
-**[Nathaniel Simonton](https://robowiki.net/wiki/User:Simonton)**. Simonton built the first k-D tree in a bot and
-pushed **Dynamic Clustering** to its limits with **[Diamond](https://robowiki.net/wiki/Diamond)**.
+**[Nathaniel Simonton](https://robowiki.net/wiki/User:Simonton)**. Simonton wrote the first bucket PR k-D tree in the
+Robocode community and researched how far **Dynamic Clustering** targeting could be pushed.
 
 ### Rednaxela and Julian Kent (Skilgannon)
 
@@ -124,9 +121,10 @@ in several commercial products.
 ### Albert Perez
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:Albert)  
-Creator of the original **[RoboRumble](https://robowiki.net/wiki/RoboRumble)** client and the bot
-**[MicroAspid](https://robowiki.net/wiki/MicroAspid)**. He turned Robocode into a true competitive sport and pioneered
-**Precise Prediction**, simulating Robocode's physics perfectly to allow for ultra-accurate targeting.
+Chief developer of **[RoboRumble@Home](https://robowiki.net/wiki/RoboRumble)**, which PEZ called "the best present
+given to the Robocode community since Robocode itself." He also created the Face2Face competition, wrote the bots Aspid
+and MicroAspid, and wrote FuturePosition, one of the first **Precise Prediction** classes for simulating Robocode's
+movement physics.
 
 ### Kyle Huntington (Kawigi)
 
