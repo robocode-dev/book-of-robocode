@@ -223,6 +223,20 @@ Targeting tuned for opponents that react to bullet waves, often by emphasizing r
 
 See: [Anti-Surfer Targeting](../targeting/advanced-targeting/anti-surfer-targeting.md)
 
+### Neural targeting
+
+Targeting that trains a neural network on enemy movement data, usually alongside waves and GuessFactors rather than
+replacing them.
+
+See: [Neural & Experimental Targeting](../targeting/advanced-targeting/neural-experimental-targeting.md)
+
+### Retroactive hit analysis
+
+An experimental targeting idea that tests candidate bullet speeds against a bot's own recorded past positions and
+the enemy's current position, instead of predicting forward with waves.
+
+See: [Neural & Experimental Targeting](../targeting/advanced-targeting/neural-experimental-targeting.md)
+
 ### Virtual guns
 
 A system that runs multiple targeting algorithms simultaneously, tracking which would have hit most often, and uses the

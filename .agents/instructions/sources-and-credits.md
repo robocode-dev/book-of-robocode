@@ -51,6 +51,7 @@ Known originators:
 
 - **Mathew A. Nelson (Mat Nelson)**: original creator of Robocode. Linear and Circular Targeting (original IBM samples).
 - **Flemming Nørnberg Larsen (fnl)**: long-time maintainer of classic Robocode. Creator of Robocode Tank Royale.
+  Proposed Retroactive Hit Analysis Targeting (2026, experimental, not battle-tested).
 - **David Alves**: invented the wave concept. Co-pioneered GuessFactor Targeting. Pioneered Pattern Matching (Phoenix)
   and Random Orbital Movement.
 - **Paul Evans**: co-pioneered GuessFactor Targeting (discovered "bins"). Popularized segmentation.

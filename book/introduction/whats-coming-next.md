@@ -27,7 +27,6 @@ in the book.
 
 ### Advanced Targeting (Advanced)
 - Angular Targeting (Factored Variants)
-- Neural & Experimental Targeting
 
 ## Movement & Evasion
 
@@ -44,11 +43,6 @@ in the book.
 - Pattern & Enemy Dodging Movement
 - Ramming & Mirror Movement
 - Movement Analysis
-
-## Energy & Scoring
-
-### Energy Management (Advanced)
-- Energy Management in 1v1 and Melee
 
 ## Team Strategies
 

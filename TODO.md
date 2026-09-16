@@ -1,23 +1,13 @@
 # TODO
 
-## Missing Pages (Currently Commented Out)
+## Missing Pages
 
-Create these advanced pages and uncomment their links (search for `<!-- TODO: Add link when page is created`):
-
-**Targeting Systems:**
-
-**Movement & Evasion:**
-- Dodging Bullets — Reactive bullet avoidance
-- Wave Surfing Implementations — Compare GoTo vs. True Surfing
-- Flattener — Counter enemies who learn surfing patterns
-
-**Melee Combat:**
-- Melee Movement Tactics — Apply techniques to multi-opponent battles
+See `book/introduction/whats-coming-next.md` for the current list of unwritten articles, kept in sync with
+`BOOK_STRUCTURE.md`.
 
 ## Content & Links
 
 - Add term glossary links throughout content (e.g., `GuessFactor` linking to glossary)
-- Add specs/retroactive-hit-analysis.md (Flemming's idea) to the book alongside waves content
 
 ## Contribution & Attribution
 

@@ -58,7 +58,7 @@
 │  ├─ Advanced Targeting [A]
 │  │  ├─ Angular Targeting (Factored Variants) [A]
 │  │  ├─ Anti-Surfer Targeting [A] [✅]
-│  │  └─ Neural & Experimental Targeting [A]
+│  │  └─ Neural & Experimental Targeting [A] [✅]
 │  └─ Targeting Tactics [I]
 │     ├─ Fire Power & Timing Decisions [I] [✅]
 │     └─ Saving Gun Data [I] [✅]
