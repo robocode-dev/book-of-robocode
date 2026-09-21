@@ -66,7 +66,7 @@ destination. Three enemy bots are scattered near the corners of the arena.
   - from: (3500, 2900), to: (2100, 1600), color: "#EF4444", arrow: false, dashed: true
   - from: (3500, 2900), to: (3400, 4600), color: "#F59E0B", arrow: false, dashed: true
   - from: (3500, 2900), to: (5200, 2600), color: "#F59E0B", arrow: false, dashed: true
-  - from: (3500, 2900), to: (2600, 3300), color: "#10B981", arrow: true, dashed: false
+  - from: (3500, 2900), to: (2728, 3243), color: "#10B981", arrow: true, dashed: false
 **Circles:**
   - center: (4000, 2500), radius: 90, color: "#EF4444", fill: "#EF4444"
   - center: (2100, 1600), radius: 90, color: "#EF4444", fill: "#EF4444"
@@ -76,7 +76,7 @@ destination. Three enemy bots are scattered near the corners of the arena.
 **Texts:**
   - text: "near center", position: (4050, 2280), color: "#EF4444"
   - text: "near an enemy", position: (1550, 1400), color: "#EF4444"
-  - text: "long travel", position: (3450, 4850), color: "#F59E0B"
+  - text: "long travel", position: (3560, 4650), color: "#F59E0B"
   - text: "poor angle to enemies", position: (5250, 2380), color: "#F59E0B"
   - text: "lowest risk: chosen", position: (1900, 3550), color: "#10B981"
 -->
