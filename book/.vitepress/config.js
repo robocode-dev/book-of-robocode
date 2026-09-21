@@ -172,6 +172,7 @@ export default withMermaid(defineConfig({
                 link: '/targeting/predictive-targeting/play-it-forward-sequential-prediction' }
             ]},
             { text: 'Advanced Targeting', items: [
+              { text: 'Angular Targeting', link: '/targeting/advanced-targeting/angular-targeting' },
               { text: 'Anti-Surfer Targeting', link: '/targeting/advanced-targeting/anti-surfer-targeting' },
               { text: 'Neural & Experimental Targeting', link: '/targeting/advanced-targeting/neural-experimental-targeting' }
             ]},

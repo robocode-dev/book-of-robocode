@@ -56,7 +56,7 @@
 │  │  ├─ Pattern Matching [A] [✅]
 │  │  └─ Play It Forward & Sequential Prediction [A] [✅]
 │  ├─ Advanced Targeting [A]
-│  │  ├─ Angular Targeting (Factored Variants) [A]
+│  │  ├─ Angular Targeting (Factored Variants) [A] [✅]
 │  │  ├─ Anti-Surfer Targeting [A] [✅]
 │  │  └─ Neural & Experimental Targeting [A] [✅]
 │  └─ Targeting Tactics [I]

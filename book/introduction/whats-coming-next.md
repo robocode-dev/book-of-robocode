@@ -17,11 +17,6 @@ The Book of Robocode is an evolving project. This page lists the articles and tu
 organized by section and difficulty level. As each page is completed, it will be removed from this list and published
 in the book.
 
-## Targeting Systems
-
-### Advanced Targeting (Advanced)
-- Angular Targeting (Factored Variants)
-
 ## Team Strategies
 
 ### Team Basics (Intermediate)
