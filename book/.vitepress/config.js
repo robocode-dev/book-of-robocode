@@ -207,6 +207,9 @@ export default withMermaid(defineConfig({
               { text: 'Wave Surfing Introduction', link: '/movement/advanced-evasion/wave-surfing-introduction' },
               { text: 'Wave Surfing Implementations', link: '/movement/advanced-evasion/wave-surfing-implementations' },
               { text: 'Flattener', link: '/movement/advanced-evasion/flattener' }
+            ]},
+            { text: 'Offensive Movement', items: [
+              { text: 'Pattern & Enemy Dodging Movement', link: '/movement/offensive-movement/pattern-enemy-dodging-movement' }
             ]}
           ]
         }

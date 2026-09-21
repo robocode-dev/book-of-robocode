@@ -25,7 +25,6 @@ in the book.
 ## Movement & Evasion
 
 ### Offensive Movement (Advanced)
-- Pattern & Enemy Dodging Movement
 - Ramming & Mirror Movement
 - Movement Analysis
 
