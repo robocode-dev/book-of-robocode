@@ -25,7 +25,6 @@ in the book.
 ## Movement & Evasion
 
 ### Offensive Movement (Advanced)
-- Ramming & Mirror Movement
 - Movement Analysis
 
 ## Team Strategies

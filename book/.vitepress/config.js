@@ -209,7 +209,8 @@ export default withMermaid(defineConfig({
               { text: 'Flattener', link: '/movement/advanced-evasion/flattener' }
             ]},
             { text: 'Offensive Movement', items: [
-              { text: 'Pattern & Enemy Dodging Movement', link: '/movement/offensive-movement/pattern-enemy-dodging-movement' }
+              { text: 'Pattern & Enemy Dodging Movement', link: '/movement/offensive-movement/pattern-enemy-dodging-movement' },
+              { text: 'Ramming & Mirror Movement', link: '/movement/offensive-movement/ramming-mirror-movement' }
             ]}
           ]
         }

@@ -84,7 +84,7 @@
 │  │  └─ Flattener [A] [✅]
 │  └─ Offensive Movement [A]
 │     ├─ Pattern & Enemy Dodging Movement [A] [✅]
-│     ├─ Ramming & Mirror Movement [A]
+│     ├─ Ramming & Mirror Movement [A] [✅]
 │     └─ Movement Analysis [A]
 │
 ├─ Energy & Scoring [I]
