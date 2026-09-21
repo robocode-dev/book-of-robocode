@@ -28,7 +28,7 @@
     <line x1="3500" y1="2900" x2="3400" y2="4600" stroke="#F59E0B"/>
     <line x1="3500" y1="2900" x2="5200" y2="2600" stroke="#F59E0B"/>
   </g>
-  <line x1="3500" y1="2900" x2="2728" y2="3243" stroke="#10B981" stroke-width="34"
+  <line x1="3500" y1="2900" x2="2714" y2="3249" stroke="#10B981" stroke-width="34"
         marker-end="url(#arrow-green)"/>
 
   <!-- Candidate points -->
@@ -52,10 +52,10 @@
               --body-rotation:300deg; --turret-rotation:300deg; --radar-rotation:300deg;"/>
 
   <!-- Text labels -->
-  <text class="small bold" x="4050" y="2280" fill="#EF4444">near center</text>
-  <text class="small bold" x="1550" y="1400" fill="#EF4444" text-anchor="middle">near an enemy</text>
+  <text class="small bold" x="4150" y="2540" fill="#EF4444">near center</text>
+  <text class="small bold" x="2000" y="1820" fill="#EF4444" text-anchor="end">near an enemy</text>
   <text class="small bold" x="3560" y="4650" fill="#F59E0B">long travel</text>
-  <text class="small bold" x="5250" y="2380" fill="#F59E0B">poor angle to enemies</text>
+  <text class="small bold" x="5350" y="2640" fill="#F59E0B">poor angle to enemies</text>
   <text class="text bold" x="1900" y="3550" fill="#10B981" text-anchor="middle">lowest risk: chosen</text>
 
   <!-- Tank defs block (copied from tank.svg) -->
