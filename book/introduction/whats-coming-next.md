@@ -24,9 +24,6 @@ in the book.
 
 ## Movement & Evasion
 
-### Strategic Movement (Advanced)
-- Corner Movement
-
 ### Offensive Movement (Advanced)
 - Pattern & Enemy Dodging Movement
 - Ramming & Mirror Movement
