@@ -197,7 +197,8 @@ export default withMermaid(defineConfig({
               { text: 'Oscillator Movement', link: '/movement/simple-evasion/oscillator-movement' }
             ]},
             { text: 'Strategic Movement', items: [
-              { text: 'Anti-Gravity Movement', link: '/movement/strategic-movement/anti-gravity-movement' }
+              { text: 'Anti-Gravity Movement', link: '/movement/strategic-movement/anti-gravity-movement' },
+              { text: 'Minimum Risk Movement', link: '/movement/strategic-movement/minimum-risk-movement' }
             ]},
             { text: 'Advanced Evasion', items: [
               { text: 'Gun Heat Waves & Bullet Shadows', link: '/movement/advanced-evasion/gun-heat-waves-bullet-shadows' },

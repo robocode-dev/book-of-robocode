@@ -25,7 +25,6 @@ in the book.
 ## Movement & Evasion
 
 ### Strategic Movement (Advanced)
-- Minimum Risk Movement
 - Corner Movement
 
 ### Offensive Movement (Advanced)
