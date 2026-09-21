@@ -85,7 +85,7 @@
 │  └─ Offensive Movement [A]
 │     ├─ Pattern & Enemy Dodging Movement [A] [✅]
 │     ├─ Ramming & Mirror Movement [A] [✅]
-│     └─ Movement Analysis [A]
+│     └─ Movement Analysis [A] [✅]
 │
 ├─ Energy & Scoring [I]
 │  ├─ Energy as a Resource [I] [✅]

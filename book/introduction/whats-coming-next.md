@@ -22,11 +22,6 @@ in the book.
 ### Advanced Targeting (Advanced)
 - Angular Targeting (Factored Variants)
 
-## Movement & Evasion
-
-### Offensive Movement (Advanced)
-- Movement Analysis
-
 ## Team Strategies
 
 ### Team Basics (Intermediate)

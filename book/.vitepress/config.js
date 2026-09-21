@@ -210,7 +210,8 @@ export default withMermaid(defineConfig({
             ]},
             { text: 'Offensive Movement', items: [
               { text: 'Pattern & Enemy Dodging Movement', link: '/movement/offensive-movement/pattern-enemy-dodging-movement' },
-              { text: 'Ramming & Mirror Movement', link: '/movement/offensive-movement/ramming-mirror-movement' }
+              { text: 'Ramming & Mirror Movement', link: '/movement/offensive-movement/ramming-mirror-movement' },
+              { text: 'Movement Analysis', link: '/movement/offensive-movement/movement-analysis' }
             ]}
           ]
         }
