@@ -66,7 +66,7 @@ destination. Three enemy bots are scattered near the corners of the arena.
   - from: (3500, 2900), to: (2100, 1600), color: "#EF4444", arrow: false, dashed: true
   - from: (3500, 2900), to: (3400, 4600), color: "#F59E0B", arrow: false, dashed: true
   - from: (3500, 2900), to: (5200, 2600), color: "#F59E0B", arrow: false, dashed: true
-  - from: (3500, 2900), to: (2708, 3252), color: "#10B981", arrow: true, dashed: false
+  - from: (3500, 2900), to: (2883, 3174), color: "#10B981", arrow: true, dashed: false
 **Circles:**
   - center: (4000, 2500), radius: 90, color: "#EF4444", fill: "#EF4444"
   - center: (2100, 1600), radius: 90, color: "#EF4444", fill: "#EF4444"
