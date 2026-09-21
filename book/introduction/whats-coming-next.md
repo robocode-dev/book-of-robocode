@@ -19,9 +19,6 @@ in the book.
 
 ## Targeting Systems
 
-### Statistical Targeting (Advanced)
-- Advanced Statistical Methods
-
 ### Predictive Targeting (Advanced)
 - Play It Forward & Sequential Prediction
 

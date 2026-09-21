@@ -50,7 +50,7 @@
 │  │  ├─ GuessFactor Targeting (with Tutorial) [A] [✅]
 │  │  ├─ Segmentation & Visit Count Stats [A] [✅]
 │  │  ├─ Dynamic Clustering (with Tutorial) [A] [✅]
-│  │  └─ Advanced Statistical Methods [A]
+│  │  └─ Advanced Statistical Methods [A] [✅]
 │  ├─ Predictive Targeting [A]
 │  │  ├─ Precise Prediction [A] [✅]
 │  │  ├─ Pattern Matching [A] [✅]
