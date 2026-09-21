@@ -54,7 +54,7 @@
 │  ├─ Predictive Targeting [A]
 │  │  ├─ Precise Prediction [A] [✅]
 │  │  ├─ Pattern Matching [A] [✅]
-│  │  └─ Play It Forward & Sequential Prediction [A]
+│  │  └─ Play It Forward & Sequential Prediction [A] [✅]
 │  ├─ Advanced Targeting [A]
 │  │  ├─ Angular Targeting (Factored Variants) [A]
 │  │  ├─ Anti-Surfer Targeting [A] [✅]

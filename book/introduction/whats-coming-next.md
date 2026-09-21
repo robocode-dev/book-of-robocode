@@ -19,9 +19,6 @@ in the book.
 
 ## Targeting Systems
 
-### Predictive Targeting (Advanced)
-- Play It Forward & Sequential Prediction
-
 ### Advanced Targeting (Advanced)
 - Angular Targeting (Factored Variants)
 

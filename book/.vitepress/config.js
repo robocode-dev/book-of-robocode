@@ -167,7 +167,9 @@ export default withMermaid(defineConfig({
             ]},
             { text: 'Predictive Targeting', items: [
               { text: 'Precise Prediction', link: '/targeting/predictive-targeting/precise-prediction' },
-              { text: 'Pattern Matching', link: '/targeting/predictive-targeting/pattern-matching' }
+              { text: 'Pattern Matching', link: '/targeting/predictive-targeting/pattern-matching' },
+              { text: 'Play It Forward & Sequential Prediction',
+                link: '/targeting/predictive-targeting/play-it-forward-sequential-prediction' }
             ]},
             { text: 'Advanced Targeting', items: [
               { text: 'Anti-Surfer Targeting', link: '/targeting/advanced-targeting/anti-surfer-targeting' },
