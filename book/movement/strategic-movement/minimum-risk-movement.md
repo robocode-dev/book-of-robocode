@@ -78,7 +78,7 @@ destination. Three enemy bots are scattered near the corners of the arena.
   - text: "near an enemy", position: (1930, 1650), color: "#EF4444", anchor: end
   - text: "long travel", position: (3560, 4650), color: "#F59E0B"
   - text: "poor angle to enemies", position: (5350, 2640), color: "#F59E0B"
-  - text: "lowest risk: chosen", position: (1900, 3550), color: "#10B981"
+  - text: "lowest risk: chosen", position: (2430, 3350), color: "#10B981", anchor: end
 -->
 
 <img src="/images/minimum-risk-candidate-points.svg"
