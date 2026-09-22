@@ -19,7 +19,6 @@ in the book.
 
 ## Advanced Topics
 
-- Testing & Analysis Tools
 - Optimization Techniques
 
 ## Robocode Tank Royale Differences

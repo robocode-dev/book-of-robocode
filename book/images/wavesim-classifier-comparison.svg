@@ -1,0 +1,199 @@
+<svg version="1.1" width="1000" height="750" viewBox="0 0 8000 6000"
+     xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">WaveSim replays one recorded encounter through every gun classifier, so each is judged
+  against the same real outcome</title>
+  <desc id="desc">One friendly bot and one enemy bot share the arena. A solid green line runs from the friendly
+  bot to the enemy's actual recorded position, labeled "actual recorded outcome". A dashed blue line and a
+  dashed orange line run from the same friendly bot to two nearby points above the enemy, labeled "classifier
+  A's guess" and "classifier B's guess", showing two different predicted aim points compared against the one
+  real outcome.</desc>
+
+  <style>
+    .text { font: 150px sans-serif; }
+    .small { font: 120px sans-serif; }
+    .bold { font-weight: bold; }
+  </style>
+
+  <marker id="arrow-green" markerWidth="20" markerHeight="20" refX="6" refY="3" orient="auto">
+    <polygon points="6 0, 12 3, 6 6" fill="#10B981"/>
+  </marker>
+
+  <!-- Battlefield background -->
+  <rect x="0" y="0" width="8000" height="6000" fill="grey"/>
+  <rect x="200" y="200" width="7600" height="5600" fill="#111"/>
+
+  <!-- Candidate guesses -->
+  <line x1="1830" y1="4530" x2="5100" y2="1350" stroke="#60A5FA" stroke-width="20" stroke-dasharray="50 40"/>
+  <line x1="1830" y1="4530" x2="5550" y2="1980" stroke="#F59E0B" stroke-width="20" stroke-dasharray="50 40"/>
+
+  <!-- Actual recorded outcome -->
+  <line x1="1830" y1="4530" x2="5580" y2="1855" stroke="#10B981" stroke-width="30" marker-end="url(#arrow-green)"/>
+
+  <!-- Guess markers -->
+  <circle cx="5100" cy="1350" r="90" fill="none" stroke="#60A5FA" stroke-width="20"/>
+  <circle cx="5550" cy="1980" r="90" fill="none" stroke="#F59E0B" stroke-width="20"/>
+
+  <!-- Bots -->
+  <use href="#tank" transform="translate(1500, 4700) scale(0.75)"
+       style="--body-rotation:20deg; --turret-rotation:20deg; --radar-rotation:20deg;"/>
+  <use href="#tank" transform="translate(5800, 1600) scale(0.6)"
+       style="--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa;
+              --body-rotation:200deg; --turret-rotation:200deg; --radar-rotation:200deg;"/>
+
+  <!-- Text labels -->
+  <text class="small bold" x="3500" y="2600" fill="#10B981">actual recorded outcome</text>
+  <text class="small bold" x="2050" y="1900" fill="#60A5FA">classifier A's guess</text>
+  <text class="small bold" x="3400" y="3550" fill="#F59E0B">classifier B's guess</text>
+
+  <!-- Tank defs block (copied from tank.svg) -->
+  <defs>
+    <style>
+      .tank-body, .tank-turret, .tank-radar {
+      transform-origin: 400px 400px;
+      }
+      .tank-body {
+      transform: rotate(var(--body-rotation, 0deg));
+      }
+      .tank-turret {
+      transform: rotate(var(--turret-rotation, 0deg));
+      }
+      .tank-radar {
+      transform: rotate(var(--radar-rotation, 0deg));
+      }
+      svg {
+      --tank-body-color: #019;
+      --tank-turret-color: #06c;
+      --tank-radar-color: #aaf;
+      --left-belt-track-1: inline;
+      --left-belt-track-2: none;
+      --left-belt-track-3: none;
+      --right-belt-track-1: none;
+      --right-belt-track-2: inline;
+      --right-belt-track-3: none;
+      }
+      .tank-body-fill {
+      fill: var(--tank-body-color, #019);
+      }
+      .tank-turret-fill {
+      fill: var(--tank-turret-color, #06c);
+      }
+      .tank-radar-fill {
+      fill: var(--tank-radar-color, #aaf);
+      }
+      .left-belt, .right-belt {
+      display: none;
+      }
+      .left-belt.track1 {
+      display: var(--left-belt-track-1, none);
+      }
+      .left-belt.track2 {
+      display: var(--left-belt-track-2, none);
+      }
+      .left-belt.track3 {
+      display: var(--left-belt-track-3, none);
+      }
+      .right-belt.track1 {
+      display: var(--right-belt-track-1, none);
+      }
+      .right-belt.track2 {
+      display: var(--right-belt-track-2, none);
+      }
+      .right-belt.track3 {
+      display: var(--right-belt-track-3, none);
+      }
+    </style>
+
+    <linearGradient id="cannon-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#333"/>
+      <stop offset="50%" stop-color="#CCC"/>
+      <stop offset="100%" stop-color="#333"/>
+    </linearGradient>
+
+    <symbol id="link0">
+      <rect x="5" y="55" width="125" height="25" fill="#aaaaaa"/>
+      <rect x="10" y="70" width="116" height="35" fill="#666666" rx="10" ry="10"/>
+      <rect x="5" y="55" width="125" height="50" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+    </symbol>
+
+    <symbol id="link30">
+      <rect x="5" y="55" width="125" height="25" fill="#939393"/>
+      <rect x="10" y="70" width="116" height="30" fill="#585858" rx="10" ry="10"/>
+      <rect x="5" y="55" width="125" height="42" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+    </symbol>
+
+    <symbol id="link60">
+      <rect x="5" y="55" width="125" height="20" fill="#555555"/>
+      <rect x="5" y="55" width="125" height="20" fill="none" stroke="black" stroke-width="10" rx="10" ry="10"/>
+    </symbol>
+
+    <symbol id="main-track">
+      <rect x="20" y="75" width="95" height="450" fill="#333333" stroke="black" stroke-width="10"/>
+    </symbol>
+
+    <symbol id="track1">
+      <use href="#main-track"/>
+      <use href="#link30"/>
+      <use href="#link0" y="60"/>
+      <use href="#link0" y="140"/>
+      <use href="#link0" y="220"/>
+      <use href="#link0" y="300"/>
+      <use href="#link0" y="380"/>
+      <use href="#link30" y="448"/>
+    </symbol>
+
+    <symbol id="track2">
+      <use href="#main-track"/>
+      <use href="#link60"/>
+      <use href="#link0" y="33"/>
+      <use href="#link0" y="113"/>
+      <use href="#link0" y="193"/>
+      <use href="#link0" y="273"/>
+      <use href="#link0" y="353"/>
+      <use href="#link0" y="433"/>
+    </symbol>
+
+    <symbol id="track3">
+      <use href="#main-track"/>
+      <use href="#link0" y="7"/>
+      <use href="#link0" y="87"/>
+      <use href="#link0" y="167"/>
+      <use href="#link0" y="247"/>
+      <use href="#link0" y="327"/>
+      <use href="#link0" y="407"/>
+      <use href="#link60" y="470"/>
+    </symbol>
+
+    <symbol id="body">
+      <use href="#track1" x="150" y="100" class="left-belt track1"/>
+      <use href="#track2" x="150" y="100" class="left-belt track2"/>
+      <use href="#track3" x="150" y="100" class="left-belt track3"/>
+      <use href="#track1" x="515" y="100" class="right-belt track1"/>
+      <use href="#track2" x="515" y="100" class="right-belt track2"/>
+      <use href="#track3" x="515" y="100" class="right-belt track3"/>
+
+      <rect class="tank-body-fill" x="240" y="190" width="320" height="420" stroke="black" stroke-width="20"
+            rx="10" ry="10"/>
+      <rect x="250" y="520" width="300" height="80" opacity="0.5"/>
+    </symbol>
+
+    <symbol id="turret">
+      <rect class="tank-turret-fill" x="300" y="320" width="200" height="200" stroke="black" stroke-width="20"
+            rx="10" ry="10"/>
+      <rect x="310" y="460" width="180" height="50" fill="black" opacity="0.5"/>
+
+      <rect x="360" y="240" width="80" height="80" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+      <rect x="375" y="70" width="50" height="170" fill="url(#cannon-grad)" stroke="black" stroke-width="20"/>
+    </symbol>
+
+    <symbol id="radar">
+      <circle class="tank-radar-fill" cx="400" cy="400" r="30" stroke="black" stroke-width="20"/>
+      <path class="tank-radar-fill" d="M 290 420 q 110 100 220 0 z" stroke="black" stroke-width="20"/>
+    </symbol>
+
+    <symbol id="tank">
+      <use class="tank-body" href="#body"/>
+      <use class="tank-turret" href="#turret"/>
+      <use class="tank-radar" href="#radar"/>
+    </symbol>
+  </defs>
+</svg>

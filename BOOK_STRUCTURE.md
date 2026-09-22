@@ -109,7 +109,7 @@
 ├─ Advanced Topics [A]
 │  ├─ Multiple Choice & BestPSpace [A] [✅]
 │  ├─ Targeting Matrix [A] [✅]
-│  ├─ Testing & Analysis Tools [A]
+│  ├─ Testing & Analysis Tools [A] [✅]
 │  └─ Optimization Techniques [A]
 │
 ├─ Robocode Tank Royale Differences [A]
