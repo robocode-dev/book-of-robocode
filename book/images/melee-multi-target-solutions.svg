@@ -20,8 +20,8 @@
   <rect x="200" y="200" width="7600" height="5600" fill="#111"/>
 
   <!-- Candidate firing solutions -->
-  <line x1="1762" y1="4316" x2="5472" y2="1699" stroke="#6B7280" stroke-width="20" stroke-dasharray="50 40"/>
-  <line x1="1603" y1="4197" x2="2495" y2="1566" stroke="#6B7280" stroke-width="20" stroke-dasharray="50 40"/>
+  <line x1="1603" y1="4197" x2="2550" y2="1400" stroke="#6B7280" stroke-width="20" stroke-dasharray="50 40"/>
+  <line x1="1762" y1="4316" x2="5572" y2="1600" stroke="#6B7280" stroke-width="20" stroke-dasharray="50 40"/>
   <line x1="1814" y1="4438" x2="4399" y2="3927" stroke="#10B981" stroke-width="30" marker-end="url(#arrow-green)"/>
 
   <!-- Bots -->
@@ -38,8 +38,8 @@
               --body-rotation:120deg; --turret-rotation:120deg; --radar-rotation:120deg;"/>
 
   <!-- Text labels -->
-  <text class="small bold" x="2600" y="4300" fill="#10B981">highest-probability solution</text>
-  <text class="small" x="4600" y="2100" fill="#9CA3AF">weaker solutions, not fired</text>
+  <text class="small bold" x="2600" y="4470" fill="#10B981">highest-probability solution</text>
+  <text class="small" x="4200" y="2100" fill="#9CA3AF">weaker solutions, not fired</text>
 
   <!-- Tank defs block (copied from tank.svg) -->
   <defs>
