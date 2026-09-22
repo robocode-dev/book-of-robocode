@@ -241,6 +241,15 @@ export default withMermaid(defineConfig({
           ]
         }
       ],
+      // TODO: Review nav entry for Melee Combat
+      '/melee-combat/': [
+        {
+          text: 'Melee Combat',
+          items: [
+            { text: 'Melee Strategy', link: '/melee-combat/melee-strategy' }
+          ]
+        }
+      ],
       '/appendices/': [
         {
           text: 'Appendices',

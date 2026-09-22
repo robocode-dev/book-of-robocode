@@ -19,10 +19,7 @@ in the book.
 
 ## Melee Combat
 
-All melee combat pages are planned for future releases:
-
 ### Melee Strategy (Advanced)
-- Melee Strategy
 - Melee-Specific Targeting
 - Melee Movement Tactics
 - Staying Alive in Chaos
