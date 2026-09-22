@@ -49,6 +49,13 @@ The marker is a regeneration contract, so keep it in the page after drawing and 
 **Coordinates and angles:**
 - Coordinates are SVG viewport units with y pointing down.
 - Bot `position` is the tank's top-left translate. Its center is `position + 400 × scale` (default scale 0.75).
+- Any line, arrow, or circle that should meet a bot (an arrowhead, a highlight ring, a "skip" mark) must target
+  that center, not the raw `position`. Compute it, do not eyeball it against the tank artwork: rotation spins the
+  bot around its center, so the formula holds no matter what `body`/`turret`/`radar` angle it uses.
+- An arrow's `marker-end` triangle extends past the line's literal end coordinate in the direction of travel, and
+  bots are drawn after lines, so a line aimed exactly at a bot's center buries the arrowhead behind the tank
+  artwork. Stop the line 300-450 units short of the center (scale the distance with the bot's own `scale`) so the
+  full arrowhead renders in the open, then confirm it in the render, not from the coordinates alone.
 - Bot angles follow the tank symbol: 0° points up, clockwise.
 - Arc angles are SVG angles: 0° points right, clockwise.
 
@@ -71,7 +78,9 @@ style="max-width:100%;height:auto;"/><br>
   reference to another file (`tank.svg#tank`) does not render inside `<img>`, so the bots silently disappear.
 - Set bot colors and rotations with the CSS variables, for example `--body-rotation`. Enemy bots set
   `--tank-body-color:#c00; --tank-turret-color:#e22; --tank-radar-color:#faa`.
-- Draw waves and paths before bots so each bot stays visible where its line starts.
+- Draw waves and paths that should pass behind a bot before the bots block, so the bot stays visible where its
+  line starts. Draw a ring, slash, or other annotation that highlights one specific bot after that bot's `<use>`
+  element instead, or the bot paints over the annotation and hides it.
 - Compute geometry with a small script rather than guessing: arc endpoints, bearings, wave radii, and turn-limited
   paths (turn rate $10 - 0.75|v|$ degrees per turn). The diagram must not contradict the page's physics.
 - Keep labels short (150px sans-serif, 120px for secondary notes). Do not let a label overlap a line, arc, or bot.
@@ -111,4 +120,6 @@ Mermaid charts follow the same rule. Use a transparent background and chocolate 
    Edge works:
    `msedge --headless --user-data-dir=<tmp> --allow-file-access-from-files --screenshot=<out.png> file:///<page.html>`.
 3. Fix missing bots, overlapping labels, and clipped text, then render again.
-4. Update the marker (positions, angles, description) so it matches what was drawn.
+4. Confirm every line, arrow, and circle that targets a bot actually touches its silhouette in the render, and
+   that any on-bot annotation (a ring, a slash) is layered after that bot rather than hidden underneath it.
+5. Update the marker (positions, angles, description) so it matches what was drawn.
