@@ -19,7 +19,6 @@ in the book.
 
 ## Advanced Topics
 
-- Targeting Matrix
 - Testing & Analysis Tools
 - Optimization Techniques
 

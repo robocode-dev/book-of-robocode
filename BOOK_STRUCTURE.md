@@ -108,7 +108,7 @@
 │
 ├─ Advanced Topics [A]
 │  ├─ Multiple Choice & BestPSpace [A] [✅]
-│  ├─ Targeting Matrix [A]
+│  ├─ Targeting Matrix [A] [✅]
 │  ├─ Testing & Analysis Tools [A]
 │  └─ Optimization Techniques [A]
 │

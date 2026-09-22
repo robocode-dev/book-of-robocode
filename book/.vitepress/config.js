@@ -263,7 +263,8 @@ export default withMermaid(defineConfig({
         {
           text: 'Advanced Topics',
           items: [
-            { text: 'Multiple Choice & BestPSpace', link: '/advanced/multiple-choice-bestpspace' }
+            { text: 'Multiple Choice & BestPSpace', link: '/advanced/multiple-choice-bestpspace' },
+            { text: 'Targeting Matrix', link: '/advanced/targeting-matrix' }
           ]
         }
       ],
