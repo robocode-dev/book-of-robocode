@@ -20,7 +20,6 @@ in the book.
 ## Melee Combat
 
 ### Melee Strategy (Advanced)
-- Melee Movement Tactics
 - Staying Alive in Chaos
 
 ## Advanced Topics
