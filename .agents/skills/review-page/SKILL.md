@@ -16,7 +16,7 @@ Read `AGENTS.md`, `BOOK_STRUCTURE.md`, and these files in `.agents/instructions/
 ## 2. Check
 
 - **Format:** check the page against the checklist in `page-format.md`: frontmatter, H1, Origins callout, overview,
-  section count, length, formulas and code, Further Reading, and sidebar and roadmap integration.
+  section count, length, formulas and code, Further Reading, and sidebar, nav, and roadmap integration.
 - **Accuracy:**
   - Every number and mechanism must match its cited source.
   - Classic and Tank Royale material must be kept apart.

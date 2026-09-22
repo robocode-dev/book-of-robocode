@@ -74,6 +74,14 @@ export default withMermaid(defineConfig({
         ]
       },
       {
+        text: 'Advanced Play',
+        items: [
+          { text: 'Team Strategies', link: '/team-strategies/team-basics' },
+          { text: 'Melee Combat', link: '/melee-combat/melee-strategy' },
+          { text: 'Advanced Topics', link: '/advanced/multiple-choice-bestpspace' }
+        ]
+      },
+      {
         text: 'Reference',
         items: [
           { text: 'Glossary', link: '/appendices/glossary' },
@@ -229,7 +237,6 @@ export default withMermaid(defineConfig({
           ]
         }
       ],
-      // TODO: Review nav entry for Team Strategies
       '/team-strategies/': [
         {
           text: 'Team Strategies',
@@ -241,7 +248,6 @@ export default withMermaid(defineConfig({
           ]
         }
       ],
-      // TODO: Review nav entry for Melee Combat
       '/melee-combat/': [
         {
           text: 'Melee Combat',
@@ -253,7 +259,6 @@ export default withMermaid(defineConfig({
           ]
         }
       ],
-      // TODO: Review nav entry for Advanced Topics
       '/advanced/': [
         {
           text: 'Advanced Topics',

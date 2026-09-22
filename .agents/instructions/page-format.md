@@ -108,7 +108,10 @@ source:
 - Add the page to the sidebar in `book/.vitepress/config.js`: find the key for the section folder (for example
   `'/targeting/'`), then the nested `items` array for the sub-section. Add `{text: '<Title>', link: '/<path>'}` with no
   `.md`, in `BOOK_STRUCTURE.md` order.
-- Do not add nav dropdowns. If a section is missing from nav, add `// TODO: Review nav entry for <section>` and flag it.
+- Add the section to `nav:` too: find the existing dropdown whose theme fits (a combat-technique chapter joins
+  the other combat-technique chapters) and add `{ text: '<Section>', link: '<first sidebar link>' }` to its
+  `items`, matching entries like `Radar & Scanning`. Add `// TODO: Review nav entry for <section>` above the
+  sidebar key only when no existing dropdown is a reasonable fit. That should be rare.
 - Remove the page from the pending lists in `book/introduction/whats-coming-next.md`.
 - Mark the page `[✅]` in `BOOK_STRUCTURE.md`.
 - Add a glossary entry in `book/appendices/glossary.md` only for a central, newly introduced term.
@@ -119,5 +122,6 @@ source:
 - [ ] H1 equals `title`, the Origins callout follows it, and `## Further Reading` is last.
 - [ ] Length and paragraph limits hold, and every line is 120 characters or fewer.
 - [ ] Every illustration marker has a rendered SVG and a matching `<img>`.
-- [ ] `config.js` is valid, the sidebar entry is in the right place, and the roadmap is updated.
+- [ ] `config.js` is valid, the sidebar entry is in the right place, the nav entry (or its TODO) is set, and
+  the roadmap is updated.
 - [ ] `npm run build` passes.

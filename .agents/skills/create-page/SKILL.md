@@ -33,8 +33,8 @@ not in `BOOK_STRUCTURE.md`, ask before continuing. Check `git status` so existin
 
 ## 4. Integrate
 
-Apply `page-format.md`, Section 6: add the sidebar entry, update the roadmap, set the `BOOK_STRUCTURE.md` status, and
-add a glossary entry only if one is warranted.
+Apply `page-format.md`, Section 6: add the sidebar entry, add or confirm the nav entry, update the roadmap, set
+the `BOOK_STRUCTURE.md` status, and add a glossary entry only if one is warranted.
 
 ## 5. Illustrate, review, and build
 
