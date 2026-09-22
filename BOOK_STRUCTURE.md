@@ -98,7 +98,7 @@
 │  ├─ Team Basics [I] [✅]
 │  ├─ Twin Duel Strategy Guide [A] [✅]
 │  ├─ Communication & Coordination [A] [✅]
-│  └─ Team Roles & Formations [A]
+│  └─ Team Roles & Formations [A] [✅]
 │
 ├─ Melee Combat [A]
 │  ├─ Melee Strategy [A]
