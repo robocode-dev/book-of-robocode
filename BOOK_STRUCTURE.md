@@ -104,7 +104,7 @@
 │  ├─ Melee Strategy [A] [✅]
 │  ├─ Melee-Specific Targeting [A] [✅]
 │  ├─ Melee Movement Tactics [A] [✅]
-│  └─ Staying Alive in Chaos [A]
+│  └─ Staying Alive in Chaos [A] [✅]
 │
 ├─ Advanced Topics [A]
 │  ├─ Multiple Choice & BestPSpace [A]

@@ -17,11 +17,6 @@ The Book of Robocode is an evolving project. This page lists the articles and tu
 organized by section and difficulty level. As each page is completed, it will be removed from this list and published
 in the book.
 
-## Melee Combat
-
-### Melee Strategy (Advanced)
-- Staying Alive in Chaos
-
 ## Advanced Topics
 
 All advanced topics are planned:

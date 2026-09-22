@@ -248,7 +248,8 @@ export default withMermaid(defineConfig({
           items: [
             { text: 'Melee Strategy', link: '/melee-combat/melee-strategy' },
             { text: 'Melee-Specific Targeting', link: '/melee-combat/melee-specific-targeting' },
-            { text: 'Melee Movement Tactics', link: '/melee-combat/melee-movement-tactics' }
+            { text: 'Melee Movement Tactics', link: '/melee-combat/melee-movement-tactics' },
+            { text: 'Staying Alive in Chaos', link: '/melee-combat/staying-alive-in-chaos' }
           ]
         }
       ],
