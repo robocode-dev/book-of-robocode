@@ -28,7 +28,7 @@
   <rect x="200" y="200" width="7600" height="5600" fill="#111"/>
 
   <!-- Mutual exchange -->
-  <line x1="3219" y1="3676" x2="4181" y2="3603" stroke="#F59E0B" stroke-width="30"
+  <line x1="3300" y1="3676" x2="4100" y2="3603" stroke="#F59E0B" stroke-width="30"
         marker-start="url(#arrow-orange-start)" marker-end="url(#arrow-orange-end)"/>
 
   <!-- Third bot closing in -->
@@ -48,7 +48,7 @@
   <!-- Text labels -->
   <text class="small bold" x="2900" y="4150" fill="#F59E0B" text-anchor="middle">a long exchange wears both
     down</text>
-  <text class="small bold" x="5600" y="2000" fill="#EF4444">closing in on whoever survives</text>
+  <text class="small bold" x="5000" y="2000" fill="#EF4444">closing in on whoever survives</text>
 
   <!-- Tank defs block (copied from tank.svg) -->
   <defs>
