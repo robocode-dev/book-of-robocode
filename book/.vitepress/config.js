@@ -253,6 +253,15 @@ export default withMermaid(defineConfig({
           ]
         }
       ],
+      // TODO: Review nav entry for Advanced Topics
+      '/advanced/': [
+        {
+          text: 'Advanced Topics',
+          items: [
+            { text: 'Multiple Choice & BestPSpace', link: '/advanced/multiple-choice-bestpspace' }
+          ]
+        }
+      ],
       '/appendices/': [
         {
           text: 'Appendices',

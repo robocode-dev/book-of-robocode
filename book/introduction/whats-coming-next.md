@@ -19,9 +19,6 @@ in the book.
 
 ## Advanced Topics
 
-All advanced topics are planned:
-
-- Multiple Choice & BestPSpace
 - Targeting Matrix
 - Testing & Analysis Tools
 - Optimization Techniques

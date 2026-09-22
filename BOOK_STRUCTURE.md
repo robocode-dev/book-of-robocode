@@ -107,7 +107,7 @@
 │  └─ Staying Alive in Chaos [A] [✅]
 │
 ├─ Advanced Topics [A]
-│  ├─ Multiple Choice & BestPSpace [A]
+│  ├─ Multiple Choice & BestPSpace [A] [✅]
 │  ├─ Targeting Matrix [A]
 │  ├─ Testing & Analysis Tools [A]
 │  └─ Optimization Techniques [A]
