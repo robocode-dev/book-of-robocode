@@ -20,7 +20,6 @@ in the book.
 ## Team Strategies
 
 ### Team Combat (Advanced)
-- Communication & Coordination
 - Team Roles & Formations
 
 ## Melee Combat

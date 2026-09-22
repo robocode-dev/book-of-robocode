@@ -235,7 +235,8 @@ export default withMermaid(defineConfig({
           text: 'Team Strategies',
           items: [
             { text: 'Team Basics', link: '/team-strategies/team-basics' },
-            { text: 'Twin Duel Strategy Guide', link: '/team-strategies/twin-duel-strategy-guide' }
+            { text: 'Twin Duel Strategy Guide', link: '/team-strategies/twin-duel-strategy-guide' },
+            { text: 'Communication & Coordination', link: '/team-strategies/communication-coordination' }
           ]
         }
       ],
