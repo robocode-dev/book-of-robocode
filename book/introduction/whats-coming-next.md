@@ -19,11 +19,7 @@ in the book.
 
 ## Team Strategies
 
-### Team Basics (Intermediate)
-- Team Basics
-
 ### Team Combat (Advanced)
-- Twin Duel Strategy Guide
 - Communication & Coordination
 - Team Roles & Formations
 

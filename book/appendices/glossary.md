@@ -75,6 +75,13 @@ specialization and coordinated tactics. Communication between teammates can prov
 See:
 [Scoring Systems & Battle Types](../energy-and-scoring/scoring-systems-battle-types.md#team-strategy-coordinate-for-collective-score)
 
+### Droid
+
+A team-only bot with no radar, in exchange for extra energy: 20 extra in classic Robocode. A Droid depends on
+messages from a teammate's radar to know where enemies are.
+
+See: [Team Basics](../team-strategies/team-basics.md)
+
 ---
 
 ## General terms

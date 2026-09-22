@@ -95,8 +95,8 @@
 │  └─ Energy Management in 1v1 and Melee [A] [✅]
 │
 ├─ Team Strategies [A]
-│  ├─ Team Basics [I]
-│  ├─ Twin Duel Strategy Guide [A]
+│  ├─ Team Basics [I] [✅]
+│  ├─ Twin Duel Strategy Guide [A] [✅]
 │  ├─ Communication & Coordination [A]
 │  └─ Team Roles & Formations [A]
 │

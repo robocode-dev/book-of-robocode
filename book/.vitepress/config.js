@@ -229,6 +229,16 @@ export default withMermaid(defineConfig({
           ]
         }
       ],
+      // TODO: Review nav entry for Team Strategies
+      '/team-strategies/': [
+        {
+          text: 'Team Strategies',
+          items: [
+            { text: 'Team Basics', link: '/team-strategies/team-basics' },
+            { text: 'Twin Duel Strategy Guide', link: '/team-strategies/twin-duel-strategy-guide' }
+          ]
+        }
+      ],
       '/appendices/': [
         {
           text: 'Appendices',
