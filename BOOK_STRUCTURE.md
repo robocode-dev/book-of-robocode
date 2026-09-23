@@ -110,7 +110,7 @@
 │  ├─ Multiple Choice & BestPSpace [A] [✅]
 │  ├─ Targeting Matrix [A] [✅]
 │  ├─ Testing & Analysis Tools [A] [✅]
-│  └─ Optimization Techniques [A]
+│  └─ Optimization Techniques [A] [✅]
 │
 ├─ Robocode Tank Royale Differences [A]
 │  ├─ API Changes [A] [✅]

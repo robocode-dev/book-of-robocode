@@ -266,7 +266,8 @@ export default withMermaid(defineConfig({
           items: [
             { text: 'Multiple Choice & BestPSpace', link: '/advanced/multiple-choice-bestpspace' },
             { text: 'Targeting Matrix', link: '/advanced/targeting-matrix' },
-            { text: 'Testing & Analysis Tools', link: '/advanced/testing-analysis-tools' }
+            { text: 'Testing & Analysis Tools', link: '/advanced/testing-analysis-tools' },
+            { text: 'Optimization Techniques', link: '/advanced/optimization-techniques' }
           ]
         }
       ],
