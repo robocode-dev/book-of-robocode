@@ -25,7 +25,6 @@ in the book.
 
 Migration and platform comparison guides:
 
-- API Changes
 - Migration Guide
 
 ## Appendices

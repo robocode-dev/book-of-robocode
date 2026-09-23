@@ -113,7 +113,7 @@
 │  └─ Optimization Techniques [A]
 │
 ├─ Robocode Tank Royale Differences [A]
-│  ├─ API Changes [A]
+│  ├─ API Changes [A] [✅]
 │  ├─ Physics Differences [A] [✅]
 │  └─ Migration Guide [A]
 │
