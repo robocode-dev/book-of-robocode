@@ -87,6 +87,8 @@ export default withMermaid(defineConfig({
           { text: 'Tank Royale Differences', link: '/tank-royale/physics-differences' },
           { text: 'Glossary', link: '/appendices/glossary' },
           { text: 'Quick Reference (Formulas)', link: '/appendices/quick-reference' },
+          { text: 'Debugging Tips', link: '/appendices/debugging-tips' },
+          { text: 'References & Credits', link: '/appendices/references-and-credits' },
           { text: 'Wall of Fame', link: '/appendices/wall-of-fame' },
           { text: 'Feedback & Contributing', link: '/appendices/feedback' }
         ]
@@ -288,6 +290,7 @@ export default withMermaid(defineConfig({
             { text: 'Glossary', link: '/appendices/glossary' },
             { text: 'Quick Reference', link: '/appendices/quick-reference' },
             { text: 'Debugging Tips', link: '/appendices/debugging-tips' },
+            { text: 'References & Credits', link: '/appendices/references-and-credits' },
             { text: 'Wall of Fame', link: '/appendices/wall-of-fame' },
             { text: 'Feedback & Contributing', link: '/appendices/feedback' }
           ]

@@ -17,16 +17,13 @@ The Book of Robocode is an evolving project. This page lists the articles and tu
 organized by section and difficulty level. As each page is completed, it will be removed from this list and published
 in the book.
 
-## Appendices
-
-### Reference Material (Intermediate/Beginner)
-- References & Credits
+Every page planned in `BOOK_STRUCTURE.md` is now published. This page stays in place for whatever the maintainers add
+next, a deeper technique, a platform update, or a topic a reader requests.
 
 ---
 
 > [!NOTE] Contributing
-> These pages will be written based on RoboWiki documentation and Robocode Tank Royale official docs. If you'd like to
-> contribute or suggest changes to the roadmap, please visit the
+> If you'd like to suggest a new page or a change to an existing one, please visit the
 > [Book of Robocode repository](https://github.com/robocode-dev/book-of-robocode).
 
 ## Further Reading
