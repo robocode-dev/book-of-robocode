@@ -45,6 +45,12 @@ A claim with no traceable source, an invented benchmark, a guessed constant, a h
 a defect. Report it the way [Feedback & Contributing](./feedback.md) describes, through a GitHub issue or a direct
 edit.
 
+> [!WARNING] Some sources are hard to verify
+> Origin credits in particular sometimes trace back to the archived old RoboWiki, a forum thread, or a bot's own
+> source comments rather than the current wiki, and untangling who did what first is not always clean. Treat a
+> credit or a history claim as the book's best current reading of those sources, not as beyond question. Use the
+> **Suggest a change to this page** link in any page's footer to propose a fix.
+
 ## Licensing
 
 The book's text and its code carry different licenses, matching how each is meant to be reused:

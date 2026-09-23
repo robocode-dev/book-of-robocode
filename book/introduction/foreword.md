@@ -33,6 +33,13 @@ This book is meant to complement RoboWiki, not replace it. It takes the classic 
 strategies, and energy management, then presents them in a unified, progressive structure. Each page is short, focused,
 and written with beginners in mind, while still offering depth for advanced readers.
 
+> [!WARNING] This book can be wrong
+> Some of the history this book draws on lives only on the archived old RoboWiki, in forum threads, or in a bot's
+> source comments, and piecing together who did what first is not always clean. If a page gets a fact, a formula, or
+> a credit wrong, use the **Suggest a change to this page** link in its footer, or see
+> [Feedback & Contributing](../appendices/feedback.md). Corrections from readers are how a book like this stays
+> trustworthy.
+
 ## Goals of This Book
 
 The Book of Robocode has three main goals:
