@@ -78,6 +78,34 @@ Classic `TeamRobot` sends a `Serializable` payload with `broadcastMessage(messag
 serialized Java. See [Team Communication & Coordination](../team-strategies/communication-coordination.md) for the
 message-size limits on each platform.
 
+## A utility class becomes built-in methods
+
+Classic Robocode's angle math lives outside any bot, in the static `robocode.util.Utils` class. A gun that needs a
+bearing to a point has to import it and call it by hand:
+
+```java
+// Classic Robocode
+import static robocode.util.Utils.normalRelativeAngleDegrees;
+
+double bearing = normalRelativeAngleDegrees(absoluteAngleTo(x, y) - getHeading());
+```
+
+Tank Royale drops the standalone class and puts the same math directly on `Bot`, aware of the bot's own position and
+each of its three headings:
+
+| Classic Robocode (`robocode.util.Utils`)  | Tank Royale (`Bot` methods)                          |
+|---------------------------------------------|---------------------------------------------------------|
+| `normalRelativeAngleDegrees(angle)`          | `normalizeRelativeAngle(angle)`                          |
+| `normalAbsoluteAngleDegrees(angle)`          | `normalizeAbsoluteAngle(angle)`                          |
+| not provided                                 | `directionTo(x, y)`, `bearingTo(x, y)`                   |
+| not provided                                 | `gunBearingTo(x, y)`, `radarBearingTo(x, y)`              |
+| not provided                                 | `distanceTo(x, y)`                                        |
+
+`bearingTo(x, y)` folds a call to `directionTo` and a normalization into one step, and `gunBearingTo` /
+`radarBearingTo` give the gun and radar the same shortcut aimed at their own heading. None of these are new physics,
+they are the formulas from [Coordinate Systems & Angles](../physics/coordinates-and-angles.md) written once so every
+bot stops reimplementing them by hand.
+
 ## What stayed the same
 
 The event-driven shape of the API did not change. A bot still overrides `run()` for its main loop and overrides one
@@ -195,6 +223,7 @@ Everything past the class and method names, the turn loop, the event dispatch, t
 - Convert headings and turn signs, see [Physics Differences](./physics-differences.md).
 - Re-check hitbox math that assumed a square bot, see the same page.
 - Re-check team message sizes against Tank Royale's per-turn packet limits.
+- Drop hand-rolled `robocode.util.Utils` calls in favor of `Bot`'s built-in bearing and distance methods.
 
 None of this changes strategy. A wave surfing gun or a GuessFactor targeting scheme ports over unchanged once the
 names and angles line up. The next page, Migration Guide, walks through porting one real bot end to end.
