@@ -112,6 +112,11 @@ Classic Robocode runs every bot in its own thread inside the game engine. Tank R
 and send an intent to the server each turn, and the docs call each turn "deterministic" as a result. The physics does
 not change, but a slow bot skips turns when it misses the configured turn time limit.
 
+Classic Robocode gives a bot no way to see that deadline coming. Tank Royale exposes it directly: `getTurnTimeout()`
+returns the turn budget in microseconds, and `getTimeLeft()` returns how much of it remains before `go()` must be
+called. A bot with a heavy per-turn computation, such as a k-d tree rebuild or a wide GuessFactor scan, can check
+`getTimeLeft()` and cut the work short instead of losing the whole turn to a timeout.
+
 The mechanics are close enough that most strategy knowledge carries over. The API is another story, and the next page,
 API Changes, covers the method names and events that did move.
 
