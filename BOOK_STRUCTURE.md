@@ -120,7 +120,7 @@
 ├─ Appendices [B]
 │  ├─ Glossary [B] [✅]
 │  ├─ Quick Reference (Formulas) [I] [✅]
-│  ├─ Debugging Tips [I]
+│  ├─ Debugging Tips [I] [✅]
 │  ├─ References & Credits [B]
 │  └─ Wall of Fame [B] [✅]
 ```

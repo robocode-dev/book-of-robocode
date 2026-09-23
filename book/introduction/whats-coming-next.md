@@ -20,7 +20,6 @@ in the book.
 ## Appendices
 
 ### Reference Material (Intermediate/Beginner)
-- Debugging Tips
 - References & Credits
 
 ---
