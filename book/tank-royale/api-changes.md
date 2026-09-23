@@ -41,10 +41,10 @@ they never had in classic Robocode:
 
 | Classic Robocode        | Tank Royale             | Note                                             |
 |--------------------------|--------------------------|---------------------------------------------------|
-| `ahead(distance)`        | `forward(distance)`      | `ahead()` still exists in Tank Royale as an alias |
+| `ahead(distance)`        | `forward(distance)`      | renamed                                           |
 | `back(distance)`         | `back(distance)`         | unchanged                                         |
 | `turnGunRight(degrees)`  | `turnGunRight(degrees)`  | unchanged                                         |
-| `setAhead(distance)`     | `setForward(distance)`   | non-blocking form                                 |
+| `setAhead(distance)`     | `setForward(distance)`   | non-blocking form, also renamed                   |
 | `setTurnGunRight(deg)`   | `setTurnGunRight(deg)`   | unchanged                                         |
 | `fire(power)`            | `fire(power)`            | unchanged                                         |
 | `execute()`              | `go()`                   | commits the turn's setter calls                   |
@@ -68,7 +68,40 @@ Event names drop "Robot" for "Bot", matching the class rename:
 | `RobotDeathEvent`          | `BotDeathEvent`          |
 | `onRobotDeath(event)`      | `onBotDeath(event)`      |
 
-Bullet, wall, and win events, such as `onBulletHit`, `onHitWall`, and `onWin`, keep the same names on both platforms.
+Two more events were renamed for clarity rather than to match the `Robot` → `Bot` swap. Classic Robocode's
+`BulletHitEvent` fires when one of your bullets hits an enemy, easy to confuse with `HitByBulletEvent`, which fires
+when an enemy's bullet hits you. Tank Royale renames it to `BulletHitBotEvent`, so the "who got hit" is in the name
+instead of implied by which event class it is. Classic Robocode's `BulletMissedEvent` fires when a bullet reaches the
+edge of the battlefield without hitting anything, a name that reads more like the shooter's bad aim than what
+actually happened. Tank Royale renames it to `BulletHitWallEvent`, describing the event, not a verdict on it.
+
+| Classic Robocode      | Tank Royale           |
+|-------------------------|--------------------------|
+| `BulletHitEvent`         | `BulletHitBotEvent`       |
+| `onBulletHit(event)`     | `onBulletHitBot(event)`   |
+| `BulletMissedEvent`      | `BulletHitWallEvent`      |
+| `onBulletMissed(event)`  | `onBulletHitWall(event)`  |
+
+`HitByBulletEvent`, `HitWallEvent`, `BulletHitBulletEvent`, and `onWin` keep the same shape and meaning on both
+platforms, only the renamed classes above changed.
+
+## Independent turning: "robot turn" becomes "body turn"
+
+`AdvancedRobot` lets the gun and radar turn independently of the body, so a locked radar keeps tracking a target
+while the body dodges. Classic Robocode names this after the "robot" whose turn the gun or radar is compensating
+for. Tank Royale renames it after the "body", matching its own vocabulary for the chassis:
+
+| Classic Robocode                    | Tank Royale                        |
+|----------------------------------------|----------------------------------------|
+| `setAdjustGunForRobotTurn(adjust)`      | `setAdjustGunForBodyTurn(adjust)`       |
+| `isAdjustGunForRobotTurn()`             | `isAdjustGunForBodyTurn()`              |
+| `setAdjustRadarForRobotTurn(adjust)`    | `setAdjustRadarForBodyTurn(adjust)`     |
+| `isAdjustRadarForRobotTurn()`           | `isAdjustRadarForBodyTurn()`            |
+| `setAdjustRadarForGunTurn(adjust)`      | `setAdjustRadarForGunTurn(adjust)`      |
+| `isAdjustRadarForGunTurn()`             | `isAdjustRadarForGunTurn()`             |
+
+The last pair, radar independent of the gun, keeps its name on both platforms since "gun" was never ambiguous. Set
+`adjust` to `true` to decouple that part from the turn it would otherwise inherit.
 
 ## Graphical debugging moves out of an event
 
@@ -227,6 +260,8 @@ Everything past the class and method names, the turn loop, the event dispatch, t
 
 - Replace `Robot` / `AdvancedRobot` / `TeamRobot` with `Bot`.
 - Rename every `XxxRobotEvent` and `onXxxRobot` handler to its `XxxBotEvent` / `onXxxBot` form.
+- Rename `BulletHitEvent` to `BulletHitBotEvent` and `BulletMissedEvent` to `BulletHitWallEvent`.
+- Rename every `AdjustXxxForRobotTurn` call to `AdjustXxxForBodyTurn`.
 - Replace `execute()` with `go()`.
 - Convert headings and turn signs, see [Physics Differences](./physics-differences.md).
 - Re-check hitbox math that assumed a square bot, see the same page.
