@@ -73,7 +73,8 @@ travels in.*
 ## Reading the list from the other side
 
 The same six items work as a live cue, not only a design flaw. RoboWiki points to rambots like SledgeHammer and
-Tide, which lean on exactly this: an opponent running low energy and short hops draws ramming attacks that land
+Tide, which lean on exactly this: an opponent running low energy and short hops draws
+[ramming](/appendices/glossary#ramming) attacks that land
 above 90% of the time while collecting the ramming bonus on top. A bot that notices a short-hop, low-energy
 opponent has a real reason to close in rather than keep firing from range.
 

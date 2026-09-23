@@ -55,7 +55,8 @@ one unconverted angle left.
 ## 4. Re-check hitbox-dependent math
 
 Classic Robocode's 36×36 axis-aligned square and Tank Royale's 18-unit-radius circle agree closely head-on but differ
-at the corners. A bot that computes exact bullet shadows or GuessFactor bins against the classic square's corners will
+at the corners. A bot that computes exact bullet shadows or [GuessFactor](/appendices/glossary#guessfactor) bins
+against the classic square's corners will
 be slightly off in Tank Royale. Widen any hardcoded hit-tolerance margin rather than trying to model the exact
 geometry twice.
 
@@ -70,7 +71,8 @@ assuming the old protocol still fits.
 
 Before running full battles, fire the ported bot at a wall-hugging or stationary opponent and confirm three things in
 order: the bot moves the direction it intends to, the gun tracks the right target, and it doesn't crash on the first
-`onBotDeath` or `onRoundEnded` event. Only then run it in RoboRumble-style battles, where a subtle heading bug shows up
+`onBotDeath` or `onRoundEnded` event. Only then run it in [RoboRumble](/appendices/glossary#roborumble)-style
+battles, where a subtle heading bug shows up
 as a mysteriously low win rate rather than a crash.
 
 > [!WARNING] Platform Difference

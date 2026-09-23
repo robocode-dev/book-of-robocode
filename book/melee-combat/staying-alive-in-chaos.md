@@ -20,7 +20,7 @@ source:
 
 > [!TIP] Origins
 > **Melee survival diagnostics** were developed and documented by the RoboWiki community, distilled from years of
-> watching where in the standings melee bots tend to finish.
+> watching where in the standings [melee](/appendices/glossary#melee) bots tend to finish.
 
 [Melee Strategy](/melee-combat/melee-strategy), [Melee-Specific Targeting](
 /melee-combat/melee-specific-targeting), and [Melee Movement Tactics](/melee-combat/melee-movement-tactics) each
@@ -97,7 +97,8 @@ style="max-width:100%;height:auto;"/><br>
 ## The last two are a different game
 
 Everything above stops applying the moment the field narrows to two. [Melee Strategy](
-/melee-combat/melee-strategy#four-battles-in-one) already covers why: the final duel has quietly become a 1v1,
+/melee-combat/melee-strategy#four-battles-in-one) already covers why: the final duel has quietly become a
+[1v1](/appendices/glossary#_1v1-one-on-one-duel),
 and the bot that keeps playing the crowd-survival game instead of the accuracy-and-energy game one enemy actually
 rewards is the one that finishes second.
 

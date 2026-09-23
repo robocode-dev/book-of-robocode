@@ -18,8 +18,10 @@ source: [
 > **Gun Heat Lock** was developed and documented by the RoboWiki community as an optimization strategy that coordinates
 > radar and gun systems in melee battles.
 
-In melee combat, radar time is precious, you need to track multiple opponents while your targeting system requires fresh
-data to aim accurately. **Gun heat lock** solves this coordination problem by using **gun heat** as a timing signal to
+In [melee](/appendices/glossary#melee) combat, radar time is precious, you need to track multiple opponents while
+your targeting system requires fresh
+data to aim accurately. **Gun heat lock** solves this coordination problem by using
+**[gun heat](/appendices/glossary#gun-heat)** as a timing signal to
 focus the radar on whichever enemy the gun is about to fire at.
 
 This technique ensures that the most critical scan, the one your targeting system needs right before firing, happens at
@@ -547,7 +549,7 @@ The threshold value trades off between scan freshness and situational awareness:
 - **Best for:** Battles with fewer remaining enemies or when targeting accuracy is critical.
 
 Adaptive bots adjust this threshold dynamically based on how many enemies remain: use higher thresholds in late-game
-1v1 or 2v2 scenarios, lower thresholds in crowded early-game melees.
+[1v1](/appendices/glossary#_1v1-one-on-one-duel) or 2v2 scenarios, lower thresholds in crowded early-game melees.
 
 ## Integration with Targeting Systems
 

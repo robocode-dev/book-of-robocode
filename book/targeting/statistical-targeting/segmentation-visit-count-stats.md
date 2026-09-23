@@ -30,7 +30,8 @@ source:
 > ("Skilgannon")** further optimized these systems. Voidious's duelist **Dookious**, for example, combined
 > segmentation and Visit Count Stats with Wave Surfing.
 
-Basic GuessFactor Targeting treats all enemy movements equally, recording every dodge attempt into a single array. This
+Basic [GuessFactor](/appendices/glossary#guessfactor) Targeting treats all enemy movements equally, recording every
+dodge attempt into a single array. This
 works well against bots with consistent behavior but fails when enemies adapt their movement based on distance,
 bullet power, or wall proximity.
 

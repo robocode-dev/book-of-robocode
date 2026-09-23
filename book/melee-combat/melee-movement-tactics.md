@@ -23,7 +23,8 @@ source:
 > Movement, Minimum Risk Movement, and Corner Movement, each pioneered for its own use and adapted to melee's
 > crowd of simultaneous threats.
 
-A 1v1 bot's movement has one job: dodge the gun currently aimed at it. A melee bot's movement runs two jobs at
+A [1v1](/appendices/glossary#_1v1-one-on-one-duel) bot's movement has one job: dodge the gun currently aimed at it.
+A [melee](/appendices/glossary#melee) bot's movement runs two jobs at
 once, being in the right place so fewer guns can reach it, and moving in the right direction to dodge the ones
 that do anyway. [Melee Strategy](/melee-combat/melee-strategy) already covers how the right answer shifts as
 bots die. This page covers the movement tools for each of those two jobs.

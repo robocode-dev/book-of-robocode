@@ -31,10 +31,12 @@ adaptive, recognizing opponents and applying learned strategies instantly.
 
 Most statistical and pattern-based targeting systems collect data during battle:
 
-- **GuessFactors** record where enemies are when bullets arrive.
+- **[GuessFactors](/appendices/glossary#guessfactor)** record where enemies are when bullets arrive.
 - **Visit count statistics** track enemy behavior patterns segmented by distance, velocity, or lateral direction.
-- **Pattern matching** logs sequences of enemy movements to predict future positions.
-- **Virtual gun performance** tracks which aiming method works best against specific opponents.
+- **[Pattern matching](/appendices/glossary#pattern-matching)** logs sequences of enemy movements to predict future
+  positions.
+- **[Virtual gun](/appendices/glossary#virtual-guns) performance** tracks which aiming method works best against
+  specific opponents.
 
 Without data persistence, all this learning vanishes at the end of each round or battle. The bot must start from
 scratch every time, wasting valuable ticks relearning what it already discovered.

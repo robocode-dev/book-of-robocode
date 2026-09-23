@@ -269,7 +269,8 @@ Everything past the class and method names, the turn loop, the event dispatch, t
 - Drop hand-rolled `robocode.util.Utils` calls in favor of `Bot`'s built-in bearing and distance methods.
 - Move `onPaint` graphics code to a `getGraphics()` call guarded by `isDebuggingEnabled()`.
 
-None of this changes strategy. A wave surfing gun or a GuessFactor targeting scheme ports over unchanged once the
+None of this changes strategy. A wave surfing gun or a [GuessFactor](/appendices/glossary#guessfactor) targeting
+scheme ports over unchanged once the
 names and angles line up. The next page, Migration Guide, walks through porting one real bot end to end.
 
 ## Further Reading

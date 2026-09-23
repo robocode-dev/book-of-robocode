@@ -241,7 +241,8 @@ $\text{angleOffset} = \text{actualBearingAtHit} - \text{bearingAtFire}$
 
 $\text{guessFactor} = \frac{\text{angleOffset}}{\text{maxEscapeAngle}}$
 
-GuessFactor ranges from **-1.0** (maximum clockwise dodge) to **+1.0** (maximum counter-clockwise dodge).
+[GuessFactor](/appendices/glossary#guessfactor) ranges from **-1.0** (maximum clockwise dodge) to **+1.0** (maximum
+counter-clockwise dodge).
 
 ---
 

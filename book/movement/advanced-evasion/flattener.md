@@ -28,7 +28,8 @@ source:
 > enabling it only above a certain enemy hit percentage in his bot Diamond, and bots such as YersiniaPestis use
 > several activation levels instead of an on/off switch.
 
-A wave surfer learns from being hit. Every bullet that lands raises the danger at that GuessFactor, and the surfer
+A wave surfer learns from being hit. Every bullet that lands raises the danger at that
+[GuessFactor](/appendices/glossary#guessfactor), and the surfer
 steers elsewhere next time. That works well against a gun that aims where bullets used to connect. But some guns,
 including many [anti-surfer guns](../../targeting/advanced-targeting/anti-surfer-targeting.md), learn from where the
 bot *went*, whether or not a bullet was there. Voidious noted that his anti-surfer gun decays its data by visits,

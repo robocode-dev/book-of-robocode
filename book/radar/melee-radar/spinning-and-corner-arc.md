@@ -34,7 +34,8 @@ optimizes radar time when positioned strategically in a corner.
 
 ## Spinning Radar for Melee
 
-The simplest melee radar strategy is identical to the basic spinning pattern used in 1v1: keep the radar turning 
+The simplest melee radar strategy is identical to the basic spinning pattern used in
+[1v1](/appendices/glossary#_1v1-one-on-one-duel): keep the radar turning 
 continuously to sweep the entire battlefield.
 
 In melee, this approach has distinct advantages:

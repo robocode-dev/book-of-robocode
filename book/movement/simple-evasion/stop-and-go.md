@@ -28,7 +28,8 @@ targeting, while remaining simple enough for beginners to implement and understa
 
 ## Why Stop and Go Works
 
-Most targeting systems predict future bot positions based on current velocity and heading. Linear targeting assumes the
+Most targeting systems predict future bot positions based on current velocity and heading.
+[Linear targeting](/appendices/glossary#linear-targeting) assumes the
 target will maintain its current velocity. Statistical targeting builds patterns from historical movement data. Stop and
 Go exploit both approaches by making velocity unpredictable.
 
@@ -42,7 +43,8 @@ time the bullet arrives.
 **Against statistical targeting:** The dramatic velocity changes prevent the targeting system from finding reliable
 patterns in the movement data.
 
-**Against simple targeting:** Head-on targeting remains unaffected, but most intermediate bots have moved beyond this
+**Against simple targeting:** [Head-on targeting](/appendices/glossary#head-on-targeting) remains unaffected, but
+most intermediate bots have moved beyond this
 basic approach.
 
 ## Core Concept
@@ -619,7 +621,7 @@ After mastering Stop and Go, consider:
 
 - **Oscillator movement:** Adds lateral movement to Stop and Go
 - **Random movement:** Combines unpredictability with Stop and Go timing
-- **Wave surfing:** Advanced evasion for expert-level play
+- **[Wave surfing](/appendices/glossary#wave-surfing):** Advanced evasion for expert-level play
 - **Multiple Choice:** Combines several movement strategies with virtual guns
 
 Stop and Go remain a valuable component even in advanced bots, often used as one option in a multiple-choice movement

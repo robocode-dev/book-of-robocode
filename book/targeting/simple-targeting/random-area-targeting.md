@@ -40,7 +40,8 @@ Random targeting tends to help when:
 
 - The enemy **dodges unpredictably** (or uses random movement itself).
 - The bot **lacks radar lock** on the enemy or loses track frequently.
-- The bot is **in melee** and needs to throw multiple shots to hit someone among many bots.
+- The bot is **in [melee](/appendices/glossary#melee)** and needs to throw multiple shots to hit someone among many
+  bots.
 - The bot is a **learning or testing bot** that doesn't yet have targeting logic.
 
 It tends to fail when:
@@ -240,7 +241,8 @@ The **spread angle** controls how wide the scatter is:
 
 **Area Targeting** fires at a **predicted region** where the enemy might be, based on its last known position and
 assumed movement range.
-Instead of firing at a single intercept point (as in Linear or Circular targeting), the bot fires multiple shots or a
+Instead of firing at a single intercept point (as in [Linear](/appendices/glossary#linear-targeting) or
+[Circular](/appendices/glossary#circular-targeting) targeting), the bot fires multiple shots or a
 spray pattern to cover an area.
 
 ### When does it work?

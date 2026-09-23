@@ -33,7 +33,8 @@ identical duelists collides, duplicates effort, and leaves gaps a coordinated te
 Robocode numbers every bot instance on a team, so five copies of one class can still tell each other apart and
 take different jobs without five different source files. Tank Royale's own team documentation puts names on the
 typical split: a Leader that carries wide radar coverage and low firepower to gather information, a Soldier that
-carries the heavy gun and leans on the Leader's data, and a Droid that trades its radar for extra energy and
+carries the heavy gun and leans on the Leader's data, and a [Droid](/appendices/glossary#droid) that trades its
+radar for extra energy and
 depends on a teammate for every target it ever sees, as [Team Basics](/team-strategies/team-basics) covers.
 
 RoboWiki's own example rosters show the same split by proportion rather than name: one leader with radar plus

@@ -234,10 +234,10 @@ will do is wasteful. aim for the minimum that guarantees the kill, no more.
 
 ### Melee combat
 
-In melee battles (3+ bots), bullet power selection requires different priorities:
+In [melee](/appendices/glossary#melee) battles (3+ bots), bullet power selection requires different priorities:
 
 - **Conservative by default:** Fire 1.5–2.0 power to balance damage with energy efficiency. You're fighting multiple
-  opponents, so energy conservation matters more than 1v1.
+  opponents, so energy conservation matters more than [1v1](/appendices/glossary#_1v1-one-on-one-duel).
 - **Opportunistic heavy shots:** Use 2.5–3.0 power only when you have a high-confidence shot at a low-energy bot you can
   eliminate.
 - **Light shots when crowded:** If multiple bots are clustered or moving unpredictably, fire 0.8–1.2 power to increase

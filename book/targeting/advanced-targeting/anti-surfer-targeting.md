@@ -39,7 +39,8 @@ an actual shot more influence than an outcome from a virtual wave.
 
 Recent results matter most because a surfer may revise its danger model after being hit. One simple age rule is
 $w = w_f e^{-\lambda a}$, where $w_f$ is the base weight for a firing or virtual wave, $a$ is sample age in turns, and
-$\lambda$ controls how quickly old evidence fades. Apply this weight when building the GuessFactor density, not by
+$\lambda$ controls how quickly old evidence fades. Apply this weight when building the
+[GuessFactor](/appendices/glossary#guessfactor) density, not by
 pretending the old result never happened.
 
 <!-- TODO: Illustration
@@ -97,7 +98,8 @@ matcher compete on real bullet results instead of declaring one strategy the win
 
 ## A different kind of prediction
 
-Pattern matching does not choose an angle from the same wave statistics that a surfer expects. It replays a matching
+[Pattern matching](/appendices/glossary#pattern-matching) does not choose an angle from the same wave statistics that
+a surfer expects. It replays a matching
 sequence of heading changes and velocities. That difference often makes it a valuable virtual gun against surfers,
 though it fails when the enemy deliberately breaks its movement sequence.
 

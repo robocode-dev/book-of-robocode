@@ -19,10 +19,12 @@ source:
 # Melee Strategy
 
 > [!TIP] Origins
-> **Melee strategy** was developed and documented by the RoboWiki community, distilled from years of RoboRumble
+> **Melee strategy** was developed and documented by the RoboWiki community, distilled from years of
+> [RoboRumble](/appendices/glossary#roborumble)
 > melee results into a single strategy guide.
 
-In a 1v1 duel a bot always knows exactly one thing: who is shooting at it. Drop that same bot into a melee with
+In a [1v1](/appendices/glossary#_1v1-one-on-one-duel) duel a bot always knows exactly one thing: who is shooting
+at it. Drop that same bot into a [melee](/appendices/glossary#melee) with
 nine enemies, and the question changes to which one is shooting at it, a question that gets harder or easier to
 answer as bots die and the field shrinks.
 [Scoring Systems & Battle Types](/energy-and-scoring/scoring-systems-battle-types) already covers why survival

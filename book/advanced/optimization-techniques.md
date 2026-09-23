@@ -24,7 +24,8 @@ source:
 > Java implementations with advanced pruning. The CPU time limit itself was built into the engine and documented
 > by the RoboWiki community.
 
-A gun that scores well in a slow, single-battle test can start missing in a full RoboRumble run, on a busier
+A gun that scores well in a slow, single-battle test can start missing in a full
+[RoboRumble](/appendices/glossary#roborumble) run, on a busier
 machine, or against a bot that spawns extra threads. Nothing about the targeting math changed. The turn simply ran
 out of time, the engine skipped it, and the gun fired at a stale target or not at all.
 

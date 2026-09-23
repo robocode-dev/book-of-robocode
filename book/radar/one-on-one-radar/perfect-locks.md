@@ -17,7 +17,7 @@ source: [
 
 > [!TIP] Origins
 > **Perfect Lock** patterns (Turn Multiplier Lock and Width Lock) were developed and documented by the RoboWiki
-> community for optimal 1v1 radar tracking.
+> community for optimal [1v1](/appendices/glossary#_1v1-one-on-one-duel) radar tracking.
 
 A radar *lock* tries to re-scan the same enemy at every turn. A **perfect lock** goes one step further: it turns the
 radar so the enemy is guaranteed to be inside the radar beam again next tick, even while both bots are turning.

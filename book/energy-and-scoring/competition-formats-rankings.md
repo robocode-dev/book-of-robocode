@@ -18,8 +18,10 @@ source: [
 # Competition Formats & Rankings
 
 > [!TIP] Origins
-> **RoboRumble@Home**, the original continuous ranking system, was developed with **Albert Perez** as its chief
-> developer. **LiteRumble** was created by **Julian Kent ("Skilgannon")** as the modern successor.
+> **[RoboRumble](/appendices/glossary#roborumble)@Home**, the original continuous ranking system, was developed with
+> **Albert Perez** as its chief
+> developer. **[LiteRumble](/appendices/glossary#literumble)** was created by **Julian Kent ("Skilgannon")** as the
+> modern successor.
 
 The community behind classic Robocode has developed standardized competition formats to ensure fair comparisons between
 bots. These formats define specific battlefield sizes, round counts, and battle configurations used in official
@@ -100,7 +102,8 @@ Multi-bot chaos where 3+ bots battle simultaneously until only one survives. Sur
 output. [Learn about melee scoring strategy →](./scoring-systems-battle-types.md#melee-strategy-survive-and-opportunize)
 
 > [!TIP] Fun fact
-> The name "Tank Royale" is inspired by Melee battles. they resemble the popular "Battle Royale" game genre where
+> The name "Tank Royale" is inspired by [Melee](/appendices/glossary#melee) battles. they resemble the popular
+> "Battle Royale" game genre where
 > multiple players fight until only one remains standing!
 
 **Key characteristics:**
@@ -112,7 +115,8 @@ output. [Learn about melee scoring strategy →](./scoring-systems-battle-types.
 
 ### Teams
 
-Coordinated team battles where multiple bots work together toward a common goal. Communication and role specialization
+Coordinated [Team](/appendices/glossary#team) battles where multiple bots work together toward a common goal.
+Communication and role specialization
 become
 critical.
 [Learn about team scoring strategy →](./scoring-systems-battle-types.md#team-strategy-coordinate-for-collective-score)
@@ -169,7 +173,8 @@ learn opponent patterns while preventing lucky streaks from dominating results.
 **Why these dimensions?**
 
 The square 1000×1000 battlefield provides ample space for multiple bots without overcrowding. The larger size compared
-to 1v1 accommodates more complex multi-bot interactions and reduces the impact of early positioning advantages.
+to [1v1](/appendices/glossary#_1v1-one-on-one-duel) accommodates more complex multi-bot interactions and reduces
+the impact of early positioning advantages.
 
 Fewer rounds (10 vs 35) reflect the higher variance in melee battles. With more bots, individual matches have more
 randomness, so extended series become less meaningful than in 1v1.

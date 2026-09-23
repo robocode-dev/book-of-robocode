@@ -14,8 +14,10 @@ source: [
 # Understanding the Challenge
 
 > [!TIP] Origins
-> **GuessFactor Targeting** was introduced by **Paul Evans** in 2002 with his bots SandboxLump and SandboxDT. The
-> **Wave** concept was introduced by **Iiley** in his bot Cigaret later that year. **Wave Surfing** was invented by
+> **[GuessFactor](/appendices/glossary#guessfactor) Targeting** was introduced by **Paul Evans** in 2002 with his
+> bots SandboxLump and SandboxDT. The
+> **[Wave](/appendices/glossary#wave)** concept was introduced by **Iiley** in his bot Cigaret later that year.
+> **[Wave Surfing](/appendices/glossary#wave-surfing)** was invented by
 > **ABC** in the bot **Shadow**. These techniques revolutionized competitive Robocode.
 
 The simple targeting methods, head-on, linear, and circular, work great against predictable bots.
@@ -84,7 +86,8 @@ This is the foundation of **statistical targeting**:
 - Use that data to predict where they're *likely* to go next.d
 - Continuously update probabilities as more data is collected.
 
-Methods like **GuessFactor Targeting** and **Dynamic Clustering** implement this idea in different ways.
+Methods like **GuessFactor Targeting** and **[Dynamic Clustering](/appendices/glossary#dynamic-clustering)**
+implement this idea in different ways.
 
 ## The role of waves
 
@@ -150,8 +153,9 @@ Now that the core challenge is clear, the next page introduces the tool that mak
 After understanding waves, explore the major targeting approaches:
 
 - **Statistical Targeting:** GuessFactor, segmentation, and dynamic clustering.
-- **Predictive Targeting:** Pattern matching and precise prediction.
-- **Adaptive Systems:** Virtual guns and multiple-choice strategies.
+- **Predictive Targeting:** [Pattern matching](/appendices/glossary#pattern-matching) and
+  [precise prediction](/appendices/glossary#precise-prediction).
+- **Adaptive Systems:** [Virtual guns](/appendices/glossary#virtual-guns) and multiple-choice strategies.
 
 ## Tips
 

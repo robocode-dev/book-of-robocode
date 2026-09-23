@@ -32,7 +32,8 @@ waves justify a finer cut.
 
 ## A leaf that earns its split
 
-Each leaf in the tree starts as a single GuessFactor histogram, exactly like the segments from
+Each leaf in the tree starts as a single [GuessFactor](/appendices/glossary#guessfactor) histogram, exactly like
+the segments from
 [Segmentation & Visit Count Stats](segmentation-visit-count-stats.md). Every wave that lands in a leaf adds one
 observation, and the leaf checks its sample count. Vic Stewart's original implementation waits for 40 observations
 before a leaf becomes eligible to split, and settled leaves average close to 30 observations once the tree stabilizes.
@@ -112,7 +113,8 @@ every statistical gun faces.
 
 ## Platform notes
 
-Wave capture, splitting, and GuessFactor storage are bot-side data structures, so the technique carries over between
+[Wave](/appendices/glossary#wave) capture, splitting, and GuessFactor storage are bot-side data structures, so the
+technique carries over between
 classic Robocode and Tank Royale without change. Convert headings and bearings into one consistent angle convention
 before building a state key, since classic Robocode measures compass-style while Tank Royale measures mathematically.
 

@@ -18,7 +18,8 @@ source: [
 > [!TIP] Origins
 > **Iiley** introduced the Wave concept with his bot Cigaret in December 2002. Since bullets travel at a constant
 > speed, a bot can track an abstract "circle" expanding from the shooter, and when that circle reaches the target, it
-> knows exactly what the GuessFactor was. Several bots used the idea under other names before, and PEZ noted that the
+> knows exactly what the [GuessFactor](/appendices/glossary#guessfactor) was. Several bots used the idea under other
+> names before, and PEZ noted that the
 > descriptive name "Wave" was a real contribution in itself. Waves now underpin both **GuessFactor Targeting**
 > (introduced by **Paul Evans**) and **Wave Surfing** (invented by **ABC**).
 
@@ -36,7 +37,7 @@ enemy, that's the exact moment a bullet would have hit them, allowing the bot to
 firing direction.
 
 Over many battles, these recorded angles form a statistical profile of enemy movement, enabling probabilistic targeting
-systems like GuessFactor Targeting and Dynamic Clustering.
+systems like GuessFactor Targeting and [Dynamic Clustering](/appendices/glossary#dynamic-clustering).
 
 ## What is a wave?
 
@@ -625,7 +626,8 @@ accuracy** (better predictions when it actually matters). The balance between qu
 
 The wave concept isn't just for targeting, it's also the foundation of advanced movement strategies.
 
-**Wave surfing** reverses the wave concept: the bot tracks *enemy* waves (bullets the enemy has fired or might fire)
+**[Wave surfing](/appendices/glossary#wave-surfing)** reverses the wave concept: the bot tracks *enemy* waves
+(bullets the enemy has fired or might fire)
 and moves to positions with the lowest danger based on where the enemy's gun has hit before.
 
 This creates an ongoing tactical battle:
@@ -694,7 +696,8 @@ Waves excel at measuring outcomes, but they don't solve every targeting problem:
 Advanced bots address these with:
 
 - **Segmentation:** Split data by situation (distance, wall proximity, velocity).
-- **Virtual guns:** Run multiple targeting methods in parallel and use the best performer.
+- **[Virtual guns](/appendices/glossary#virtual-guns):** Run multiple targeting methods in parallel and use the best
+  performer.
 - **Data decay:** Weight recent data more heavily than old data.
 
 ## Further Reading

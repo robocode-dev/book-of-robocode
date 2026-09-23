@@ -24,7 +24,8 @@ source:
 > **GrubbmGait**, and refined into its current strategy through years of weekly competition by the RoboWiki
 > community.
 
-Take a bot tuned for 1v1 duels, run two copies of it in the same battle, and something odd happens: it starts
+Take a bot tuned for [1v1](/appendices/glossary#_1v1-one-on-one-duel) duels, run two copies of it in the same
+battle, and something odd happens: it starts
 losing to teams that are individually weaker. [Team Basics](/team-strategies/team-basics) covers the first fix,
 knowing who not to shoot, but Twin Duel adds a second constraint no 1v1 bot has ever faced: a hard code budget
 and an opponent that can gang up two-on-one.
@@ -34,7 +35,8 @@ and an opponent that can gang up two-on-one.
 Twin Duel runs on an 800x800 unit field for 75 rounds, two bots per team against two bots per team, scored by
 average points per second like the [Scoring Systems](/energy-and-scoring/scoring-systems-battle-types) page
 describes. The catch is the code size cap: the whole team's `.jar`, shared code included, must measure under
-2000 bytes, and reading or writing files is not allowed. Since 2009 the competition runs inside RoboRumble under
+2000 bytes, and reading or writing files is not allowed. Since 2009 the competition runs inside
+[RoboRumble](/appendices/glossary#roborumble) under
 an honor system rather than a technical check, but the budget still shapes every design choice.
 
 That budget rules out running full melee logic on both bots. A 2000-byte team has room for a competent 1v1-style

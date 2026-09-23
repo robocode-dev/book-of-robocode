@@ -37,7 +37,7 @@ out as identical on both platforms:
 | Bullet speed             | $20 - 3 \cdot p$ units/turn                        |
 | Bullet damage            | $4p$, plus $2(p - 1)$ when $p > 1$                 |
 | Energy returned on a hit | $3p$                                               |
-| Gun heat per shot        | $1 + p / 5$                                        |
+| [Gun heat](/appendices/glossary#gun-heat) per shot | $1 + p / 5$                                        |
 | Bot vs bot collision     | 0.6 damage to each bot                             |
 | Wall damage              | $\lvert v \rvert / 2 - 1$, never below 0           |
 
@@ -114,7 +114,8 @@ not change, but a slow bot skips turns when it misses the configured turn time l
 
 Classic Robocode gives a bot no way to see that deadline coming. Tank Royale exposes it directly: `getTurnTimeout()`
 returns the turn budget in microseconds, and `getTimeLeft()` returns how much of it remains before `go()` must be
-called. A bot with a heavy per-turn computation, such as a k-d tree rebuild or a wide GuessFactor scan, can check
+called. A bot with a heavy per-turn computation, such as a k-d tree rebuild or a wide
+[GuessFactor](/appendices/glossary#guessfactor) scan, can check
 `getTimeLeft()` and cut the work short instead of losing the whole turn to a timeout.
 
 The mechanics are close enough that most strategy knowledge carries over. The API is another story, and the next page,

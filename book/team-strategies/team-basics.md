@@ -23,7 +23,8 @@ source:
 > `TeamRobot` class. Robocode Tank Royale ships the same idea as a core platform feature with its own message API.
 
 Drop five copies of a strong duelist into a team battle and the first new bug shows up immediately: the same
-targeting logic that never had to think twice in 1v1 now puts a bullet into a teammate. Team battles do not just
+targeting logic that never had to think twice in [1v1](/appendices/glossary#_1v1-one-on-one-duel) now puts a bullet
+into a teammate. Team battles do not just
 add more bots to the arena. They add a second problem that 1v1 and melee never asked: which of the bots on screen
 are actually the enemy.
 
@@ -73,7 +74,8 @@ style="max-width:100%;height:auto;"/><br>
 
 ## The leader sees, the droids swing
 
-Classic Robocode lets a team mix a special kind of bot into the roster: a **Droid**, which trades its radar for
+Classic Robocode lets a team mix a special kind of bot into the roster: a **[Droid](/appendices/glossary#droid)**,
+which trades its radar for
 20 extra energy. A Droid cannot see the battlefield on its own, so it depends entirely on messages from a
 teammate that can. Tank Royale carries the same trade-off forward with its own `Droid` interface: more energy, no
 radar, total dependence on teammates for target data.

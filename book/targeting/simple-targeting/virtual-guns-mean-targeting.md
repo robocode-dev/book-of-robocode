@@ -416,7 +416,8 @@ They're less useful when:
 
 Advanced bots extend the virtual gun idea with:
 
-- **More sophisticated guns** (GuessFactor, pattern matching, neural nets).
+- **More sophisticated guns** ([GuessFactor](/appendices/glossary#guessfactor),
+  [pattern matching](/appendices/glossary#pattern-matching), neural nets).
 - **Per-situation selection** (different gun per range, velocity, or wall proximity).
 - **Confidence intervals** (prefer guns with more data when rates are close).
 - **Hybrid aiming** (average multiple gun angles weighted by success rate).

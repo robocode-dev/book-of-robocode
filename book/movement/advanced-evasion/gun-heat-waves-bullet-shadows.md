@@ -42,7 +42,7 @@ Together, they improve wave detection accuracy and enable more precise bullet do
 
 You detect enemy fire by monitoring energy drops. But sometimes the enemy's energy drops due to:
 
-- Ramming damage
+- [Ramming](/appendices/glossary#ramming) damage
 - Bullet hits from other bots (melee)
 - Death
 - Wall collisions (in some game modes)
@@ -89,7 +89,7 @@ xychart-beta
 | 50 | 2.8 | 🎯 **Hit by bullet** | Drop > 3.0 |
 | 54 | 1.0 | 🔫 **Fired bullet** | Drop in [0.1, 3.0] + gun heat check |
 
-> [!NOTE] Your bot tracks Gun heat
+> [!NOTE] Your bot tracks [Gun heat](/appendices/glossary#gun-heat)
 > You cannot read the enemy's gun heat directly, you must model it based on when they fire. 
 > See [Validating with Gun Heat](#validating-with-gun-heat) below for the implementation.
 
@@ -703,12 +703,14 @@ more aggressive route. Otherwise it should continue its normal evasive plan.
 
 Exclude shadow regions from danger calculations:
 
-When evaluating reachable GuessFactors, assign zero additional danger to candidate positions for which
+When evaluating reachable [GuessFactors](/appendices/glossary#guessfactor), assign zero additional danger to
+candidate positions for which
 `isInShadow(position)` is true, and calculate normal danger for the others.
 
 **3. Melee Survival**
 
-In melee, bullets come from all directions. Bullet Shadows help identify temporary safe zones:
+In [melee](/appendices/glossary#melee), bullets come from all directions. Bullet Shadows help identify temporary
+safe zones:
 
 In melee, filter generated destinations with `isInShadow` and choose the best safe candidate when one exists. A shadow
 is temporary and local to one bullet, so it should supplement rather than replace general danger evaluation.

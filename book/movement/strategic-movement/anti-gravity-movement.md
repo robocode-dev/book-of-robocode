@@ -17,11 +17,13 @@ source: [
 > [!TIP] Origins
 > **Anti-Gravity Movement** was one of the primary movement strategies before **Wave Surfing** was invented. Along
 > with Random movement, Anti-Gravity was how bots evaded bullets, by maintaining distance and avoiding predictable
-> patterns. **Minimum Risk Movement** (a related technique for melee combat) was pioneered by **Aelryen** and
+> patterns. **Minimum Risk Movement** (a related technique for [melee](/appendices/glossary#melee) combat) was
+> pioneered by **Aelryen** and
 **ABC**.
 
 > [!WARNING] Historical Context
-> Anti-Gravity Movement was largely **superseded by Wave Surfing for competitive 1v1 play around 2003**. While it
+> Anti-Gravity Movement was largely **superseded by Wave Surfing for competitive
+> [1v1](/appendices/glossary#_1v1-one-on-one-duel) play around 2003**. While it
 > remains an excellent learning tool and performs well in melee battles, top-tier 1v1 bots use Wave Surfing because
 > it directly counters statistical targeting systems. If your goal is competitive 1v1 performance, study
 > [Wave Surfing Introduction](../advanced-evasion/wave-surfing-introduction.md) instead.

@@ -33,7 +33,8 @@ source:
 
 Every targeting method covered so far predicts forward: build a model from past data, then guess where the enemy
 will be when the bullet arrives. Two less-traveled ideas turn that model-building step inside out. One replaces the
-GuessFactor histogram with a trained neural network. The other skips prediction entirely and asks a simpler
+[GuessFactor](/appendices/glossary#guessfactor) histogram with a trained neural network. The other skips prediction
+entirely and asks a simpler
 question: given where I already know I stood, which bullet speed would have connected just now?
 
 ## Neural targeting
@@ -50,7 +51,8 @@ bots followed.
 
 Most of them underperformed: a trained network only reflects situations it has already seen, and Robocode battles
 rarely repeat a state exactly. The technique only became competitive once bots stopped asking the network to replace
-waves and GuessFactors and started pairing it with them. Wcsv's Engineer crossed a 2030 RoboRumble rating in 2006,
+waves and GuessFactors and started pairing it with them. Wcsv's Engineer crossed a 2030
+[RoboRumble](/appendices/glossary#roborumble) rating in 2006,
 the first neural bot past 2000, and the modern Gaff combines waves, GuessFactors, and radial basis functions with its
 network to build what many consider the strongest Anti-Surfer gun in the field.
 

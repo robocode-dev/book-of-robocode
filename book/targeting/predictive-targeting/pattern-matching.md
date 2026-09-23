@@ -22,7 +22,8 @@ An enemy that repeats a turn-and-speed sequence can defeat a linear gun without 
 matching notices the sequence instead of assuming constant velocity. It looks for the enemy's recent movement in its
 own history, then plays forward the movements that followed the best earlier match.
 
-This is **log-based targeting**. Its prediction comes from a past trace, not from a GuessFactor histogram.
+This is **log-based targeting**. Its prediction comes from a past trace, not from a
+[GuessFactor](/appendices/glossary#guessfactor) histogram.
 
 ## What belongs in the log?
 

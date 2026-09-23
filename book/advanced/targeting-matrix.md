@@ -21,8 +21,9 @@ source:
 > the bucket-and-count approach [GuessFactor Targeting](/targeting/statistical-targeting/guessfactor-targeting)
 > and [BestPSpace](/advanced/multiple-choice-bestpspace) both build on.
 
-A GuessFactor bin only means something once enough shots have landed in it. Early in a battle, or with a rare
-combination of segment values, plenty of bins sit at zero or one visits, too thin to trust. A Targeting Matrix
+A [GuessFactor](/appendices/glossary#guessfactor) bin only means something once enough shots have landed in it.
+Early in a battle, or with a rare combination of segment values, plenty of bins sit at zero or one visits, too thin
+to trust. A Targeting Matrix
 sidesteps the bucket entirely: instead of counting visits per bin, it fits one smooth mathematical curve through
 every recorded shot at once, and that curve can answer for a distance or velocity it has never exactly visited.
 

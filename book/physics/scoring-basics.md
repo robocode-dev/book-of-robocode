@@ -27,8 +27,10 @@ landed more (or better) hits earlier, earned more damage points, and possibly go
 
 Robocode talks about the **participant** that receives points.
 
-- In a 1v1 or melee free-for-all, a participant is usually a single bot.
-- In a team battle, the participant is the **team**. Points are credited to the team total.
+- In a [1v1](/appendices/glossary#_1v1-one-on-one-duel) or [melee](/appendices/glossary#melee) free-for-all, a
+  participant is usually a single bot.
+- In a [Team](/appendices/glossary#team) battle, the participant is the **team**. Points are credited to the team
+  total.
 
 Practical takeaway: if the goal is to win, the bot logic should optimize the participant's score (often team score),
 not just personal survival.

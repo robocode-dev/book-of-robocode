@@ -44,8 +44,9 @@ competitions, see
 | **Melee** | 3+ bots | Last bot standing or highest score | Survival, target selection, opportunistic damage |
 | **Team** | 2+ teams of 1+ bots | Highest team score | Coordination, shared targeting, role specialization |
 
-Each format uses the same scoring categories but rewards different behaviors. A bot optimized for 1v1 might struggle in
-melee, and vice versa.
+Each format uses the same scoring categories but rewards different behaviors. A bot optimized for
+[1v1](/appendices/glossary#_1v1-one-on-one-duel) might struggle in
+[melee](/appendices/glossary#melee), and vice versa.
 
 > [!TIP] Choose your battles
 > When designing a bot, decide early which format to target. A "do everything" bot rarely excels at anything.
@@ -96,7 +97,8 @@ fatal ram:
 - **Ram kill bonus:** $0.30 \times 30 = 9$ points (earned when the enemy dies)
 - **Total ram score:** $60 + 9 = $ **69 points**
 
-Ramming is rarely the primary strategy but can be decisive in endgame situations or against disabled bots. For details
+[Ramming](/appendices/glossary#ramming) is rarely the primary strategy but can be decisive in endgame situations or
+against disabled bots. For details
 on implementing ramming tactics, see **Ramming & Mirror Movement**.
 
 ### 3. Bullet damage bonus (kill bonus)
@@ -214,7 +216,8 @@ With 3+ bots, chaos reigns. Bots can steal kills, hit each other simultaneously,
 
 ### Team strategy: coordinate for collective score
 
-In team battles, all team members' points combine into a single team score. This enables role specialization.
+In [Team](/appendices/glossary#team) battles, all team members' points combine into a single team score. This
+enables role specialization.
 
 **Key priorities:**
 

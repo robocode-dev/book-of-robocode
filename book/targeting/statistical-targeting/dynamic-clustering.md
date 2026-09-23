@@ -29,7 +29,7 @@ estimation, not k-means clustering.
 
 At fire time, record a state vector alongside the eventual outcome of its wave. A small first vector might contain
 normalized distance, lateral velocity, advancing velocity, and distance to the nearest wall. When the wave reaches the
-enemy, attach its observed GuessFactor to that same record.
+enemy, attach its observed [GuessFactor](/appendices/glossary#guessfactor) to that same record.
 
 For a current state $q$ and a recorded state $p$, a common squared similarity distance is
 $d^2(p,q) = \sum_i w_i(p_i-q_i)^2$. Here $p_i$ and $q_i$ are values on axis $i$, and $w_i$ is that axis's weight.

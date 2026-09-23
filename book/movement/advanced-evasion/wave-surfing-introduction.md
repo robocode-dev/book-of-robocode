@@ -23,7 +23,8 @@ source: [
 > discovery changed the game from a test of luck to a test of statistical prediction, revolutionizing defensive movement
 > by transforming bullet dodging from reactive guesswork into predictive statistical analysis.
 
-Wave Surfing is more than just "dodging bullets", it's the defensive counterpart to GuessFactor Targeting. While 
+Wave Surfing is more than just "dodging bullets", it's the defensive counterpart to
+[GuessFactor](/appendices/glossary#guessfactor) Targeting. While
 GuessFactor guns track *where enemies dodge to*, Wave Surfing tracks *where enemies shoot* and move to locations 
 they're least likely to target.
 
@@ -36,7 +37,8 @@ Traditional movement asks: "Where should I go to be unpredictable?"
 
 Wave Surfing asks: "Where will the enemy *think* I'm going, and how can I avoid being there?"
 
-The key realization: if your enemy uses statistical targeting (GuessFactor, Dynamic Clustering, etc.), they're 
+The key realization: if your enemy uses statistical targeting (GuessFactor,
+[Dynamic Clustering](/appendices/glossary#dynamic-clustering), etc.), they're 
 predicting your movement based on your past behavior. By tracking *their* statistics and intentionally moving to 
 locations they historically *don't* shoot at, you can minimize your hit rate.
 

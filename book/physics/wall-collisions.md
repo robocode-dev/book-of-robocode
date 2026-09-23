@@ -43,8 +43,8 @@ are:
 
 ### Standard Battle Sizes
 
-- **1v1 (Standard):** 800 × 600 units
-- **Melee (Free-for-all):** 1000 × 1000 units
+- **[1v1](/appendices/glossary#_1v1-one-on-one-duel) (Standard):** 800 × 600 units
+- **[Melee](/appendices/glossary#melee) (Free-for-all):** 1000 × 1000 units
 
 Larger battlefields give bots more space to maneuver and evade, while smaller battlefields force closer combat. The
 dimensions affect movement strategy significantly. On a 400 × 400 battlefield, escape routes are limited, while a 5000 ×
@@ -209,7 +209,8 @@ As you improve, you'll refine your wall avoidance:
 
 - **Predictive movement:** Calculate exactly when you'll reach the wall based on your current velocity and
   deceleration rate, and plan your turn in advance.
-- **Wall smoothing:** Move parallel to walls at a safe distance, rather than bouncing away abruptly. This keeps your
+- **[Wall smoothing](/appendices/glossary#wall-smoothing):** Move parallel to walls at a safe distance, rather than
+  bouncing away abruptly. This keeps your
   movement fluid and less predictable.
 - **Tactical positioning:** Sometimes staying near (but not touching) a wall can limit the angles an enemy can attack
   you from, but only if you're confident you can dodge effectively.

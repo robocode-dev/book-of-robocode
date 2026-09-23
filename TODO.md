@@ -9,12 +9,6 @@ See `book/introduction/whats-coming-next.md` for the current list of unwritten a
 
 - Add term glossary links throughout content (e.g., `GuessFactor` linking to glossary)
 
-## Contribution & Attribution
-
-- Create contribution guidelines (how to contribute, make PRs, file issues)
-- Update ATTRIBUTION.md with all contributors
-- Create a credits page in the book
-
 ## Examples & Resources
 
 - Consider providing bot examples in a GitHub repo

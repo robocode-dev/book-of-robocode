@@ -63,7 +63,8 @@ style="max-width:100%;height:auto;"/><br>
 twice for it.*
 
 RoboWiki calls a bot built around this a rambot or rammer, and names GrubbmThree, LunarTwins, and NightmareTeam as
-strong examples in the 1v1, Twin Duel, and team formats. Nearly all of them still carry a simple gun, usually
+strong examples in the [1v1](/appendices/glossary#_1v1-one-on-one-duel), Twin Duel, and team formats. Nearly all of
+them still carry a simple gun, usually
 [Head-On](../../targeting/simple-targeting/head-on-targeting.md), Linear, or Circular Targeting, because closing
 the distance with no gun running is dangerous on its own.
 A rammer used as a finishing move waits until the last bullet fired at it has passed before it commits to the
@@ -116,7 +117,8 @@ guessing at where to go next.
 A rammer's straight-line approach is exactly the predictable motion the earlier chapters on
 [linear](../../targeting/simple-targeting/linear-targeting.md) and
 [circular](../../targeting/simple-targeting/circular-targeting.md) targeting were built to punish, and RoboWiki
-notes the style remains largely untested against Wave Surfing or GuessFactor guns. Ramming is a strong finishing
+notes the style remains largely untested against Wave Surfing or [GuessFactor](/appendices/glossary#guessfactor)
+guns. Ramming is a strong finishing
 move and a weak full-time plan.
 
 Mirror Movement's cost shows up against the opponents it should struggle with most. RoboWiki is blunt about it:

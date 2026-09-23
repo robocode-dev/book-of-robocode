@@ -150,7 +150,8 @@ Locking improves targeting because aim and prediction are based on fresh data ra
 
 ### Sweeping (essential in melee)
 
-In melee, scanning one bot perfectly can lead to getting surprised by a different bot. Sweeping solves discovery and
+In [melee](/appendices/glossary#melee), scanning one bot perfectly can lead to getting surprised by a different
+bot. Sweeping solves discovery and
 keeps general awareness.
 
 A practical “efficient sweep” mindset:

@@ -238,7 +238,8 @@ The way bullets detect hits on bots differs between platforms:
 - Firing reduces your energy immediately by the bullet power.
 - Be careful not to drop yourself to zero energy (= disabled): a disabled bot becomes an easy target and can be killed
   by a fast small bullet.
-- In team battles, bullets can hit allies (friendly fire). Always consider the line of fire.
+- In [Team](/appendices/glossary#team) battles, bullets can hit allies (friendly fire). Always consider the line of
+  fire.
 
 ![Friendly Fire Vignette](../images/friendly-fire.svg)<br>
 *Friendly fire scenario where a bot accidentally hits a teammate. Always check your line of fire in team battles.*

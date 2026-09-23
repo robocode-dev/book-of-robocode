@@ -32,7 +32,8 @@ judgment calls before it works in a crowd.
 
 ## Why GuessFactor loses its edge
 
-GuessFactor Targeting leans on the enemy moving roughly perpendicular to the bot doing the shooting, since that
+[GuessFactor](/appendices/glossary#guessfactor) Targeting leans on the enemy moving roughly perpendicular to the
+bot doing the shooting, since that
 is what produces a clean escape-angle distribution to learn from. In melee, most bots spend their movement
 budget reacting to several threats at once, not specifically dodging this bot, so the perpendicular pattern a
 guess-factor gun depends on shows up far less often. The technique still works, it is just a smaller edge than it

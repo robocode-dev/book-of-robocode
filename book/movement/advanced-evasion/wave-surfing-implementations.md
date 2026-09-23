@@ -30,11 +30,13 @@ source:
 > common style, used by Shadow, Diamond, and the tutorial bot BasicSurfer by **Patrick Cupka (Voidious)**.
 > **GoTo Surfing** is the style used by DrussGT.
 
-[Wave Surfing Introduction](./wave-surfing-introduction.md) ends with a GuessFactor that the enemy rarely hits. Knowing
+[Wave Surfing Introduction](./wave-surfing-introduction.md) ends with a
+[GuessFactor](/appendices/glossary#guessfactor) that the enemy rarely hits. Knowing
 where to be is only half the job. The bot cannot jump there: it accelerates by 1 unit per turn, brakes by 2, turns at
 most $10 - 0.75\lvert v \rvert$ degrees per turn, and has only until the wave arrives. By April 2010, RoboWiki noted,
-the top 40 duelists in the RoboRumble all used some form of surfing. RoboWiki describes two main ways to steer, plus a
-melee variant.
+the top 40 duelists in the [RoboRumble](/appendices/glossary#roborumble) all used some form of surfing. RoboWiki
+describes two main ways to steer, plus a
+[melee](/appendices/glossary#melee) variant.
 
 ## The shared engine: predict the intercept
 

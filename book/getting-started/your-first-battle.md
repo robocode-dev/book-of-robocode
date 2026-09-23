@@ -240,7 +240,8 @@ physics on the battlefield.
 - **Bullets do not inherit your movement.** Only the gun direction and bullet power matter for the bullet path and
   speed.
 - **Power vs speed tradeoff:** low-power shots are cheaper and fly faster. High-power shots are stronger but slower.
-- **Friendly fire exists** in team battles: a bullet will hit the first bot in its path, ally or enemy.
+- **Friendly fire exists** in [Team](/appendices/glossary#team) battles: a bullet will hit the first bot in its
+  path, ally or enemy.
 
 For a full explanation of bullet power, speed, damage, and cooldown (including formulas and charts), see
 [Bullet Travel & Bullet Physics](../physics/bullet-physics.md) in the **Battlefield Physics** section.

@@ -35,9 +35,10 @@ Spinning radar is most valuable for:
 
 - **Discovery:** getting the first scan as fast as possible.
 - **Reacquire:** finding an enemy again after it has not been scanned for a while.
-- **Simple melee awareness:** steadily collecting scan data on multiple enemies.
+- **Simple [melee](/appendices/glossary#melee) awareness:** steadily collecting scan data on multiple enemies.
 
-In 1v1, spinning forever is usually not optimal once the enemy is found; you typically switch to a lock pattern like
+In [1v1](/appendices/glossary#_1v1-one-on-one-duel), spinning forever is usually not optimal once the enemy is
+found; you typically switch to a lock pattern like
 **Infinite Lock** (covered below) to get more frequent re-scans of *that one bot*.
 
 <img src="../../images/spinning-radar.svg" alt="Spinning Radar Illustration" style="max-width:100%;height:auto;"><br>

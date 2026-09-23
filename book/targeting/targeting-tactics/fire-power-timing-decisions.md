@@ -35,7 +35,8 @@ Bullet power affects three critical aspects of combat:
 
 1. **Damage dealt**: Higher power means more damage per hit (4× power, plus bonus above 1.0).
 2. **Bullet speed**: Lower power bullets travel faster (20 - 3× power units/turn), reaching the target sooner.
-3. **Gun heat generated**: Higher power adds more heat (1 + power/5), delaying your next shot.
+3. **[Gun heat](/appendices/glossary#gun-heat) generated**: Higher power adds more heat (1 + power/5), delaying
+   your next shot.
 4. **Energy cost**: Firing consumes energy equal to the bullet power, risking disablement if you run low.
 
 These tradeoffs mean there's rarely a "best" power for all situations. the right choice depends on range, enemy
@@ -250,7 +251,7 @@ Some situations favor delaying a shot:
 
 > [!TIP] Fire when ready
 > Most competitive bots fire whenever gun heat is 0 and the gun is aimed. Delaying too much can mean missed
-> opportunities, especially in fast-paced 1v1 battles.
+> opportunities, especially in fast-paced [1v1](/appendices/glossary#_1v1-one-on-one-duel) battles.
 
 ## Bullet power and cooldown timing
 

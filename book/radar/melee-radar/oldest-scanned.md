@@ -16,7 +16,8 @@ source: [
 > **Oldest Scanned** was developed and documented by the RoboWiki community as an intelligent melee radar strategy
 > that improves upon simple spinning patterns.
 
-In melee battles with multiple opponents, maintaining up-to-date information on all enemies is critical for accurate
+In [melee](/appendices/glossary#melee) battles with multiple opponents, maintaining up-to-date information on all
+enemies is critical for accurate
 targeting and threat assessment. The **oldest scanned** strategy solves this by tracking when each enemy was last seen
 and prioritizing radar time toward the most stale data.
 

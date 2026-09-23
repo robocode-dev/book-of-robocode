@@ -47,7 +47,8 @@ that hits consistently gains an energy advantage, while a bot that misses falls 
 
 ## Starting energy and constraints
 
-Every bot starts with **100 energy** at the beginning of a round. Bots that implement the **Droid** interface start with
+Every bot starts with **100 energy** at the beginning of a round. Bots that implement the
+**[Droid](/appendices/glossary#droid)** interface start with
 **120 energy** instead.
 
 **Energy constraints:**
@@ -115,8 +116,9 @@ This creates a powerful incentive to fire accurately: every hit is a net energy 
 
 ## Energy advantage and disadvantage in 1v1
 
-The **energy differential** between you and your opponent is one of the most important tactical indicators in 1v1
-battles. Your strategy should adapt based on whether you have more, less, or similar energy.
+The **energy differential** between you and your opponent is one of the most important tactical indicators in
+[1v1](/appendices/glossary#_1v1-one-on-one-duel) battles. Your strategy should adapt based on whether you have
+more, less, or similar energy.
 
 ### Dominant position (large energy advantage)
 
@@ -156,7 +158,8 @@ missed shots drain your position. Neither bot can afford to be wasteful.
 
 ## Energy tactics in melee battles
 
-Melee battles (3+ bots) require fundamentally different energy management than 1v1. The presence of multiple opponents
+[Melee](/appendices/glossary#melee) battles (3+ bots) require fundamentally different energy management than 1v1.
+The presence of multiple opponents
 changes everything.
 
 ### High energy in melee

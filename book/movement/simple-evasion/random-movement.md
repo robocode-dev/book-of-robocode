@@ -32,9 +32,12 @@ patterns, constant velocity, consistent turn rates, or predictable oscillations.
 by
 ensuring that future positions cannot be reliably predicted from past behavior.
 
-Against **head-on targeting**, random movement provides minimal benefit since head-on aims at the current position.
-Against **linear targeting**, random changes in velocity and heading make predictions fail. Against **statistical
-targeting** (including GuessFactor), randomness prevents the targeting system from finding reliable patterns to exploit.
+Against **[head-on targeting](/appendices/glossary#head-on-targeting)**, random movement provides minimal benefit
+since head-on aims at the current position.
+Against **[linear targeting](/appendices/glossary#linear-targeting)**, random changes in velocity and heading make
+predictions fail. Against **statistical targeting** (including
+[GuessFactor](/appendices/glossary#guessfactor)), randomness prevents the targeting system from finding reliable
+patterns to exploit.
 
 The effectiveness of a random movement depends on how unpredictable it truly is. Poor randomization or accidental
 patterns can still be exploited by adaptive targeting systems.
@@ -567,13 +570,13 @@ Random movement is effective against:
 - **Simple targeting** (head-on, linear, circular)
 - **Weak statistical targeting** without enough data
 - **New opponents** where you have no information about their targeting
-- **Melee battles** where predictability is dangerous
+- **[Melee](/appendices/glossary#melee) battles** where predictability is dangerous
 
 It's less effective against:
 
 - **Advanced statistical targeting** with anti-random techniques
 - **Pattern matchers** designed to handle randomness
-- **Precise prediction** that reads ahead many ticks
+- **[Precise prediction](/appendices/glossary#precise-prediction)** that reads ahead many ticks
 
 Random movement works best as part of a larger strategy, use it as a baseline, combine it with other techniques, or
 switch to it when other movements fail.

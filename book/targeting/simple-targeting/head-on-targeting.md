@@ -38,7 +38,8 @@ It tends to miss when:
 - The enemy frequently changes its direction.
 - A smart enemy predicts where the bullet will go and dodges accordingly.
 
-A useful mindset: head-on targeting is the “baseline” that more advanced targeting (linear, circular, GuessFactor, …)
+A useful mindset: head-on targeting is the “baseline” that more advanced targeting (linear, circular,
+[GuessFactor](/appendices/glossary#guessfactor), …)
 tries to beat.
 
 ## What information is needed?

@@ -21,8 +21,10 @@ source: [
 > Energy management strategies across battle formats were developed and refined by the RoboWiki community,
 > with contributions from competitive bot developers including **Voidious**, **Skilgannon**, and **Chase**.
 
-Energy management looks different depending on the battle format. A 1v1 duel is a focused contest between two bots where
-energy decisions are locked into a predictable opponent's cycle. Melee is a chaotic multi-bot environment where energy 
+Energy management looks different depending on the battle format. A
+[1v1](/appendices/glossary#_1v1-one-on-one-duel) duel is a focused contest between two bots where
+energy decisions are locked into a predictable opponent's cycle.
+[Melee](/appendices/glossary#melee) is a chaotic multi-bot environment where energy 
 must be budgeted across unknown threats and rapidly shifting alliances. Understanding these distinctions transforms 
 energy management from a general principle into a battle-specific weapon.
 
@@ -37,7 +39,7 @@ you know exactly how much energy your opponent has, when they fire, and how much
 A typical 1v1 battle progresses through distinct **energy phases**:
 
 1. **Opening (Ticks 1–50)**
-   - Both bots start with 100 energy (or 120 if using the Droid interface).
+   - Both bots start with 100 energy (or 120 if using the [Droid](/appendices/glossary#droid) interface).
    - Aggressive early fire builds momentum and damages the opponent before they can establish defensive positioning.
    - **Strategy:** Fire moderate power (1.5–2.0) to inflict consistent damage while conserving energy for mid-game.
 

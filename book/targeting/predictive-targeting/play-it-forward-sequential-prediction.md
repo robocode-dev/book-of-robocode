@@ -28,7 +28,8 @@ source:
 > Eindhoven University of Technology published its linear-time matching algorithm in *Game Programming Wisdom*
 > (2002), and the RoboWiki community adapted it for pattern-matching guns.
 
-A GuessFactor gun needs an angle for every situation in its log. The direct way to get one is a virtual bullet: place
+A [GuessFactor](/appendices/glossary#guessfactor) gun needs an angle for every situation in its log. The direct way
+to get one is a virtual bullet: place
 a shot at a candidate angle, then check its position against the enemy every turn until it either hits or passes by.
 Test a fan of candidate angles and the cost multiplies with each one. These two techniques cut that cost from two
 different directions.
@@ -92,7 +93,8 @@ battlefield coordinates. The replay produces the same angle either way. Fast PIF
 
 ## Sequential Prediction: the best match in one pass
 
-Pattern matching needs the best, usually longest, matching sequence before it can replay anything, and comparing
+[Pattern matching](/appendices/glossary#pattern-matching) needs the best, usually longest, matching sequence before
+it can replay anything, and comparing
 the newest frames against every earlier window costs more with each tick added to the log. Sequential Prediction
 finds the longest match ending at every position in a single linear pass instead.
 

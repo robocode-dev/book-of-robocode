@@ -38,7 +38,8 @@ Highlights:
   tutorials.
 - **Albert Perez** created the **[RoboRumble](https://robowiki.net/wiki/RoboRumble)**, a continuous distributed ranking 
   system that transformed Robocode into a true competitive sport. Without this ranking system, the "evolutionary war" 
-  between strategies like GuessFactor Targeting and Wave Surfing would never have happened. Developers would not have
+  between strategies like [GuessFactor](/appendices/glossary#guessfactor) Targeting and
+  [Wave Surfing](/appendices/glossary#wave-surfing) would never have happened. Developers would not have
   had a way to prove which bot was actually better.
 
 RoboWiki became the reference for advanced topics such as wave surfing, GuessFactor targeting, detailed battlefield

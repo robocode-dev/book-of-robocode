@@ -39,7 +39,8 @@ A legendary competitor and the current steward of the community's infrastructure
 **[RoboWiki](https://robowiki.net/)** and developer of the modern **[LiteRumble](https://robowiki.net/wiki/LiteRumble)**
 ranking system, he keeps the game's history and competitive scene alive. He authored
 **[DrussGT](https://robowiki.net/wiki/DrussGT)**, one of the
-most dominant bots in history, and perfected **Dynamic Clustering** using a K-Nearest Neighbor (KNN) approach.
+most dominant bots in history, and perfected **[Dynamic Clustering](/appendices/glossary#dynamic-clustering)**
+using a K-Nearest Neighbor (KNN) approach.
 
 ---
 
@@ -66,7 +67,8 @@ opening it to the public to serve as the community's central knowledge hub.
 ### David Alves
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:David_Alves)  
-An early author of **GuessFactor Targeting** guns, with a gun he described as similar to Paul Evans's SandboxDT. His
+An early author of **[GuessFactor](/appendices/glossary#guessfactor) Targeting** guns, with a gun he described as
+similar to Paul Evans's SandboxDT. His
 Duelist series was the first to have strong bots in practically every size category, and Duelist once took the top of
 the rankings from SandboxDT. His bot **[Phoenix](https://robowiki.net/wiki/Phoenix)** combines GuessFactor
 Targeting and virtual guns with Wave Surfing in duels and Minimum Risk Movement in melee.
@@ -93,7 +95,8 @@ Author of **[Dookious](https://robowiki.net/wiki/Dookious)** and **[Diamond](htt
 ### Kev (kc)
 
 [RoboWiki User Page](https://robowiki.net/wiki/User:Kev)  
-Author of **[BeepBoop](https://robowiki.net/wiki/BeepBoop)**, the current RoboRumble king, along with WaveSerpent and
+Author of **[BeepBoop](https://robowiki.net/wiki/BeepBoop)**, the current
+[RoboRumble](/appendices/glossary#roborumble) king, along with WaveSerpent and
 other duelists. Kev represents the pinnacle of 1-vs-1 performance, and his bots pushed statistical targeting and movement to their absolute limits.
 
 ---

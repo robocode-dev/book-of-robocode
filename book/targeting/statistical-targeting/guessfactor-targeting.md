@@ -19,7 +19,8 @@ source:
 
 > [!TIP] Origins
 > **GuessFactor Targeting** was introduced by **Paul Evans** in 2002 with his bots SandboxLump and SandboxDT. It was
-> the first targeting designed to beat random movement. **Iiley** later introduced the **Wave**, which became the
+> the first targeting designed to beat random movement. **Iiley** later introduced the
+> **[Wave](/appendices/glossary#wave)**, which became the
 > standard way to collect its data. Early adopters such as **David Alves** (Duelist, Phoenix) built guns on the same
 > idea, and **Kyle Huntington (Kawigi)** spread it widely through his GuessFactor Targeting Tutorial and the
 > **FloodMini** bot.
