@@ -70,6 +70,14 @@ Event names drop "Robot" for "Bot", matching the class rename:
 
 Bullet, wall, and win events, such as `onBulletHit`, `onHitWall`, and `onWin`, keep the same names on both platforms.
 
+## Graphical debugging moves out of an event
+
+Classic Robocode paints debug graphics inside an overridden `onPaint(Graphics2D g)` method, calling `getGraphics()`
+from within it to get the same canvas. Tank Royale drops the dedicated event: check `isDebuggingEnabled()` and call
+`getGraphics()` directly, which returns an `IGraphics` canvas with its own drawing methods (`setStrokeColor`,
+`fillRectangle`, and similar) instead of `Graphics2D`. See
+[Debugging Tips](../appendices/debugging-tips.md) for how to put this to use.
+
 ## Team messaging renames
 
 Classic `TeamRobot` sends a `Serializable` payload with `broadcastMessage(message)` for the whole team or
@@ -224,6 +232,7 @@ Everything past the class and method names, the turn loop, the event dispatch, t
 - Re-check hitbox math that assumed a square bot, see the same page.
 - Re-check team message sizes against Tank Royale's per-turn packet limits.
 - Drop hand-rolled `robocode.util.Utils` calls in favor of `Bot`'s built-in bearing and distance methods.
+- Move `onPaint` graphics code to a `getGraphics()` call guarded by `isDebuggingEnabled()`.
 
 None of this changes strategy. A wave surfing gun or a GuessFactor targeting scheme ports over unchanged once the
 names and angles line up. The next page, Migration Guide, walks through porting one real bot end to end.

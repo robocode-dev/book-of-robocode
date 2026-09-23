@@ -51,7 +51,8 @@ something inferred from a log.
 > [!WARNING] Platform Difference
 > Classic Robocode overrides `onPaint(Graphics2D g)` and calls `getGraphics()` from inside it. Tank Royale checks
 > `isDebuggingEnabled()` and calls `getGraphics()` directly, which returns an `IGraphics` canvas with its own
-> drawing methods (`setStrokeColor`, `fillRectangle`, and similar), instead of Java's `Graphics2D`.
+> drawing methods (`setStrokeColor`, `fillRectangle`, and similar), instead of Java's `Graphics2D`. See
+> [API Changes](../tank-royale/api-changes.md) for the full rename.
 
 A gun that predicts an enemy's future position can draw a small circle at that prediction every turn. If the
 circle drifts away from where the enemy actually ends up, the bug is in the prediction math, not somewhere else in
