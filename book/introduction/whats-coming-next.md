@@ -21,12 +21,6 @@ in the book.
 
 - Optimization Techniques
 
-## Robocode Tank Royale Differences
-
-Migration and platform comparison guides:
-
-- Migration Guide
-
 ## Appendices
 
 ### Reference Material (Intermediate/Beginner)

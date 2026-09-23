@@ -115,7 +115,7 @@
 ├─ Robocode Tank Royale Differences [A]
 │  ├─ API Changes [A] [✅]
 │  ├─ Physics Differences [A] [✅]
-│  └─ Migration Guide [A]
+│  └─ Migration Guide [A] [✅]
 │
 ├─ Appendices [B]
 │  ├─ Glossary [B] [✅]

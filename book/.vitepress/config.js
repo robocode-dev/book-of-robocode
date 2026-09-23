@@ -275,7 +275,8 @@ export default withMermaid(defineConfig({
           text: 'Robocode Tank Royale Differences',
           items: [
             { text: 'API Changes', link: '/tank-royale/api-changes' },
-            { text: 'Physics Differences', link: '/tank-royale/physics-differences' }
+            { text: 'Physics Differences', link: '/tank-royale/physics-differences' },
+            { text: 'Migration Guide', link: '/tank-royale/migration-guide' }
           ]
         }
       ],
