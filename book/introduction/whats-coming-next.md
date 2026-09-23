@@ -26,7 +26,6 @@ in the book.
 Migration and platform comparison guides:
 
 - API Changes
-- Physics Differences
 - Migration Guide
 
 ## Appendices

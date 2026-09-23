@@ -84,6 +84,7 @@ export default withMermaid(defineConfig({
       {
         text: 'Reference',
         items: [
+          { text: 'Tank Royale Differences', link: '/tank-royale/physics-differences' },
           { text: 'Glossary', link: '/appendices/glossary' },
           { text: 'Quick Reference (Formulas)', link: '/appendices/quick-reference' },
           { text: 'Wall of Fame', link: '/appendices/wall-of-fame' },
@@ -266,6 +267,14 @@ export default withMermaid(defineConfig({
             { text: 'Multiple Choice & BestPSpace', link: '/advanced/multiple-choice-bestpspace' },
             { text: 'Targeting Matrix', link: '/advanced/targeting-matrix' },
             { text: 'Testing & Analysis Tools', link: '/advanced/testing-analysis-tools' }
+          ]
+        }
+      ],
+      '/tank-royale/': [
+        {
+          text: 'Robocode Tank Royale Differences',
+          items: [
+            { text: 'Physics Differences', link: '/tank-royale/physics-differences' }
           ]
         }
       ],

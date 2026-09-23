@@ -31,15 +31,14 @@ moment it arrives.
 
 ## A budget before a protocol
 
-Classic Robocode's `TeamRobot` gives a bot one wire out: `broadcastMessage(message)`, which reaches every name
-`getTeammates()` returns, carrying anything that implements `Serializable`. RoboWiki's own examples never narrow
-that to a single recipient, so classic Robocode has no confirmed way to message just one teammate. Tank Royale
-forks the wire in two: `broadcastTeamMessage(message)` for everyone, `sendTeamMessage(teammateId, message)` for
-one bot alone.
+Classic Robocode's `TeamRobot` has two ways to send a `Serializable` message: `broadcastMessage(message)` reaches
+every teammate, and `sendMessage(name, message)` addresses one teammate by name. Tank Royale offers the same two
+choices with `broadcastTeamMessage(message)` and `sendTeamMessage(teammateId, message)`.
 
-Both platforms then hand back the same warning in different words: use the wire sparingly. Tank Royale makes that
-explicit with hard numbers, 10 team messages per bot per turn and 32,768 bytes per message in JSON, so a protocol
-has to fit a budget before it fits a purpose.
+Classic Robocode caps each message at 32,768 bytes after Java serialization. Tank Royale limits each bot to 64 packets
+per turn, with at most 128 logical payloads across ordinary packets and batches. Each packet may use 49,152 UTF-8
+bytes, and the compact packet array may use 262,144 UTF-8 bytes. A batch keeps ordered entries in one packet and one
+event, which helps when several updates must arrive together.
 
 ## Give every message a shape
 
@@ -110,10 +109,10 @@ spends the message budget on noise, and firing it too late spends it on an obitu
 ## Platform notes
 
 > [!WARNING] Platform Difference
-> Classic Robocode's `TeamRobot` only broadcasts to the whole team, with no size or rate limit that RoboWiki
-> documents. Robocode Tank Royale adds a one-to-one `sendTeamMessage` alongside its broadcast, but caps that
-> channel with hard numbers: 10 messages per bot per turn, 32,768 bytes each. The generous classic channel is
-> easier to abuse, since nothing in the platform stops a runaway loop from flooding it.
+> Both platforms support broadcast and directed messages. Classic Robocode limits each Java-serialized message to
+> 32,768 bytes. Tank Royale also limits per-turn traffic to 64 packets and 128 logical payloads, plus 49,152 UTF-8
+> bytes per packet and 262,144 UTF-8 bytes for the compact packet array. A failed Tank Royale intent is rejected in
+> full, and accepted messages arrive on the next turn.
 
 ## Further Reading
 

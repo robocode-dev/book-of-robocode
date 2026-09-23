@@ -104,14 +104,14 @@ top of a team that already avoids shooting itself.
 | Team-aware base | `TeamRobot` class | `Bot` interface (any bot can join a team) |
 | Teammate check | `isTeammate(name)` | `isTeammate(id)` |
 | Broadcast to all | `broadcastMessage(message)` | `broadcastTeamMessage(message)` |
-| Message one teammate | not documented on RoboWiki | `sendTeamMessage(teammateId, message)` |
+| Message one teammate | `sendMessage(name, message)` | `sendTeamMessage(teammateId, message)` |
 | Droid trade-off | no radar, +20 energy | no radar, more energy |
 | Leader energy bonus | +100 energy (200 total, 220 for a Droid leader) | not documented |
 
-Tank Royale documents hard limits classic Robocode does not spell out the same way: 10 team messages per bot per
-turn, and 32,768 bytes per message in its JSON format. Convert bearings into one consistent angle convention
-before passing position data between teammates, since classic Robocode headings are compass-style while Tank
-Royale headings are mathematical.
+Classic Robocode limits each message to 32,768 bytes after Java serialization. Tank Royale has per-turn limits as
+well: 64 packets, up to 128 payloads when batches are counted, 49,152 UTF-8 bytes per packet, and 262,144 UTF-8 bytes
+for the compact packet array. Convert bearings into one consistent angle convention before passing position data
+between teammates, since classic Robocode headings are compass-style while Tank Royale headings are mathematical.
 
 ## Further Reading
 

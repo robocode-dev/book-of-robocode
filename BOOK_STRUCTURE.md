@@ -31,7 +31,7 @@
 │  ├─ One-on-One Radar [I] [✅]
 │  │  ├─ Spinning Radar [I] [✅] / Infinity Lock [I] [✅]
 │  │  └─ Perfect Locks (Turn Multiplier & Width Lock) [A] [✅]
-│  └─ Melee Radar [A]
+│  └─ Melee Radar [A] [✅]
 │     ├─ Spinning & Corner Arc [A] [✅]
 │     ├─ Oldest Scanned [A] [✅]
 │     └─ Gun Heat Lock [A] [✅]
@@ -114,7 +114,7 @@
 │
 ├─ Robocode Tank Royale Differences [A]
 │  ├─ API Changes [A]
-│  ├─ Physics Differences [A]
+│  ├─ Physics Differences [A] [✅]
 │  └─ Migration Guide [A]
 │
 ├─ Appendices [B]
