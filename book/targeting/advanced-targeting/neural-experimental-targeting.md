@@ -90,30 +90,54 @@ rises by at least 3 units per turn.
 
 Those two facts turn wave checking into bookkeeping on two indices. The entries whose bullet has reached the front of
 the enemy (`f ≥ −18`) form a run at the old end of the buffer, and that run only grows. The same holds for the
-entries whose bullet has already passed the back of the enemy (`f > 18`). For each speed, the bot remembers where each run
-ended on the previous scan and binary-searches where it ends now. Every entry in between crossed since the last scan,
-and each one is handled exactly once:
+entries whose bullet has already passed the back of the enemy (`f > 18`). For each speed, the bot remembers where
+each run ended on the previous scan and binary-searches where it ends now. Every entry in between crossed since the
+last scan, and each one is handled exactly once:
 
 ```txt
-for each tracked bulletSpeed s:
-    enterEnd[s], leaveEnd[s]     # where each run ended on the previous scan
+# enterEnd[s], leaveEnd[s]: where each run ended the last time speed s was advanced
+gfSpan(e, s, enemyNow):             # GuessFactors covered by the enemy's width, not its center
+    b = bearing(e.myPosition, enemyNow)
+    w = atan(18 / distance(e.myPosition, enemyNow))
+    return sorted(guessFactor(e.enemyState, b - w, s), guessFactor(e.enemyState, b + w, s))
+
+advance(s, now, enemyNow):          # f uses now and enemyNow, entries up to turn now
+    newEnter = binarySearch(buffer, last entry with f >= -18)
+    newLeave = binarySearch(buffer, last entry with f > 18)
+    for each entry e after enterEnd[s] up to newEnter:      # bullet reaches the enemy
+        e.startSpan[s] = gfSpan(e, s, enemyNow)
+    for each entry e after leaveEnd[s] up to newLeave:      # bullet leaves the enemy
+        endSpan = gfSpan(e, s, enemyNow)
+        record(union(e.startSpan[s], endSpan), segmentsOf(e.enemyState))
+    enterEnd[s] = newEnter
+    leaveEnd[s] = newLeave
 
 on each scan:
     for each tracked bulletSpeed s:
-        newEnter = binarySearch(buffer, last entry with f >= -18)
-        newLeave = binarySearch(buffer, last entry with f > 18)
-        for each entry e after enterEnd[s] up to newEnter:      # bullet reaches the enemy
-            e.startGf[s] = guessFactor(e.enemyState, bearing(e.myPosition, enemyNow), s)
-        for each entry e after leaveEnd[s] up to newLeave:      # bullet leaves the enemy
-            endGf = guessFactor(e.enemyState, bearing(e.myPosition, enemyNow), s)
-            record(range(e.startGf[s], endGf), segmentsOf(e.enemyState))
-        enterEnd[s] = newEnter
-        leaveEnd[s] = newLeave
+        advance(s, currentTurn, scannedEnemyPosition)
 ```
 
 The same loop copes with skipped scans, which are common in melee when the radar is busy elsewhere. If three turns
-pass between scans, more entries fall between the old and new ends, and every one of them is still recorded once. If
-an entry enters and leaves within one gap, the first loop sets its start just before the second loop reads it.
+pass between scans, more entries fall between the old and new ends, and every one of them is still recorded once.
+
+An entry can also enter and leave within one gap. The first loop then sets its start just before the second loop
+reads it, and both ends use the same enemy position. With center bearings that range would have zero width. With
+`gfSpan`, it still covers the enemy's width, `±atan(18 / d)` around the center, where `d` is the distance from the
+entry's firing position. What it misses is the enemy's movement during the turns the bullet spent crossing it.
+
+Asking about a new bullet speed later uses the same function. The bot starts both runs before the oldest entry and
+replays the buffer, oldest turn first, treating each stored enemy position as if it were the scan of that turn:
+
+```txt
+track a new bulletSpeed s:
+    enterEnd[s] = leaveEnd[s] = before the oldest entry
+    for each buffered turn T where the enemy was scanned, oldest first:
+        advance(s, T, buffer[T].enemyState.position)
+    add s to the tracked speeds
+```
+
+When the replay reaches the newest turn, speed `s` has the same statistics it would have had if the bot had tracked it
+from the start of the buffer, and the ordinary scan loop carries on from there.
 
 The enemy snapshot is what makes the data useful. A plain bearing from an old position to the enemy's current spot
 describes one geometry that never repeats. Measured against the enemy's position and lateral direction at `tᵢ` and
@@ -149,8 +173,19 @@ style="max-width:100%;height:auto;"/><br>
 The data is only as good as the hit test. Against a gun whose waves use the enemy's center point, the two methods
 record the same GuessFactors. Stronger wave guns use precise intersection: they test the bullet's path against the
 enemy's hitbox on every turn it overlaps and record the whole range of GuessFactors that would have hit. The two
-crossings above only measure that range at its ends, when the bullet reaches the 18-unit margin and when it leaves
-it, and only on turns the bot actually scanned. That is an approximation of precise intersection, not a match for it.
+crossings above cover the enemy's width at each end, through `gfSpan`, but they only look at the ends: when the
+bullet reaches the 18-unit margin and when it leaves it, and only on turns the bot actually scanned. An 18-unit
+circle also stands in for classic Robocode's square hitbox. That is an approximation of precise intersection, not a
+match for it.
+
+The biggest limit hits the headline feature. The enemy's recorded path is its reaction to the bullets the bot
+actually fired. A [wave surfer](/appendices/glossary#wave-surfing) sees the energy drop of each real shot, works out
+that bullet's speed, and moves to dodge that one wave. Replaying a different speed asks how a bullet the surfer never
+saw would have done against movement that was dodging something else. A surfer that had seen that bullet would have
+moved differently, so the replayed record is a counterfactual that the buffer cannot correct, and nothing in it shows
+how far off it is. Against a surfer, only the speeds the bot really fired give trustworthy statistics. Against
+movement that ignores bullets, such as an oscillator or a random mover, the path would have been the same whatever
+the bot fired, and comparing bullet powers after the fact holds up.
 
 The history also has limits. A bullet speed asked about after the fact can only be replayed over turns where the
 buffer holds the enemy's position, so gaps in scanning become gaps in the answer. And the buffer must be long enough
@@ -165,12 +200,13 @@ choice, it remains a hypothesis.
 |----------------------|--------------------------------------------|----------------------------------------------|
 | Status               | Established, RoboWiki-documented           | Experimental, untested in a real bot          |
 | What it changes      | The model that turns data into an aim      | How the gun collects its GuessFactor data     |
-| Strongest when       | Paired with waves and GuessFactors         | Comparing bullet powers after the fact        |
-| Weakest when         | Data is scarce, network overfits           | Compared with precise-intersection wave guns  |
+| Strongest when       | Paired with waves and GuessFactors         | Comparing powers when movement ignores bullets |
+| Weakest when         | Data is scarce, network overfits           | Replaying unfired speeds against wave surfers |
 
 Neither method replaces wave-based targeting. Neural targeting earns its keep as an addition to a wave gun, not a
-substitute. Retroactive hit analysis feeds the same kind of gun from a history that any bullet speed can query later,
-and it still has to show that this flexibility wins battles.
+substitute. Retroactive hit analysis feeds the same kind of gun from a history that any bullet speed can query later.
+That flexibility only tells the truth against enemies that do not react to the bullets the bot fired, and it still
+has to show that it wins battles.
 
 ## Platform notes
 
