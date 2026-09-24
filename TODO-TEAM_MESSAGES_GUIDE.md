@@ -1,178 +1,151 @@
-# Quick Reference: Team Messages in C# Bot API
+# TODO: Team Messages Across All Bot APIs
 
-## Overview
-Team messages allow bots in the same team to communicate with each other during a battle. Messages are serialized to JSON and deserialized on the receiving end.
+Working notes for a future book update on Tank Royale team messages in Java, C#, Python, and TypeScript.
+Not a book page. Do not publish until the change below is final.
 
-## How to Send Team Messages
+## Status
 
-### Send to All Teammates
-```csharp
-BroadcastTeamMessage(messageObject);
-```
+- Source of truth: branch `ch-047-team-message-limits` in `C:\Code\tank-royale`, change `CH-047`
+  (`changes/CH-047-team-message-limits/`), article `web/docs/articles/team-messages.md`, and
+  `bot-api/dotnet/TEAM_MESSAGES_GUIDE.md`.
+- CH-047 is a **draft**. The stress acceptance gate is unresolved (one failed run out of eleven on 2026-09-24), so
+  the limits below are a candidate, not a published policy.
+- This file used to be a copy of the older .NET guide. Its "10 messages per turn" and "32,768 bytes" figures are the
+  old Tank Royale limits and must not be used.
 
-### Send to Specific Teammate
-```csharp
-SendTeamMessage(teammateId, messageObject);
-```
+## Book fixes waiting on CH-047
 
-## Message Classes
+- `book/team-strategies/communication-coordination.md` already states the new limits (lines 38 and 113) before
+  CH-047 is published. Re-check them against the final numbers.
+- The same page still says "the 10-message budget" (line 56). Rewrite it against the final per-turn limits.
+- Add ordered batches (`sendTeamMessageBatch`) to the page. They are the main reason for CH-047.
+- Show send and receive code for all four languages, based on the `MyFirstTeam` sample (`MyFirstLeader`,
+  `MyFirstDroid`).
+- Consider a short cross-link or platform note in `book/tank-royale/api-changes.md` and `migration-guide.md`.
+- Delete this file once the book pages are updated.
 
-Message classes should be simple POCOs (Plain Old CLR Objects) with public properties:
+## API summary
 
-```csharp
-class Point
-{
-    public double X { get; set; }
-    public double Y { get; set; }
+Names seen in the branch article. Verify the rest (for example Python `send_team_message`, and whether a broadcast
+batch method exists) against the Bot API sources before writing.
+
+| Language   | Broadcast                   | Batch to one teammate               | Receive           |
+|------------|-----------------------------|-------------------------------------|-------------------|
+| Java       | `broadcastTeamMessage`      | `sendTeamMessageBatch(id, list)`    | `onTeamMessage`   |
+| C#         | `BroadcastTeamMessage`      | `SendTeamMessageBatch(id, array)`   | `OnTeamMessage`   |
+| Python     | `broadcast_team_message`    | `send_team_message_batch(id, list)` | `on_team_message` |
+| TypeScript | `broadcastTeamMessage`      | `sendTeamMessageBatch(id, array)`   | `onTeamMessage`   |
+
+Directed single messages use `sendTeamMessage(teammateId, message)` in Java and TypeScript (`SendTeamMessage` in C#).
+Teammate checks use `isTeammate` / `IsTeammate` / `is_teammate`.
+
+## How each language finds the message type
+
+The same feature adapts to four different type systems. This is the most interesting teaching angle.
+
+- **Java:** message classes are matched by class name. The receiver checks with `instanceof`.
+- **C#:** message classes (plain classes with public properties) are matched by type name. The receiver uses
+  pattern matching, such as `if (evt.Message is Point target)`. `Color` properties serialize as hex strings.
+- **Python:** each message class needs the `@team_message_type` decorator (usually on a `@dataclass`) to be
+  registered for serialization. The receiver uses `isinstance`.
+- **TypeScript:** no runtime classes. Messages are plain JSON strings: `JSON.stringify()` to send, `JSON.parse()` to
+  receive, and a discriminated union with a `type` field (`type TeamMessage = Point | RobotColors`) to tell them
+  apart. Colors travel as hex strings via `ColorUtil.toHex()` and `ColorUtil.fromHexColor()`.
+
+In Java, C#, and Python, sender and receiver each define their own message classes with the same name and compatible
+fields.
+
+## Receiving: MyFirstDroid
+
+```java
+@Override
+public void onTeamMessage(TeamMessageEvent e) {
+    if (e.getMessage() instanceof Point target) {
+        turnRight(bearingTo(target.x, target.y));
+        fire(3);
+    }
 }
-
-class RobotColors
-{
-    public Color BodyColor { get; set; }
-    public Color GunColor { get; set; }
-    // ... other properties
-}
 ```
-
-## Important Rules
-
-1. **Each bot defines its own message classes** - MyFirstLeader and MyFirstDroid each have their own `Point` and `RobotColors` classes
-
-2. **Classes are matched by name** - The type name (e.g., "RobotColors") is used to find the corresponding class in the receiving bot's assembly
-
-3. **Use the global namespace or consistent namespaces** - Classes in the global namespace work best for cross-bot communication
-
-4. **Properties must be public** - JSON serialization requires public getters and setters
-
-5. **Color properties are automatically handled** - The `Color` type has a custom JSON converter that serializes to hex format (#RRGGBBAA)
-
-## Receiving Team Messages
-
-Override the `OnTeamMessage` method:
 
 ```csharp
 public override void OnTeamMessage(TeamMessageEvent evt)
 {
-    var message = evt.Message;
-    
-    if (message is Point point)
-    {
-        // Handle point message
-        TurnRight(BearingTo(point.X, point.Y));
-        Fire(3);
-    }
-    else if (message is RobotColors colors)
-    {
-        // Handle colors message
-        BodyColor = colors.BodyColor;
-        GunColor = colors.GunColor;
-    }
-}
-```
-
-## Example: MyFirstTeam
-
-### MyFirstLeader (Sender)
-```csharp
-public override void Run()
-{
-    // Create and send colors to team
-    var colors = new RobotColors {
-        BodyColor = Color.Red,
-        GunColor = Color.Yellow
-    };
-    BroadcastTeamMessage(colors);
-    
-    // ... bot logic ...
-}
-
-public override void OnScannedBot(ScannedBotEvent evt)
-{
-    if (!IsTeammate(evt.ScannedBotId))
-    {
-        // Send enemy position to teammates
-        BroadcastTeamMessage(new Point(evt.X, evt.Y));
-    }
-}
-```
-
-### MyFirstDroid (Receiver)
-```csharp
-public override void OnTeamMessage(TeamMessageEvent evt)
-{
-    var message = evt.Message;
-    
-    if (message is Point target)
+    if (evt.Message is Point target)
     {
         TurnRight(BearingTo(target.X, target.Y));
         Fire(3);
     }
-    else if (message is RobotColors colors)
-    {
-        BodyColor = colors.BodyColor;
-        GunColor = colors.GunColor;
+}
+```
+
+```python
+@team_message_type
+@dataclass
+class Point:
+    x: float
+    y: float
+
+async def on_team_message(self, e: TeamMessageEvent) -> None:
+    if isinstance(e.message, Point):
+        await self.turn_right(self.bearing_to(e.message.x, e.message.y))
+        await self.fire(3)
+```
+
+```typescript
+interface Point { type: "Point"; x: number; y: number; }
+type TeamMessage = Point | RobotColors;
+
+override onTeamMessage(e: TeamMessageEvent) {
+    const message = JSON.parse(e.message) as TeamMessage;
+    if (message.type === "Point") {
+        this.turnRight(this.bearingTo(message.x, message.y));
+        this.fire(3);
     }
 }
 ```
 
-## Troubleshooting
+## Ordered batches (new in CH-047)
 
-### Colors Not Showing
-- Ensure `RobotColors` class has the same property names on both sender and receiver
-- Check that colors are set AFTER the message is received in `OnTeamMessage`
+A batch carries several entries in one packet and one `TeamMessageEvent`. The event's message is a
+`TeamMessageBatch`, and its entries keep their send order. Batching cuts per-message framing and callback work. It
+does not compress the JSON. Every recipient must advertise batch version 1, or the server rejects the sender's intent.
 
-### Messages Not Received
-- Verify both bots are part of the same team (check team JSON configuration)
-- Use `IsTeammate(botId)` to verify team membership
-- Check bot console for any error messages
+```java
+sendTeamMessageBatch(teammateId, List.of(new Point(250, 300), new Point(400, 180)));
 
-### Type Not Found Error
-- Make sure the message class is defined in the receiving bot's file
-- Use simple class names without complex namespaces
-- Ensure properties match between sender and receiver
-
-## Limitations
-
-- Maximum 10 team messages per turn per bot
-- Maximum message size: 32,768 bytes (JSON format)
-- Messages must be serializable to JSON (no circular references)
-- Complex objects may require custom JSON converters
-
-## Advanced: Custom Message Types
-
-For complex scenarios, you can define custom message types with type discriminators:
-
-```csharp
-abstract class TeamMessage
-{
-    public abstract string Type { get; }
-}
-
-class MoveCommand : TeamMessage
-{
-    public override string Type => "Move";
-    public double X { get; set; }
-    public double Y { get; set; }
-}
-
-class AttackCommand : TeamMessage
-{
-    public override string Type => "Attack";
-    public int TargetId { get; set; }
-}
-```
-
-Then in `OnTeamMessage`:
-```csharp
-public override void OnTeamMessage(TeamMessageEvent evt)
-{
-    if (evt.Message is MoveCommand move)
-    {
-        // Handle move
-    }
-    else if (evt.Message is AttackCommand attack)
-    {
-        // Handle attack
+@Override
+public void onTeamMessage(TeamMessageEvent event) {
+    if (event.getMessage() instanceof TeamMessageBatch batch) {
+        for (Object message : batch.getMessages()) { /* in send order */ }
     }
 }
 ```
+
+The C#, Python, and TypeScript versions follow the same shape (`batch.Messages`, `event.message.messages`,
+`event.message.messages`). See the code group in the Tank Royale article.
+
+## Candidate limits (per bot, per turn)
+
+| Limit                                                | Value                          |
+|------------------------------------------------------|--------------------------------|
+| Team-message packets, including batches              | 64                             |
+| Logical payloads, counting every batch entry         | 128                            |
+| One encoded packet                                   | 49,152 UTF-8 bytes (48 KiB)    |
+| Compact `teamMessages` array                         | 262,144 UTF-8 bytes (256 KiB)  |
+| Incoming WebSocket text frame (checked before parse) | 1 MiB                          |
+
+- Each Bot API checks a call before enqueueing it and throws if a limit would be exceeded. Empty batches and null
+  entries are rejected.
+- The server rejects an invalid intent in full, so none of its messages are delivered.
+- Accepted messages arrive on the next turn.
+- Messages must serialize to JSON (no circular references).
+
+Classic Robocode is different: `TeamRobot` sends one `Serializable` object with `broadcastMessage` or `sendMessage`,
+limited to 32,768 bytes after Java serialization. A classic bot can put a collection in one message and iterate it
+from one `MessageEvent`.
+
+## Also fixed in CH-047
+
+Private bot events were stored in a `HashSet` on the server and in the Java and .NET Bot APIs. That made team-message
+order non-deterministic and dropped identical messages. CH-047 keeps them in ordered lists. Worth a sentence in the
+book only if older bots relied on that behavior.

@@ -5,9 +5,10 @@
 See `book/introduction/whats-coming-next.md` for the current list of unwritten articles, kept in sync with
 `BOOK_STRUCTURE.md`.
 
-## Content & Links
+## Team Messages (waiting on Tank Royale CH-047)
 
-- Add term glossary links throughout content (e.g., `GuessFactor` linking to glossary)
+- Update the team-message coverage for Java, C#, Python, and TypeScript once CH-047 (team-message limits and
+  ordered batches) is final. Notes, pending book fixes, and candidate limits: `TODO-TEAM_MESSAGES_GUIDE.md`.
 
 ## Examples & Resources
 
