@@ -2,9 +2,9 @@
 title: "Neural & Experimental Targeting"
 category: "Targeting Systems"
 summary: >-
-  Two ways of stepping outside the wave-and-GuessFactor mainstream: training a neural network to predict enemy
-  movement, and testing bullet speeds retroactively against your own recorded flight path instead of predicting
-  forward at all.
+  Two ways of stepping outside the usual wave-gun machinery: training a neural network to predict enemy movement,
+  and finding which past firing positions a bullet would reach right now with one binary search over a shared
+  history buffer.
 tags:
   - neural-experimental-targeting
   - targeting
@@ -31,11 +31,11 @@ source:
 > been documented on RoboWiki or tested in a competing bot, so treat it as a hypothesis worth trying, not settled
 > doctrine like the rest of this book.
 
-Every targeting method covered so far predicts forward: build a model from past data, then guess where the enemy
-will be when the bullet arrives. Two less-traveled ideas turn that model-building step inside out. One replaces the
-[GuessFactor](/appendices/glossary#guessfactor) histogram with a trained neural network. The other skips prediction
-entirely and asks a simpler
-question: given where I already know I stood, which bullet speed would have connected just now?
+A wave gun learns from what already happened and aims with a model built from those facts. Two less-traveled ideas
+change a different part of that process. One replaces the [GuessFactor](/appendices/glossary#guessfactor) histogram
+with a trained neural network. The other keeps the GuessFactor model and changes how the gun collects its data:
+instead of tracking one wave object per turn, it searches a single history buffer for the past positions a bullet
+would be reaching right now.
 
 ## Neural targeting
 
@@ -63,32 +63,47 @@ network to build what many consider the strongest Anti-Surfer gun in the field.
 
 ## Retroactive hit analysis: an experimental idea
 
-Wave-based targeting works by predicting forward: fire, then track an expanding circle until it reaches the enemy,
-then record the angle. That means every wave needs the enemy's position at some future turn before it teaches the
-gun anything.
+A [wave](/appendices/glossary#wave) gun already learns from the past. It remembers where a bullet could have been
+fired, lets a circle grow at bullet speed, and records a GuessFactor when that circle reaches the enemy. Many wave
+guns start a wave every turn, not only when they fire, to collect more data. The cost is bookkeeping: one wave object
+per turn, often one per bullet power, and a distance check against every live wave on every turn.
 
-Retroactive hit analysis flips the order. Keep a short buffer of your own past positions and headings, maybe the last
-50 to 100 turns, and every time you scan the enemy, work backward: for each past position and each candidate bullet
-speed, would a bullet fired from there have covered the exact distance to where the enemy is right now?
+Retroactive hit analysis collects the same data from one ring buffer instead. Each turn, the bot stores one entry:
+its own position, plus the enemy's state at that moment (position, lateral direction, and velocity). On every scan,
+it asks which stored entries a bullet of a given speed would be reaching right now.
+
+For entry `i`, stored at turn `tᵢ` from position `pᵢ`, and a bullet speed `v`, the gap between how far the bullet
+has flown and how far away the enemy is now is
 
 ```txt
-for each of my past positions p (up to ~100 turns back):
-    ticksElapsed = currentTurn - p.turn
-    for each candidate bulletSpeed:
-        expectedDistance = bulletSpeed * ticksElapsed
-        actualDistance = distance(p.position, enemyCurrentPosition)
-        if |expectedDistance - actualDistance| < 18:   # bot radius, in units
-            angle = bearing(p.position, enemyCurrentPosition)
-            record(angle, bulletSpeed, p.turn)
+f(i) = v · (now − tᵢ) − distance(pᵢ, enemyNow)
 ```
 
-A hit found this way is not a prediction, it is a fact about the past: "a bullet fired from that spot, at that
-speed, would have landed here." Bin those facts by angle the same way a GuessFactor gun bins live hits, and the
-result is a histogram built entirely from ground truth instead of forward simulation.
+A value near zero means a bullet fired from that entry would be reaching the enemy on this turn.
+
+Here is the trick. Moving from one entry to the next newer one, the first term shrinks by `v`, which is at least 11
+units per turn, because bullet speed is `20 − 3 × firepower`. The second term changes by at most the bot's own
+movement, which is at most 8 units per turn. So `f` drops by at least 3 units at every step. It only ever decreases,
+which means a binary search finds the crossing directly:
+
+```txt
+on each scan:
+    for each bulletSpeed of interest:
+        i = binarySearch(buffer, where f(i) crosses 0)
+        for each entry j next to i while |f(j)| < 18:     # 18 units, the hit margin
+            snapshot = buffer[j].enemyState
+            gf = guessFactor(snapshot, bearing(buffer[j].myPosition, enemyNow), bulletSpeed)
+            record(gf, segmentsOf(snapshot))
+```
+
+The enemy snapshot is what makes the data useful. A plain bearing from an old position to the enemy's current spot
+describes one geometry that never repeats. Measured against the enemy's position and lateral direction at `tᵢ` and
+scaled by the maximum escape angle, the same hit becomes a GuessFactor that the gun can reuse from any position,
+exactly as it would with a wave.
 
 <!-- TODO: Illustration
 **Filename:** retroactive-hit-analysis-geometry.svg
-**Caption:** "Testing a past position against the enemy's current spot finds which bullet speed would have connected."
+**Caption:** "A bullet fired from this entry 100 turns ago at 19 units per turn is reaching the enemy now."
 **Viewport:** 5200x4200
 **Battlefield:** true
 **Bots:**
@@ -106,32 +121,36 @@ result is a histogram built entirely from ground truth instead of forward simula
 -->
 
 <img src="/images/retroactive-hit-analysis-geometry.svg"
-alt="Testing a past position against the enemy's current spot finds which bullet speed would have connected."
+alt="A bullet fired from this entry 100 turns ago at 19 units per turn is reaching the enemy now."
 style="max-width:100%;height:auto;"/><br>
-*Testing a past position against the enemy's current spot finds which bullet speed would have connected.*
+*A bullet fired from this entry 100 turns ago at 19 units per turn is reaching the enemy now.*
 
 ### What it trades away
 
-The method never predicts what happens next turn, only what would have worked a few turns ago. It leans on the enemy
-repeating similar movement over that short window, an assumption that breaks the moment the enemy changes rhythm, and
-it runs one distance check per past position per candidate speed every scan, cheap but not free.
+The method does not aim any better than a GuessFactor gun that starts a wave every turn. It collects the same data,
+so the gain is speed: no wave objects to create or clean up, one buffer shared by every bullet power, and O(log n)
+work per bullet speed per scan instead of a check against every live wave. The gain is real, but it only helps a
+bot whose wave bookkeeping is a noticeable part of its turn time.
 
-The same buffer works in reverse for movement: track the *enemy's* past positions instead of your own, and when one
-of their bullets hits or misses, work backward to find which position it was fired from. That builds a danger map of
-where the enemy's gun tends to succeed, though it only learns after the fact, so it never dodges anything in real
-time the way wave surfing does.
+Scans can skip turns, especially in melee, when the radar is busy elsewhere. A crossing can then happen between two
+scans, so each scan must handle every entry between the previous crossing index and the new one, not only the
+entries next to `i`. Otherwise those hits are lost.
+
+The idea still needs a real bot. Until it matches a tick-wave GuessFactor gun on data and beats it on processing
+time, it remains a hypothesis.
 
 ## Choosing between them
 
 | Aspect              | Neural Targeting                          | Retroactive Hit Analysis                    |
 |----------------------|--------------------------------------------|----------------------------------------------|
 | Status               | Established, RoboWiki-documented           | Experimental, untested in a real bot          |
-| Data source          | Trained model over historical states       | Direct geometric test against ground truth    |
-| Strongest when       | Paired with waves and GuessFactors         | Enemy movement holds steady for a few turns   |
-| Weakest when         | Data is scarce, network overfits           | Enemy changes rhythm between scans            |
+| What it changes      | The model that turns data into an aim      | How the gun collects its GuessFactor data     |
+| Strongest when       | Paired with waves and GuessFactors         | Many bullet powers share one history          |
+| Weakest when         | Data is scarce, network overfits           | Scans skip turns and crossings are missed     |
 
-Neither method replaces wave-based targeting outright. Neural targeting earns its keep as an addition to a wave gun,
-not a substitute, and retroactive hit analysis remains a hypothesis worth testing before trusting it in competition.
+Neither method replaces wave-based targeting. Neural targeting earns its keep as an addition to a wave gun, not a
+substitute. Retroactive hit analysis is a faster way to feed the same gun, and it still has to prove that speed in a
+real battle.
 
 ## Platform notes
 

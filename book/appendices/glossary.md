@@ -244,8 +244,8 @@ See: [Neural & Experimental Targeting](../targeting/advanced-targeting/neural-ex
 
 ### Retroactive hit analysis
 
-An experimental targeting idea that tests candidate bullet speeds against a bot's own recorded past positions and
-the enemy's current position, instead of predicting forward with waves.
+An experimental way to collect GuessFactor data without wave objects. A bot stores its position and the enemy's
+state every turn, then uses a binary search on each scan to find the past entries a bullet would be reaching now.
 
 See: [Neural & Experimental Targeting](../targeting/advanced-targeting/neural-experimental-targeting.md)
 
