@@ -244,8 +244,8 @@ See: [Neural & Experimental Targeting](../targeting/advanced-targeting/neural-ex
 
 ### Retroactive hit analysis
 
-An experimental way to collect GuessFactor data without wave objects. A bot stores its position and the enemy's
-state every turn, then uses a binary search on each scan to find the past entries a bullet would be reaching now.
+An experimental way to collect GuessFactor data from one history instead of waves fixed to one bullet speed. A bot
+stores its position and the enemy's state every turn, so it can later ask how any bullet speed would have done.
 
 See: [Neural & Experimental Targeting](../targeting/advanced-targeting/neural-experimental-targeting.md)
 

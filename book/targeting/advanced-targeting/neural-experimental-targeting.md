@@ -3,8 +3,7 @@ title: "Neural & Experimental Targeting"
 category: "Targeting Systems"
 summary: >-
   Two ways of stepping outside the usual wave-gun machinery: training a neural network to predict enemy movement,
-  and finding which past firing positions a bullet would reach right now with one binary search over a shared
-  history buffer.
+  and keeping one history of both bots' positions so the gun can ask later how any bullet speed would have done.
 tags:
   - neural-experimental-targeting
   - targeting
@@ -34,8 +33,8 @@ source:
 A wave gun learns from what already happened and aims with a model built from those facts. Two less-traveled ideas
 change a different part of that process. One replaces the [GuessFactor](/appendices/glossary#guessfactor) histogram
 with a trained neural network. The other keeps the GuessFactor model and changes how the gun collects its data:
-instead of tracking one wave object per turn, it searches a single history buffer for the past positions a bullet
-would be reaching right now.
+instead of waves fixed to one bullet speed each, it keeps one history of both bots' positions, so the gun can ask
+afterwards how any bullet speed would have done.
 
 ## Neural targeting
 
@@ -167,7 +166,7 @@ choice, it remains a hypothesis.
 | Status               | Established, RoboWiki-documented           | Experimental, untested in a real bot          |
 | What it changes      | The model that turns data into an aim      | How the gun collects its GuessFactor data     |
 | Strongest when       | Paired with waves and GuessFactors         | Comparing bullet powers after the fact        |
-| Weakest when         | Data is scarce, network overfits           | Against precise-intersection wave guns        |
+| Weakest when         | Data is scarce, network overfits           | Compared with precise-intersection wave guns  |
 
 Neither method replaces wave-based targeting. Neural targeting earns its keep as an addition to a wave gun, not a
 substitute. Retroactive hit analysis feeds the same kind of gun from a history that any bullet speed can query later,
