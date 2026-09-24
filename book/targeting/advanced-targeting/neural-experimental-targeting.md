@@ -79,8 +79,14 @@ has flown and how far away the enemy is now is
 f(i) = v · (now − tᵢ) − distance(pᵢ, enemyNow)
 ```
 
-A value near zero means a bullet fired from that entry is reaching the enemy on this turn. A value between −18 and
-18 means the bullet overlaps the enemy's 18-unit hit margin.
+The first term needs the right turn count, because an off-by-one shifts every recorded GuessFactor the same way. In
+Tank Royale, a bot that decides to fire after seeing turn `tᵢ` gets its bullet on the next turn, starting at `pᵢ`,
+and the bullet moves `v` units within that same turn. So on turn `now`, the bullet is `v · (now − tᵢ)` units out,
+which is the first term of `f`. The hit test on that turn sweeps the bullet's next step as well, from
+`v · (now − tᵢ)` to `v · (now − tᵢ + 1)`, against where the enemy stands after moving.
+
+So a bullet reaches the front of the enemy's 18-unit hit margin once `f + v ≥ −18`, one step earlier than `f` alone
+suggests. It has passed the back of the margin once `f > 18`.
 
 Here is the trick. Moving from one entry to the next newer one, the first term shrinks by `v`, which is at least 11
 units per turn, because bullet speed is `20 − 3 × firepower`. The second term changes by at most the bot's own
@@ -89,8 +95,9 @@ over time: for a fixed entry, the bullet gains at least 11 units per turn while 
 rises by at least 3 units per turn.
 
 Those two facts turn wave checking into bookkeeping on two indices. The entries whose bullet has reached the front of
-the enemy (`f ≥ −18`) form a run at the old end of the buffer, and that run only grows. The same holds for the
-entries whose bullet has already passed the back of the enemy (`f > 18`). For each speed, the bot remembers where
+the enemy (`f + v ≥ −18`) form a run at the old end of the buffer, and that run only grows, since adding the
+constant `v` keeps `f` in order. The same holds for the entries whose bullet has already passed the back of the
+enemy (`f > 18`). For each speed, the bot remembers where
 each run ended on the previous scan and binary-searches where it ends now. Every entry in between crossed since the
 last scan, and each one is handled exactly once:
 
@@ -99,16 +106,20 @@ last scan, and each one is handled exactly once:
 gfSpan(e, s, enemyNow):             # GuessFactors covered by the enemy's width, not its center
     b = bearing(e.myPosition, enemyNow)
     w = atan(18 / distance(e.myPosition, enemyNow))
-    return sorted(guessFactor(e.enemyState, b - w, s), guessFactor(e.enemyState, b + w, s))
+    g1 = guessFactor(e.enemyState, b - w, s)
+    g2 = guessFactor(e.enemyState, b + w, s)
+    return (lo: min(g1, g2), hi: max(g1, g2))
 
 advance(s, now, enemyNow):          # f uses now and enemyNow, entries up to turn now
-    newEnter = binarySearch(buffer, last entry with f >= -18)
+    newEnter = binarySearch(buffer, last entry with f + s >= -18)   # hit test sweeps one step ahead
     newLeave = binarySearch(buffer, last entry with f > 18)
     for each entry e after enterEnd[s] up to newEnter:      # bullet reaches the enemy
         e.startSpan[s] = gfSpan(e, s, enemyNow)
     for each entry e after leaveEnd[s] up to newLeave:      # bullet leaves the enemy
         endSpan = gfSpan(e, s, enemyNow)
-        record(union(e.startSpan[s], endSpan), segmentsOf(e.enemyState))
+        lo = min(e.startSpan[s].lo, endSpan.lo)             # hull, not union: the enemy
+        hi = max(e.startSpan[s].hi, endSpan.hi)             # crossed every angle in between
+        record(range(lo, hi), segmentsOf(e.enemyState))
     enterEnd[s] = newEnter
     leaveEnd[s] = newLeave
 
@@ -183,7 +194,9 @@ actually fired. A [wave surfer](/appendices/glossary#wave-surfing) sees the ener
 that bullet's speed, and moves to dodge that one wave. Replaying a different speed asks how a bullet the surfer never
 saw would have done against movement that was dodging something else. A surfer that had seen that bullet would have
 moved differently, so the replayed record is a counterfactual that the buffer cannot correct, and nothing in it shows
-how far off it is. Against a surfer, only the speeds the bot really fired give trustworthy statistics. Against
+how far off it is. This is not unique to the method: waves started on turns without a real shot have the same
+problem, which is why anti-surfer guns weight real waves above virtual ones. Against a surfer, only the speeds the
+bot really fired give trustworthy statistics. Against
 movement that ignores bullets, such as an oscillator or a random mover, the path would have been the same whatever
 the bot fired, and comparing bullet powers after the fact holds up.
 
@@ -213,6 +226,10 @@ has to show that it wins battles.
 Both ideas depend only on shared rules: bullet speed of `20 - 3 × firepower` units per turn, and an 18-unit hit
 margin that stands in for Tank Royale's circular hitbox and approximates classic Robocode's 36×36 square. Convert
 bearings at the API boundary, since the two platforms define 0° differently.
+
+The firing-turn timing in the retroactive hit analysis section follows the Tank Royale server's turn order. Classic
+Robocode updates bullets in its own order, so a classic bot should check the turn count before trusting the `f + v`
+test.
 
 ## Further Reading
 
