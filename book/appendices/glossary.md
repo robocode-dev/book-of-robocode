@@ -240,14 +240,14 @@ See: [Anti-Surfer Targeting](../targeting/advanced-targeting/anti-surfer-targeti
 Targeting that trains a neural network on enemy movement data, usually alongside waves and GuessFactors rather than
 replacing them.
 
-See: [Neural & Experimental Targeting](../targeting/advanced-targeting/neural-experimental-targeting.md)
+See: [Neural Targeting](../targeting/advanced-targeting/neural-targeting.md)
 
 ### Retroactive hit analysis
 
 An experimental way to collect GuessFactor data from one history instead of waves fixed to one bullet speed. A bot
 stores its position and the enemy's state every turn, so it can later ask how any bullet speed would have done.
 
-See: [Neural & Experimental Targeting](../targeting/advanced-targeting/neural-experimental-targeting.md)
+See: [Retroactive Hit Analysis](../targeting/advanced-targeting/retroactive-hit-analysis.md)
 
 ### Virtual guns
 

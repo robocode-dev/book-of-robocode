@@ -185,7 +185,8 @@ export default withMermaid(defineConfig({
             { text: 'Advanced Targeting', items: [
               { text: 'Angular Targeting', link: '/targeting/advanced-targeting/angular-targeting' },
               { text: 'Anti-Surfer Targeting', link: '/targeting/advanced-targeting/anti-surfer-targeting' },
-              { text: 'Neural & Experimental Targeting', link: '/targeting/advanced-targeting/neural-experimental-targeting' }
+              { text: 'Neural Targeting', link: '/targeting/advanced-targeting/neural-targeting' },
+              { text: 'Retroactive Hit Analysis', link: '/targeting/advanced-targeting/retroactive-hit-analysis' }
             ]},
             { text: 'Targeting Tactics', items: [
               { text: 'Fire Power & Timing Decisions', link: '/targeting/targeting-tactics/fire-power-timing-decisions' },
