@@ -9,6 +9,7 @@ source:
   - "RoboWiki - Robocode/RobocodeAPI (classic Robocode) https://robowiki.net/wiki/Robocode/RobocodeAPI"
   - "Robocode Tank Royale Docs - Bot API https://robocode.dev/articles/bot-api.html"
   - "Robocode Tank Royale Docs - Physics https://robocode.dev/articles/physics.html"
+  - "Tank Royale Rumble - https://robocode.dev/rumble"
 ---
 
 # Migration Guide
@@ -71,9 +72,9 @@ assuming the old protocol still fits.
 
 Before running full battles, fire the ported bot at a wall-hugging or stationary opponent and confirm three things in
 order: the bot moves the direction it intends to, the gun tracks the right target, and it doesn't crash on the first
-`onBotDeath` or `onRoundEnded` event. Only then run it in [RoboRumble](/appendices/glossary#roborumble)-style
-battles, where a subtle heading bug shows up
-as a mysteriously low win rate rather than a crash.
+`onBotDeath` or `onRoundEnded` event. Only then run real battles in Tank Royale, where a subtle heading bug can cost
+results without causing a crash. The public [Tank Royale Rumble](/appendices/glossary#tank-royale-rumble) has its own
+bot catalog and rankings, separate from classic [RoboRumble](/appendices/glossary#roborumble).
 
 > [!WARNING] Platform Difference
 > Tank Royale bots run as separate processes and can be skipped for a slow turn instead of finishing late like a
@@ -82,10 +83,9 @@ as a mysteriously low win rate rather than a crash.
 
 ## What does not need porting
 
-The strategy survives the move untouched. A wave surfing movement, a GuessFactor gun, or an anti-gravity swarm
-tactic reads the same battlefield and reasons about the same physics on both platforms. Only the vocabulary for
-reading that battlefield changes. A bot that wins on classic Robocode's RoboRumble should win on Tank Royale's
-leaderboard too, once the checklist above is clean.
+The strategy may survive the move, but its performance still needs testing in the new engine. A wave surfing movement,
+a GuessFactor gun, or an anti-gravity swarm tactic can be adapted to Tank Royale's battlefield. The [Tank Royale Rumble
+rankings](https://robocode-dev.github.io/rumble-data/) measure those battles separately from classic RoboRumble.
 
 ## Further Reading
 
@@ -95,3 +95,4 @@ leaderboard too, once the checklist above is clean.
 - [API Changes](./api-changes.md) - class, method, and event renames
 - [Physics Differences](./physics-differences.md) - angle, turn-sign, and hitbox differences
 - [Team Communication & Coordination](../team-strategies/communication-coordination.md) - message limits
+- [Tank Royale Rumble](https://robocode.dev/rumble) - bot submission, ranked battles, and rankings

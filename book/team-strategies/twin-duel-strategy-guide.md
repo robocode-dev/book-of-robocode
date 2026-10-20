@@ -15,6 +15,7 @@ difficulty: "advanced"
 source:
   - "RoboWiki - Twin Duel (classic Robocode) https://robowiki.net/wiki/Twin_Duel"
   - "RoboWiki - Twin Duel/Strategy Guide (classic Robocode) https://robowiki.net/wiki/Twin_Duel/Strategy_Guide"
+  - "Tank Royale Rumble - https://robocode.dev/rumble"
 ---
 
 # Twin Duel Strategy Guide
@@ -118,16 +119,16 @@ style="max-width:100%;height:auto;"/><br>
 ## Platform notes
 
 > [!WARNING] Platform Difference
-> Twin Duel is a classic-Robocode-only RoboRumble competition, defined by an 800x800 field and a shared 2000-byte
-> code cap. Robocode Tank Royale has no matching ranked ladder or code-size rule.
+> This page describes classic RoboRumble's Twin Duel, including its shared 2000-byte code cap. Tank Royale Rumble has a
+> separate ranked TwinDuel game type, but it does not use that classic code-size rule.
 
-Tank Royale's [Team Strategies](https://robocode.dev/articles/team-strategies.html) article documents the same
-underlying ideas for its own team battles: distributed targeting, focus fire, and crossfire positioning. Without
-Twin Duel's byte cap, a Tank Royale team can afford to implement more of that in full rather than borrowing just
-enough of it to fit.
+Tank Royale Rumble lists its [TwinDuel format and ranked results](https://robocode.dev/rumble). Tank Royale's
+[Team Strategies](https://robocode.dev/articles/team-strategies.html) article covers distributed targeting, focus
+fire, and crossfire positioning. Without the classic byte cap, a Tank Royale team can implement more of that strategy.
 
 ## Further Reading
 
 - [Twin Duel](https://robowiki.net/wiki/Twin_Duel) - RoboWiki (classic Robocode)
 - [Twin Duel/Strategy Guide](https://robowiki.net/wiki/Twin_Duel/Strategy_Guide) - RoboWiki (classic Robocode)
 - [Team Strategies](https://robocode.dev/articles/team-strategies.html) - Tank Royale documentation
+- [Tank Royale Rumble](https://robocode.dev/rumble) - Tank Royale ranked formats
