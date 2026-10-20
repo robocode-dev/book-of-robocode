@@ -8,7 +8,8 @@ tags: [ "glossary", "reference", "terminology", "beginner", "robocode", "tank-ro
 difficulty: "beginner"
 source: [
   "RoboWiki - Robocode/Glossary (classic Robocode) https://robowiki.net/wiki/Robocode/Glossary",
-  "Robocode Tank Royale Docs https://robocode.dev/"
+  "Robocode Tank Royale Docs https://robocode.dev/",
+  "Tank Royale Rumble https://robocode.dev/rumble"
 ]
 ---
 
@@ -163,6 +164,12 @@ community rankings.
 The external ranking system (hosted at [literumble.appspot.com](https://literumble.appspot.com/)) that collects
 RoboRumble battle results and computes official rankings. Created and maintained by Julian Kent ("Skilgannon").
 
+### Tank Royale Rumble
+
+The community-run ranked competition for Robocode Tank Royale. Bot owners submit source to a reviewed catalog,
+contributors run ranked battles, and accepted results feed the
+[public dashboard](https://robocode-dev.github.io/rumble-data/).
+
 ---
 
 ## Movement terms
@@ -258,3 +265,4 @@ best performer.
 
 - [Robocode/Glossary](https://robowiki.net/wiki/Robocode/Glossary) - RoboWiki (classic Robocode)
 - [Robocode Tank Royale](https://robocode.dev/) - Tank Royale documentation
+- [Tank Royale Rumble](https://robocode.dev/rumble) - ranked competition guide

@@ -8,7 +8,8 @@ tags: [ "introduction", "robocode", "tank-royale", "beginner" ]
 difficulty: "beginner"
 source: [
   "RoboWiki - Robocode (classic Robocode only)",
-  "Robocode Tank Royale Docs - robocode-dev.github.io/tank-royale"
+  "Robocode Tank Royale Docs - robocode-dev.github.io/tank-royale",
+  "Tank Royale Rumble - https://robocode.dev/rumble"
 ]
 ---
 
@@ -83,8 +84,11 @@ see [Competition Formats & Rankings](../energy-and-scoring/competition-formats-r
 - Runs on a server + bot architecture.
 - Bots connect to a game server using network protocols.
 - You can write bots in multiple languages (for example, Java, C#, Python, Kotlin, Scala, and more).
-- Does not have a community competition system like RoboRumble and
-  [LiteRumble](/appendices/glossary#literumble) yet.
+- Has its own community competition, [Tank Royale Rumble](/appendices/glossary#tank-royale-rumble), with separate bot
+  submission, ranked battle contribution, and public rankings. See the
+  [bot author guide](https://robocode.dev/rumble/bot-author-guide),
+  [battle contributor guide](https://robocode.dev/rumble/client-guide), and
+  [live rankings](https://robocode-dev.github.io/rumble-data/).
 
 ---
 
@@ -102,3 +106,4 @@ see [Competition Formats & Rankings](../energy-and-scoring/competition-formats-r
 
 - [Robocode](https://robowiki.net/wiki/Robocode) - RoboWiki (classic Robocode)
 - [Robocode Tank Royale](https://robocode.dev/) - Tank Royale documentation
+- [Tank Royale Rumble](https://robocode.dev/rumble) - ranked competition guide

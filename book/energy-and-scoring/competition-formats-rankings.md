@@ -11,7 +11,8 @@ source: [
   "RoboWiki - RoboRumble/Enter The Competition (classic Robocode)
   https://robowiki.net/wiki/RoboRumble/Enter_The_Competition",
   "RoboWiki - LiteRumble (classic Robocode) https://robowiki.net/wiki/LiteRumble",
-  "RoboWiki - RoboRumble (classic Robocode) https://robowiki.net/wiki/RoboRumble"
+  "RoboWiki - RoboRumble (classic Robocode) https://robowiki.net/wiki/RoboRumble",
+  "Tank Royale Rumble - https://robocode.dev/rumble"
 ]
 ---
 
@@ -36,8 +37,12 @@ details on how scoring works across different battle types, see
 **[Scoring Systems & Battle Types](./scoring-systems-battle-types.md)**.
 
 > [!NOTE] Platform availability
-> RoboRumble is built into **classic Robocode only**. Tank Royale does not yet have an integrated ranking system, though
-> the community competition formats and scoring concepts apply to both platforms.
+> RoboRumble and LiteRumble serve **classic Robocode**. Tank Royale has a separate community competition, [Tank Royale
+> Rumble](https://robocode.dev/rumble), with its own bot catalog, battle contributors, and rankings.
+
+Tank Royale Rumble has separate [bot submission](https://robocode.dev/rumble/bot-author-guide) and
+[ranked battle contribution](https://robocode.dev/rumble/client-guide) guides, plus a
+[live rankings dashboard](https://robocode-dev.github.io/rumble-data/).
 
 ## Why standardized formats matter
 
@@ -201,7 +206,7 @@ Team battles use various configurations depending on tournament rules, but commo
 - **Rounds per match:** 10 rounds
 - **Participants:** Variable team sizes (2-5 bots per team)
 
-## How rankings work
+## How classic rankings work
 
 Community rankings through RoboRumble (powered by LiteRumble) use sophisticated rating systems to rank bots fairly
 across many battles.
@@ -233,9 +238,9 @@ A bot's ranking becomes reliable after fighting a sufficient number of diverse o
 - **Opponent diversity:** Battles across the full skill spectrum
 - **Temporal distribution:** Battles spread over time to reduce clustering effects
 
-## Participating in rankings
+## Participating in RoboRumble
 
-### Submitting bots
+### Submitting classic bots
 
 To participate in RoboRumble rankings, visit
 the [RoboRumble/Enter The Competition](https://robowiki.net/wiki/RoboRumble/Enter_The_Competition) page for detailed
@@ -336,3 +341,4 @@ The continuous operation of these systems enables the global Robocode community 
 - [LiteRumble](https://robowiki.net/wiki/LiteRumble) - RoboWiki (classic Robocode)
 - [RoboRumble/Enter The Competition](https://robowiki.net/wiki/RoboRumble/Enter_The_Competition) - RoboWiki (classic
   Robocode)
+- [Tank Royale Rumble](https://robocode.dev/rumble) - ranked competition guide
