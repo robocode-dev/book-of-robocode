@@ -16,6 +16,7 @@
 │  ├─ Blocking vs Non-Blocking Movement (Setters) [B] [✅]
 │  ├─ Bot Anatomy & The Bot API (Moved) [B] [✅]
 │  ├─ Robot Properties File [B] [✅]
+│  ├─ Robot Rules and Sandbox [I] [✅]
 │  └─ Your First Battle [B] [✅]
 │
 ├─ Battlefield Physics [B]

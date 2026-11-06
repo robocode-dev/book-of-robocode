@@ -247,7 +247,8 @@ the [RoboRumble/Enter The Competition](https://robowiki.net/wiki/RoboRumble/Ente
 submission instructions. Key requirements include:
 
 1. **Follow naming conventions**: Use consistent bot names and versions
-2. **Meet technical requirements**: Ensure bots run on standard configurations
+2. **Meet technical requirements**: Ensure bots run on standard configurations and follow the
+   [Robot Rules and Sandbox](../getting-started/robot-rules-and-sandbox.md), or they are rejected or stopped
 3. **Package properly**: Submit your bot in the correct format with all dependencies
 4. **Test thoroughly**: Verify your bot works in the standard environment before submission
 

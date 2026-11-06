@@ -85,3 +85,4 @@ turn.
 - [Testing & Debugging Guide](https://robocode.dev/articles/testing-guide.html) - Tank Royale documentation
 - [Testing & Analysis Tools](../advanced/testing-analysis-tools.md) - replaying one recorded encounter
 - [Optimization Techniques](../advanced/optimization-techniques.md) - why a turn gets skipped
+- [Robot Rules and Sandbox](../getting-started/robot-rules-and-sandbox.md) - why a bot is rejected or stopped

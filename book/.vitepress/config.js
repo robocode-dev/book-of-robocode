@@ -115,6 +115,7 @@ export default withMermaid(defineConfig({
             { text: 'The Bot API', link: '/getting-started/the-bot-api' },
             { text: 'Blocking vs Non-Blocking Movement (Setters)', link: '/getting-started/blocking-vs-non-blocking-movement-setters' },
             { text: 'Robot Properties File', link: '/getting-started/robot-properties-file' },
+            { text: 'Robot Rules and Sandbox', link: '/getting-started/robot-rules-and-sandbox' },
             { text: 'Your First Battle', link: '/getting-started/your-first-battle' }
           ]
         }

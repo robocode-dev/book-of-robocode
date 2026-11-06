@@ -75,6 +75,8 @@ see [Competition Formats & Rankings](../energy-and-scoring/competition-formats-r
 - Runs on the Java platform.
 - You write Java bots that extend specific base classes from the Robocode API.
 - Battles run inside a desktop GUI application.
+- Runs every bot in a sandbox that limits files, threads, and processing time, described in
+  [Robot Rules and Sandbox](../getting-started/robot-rules-and-sandbox.md).
 - Has the **[RoboRumble](/appendices/glossary#roborumble) client built-in** for participating in community rankings
   via [LiteRumble](https://literumble.appspot.com/).
 - Many classic strategies, tutorials, and bots live on [RoboWiki](https://robowiki.net) (classic Robocode only).

@@ -117,6 +117,10 @@ Robocode runs multiple **rounds** in a single battle. At the end, you’ll see:
 - A **score table** listing each bot.
 - An **overall winner**, based on score over all rounds.
 
+> [!NOTE] Note
+> If a classic bot does not start, or dies at once with a `SYSTEM:` message in its console, it may have broken one of
+> the rules the engine enforces. [Robot Rules and Sandbox](robot-rules-and-sandbox.md) explains them.
+
 Try re-running the battle with:
 
 - Different sample opponents.
@@ -311,6 +315,7 @@ Then, move on to deeper topics in the book:
 - **Radar and scanning** to find enemies more reliably.
 - **Targeting and movement** strategies to win more battles.
 - **Energy and scoring** to understand why some bots "win" even without many kills.
+- The **rules** that classic Robocode enforces on every bot, in [Robot Rules and Sandbox](robot-rules-and-sandbox.md).
 
 For more detailed, up-to-date instructions and screenshots, you can always refer to:
 
